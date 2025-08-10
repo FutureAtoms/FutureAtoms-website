@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SystemVerilogGPT - AI for RTL Design | FutureAtoms</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(240, 147, 251, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #f093fb;
+        }
+
+        #silicon-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding-top: 100px;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .app-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 20px 60px rgba(240, 147, 251, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .app-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .app-tagline {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: rgba(240, 147, 251, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 147, 251, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(240, 147, 251, 0.1);
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #f093fb;
+        }
+
+        .feature-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .generation-section {
+            padding: 4rem 2rem;
+            background: rgba(10, 10, 15, 0.5);
+        }
+
+        .generation-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .generation-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .chat-interface {
+            background: rgba(240, 147, 251, 0.05);
+            border: 1px solid rgba(240, 147, 251, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .chat-message {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .user-message {
+            background: rgba(240, 147, 251, 0.1);
+            text-align: right;
+        }
+
+        .ai-message {
+            background: rgba(245, 87, 108, 0.1);
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-snippet {
+            color: #f093fb;
+        }
+
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Three.js Silicon Container -->
+    <div id="silicon-container"></div>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="app-icon"><i class="fas fa-bolt"></i></div>
+                <h1 class="app-title">SystemVerilogGPT</h1>
+                <p class="app-tagline">AI-Powered RTL Generation & Verification</p>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
+                    Specialized GPT for hardware description and verification. Accelerate chip design 
+                    with AI-powered SystemVerilog/Verilog generation, verification, and optimization.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                <h3 class="feature-title">Instant RTL Generation</h3>
+                <p class="feature-description">Generate complex SystemVerilog modules from specifications</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                <h3 class="feature-title">UVM Testbenches</h3>
+                <p class="feature-description">Automatic UVM testbench and sequence generation</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-search"></i></div>
+                <h3 class="feature-title">Code Review</h3>
+                <p class="feature-description">Identify bugs and suggest optimizations in existing RTL</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-book"></i></div>
+                <h3 class="feature-title">Documentation</h3>
+                <p class="feature-description">Generate comprehensive documentation from RTL code</p>
+            </div>
+        </div>
+
+        <!-- Generation Demo Section -->
+        <div class="generation-section">
+            <div class="generation-container">
+                <h2 class="generation-title">Natural Language to RTL</h2>
+                <div class="chat-interface">
+                    <div class="chat-message user-message">
+                        Create a parameterized FIFO with configurable depth and width
+                    </div>
+                    <div class="chat-message ai-message">
+                        <span class="code-snippet">module fifo #(
+    parameter WIDTH = 8,
+    parameter DEPTH = 16
+) (
+    input clk, rst_n,
+    input wr_en, rd_en,
+    input [WIDTH-1:0] data_in,
+    output reg [WIDTH-1:0] data_out,
+    output full, empty
+);
+    // AI-optimized FIFO implementation...
+endmodule</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Revolutionize Your RTL Design</h2>
+            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
+                10x faster chip design with AI-powered SystemVerilog generation
+            </p>
+            <a href="#" class="cta-btn">Try SystemVerilogGPT</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup for silicon wafer visualization
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('silicon-container').appendChild(renderer.domElement);
+
+        // Create silicon wafer
+        const waferGeometry = new THREE.CylinderGeometry(8, 8, 0.5, 64);
+        const waferMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x2a2a3a,
+            metalness: 0.9,
+            roughness: 0.1,
+            clearcoat: 1,
+            clearcoatRoughness: 0
+        });
+        const wafer = new THREE.Mesh(waferGeometry, waferMaterial);
+        wafer.rotation.x = Math.PI / 2;
+        scene.add(wafer);
+
+        // Create die patterns on wafer
+        const dieGroup = new THREE.Group();
+        const dieSize = 0.8;
+        const dieSpacing = 1;
+        
+        for (let x = -3; x <= 3; x++) {
+            for (let y = -3; y <= 3; y++) {
+                const distance = Math.sqrt(x * x + y * y);
+                if (distance <= 3.5) {
+                    const dieGeometry = new THREE.BoxGeometry(dieSize, dieSize, 0.1);
+                    const dieMaterial = new THREE.MeshPhysicalMaterial({
+                        color: 0xf093fb,
+                        emissive: 0xf5576c,
+                        emissiveIntensity: 0.2,
+                        metalness: 0.7,
+                        roughness: 0.3
+                    });
+                    
+                    const die = new THREE.Mesh(dieGeometry, dieMaterial);
+                    die.position.set(x * dieSpacing, y * dieSpacing, 0.3);
+                    dieGroup.add(die);
+                }
+            }
+        }
+        
+        scene.add(dieGroup);
+
+        // Add circuit traces
+        const traceCount = 50;
+        const traces = [];
+        
+        for (let i = 0; i < traceCount; i++) {
+            const points = [];
+            const startAngle = Math.random() * Math.PI * 2;
+            const startRadius = Math.random() * 7;
+            
+            for (let j = 0; j < 5; j++) {
+                points.push(new THREE.Vector3(
+                    Math.cos(startAngle + j * 0.2) * (startRadius - j * 0.5),
+                    Math.sin(startAngle + j * 0.2) * (startRadius - j * 0.5),
+                    0.4
+                ));
+            }
+            
+            const traceGeometry = new THREE.BufferGeometry().setFromPoints(points);
+            const traceMaterial = new THREE.LineBasicMaterial({
+                color: 0xf093fb,
+                opacity: 0.5,
+                transparent: true
+            });
+            
+            const trace = new THREE.Line(traceGeometry, traceMaterial);
+            traces.push(trace);
+            scene.add(trace);
+        }
+
+        // Add electrons
+        const electronCount = 100;
+        const electronGeometry = new THREE.BufferGeometry();
+        const electronPositions = new Float32Array(electronCount * 3);
+        
+        for (let i = 0; i < electronCount; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = Math.random() * 8;
+            electronPositions[i * 3] = Math.cos(angle) * radius;
+            electronPositions[i * 3 + 1] = Math.sin(angle) * radius;
+            electronPositions[i * 3 + 2] = Math.random() * 2;
+        }
+        
+        electronGeometry.setAttribute('position', new THREE.BufferAttribute(electronPositions, 3));
+        
+        const electronMaterial = new THREE.PointsMaterial({
+            color: 0xf5576c,
+            size: 0.1,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        
+        const electrons = new THREE.Points(electronGeometry, electronMaterial);
+        scene.add(electrons);
+
+        // Lighting
+        const light1 = new THREE.PointLight(0xf093fb, 2, 100);
+        light1.position.set(10, 10, 10);
+        scene.add(light1);
+
+        const light2 = new THREE.PointLight(0xf5576c, 1, 100);
+        light2.position.set(-10, -10, 10);
+        scene.add(light2);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+        scene.add(ambientLight);
+
+        camera.position.set(0, -10, 15);
+        camera.lookAt(0, 0, 0);
+
+        // Mouse tracking
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const time = Date.now() * 0.001;
+            
+            // Rotate wafer
+            wafer.rotation.z += 0.003;
+            dieGroup.rotation.z -= 0.003;
+            
+            // Pulse dies
+            dieGroup.children.forEach((die, index) => {
+                die.material.emissiveIntensity = 0.2 + Math.sin(time * 3 + index * 0.5) * 0.1;
+            });
+            
+            // Animate electrons
+            const positions = electrons.geometry.attributes.position.array;
+            for (let i = 0; i < electronCount; i++) {
+                const angle = Math.atan2(positions[i * 3 + 1], positions[i * 3]);
+                const radius = Math.sqrt(positions[i * 3] * positions[i * 3] + positions[i * 3 + 1] * positions[i * 3 + 1]);
+                
+                positions[i * 3] = Math.cos(angle + 0.01) * radius;
+                positions[i * 3 + 1] = Math.sin(angle + 0.01) * radius;
+                positions[i * 3 + 2] = 0.5 + Math.sin(time + i) * 0.5;
+            }
+            electrons.geometry.attributes.position.needsUpdate = true;
+            
+            // Camera movement
+            camera.position.x = mouseX * 3;
+            camera.position.y = -10 + mouseY * 3;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

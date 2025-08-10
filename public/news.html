@@ -48,7 +48,9 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             cursor: pointer;
@@ -71,7 +73,7 @@
         .nav-links a:hover,
         .nav-links a.active {
             opacity: 1;
-            color: #667eea;
+            color: #c0c0c0;
         }
 
         .hero-section {
@@ -265,6 +267,12 @@
             padding: 3rem 2rem;
             background: rgba(10, 10, 15, 0.9);
             margin-top: 4rem;
+        }
+        /* Metallic Luster Animation */
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            50% { background-position: 0% center; }
+            100% { background-position: -200% center; }
         }
     </style>
 </head>

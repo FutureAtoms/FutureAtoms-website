@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - FutureAtoms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #c0c0c0;
+        }
+
+        .nav-links a.active {
+            opacity: 1;
+            color: #c0c0c0;
+        }
+
+        .content-wrapper {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #c0c0c0;
+        }
+
+        .section p {
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .founder-card {
+            background: rgba(102, 126, 234, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-title {
+            color: #c0c0c0;
+            margin-bottom: 1rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #c0c0c0;
+        }
+
+        .value-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            background: rgba(10, 10, 15, 0.9);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        /* Metallic Luster Animation */
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            50% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">About FutureAtoms</h1>
+            <p class="hero-subtitle">
+                Building tomorrow's technology, one atom at a time. We're a forward-thinking company 
+                creating innovative solutions across AI, health tech, and semiconductor design.
+            </p>
+        </div>
+
+        <!-- About Content -->
+        <div class="about-content">
+            <div class="section">
+                <h2>Our Story</h2>
+                <p>
+                    FutureAtoms was founded with a simple yet ambitious vision: to harness the power of emerging 
+                    technologies to solve real-world problems. From AI-powered music generation to advanced 
+                    semiconductor design tools, we're at the intersection of innovation and practical application.
+                </p>
+                <p>
+                    Our journey began with the recognition that the future belongs to those who can seamlessly 
+                    integrate artificial intelligence, human creativity, and cutting-edge hardware design. 
+                    Every product we create reflects this philosophy.
+                </p>
+            </div>
+
+            <!-- Founder Card -->
+            <div class="founder-card">
+                <div class="founder-avatar">👨‍💻</div>
+                <div class="founder-name">Abhilash Chadhar</div>
+                <div class="founder-title">Founder & CEO</div>
+                <p>
+                    Visionary technologist with deep expertise in AI, semiconductor design, and product development. 
+                    Passionate about creating technology that enhances human potential and drives meaningful innovation.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Our Mission</h2>
+                <p>
+                    To democratize access to advanced technologies by creating intuitive, powerful tools that 
+                    empower individuals and organizations to achieve more than they thought possible. We believe 
+                    technology should augment human capability, not replace it.
+                </p>
+            </div>
+
+            <!-- Values -->
+            <div class="section">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <div class="value-title">Innovation First</div>
+                        <div class="value-description">
+                            We push boundaries and challenge conventional thinking in everything we do.
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <div class="value-title">Human-Centered</div>
+                        <div class="value-description">
+                            Technology should serve people, enhancing their capabilities and well-being.
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚡</div>
+                        <div class="value-title">Excellence</div>
+                        <div class="value-description">
+                            We're committed to delivering exceptional quality in every product we create.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="section">
+                <h2>Impact by Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Active Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">GitHub Stars</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Technology Areas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Looking Forward</h2>
+                <p>
+                    As we continue to grow, our commitment remains unchanged: to create technology that 
+                    makes a meaningful difference in people's lives. Whether it's helping musicians create 
+                    with AI, supporting mental health through technology, or accelerating semiconductor 
+                    design, we're building the tools that will power tomorrow's innovations.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Mouse cursor effect -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

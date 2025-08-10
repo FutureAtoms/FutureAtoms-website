@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BevyBeats - AI Music Generation | FutureAtoms</title>
+    <title>AdaptiveVision - AI Object Detection | FutureAtoms</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -26,7 +26,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(48, 207, 208, 0.1) 0%, transparent 70%);
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
@@ -72,10 +72,10 @@
 
         .nav-links a:hover {
             opacity: 1;
-            color: #d4a574;
+            color: #30cfd0;
         }
 
-        #wave-container {
+        #vision-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -107,13 +107,13 @@
             width: 150px;
             height: 150px;
             margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
+            background: linear-gradient(135deg, #30cfd0, #330867);
             border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            box-shadow: 0 20px 60px rgba(212, 165, 116, 0.3);
+            box-shadow: 0 20px 60px rgba(48, 207, 208, 0.3);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -125,7 +125,7 @@
         .app-title {
             font-size: 4rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
+            background: linear-gradient(135deg, #30cfd0, #330867);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
@@ -149,9 +149,9 @@
         }
 
         .feature-card {
-            background: rgba(212, 165, 116, 0.05);
+            background: rgba(48, 207, 208, 0.05);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 165, 116, 0.2);
+            border: 1px solid rgba(48, 207, 208, 0.2);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
@@ -160,8 +160,8 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(212, 165, 116, 0.1);
-            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
+            background: rgba(48, 207, 208, 0.1);
+            box-shadow: 0 20px 40px rgba(48, 207, 208, 0.2);
         }
 
         .feature-icon {
@@ -172,7 +172,7 @@
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #d4a574;
+            color: #30cfd0;
         }
 
         .feature-description {
@@ -180,77 +180,44 @@
             line-height: 1.6;
         }
 
-        .demo-section {
+        .detection-section {
             padding: 4rem 2rem;
             background: rgba(10, 10, 15, 0.5);
         }
 
-        .demo-container {
-            max-width: 800px;
+        .detection-container {
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .demo-title {
+        .detection-title {
             font-size: 2.5rem;
             margin-bottom: 2rem;
         }
 
-        .music-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .control-btn {
-            padding: 1rem 2rem;
-            background: rgba(212, 165, 116, 0.1);
-            border: 1px solid rgba(212, 165, 116, 0.3);
-            border-radius: 30px;
-            color: #d4a574;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .control-btn:hover {
-            background: rgba(212, 165, 116, 0.2);
-            transform: scale(1.05);
-        }
-
-        .visualizer {
-            height: 200px;
-            background: rgba(212, 165, 116, 0.05);
+        .detection-demo {
+            background: rgba(48, 207, 208, 0.05);
+            border: 1px solid rgba(48, 207, 208, 0.2);
             border-radius: 20px;
-            border: 1px solid rgba(212, 165, 116, 0.2);
+            padding: 2rem;
+            position: relative;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            padding: 2rem;
         }
 
-        .bar {
-            width: 8px;
-            background: linear-gradient(to top, #d4a574, #b8860b);
-            border-radius: 4px;
-            animation: pulse 1s ease-in-out infinite;
+        .detection-box {
+            position: absolute;
+            border: 2px solid #30cfd0;
+            background: rgba(48, 207, 208, 0.1);
+            animation: detectPulse 2s infinite;
         }
 
-        .bar:nth-child(1) { animation-delay: 0s; height: 40%; }
-        .bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
-        .bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
-        .bar:nth-child(4) { animation-delay: 0.3s; height: 50%; }
-        .bar:nth-child(5) { animation-delay: 0.4s; height: 70%; }
-        .bar:nth-child(6) { animation-delay: 0.5s; height: 45%; }
-        .bar:nth-child(7) { animation-delay: 0.6s; height: 65%; }
-        .bar:nth-child(8) { animation-delay: 0.7s; height: 55%; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.5); }
+        @keyframes detectPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .cta-section {
@@ -261,9 +228,9 @@
         .cta-btn {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
+            background: linear-gradient(135deg, #30cfd0, #330867);
             border-radius: 30px;
-            color: #0a0a0f;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
@@ -272,7 +239,7 @@
 
         .cta-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.3);
+            box-shadow: 0 20px 40px rgba(48, 207, 208, 0.3);
         }
 
         .footer {
@@ -298,20 +265,20 @@
         </ul>
     </nav>
 
-    <!-- Three.js Wave Container -->
-    <div id="wave-container"></div>
+    <!-- Three.js Vision Container -->
+    <div id="vision-container"></div>
 
     <!-- Content -->
     <div class="content-wrapper">
         <!-- Hero Section -->
         <div class="hero-section">
             <div class="hero-content">
-                <div class="app-icon"><i class="fas fa-music"></i></div>
-                <h1 class="app-title">BevyBeats</h1>
-                <p class="app-tagline">Where AI Meets Musical Creativity</p>
+                <div class="app-icon"><i class="fas fa-eye"></i></div>
+                <h1 class="app-title">AdaptiveVision</h1>
+                <p class="app-tagline">Next-Gen Object Detection with Adaptive AI</p>
                 <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                    Experience the future of music creation with our revolutionary AI-powered platform. 
-                    Generate, discover, and stream music that evolves with your taste.
+                    Cutting-edge computer vision powered by adaptive algorithms for real-time 
+                    object detection and visual understanding in any environment.
                 </p>
             </div>
         </div>
@@ -319,56 +286,47 @@
         <!-- Features -->
         <div class="feature-grid">
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-waveform-lines"></i></div>
-                <h3 class="feature-title">AI Generation</h3>
-                <p class="feature-description">Create unique songs in any genre with advanced neural networks</p>
+                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="feature-title">Real-time Detection</h3>
+                <p class="feature-description">Process video streams at 60+ FPS with high accuracy</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-headphones"></i></div>
-                <h3 class="feature-title">Smart Streaming</h3>
-                <p class="feature-description">Spotify-like experience with AI-curated playlists</p>
+                <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="feature-title">Adaptive Learning</h3>
+                <p class="feature-description">Self-improving algorithms that adapt to new scenarios</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sliders"></i></div>
-                <h3 class="feature-title">Style Transfer</h3>
-                <p class="feature-description">Transform songs across genres and moods instantly</p>
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3 class="feature-title">Edge Deployment</h3>
+                <p class="feature-description">Optimized for mobile and embedded devices</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-microphone"></i></div>
-                <h3 class="feature-title">Voice Synthesis</h3>
-                <p class="feature-description">Generate vocals that match your creative vision</p>
+                <div class="feature-icon"><i class="fas fa-search-plus"></i></div>
+                <h3 class="feature-title">Multi-scale Analysis</h3>
+                <p class="feature-description">Detect objects from tiny to large with equal precision</p>
             </div>
         </div>
 
-        <!-- Demo Section -->
-        <div class="demo-section">
-            <div class="demo-container">
-                <h2 class="demo-title">Experience the Magic</h2>
-                <div class="music-controls">
-                    <button class="control-btn">Generate Jazz</button>
-                    <button class="control-btn">Create EDM</button>
-                    <button class="control-btn">Make Classical</button>
-                </div>
-                <div class="visualizer">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+        <!-- Detection Demo Section -->
+        <div class="detection-section">
+            <div class="detection-container">
+                <h2 class="detection-title">See It In Action</h2>
+                <div class="detection-demo">
+                    <div class="detection-box" style="width: 120px; height: 120px; top: 20%; left: 15%;"></div>
+                    <div class="detection-box" style="width: 80px; height: 80px; top: 50%; left: 60%;"></div>
+                    <div class="detection-box" style="width: 100px; height: 100px; top: 30%; left: 40%;"></div>
+                    <p style="z-index: 10;">Real-time object detection with bounding boxes</p>
                 </div>
             </div>
         </div>
 
         <!-- CTA Section -->
         <div class="cta-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Create?</h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Empower Your Vision Applications</h2>
             <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                Join thousands of artists already using BevyBeats
+                Integrate AdaptiveVision into your products today
             </p>
-            <a href="#" class="cta-btn">Start Creating Music</a>
+            <a href="https://github.com/FutureAtoms/AdaptiVision" class="cta-btn">Explore on GitHub</a>
         </div>
 
         <!-- Footer -->
@@ -380,66 +338,80 @@
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Scene setup for audio waves
+        // Scene setup for vision grid
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
-        document.getElementById('wave-container').appendChild(renderer.domElement);
+        document.getElementById('vision-container').appendChild(renderer.domElement);
 
-        // Create audio wave mesh
-        const waveGeometry = new THREE.PlaneGeometry(30, 10, 128, 32);
-        const waveMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0xd4a574,
-            emissive: 0xb8860b,
-            emissiveIntensity: 0.2,
-            metalness: 0.8,
-            roughness: 0.2,
-            wireframe: true,
+        // Create scanning grid
+        const gridSize = 20;
+        const gridDivisions = 20;
+        const gridHelper = new THREE.GridHelper(gridSize, gridDivisions, 0x30cfd0, 0x330867);
+        gridHelper.rotation.x = Math.PI / 2;
+        scene.add(gridHelper);
+
+        // Create scanning line
+        const scanLineGeometry = new THREE.PlaneGeometry(gridSize, 0.5);
+        const scanLineMaterial = new THREE.MeshBasicMaterial({
+            color: 0x30cfd0,
             transparent: true,
-            opacity: 0.3
+            opacity: 0.8,
+            side: THREE.DoubleSide
         });
-        
-        const wave = new THREE.Mesh(waveGeometry, waveMaterial);
-        wave.rotation.x = -Math.PI / 3;
-        scene.add(wave);
+        const scanLine = new THREE.Mesh(scanLineGeometry, scanLineMaterial);
+        scene.add(scanLine);
 
-        // Add particles for musical notes
-        const noteCount = 100;
-        const noteGeometry = new THREE.BufferGeometry();
-        const notePositions = new Float32Array(noteCount * 3);
+        // Create detection cubes
+        const cubeCount = 8;
+        const cubes = [];
         
-        for (let i = 0; i < noteCount; i++) {
-            notePositions[i * 3] = (Math.random() - 0.5) * 40;
-            notePositions[i * 3 + 1] = Math.random() * 10;
-            notePositions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+        for (let i = 0; i < cubeCount; i++) {
+            const size = Math.random() * 0.5 + 0.3;
+            const cubeGeometry = new THREE.BoxGeometry(size, size, size);
+            const cubeMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0x30cfd0,
+                emissive: 0x330867,
+                emissiveIntensity: 0.2,
+                metalness: 0.7,
+                roughness: 0.3,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.position.set(
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 5
+            );
+            
+            // Add wireframe overlay
+            const wireframe = new THREE.WireframeGeometry(cubeGeometry);
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x30cfd0 });
+            const wireframeMesh = new THREE.LineSegments(wireframe, lineMaterial);
+            cube.add(wireframeMesh);
+            
+            cubes.push(cube);
+            scene.add(cube);
         }
-        
-        noteGeometry.setAttribute('position', new THREE.BufferAttribute(notePositions, 3));
-        
-        const noteMaterial = new THREE.PointsMaterial({
-            color: 0xd4a574,
-            size: 0.2,
-            transparent: true,
-            opacity: 0.6,
-            blending: THREE.AdditiveBlending
-        });
-        
-        const notes = new THREE.Points(noteGeometry, noteMaterial);
-        scene.add(notes);
 
         // Lighting
-        const light1 = new THREE.PointLight(0xd4a574, 1, 100);
-        light1.position.set(0, 10, 10);
+        const light1 = new THREE.PointLight(0x30cfd0, 1, 100);
+        light1.position.set(10, 10, 10);
         scene.add(light1);
 
-        const light2 = new THREE.PointLight(0xb8860b, 0.5, 100);
+        const light2 = new THREE.PointLight(0x330867, 0.5, 100);
         light2.position.set(-10, -10, 10);
         scene.add(light2);
 
-        camera.position.set(0, 5, 15);
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+        scene.add(ambientLight);
+
+        camera.position.set(0, 0, 15);
         camera.lookAt(0, 0, 0);
 
         // Mouse tracking
@@ -450,7 +422,6 @@
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
             
-            // Update cursor glow
             const cursorGlow = document.getElementById('cursorGlow');
             if (cursorGlow) {
                 cursorGlow.style.left = e.clientX + 'px';
@@ -462,36 +433,28 @@
         function animate() {
             requestAnimationFrame(animate);
             
-            // Animate wave vertices
             const time = Date.now() * 0.001;
-            const vertices = wave.geometry.attributes.position;
             
-            for (let i = 0; i < vertices.count; i++) {
-                const x = vertices.getX(i);
-                const y = vertices.getY(i);
-                const waveHeight = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 2;
-                vertices.setZ(i, waveHeight);
-            }
+            // Animate scan line
+            scanLine.position.y = Math.sin(time) * 10;
+            scanLineMaterial.opacity = 0.8 - Math.abs(Math.sin(time)) * 0.3;
             
-            vertices.needsUpdate = true;
-            
-            // Rotate wave slightly
-            wave.rotation.z = Math.sin(time * 0.2) * 0.1;
-            
-            // Animate notes
-            notes.rotation.y += 0.001;
-            const notePos = notes.geometry.attributes.position.array;
-            for (let i = 0; i < noteCount; i++) {
-                notePos[i * 3 + 1] += 0.02;
-                if (notePos[i * 3 + 1] > 10) {
-                    notePos[i * 3 + 1] = -5;
-                }
-            }
-            notes.geometry.attributes.position.needsUpdate = true;
+            // Rotate and pulse cubes
+            cubes.forEach((cube, index) => {
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                
+                // Detection pulse effect
+                const scale = 1 + Math.sin(time * 3 + index) * 0.1;
+                cube.scale.set(scale, scale, scale);
+                
+                // Float animation
+                cube.position.y += Math.sin(time + index) * 0.01;
+            });
             
             // Camera movement
-            camera.position.x = mouseX * 5;
-            camera.position.y = 5 + mouseY * 2;
+            camera.position.x = mouseX * 3;
+            camera.position.y = mouseY * 3;
             camera.lookAt(0, 0, 0);
             
             renderer.render(scene, camera);
@@ -504,17 +467,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // Control buttons interaction
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Trigger wave animation
-                waveMaterial.emissiveIntensity = 0.5;
-                setTimeout(() => {
-                    waveMaterial.emissiveIntensity = 0.2;
-                }, 300);
-            });
         });
     </script>
 </body>

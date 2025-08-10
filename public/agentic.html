@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Control Framework - Enterprise AI Orchestration | FutureAtoms</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #4facfe;
+        }
+
+        #flow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding-top: 100px;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .app-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 20px 60px rgba(79, 172, 254, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .app-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .app-tagline {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: rgba(79, 172, 254, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(79, 172, 254, 0.1);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4facfe;
+        }
+
+        .feature-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .code-section {
+            padding: 4rem 2rem;
+            background: rgba(10, 10, 15, 0.5);
+        }
+
+        .code-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .code-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .code-block {
+            background: rgba(79, 172, 254, 0.05);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .code-keyword {
+            color: #4facfe;
+        }
+
+        .code-string {
+            color: #00f2fe;
+        }
+
+        .code-comment {
+            color: #666;
+            font-style: italic;
+        }
+
+        .workflow-section {
+            padding: 4rem 2rem;
+        }
+
+        .workflow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .workflow-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: rgba(79, 172, 254, 0.05);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #4facfe;
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 30px;
+            color: #0a0a0f;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.3);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid #4facfe;
+            color: #4facfe;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Three.js Flow Container -->
+    <div id="flow-container"></div>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="app-icon"><i class="fas fa-network-wired"></i></div>
+                <h1 class="app-title">Agentic Control</h1>
+                <p class="app-tagline">Enterprise-Grade Agent Orchestration Framework</p>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
+                    Advanced CLI tool and MCP server for orchestrating complex autonomous agent workflows. 
+                    Build, deploy, and manage intelligent systems at scale.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                <h3 class="feature-title">Task Orchestration</h3>
+                <p class="feature-description">Coordinate complex multi-agent workflows with precision</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                <h3 class="feature-title">MCP Integration</h3>
+                <p class="feature-description">Seamless Model Context Protocol server for AI systems</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="feature-title">Real-time Monitoring</h3>
+                <p class="feature-description">Track agent performance and system metrics live</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="feature-title">Enterprise Security</h3>
+                <p class="feature-description">Built-in authentication and access control</p>
+            </div>
+        </div>
+
+        <!-- Code Section -->
+        <div class="code-section">
+            <div class="code-container">
+                <h2 class="code-title">Simple Yet Powerful</h2>
+                <div class="code-block">
+                    <div class="code-line"><span class="code-comment"># Initialize agentic control framework</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> init --project <span class="code-string">"enterprise-automation"</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-comment"># Define agent workflow</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> workflow create --name <span class="code-string">"data-pipeline"</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> agent add --type <span class="code-string">"analyzer"</span> --model <span class="code-string">"gpt-4"</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> agent add --type <span class="code-string">"processor"</span> --parallel <span class="code-string">4</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-comment"># Deploy and monitor</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> deploy --environment <span class="code-string">"production"</span></div>
+                    <div class="code-line"><span class="code-keyword">agentic</span> monitor --dashboard</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workflow Section -->
+        <div class="workflow-section">
+            <div class="workflow-container">
+                <h2 class="workflow-title">Seamless Workflow Automation</h2>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <h4>1. Define</h4>
+                        <p>Create agent workflows with YAML or CLI</p>
+                    </div>
+                    <div class="workflow-step">
+                        <h4>2. Configure</h4>
+                        <p>Set up agents, models, and resources</p>
+                    </div>
+                    <div class="workflow-step">
+                        <h4>3. Deploy</h4>
+                        <p>Launch workflows in any environment</p>
+                    </div>
+                    <div class="workflow-step">
+                        <h4>4. Scale</h4>
+                        <p>Auto-scale based on workload</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Orchestrate Intelligence?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
+                Join leading enterprises using Agentic Control for AI automation
+            </p>
+            <a href="https://github.com/FutureAtoms/agentic-control-framework" class="cta-btn">View on GitHub</a>
+            <a href="#" class="cta-btn secondary">Documentation</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup for workflow visualization
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('flow-container').appendChild(renderer.domElement);
+
+        // Create flow visualization
+        const flowGroup = new THREE.Group();
+        
+        // Create central hub
+        const hubGeometry = new THREE.OctahedronGeometry(1, 0);
+        const hubMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x4facfe,
+            emissive: 0x00f2fe,
+            emissiveIntensity: 0.3,
+            metalness: 0.8,
+            roughness: 0.2,
+            wireframe: false
+        });
+        const hub = new THREE.Mesh(hubGeometry, hubMaterial);
+        flowGroup.add(hub);
+
+        // Create orbiting agents
+        const agentCount = 6;
+        const agents = [];
+        
+        for (let i = 0; i < agentCount; i++) {
+            const angle = (i / agentCount) * Math.PI * 2;
+            const radius = 5;
+            
+            const agentGeometry = new THREE.BoxGeometry(0.8, 0.8, 0.8);
+            const agentMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0x00f2fe,
+                emissive: 0x4facfe,
+                emissiveIntensity: 0.2,
+                metalness: 0.6,
+                roughness: 0.4
+            });
+            
+            const agent = new THREE.Mesh(agentGeometry, agentMaterial);
+            agent.position.x = Math.cos(angle) * radius;
+            agent.position.z = Math.sin(angle) * radius;
+            agent.userData = { angle: angle, radius: radius };
+            
+            agents.push(agent);
+            flowGroup.add(agent);
+            
+            // Create connection to hub
+            const points = [];
+            points.push(new THREE.Vector3(0, 0, 0));
+            points.push(agent.position);
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: 0x4facfe,
+                opacity: 0.5,
+                transparent: true
+            });
+            const line = new THREE.Line(lineGeometry, lineMaterial);
+            flowGroup.add(line);
+        }
+        
+        scene.add(flowGroup);
+
+        // Add data flow particles
+        const particleCount = 200;
+        const particleGeometry = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            particlePositions[i * 3] = (Math.random() - 0.5) * 20;
+            particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+            particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+        }
+        
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        
+        const particleMaterial = new THREE.PointsMaterial({
+            color: 0x4facfe,
+            size: 0.1,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
+        });
+        
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        scene.add(flowGroup);
+
+        // Lighting
+        const light1 = new THREE.PointLight(0x4facfe, 2, 100);
+        light1.position.set(10, 10, 10);
+        scene.add(light1);
+
+        const light2 = new THREE.PointLight(0x00f2fe, 1, 100);
+        light2.position.set(-10, -10, 10);
+        scene.add(light2);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        scene.add(ambientLight);
+
+        camera.position.set(0, 5, 15);
+        camera.lookAt(0, 0, 0);
+
+        // Mouse tracking
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const time = Date.now() * 0.001;
+            
+            // Rotate hub
+            hub.rotation.x += 0.01;
+            hub.rotation.y += 0.01;
+            
+            // Orbit agents
+            agents.forEach((agent, index) => {
+                const angle = agent.userData.angle + time * 0.5;
+                const radius = agent.userData.radius;
+                
+                agent.position.x = Math.cos(angle) * radius;
+                agent.position.z = Math.sin(angle) * radius;
+                agent.position.y = Math.sin(time * 2 + index) * 0.5;
+                
+                agent.rotation.x += 0.02;
+                agent.rotation.y += 0.02;
+            });
+            
+            // Animate particles
+            particles.rotation.y += 0.001;
+            
+            // Camera movement
+            camera.position.x = mouseX * 3;
+            camera.position.y = 5 + mouseY * 2;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureAtoms - Building Tomorrow's Technology</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -24,7 +26,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.15) 0%, transparent 70%);
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
@@ -49,10 +51,21 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, 
+                #808080 0%, 
+                #c0c0c0 20%, 
+                #ffffff 40%, 
+                #e6e6e6 50%, 
+                #ffffff 60%, 
+                #c0c0c0 80%, 
+                #808080 100%);
+            background-size: 200% 100%;
+            animation: logoShine 3s ease-in-out infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             cursor: pointer;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            filter: contrast(1.1) brightness(1.1);
         }
 
         .nav-links {
@@ -71,7 +84,7 @@
 
         .nav-links a:hover {
             opacity: 1;
-            color: #667eea;
+            color: #c0c0c0;
         }
 
         #canvas-container {
@@ -109,7 +122,9 @@
         .hero-title {
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #feca57 75%, #48c6ef 100%);
+            background: linear-gradient(135deg, #c0c0c0 0%, #e6e6e6 25%, #d3d3d3 50%, #b8b8b8 75%, #a8a8a8 100%);
+            background-size: 300% 300%;
+            animation: metallicFlow 4s ease-in-out infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -169,8 +184,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             flex-shrink: 0;
+            color: #ffffff;
         }
 
         .venture-title {
@@ -235,7 +251,7 @@
         }
 
         .nav-dot.active {
-            background: #667eea;
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6);
             transform: scale(1.5);
         }
 
@@ -304,7 +320,9 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
             border-radius: 50%;
             top: 40px;
             left: 40px;
@@ -350,7 +368,9 @@
         }
 
         .zaphy-icon {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
         }
 
         .agentic-icon {
@@ -370,7 +390,38 @@
         }
 
         .systemverilog-icon {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
+            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        /* Metallic Luster Animations */
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            50% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+
+        @keyframes metallicFlow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes logoShine {
+            0% { 
+                background-position: -100% 0;
+                filter: contrast(1.1) brightness(1.1);
+            }
+            50% { 
+                background-position: 100% 0;
+                filter: contrast(1.3) brightness(1.2);
+            }
+            100% { 
+                background-position: -100% 0;
+                filter: contrast(1.1) brightness(1.1);
+            }
         }
     </style>
 </head>
@@ -429,12 +480,12 @@
         <!-- AI & Music Section -->
         <div class="section">
             <div class="venture-card" id="bevybeats" style="left: 25%;">
-                <div class="venture-icon bevybeats-icon">🦋</div>
+                <div class="venture-icon bevybeats-icon"><i class="fas fa-music"></i></div>
                 <h3 class="venture-title">BevyBeats</h3>
                 <p class="venture-description">Revolutionary AI music platform combining streaming with advanced AI song generation. Create and discover music like never before.</p>
             </div>
             <div class="venture-card" id="savitri" style="left: 75%;">
-                <div class="venture-icon savitri-icon">🧘</div>
+                <div class="venture-icon savitri-icon"><i class="fas fa-brain"></i></div>
                 <h3 class="venture-title">Savitri</h3>
                 <p class="venture-description">AI therapy app offering CBT, DBT, and ACT through voice and video. Your personal mental wellness companion powered by AI.</p>
             </div>
@@ -443,12 +494,12 @@
         <!-- Productivity Tools Section -->
         <div class="section">
             <div class="venture-card" id="zaphy" style="left: 25%;">
-                <div class="venture-icon zaphy-icon">🤖</div>
+                <div class="venture-icon zaphy-icon"><i class="fab fa-linkedin"></i></div>
                 <h3 class="venture-title">Zaphy</h3>
                 <p class="venture-description">Smart Chrome extension for LinkedIn that instantly crafts AI-powered contextual replies. Network smarter with intelligent automation.</p>
             </div>
             <div class="venture-card" id="agentic" style="left: 75%;">
-                <div class="venture-icon agentic-icon">🔄</div>
+                <div class="venture-icon agentic-icon"><i class="fas fa-network-wired"></i></div>
                 <h3 class="venture-title">Agentic Control</h3>
                 <p class="venture-description">Advanced CLI tool with MCP server for orchestrating complex agent workflows. Enterprise-grade autonomous system control.</p>
             </div>
@@ -457,12 +508,12 @@
         <!-- Health & Tech Section -->
         <div class="section">
             <div class="venture-card" id="yuj" style="left: 25%;">
-                <div class="venture-icon yuj-icon">☀️</div>
+                <div class="venture-icon yuj-icon"><i class="fas fa-dumbbell"></i></div>
                 <h3 class="venture-title">Yuj</h3>
                 <p class="venture-description">Comprehensive yoga and workout app bringing ancient wisdom and modern fitness together for holistic wellness.</p>
             </div>
             <div class="venture-card" id="adaptivision" style="left: 75%;">
-                <div class="venture-icon adaptivision-icon">👁️</div>
+                <div class="venture-icon adaptivision-icon"><i class="fas fa-eye"></i></div>
                 <h3 class="venture-title">AdaptiveVision</h3>
                 <p class="venture-description">Cutting-edge object detection powered by adaptive algorithms. Real-time visual understanding for next-gen applications.</p>
             </div>
@@ -471,12 +522,12 @@
         <!-- Development Tools Section -->
         <div class="section">
             <div class="venture-card" id="incoder" style="left: 25%;">
-                <div class="venture-icon incoder-icon">💻</div>
+                <div class="venture-icon incoder-icon"><i class="fas fa-microchip"></i></div>
                 <h3 class="venture-title">Incoder</h3>
                 <p class="venture-description">The Cursor for semiconductor design. Revolutionary OS transforming how engineers design and verify silicon chips.</p>
             </div>
             <div class="venture-card" id="systemverilog" style="left: 75%;">
-                <div class="venture-icon systemverilog-icon">⚡</div>
+                <div class="venture-icon systemverilog-icon"><i class="fas fa-code"></i></div>
                 <h3 class="venture-title">SystemVerilogGPT</h3>
                 <p class="venture-description">Specialized GPT for hardware description and verification. Accelerating chip design with AI-powered RTL generation.</p>
             </div>
@@ -519,7 +570,7 @@
         scene.add(ambientLight);
 
         // Main spotlight with dramatic effect
-        const spotLight = new THREE.SpotLight(0x667eea, 2);
+        const spotLight = new THREE.SpotLight(0xc0c0c0, 2);
         spotLight.position.set(10, 20, 10);
         spotLight.angle = Math.PI / 6;
         spotLight.penumbra = 0.3;
@@ -547,7 +598,7 @@
         const ventures = [
             { name: 'BevyBeats', color: 0xd4a574, position: new THREE.Vector3(-3, 2, -2) },
             { name: 'Savitri', color: 0xff6b6b, position: new THREE.Vector3(3, 1, -1) },
-            { name: 'Zaphy', color: 0x667eea, position: new THREE.Vector3(-2, -2, 2) },
+            { name: 'Zaphy', color: 0xc0c0c0, position: new THREE.Vector3(-2, -2, 2) },
             { name: 'Agentic', color: 0x4facfe, position: new THREE.Vector3(2, -1, -3) },
             { name: 'Yuj', color: 0xfa709a, position: new THREE.Vector3(0, 3, 1) },
             { name: 'AdaptiveVision', color: 0x30cfd0, position: new THREE.Vector3(-4, 0, 0) },

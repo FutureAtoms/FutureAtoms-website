@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - FutureAtoms</title>
+    <title>FutureAtoms Tech Herald - Blog</title>
+    <!-- Newspaper fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,459 +14,331 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0f;
-            color: #ffffff;
-            cursor: none;
-            overflow-x: hidden;
+            font-family: 'Libre Baskerville', serif;
+            background: #1a1a1a;
+            color: #2c2c2c;
+            line-height: 1.6;
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
+        /* Newspaper Header */
+        .newspaper-header {
+            background: #fff;
+            border-bottom: 4px solid #000;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .newspaper-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
+        .newspaper-subtitle {
+            font-family: 'Old Standard TT', serif;
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .newspaper-date {
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: #000;
+            padding: 1rem 0;
+            text-align: center;
         }
 
         .nav-links {
-            display: flex;
-            gap: 2rem;
             list-style: none;
+            display: inline-flex;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-            cursor: pointer;
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            opacity: 1;
-            color: #667eea;
+            color: #ccc;
         }
 
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 400px;
-            z-index: 1;
-        }
-
-        .blog-container {
-            position: relative;
-            z-index: 2;
-            padding-top: 450px;
-            padding-bottom: 4rem;
+        /* Main Content */
+        .newspaper-container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            border-radius: 8px;
+        }
+
+        /* Headlines Section */
+        .headlines-section {
+            border-bottom: 3px solid #000;
+            padding: 2rem 0;
+        }
+
+        .main-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #000;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 2px solid #000;
+        }
+
+        .main-stories {
+            border-right: 2px solid #000;
             padding-right: 2rem;
         }
 
-        .blog-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        .sidebar {
+            padding-left: 2rem;
         }
 
-        .blog-title {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .blog-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .blog-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
+        /* Article Cards */
+        .article-card {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.3);
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        .article-card:hover {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin: -1rem;
+            border-radius: 4px;
         }
 
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            position: relative;
-            overflow: hidden;
+        .article-card:last-child {
+            border-bottom: none;
         }
 
-        .blog-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.5));
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-category {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(102, 126, 234, 0.2);
-            border-radius: 20px;
+        .article-category {
+            font-family: 'Old Standard TT', serif;
             font-size: 0.8rem;
-            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 0.5rem;
         }
 
-        .blog-post-title {
+        .article-headline {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
+            color: #000;
             margin-bottom: 0.5rem;
             line-height: 1.3;
         }
 
-        .blog-excerpt {
-            opacity: 0.8;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+        .sidebar .article-headline {
+            font-size: 1.2rem;
         }
 
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            opacity: 0.6;
+        .article-excerpt {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 0.5rem;
         }
 
-        .blog-author {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .article-meta {
+            font-family: 'Old Standard TT', serif;
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
         }
 
-        .author-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+        /* Decorative Elements */
+        .decorative-border {
+            height: 4px;
+            background: repeating-linear-gradient(
+                to right,
+                #000,
+                #000 10px,
+                #fff 10px,
+                #fff 20px
+            );
+            margin: 1rem 0;
         }
 
-        .featured-post {
-            grid-column: span 2;
+        .column-divider {
+            width: 1px;
+            background: #000;
+            margin: 0 1rem;
         }
 
-        .footer {
+        /* Footer */
+        .newspaper-footer {
+            background: #000;
+            color: #fff;
             text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(10, 10, 15, 0.9);
-            margin-top: 4rem;
+            padding: 2rem 0;
+            font-family: 'Old Standard TT', serif;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .newspaper-title {
+                font-size: 2.5rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-stories,
+            .sidebar {
+                border: none;
+                padding: 0;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <!-- Newspaper Header -->
+    <header class="newspaper-header">
+        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
+        <p class="newspaper-subtitle">Your Premier Source for AI Innovation & Technology News</p>
+        <div class="newspaper-date">December 15, 2024 • Volume 1, Issue 1 • Founded by Abhilash Chadhar</div>
+    </header>
 
     <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+    <nav class="nav-bar">
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html" class="active">Blog</a></li>
-            <li><a href="news.html">News</a></li>
+            <li><a href="blog.html" class="active">Tech Herald</a></li>
+            <li><a href="news.html">Breaking News</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Three.js Canvas -->
-    <div id="canvas-container"></div>
+    <!-- Main Content -->
+    <main class="newspaper-container">
+        <!-- Headlines Section -->
+        <section class="headlines-section">
+            <h2 class="main-headline">AI Revolution Transforms Music, Therapy, and Chip Design</h2>
+        </section>
 
-    <!-- Blog Content -->
-    <div class="blog-container">
-        <div class="blog-header">
-            <h1 class="blog-title">Tech Insights</h1>
-            <p class="blog-subtitle">Exploring the frontiers of AI, semiconductors, and innovation</p>
+        <div class="decorative-border"></div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid">
+            <!-- Main Stories Column -->
+            <section class="main-stories">
+                <article class="article-card" onclick="window.location.href='blog-ai-music-revolution.html'">
+                    <div class="article-category">AI Innovation • Featured Story</div>
+                    <h3 class="article-headline">The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity</h3>
+                    <p class="article-excerpt">In an unprecedented breakthrough, artificial intelligence is transforming the music industry through advanced neural networks that enable seamless human-AI collaboration. Our investigation reveals how BevyBeats is pioneering this revolution, offering artists tools that were unimaginable just years ago...</p>
+                    <div class="article-meta">By Abhilash Chadhar • December 15, 2024 • 8 min read</div>
+                </article>
+
+                <article class="article-card" onclick="window.location.href='blog-ai-therapy.html'">
+                    <div class="article-category">Mental Health Technology</div>
+                    <h3 class="article-headline">AI Therapy Breakthrough: The Science Behind Savitri's Success</h3>
+                    <p class="article-excerpt">Revolutionary AI-powered therapy platform combines CBT, DBT, and ACT methodologies in groundbreaking approach to mental health care. Clinical trials show remarkable results in patient engagement and therapeutic outcomes...</p>
+                    <div class="article-meta">By Medical Technology Team • December 12, 2024 • 6 min read</div>
+                </article>
+
+                <article class="article-card" onclick="window.location.href='blog-linkedin-automation.html'">
+                    <div class="article-category">Professional Productivity</div>
+                    <h3 class="article-headline">Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement</h3>
+                    <p class="article-excerpt">Chrome extension leverages advanced natural language processing to generate contextually appropriate professional responses, maintaining authentic voice while dramatically improving networking efficiency...</p>
+                    <div class="article-meta">By Product Development Team • December 10, 2024 • 5 min read</div>
+                </article>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <article class="article-card" onclick="window.location.href='blog-semiconductor-ai.html'">
+                    <div class="article-category">Semiconductor Design</div>
+                    <h3 class="article-headline">Incoder: The Revolutionary AI Assistant for Silicon Design</h3>
+                    <p class="article-excerpt">Industry first: AI-powered development environment specifically designed for SystemVerilog and semiconductor engineering workflows...</p>
+                    <div class="article-meta">December 8, 2024</div>
+                </article>
+
+                <article class="article-card" onclick="window.location.href='blog-computer-vision.html'">
+                    <div class="article-category">Computer Vision</div>
+                    <h3 class="article-headline">AdaptiveVision: Real-time Object Detection at Scale</h3>
+                    <p class="article-excerpt">Next-generation computer vision system processes 60+ FPS with unprecedented accuracy using adaptive learning algorithms...</p>
+                    <div class="article-meta">December 5, 2024</div>
+                </article>
+
+                <article class="article-card" onclick="window.location.href='blog-agent-orchestration.html'">
+                    <div class="article-category">Enterprise AI</div>
+                    <h3 class="article-headline">Building Autonomous Systems with Agentic Control Framework</h3>
+                    <p class="article-excerpt">Enterprise-grade solution for orchestrating complex multi-agent workflows using Model Context Protocol servers...</p>
+                    <div class="article-meta">December 3, 2024</div>
+                </article>
+
+                <article class="article-card" onclick="window.location.href='blog-fitness-wellness.html'">
+                    <div class="article-category">Wellness Technology</div>
+                    <h3 class="article-headline">Yuj: Where Ancient Wisdom Meets Modern Fitness Science</h3>
+                    <p class="article-excerpt">Innovative app combines traditional yoga practices with cutting-edge strength training methodologies and AI-driven personalization...</p>
+                    <div class="article-meta">December 1, 2024</div>
+                </article>
+            </aside>
         </div>
 
-        <div class="blog-grid">
-            <!-- Featured Post -->
-            <article class="blog-card featured-post">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">AI Innovation</span>
-                    <h2 class="blog-post-title">The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity</h2>
-                    <p class="blog-excerpt">Discover how advanced neural networks are transforming music creation, enabling artists to collaborate with AI in unprecedented ways. We explore the technology behind BevyBeats and its impact on the music industry.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>Abhilash Chadhar</span>
-                        </div>
-                        <span>Dec 15, 2024</span>
-                    </div>
-                </div>
-            </article>
+        <div class="decorative-border"></div>
 
-            <!-- Regular Posts -->
-            <article class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">Mental Health Tech</span>
-                    <h2 class="blog-post-title">AI Therapy: The Science Behind Savitri</h2>
-                    <p class="blog-excerpt">How CBT, DBT, and ACT methodologies are being enhanced through AI-powered interactions.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>Tech Team</span>
-                        </div>
-                        <span>Dec 10, 2024</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">Productivity</span>
-                    <h2 class="blog-post-title">Automating LinkedIn with Zaphy</h2>
-                    <p class="blog-excerpt">Transform your professional networking with intelligent AI responses that maintain your authentic voice.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>Product Team</span>
-                        </div>
-                        <span>Dec 5, 2024</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">Semiconductor Design</span>
-                    <h2 class="blog-post-title">Incoder: The Cursor for Silicon</h2>
-                    <p class="blog-excerpt">Revolutionizing chip design with AI-powered tools that understand SystemVerilog at a fundamental level.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>Engineering</span>
-                        </div>
-                        <span>Nov 28, 2024</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">Computer Vision</span>
-                    <h2 class="blog-post-title">AdaptiveVision: Real-time Object Detection</h2>
-                    <p class="blog-excerpt">Breaking down the adaptive algorithms that power next-generation visual understanding systems.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>AI Research</span>
-                        </div>
-                        <span>Nov 20, 2024</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-image"></div>
-                <div class="blog-content">
-                    <span class="blog-category">Developer Tools</span>
-                    <h2 class="blog-post-title">Building Autonomous Systems with Agentic Control</h2>
-                    <p class="blog-excerpt">A deep dive into MCP servers and orchestrating complex agent workflows for enterprise applications.</p>
-                    <div class="blog-meta">
-                        <div class="blog-author">
-                            <div class="author-avatar"></div>
-                            <span>Dev Team</span>
-                        </div>
-                        <span>Nov 15, 2024</span>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
+        <!-- Additional Sections -->
+        <section style="padding: 2rem 0; text-align: center;">
+            <p style="font-family: 'Old Standard TT', serif; font-style: italic; color: #666;">
+                "Innovation distinguishes between a leader and a follower" - Steve Jobs
+            </p>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
-        <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
-    </div>
-
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Scene setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
-        renderer.setSize(window.innerWidth, 400);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-        // Create particle text effect
-        const particleCount = 2000;
-        const particles = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        const colors = new Float32Array(particleCount * 3);
-        
-        for (let i = 0; i < particleCount; i++) {
-            const i3 = i * 3;
-            
-            // Create text-like formation
-            const angle = (i / particleCount) * Math.PI * 4;
-            const radius = 5 + Math.sin(angle * 2) * 3;
-            
-            positions[i3] = Math.cos(angle) * radius;
-            positions[i3 + 1] = (Math.random() - 0.5) * 2;
-            positions[i3 + 2] = Math.sin(angle) * radius;
-            
-            // Gradient colors
-            colors[i3] = 0.4 + Math.random() * 0.3;
-            colors[i3 + 1] = 0.5 + Math.random() * 0.3;
-            colors[i3 + 2] = 0.9 + Math.random() * 0.1;
-        }
-        
-        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-        
-        const particleMaterial = new THREE.PointsMaterial({
-            size: 0.05,
-            vertexColors: true,
-            blending: THREE.AdditiveBlending,
-            transparent: true,
-            opacity: 0.8
-        });
-        
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        // Add flowing lines
-        const lineMaterial = new THREE.LineBasicMaterial({
-            color: 0x8899dd,
-            transparent: true,
-            opacity: 0.3
-        });
-
-        for (let i = 0; i < 5; i++) {
-            const curve = new THREE.CatmullRomCurve3([
-                new THREE.Vector3(-10, Math.random() * 4 - 2, 0),
-                new THREE.Vector3(-5, Math.random() * 4 - 2, Math.random() * 2 - 1),
-                new THREE.Vector3(0, Math.random() * 4 - 2, Math.random() * 2 - 1),
-                new THREE.Vector3(5, Math.random() * 4 - 2, Math.random() * 2 - 1),
-                new THREE.Vector3(10, Math.random() * 4 - 2, 0)
-            ]);
-            
-            const points = curve.getPoints(50);
-            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
-            const line = new THREE.Line(lineGeometry, lineMaterial);
-            scene.add(line);
-        }
-
-        camera.position.z = 15;
-
-        // Mouse tracking
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-            
-            // Update cursor glow
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
-        });
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // Rotate particle system
-            particleSystem.rotation.y += 0.002;
-            particleSystem.rotation.x = mouseY * 0.5;
-            
-            // Wave effect on particles
-            const positions = particles.attributes.position.array;
-            const time = Date.now() * 0.001;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const i3 = i * 3;
-                positions[i3 + 1] = Math.sin(time + i * 0.01) * 0.5;
-            }
-            
-            particles.attributes.position.needsUpdate = true;
-            
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / 400;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, 400);
-        });
-    </script>
+    <footer class="newspaper-footer">
+        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and artificial intelligence advancement</p>
+    </footer>
 </body>
 </html>
