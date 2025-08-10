@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FutureAtoms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: #667eea;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            z-index: 1;
+        }
+
+        .blog-container {
+            position: relative;
+            z-index: 2;
+            padding-top: 450px;
+            padding-bottom: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .blog-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.5));
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .featured-post {
+            grid-column: span 2;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Three.js Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Tech Insights</h1>
+            <p class="blog-subtitle">Exploring the frontiers of AI, semiconductors, and innovation</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Featured Post -->
+            <article class="blog-card featured-post">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">AI Innovation</span>
+                    <h2 class="blog-post-title">The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity</h2>
+                    <p class="blog-excerpt">Discover how advanced neural networks are transforming music creation, enabling artists to collaborate with AI in unprecedented ways. We explore the technology behind BevyBeats and its impact on the music industry.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>Abhilash Chadhar</span>
+                        </div>
+                        <span>Dec 15, 2024</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Regular Posts -->
+            <article class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">Mental Health Tech</span>
+                    <h2 class="blog-post-title">AI Therapy: The Science Behind Savitri</h2>
+                    <p class="blog-excerpt">How CBT, DBT, and ACT methodologies are being enhanced through AI-powered interactions.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>Tech Team</span>
+                        </div>
+                        <span>Dec 10, 2024</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">Productivity</span>
+                    <h2 class="blog-post-title">Automating LinkedIn with Zaphy</h2>
+                    <p class="blog-excerpt">Transform your professional networking with intelligent AI responses that maintain your authentic voice.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>Product Team</span>
+                        </div>
+                        <span>Dec 5, 2024</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">Semiconductor Design</span>
+                    <h2 class="blog-post-title">Incoder: The Cursor for Silicon</h2>
+                    <p class="blog-excerpt">Revolutionizing chip design with AI-powered tools that understand SystemVerilog at a fundamental level.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>Engineering</span>
+                        </div>
+                        <span>Nov 28, 2024</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">Computer Vision</span>
+                    <h2 class="blog-post-title">AdaptiveVision: Real-time Object Detection</h2>
+                    <p class="blog-excerpt">Breaking down the adaptive algorithms that power next-generation visual understanding systems.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>AI Research</span>
+                        </div>
+                        <span>Nov 20, 2024</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"></div>
+                <div class="blog-content">
+                    <span class="blog-category">Developer Tools</span>
+                    <h2 class="blog-post-title">Building Autonomous Systems with Agentic Control</h2>
+                    <p class="blog-excerpt">A deep dive into MCP servers and orchestrating complex agent workflows for enterprise applications.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"></div>
+                            <span>Dev Team</span>
+                        </div>
+                        <span>Nov 15, 2024</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, 400);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Create particle text effect
+        const particleCount = 2000;
+        const particles = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            const i3 = i * 3;
+            
+            // Create text-like formation
+            const angle = (i / particleCount) * Math.PI * 4;
+            const radius = 5 + Math.sin(angle * 2) * 3;
+            
+            positions[i3] = Math.cos(angle) * radius;
+            positions[i3 + 1] = (Math.random() - 0.5) * 2;
+            positions[i3 + 2] = Math.sin(angle) * radius;
+            
+            // Gradient colors
+            colors[i3] = 0.4 + Math.random() * 0.3;
+            colors[i3 + 1] = 0.5 + Math.random() * 0.3;
+            colors[i3 + 2] = 0.9 + Math.random() * 0.1;
+        }
+        
+        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.8
+        });
+        
+        const particleSystem = new THREE.Points(particles, particleMaterial);
+        scene.add(particleSystem);
+
+        // Add flowing lines
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x8899dd,
+            transparent: true,
+            opacity: 0.3
+        });
+
+        for (let i = 0; i < 5; i++) {
+            const curve = new THREE.CatmullRomCurve3([
+                new THREE.Vector3(-10, Math.random() * 4 - 2, 0),
+                new THREE.Vector3(-5, Math.random() * 4 - 2, Math.random() * 2 - 1),
+                new THREE.Vector3(0, Math.random() * 4 - 2, Math.random() * 2 - 1),
+                new THREE.Vector3(5, Math.random() * 4 - 2, Math.random() * 2 - 1),
+                new THREE.Vector3(10, Math.random() * 4 - 2, 0)
+            ]);
+            
+            const points = curve.getPoints(50);
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(lineGeometry, lineMaterial);
+            scene.add(line);
+        }
+
+        camera.position.z = 15;
+
+        // Mouse tracking
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            
+            // Update cursor glow
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate particle system
+            particleSystem.rotation.y += 0.002;
+            particleSystem.rotation.x = mouseY * 0.5;
+            
+            // Wave effect on particles
+            const positions = particles.attributes.position.array;
+            const time = Date.now() * 0.001;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                positions[i3 + 1] = Math.sin(time + i * 0.01) * 0.5;
+            }
+            
+            particles.attributes.position.needsUpdate = true;
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / 400;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, 400);
+        });
+    </script>
+</body>
+</html>

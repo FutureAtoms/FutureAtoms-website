@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureAtoms - Building Tomorrow's Technology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #667eea;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .scroll-container {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.5));
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #feca57 75%, #48c6ef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: gradient-shift 5s ease infinite;
+            pointer-events: auto;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        .venture-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            width: 380px;
+            height: 280px;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .venture-card.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .venture-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .venture-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .venture-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .venture-description {
+            opacity: 0.8;
+            line-height: 1.6;
+            flex-grow: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        @media (max-width: 1024px) {
+            .venture-card {
+                width: 320px;
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .venture-card {
+                width: 280px;
+                height: 240px;
+                padding: 1.5rem;
+            }
+            
+            .venture-title {
+                font-size: 1.5rem;
+            }
+            
+            .venture-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #667eea;
+            transform: scale(1.5);
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #0a0a0f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.8s;
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        .atom-loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: atom-spin 2s linear infinite;
+        }
+
+        @keyframes atom-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .orbit {
+            position: absolute;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+        }
+
+        .orbit-1 {
+            width: 100px;
+            height: 100px;
+            animation: orbit-1 1.5s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 80px;
+            height: 80px;
+            top: 10px;
+            left: 10px;
+            animation: orbit-2 1s linear infinite reverse;
+        }
+
+        .orbit-3 {
+            width: 60px;
+            height: 60px;
+            top: 20px;
+            left: 20px;
+            animation: orbit-3 0.8s linear infinite;
+        }
+
+        .nucleus {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            top: 40px;
+            left: 40px;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+        }
+
+        @keyframes orbit-1 {
+            0% { transform: rotateX(60deg) rotateZ(0deg); }
+            100% { transform: rotateX(60deg) rotateZ(360deg); }
+        }
+
+        @keyframes orbit-2 {
+            0% { transform: rotateY(60deg) rotateZ(0deg); }
+            100% { transform: rotateY(60deg) rotateZ(360deg); }
+        }
+
+        @keyframes orbit-3 {
+            0% { transform: rotateX(30deg) rotateY(30deg) rotateZ(0deg); }
+            100% { transform: rotateX(30deg) rotateY(30deg) rotateZ(360deg); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            pointer-events: auto;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Venture specific styles */
+        .bevybeats-icon {
+            background: linear-gradient(135deg, #d4a574, #b8860b);
+        }
+
+        .savitri-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+        }
+
+        .zaphy-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .agentic-icon {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .yuj-icon {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+
+        .adaptivision-icon {
+            background: linear-gradient(135deg, #30cfd0, #330867);
+        }
+
+        .incoder-icon {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+
+        .systemverilog-icon {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="logo">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="atom-loader">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="nucleus"></div>
+        </div>
+        <div class="loading-text">Initializing Atomic Universe...</div>
+    </div>
+
+    <!-- Canvas Container for Three.js -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+        <div class="nav-dot" data-section="4"></div>
+    </div>
+
+    <!-- Scroll Container -->
+    <div class="scroll-container">
+        <!-- Hero Section -->
+        <div class="section hero-section">
+            <h1 class="hero-title">FutureAtoms</h1>
+            <p class="hero-subtitle">Building Tomorrow's Technology, One Atom at a Time</p>
+            <div class="scroll-indicator">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <path d="M15 20L8 13L10.1 10.9L15 15.8L19.9 10.9L22 13L15 20Z" fill="white" opacity="0.6"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- AI & Music Section -->
+        <div class="section">
+            <div class="venture-card" id="bevybeats" style="left: 25%;">
+                <div class="venture-icon bevybeats-icon">🦋</div>
+                <h3 class="venture-title">BevyBeats</h3>
+                <p class="venture-description">Revolutionary AI music platform combining streaming with advanced AI song generation. Create and discover music like never before.</p>
+            </div>
+            <div class="venture-card" id="savitri" style="left: 75%;">
+                <div class="venture-icon savitri-icon">🧘</div>
+                <h3 class="venture-title">Savitri</h3>
+                <p class="venture-description">AI therapy app offering CBT, DBT, and ACT through voice and video. Your personal mental wellness companion powered by AI.</p>
+            </div>
+        </div>
+
+        <!-- Productivity Tools Section -->
+        <div class="section">
+            <div class="venture-card" id="zaphy" style="left: 25%;">
+                <div class="venture-icon zaphy-icon">🤖</div>
+                <h3 class="venture-title">Zaphy</h3>
+                <p class="venture-description">Smart Chrome extension for LinkedIn that instantly crafts AI-powered contextual replies. Network smarter with intelligent automation.</p>
+            </div>
+            <div class="venture-card" id="agentic" style="left: 75%;">
+                <div class="venture-icon agentic-icon">🔄</div>
+                <h3 class="venture-title">Agentic Control</h3>
+                <p class="venture-description">Advanced CLI tool with MCP server for orchestrating complex agent workflows. Enterprise-grade autonomous system control.</p>
+            </div>
+        </div>
+
+        <!-- Health & Tech Section -->
+        <div class="section">
+            <div class="venture-card" id="yuj" style="left: 25%;">
+                <div class="venture-icon yuj-icon">☀️</div>
+                <h3 class="venture-title">Yuj</h3>
+                <p class="venture-description">Comprehensive yoga and workout app bringing ancient wisdom and modern fitness together for holistic wellness.</p>
+            </div>
+            <div class="venture-card" id="adaptivision" style="left: 75%;">
+                <div class="venture-icon adaptivision-icon">👁️</div>
+                <h3 class="venture-title">AdaptiveVision</h3>
+                <p class="venture-description">Cutting-edge object detection powered by adaptive algorithms. Real-time visual understanding for next-gen applications.</p>
+            </div>
+        </div>
+
+        <!-- Development Tools Section -->
+        <div class="section">
+            <div class="venture-card" id="incoder" style="left: 25%;">
+                <div class="venture-icon incoder-icon">💻</div>
+                <h3 class="venture-title">Incoder</h3>
+                <p class="venture-description">The Cursor for semiconductor design. Revolutionary OS transforming how engineers design and verify silicon chips.</p>
+            </div>
+            <div class="venture-card" id="systemverilog" style="left: 75%;">
+                <div class="venture-icon systemverilog-icon">⚡</div>
+                <h3 class="venture-title">SystemVerilogGPT</h3>
+                <p class="venture-description">Specialized GPT for hardware description and verification. Accelerating chip design with AI-powered RTL generation.</p>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="section" style="min-height: auto; padding: 4rem 2rem; background: rgba(10, 10, 15, 0.9);">
+            <div style="text-align: center; pointer-events: auto;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Build the Future?</h2>
+                <p style="opacity: 0.8; margin-bottom: 2rem;">Join us in creating tomorrow's technology, today.</p>
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js and GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script type="module">
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Enhanced lighting setup
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        scene.add(ambientLight);
+
+        // Main spotlight with dramatic effect
+        const spotLight = new THREE.SpotLight(0x667eea, 2);
+        spotLight.position.set(10, 20, 10);
+        spotLight.angle = Math.PI / 6;
+        spotLight.penumbra = 0.3;
+        spotLight.decay = 2;
+        spotLight.distance = 100;
+        spotLight.castShadow = true;
+        spotLight.shadow.mapSize.width = 1024;
+        spotLight.shadow.mapSize.height = 1024;
+        scene.add(spotLight);
+
+        // Secondary colored lights
+        const pointLight1 = new THREE.PointLight(0xff6b6b, 1, 50);
+        pointLight1.position.set(-10, 10, -10);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0x4facfe, 1, 50);
+        pointLight2.position.set(10, -10, 10);
+        scene.add(pointLight2);
+
+        // Create atomic structure
+        const atoms = [];
+        const atomGroup = new THREE.Group();
+        
+        // Venture data with colors
+        const ventures = [
+            { name: 'BevyBeats', color: 0xd4a574, position: new THREE.Vector3(-3, 2, -2) },
+            { name: 'Savitri', color: 0xff6b6b, position: new THREE.Vector3(3, 1, -1) },
+            { name: 'Zaphy', color: 0x667eea, position: new THREE.Vector3(-2, -2, 2) },
+            { name: 'Agentic', color: 0x4facfe, position: new THREE.Vector3(2, -1, -3) },
+            { name: 'Yuj', color: 0xfa709a, position: new THREE.Vector3(0, 3, 1) },
+            { name: 'AdaptiveVision', color: 0x30cfd0, position: new THREE.Vector3(-4, 0, 0) },
+            { name: 'Incoder', color: 0xa8edea, position: new THREE.Vector3(4, 0, -2) },
+            { name: 'SystemVerilog', color: 0xf093fb, position: new THREE.Vector3(0, -3, 3) }
+        ];
+
+        // Create atoms for each venture
+        ventures.forEach((venture, index) => {
+            const atomGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+            const atomMaterial = new THREE.MeshPhysicalMaterial({
+                color: venture.color,
+                emissive: venture.color,
+                emissiveIntensity: 0.3,
+                metalness: 0.7,
+                roughness: 0.2,
+                clearcoat: 1,
+                clearcoatRoughness: 0,
+                envMapIntensity: 1,
+                reflectivity: 1
+            });
+            
+            const atom = new THREE.Mesh(atomGeometry, atomMaterial);
+            atom.position.copy(venture.position);
+            atom.castShadow = true;
+            atom.receiveShadow = true;
+            atom.userData = { name: venture.name, originalPosition: venture.position.clone() };
+            
+            // Add orbital rings
+            const ringGeometry = new THREE.TorusGeometry(0.8, 0.02, 16, 100);
+            const ringMaterial = new THREE.MeshBasicMaterial({ 
+                color: venture.color, 
+                opacity: 0.3, 
+                transparent: true 
+            });
+            
+            const ring1 = new THREE.Mesh(ringGeometry, ringMaterial);
+            ring1.rotation.x = Math.random() * Math.PI;
+            ring1.rotation.y = Math.random() * Math.PI;
+            atom.add(ring1);
+            
+            const ring2 = new THREE.Mesh(ringGeometry, ringMaterial);
+            ring2.rotation.x = Math.random() * Math.PI;
+            ring2.rotation.y = Math.random() * Math.PI;
+            ring2.scale.set(0.7, 0.7, 0.7);
+            atom.add(ring2);
+            
+            atoms.push(atom);
+            atomGroup.add(atom);
+        });
+
+        scene.add(atomGroup);
+
+        // Create connecting lines between atoms
+        const lineMaterial = new THREE.LineBasicMaterial({ 
+            color: 0x8899dd, 
+            opacity: 0.3, 
+            transparent: true 
+        });
+
+        for (let i = 0; i < atoms.length; i++) {
+            for (let j = i + 1; j < atoms.length; j++) {
+                if (Math.random() > 0.6) {
+                    const points = [];
+                    points.push(atoms[i].position);
+                    points.push(atoms[j].position);
+                    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                    const line = new THREE.Line(geometry, lineMaterial);
+                    atomGroup.add(line);
+                }
+            }
+        }
+
+        // Add particle system for ambient effect
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0xaabbff,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Camera positioning
+        camera.position.set(0, 0, 8);
+        camera.lookAt(0, 0, 0);
+
+        // Post-processing setup (simulated)
+        const composer = {
+            render: () => renderer.render(scene, camera)
+        };
+
+        // Animation variables
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        // Mouse movement
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            
+            // Update cursor glow position
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = event.clientX + 'px';
+                cursorGlow.style.top = event.clientY + 'px';
+            }
+        });
+
+        // Scroll animations with GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hide loading screen
+        setTimeout(() => {
+            document.getElementById('loadingScreen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+            }, 800);
+        }, 2000);
+
+        // Animate venture cards on scroll
+        const ventureCards = document.querySelectorAll('.venture-card');
+        ventureCards.forEach((card) => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    onEnter: () => card.classList.add('active'),
+                    onLeaveBack: () => card.classList.remove('active')
+                }
+            });
+        });
+
+        // Camera movement on scroll
+        ScrollTrigger.create({
+            trigger: '.scroll-container',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                
+                // Rotate entire atom group
+                atomGroup.rotation.y = progress * Math.PI * 2;
+                atomGroup.rotation.x = Math.sin(progress * Math.PI) * 0.5;
+                
+                // Camera zoom effect
+                camera.position.z = 8 - progress * 3;
+                
+                // Update spotlight
+                spotLight.position.x = Math.sin(progress * Math.PI * 2) * 15;
+                spotLight.position.y = 20 - progress * 10;
+            }
+        });
+
+        // Navigation dots
+        const navDots = document.querySelectorAll('.nav-dot');
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const sections = document.querySelectorAll('.section');
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Update active navigation dot on scroll
+        ScrollTrigger.create({
+            trigger: '.scroll-container',
+            start: 'top top',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const activeIndex = Math.floor(progress * 4.99);
+                navDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Smooth mouse follow
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            // Rotate atom group based on mouse
+            atomGroup.rotation.x += targetY * 0.001;
+            atomGroup.rotation.y += targetX * 0.001;
+
+            // Animate individual atoms
+            atoms.forEach((atom, index) => {
+                atom.rotation.x += 0.01;
+                atom.rotation.y += 0.01;
+                
+                // Floating animation
+                atom.position.y = atom.userData.originalPosition.y + 
+                    Math.sin(Date.now() * 0.001 + index) * 0.1;
+                
+                // Pulse effect
+                const scale = 1 + Math.sin(Date.now() * 0.002 + index) * 0.05;
+                atom.scale.set(scale, scale, scale);
+            });
+
+            // Animate particles
+            particlesMesh.rotation.y += 0.0005;
+            particlesMesh.rotation.x += 0.0003;
+
+            // Animate lights
+            pointLight1.position.x = Math.sin(Date.now() * 0.001) * 10;
+            pointLight1.position.z = Math.cos(Date.now() * 0.001) * 10;
+            
+            pointLight2.position.x = Math.cos(Date.now() * 0.0015) * 10;
+            pointLight2.position.z = Math.sin(Date.now() * 0.0015) * 10;
+
+            composer.render();
+        }
+
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Firebase connection placeholder
+        // Initialize Firebase here when ready
+        const initFirebase = () => {
+            // const firebaseConfig = {
+            //     apiKey: "your-api-key",
+            //     authDomain: "your-auth-domain",
+            //     projectId: "your-project-id",
+            //     storageBucket: "your-storage-bucket",
+            //     messagingSenderId: "your-messaging-sender-id",
+            //     appId: "your-app-id"
+            // };
+            // firebase.initializeApp(firebaseConfig);
+            console.log('Firebase connection ready to be configured');
+        };
+
+        // Venture card click handlers
+        document.querySelectorAll('.venture-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const ventureId = this.id;
+                console.log(`Opening ${ventureId} details...`);
+                // Navigate to individual app pages
+                const ventureUrls = {
+                    'bevybeats': 'bevybeats.html',
+                    'savitri': 'savitri.html',
+                    'zaphy': 'zaphy.html',
+                    'agentic': 'agentic.html',
+                    'yuj': 'yuj.html',
+                    'adaptivision': 'adaptivision.html',
+                    'incoder': 'incoder.html',
+                    'systemverilog': 'systemverilog.html'
+                };
+                if (ventureUrls[ventureId]) {
+                    window.location.href = ventureUrls[ventureId];
+                }
+            });
+        });
+    </script>
+</body>
+</html>

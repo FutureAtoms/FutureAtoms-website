@@ -1,0 +1,32 @@
+{
+  "name": "futureatoms-website",
+  "version": "1.0.0",
+  "description": "FutureAtoms - Building Tomorrow's Technology",
+  "author": "Abhilash Chadhar",
+  "license": "MIT",
+  "scripts": {
+    "serve": "firebase serve",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "init": "firebase init",
+    "build": "echo 'No build required for static site'",
+    "start": "python3 -m http.server 8000 -d public"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/futureatoms-website.git"
+  },
+  "keywords": [
+    "futureatoms",
+    "ai",
+    "music",
+    "bevybeats",
+    "savitri",
+    "zaphy",
+    "incoder",
+    "technology"
+  ]
+}

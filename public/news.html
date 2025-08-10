@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - FutureAtoms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: #667eea;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #globe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .news-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .news-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.8;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .news-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(48, 207, 208, 0.3);
+            transform: translateX(10px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #30cfd0, #330867);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .news-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-header {
+            margin-bottom: 1rem;
+        }
+
+        .news-date {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-item-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .news-excerpt {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .news-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .read-more {
+            color: #30cfd0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .news-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="news.html" class="active">News</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Globe -->
+    <div class="hero-section">
+        <div id="globe-container"></div>
+        <div class="hero-content">
+            <h1 class="news-title">Global Updates</h1>
+            <p class="news-subtitle">Latest developments from FutureAtoms ecosystem</p>
+        </div>
+    </div>
+
+    <!-- News Content -->
+    <div class="news-container">
+        <div class="news-filters">
+            <button class="filter-btn active">All News</button>
+            <button class="filter-btn">Product Updates</button>
+            <button class="filter-btn">Company</button>
+            <button class="filter-btn">Technology</button>
+            <button class="filter-btn">Partnerships</button>
+        </div>
+
+        <div class="news-grid">
+            <article class="news-item">
+                <div class="news-image">
+                    <span class="news-badge">BREAKING</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-header">
+                            <div class="news-date">December 18, 2024</div>
+                            <h2 class="news-item-title">BevyBeats Reaches 1 Million AI-Generated Songs</h2>
+                        </div>
+                        <p class="news-excerpt">Our AI music platform has hit a major milestone, with creators generating over 1 million unique songs using our advanced neural network technology. This achievement marks a new era in democratized music creation.</p>
+                    </div>
+                    <div class="news-footer">
+                        <div class="news-tags">
+                            <span class="news-tag">BevyBeats</span>
+                            <span class="news-tag">Milestone</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <div class="news-image">
+                    <span class="news-badge">UPDATE</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-header">
+                            <div class="news-date">December 15, 2024</div>
+                            <h2 class="news-item-title">Incoder Beta Launch: Revolutionary Semiconductor Design Platform</h2>
+                        </div>
+                        <p class="news-excerpt">Today marks the beta launch of Incoder, our groundbreaking semiconductor design OS. Early access partners include leading chip manufacturers who are already seeing 40% productivity improvements.</p>
+                    </div>
+                    <div class="news-footer">
+                        <div class="news-tags">
+                            <span class="news-tag">Incoder</span>
+                            <span class="news-tag">Launch</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <div class="news-image">
+                    <span class="news-badge">PARTNERSHIP</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-header">
+                            <div class="news-date">December 12, 2024</div>
+                            <h2 class="news-item-title">Savitri Partners with Leading Mental Health Organizations</h2>
+                        </div>
+                        <p class="news-excerpt">We're proud to announce partnerships with three major mental health organizations to bring AI-powered therapy to underserved communities worldwide, making mental wellness accessible to millions.</p>
+                    </div>
+                    <div class="news-footer">
+                        <div class="news-tags">
+                            <span class="news-tag">Savitri</span>
+                            <span class="news-tag">Partnership</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <div class="news-image">
+                    <span class="news-badge">FEATURE</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-header">
+                            <div class="news-date">December 8, 2024</div>
+                            <h2 class="news-item-title">Zaphy 2.0: Advanced Context Understanding for LinkedIn</h2>
+                        </div>
+                        <p class="news-excerpt">The latest version of our LinkedIn automation tool now features advanced context understanding, allowing for even more personalized and authentic automated responses that maintain your unique voice.</p>
+                    </div>
+                    <div class="news-footer">
+                        <div class="news-tags">
+                            <span class="news-tag">Zaphy</span>
+                            <span class="news-tag">Product Update</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <div class="news-image">
+                    <span class="news-badge">RESEARCH</span>
+                </div>
+                <div class="news-content">
+                    <div>
+                        <div class="news-header">
+                            <div class="news-date">December 5, 2024</div>
+                            <h2 class="news-item-title">AdaptiveVision Achieves 99.7% Accuracy in Real-time Object Detection</h2>
+                        </div>
+                        <p class="news-excerpt">Our computer vision team has achieved a breakthrough in object detection accuracy while maintaining real-time performance, setting new industry benchmarks for adaptive vision systems.</p>
+                    </div>
+                    <div class="news-footer">
+                        <div class="news-tags">
+                            <span class="news-tag">AdaptiveVision</span>
+                            <span class="news-tag">Research</span>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup for globe
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, 500);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('globe-container').appendChild(renderer.domElement);
+
+        // Create globe
+        const globeGeometry = new THREE.SphereGeometry(5, 64, 64);
+        const globeMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x0a0a0f,
+            emissive: 0x330867,
+            emissiveIntensity: 0.1,
+            roughness: 0.8,
+            metalness: 0.2,
+            clearcoat: 1,
+            clearcoatRoughness: 0,
+            wireframe: true
+        });
+        
+        const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+        scene.add(globe);
+
+        // Add news points on globe
+        const pointsGeometry = new THREE.BufferGeometry();
+        const pointsCount = 50;
+        const positions = new Float32Array(pointsCount * 3);
+        
+        for (let i = 0; i < pointsCount; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(Math.random() * 2 - 1);
+            const radius = 5.2;
+            
+            positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+            positions[i * 3 + 2] = radius * Math.cos(phi);
+        }
+        
+        pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const pointsMaterial = new THREE.PointsMaterial({
+            color: 0x30cfd0,
+            size: 0.1,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        
+        const points = new THREE.Points(pointsGeometry, pointsMaterial);
+        scene.add(points);
+
+        // Add orbital rings
+        const ringGeometry = new THREE.TorusGeometry(7, 0.01, 16, 100);
+        const ringMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x30cfd0, 
+            opacity: 0.3, 
+            transparent: true 
+        });
+        
+        const ring1 = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring1.rotation.x = Math.PI / 2;
+        scene.add(ring1);
+        
+        const ring2 = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring2.rotation.y = Math.PI / 3;
+        scene.add(ring2);
+
+        // Add ambient particles
+        const ambientGeometry = new THREE.BufferGeometry();
+        const ambientCount = 500;
+        const ambientPositions = new Float32Array(ambientCount * 3);
+        
+        for (let i = 0; i < ambientCount * 3; i++) {
+            ambientPositions[i] = (Math.random() - 0.5) * 30;
+        }
+        
+        ambientGeometry.setAttribute('position', new THREE.BufferAttribute(ambientPositions, 3));
+        
+        const ambientMaterial = new THREE.PointsMaterial({
+            color: 0xaabbff,
+            size: 0.02,
+            transparent: true,
+            opacity: 0.6
+        });
+        
+        const ambientParticles = new THREE.Points(ambientGeometry, ambientMaterial);
+        scene.add(ambientParticles);
+
+        // Lighting
+        const light = new THREE.PointLight(0x30cfd0, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        scene.add(ambientLight);
+
+        camera.position.z = 15;
+
+        // Mouse tracking
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / 500) * 2 + 1;
+            
+            // Update cursor glow
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate globe
+            globe.rotation.y += 0.003;
+            points.rotation.y += 0.003;
+            
+            // Rotate rings
+            ring1.rotation.z += 0.002;
+            ring2.rotation.x += 0.001;
+            
+            // Camera follow mouse slightly
+            camera.position.x = mouseX * 2;
+            camera.position.y = mouseY * 2;
+            camera.lookAt(scene.position);
+            
+            // Pulse news points
+            const time = Date.now() * 0.001;
+            pointsMaterial.size = 0.1 + Math.sin(time * 2) * 0.02;
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / 500;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, 500);
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
