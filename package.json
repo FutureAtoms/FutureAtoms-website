@@ -10,9 +10,14 @@
     "deploy:hosting": "firebase deploy --only hosting",
     "init": "firebase init",
     "build": "echo 'No build required for static site'",
-    "start": "python3 -m http.server 8000 -d public"
+    "start": "python3 -m http.server 8000 -d public",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.1",
     "firebase-tools": "^13.0.0"
   },
   "repository": {
@@ -26,7 +31,7 @@
     "bevybeats",
     "savitri",
     "zaphy",
-    "incoder",
+    "chipos",
     "technology"
   ]
 }

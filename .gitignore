@@ -76,4 +76,6 @@ temp/
 # Lock files (keep one, remove others based on preference)
 # package-lock.json
 # yarn.lock
-# pnpm-lock.yaml
+# pnpm-lock.yaml# Large binary files
+public/ChipOS-macOS-arm64.dmg
+*.dmg
