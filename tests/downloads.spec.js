@@ -27,6 +27,32 @@ test.describe('Download Links Tests', () => {
     console.log('✓ ChipOS DMG file is accessible');
   });
 
+  test('ChipOS Linux .deb file exists and download link works', async ({ page }) => {
+    await page.goto('/chipos.html');
+
+    // Find the Linux download button
+    const downloadButton = page.locator('a[href*="chipos_1.105.0_amd64.deb"]');
+    await expect(downloadButton).toBeVisible();
+
+    // Verify it has download attribute
+    const hasDownload = await downloadButton.getAttribute('download');
+    expect(hasDownload).not.toBeNull();
+
+    // Check the href points to the correct file
+    const href = await downloadButton.getAttribute('href');
+    expect(href).toContain('chipos_1.105.0_amd64.deb');
+
+    console.log('✓ ChipOS Linux download button configured correctly');
+  });
+
+  test('ChipOS .deb file is accessible', async ({ page, request }) => {
+    // Check if file exists by making a HEAD request
+    const response = await request.head('http://localhost:8000/chipos_1.105.0_amd64.deb');
+    expect(response.status()).toBe(200);
+
+    console.log('✓ ChipOS .deb file is accessible');
+  });
+
   test('ChipOS page shows correct product name', async ({ page }) => {
     await page.goto('/chipos.html');
 
