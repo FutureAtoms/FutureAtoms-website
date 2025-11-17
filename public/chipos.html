@@ -12,6 +12,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #0a0a0f;
@@ -259,6 +263,111 @@
             line-height: 1.6;
         }
 
+        .installation-section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .installation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .install-card {
+            background: rgba(168, 237, 234, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(168, 237, 234, 0.1);
+            transition: all 0.3s;
+        }
+
+        .install-card:hover {
+            transform: translateY(-5px);
+            background: rgba(168, 237, 234, 0.08);
+            border-color: rgba(168, 237, 234, 0.3);
+            box-shadow: 0 20px 60px rgba(168, 237, 234, 0.15);
+        }
+
+        .install-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(168, 237, 234, 0.1);
+        }
+
+        .install-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .install-header i {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .install-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .step-number {
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0a0a0f;
+            flex-shrink: 0;
+        }
+
+        .step p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .code-snippet {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(168, 237, 234, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-snippet code {
+            color: #a8edea;
+            font-size: 0.9rem;
+        }
+
+        .step code {
+            background: rgba(168, 237, 234, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #a8edea;
+        }
+
         .tech-stack-section {
             padding: 4rem 2rem;
             max-width: 1400px;
@@ -398,6 +507,29 @@
             .nav-links {
                 display: none;
             }
+
+            .installation-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .install-card {
+                padding: 2rem;
+            }
+
+            .install-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .step-number {
+                min-width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .code-snippet {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -429,16 +561,10 @@
                     Power up your AI coding assistants with your own custom knowledge base and task management as an MCP server.
                     Store documentation, manage tasks, and enable AI agents to collaborate seamlessly with advanced RAG capabilities.
                 </p>
-                <div class="cta-buttons">
-                    <a href="ChipOS-macOS-arm64.dmg" class="cta-btn cta-btn-primary" download>
-                        <i class="fab fa-apple"></i>
-                        Download for macOS
-                    </a>
-                    <a href="chipos_1.105.0_amd64.deb" class="cta-btn cta-btn-secondary" download>
-                        <i class="fab fa-linux"></i>
-                        Download for Linux
-                    </a>
-                </div>
+                <a href="#installation" class="cta-btn cta-btn-primary" style="margin-top: 2rem;">
+                    <i class="fas fa-download"></i>
+                    Get Started - Download ChipOS
+                </a>
             </div>
         </div>
 
@@ -474,6 +600,84 @@
                     <div class="feature-icon"><i class="fas fa-users"></i></div>
                     <h3 class="feature-title">Multi-Agent Support</h3>
                     <p class="feature-description">Coordinate multiple AI agents with shared context and knowledge base access.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="installation-section" id="installation">
+            <h2 class="section-title">Installation Instructions</h2>
+            <div class="installation-grid">
+                <div class="install-card">
+                    <div class="install-header">
+                        <i class="fab fa-apple" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>macOS Installation</h3>
+                    </div>
+                    <div class="install-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Download ChipOS-macOS-arm64.dmg</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Open the downloaded .dmg file</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Drag ChipOS to your Applications folder</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Launch ChipOS from Applications</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">5</span>
+                            <p>If prompted by Gatekeeper, go to System Preferences → Security & Privacy and click "Open Anyway"</p>
+                        </div>
+                    </div>
+                    <a href="ChipOS-macOS-arm64.dmg" class="cta-btn cta-btn-primary" download style="margin-top: 1.5rem;">
+                        <i class="fab fa-apple"></i> Download for macOS
+                    </a>
+                </div>
+
+                <div class="install-card">
+                    <div class="install-header">
+                        <i class="fab fa-linux" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Linux Installation (Debian/Ubuntu)</h3>
+                    </div>
+                    <div class="install-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Download chipos_1.105.0_amd64.deb</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Open terminal and navigate to Downloads folder</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <div>
+                                <div class="code-snippet">
+                                    <code>sudo dpkg -i chipos_1.105.0_amd64.deb</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <div>
+                                <p>If there are dependency issues, run:</p>
+                                <div class="code-snippet">
+                                    <code>sudo apt-get install -f</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">5</span>
+                            <p>Launch ChipOS from your applications menu or run <code>chipos</code> in terminal</p>
+                        </div>
+                    </div>
+                    <a href="chipos_1.105.0_amd64.deb" class="cta-btn cta-btn-secondary" download style="margin-top: 1.5rem;">
+                        <i class="fab fa-linux"></i> Download for Linux
+                    </a>
                 </div>
             </div>
         </div>
@@ -529,20 +733,14 @@
         </div>
 
         <div class="cta-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Supercharge Your AI Coding Workflow</h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Get Started?</h2>
             <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                Join the future of AI-powered development with ChipOS
+                Download ChipOS and supercharge your AI coding workflow today
             </p>
-            <div class="cta-buttons">
-                <a href="ChipOS-macOS-arm64.dmg" class="cta-btn cta-btn-primary" download>
-                    <i class="fab fa-apple"></i>
-                    Download for macOS
-                </a>
-                <a href="chipos_1.105.0_amd64.deb" class="cta-btn cta-btn-secondary" download>
-                    <i class="fab fa-linux"></i>
-                    Download for Linux (.deb)
-                </a>
-            </div>
+            <a href="#installation" class="cta-btn cta-btn-primary">
+                <i class="fas fa-arrow-up"></i>
+                View Installation Instructions
+            </a>
         </div>
 
         <div class="footer">

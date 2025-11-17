@@ -31,6 +31,24 @@ firebase deploy --only hosting
 firebase deploy
 ```
 
+### Testing
+```bash
+# Install dependencies (first time)
+npm install
+
+# Run all Playwright tests
+npm test
+
+# Run tests with visible browser
+npm run test:headed
+
+# Run tests in interactive UI mode
+npm run test:ui
+
+# View test report
+npm run test:report
+```
+
 ### Setup (First Time)
 ```bash
 # Run automated setup script
@@ -147,6 +165,27 @@ When adding/updating content related to the semiconductor design venture, always
 - ScrollTrigger: `https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js`
 - Font Awesome: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css`
 
+## Testing
+
+The project uses Playwright for end-to-end testing with comprehensive test coverage:
+
+**Test Structure:**
+- `tests/homepage.spec.js` - Homepage functionality (Three.js canvas, venture cards, navigation)
+- `tests/navigation.spec.js` - Navigation between pages
+- `tests/animations.spec.js` - GSAP scroll animations
+- `tests/downloads.spec.js` - Download links (DMG files, etc.)
+- `tests/responsive.spec.js` - Responsive design across breakpoints
+
+**Test Configuration (`playwright.config.js`):**
+- Runs on `http://localhost:8000` (automatically starts server via `npm start`)
+- Uses Python's HTTP server for local testing
+- Configured for Chromium (Desktop Chrome) tests
+- Single worker to avoid conflicts
+- HTML reporter with screenshots/videos on failure
+
+**Running Tests:**
+Tests automatically start the local server, so no need to run `npm start` separately. Just run `npm test` and Playwright handles everything.
+
 ## Firebase Hosting Configuration
 
 The site uses Firebase Hosting with the following setup:
@@ -159,7 +198,12 @@ The site uses Firebase Hosting with the following setup:
 - Images: 7 days (`max-age=604800`)
 - JS/CSS: 7 days (`max-age=604800`)
 
-**Deployment:** GitHub Actions auto-deploys on push to `main` branch (requires `FIREBASE_TOKEN` secret)
+**CI/CD Pipeline:**
+- GitHub Actions workflow: `.github/workflows/firebase-deploy.yml`
+- Auto-deploys on push to `main` branch
+- Also runs on pull requests for preview
+- Requires `FIREBASE_TOKEN` secret in GitHub repository settings
+- Uses Firebase CLI to deploy hosting only
 
 ## Common Tasks
 
@@ -197,6 +241,30 @@ When renaming a venture (like Incoder → ChipOS):
 3. Add article card to `blog.html` sidebar
 4. Add to related items section in other blog posts
 5. Update news feed in `news.html` if newsworthy
+
+### Writing Tests
+
+When adding new features or pages:
+
+1. Add test file in `/tests` directory following naming pattern: `feature-name.spec.js`
+2. Use existing tests as templates (e.g., `tests/homepage.spec.js`)
+3. Test structure:
+   ```javascript
+   const { test, expect } = require('@playwright/test');
+
+   test.describe('Feature Name', () => {
+     test('test description', async ({ page }) => {
+       await page.goto('/page.html');
+       // Test logic
+     });
+   });
+   ```
+4. Common test patterns:
+   - Three.js canvas: Wait 2000ms for initialization, check canvas visibility
+   - Scroll animations: Use `scrollIntoViewIfNeeded()` before interactions
+   - Navigation: Check URL with `toHaveURL()` regex
+   - Loading screens: Wait for disappearance with timeout
+5. Run tests locally before committing: `npm test`
 
 ## Color Palette & Branding
 
