@@ -1,479 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity - FutureAtoms Tech Herald</title>
-    <!-- Newspaper fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>The Future of AI Music Generation | FutureAtoms Research</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
     <style>
-        * {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Libre Baskerville', serif;
-            background: #1a1a1a;
-            color: #2c2c2c;
-            line-height: 1.8;
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.05);
         }
 
-        /* Newspaper Header */
-        .newspaper-header {
-            background: #fff;
-            border-bottom: 4px solid #000;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .metallic-text {
+            background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .newspaper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
+        .metallic-border {
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            box-shadow: 0 0 15px rgba(229, 228, 226, 0.1);
+        }
+
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .newspaper-date {
-            font-size: 0.9rem;
-            color: #888;
-            font-family: 'Old Standard TT', serif;
-        }
-
-        /* Navigation */
-        .nav-bar {
-            background: #000;
-            padding: 0.8rem 0;
-            text-align: center;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ccc;
-        }
-
-        /* Article Container */
-        .article-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            border-radius: 8px;
-        }
-
-        /* Article Header */
-        .article-header {
-            border-bottom: 3px solid #000;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .article-category {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #cc0000;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #000;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .article-subheadline {
-            font-family: 'Old Standard TT', serif;
-            font-size: 1.3rem;
-            color: #444;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .article-meta {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .byline {
-            font-weight: 700;
-            color: #000;
-        }
-
-        /* Article Content */
-        .article-content {
-            padding: 2rem 0;
-            column-count: 2;
-            column-gap: 3rem;
-            column-rule: 1px solid #ddd;
-            text-align: justify;
-            hyphens: auto;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .article-content p {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            break-inside: avoid-column;
-        }
-
-        .article-content p:first-child::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            float: left;
-            line-height: 3rem;
-            margin: 0.5rem 0.5rem 0 0;
-            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
 
         .article-content h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #000;
-            margin: 1.5rem 0 0.8rem 0;
-            break-after: avoid-column;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .quote-box {
-            background: #f5f5f5;
-            border-left: 4px solid #000;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            font-style: italic;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .quote-box::before,
-        .quote-box::after {
-            content: '"';
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 900;
-            color: #000;
-        }
-
-        /* Statistics Box */
-        .stats-box {
-            background: #fff;
-            border: 2px solid #000;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            text-align: center;
-        }
-
-        .stats-box h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #cc0000;
-        }
-
-        .stat-label {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Decorative Elements */
-        .decorative-border {
-            height: 4px;
-            background: repeating-linear-gradient(
-                to right,
-                #000,
-                #000 10px,
-                #fff 10px,
-                #fff 20px
-            );
-            margin: 2rem 0;
-        }
-
-        /* Author Bio */
-        .author-bio {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
+            border-left: 4px solid #00ffff;
+            background: rgba(0, 255, 255, 0.05);
             padding: 2rem;
-            margin: 2rem 0;
-            column-span: all;
-        }
-
-        .author-bio h4 {
-            font-family: 'Playfair Display', serif;
+            margin: 2.5rem 0;
+            font-style: italic;
             font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            color: #a5f3fc;
         }
 
-        /* Related Articles */
-        .related-articles {
-            border-top: 2px solid #000;
-            padding: 2rem 0;
-            margin-top: 2rem;
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
 
-        .related-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
         }
 
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .related-item {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .related-item:hover {
-            background: #f9f9f9;
-        }
-
-        .related-item h5 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .related-item p {
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
             font-size: 0.9rem;
-            color: #666;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
         }
 
-        /* Footer */
-        .newspaper-footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            margin-top: 2rem;
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
+            padding-left: 20px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .article-content {
-                column-count: 1;
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
             }
-            
-            .article-headline {
-                font-size: 2rem;
-            }
-            
-            .newspaper-title {
-                font-size: 2rem;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Newspaper Header -->
-    <header class="newspaper-header">
-        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
-        <div class="newspaper-date">December 15, 2024 • Volume 1, Issue 1</div>
-    </header>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Herald</a></li>
-            <li><a href="news.html">Breaking News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Article Container -->
-    <main class="article-container">
-        <!-- Article Header -->
-        <header class="article-header">
-            <div class="article-category">AI Innovation • Featured Story</div>
-            <h1 class="article-headline">The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity</h1>
-            <p class="article-subheadline">Advanced neural networks enable unprecedented human-AI collaboration in music production, transforming how artists create and express themselves</p>
-            <div class="article-meta">
-                <span class="byline">By Abhilash Chadhar</span> • Senior Technology Editor • December 15, 2024 • 8 min read
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div
+                class="w-10 h-10 rounded-full border border-cyan-500/50 flex items-center justify-center bg-cyan-900/20 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                <span class="font-['Orbitron'] text-cyan-400 font-bold text-xl">Ψ</span>
             </div>
-        </header>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+            </div>
+        </div>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
 
-        <div class="decorative-border"></div>
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-link active">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
+
+        <!-- Article Header -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block px-4 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-['Orbitron'] tracking-widest mb-6">
+                AI INNOVATION
+            </div>
+            <h1 class="text-4xl md:text-6xl font-['Orbitron'] font-bold leading-tight mb-8 metallic-text">
+                The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity
+            </h1>
+            <div
+                class="flex items-center justify-center gap-6 text-sm text-gray-400 font-mono border-t border-b border-white/10 py-4">
+                <span>DEC 15, 2024</span>
+                <span>•</span>
+                <span>BY ABHILASH CHADHAR</span>
+                <span>•</span>
+                <span>8 MIN READ</span>
+            </div>
+        </div>
 
         <!-- Article Content -->
-        <article class="article-content">
-            <p>In the dimly lit recording studio in San Francisco's Mission District, musician Sarah Chen watches in amazement as artificial intelligence transforms her simple humming into a full orchestral arrangement. This isn't science fiction—it's the reality of BevyBeats, the revolutionary AI music platform that's reshaping how we think about musical creativity.</p>
+        <article class="glass-panel p-8 md:p-12 rounded-2xl metallic-border article-content">
+            <p>In the dimly lit recording studio in San Francisco's Mission District, musician Sarah Chen watches in
+                amazement as artificial intelligence transforms her simple humming into a full orchestral arrangement.
+                This isn't science fiction—it's the reality of BevyBeats, the revolutionary AI music platform that's
+                reshaping how we think about musical creativity.</p>
 
-            <p>The platform, developed by FutureAtoms, represents a quantum leap in AI-assisted music production. Unlike previous attempts at computer-generated music, BevyBeats doesn't replace human creativity—it amplifies it, serving as a collaborative partner that understands musical intent, emotion, and artistic vision.</p>
+            <p>The platform, developed by FutureAtoms, represents a quantum leap in AI-assisted music production. Unlike
+                previous attempts at computer-generated music, BevyBeats doesn't replace human creativity—it amplifies
+                it, serving as a collaborative partner that understands musical intent, emotion, and artistic vision.
+            </p>
 
             <h3>The Technology Behind the Magic</h3>
 
-            <p>At its core, BevyBeats employs a sophisticated neural network architecture that has been trained on millions of musical compositions spanning centuries and genres. The system analyzes not just melody and harmony, but the subtle emotional undertones that make music resonate with human listeners.</p>
+            <p>At its core, BevyBeats employs a sophisticated neural network architecture that has been trained on
+                millions of musical compositions spanning centuries and genres. The system analyzes not just melody and
+                harmony, but the subtle emotional undertones that make music resonate with human listeners.</p>
 
             <div class="quote-box">
-                The goal was never to replace musicians, but to give them superpowers. We wanted to create a tool that could understand the soul of music, not just its structure.
-                <br><br><em>— Dr. Elena Rodriguez, Lead AI Researcher at FutureAtoms</em>
+                "The goal was never to replace musicians, but to give them superpowers. We wanted to create a tool that
+                could understand the soul of music, not just its structure."
+                <div class="mt-4 text-sm font-bold not-italic text-cyan-400">— Dr. Elena Rodriguez, Lead AI Researcher
+                    at FutureAtoms</div>
             </div>
 
-            <p>The breakthrough came when the team realized that traditional approaches to AI music generation were fundamentally flawed. Instead of trying to recreate existing music, they focused on understanding musical intent and emotional expression.</p>
+            <p>The breakthrough came when the team realized that traditional approaches to AI music generation were
+                fundamentally flawed. Instead of trying to recreate existing music, they focused on understanding
+                musical intent and emotional expression.</p>
 
-            <p>The system employs what researchers call "emotional vector mapping"—a technique that translates human emotional input into musical parameters. When a user hums a melody or describes the mood they want to convey, the AI doesn't just process the audio data; it interprets the emotional context and builds upon it.</p>
+            <p>The system employs what researchers call "emotional vector mapping"—a technique that translates human
+                emotional input into musical parameters. When a user hums a melody or describes the mood they want to
+                convey, the AI doesn't just process the audio data; it interprets the emotional context and builds upon
+                it.</p>
 
             <h3>Real-World Impact</h3>
 
-            <p>Since its beta launch six months ago, BevyBeats has attracted over 50,000 musicians worldwide. The platform has been used to create everything from intimate acoustic ballads to complex symphonic pieces.</p>
+            <p>Since its beta launch six months ago, BevyBeats has attracted over 50,000 musicians worldwide. The
+                platform has been used to create everything from intimate acoustic ballads to complex symphonic pieces.
+            </p>
 
-            <div class="stats-box">
-                <h4>BevyBeats By The Numbers</h4>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Active Musicians</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2.3M</div>
-                        <div class="stat-label">Songs Generated</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">180</div>
-                        <div class="stat-label">Countries Represented</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">User Satisfaction</div>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-12">
+                <div class="bg-white/5 p-4 rounded-lg text-center border border-white/10">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-1">50K+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Musicians</div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-lg text-center border border-white/10">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-1">2.3M</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Songs</div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-lg text-center border border-white/10">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-pink-400 mb-1">180</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Countries</div>
+                </div>
+                <div class="bg-white/5 p-4 rounded-lg text-center border border-white/10">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-1">95%</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Satisfaction</div>
                 </div>
             </div>
 
-            <p>Grammy-winning producer Marcus Williams has been using BevyBeats in his latest projects. "It's like having a conversation with a incredibly knowledgeable musical partner who never gets tired and always has fresh ideas," he explains. "The AI suggests harmonies and arrangements I would never have thought of, but they feel completely natural."</p>
+            <p>Grammy-winning producer Marcus Williams has been using BevyBeats in his latest projects. "It's like
+                having a conversation with a incredibly knowledgeable musical partner who never gets tired and always
+                has fresh ideas," he explains. "The AI suggests harmonies and arrangements I would never have thought
+                of, but they feel completely natural."</p>
 
             <h3>Democratizing Music Production</h3>
 
-            <p>Perhaps most significantly, BevyBeats is democratizing music production. The platform's intuitive interface allows users with no formal musical training to create sophisticated compositions. Teachers report that students who previously struggled with traditional music theory are now composing complex pieces with confidence.</p>
+            <p>Perhaps most significantly, BevyBeats is democratizing music production. The platform's intuitive
+                interface allows users with no formal musical training to create sophisticated compositions. Teachers
+                report that students who previously struggled with traditional music theory are now composing complex
+                pieces with confidence.</p>
 
-            <p>The educational implications are profound. Music schools are incorporating BevyBeats into their curricula, using it as a tool for teaching composition and arrangement. Students can experiment with different musical styles and receive immediate feedback on their creative choices.</p>
-
-            <p>Independent artists, who often lack access to expensive recording equipment and session musicians, can now produce professional-quality tracks from their bedrooms. The platform includes virtual instruments that sound indistinguishable from their acoustic counterparts, all powered by AI that understands musical context and expression.</p>
+            <p>The educational implications are profound. Music schools are incorporating BevyBeats into their
+                curricula, using it as a tool for teaching composition and arrangement. Students can experiment with
+                different musical styles and receive immediate feedback on their creative choices.</p>
 
             <h3>Addressing the Critics</h3>
 
-            <p>Not everyone in the music industry has embraced AI-assisted composition. Critics argue that automated music generation threatens the livelihood of human musicians and composers. Some purists contend that AI-generated music lacks the ineffable quality that makes human-created music meaningful.</p>
+            <p>Not everyone in the music industry has embraced AI-assisted composition. Critics argue that automated
+                music generation threatens the livelihood of human musicians and composers. Some purists contend that
+                AI-generated music lacks the ineffable quality that makes human-created music meaningful.</p>
 
-            <p>The FutureAtoms team acknowledges these concerns but maintains that BevyBeats enhances rather than replaces human creativity. "The AI is a brush, not the painter," explains CEO Abhilash Chadhar. "It's the human artist who provides the vision, emotion, and intent. The AI simply helps bring that vision to life more effectively."</p>
-
-            <p>Industry data supports this perspective. Studios using BevyBeats report increased productivity and creativity among their human staff, not job displacement. Musicians are using the freed-up time to focus on performance, songwriting, and connecting with audiences—the uniquely human aspects of musical artistry.</p>
+            <p>The FutureAtoms team acknowledges these concerns but maintains that BevyBeats enhances rather than
+                replaces human creativity. "The AI is a brush, not the painter," explains CEO Abhilash Chadhar. "It's
+                the human artist who provides the vision, emotion, and intent. The AI simply helps bring that vision to
+                life more effectively."</p>
 
             <h3>The Future of Musical Collaboration</h3>
 
-            <p>Looking ahead, the implications of BevyBeats extend far beyond music production. The technology represents a new paradigm for human-AI collaboration—one where artificial intelligence serves as a creative partner rather than a replacement for human ingenuity.</p>
+            <p>Looking ahead, the implications of BevyBeats extend far beyond music production. The technology
+                represents a new paradigm for human-AI collaboration—one where artificial intelligence serves as a
+                creative partner rather than a replacement for human ingenuity.</p>
 
-            <p>The platform continues to evolve, with new features being added monthly based on user feedback. Recent updates include real-time collaboration tools that allow musicians in different countries to create together, and an AI conductor that can interpret and enhance live performances.</p>
-
-            <p>As AI continues to advance, tools like BevyBeats may become as common in creative fields as word processors are in writing. The question is no longer whether AI will transform creative industries, but how quickly and effectively we can adapt to harness its potential.</p>
-
-            <div class="author-bio">
-                <h4>About the Author</h4>
-                <p><strong>Abhilash Chadhar</strong> is the founder of FutureAtoms and a leading voice in AI technology journalism. He has been covering the intersection of artificial intelligence and creative industries for over a decade. His previous work includes investigations into AI applications in visual arts, literature, and now music production.</p>
-            </div>
+            <p>As AI continues to advance, tools like BevyBeats may become as common in creative fields as word
+                processors are in writing. The question is no longer whether AI will transform creative industries, but
+                how quickly and effectively we can adapt to harness its potential.</p>
         </article>
 
-        <div class="decorative-border"></div>
-
-        <!-- Related Articles -->
-        <section class="related-articles">
-            <h3 class="related-title">Related Stories</h3>
-            <div class="related-grid">
-                <div class="related-item" onclick="window.location.href='blog-ai-therapy.html'">
-                    <h5>AI Therapy Breakthrough: The Science Behind Savitri's Success</h5>
-                    <p>Revolutionary platform combines multiple therapeutic methodologies...</p>
+        <!-- Related Stories -->
+        <div class="mt-24">
+            <h3 class="text-2xl font-['Orbitron'] font-bold mb-8 metallic-text">RELATED RESEARCH</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-ai-therapy.html'">
+                    <div class="text-xs text-cyan-400 font-mono mb-2">MENTAL HEALTH</div>
+                    <h4 class="text-lg font-bold text-white mb-2">AI Therapy Breakthrough: The Science Behind Savitri
+                    </h4>
+                    <p class="text-sm text-gray-400">Revolutionary platform combines multiple therapeutic
+                        methodologies...</p>
                 </div>
-                <div class="related-item" onclick="window.location.href='blog-semiconductor-ai.html'">
-                    <h5>ChipOS: The Revolutionary AI Assistant for Silicon Design</h5>
-                    <p>First AI-powered development environment for SystemVerilog...</p>
-                </div>
-                <div class="related-item" onclick="window.location.href='blog-computer-vision.html'">
-                    <h5>AdaptiveVision: Real-time Object Detection at Scale</h5>
-                    <p>Next-generation computer vision processes 60+ FPS with unprecedented accuracy...</p>
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-semiconductor-ai.html'">
+                    <div class="text-xs text-orange-400 font-mono mb-2">HARDWARE</div>
+                    <h4 class="text-lg font-bold text-white mb-2">AI in Semiconductor Design: The Next Frontier</h4>
+                    <p class="text-sm text-gray-400">Exploring how artificial intelligence is reshaping chip design...
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="newspaper-footer">
-        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and artificial intelligence advancement</p>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono mt-20">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

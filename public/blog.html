@@ -1,346 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureAtoms Tech Herald - Blog</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Newspaper fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Research & Insights | FutureAtoms</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Libre Baskerville', serif;
-            background: #1a1a1a;
-            color: #2c2c2c;
-            line-height: 1.6;
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.05);
         }
 
-        /* Newspaper Header */
-        .newspaper-header {
-            background: #fff;
-            border-bottom: 4px solid #000;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .metallic-text {
+            background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .newspaper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
+        .metallic-border {
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            box-shadow: 0 0 15px rgba(229, 228, 226, 0.1);
+        }
+
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .newspaper-subtitle {
-            font-family: 'Old Standard TT', serif;
-            font-size: 1.2rem;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1rem;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
-        .newspaper-date {
-            font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 0.5rem 0;
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .category-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
             display: inline-block;
-            margin: 1rem 0;
         }
 
-        /* Navigation Bar */
-        .nav-bar {
-            background: #000;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ccc;
-        }
-
-        /* Main Content */
-        .newspaper-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
             border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
         }
 
-        /* Headlines Section */
-        .headlines-section {
-            border-bottom: 3px solid #000;
-            padding: 2rem 0;
-        }
-
-        .main-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            text-align: center;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        /* Articles Grid */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-            border-bottom: 2px solid #000;
-        }
-
-        .main-stories {
-            border-right: 2px solid #000;
-            padding-right: 2rem;
-        }
-
-        .sidebar {
-            padding-left: 2rem;
-        }
-
-        /* Article Cards */
-        .article-card {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .article-card:hover {
-            background: #f9f9f9;
-            padding: 1rem;
-            margin: -1rem;
-            border-radius: 4px;
-        }
-
-        .article-card:last-child {
-            border-bottom: none;
-        }
-
-        .article-category {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .sidebar .article-headline {
-            font-size: 1.2rem;
-        }
-
-        .article-excerpt {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 0.95rem;
-            color: #444;
-            margin-bottom: 0.5rem;
-        }
-
-        .article-meta {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.8rem;
-            color: #888;
-            font-style: italic;
-        }
-
-
-        /* Decorative Elements */
-        .decorative-border {
-            height: 4px;
-            background: repeating-linear-gradient(
-                to right,
-                #000,
-                #000 10px,
-                #fff 10px,
-                #fff 20px
-            );
-            margin: 1rem 0;
-        }
-
-        .column-divider {
-            width: 1px;
-            background: #000;
-            margin: 0 1rem;
-        }
-
-        /* Footer */
-        .newspaper-footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-family: 'Old Standard TT', serif;
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
             font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .newspaper-title {
-                font-size: 2.5rem;
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
             }
-            
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-stories,
-            .sidebar {
-                border: none;
-                padding: 0;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Newspaper Header -->
-    <header class="newspaper-header">
-        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
-        <p class="newspaper-subtitle">Your Premier Source for AI Innovation & Technology News</p>
-        <div class="newspaper-date">December 15, 2024 • Volume 1, Issue 1 • Founded by Abhilash Chadhar</div>
-    </header>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html" class="active">Tech Herald</a></li>
-            <li><a href="news.html">Breaking News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="newspaper-container">
-        <!-- Headlines Section -->
-        <section class="headlines-section">
-            <h2 class="main-headline">AI Revolution Transforms Music, Therapy, and Chip Design</h2>
-        </section>
-
-        <div class="decorative-border"></div>
-
-        <!-- Articles Grid -->
-        <div class="articles-grid">
-            <!-- Main Stories Column -->
-            <section class="main-stories">
-                <article class="article-card" onclick="window.location.href='blog-ai-music-revolution.html'">
-                    <div class="article-category">AI Innovation • Featured Story</div>
-                    <h3 class="article-headline">The Future of AI Music Generation: How BevyBeats is Revolutionizing Creativity</h3>
-                    <p class="article-excerpt">In an unprecedented breakthrough, artificial intelligence is transforming the music industry through advanced neural networks that enable seamless human-AI collaboration. Our investigation reveals how BevyBeats is pioneering this revolution, offering artists tools that were unimaginable just years ago...</p>
-                    <div class="article-meta">By Abhilash Chadhar • December 15, 2024 • 8 min read</div>
-                </article>
-
-                <article class="article-card" onclick="window.location.href='blog-ai-therapy.html'">
-                    <div class="article-category">Mental Health Technology</div>
-                    <h3 class="article-headline">AI Therapy Breakthrough: The Science Behind Savitri's Success</h3>
-                    <p class="article-excerpt">Revolutionary AI-powered therapy platform combines CBT, DBT, and ACT methodologies in groundbreaking approach to mental health care. Clinical trials show remarkable results in patient engagement and therapeutic outcomes...</p>
-                    <div class="article-meta">By Medical Technology Team • December 12, 2024 • 6 min read</div>
-                </article>
-
-                <article class="article-card" onclick="window.location.href='blog-linkedin-automation.html'">
-                    <div class="article-category">Professional Productivity</div>
-                    <h3 class="article-headline">Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement</h3>
-                    <p class="article-excerpt">Chrome extension leverages advanced natural language processing to generate contextually appropriate professional responses, maintaining authentic voice while dramatically improving networking efficiency...</p>
-                    <div class="article-meta">By Product Development Team • December 10, 2024 • 5 min read</div>
-                </article>
-            </section>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <article class="article-card" onclick="window.location.href='blog-chipos-mcp.html'">
-                    <div class="article-category">AI Development</div>
-                    <h3 class="article-headline">ChipOS: AI Command Center for Your Coding Assistants</h3>
-                    <p class="article-excerpt">Revolutionary MCP server that supercharges AI coding assistants with knowledge management, task tracking, and advanced RAG capabilities...</p>
-                    <div class="article-meta">December 8, 2024</div>
-                </article>
-
-                <article class="article-card" onclick="window.location.href='blog-computer-vision.html'">
-                    <div class="article-category">Computer Vision</div>
-                    <h3 class="article-headline">AdaptiveVision: Real-time Object Detection at Scale</h3>
-                    <p class="article-excerpt">Next-generation computer vision system processes 60+ FPS with unprecedented accuracy using adaptive learning algorithms...</p>
-                    <div class="article-meta">December 5, 2024</div>
-                </article>
-
-                <article class="article-card" onclick="window.location.href='blog-agent-orchestration.html'">
-                    <div class="article-category">Enterprise AI</div>
-                    <h3 class="article-headline">Building Autonomous Systems with Agentic Control Framework</h3>
-                    <p class="article-excerpt">Enterprise-grade solution for orchestrating complex multi-agent workflows using Model Context Protocol servers...</p>
-                    <div class="article-meta">December 3, 2024</div>
-                </article>
-
-                <article class="article-card" onclick="window.location.href='blog-fitness-wellness.html'">
-                    <div class="article-category">Wellness Technology</div>
-                    <h3 class="article-headline">Yuj: Where Ancient Wisdom Meets Modern Fitness Science</h3>
-                    <p class="article-excerpt">Innovative app combines traditional yoga practices with cutting-edge strength training methodologies and AI-driven personalization...</p>
-                    <div class="article-meta">December 1, 2024</div>
-                </article>
-            </aside>
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div
+                class="w-10 h-10 rounded-full border border-cyan-500/50 flex items-center justify-center bg-cyan-900/20 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                <span class="font-['Orbitron'] text-cyan-400 font-bold text-xl">Ψ</span>
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+            </div>
         </div>
 
-        <div class="decorative-border"></div>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
 
-        <!-- Additional Sections -->
-        <section style="padding: 2rem 0; text-align: center;">
-            <p style="font-family: 'Old Standard TT', serif; font-style: italic; color: #666;">
-                "Innovation distinguishes between a leader and a follower" - Steve Jobs
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-link active">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h1 class="text-5xl md:text-7xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+                TECH HERALD
+            </h1>
+            <p class="text-xl md:text-2xl text-cyan-100/60 font-light max-w-3xl mx-auto leading-relaxed">
+                Deep dives into AI innovation, quantum computing, and the future of technology.
             </p>
-        </section>
+        </div>
+
+        <!-- Featured Article -->
+        <div class="mb-16">
+            <article class="glass-panel p-8 md:p-12 rounded-2xl metallic-border blog-card group cursor-pointer"
+                onclick="window.location.href='blog-ai-music-revolution.html'">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div
+                        class="w-full md:w-1/2 h-64 md:h-80 bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl relative overflow-hidden border border-white/10">
+                        <div
+                            class="absolute top-6 left-6 bg-purple-500/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-purple-500/30 text-xs font-bold text-purple-300 category-tag">
+                            AI INNOVATION
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center text-6xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col justify-center">
+                        <div class="flex items-center gap-4 mb-4 text-sm text-gray-400 font-mono">
+                            <span class="text-cyan-400">DEC 15, 2024</span>
+                            <span>•</span>
+                            <span>8 MIN READ</span>
+                        </div>
+                        <h2
+                            class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-6 group-hover:text-cyan-400 transition-colors leading-tight">
+                            The Future of AI Music Generation: BevyBeats Revolution
+                        </h2>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                            In an unprecedented breakthrough, artificial intelligence is transforming the music industry
+                            through advanced neural networks that enable seamless human-AI collaboration. Discover how
+                            BevyBeats is pioneering this revolution.
+                        </p>
+                        <div
+                            class="flex items-center text-cyan-400 font-bold tracking-wider group-hover:translate-x-2 transition-transform">
+                            READ FULL ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Article 2 -->
+            <article
+                class="glass-panel p-6 rounded-2xl metallic-border blog-card group cursor-pointer flex flex-col h-full"
+                onclick="window.location.href='blog-ai-therapy.html'">
+                <div
+                    class="h-48 bg-gradient-to-br from-teal-900/50 to-cyan-900/50 rounded-xl relative overflow-hidden border border-white/10 mb-6">
+                    <div
+                        class="absolute top-4 left-4 bg-teal-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-teal-500/30 text-xs font-bold text-teal-300 category-tag">
+                        MENTAL HEALTH
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-3 text-xs text-gray-400 font-mono">
+                        <span class="text-cyan-400">DEC 12, 2024</span>
+                        <span>•</span>
+                        <span>6 MIN READ</span>
+                    </div>
+                    <h3
+                        class="text-xl font-['Orbitron'] font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        AI Therapy Breakthrough: The Science Behind Savitri
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
+                        Revolutionary AI-powered therapy platform combines CBT, DBT, and ACT methodologies in a
+                        groundbreaking approach to mental health care.
+                    </p>
+                    <div
+                        class="flex items-center text-cyan-400 text-sm font-bold tracking-wider group-hover:translate-x-2 transition-transform mt-auto">
+                        READ ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article
+                class="glass-panel p-6 rounded-2xl metallic-border blog-card group cursor-pointer flex flex-col h-full"
+                onclick="window.location.href='blog-linkedin-automation.html'">
+                <div
+                    class="h-48 bg-gradient-to-br from-blue-900/50 to-indigo-900/50 rounded-xl relative overflow-hidden border border-white/10 mb-6">
+                    <div
+                        class="absolute top-4 left-4 bg-blue-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-blue-500/30 text-xs font-bold text-blue-300 category-tag">
+                        PRODUCTIVITY
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-3 text-xs text-gray-400 font-mono">
+                        <span class="text-cyan-400">DEC 10, 2024</span>
+                        <span>•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                    <h3
+                        class="text-xl font-['Orbitron'] font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        Automating Professional Networks with Zaphy
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
+                        Chrome extension leverages advanced NLP to generate contextually appropriate professional
+                        responses, improving networking efficiency.
+                    </p>
+                    <div
+                        class="flex items-center text-cyan-400 text-sm font-bold tracking-wider group-hover:translate-x-2 transition-transform mt-auto">
+                        READ ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article
+                class="glass-panel p-6 rounded-2xl metallic-border blog-card group cursor-pointer flex flex-col h-full"
+                onclick="window.location.href='blog-chipos-mcp.html'">
+                <div
+                    class="h-48 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl relative overflow-hidden border border-white/10 mb-6">
+                    <div
+                        class="absolute top-4 left-4 bg-gray-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-gray-500/30 text-xs font-bold text-gray-300 category-tag">
+                        DEVELOPMENT
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-3 text-xs text-gray-400 font-mono">
+                        <span class="text-cyan-400">DEC 08, 2024</span>
+                        <span>•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                    <h3
+                        class="text-xl font-['Orbitron'] font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        ChipOS: AI Command Center for Coding Assistants
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
+                        Revolutionary MCP server that supercharges AI coding assistants with knowledge management, task
+                        tracking, and advanced RAG capabilities.
+                    </p>
+                    <div
+                        class="flex items-center text-cyan-400 text-sm font-bold tracking-wider group-hover:translate-x-2 transition-transform mt-auto">
+                        READ ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article
+                class="glass-panel p-6 rounded-2xl metallic-border blog-card group cursor-pointer flex flex-col h-full"
+                onclick="window.location.href='blog-semiconductor-ai.html'">
+                <div
+                    class="h-48 bg-gradient-to-br from-orange-900/50 to-red-900/50 rounded-xl relative overflow-hidden border border-white/10 mb-6">
+                    <div
+                        class="absolute top-4 left-4 bg-orange-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-orange-500/30 text-xs font-bold text-orange-300 category-tag">
+                        HARDWARE
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-3 text-xs text-gray-400 font-mono">
+                        <span class="text-cyan-400">DEC 05, 2024</span>
+                        <span>•</span>
+                        <span>7 MIN READ</span>
+                    </div>
+                    <h3
+                        class="text-xl font-['Orbitron'] font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        AI in Semiconductor Design: The Next Frontier
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
+                        Exploring how artificial intelligence is reshaping the landscape of semiconductor design and
+                        verification processes.
+                    </p>
+                    <div
+                        class="flex items-center text-cyan-400 text-sm font-bold tracking-wider group-hover:translate-x-2 transition-transform mt-auto">
+                        READ ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Coming Soon / Placeholder -->
+            <article
+                class="glass-panel p-6 rounded-2xl metallic-border blog-card group cursor-pointer flex flex-col h-full opacity-70">
+                <div
+                    class="h-48 bg-gradient-to-br from-cyan-900/30 to-blue-900/30 rounded-xl relative overflow-hidden border border-white/5 mb-6 flex items-center justify-center">
+                    <span class="font-['Orbitron'] text-cyan-500/50 text-lg tracking-widest">COMING SOON</span>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <div class="flex items-center gap-3 mb-3 text-xs text-gray-500 font-mono">
+                        <span class="text-cyan-900">UPCOMING</span>
+                    </div>
+                    <h3 class="text-xl font-['Orbitron'] font-bold text-gray-500 mb-3">
+                        More Research Insights
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+                        Stay tuned for more in-depth analysis and updates from the FutureAtoms research team.
+                    </p>
+                </div>
+            </article>
+
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="newspaper-footer">
-        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and artificial intelligence advancement</p>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
 </body>
+
 </html>

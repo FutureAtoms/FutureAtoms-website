@@ -1,0 +1,40 @@
+# FutureAtoms
+
+> FutureAtoms is a visionary technology company building the next generation of AI tools and platforms, visualized through a unique Quantum Theme. We specialize in AI for coding, hardware design, professional networking, and mental wellness.
+
+## Core Products
+
+*   [ChipOS](chipos.html): AI-native code editor that auto-builds with advanced semiconductor smarts—powered by your knowledge and MCP superpowers.
+*   [SystemVerilogGPT](systemverilog.html): Specialized GPT for hardware verification and RTL design.
+*   [Zaphy](zaphy.html): Smart Chrome extension for LinkedIn automation and professional networking.
+*   [Agentic Control](agentic.html): Advanced CLI tool for orchestrating multi-agent workflows.
+*   [Yuj](yuj.html): Holistic yoga and workout app combining ancient wisdom with modern fitness science.
+*   [AdaptiveVision](adaptivision.html): Real-time adaptive object detection algorithms for computer vision.
+*   [BevyBeats](bevybeats.html): AI-powered music generation platform and streaming service.
+*   [Savitri](savitri.html): AI therapy app offering CBT, DBT, and ACT methodologies.
+
+## Key Resources
+
+*   [Home](index.html): The main landing page featuring the Quantum Theme and product ecosystem.
+*   [Research & Blog](blog.html): In-depth articles on AI innovation, including:
+    *   [The Future of AI Music Generation](blog-ai-music-revolution.html)
+    *   [ChipOS: AI Command Center](blog-chipos-mcp.html)
+    *   [AI Therapy Breakthrough](blog-ai-therapy.html)
+    *   [Automating Professional Networks](blog-linkedin-automation.html)
+    *   [ChipOS for Silicon Design](blog-semiconductor-ai.html)
+*   [News](news.html): Latest updates and breaking news from FutureAtoms.
+*   [About Us](about.html): Learn about our mission and the team behind FutureAtoms.
+*   [Contact](contact.html): Get in touch with us.
+
+## Technical Context
+
+*   **Design System**: "Quantum Theme" featuring glassmorphism, metallic accents (Platinum, Copper, Gold, etc.), and Three.js animations.
+*   **Tech Stack**: HTML5, Tailwind CSS, Vanilla JavaScript, Three.js.
+*   **Navigation**: Responsive design with a mobile menu overlay and a "Products" dropdown on desktop.
+
+## Strategies & Goals
+
+*   **AI Democratization**: Making advanced AI tools accessible for developers, engineers, and everyday users.
+*   **Holistic Wellness**: Integrating AI into mental and physical health (Savitri, Yuj).
+*   **Hardware-Software Convergence**: Bridging the gap between software AI and hardware design (ChipOS, SystemVerilogGPT).
+*   **Professional Efficiency**: Enhancing productivity in professional networking (Zaphy).

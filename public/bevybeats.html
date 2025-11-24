@@ -1,78 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BevyBeats - AI Music Generation | FutureAtoms</title>
-    <!-- Font Awesome for icons -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0f;
-            color: #ffffff;
-            cursor: none;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
             overflow-x: hidden;
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(183, 110, 121, 0.1);
+            /* Rose Gold tint */
+            box-shadow: 0 0 30px rgba(183, 110, 121, 0.05);
         }
 
-        .nav-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .metallic-text {
+            background: linear-gradient(135deg, #B76E79 0%, #ffffff 50%, #FFC0CB 100%);
+            /* Rose Gold */
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: pointer;
+            text-shadow: 0 0 20px rgba(183, 110, 121, 0.3);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .metallic-border {
+            border: 1px solid rgba(183, 110, 121, 0.3);
+            box-shadow: 0 0 15px rgba(183, 110, 121, 0.1);
         }
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-            cursor: pointer;
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: #d4a574;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #B76E79;
+            text-shadow: 0 0 10px rgba(183, 110, 121, 0.5);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(183, 110, 121, 0.1);
+            border-color: rgba(183, 110, 121, 0.3);
+        }
+
+        .cta-btn {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .bar {
+            width: 8px;
+            background: linear-gradient(to top, #B76E79, #FFC0CB);
+            border-radius: 4px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) {
+            animation-delay: 0s;
+            height: 40%;
+        }
+
+        .bar:nth-child(2) {
+            animation-delay: 0.1s;
+            height: 60%;
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: 0.2s;
+            height: 80%;
+        }
+
+        .bar:nth-child(4) {
+            animation-delay: 0.3s;
+            height: 50%;
+        }
+
+        .bar:nth-child(5) {
+            animation-delay: 0.4s;
+            height: 70%;
+        }
+
+        .bar:nth-child(6) {
+            animation-delay: 0.5s;
+            height: 45%;
+        }
+
+        .bar:nth-child(7) {
+            animation-delay: 0.6s;
+            height: 65%;
+        }
+
+        .bar:nth-child(8) {
+            animation-delay: 0.7s;
+            height: 55%;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(1.5);
+            }
         }
 
         #wave-container {
@@ -81,275 +160,180 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            z-index: 1;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .content-wrapper {
+        /* Dropdown Styles */
+        .dropdown {
             position: relative;
-            z-index: 2;
-            padding-top: 100px;
-        }
-
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .app-icon {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            box-shadow: 0 20px 60px rgba(212, 165, 116, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .app-title {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .app-tagline {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-            padding: 0 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .feature-card {
-            background: rgba(212, 165, 116, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(212, 165, 116, 0.1);
-            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #d4a574;
-        }
-
-        .feature-description {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .demo-section {
-            padding: 4rem 2rem;
-            background: rgba(10, 10, 15, 0.5);
-        }
-
-        .demo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .demo-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .music-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .control-btn {
-            padding: 1rem 2rem;
-            background: rgba(212, 165, 116, 0.1);
-            border: 1px solid rgba(212, 165, 116, 0.3);
-            border-radius: 30px;
-            color: #d4a574;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .control-btn:hover {
-            background: rgba(212, 165, 116, 0.2);
-            transform: scale(1.05);
-        }
-
-        .visualizer {
-            height: 200px;
-            background: rgba(212, 165, 116, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            padding: 2rem;
-        }
-
-        .bar {
-            width: 8px;
-            background: linear-gradient(to top, #d4a574, #b8860b);
-            border-radius: 4px;
-            animation: pulse 1s ease-in-out infinite;
-        }
-
-        .bar:nth-child(1) { animation-delay: 0s; height: 40%; }
-        .bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
-        .bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
-        .bar:nth-child(4) { animation-delay: 0.3s; height: 50%; }
-        .bar:nth-child(5) { animation-delay: 0.4s; height: 70%; }
-        .bar:nth-child(6) { animation-delay: 0.5s; height: 45%; }
-        .bar:nth-child(7) { animation-delay: 0.6s; height: 65%; }
-        .bar:nth-child(8) { animation-delay: 0.7s; height: 55%; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.5); }
-        }
-
-        .cta-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .cta-btn {
             display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #d4a574, #b8860b);
-            border-radius: 30px;
-            color: #0a0a0f;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(183, 110, 121, 0.2);
+            border: 1px solid rgba(183, 110, 121, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
         }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.3);
+        .dropdown-content a:hover {
+            background: rgba(183, 110, 121, 0.1);
+            color: #B76E79;
+            border-left: 2px solid #B76E79;
+            padding-left: 20px;
         }
 
-        .footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(10, 10, 15, 0.9);
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Custom Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
     <!-- Three.js Wave Container -->
     <div id="wave-container"></div>
 
-    <!-- Content -->
-    <div class="content-wrapper">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-content">
-                <div class="app-icon"><i class="fas fa-music"></i></div>
-                <h1 class="app-title">BevyBeats</h1>
-                <p class="app-tagline">Where AI Meets Musical Creativity</p>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                    Experience the future of music creation with our revolutionary AI-powered platform. 
-                    Generate, discover, and stream music that evolves with your taste.
-                </p>
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-pink-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div
+                class="w-10 h-10 rounded-full border border-pink-500/50 flex items-center justify-center bg-pink-900/20 shadow-[0_0_15px_rgba(183,110,121,0.3)]">
+                <span class="font-['Orbitron'] text-pink-400 font-bold text-xl">Ψ</span>
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-pink-400">ATOMS</span>
+                </h1>
             </div>
         </div>
 
-        <!-- Features -->
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-waveform-lines"></i></div>
-                <h3 class="feature-title">AI Generation</h3>
-                <p class="feature-description">Create unique songs in any genre with advanced neural networks</p>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-headphones"></i></div>
-                <h3 class="feature-title">Smart Streaming</h3>
-                <p class="feature-description">Spotify-like experience with AI-curated playlists</p>
+
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-pink-500/50 px-4 py-1 rounded hover:bg-pink-500/20">CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-24">
+            <div
+                class="mb-8 inline-block animate-bounce text-6xl text-pink-400 drop-shadow-[0_0_30px_rgba(183,110,121,0.5)]">
+                <i class="fas fa-music"></i>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-sliders"></i></div>
-                <h3 class="feature-title">Style Transfer</h3>
-                <p class="feature-description">Transform songs across genres and moods instantly</p>
+            <h1 class="text-6xl md:text-8xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+                BEVY<span class="text-pink-400">BEATS</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-pink-100/60 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+                Where AI Meets Musical Creativity. Generate, discover, and stream music with Rose Gold elegance.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#"
+                    class="cta-btn bg-pink-500/20 border border-pink-400 text-pink-400 px-8 py-4 rounded-full font-bold hover:bg-pink-500/30 hover:shadow-[0_0_20px_rgba(183,110,121,0.3)]">
+                    <i class="fas fa-play mr-2"></i> START CREATING
+                </a>
+                <a href="#"
+                    class="cta-btn bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10">
+                    <i class="fas fa-headphones mr-2"></i> LISTEN NOW
+                </a>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-microphone"></i></div>
-                <h3 class="feature-title">Voice Synthesis</h3>
-                <p class="feature-description">Generate vocals that match your creative vision</p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-pink-400 mb-6"><i class="fas fa-waveform-lines"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">AI Generation</h3>
+                <p class="text-gray-400 leading-relaxed">Create unique songs in any genre with advanced neural networks
+                </p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-pink-400 mb-6"><i class="fas fa-headphones"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Smart Streaming</h3>
+                <p class="text-gray-400 leading-relaxed">Spotify-like experience with AI-curated playlists</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-pink-400 mb-6"><i class="fas fa-sliders"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Style Transfer</h3>
+                <p class="text-gray-400 leading-relaxed">Transform songs across genres and moods instantly</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-pink-400 mb-6"><i class="fas fa-microphone"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Voice Synthesis</h3>
+                <p class="text-gray-400 leading-relaxed">Generate vocals that match your creative vision</p>
             </div>
         </div>
 
         <!-- Demo Section -->
-        <div class="demo-section">
-            <div class="demo-container">
-                <h2 class="demo-title">Experience the Magic</h2>
-                <div class="music-controls">
-                    <button class="control-btn">Generate Jazz</button>
-                    <button class="control-btn">Create EDM</button>
-                    <button class="control-btn">Make Classical</button>
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">EXPERIENCE THE MAGIC</h2>
+            <div class="glass-panel p-8 rounded-2xl metallic-border max-w-4xl mx-auto text-center">
+                <div class="flex justify-center gap-4 mb-8">
+                    <button
+                        class="px-6 py-2 rounded-full border border-pink-400/50 text-pink-400 hover:bg-pink-400/10 transition-colors">JAZZ</button>
+                    <button
+                        class="px-6 py-2 rounded-full border border-pink-400/50 text-pink-400 hover:bg-pink-400/10 transition-colors">EDM</button>
+                    <button
+                        class="px-6 py-2 rounded-full border border-pink-400/50 text-pink-400 hover:bg-pink-400/10 transition-colors">CLASSICAL</button>
                 </div>
-                <div class="visualizer">
+                <div
+                    class="h-40 bg-pink-900/20 rounded-xl border border-pink-500/20 flex items-center justify-center gap-2 px-8">
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -362,38 +346,47 @@
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Create?</h2>
-            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                Join thousands of artists already using BevyBeats
-            </p>
-            <a href="#" class="cta-btn">Start Creating Music</a>
-        </div>
+    </main>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
-        </div>
-    </div>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono relative z-10">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
+    </footer>
 
     <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Scene setup for audio waves
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         document.getElementById('wave-container').appendChild(renderer.domElement);
 
-        // Create audio wave mesh
+        // Create audio wave mesh (Rose Gold)
         const waveGeometry = new THREE.PlaneGeometry(30, 10, 128, 32);
         const waveMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0xd4a574,
-            emissive: 0xb8860b,
+            color: 0xB76E79, // Rose Gold
+            emissive: 0xFFC0CB, // Pink
             emissiveIntensity: 0.2,
             metalness: 0.8,
             roughness: 0.2,
@@ -401,7 +394,7 @@
             transparent: true,
             opacity: 0.3
         });
-        
+
         const wave = new THREE.Mesh(waveGeometry, waveMaterial);
         wave.rotation.x = -Math.PI / 3;
         scene.add(wave);
@@ -410,32 +403,32 @@
         const noteCount = 100;
         const noteGeometry = new THREE.BufferGeometry();
         const notePositions = new Float32Array(noteCount * 3);
-        
+
         for (let i = 0; i < noteCount; i++) {
             notePositions[i * 3] = (Math.random() - 0.5) * 40;
             notePositions[i * 3 + 1] = Math.random() * 10;
             notePositions[i * 3 + 2] = (Math.random() - 0.5) * 20;
         }
-        
+
         noteGeometry.setAttribute('position', new THREE.BufferAttribute(notePositions, 3));
-        
+
         const noteMaterial = new THREE.PointsMaterial({
-            color: 0xd4a574,
+            color: 0xB76E79, // Rose Gold
             size: 0.2,
             transparent: true,
             opacity: 0.6,
             blending: THREE.AdditiveBlending
         });
-        
+
         const notes = new THREE.Points(noteGeometry, noteMaterial);
         scene.add(notes);
 
         // Lighting
-        const light1 = new THREE.PointLight(0xd4a574, 1, 100);
+        const light1 = new THREE.PointLight(0xB76E79, 1, 100);
         light1.position.set(0, 10, 10);
         scene.add(light1);
 
-        const light2 = new THREE.PointLight(0xb8860b, 0.5, 100);
+        const light2 = new THREE.PointLight(0xFFC0CB, 0.5, 100);
         light2.position.set(-10, -10, 10);
         scene.add(light2);
 
@@ -449,35 +442,28 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-            
-            // Update cursor glow
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
         });
 
         // Animation loop
         function animate() {
             requestAnimationFrame(animate);
-            
+
             // Animate wave vertices
             const time = Date.now() * 0.001;
             const vertices = wave.geometry.attributes.position;
-            
+
             for (let i = 0; i < vertices.count; i++) {
                 const x = vertices.getX(i);
                 const y = vertices.getY(i);
                 const waveHeight = Math.sin(x * 0.5 + time) * Math.cos(y * 0.5 + time) * 2;
                 vertices.setZ(i, waveHeight);
             }
-            
+
             vertices.needsUpdate = true;
-            
+
             // Rotate wave slightly
             wave.rotation.z = Math.sin(time * 0.2) * 0.1;
-            
+
             // Animate notes
             notes.rotation.y += 0.001;
             const notePos = notes.geometry.attributes.position.array;
@@ -488,12 +474,12 @@
                 }
             }
             notes.geometry.attributes.position.needsUpdate = true;
-            
+
             // Camera movement
             camera.position.x = mouseX * 5;
             camera.position.y = 5 + mouseY * 2;
             camera.lookAt(0, 0, 0);
-            
+
             renderer.render(scene, camera);
         }
 
@@ -505,17 +491,7 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
-        // Control buttons interaction
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Trigger wave animation
-                waveMaterial.emissiveIntensity = 0.5;
-                setTimeout(() => {
-                    waveMaterial.emissiveIntensity = 0.2;
-                }, 300);
-            });
-        });
     </script>
 </body>
+
 </html>

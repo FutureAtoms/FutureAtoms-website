@@ -1,78 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SystemVerilogGPT - AI for RTL Design | FutureAtoms</title>
-    <!-- Font Awesome for icons -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0f;
-            color: #ffffff;
-            cursor: none;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
             overflow-x: hidden;
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(240, 147, 251, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            /* Silver tint */
+            box-shadow: 0 0 30px rgba(192, 192, 192, 0.05);
         }
 
-        .nav-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .metallic-text {
+            background: linear-gradient(135deg, #C0C0C0 0%, #ffffff 50%, #E0E0E0 100%);
+            /* Silver */
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: pointer;
+            text-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .metallic-border {
+            border: 1px solid rgba(192, 192, 192, 0.3);
+            box-shadow: 0 0 15px rgba(192, 192, 192, 0.1);
         }
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-            cursor: pointer;
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: #f093fb;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #C0C0C0;
+            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(192, 192, 192, 0.1);
+            border-color: rgba(192, 192, 192, 0.3);
+        }
+
+        .cta-btn {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .code-snippet {
+            font-family: 'Monaco', 'Courier New', monospace;
+            color: #C0C0C0;
         }
 
         #silicon-container {
@@ -81,284 +106,223 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            z-index: 1;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .content-wrapper {
+        /* Dropdown Styles */
+        .dropdown {
             position: relative;
-            z-index: 2;
-            padding-top: 100px;
-        }
-
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-        }
-
-        .app-icon {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            box-shadow: 0 20px 60px rgba(240, 147, 251, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .app-title {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .app-tagline {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-            padding: 0 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .feature-card {
-            background: rgba(240, 147, 251, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(240, 147, 251, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(240, 147, 251, 0.1);
-            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #f093fb;
-        }
-
-        .feature-description {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .generation-section {
-            padding: 4rem 2rem;
-            background: rgba(10, 10, 15, 0.5);
-        }
-
-        .generation-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .generation-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .chat-interface {
-            background: rgba(240, 147, 251, 0.05);
-            border: 1px solid rgba(240, 147, 251, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-        }
-
-        .chat-message {
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 10px;
-        }
-
-        .user-message {
-            background: rgba(240, 147, 251, 0.1);
-            text-align: right;
-        }
-
-        .ai-message {
-            background: rgba(245, 87, 108, 0.1);
-            font-family: 'Courier New', monospace;
-        }
-
-        .code-snippet {
-            color: #f093fb;
-        }
-
-        .cta-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .cta-btn {
             display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            border-radius: 30px;
-            color: #ffffff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(192, 192, 192, 0.2);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
         }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.3);
+        .dropdown-content a:hover {
+            background: rgba(192, 192, 192, 0.1);
+            color: #C0C0C0;
+            border-left: 2px solid #C0C0C0;
+            padding-left: 20px;
         }
 
-        .footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(10, 10, 15, 0.9);
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Custom Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
     <!-- Three.js Silicon Container -->
     <div id="silicon-container"></div>
 
-    <!-- Content -->
-    <div class="content-wrapper">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-content">
-                <div class="app-icon"><i class="fas fa-bolt"></i></div>
-                <h1 class="app-title">SystemVerilogGPT</h1>
-                <p class="app-tagline">AI-Powered RTL Generation & Verification</p>
-                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                    Specialized GPT for hardware description and verification. Accelerate chip design 
-                    with AI-powered SystemVerilog/Verilog generation, verification, and optimization.
-                </p>
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-gray-700/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div
+                class="w-10 h-10 rounded-full border border-gray-500/50 flex items-center justify-center bg-gray-900/20 shadow-[0_0_15px_rgba(192,192,192,0.3)]">
+                <span class="font-['Orbitron'] text-gray-400 font-bold text-xl">Ψ</span>
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-gray-400">ATOMS</span>
+                </h1>
             </div>
         </div>
 
-        <!-- Features -->
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-magic"></i></div>
-                <h3 class="feature-title">Instant RTL Generation</h3>
-                <p class="feature-description">Generate complex SystemVerilog modules from specifications</p>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-flask"></i></div>
-                <h3 class="feature-title">UVM Testbenches</h3>
-                <p class="feature-description">Automatic UVM testbench and sequence generation</p>
+
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-gray-500/50 px-4 py-1 rounded hover:bg-gray-500/20">CONTACT</a>
+        </nav>
+    </header>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-24">
+            <div
+                class="mb-8 inline-block animate-bounce text-6xl text-gray-400 drop-shadow-[0_0_30px_rgba(192,192,192,0.5)]">
+                <i class="fas fa-bolt"></i>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-search"></i></div>
-                <h3 class="feature-title">Code Review</h3>
-                <p class="feature-description">Identify bugs and suggest optimizations in existing RTL</p>
+            <h1 class="text-6xl md:text-8xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+                SYSTEM<span class="text-gray-400">VERILOG</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100/60 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+                AI-Powered RTL Generation & Verification. Accelerate chip design with Silver-grade precision and speed.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#"
+                    class="cta-btn bg-gray-500/20 border border-gray-400 text-gray-400 px-8 py-4 rounded-full font-bold hover:bg-gray-500/30 hover:shadow-[0_0_20px_rgba(192,192,192,0.3)]">
+                    <i class="fas fa-rocket mr-2"></i> TRY IT NOW
+                </a>
+                <a href="#"
+                    class="cta-btn bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10">
+                    <i class="fas fa-book mr-2"></i> DOCUMENTATION
+                </a>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-book"></i></div>
-                <h3 class="feature-title">Documentation</h3>
-                <p class="feature-description">Generate comprehensive documentation from RTL code</p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-gray-400 mb-6"><i class="fas fa-magic"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Instant RTL</h3>
+                <p class="text-gray-400 leading-relaxed">Generate complex SystemVerilog modules from specifications</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-gray-400 mb-6"><i class="fas fa-flask"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">UVM Testbenches</h3>
+                <p class="text-gray-400 leading-relaxed">Automatic UVM testbench and sequence generation</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-gray-400 mb-6"><i class="fas fa-search"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Code Review</h3>
+                <p class="text-gray-400 leading-relaxed">Identify bugs and suggest optimizations in existing RTL</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-gray-400 mb-6"><i class="fas fa-book"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Documentation</h3>
+                <p class="text-gray-400 leading-relaxed">Generate comprehensive documentation from RTL code</p>
             </div>
         </div>
 
         <!-- Generation Demo Section -->
-        <div class="generation-section">
-            <div class="generation-container">
-                <h2 class="generation-title">Natural Language to RTL</h2>
-                <div class="chat-interface">
-                    <div class="chat-message user-message">
-                        Create a parameterized FIFO with configurable depth and width
-                    </div>
-                    <div class="chat-message ai-message">
-                        <span class="code-snippet">module fifo #(
-    parameter WIDTH = 8,
-    parameter DEPTH = 16
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">NATURAL LANGUAGE TO RTL
+            </h2>
+            <div class="glass-panel p-8 rounded-2xl metallic-border max-w-3xl mx-auto">
+                <div class="mb-6 p-4 bg-gray-800/50 rounded-lg text-right text-gray-300 border border-gray-700">
+                    Create a parameterized FIFO with configurable depth and width
+                </div>
+                <div class="p-6 bg-black/50 rounded-lg text-left border border-gray-700">
+                    <pre class="code-snippet text-sm md:text-base overflow-x-auto">
+<span class="text-purple-400">module</span> fifo #(
+    <span class="text-purple-400">parameter</span> WIDTH = 8,
+    <span class="text-purple-400">parameter</span> DEPTH = 16
 ) (
-    input clk, rst_n,
-    input wr_en, rd_en,
-    input [WIDTH-1:0] data_in,
-    output reg [WIDTH-1:0] data_out,
-    output full, empty
+    <span class="text-purple-400">input</span> clk, rst_n,
+    <span class="text-purple-400">input</span> wr_en, rd_en,
+    <span class="text-purple-400">input</span> [WIDTH-1:0] data_in,
+    <span class="text-purple-400">output reg</span> [WIDTH-1:0] data_out,
+    <span class="text-purple-400">output</span> full, empty
 );
-    // AI-optimized FIFO implementation...
-endmodule</span>
-                    </div>
+    <span class="text-gray-500">// AI-optimized FIFO implementation...</span>
+<span class="text-purple-400">endmodule</span></pre>
                 </div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Revolutionize Your RTL Design</h2>
-            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                10x faster chip design with AI-powered SystemVerilog generation
-            </p>
-            <a href="#" class="cta-btn">Try SystemVerilogGPT</a>
-        </div>
+    </main>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
-        </div>
-    </div>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono relative z-10">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
+    </footer>
 
     <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         // Scene setup for silicon wafer visualization
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         document.getElementById('silicon-container').appendChild(renderer.domElement);
@@ -380,38 +344,38 @@ endmodule</span>
         const dieGroup = new THREE.Group();
         const dieSize = 0.8;
         const dieSpacing = 1;
-        
+
         for (let x = -3; x <= 3; x++) {
             for (let y = -3; y <= 3; y++) {
                 const distance = Math.sqrt(x * x + y * y);
                 if (distance <= 3.5) {
                     const dieGeometry = new THREE.BoxGeometry(dieSize, dieSize, 0.1);
                     const dieMaterial = new THREE.MeshPhysicalMaterial({
-                        color: 0xf093fb,
-                        emissive: 0xf5576c,
+                        color: 0xC0C0C0, // Silver
+                        emissive: 0xE0E0E0, // Light Silver
                         emissiveIntensity: 0.2,
                         metalness: 0.7,
                         roughness: 0.3
                     });
-                    
+
                     const die = new THREE.Mesh(dieGeometry, dieMaterial);
                     die.position.set(x * dieSpacing, y * dieSpacing, 0.3);
                     dieGroup.add(die);
                 }
             }
         }
-        
+
         scene.add(dieGroup);
 
         // Add circuit traces
         const traceCount = 50;
         const traces = [];
-        
+
         for (let i = 0; i < traceCount; i++) {
             const points = [];
             const startAngle = Math.random() * Math.PI * 2;
             const startRadius = Math.random() * 7;
-            
+
             for (let j = 0; j < 5; j++) {
                 points.push(new THREE.Vector3(
                     Math.cos(startAngle + j * 0.2) * (startRadius - j * 0.5),
@@ -419,14 +383,14 @@ endmodule</span>
                     0.4
                 ));
             }
-            
+
             const traceGeometry = new THREE.BufferGeometry().setFromPoints(points);
             const traceMaterial = new THREE.LineBasicMaterial({
-                color: 0xf093fb,
+                color: 0xC0C0C0, // Silver
                 opacity: 0.5,
                 transparent: true
             });
-            
+
             const trace = new THREE.Line(traceGeometry, traceMaterial);
             traces.push(trace);
             scene.add(trace);
@@ -436,7 +400,7 @@ endmodule</span>
         const electronCount = 100;
         const electronGeometry = new THREE.BufferGeometry();
         const electronPositions = new Float32Array(electronCount * 3);
-        
+
         for (let i = 0; i < electronCount; i++) {
             const angle = Math.random() * Math.PI * 2;
             const radius = Math.random() * 8;
@@ -444,26 +408,26 @@ endmodule</span>
             electronPositions[i * 3 + 1] = Math.sin(angle) * radius;
             electronPositions[i * 3 + 2] = Math.random() * 2;
         }
-        
+
         electronGeometry.setAttribute('position', new THREE.BufferAttribute(electronPositions, 3));
-        
+
         const electronMaterial = new THREE.PointsMaterial({
-            color: 0xf5576c,
+            color: 0xFFFFFF, // White/Silver
             size: 0.1,
             transparent: true,
             opacity: 0.8,
             blending: THREE.AdditiveBlending
         });
-        
+
         const electrons = new THREE.Points(electronGeometry, electronMaterial);
         scene.add(electrons);
 
         // Lighting
-        const light1 = new THREE.PointLight(0xf093fb, 2, 100);
+        const light1 = new THREE.PointLight(0xC0C0C0, 2, 100);
         light1.position.set(10, 10, 10);
         scene.add(light1);
 
-        const light2 = new THREE.PointLight(0xf5576c, 1, 100);
+        const light2 = new THREE.PointLight(0xE0E0E0, 1, 100);
         light2.position.set(-10, -10, 10);
         scene.add(light2);
 
@@ -480,46 +444,40 @@ endmodule</span>
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-            
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
         });
 
         // Animation loop
         function animate() {
             requestAnimationFrame(animate);
-            
+
             const time = Date.now() * 0.001;
-            
+
             // Rotate wafer
             wafer.rotation.z += 0.003;
             dieGroup.rotation.z -= 0.003;
-            
+
             // Pulse dies
             dieGroup.children.forEach((die, index) => {
                 die.material.emissiveIntensity = 0.2 + Math.sin(time * 3 + index * 0.5) * 0.1;
             });
-            
+
             // Animate electrons
             const positions = electrons.geometry.attributes.position.array;
             for (let i = 0; i < electronCount; i++) {
                 const angle = Math.atan2(positions[i * 3 + 1], positions[i * 3]);
                 const radius = Math.sqrt(positions[i * 3] * positions[i * 3] + positions[i * 3 + 1] * positions[i * 3 + 1]);
-                
+
                 positions[i * 3] = Math.cos(angle + 0.01) * radius;
                 positions[i * 3 + 1] = Math.sin(angle + 0.01) * radius;
                 positions[i * 3 + 2] = 0.5 + Math.sin(time + i) * 0.5;
             }
             electrons.geometry.attributes.position.needsUpdate = true;
-            
+
             // Camera movement
             camera.position.x = mouseX * 3;
             camera.position.y = -10 + mouseY * 3;
             camera.lookAt(0, 0, 0);
-            
+
             renderer.render(scene, camera);
         }
 
@@ -533,4 +491,5 @@ endmodule</span>
         });
     </script>
 </body>
+
 </html>

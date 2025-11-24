@@ -1,847 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChipOS - AI Command Center for Your Coding Assistants | FutureAtoms</title>
+    <title>ChipOS - AI Command Center | FutureAtoms</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
     <style>
-        * {
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0f;
-            color: #ffffff;
-            cursor: none;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
             overflow-x: hidden;
         }
 
-        .cursor-glow {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(168, 237, 234, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: screen;
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.05);
         }
 
-        .nav-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .metallic-text {
+            background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: pointer;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .metallic-border {
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            box-shadow: 0 0 15px rgba(229, 228, 226, 0.1);
         }
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-            cursor: pointer;
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: #a8edea;
+        .nav-link:hover,
+        .nav-link.active {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 1;
+        .feature-card {
+            transition: all 0.3s ease;
         }
 
-        .content-wrapper {
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-btn {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
             position: relative;
-            z-index: 2;
-            padding-top: 100px;
+            overflow: hidden;
         }
 
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
-        .hero-content {
-            max-width: 1000px;
-            animation: fadeInUp 1s ease-out;
+        .cta-btn:hover::before {
+            left: 100%;
         }
 
-        @keyframes fadeInUp {
+        .code-block {
+            font-family: 'Monaco', 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        .logo-container {
-            margin-bottom: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .logo-image {
-            width: 200px;
-            height: 200px;
-            filter: drop-shadow(0 0 30px rgba(168, 237, 234, 0.5));
-        }
-
-        .app-title {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
-        }
-
-        .app-tagline {
-            font-size: 1.8rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .app-description {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cta-btn-primary {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            color: #0a0a0f;
-        }
-
-        .cta-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(168, 237, 234, 0.4);
-        }
-
-        .cta-btn-secondary {
-            background: rgba(168, 237, 234, 0.1);
-            color: #ffffff;
-            border: 2px solid rgba(168, 237, 234, 0.3);
-        }
-
-        .cta-btn-secondary:hover {
-            background: rgba(168, 237, 234, 0.2);
-            border-color: rgba(168, 237, 234, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .features-section {
-            padding: 8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background: rgba(168, 237, 234, 0.05);
-            backdrop-filter: blur(20px);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(168, 237, 234, 0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(168, 237, 234, 0.1);
-            border-color: rgba(168, 237, 234, 0.3);
-            box-shadow: 0 20px 60px rgba(168, 237, 234, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .feature-description {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .installation-section {
-            padding: 8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .installation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .install-card {
-            background: rgba(168, 237, 234, 0.05);
-            backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(168, 237, 234, 0.1);
-            transition: all 0.3s;
-        }
-
-        .install-card:hover {
-            transform: translateY(-5px);
-            background: rgba(168, 237, 234, 0.08);
-            border-color: rgba(168, 237, 234, 0.3);
-            box-shadow: 0 20px 60px rgba(168, 237, 234, 0.15);
-        }
-
-        .install-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(168, 237, 234, 0.1);
-        }
-
-        .install-header h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .install-header i {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .install-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .step-number {
-            min-width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #0a0a0f;
-            flex-shrink: 0;
-        }
-
-        .step p {
-            margin: 0;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .code-snippet {
-            background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(168, 237, 234, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            margin-top: 0.5rem;
-            font-family: 'Monaco', 'Courier New', monospace;
-            overflow-x: auto;
-        }
-
-        .code-snippet code {
-            color: #a8edea;
-            font-size: 0.9rem;
-        }
-
-        .step code {
-            background: rgba(168, 237, 234, 0.1);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #a8edea;
-        }
-
-        .tech-stack-section {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tech-item {
-            background: rgba(168, 237, 234, 0.05);
-            backdrop-filter: blur(20px);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(168, 237, 234, 0.1);
-            transition: all 0.3s;
-        }
-
-        .tech-item:hover {
-            background: rgba(168, 237, 234, 0.1);
-            border-color: rgba(168, 237, 234, 0.3);
-        }
-
-        .tech-item i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .code-section {
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .ide-mockup {
-            background: rgba(20, 20, 30, 0.9);
-            backdrop-filter: blur(20px);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(168, 237, 234, 0.2);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-        }
-
-        .ide-header {
-            background: rgba(30, 30, 40, 0.9);
-            padding: 1rem 1.5rem;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .ide-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ff5f57;
-        }
-
-        .ide-dot:nth-child(2) {
-            background: #ffbd2e;
-        }
-
-        .ide-dot:nth-child(3) {
-            background: #28ca42;
-        }
-
-        .ide-content {
-            padding: 2rem;
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-        }
-
-        .code-line {
-            margin-bottom: 0.5rem;
-        }
-
-        .code-comment {
-            color: #6a9955;
-        }
-
-        .code-keyword {
-            color: #569cd6;
-        }
-
-        .code-string {
-            color: #ce9178;
-        }
-
-        .code-function {
-            color: #dcdcaa;
-        }
-
-        .cta-section {
-            padding: 8rem 2rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(168, 237, 234, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .app-title {
-                font-size: 3rem;
-            }
-
-            .app-tagline {
-                font-size: 1.3rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .nav-header {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .installation-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .install-card {
-                padding: 2rem;
-            }
-
-            .install-header h3 {
-                font-size: 1.5rem;
-            }
-
-            .step-number {
-                min-width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-
-            .code-snippet {
-                font-size: 0.85rem;
-            }
-        }
     </style>
 </head>
-<body>
-    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <div class="nav-header">
-        <div class="logo" onclick="window.location.href='index.html'">FutureAtoms</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+<body>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
     </div>
 
-    <div id="particles-js"></div>
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div
+                class="w-10 h-10 rounded-full border border-cyan-500/50 flex items-center justify-center bg-cyan-900/20 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                <span class="font-['Orbitron'] text-cyan-400 font-bold text-xl">Ψ</span>
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+            </div>
+        </div>
 
-    <div class="content-wrapper">
-        <div class="hero-section">
-            <div class="hero-content">
-                <div class="logo-container">
-                    <img src="chipos-logo.png" alt="ChipOS Logo" class="logo-image">
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
                 </div>
-                <h1 class="app-title">ChipOS</h1>
-                <p class="app-tagline">The Command Center for AI Coding Assistants</p>
-                <p class="app-description">
-                    Power up your AI coding assistants with your own custom knowledge base and task management as an MCP server.
-                    Store documentation, manage tasks, and enable AI agents to collaborate seamlessly with advanced RAG capabilities.
-                </p>
-                <a href="#installation" class="cta-btn cta-btn-primary" style="margin-top: 2rem;">
-                    <i class="fas fa-download"></i>
-                    Get Started - Download ChipOS
+            </div>
+
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav
+            class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="systemverilog.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="adaptivision.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="bevybeats.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+            </div>
+
+            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="contact.html"
+                class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-24">
+            <div class="mb-8 inline-block animate-bounce">
+                <img src="chipos-logo.png" alt="ChipOS Logo"
+                    class="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-[0_0_30px_rgba(0,255,255,0.3)]">
+            </div>
+            <h1 class="text-6xl md:text-8xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+                CHIP<span class="text-cyan-400">OS</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-cyan-100/60 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+                AI-native code editor that auto-builds with advanced semiconductor smarts—powered by your knowledge and
+                MCP superpowers.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#installation"
+                    class="cta-btn bg-cyan-500/20 border border-cyan-400 text-cyan-400 px-8 py-4 rounded-full font-bold hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+                    <i class="fas fa-download mr-2"></i> DOWNLOAD CHIPOS
+                </a>
+                <a href="https://github.com/futureatoms/chipos" target="_blank"
+                    class="cta-btn bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10">
+                    <i class="fab fa-github mr-2"></i> VIEW SOURCE
                 </a>
             </div>
         </div>
 
-        <div class="features-section">
-            <h2 class="section-title">Core Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-book"></i></div>
-                    <h3 class="feature-title">Knowledge Management</h3>
-                    <p class="feature-description">Store and search through documentation, code, and resources. Crawl websites, upload PDFs, and organize your knowledge base.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-search"></i></div>
-                    <h3 class="feature-title">Smart Search with RAG</h3>
-                    <p class="feature-description">Advanced retrieval-augmented generation with intelligent context retrieval for your AI coding assistants.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
-                    <h3 class="feature-title">Task Management</h3>
-                    <p class="feature-description">Integrated task tracking with AI assistance. Collaborate with your coding assistant on tasks in real-time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-plug"></i></div>
-                    <h3 class="feature-title">MCP Server</h3>
-                    <p class="feature-description">Model Context Protocol server for seamless integration with Claude Code, Cursor, Windsurf, and more.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-sync"></i></div>
-                    <h3 class="feature-title">Real-Time Updates</h3>
-                    <p class="feature-description">Live synchronization as you add new content and collaborate with your coding assistant.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="feature-title">Multi-Agent Support</h3>
-                    <p class="feature-description">Coordinate multiple AI agents with shared context and knowledge base access.</p>
-                </div>
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-cyan-400 mb-6"><i class="fas fa-book"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Knowledge Management</h3>
+                <p class="text-gray-400 leading-relaxed">Store and search through documentation, code, and resources.
+                    Crawl websites, upload PDFs, and organize your knowledge base.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-purple-400 mb-6"><i class="fas fa-search"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Smart Search with RAG</h3>
+                <p class="text-gray-400 leading-relaxed">Advanced retrieval-augmented generation with intelligent
+                    context retrieval for your AI coding assistants.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-pink-400 mb-6"><i class="fas fa-tasks"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Task Management</h3>
+                <p class="text-gray-400 leading-relaxed">Integrated task tracking with AI assistance. Collaborate with
+                    your coding assistant on tasks in real-time.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-yellow-400 mb-6"><i class="fas fa-plug"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">MCP Server</h3>
+                <p class="text-gray-400 leading-relaxed">Model Context Protocol server for seamless integration with
+                    Claude Code, Cursor, Windsurf, and more.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-green-400 mb-6"><i class="fas fa-sync"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Real-Time Updates</h3>
+                <p class="text-gray-400 leading-relaxed">Live synchronization as you add new content and collaborate
+                    with your coding assistant.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
+                <div class="text-4xl text-blue-400 mb-6"><i class="fas fa-users"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Multi-Agent Support</h3>
+                <p class="text-gray-400 leading-relaxed">Coordinate multiple AI agents with shared context and knowledge
+                    base access.</p>
             </div>
         </div>
 
-        <div class="installation-section" id="installation">
-            <h2 class="section-title">Installation Instructions</h2>
-            <div class="installation-grid">
-                <div class="install-card">
-                    <div class="install-header">
-                        <i class="fab fa-apple" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <h3>macOS Installation</h3>
+        <!-- Installation Section -->
+        <div id="installation" class="mb-24">
+            <h2 class="text-4xl md:text-5xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">INSTALLATION
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- macOS -->
+                <div class="glass-panel p-8 rounded-2xl metallic-border">
+                    <div class="flex items-center gap-4 mb-8 border-b border-white/10 pb-4">
+                        <i class="fab fa-apple text-4xl text-white"></i>
+                        <h3 class="text-2xl font-['Orbitron'] font-bold text-white">macOS</h3>
                     </div>
-                    <div class="install-steps">
-                        <div class="step">
-                            <span class="step-number">1</span>
-                            <p>Download ChipOS-macOS-arm64.dmg</p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                1</div>
+                            <p class="text-gray-300 pt-1">Download ChipOS-macOS-arm64.dmg</p>
                         </div>
-                        <div class="step">
-                            <span class="step-number">2</span>
-                            <p>Open the downloaded .dmg file</p>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                2</div>
+                            <p class="text-gray-300 pt-1">Open the downloaded .dmg file</p>
                         </div>
-                        <div class="step">
-                            <span class="step-number">3</span>
-                            <p>Drag ChipOS to your Applications folder</p>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                3</div>
+                            <p class="text-gray-300 pt-1">Drag ChipOS to your Applications folder</p>
                         </div>
-                        <div class="step">
-                            <span class="step-number">4</span>
-                            <p>Launch ChipOS from Applications</p>
-                        </div>
-                        <div class="step">
-                            <span class="step-number">5</span>
-                            <p>If prompted by Gatekeeper, go to System Preferences → Security & Privacy and click "Open Anyway"</p>
-                        </div>
+                        <a href="#" onclick="alert('Download coming soon!')"
+                            class="inline-block mt-4 text-cyan-400 hover:text-cyan-300 font-bold border-b border-cyan-400 hover:border-cyan-300 pb-1 transition-all">
+                            Download for Apple Silicon <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
-                    <a href="ChipOS-macOS-arm64.dmg" class="cta-btn cta-btn-primary" download style="margin-top: 1.5rem;">
-                        <i class="fab fa-apple"></i> Download for macOS
-                    </a>
                 </div>
 
-                <div class="install-card">
-                    <div class="install-header">
-                        <i class="fab fa-linux" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                        <h3>Linux Installation (Debian/Ubuntu)</h3>
+                <!-- Linux -->
+                <div class="glass-panel p-8 rounded-2xl metallic-border">
+                    <div class="flex items-center gap-4 mb-8 border-b border-white/10 pb-4">
+                        <i class="fab fa-linux text-4xl text-white"></i>
+                        <h3 class="text-2xl font-['Orbitron'] font-bold text-white">Linux</h3>
                     </div>
-                    <div class="install-steps">
-                        <div class="step">
-                            <span class="step-number">1</span>
-                            <p>Download chipos_1.105.0_amd64.deb</p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                1</div>
+                            <div class="flex-1">
+                                <p class="text-gray-300 mb-2">Download .deb package</p>
+                                <div class="code-block p-3 rounded text-sm text-cyan-300">wget
+                                    https://futureatoms.com/chipos_latest.deb</div>
+                            </div>
                         </div>
-                        <div class="step">
-                            <span class="step-number">2</span>
-                            <p>Open terminal and navigate to Downloads folder</p>
-                        </div>
-                        <div class="step">
-                            <span class="step-number">3</span>
-                            <div>
-                                <div class="code-snippet">
-                                    <code>sudo dpkg -i chipos_1.105.0_amd64.deb</code>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                2</div>
+                            <div class="flex-1">
+                                <p class="text-gray-300 mb-2">Install with dpkg</p>
+                                <div class="code-block p-3 rounded text-sm text-cyan-300">sudo dpkg -i chipos_latest.deb
                                 </div>
                             </div>
                         </div>
-                        <div class="step">
-                            <span class="step-number">4</span>
-                            <div>
-                                <p>If there are dependency issues, run:</p>
-                                <div class="code-snippet">
-                                    <code>sudo apt-get install -f</code>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <span class="step-number">5</span>
-                            <p>Launch ChipOS from your applications menu or run <code>chipos</code> in terminal</p>
-                        </div>
+                        <a href="chipos_1.105.0_amd64.deb"
+                            class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
+                            <i class="fas fa-download mr-2"></i> Download for Linux
+                        </a>
                     </div>
-                    <a href="chipos_1.105.0_amd64.deb" class="cta-btn cta-btn-secondary" download style="margin-top: 1.5rem;">
-                        <i class="fab fa-linux"></i> Download for Linux
-                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="tech-stack-section">
-            <h2 class="section-title">Built With Modern Tech</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <i class="fab fa-react"></i>
-                    <h4>React + TypeScript</h4>
+        <!-- Tech Stack -->
+        <div class="mb-24 text-center">
+            <h2 class="text-3xl font-['Orbitron'] font-bold mb-12 metallic-text">BUILT WITH MODERN TECH</h2>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+                <div class="flex flex-col items-center gap-4 group">
+                    <i class="fab fa-react text-5xl text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+                    <span
+                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">React
+                        + TS</span>
                 </div>
-                <div class="tech-item">
-                    <i class="fab fa-python"></i>
-                    <h4>Python + FastAPI</h4>
+                <div class="flex flex-col items-center gap-4 group">
+                    <i class="fab fa-python text-5xl text-gray-500 group-hover:text-yellow-400 transition-colors"></i>
+                    <span
+                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Python</span>
                 </div>
-                <div class="tech-item">
-                    <i class="fas fa-database"></i>
-                    <h4>Supabase</h4>
+                <div class="flex flex-col items-center gap-4 group">
+                    <i class="fas fa-database text-5xl text-gray-500 group-hover:text-green-400 transition-colors"></i>
+                    <span
+                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Supabase</span>
                 </div>
-                <div class="tech-item">
-                    <i class="fas fa-brain"></i>
-                    <h4>OpenAI / Gemini / Ollama</h4>
-                </div>
-                <div class="tech-item">
-                    <i class="fab fa-docker"></i>
-                    <h4>Docker</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="code-section">
-            <h2 class="section-title">Easy to Get Started</h2>
-            <div class="ide-mockup">
-                <div class="ide-header">
-                    <div class="ide-dot"></div>
-                    <div class="ide-dot"></div>
-                    <div class="ide-dot"></div>
-                </div>
-                <div class="ide-content">
-                    <div class="code-line"><span class="code-comment"># Clone and setup ChipOS</span></div>
-                    <div class="code-line"><span class="code-keyword">git</span> clone [your-chipos-repo-url] chipos</div>
-                    <div class="code-line"><span class="code-keyword">cd</span> chipos</div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="code-comment"># Configure your environment</span></div>
-                    <div class="code-line"><span class="code-keyword">cp</span> .env.example .env</div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="code-comment"># Start with Docker</span></div>
-                    <div class="code-line"><span class="code-keyword">docker-compose</span> up</div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="code-comment"># Access at http://localhost:5173</span></div>
+                <div class="flex flex-col items-center gap-4 group">
+                    <i class="fab fa-docker text-5xl text-gray-500 group-hover:text-blue-400 transition-colors"></i>
+                    <span
+                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Docker</span>
                 </div>
             </div>
         </div>
 
-        <div class="cta-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Get Started?</h2>
-            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                Download ChipOS and supercharge your AI coding workflow today
-            </p>
-            <a href="#installation" class="cta-btn cta-btn-primary">
-                <i class="fas fa-arrow-up"></i>
-                View Installation Instructions
-            </a>
-        </div>
+    </main>
 
-        <div class="footer">
-            <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
-        </div>
-    </div>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
+    </footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        document.addEventListener('mousemove', (e) => {
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
-            }
-        });
-
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 100,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#a8edea', '#fed6e3', '#667eea']
-                },
-                shape: {
-                    type: 'circle',
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#a8edea',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 200,
-                        line_linked: {
-                            opacity: 0.5
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-    </script>
 </body>
+
 </html>

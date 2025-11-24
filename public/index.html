@@ -1,909 +1,905 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureAtoms - Building Tomorrow's Technology</title>
-    <!-- Font Awesome for icons -->
+    <title>FutureAtoms | Quantum Edition</title>
+    <meta name="description"
+        content="FutureAtoms: Building Tomorrow's Technology. Visualized with Quantum Orbital Mechanics.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        * {
+        /* --- Core Styles --- */
+        body,
+        html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            overflow-x: hidden;
-            background: #0a0a0f;
-            color: #ffffff;
-            cursor: none;
-        }
-
-        .cursor-glow {
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(192, 192, 192, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
-            mix-blend-mode: screen;
-        }
-
-        .nav-header {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, 
-                #808080 0%, 
-                #c0c0c0 20%, 
-                #ffffff 40%, 
-                #e6e6e6 50%, 
-                #ffffff 60%, 
-                #c0c0c0 80%, 
-                #808080 100%);
-            background-size: 200% 100%;
-            animation: logoShine 3s ease-in-out infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            cursor: pointer;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            filter: contrast(1.1) brightness(1.1);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-            color: #c0c0c0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
         }
 
         #canvas-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             z-index: 1;
         }
 
-        .scroll-container {
-            position: relative;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, transparent, rgba(10, 10, 15, 0.5));
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #feca57 75%, #48c6ef 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-            margin-bottom: 1rem;
-            animation: gradient-shift 5s ease infinite;
-            pointer-events: auto;
-        }
-
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            text-align: center;
-            pointer-events: auto;
-        }
-
-        .venture-card {
+        #ui-layer {
             position: absolute;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2rem;
-            width: 380px;
-            height: 280px;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: auto;
-            cursor: pointer;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .venture-card.active {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .venture-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        .venture-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            flex-shrink: 0;
-            color: #ffffff;
-        }
-
-        .venture-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .venture-description {
-            opacity: 0.8;
-            line-height: 1.6;
-            flex-grow: 1;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-        }
-
-        @media (max-width: 1024px) {
-            .venture-card {
-                width: 320px;
-                height: 260px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .venture-card {
-                width: 280px;
-                height: 240px;
-                padding: 1.5rem;
-            }
-            
-            .venture-title {
-                font-size: 1.5rem;
-            }
-            
-            .venture-icon {
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        .nav-dots {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .nav-dot.active {
-            background: linear-gradient(135deg, #c0c0c0, #e6e6e6);
-            transform: scale(1.5);
-        }
-
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #0a0a0f;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.8s;
-        }
-
-        .loading-text {
-            font-size: 1.2rem;
-            margin-top: 2rem;
-            opacity: 0.8;
-        }
-
-        .atom-loader {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            animation: atom-spin 2s linear infinite;
-        }
-
-        @keyframes atom-spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .orbit {
-            position: absolute;
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 50%;
-        }
-
-        .orbit-1 {
-            width: 100px;
-            height: 100px;
-            animation: orbit-1 1.5s linear infinite;
-        }
-
-        .orbit-2 {
-            width: 80px;
-            height: 80px;
-            top: 10px;
-            left: 10px;
-            animation: orbit-2 1s linear infinite reverse;
-        }
-
-        .orbit-3 {
-            width: 60px;
-            height: 60px;
-            top: 20px;
-            left: 20px;
-            animation: orbit-3 0.8s linear infinite;
-        }
-
-        .nucleus {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
-            border-radius: 50%;
-            top: 40px;
-            left: 40px;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
-        }
-
-        @keyframes orbit-1 {
-            0% { transform: rotateX(60deg) rotateZ(0deg); }
-            100% { transform: rotateX(60deg) rotateZ(360deg); }
-        }
-
-        @keyframes orbit-2 {
-            0% { transform: rotateY(60deg) rotateZ(0deg); }
-            100% { transform: rotateY(60deg) rotateZ(360deg); }
-        }
-
-        @keyframes orbit-3 {
-            0% { transform: rotateX(30deg) rotateY(30deg) rotateZ(0deg); }
-            100% { transform: rotateX(30deg) rotateY(30deg) rotateZ(360deg); }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
+        .interactive {
             pointer-events: auto;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(0, 200, 255, 0.1);
         }
 
-        /* Venture specific styles */
-        .bevybeats-icon {
-            background: linear-gradient(135deg, #d4a574, #b8860b);
+        .atom-label {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.1s;
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            white-space: nowrap;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        .savitri-icon {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-        }
-
-        .zaphy-icon {
-            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        .agentic-icon {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-
-        .yuj-icon {
-            background: linear-gradient(135deg, #fa709a, #fee140);
-        }
-
-        .adaptivision-icon {
-            background: linear-gradient(135deg, #30cfd0, #330867);
-        }
-
-        .chipos-icon {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-        }
-
-        .systemverilog-icon {
-            background: linear-gradient(135deg, #c0c0c0, #e6e6e6, #a8a8a8);
-            background-size: 200% 200%;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-        /* Metallic Luster Animations */
-        @keyframes shimmer {
-            0% { background-position: 200% center; }
-            50% { background-position: 0% center; }
-            100% { background-position: -200% center; }
-        }
-
-        @keyframes metallicFlow {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes logoShine {
-            0% { 
-                background-position: -100% 0;
-                filter: contrast(1.1) brightness(1.1);
+        /* Modal Animation */
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
             }
-            50% { 
-                background-position: 100% 0;
-                filter: contrast(1.3) brightness(1.2);
-            }
-            100% { 
-                background-position: -100% 0;
-                filter: contrast(1.1) brightness(1.1);
+
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
 
-        @keyframes heroShine {
-            0% { 
-                background-position: -150% 0;
-                filter: contrast(1.3) brightness(1.3) saturate(0);
-                text-shadow: 0 0 10px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,0.02);
-            }
-            25% {
-                background-position: -75% 0;
-                filter: contrast(1.4) brightness(1.4) saturate(0);
-                text-shadow: 0 0 15px rgba(255,255,255,0.2), 0 0 25px rgba(255,255,255,0.05);
-            }
-            50% { 
-                background-position: 0% 0;
-                filter: contrast(1.5) brightness(1.5) saturate(0);
-                text-shadow: 0 0 18px rgba(255,255,255,0.3), 0 0 30px rgba(255,255,255,0.08);
-            }
-            75% {
-                background-position: 75% 0;
-                filter: contrast(1.4) brightness(1.4) saturate(0);
-                text-shadow: 0 0 15px rgba(255,255,255,0.2), 0 0 25px rgba(255,255,255,0.05);
-            }
-            100% { 
-                background-position: 150% 0;
-                filter: contrast(1.3) brightness(1.3) saturate(0);
-                text-shadow: 0 0 10px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,0.02);
-            }
+        .modal-active {
+            display: flex !important;
+            animation: modalIn 0.3s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
         }
     </style>
 </head>
+
 <body>
-    <!-- Custom Cursor Glow -->
-    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Navigation Header -->
-    <nav class="nav-header">
-        <div class="logo">FutureAtoms</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="atom-loader">
-            <div class="orbit orbit-1"></div>
-            <div class="orbit orbit-2"></div>
-            <div class="orbit orbit-3"></div>
-            <div class="nucleus"></div>
-        </div>
-        <div class="loading-text">Initializing Atomic Universe...</div>
-    </div>
-
-    <!-- Canvas Container for Three.js -->
     <div id="canvas-container"></div>
+    <div id="labels-container"></div>
 
-    <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="nav-dot active" data-section="0"></div>
-        <div class="nav-dot" data-section="1"></div>
-        <div class="nav-dot" data-section="2"></div>
-        <div class="nav-dot" data-section="3"></div>
-        <div class="nav-dot" data-section="4"></div>
-    </div>
+    <div id="ui-layer" class="p-4 md:p-8">
+        <header class="flex justify-between items-center w-full interactive">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="resetCamera()">
+                <div
+                    class="w-10 h-10 rounded-full border border-cyan-500/50 flex items-center justify-center relative overflow-hidden bg-cyan-900/20 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                    <span class="font-['Orbitron'] text-cyan-400 font-bold text-xl">Ψ</span>
+                </div>
+                <div>
+                    <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                        FUTURE<span class="text-cyan-400">ATOMS</span>
+                    </h1>
+                    <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Quantum
+                        Dynamics</p>
+                </div>
+            </div>
 
-    <!-- Scroll Container -->
-    <div class="scroll-container">
-        <!-- Hero Section -->
-        <div class="section hero-section">
-            <h1 class="hero-title">FutureAtoms</h1>
-            <p class="hero-subtitle">Building Tomorrow's Technology, One Atom at a Time</p>
-            <div class="scroll-indicator">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                    <path d="M15 20L8 13L10.1 10.9L15 15.8L19.9 10.9L22 13L15 20Z" fill="white" opacity="0.6"/>
+            <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
+                <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+
+                <div class="dropdown">
+                    <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
+                        PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="chipos.html">ChipOS</a>
+                        <a href="systemverilog.html">SystemVerilogGPT</a>
+                        <a href="zaphy.html">Zaphy</a>
+                        <a href="agentic.html">Agentic Control</a>
+                        <a href="yuj.html">Yuj</a>
+                        <a href="adaptivision.html">AdaptiveVision</a>
+                        <a href="bevybeats.html">BevyBeats</a>
+                        <a href="savitri.html">Savitri</a>
+                    </div>
+                </div>
+
+                <a href="blog.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+                <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+                <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+                <a href="contact.html"
+                    class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+            </nav>
+
+            <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </div>
-        </div>
+        </header>
 
-        <!-- Development Tools Section -->
-        <div class="section">
-            <div class="venture-card" id="chipos" style="left: 25%;">
-                <div class="venture-icon chipos-icon">
-                    <img src="chipos-logo.png" alt="ChipOS" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(168, 237, 234, 0.5));">
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <nav
+                class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+                <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+
+                <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                    <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                    <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                    <a href="systemverilog.html"
+                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                    <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                    <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                        Control</a>
+                    <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                    <a href="adaptivision.html"
+                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                    <a href="bevybeats.html"
+                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                    <a href="savitri.html"
+                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
                 </div>
-                <h3 class="venture-title">ChipOS</h3>
-                <p class="venture-description">AI command center for coding assistants. MCP server for knowledge management, task tracking, and seamless AI agent collaboration.</p>
-            </div>
-            <div class="venture-card" id="systemverilog" style="left: 75%;">
-                <div class="venture-icon systemverilog-icon"><i class="fas fa-code"></i></div>
-                <h3 class="venture-title">SystemVerilogGPT</h3>
-                <p class="venture-description">Specialized GPT for hardware description and verification. Accelerating chip design with AI-powered RTL generation.</p>
-            </div>
+
+                <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+                <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+                <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+                <a href="contact.html"
+                    class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+            </nav>
         </div>
 
-        <!-- Productivity Tools Section -->
-        <div class="section">
-            <div class="venture-card" id="zaphy" style="left: 25%;">
-                <div class="venture-icon zaphy-icon"><i class="fab fa-linkedin"></i></div>
-                <h3 class="venture-title">Zaphy</h3>
-                <p class="venture-description">Smart Chrome extension for LinkedIn that instantly crafts AI-powered contextual replies. Network smarter with intelligent automation.</p>
-            </div>
-            <div class="venture-card" id="agentic" style="left: 75%;">
-                <div class="venture-icon agentic-icon"><i class="fas fa-network-wired"></i></div>
-                <h3 class="venture-title">Agentic Control</h3>
-                <p class="venture-description">Advanced CLI tool with MCP server for orchestrating complex agent workflows. Enterprise-grade autonomous system control.</p>
-            </div>
+        <div id="intro-msg"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none transition-opacity duration-1000 w-full px-4">
+            <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white/10 tracking-tighter">FUTURE OF AI
+            </h2>
+            <p class="text-cyan-500/50 tracking-[0.3em] md:tracking-[0.5em] mt-2 text-xs md:text-sm animate-pulse">
+                LOADING PROBABILITY FIELD...</p>
         </div>
 
-        <!-- Health & Tech Section -->
-        <div class="section">
-            <div class="venture-card" id="yuj" style="left: 25%;">
-                <div class="venture-icon yuj-icon"><i class="fas fa-dumbbell"></i></div>
-                <h3 class="venture-title">Yuj</h3>
-                <p class="venture-description">Comprehensive yoga and workout app bringing ancient wisdom and modern fitness together for holistic wellness.</p>
-            </div>
-            <div class="venture-card" id="adaptivision" style="left: 75%;">
-                <div class="venture-icon adaptivision-icon"><i class="fas fa-eye"></i></div>
-                <h3 class="venture-title">AdaptiveVision</h3>
-                <p class="venture-description">Cutting-edge object detection powered by adaptive algorithms. Real-time visual understanding for next-gen applications.</p>
-            </div>
-        </div>
+        <footer class="flex flex-col md:flex-row justify-between items-end w-full mt-auto pointer-events-none">
+            <!-- Control Matrix removed as requested -->
+            <div class="flex-1"></div> <!-- Spacer -->
 
-        <!-- AI & Music Section -->
-        <div class="section">
-            <div class="venture-card" id="bevybeats" style="left: 25%;">
-                <div class="venture-icon bevybeats-icon"><i class="fas fa-music"></i></div>
-                <h3 class="venture-title">BevyBeats</h3>
-                <p class="venture-description">Revolutionary AI music platform combining streaming with advanced AI song generation. Create and discover music like never before.</p>
+            <div class="text-right text-gray-600 text-[10px] font-mono hidden md:block">
+                <p>Probability Cloud Simulation</p>
+                <p>© 2025 FutureAtoms</p>
             </div>
-            <div class="venture-card" id="savitri" style="left: 75%;">
-                <div class="venture-icon savitri-icon"><i class="fas fa-brain"></i></div>
-                <h3 class="venture-title">Savitri</h3>
-                <p class="venture-description">AI therapy app offering CBT, DBT, and ACT through voice and video. Your personal mental wellness companion powered by AI.</p>
-            </div>
-        </div>
+        </footer>
+    </div>
 
-        <!-- Footer Section -->
-        <div class="section" style="min-height: auto; padding: 4rem 2rem; background: rgba(10, 10, 15, 0.9);">
-            <div style="text-align: center; pointer-events: auto;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Build the Future?</h2>
-                <p style="opacity: 0.8; margin-bottom: 2rem;">Join us in creating tomorrow's technology, today.</p>
-                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="opacity: 0.6;">© 2024 FutureAtoms. Created by Abhilash Chadhar. All rights reserved.</p>
+    <!-- Product Details Modal -->
+    <div id="product-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-lg interactive px-4"
+        onclick="if(event.target === this) closeModal()">
+        <div
+            class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border-l-4 border-cyan-500 relative transform transition-all shadow-2xl">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+                <div class="text-5xl md:text-6xl pt-1 self-center md:self-start drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                    id="modal-emoji">⚛️</div>
+                <div class="text-center md:text-left">
+                    <h2 id="modal-title"
+                        class="text-2xl md:text-3xl font-['Orbitron'] text-white mb-2 font-bold tracking-wide">Title
+                    </h2>
+                    <p id="modal-desc" class="text-white font-normal leading-relaxed text-sm md:text-base opacity-90">
+                        Description</p>
+                    <button id="initiate-btn"
+                        class="mt-6 px-6 py-3 border border-cyan-500 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500 hover:text-white rounded font-['Rajdhani'] font-bold tracking-wider text-sm w-full md:w-auto transition-all shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+                        EXPLORE PRODUCT
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Three.js and GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <script type="module">
-        // Scene setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.2;
-        
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
+    <!-- About Modal -->
+    <div id="about-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-xl interactive px-4"
+        onclick="if(event.target === this) closeAboutModal()">
+        <div
+            class="glass-panel w-full max-w-2xl p-8 rounded-2xl border-t-2 border-b-2 border-cyan-500 relative transform transition-all shadow-2xl">
+            <button onclick="closeAboutModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
 
-        // Enhanced lighting setup
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
+            <div class="text-center mb-8">
+                <div
+                    class="inline-block w-16 h-16 rounded-full border border-cyan-500/50 flex items-center justify-center relative overflow-hidden bg-cyan-900/20 shadow-[0_0_25px_rgba(0,255,255,0.4)] mb-4">
+                    <span class="font-['Orbitron'] text-cyan-400 font-bold text-3xl">Ψ</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span
+                        class="text-cyan-400">FUTUREATOMS</span></h2>
+                <div class="h-0.5 w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-4">
+                </div>
+            </div>
 
-        // Main spotlight with dramatic effect
-        const spotLight = new THREE.SpotLight(0xc0c0c0, 2);
-        spotLight.position.set(10, 20, 10);
-        spotLight.angle = Math.PI / 6;
-        spotLight.penumbra = 0.3;
-        spotLight.decay = 2;
-        spotLight.distance = 100;
-        spotLight.castShadow = true;
-        spotLight.shadow.mapSize.width = 1024;
-        spotLight.shadow.mapSize.height = 1024;
-        scene.add(spotLight);
+            <div class="space-y-6 text-gray-200 font-light leading-relaxed text-center md:text-left">
+                <p>
+                    <strong class="text-cyan-300 font-bold">FutureAtoms</strong> is at the forefront of the quantum
+                    computing revolution. We don't just write software; we architect the fundamental particles of the
+                    next digital age.
+                </p>
+                <p>
+                    Our mission is to harness the chaotic beauty of quantum mechanics and distill it into usable,
+                    powerful products. From AI-driven hardware verification to mental wellness applications, every
+                    product is a node in our expanding universe.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-white mb-1">8+</div>
+                        <div class="text-xs text-cyan-400 tracking-widest uppercase">Active Products</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-white mb-1">50M+</div>
+                        <div class="text-xs text-cyan-400 tracking-widest uppercase">Atoms Simulated</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-white mb-1">∞</div>
+                        <div class="text-xs text-cyan-400 tracking-widest uppercase">Possibilities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Secondary colored lights
-        const pointLight1 = new THREE.PointLight(0xff6b6b, 1, 50);
-        pointLight1.position.set(-10, 10, -10);
-        scene.add(pointLight1);
-
-        const pointLight2 = new THREE.PointLight(0x4facfe, 1, 50);
-        pointLight2.position.set(10, -10, 10);
-        scene.add(pointLight2);
-
-        // Create atomic structure
-        const atoms = [];
-        const atomGroup = new THREE.Group();
-        
-        // Venture data with colors
-        const ventures = [
-            { name: 'BevyBeats', color: 0xd4a574, position: new THREE.Vector3(-3, 2, -2) },
-            { name: 'Savitri', color: 0xff6b6b, position: new THREE.Vector3(3, 1, -1) },
-            { name: 'Zaphy', color: 0xc0c0c0, position: new THREE.Vector3(-2, -2, 2) },
-            { name: 'Agentic', color: 0x4facfe, position: new THREE.Vector3(2, -1, -3) },
-            { name: 'Yuj', color: 0xfa709a, position: new THREE.Vector3(0, 3, 1) },
-            { name: 'AdaptiveVision', color: 0x30cfd0, position: new THREE.Vector3(-4, 0, 0) },
-            { name: 'ChipOS', color: 0xa8edea, position: new THREE.Vector3(4, 0, -2) },
-            { name: 'SystemVerilog', color: 0xf093fb, position: new THREE.Vector3(0, -3, 3) }
-        ];
-
-        // Create atoms for each venture
-        ventures.forEach((venture, index) => {
-            const atomGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-            const atomMaterial = new THREE.MeshPhysicalMaterial({
-                color: venture.color,
-                emissive: venture.color,
-                emissiveIntensity: 0.3,
-                metalness: 0.7,
-                roughness: 0.2,
-                clearcoat: 1,
-                clearcoatRoughness: 0,
-                envMapIntensity: 1,
-                reflectivity: 1
-            });
-            
-            const atom = new THREE.Mesh(atomGeometry, atomMaterial);
-            atom.position.copy(venture.position);
-            atom.castShadow = true;
-            atom.receiveShadow = true;
-            atom.userData = { name: venture.name, originalPosition: venture.position.clone() };
-            
-            // Add orbital rings
-            const ringGeometry = new THREE.TorusGeometry(0.8, 0.02, 16, 100);
-            const ringMaterial = new THREE.MeshBasicMaterial({ 
-                color: venture.color, 
-                opacity: 0.3, 
-                transparent: true 
-            });
-            
-            const ring1 = new THREE.Mesh(ringGeometry, ringMaterial);
-            ring1.rotation.x = Math.random() * Math.PI;
-            ring1.rotation.y = Math.random() * Math.PI;
-            atom.add(ring1);
-            
-            const ring2 = new THREE.Mesh(ringGeometry, ringMaterial);
-            ring2.rotation.x = Math.random() * Math.PI;
-            ring2.rotation.y = Math.random() * Math.PI;
-            ring2.scale.set(0.7, 0.7, 0.7);
-            atom.add(ring2);
-            
-            atoms.push(atom);
-            atomGroup.add(atom);
-        });
-
-        scene.add(atomGroup);
-
-        // Create connecting lines between atoms
-        const lineMaterial = new THREE.LineBasicMaterial({ 
-            color: 0x8899dd, 
-            opacity: 0.3, 
-            transparent: true 
-        });
-
-        for (let i = 0; i < atoms.length; i++) {
-            for (let j = i + 1; j < atoms.length; j++) {
-                if (Math.random() > 0.6) {
-                    const points = [];
-                    points.push(atoms[i].position);
-                    points.push(atoms[j].position);
-                    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-                    const line = new THREE.Line(geometry, lineMaterial);
-                    atomGroup.add(line);
-                }
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
             }
         }
+    </script>
 
-        // Add particle system for ambient effect
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1000;
-        const posArray = new Float32Array(particlesCount * 3);
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 20;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.005,
-            color: 0xaabbff,
-            transparent: true,
-            opacity: 0.6,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        // Camera positioning
-        camera.position.set(0, 0, 8);
-        camera.lookAt(0, 0, 0);
-
-        // Post-processing setup (simulated)
-        const composer = {
-            render: () => renderer.render(scene, camera)
+        // --- Config (Defaults Preserved) ---
+        const config = {
+            speed: 0.7,
+            bloomStrength: 1.8,
+            bgColor: 0x020205,
+            nucleusColor: 0x00ffff,
+            nucleusEnergy: 1.8,
+            globalAuraMultiplier: 1.4
         };
 
-        // Animation variables
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
+        // --- Products Data ---
+        const products = [
+            {
+                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xE5E4E2, desc: 'AI-native code editor that auto-builds with advanced semiconductor smarts—powered by your knowledge and MCP superpowers.',
+                orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html'
+            }, // Platinum
+            {
+                id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Specialized GPT for hardware verification.',
+                orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html'
+            }, // Silver
+            {
+                id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0xFFD700, desc: 'Smart Chrome extension for LinkedIn.',
+                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html'
+            }, // Gold
+            {
+                id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0xB87333, desc: 'Advanced CLI tool for agent workflows.',
+                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html'
+            }, // Copper
+            {
+                id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xCD7F32, desc: 'Holistic yoga and workout app.',
+                orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html'
+            }, // Bronze
+            {
+                id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Adaptive object detection algorithms.',
+                orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html'
+            }, // Steel Blue
+            {
+                id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB76E79, desc: 'AI music platform and streaming.',
+                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html'
+            }, // Rose Gold
+            {
+                id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xB5A642, desc: 'AI therapy app offering CBT/DBT.',
+                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html'
+            } // Brass
+        ];
+        // --- Scene Setup ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(config.bgColor);
+        scene.fog = new THREE.FogExp2(config.bgColor, 0.02);
 
-        // Mouse movement
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-            
-            // Update cursor glow position
-            const cursorGlow = document.getElementById('cursorGlow');
-            if (cursorGlow) {
-                cursorGlow.style.left = event.clientX + 'px';
-                cursorGlow.style.top = event.clientY + 'px';
+        // --- Lighting for Metallic Effect ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 2, 100);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        const pointLight2 = new THREE.PointLight(0x00ffff, 1, 100);
+        pointLight2.position.set(-10, -10, -10);
+        scene.add(pointLight2);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        function updateCameraPosition() {
+            const aspect = window.innerWidth / window.innerHeight;
+            const baseDistance = 32;
+            const distance = aspect < 1 ? baseDistance / aspect : baseDistance;
+            camera.position.set(0, 0, Math.min(distance, 65));
+        }
+        updateCameraPosition();
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // --- Post Processing ---
+        const composer = new EffectComposer(renderer);
+        const renderPass = new RenderPass(scene, camera);
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+        bloomPass.threshold = 0;
+        bloomPass.strength = config.bloomStrength;
+        bloomPass.radius = 0.7;
+        composer.addPass(renderPass);
+        composer.addPass(bloomPass);
+
+        // --- Controls ---
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enablePan = false;
+        controls.minDistance = 10;
+        controls.maxDistance = 90;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+
+        // --- Helper: Create Soft Smoke Texture ---
+        function createSoftParticleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 128; canvas.height = 128;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+            grad.addColorStop(0, 'rgba(255,255,255,0.6)');
+            grad.addColorStop(0.2, 'rgba(255,255,255,0.2)');
+            grad.addColorStop(0.5, 'rgba(255,255,255,0.05)');
+            grad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 128, 128);
+            return new THREE.CanvasTexture(canvas);
+        }
+        const smokeTexture = createSoftParticleTexture();
+
+        // --- Helper: Create Soft Circle Texture for Background ---
+        function createCircleTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 64; canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = canvas.width / 2 - 2;
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            // Add a soft glow/blur for a nicer effect
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.fill();
+
+            return new THREE.CanvasTexture(canvas);
+        }
+        const circleTexture = createCircleTexture();
+
+
+        // --- GRAND NUCLEUS SETUP ---
+        const nucleusGroup = new THREE.Group();
+        scene.add(nucleusGroup);
+
+        // 1. Central Mass (Protons/Neutrons)
+        const nucMat = new THREE.MeshStandardMaterial({
+            color: 0xccffff,
+            emissive: 0x00ffff,
+            emissiveIntensity: 0.5,
+            roughness: 0.1,
+            metalness: 0.9
+        });
+        const nucleusParticles = [];
+        for (let i = 0; i < 25; i++) {
+            const geo = new THREE.SphereGeometry(0.35, 16, 16);
+            const mesh = new THREE.Mesh(geo, nucMat);
+            mesh.position.set(
+                (Math.random() - 0.5) * 1.8, (Math.random() - 0.5) * 1.8, (Math.random() - 0.5) * 1.8
+            );
+            nucleusGroup.add(mesh);
+            nucleusParticles.push(mesh);
+        }
+
+        // 2. Inner Light Source
+        const coreLight = new THREE.PointLight(0x00ffff, 5, 25);
+        nucleusGroup.add(coreLight);
+
+        // 3. Rotating Energy Cage (Wireframe)
+        const cageGeo = new THREE.IcosahedronGeometry(2.5, 1);
+        const cageMat = new THREE.MeshBasicMaterial({
+            color: 0x00ffff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+        const cage = new THREE.Mesh(cageGeo, cageMat);
+        nucleusGroup.add(cage);
+
+        // 4. Outer Grand Glow (Feathered Sprite)
+        function createFeatheredGlowTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 256; canvas.height = 256;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+            // Brighter blue center, fading to transparent black
+            grad.addColorStop(0, 'rgba(0, 100, 255, 0.4)');
+            grad.addColorStop(0.4, 'rgba(0, 50, 200, 0.15)');
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 256, 256);
+            return new THREE.CanvasTexture(canvas);
+        }
+        const featheredGlowTexture = createFeatheredGlowTexture();
+        const featheredGlowMat = new THREE.SpriteMaterial({
+            map: featheredGlowTexture,
+            color: 0x0088ff,
+            transparent: true,
+            opacity: 1.0,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        const grandGlow = new THREE.Sprite(featheredGlowMat);
+        grandGlow.scale.set(9, 9, 1);
+        scene.add(grandGlow);
+
+
+        // --- Background Swarm ---
+        const cloudCount = 3000;
+        const cloudGeo = new THREE.BufferGeometry();
+        const cloudPos = [];
+        for (let i = 0; i < cloudCount; i++) {
+            const r = Math.random() * 22 + 2;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(Math.random() * 2 - 1);
+            cloudPos.push(r * Math.sin(phi) * Math.cos(theta), r * Math.sin(phi) * Math.sin(theta), r * Math.cos(phi));
+        }
+        cloudGeo.setAttribute('position', new THREE.Float32BufferAttribute(cloudPos, 3));
+        const cloudMat = new THREE.PointsMaterial({
+            map: circleTexture,
+            color: 0x0088aa,
+            size: 0.12,
+            transparent: true,
+            opacity: 0.3,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        const cloudMesh = new THREE.Points(cloudGeo, cloudMat);
+        scene.add(cloudMesh);
+
+
+        // --- Products (The Electrons) ---
+        const productObjects = [];
+
+        function calculateOrbitalPosition(type, scale, time, phase) {
+            let x, y, z;
+            const t = time + phase;
+            if (type === 's') {
+                x = Math.sin(t) * scale; y = Math.cos(t) * scale; z = Math.sin(t * 2) * scale * 0.5;
+            } else if (type === 'p') {
+                x = scale * Math.sin(t); y = scale * Math.sin(t) * Math.cos(t); z = scale * Math.cos(t);
+            } else if (type === 'd') {
+                x = scale * Math.sin(2 * t); y = scale * Math.sin(3 * t); z = scale * Math.cos(t);
+            } else {
+                x = scale * Math.cos(t) * Math.sin(3 * t); y = scale * Math.sin(t) * Math.sin(3 * t); z = scale * Math.cos(2 * t);
             }
+            const vec = new THREE.Vector3(x, y, z);
+            vec.applyAxisAngle(new THREE.Vector3(1, 1, 0).normalize(), phase);
+            return vec;
+        }
+
+        products.forEach(v => {
+            // Mesh
+            const geo = new THREE.SphereGeometry(0.4, 32, 32);
+            const mat = new THREE.MeshStandardMaterial({
+                color: v.color,
+                metalness: 0.9,
+                roughness: 0.2,
+                emissive: v.color,
+                emissiveIntensity: 0.2
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+
+            // Bright core sprite
+            const spriteMat = new THREE.SpriteMaterial({
+                map: new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/spark1.png'),
+                color: v.color,
+                transparent: true,
+                blending: THREE.AdditiveBlending
+            });
+            const sprite = new THREE.Sprite(spriteMat);
+            sprite.scale.set(4, 4, 1);
+            mesh.add(sprite);
+
+            scene.add(mesh);
+            mesh.userData = { data: v };
+
+            // Label
+            const label = document.createElement('div');
+            label.className = 'atom-label';
+            label.innerText = v.name;
+            label.style.borderColor = '#' + v.color.toString(16).padStart(6, '0');
+            document.getElementById('labels-container').appendChild(label);
+
+            productObjects.push({
+                mesh,
+                label,
+                tailParticles: [],
+                lastSpawnTime: 0,
+                data: v,
+                t: Math.random() * 100,
+                localSpeedMult: 1.0,
+                localAuraIntensity: 1.0
+            });
         });
 
-        // Scroll animations with GSAP
-        gsap.registerPlugin(ScrollTrigger);
+        // --- Raycaster ---
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        let hoveredObj = null;
 
-        // Hide loading screen
-        setTimeout(() => {
-            document.getElementById('loadingScreen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.display = 'none';
-            }, 800);
-        }, 2000);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
 
-        // Animate venture cards on scroll
-        const ventureCards = document.querySelectorAll('.venture-card');
-        ventureCards.forEach((card) => {
-            gsap.to(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 80%',
-                    end: 'bottom 20%',
-                    onEnter: () => card.classList.add('active'),
-                    onLeaveBack: () => card.classList.remove('active')
+        window.addEventListener('touchstart', (e) => {
+            mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+            checkIntersection(true);
+        }, { passive: false });
+
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('.interactive')) checkIntersection(true);
+        });
+
+        function checkIntersection(isClick) {
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(productObjects.map(v => v.mesh), true);
+
+            if (intersects.length > 0) {
+                let hitObj = intersects[0].object;
+                if (!hitObj.userData.data && hitObj.parent && hitObj.parent.userData.data) {
+                    hitObj = hitObj.parent;
                 }
-            });
-        });
 
-        // Camera movement on scroll
-        ScrollTrigger.create({
-            trigger: '.scroll-container',
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 1,
-            onUpdate: (self) => {
-                const progress = self.progress;
-                
-                // Rotate entire atom group
-                atomGroup.rotation.y = progress * Math.PI * 2;
-                atomGroup.rotation.x = Math.sin(progress * Math.PI) * 0.5;
-                
-                // Camera zoom effect
-                camera.position.z = 8 - progress * 3;
-                
-                // Update spotlight
-                spotLight.position.x = Math.sin(progress * Math.PI * 2) * 15;
-                spotLight.position.y = 20 - progress * 10;
+                const data = hitObj.userData.data;
+
+                if (data) {
+                    if (isClick) {
+                        openModal(data);
+                    } else {
+                        if (hoveredObj !== hitObj) {
+                            if (hoveredObj) hoveredObj.scale.setScalar(1);
+                            hoveredObj = hitObj;
+                            document.body.style.cursor = 'pointer';
+                            hoveredObj.scale.setScalar(1.5);
+                        }
+                    }
+                }
+            } else {
+                if (hoveredObj) {
+                    hoveredObj.scale.setScalar(1);
+                    hoveredObj = null;
+                    document.body.style.cursor = 'default';
+                }
             }
-        });
+        }
 
-        // Navigation dots
-        const navDots = document.querySelectorAll('.nav-dot');
-        navDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                const sections = document.querySelectorAll('.section');
-                sections[index].scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+        // --- Animation ---
+        const clock = new THREE.Clock();
 
-        // Update active navigation dot on scroll
-        ScrollTrigger.create({
-            trigger: '.scroll-container',
-            start: 'top top',
-            end: 'bottom bottom',
-            onUpdate: (self) => {
-                const progress = self.progress;
-                const activeIndex = Math.floor(progress * 4.99);
-                navDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === activeIndex);
-                });
-            }
-        });
-
-        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
 
-            // Smooth mouse follow
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
+            const delta = clock.getDelta();
+            const elapsedTime = clock.getElapsedTime();
 
-            // Rotate atom group based on mouse
-            atomGroup.rotation.x += targetY * 0.001;
-            atomGroup.rotation.y += targetX * 0.001;
+            // --- Nucleus Logic Update ---
+            const nEnergy = config.nucleusEnergy;
 
-            // Animate individual atoms
-            atoms.forEach((atom, index) => {
-                atom.rotation.x += 0.01;
-                atom.rotation.y += 0.01;
-                
-                // Floating animation
-                atom.position.y = atom.userData.originalPosition.y + 
-                    Math.sin(Date.now() * 0.001 + index) * 0.1;
-                
-                // Pulse effect
-                const scale = 1 + Math.sin(Date.now() * 0.002 + index) * 0.05;
-                atom.scale.set(scale, scale, scale);
+            nucleusGroup.rotation.y += 0.005 * nEnergy;
+            nucleusGroup.rotation.z += 0.003 * nEnergy;
+
+            cage.rotation.x -= 0.01 * nEnergy;
+            cage.rotation.y -= 0.01 * nEnergy;
+            cage.material.opacity = 0.15 * nEnergy;
+            cage.scale.setScalar(1 + (0.1 * Math.sin(elapsedTime)) * nEnergy);
+
+            coreLight.intensity = 5 * nEnergy;
+
+            // Adjust Grand Glow Sprite based on energy
+            grandGlow.material.opacity = 0.6 + (0.2 * Math.sin(elapsedTime * 2));
+            const glowScale = 9 * (0.8 + (0.2 * nEnergy));
+            grandGlow.scale.set(glowScale, glowScale, 1);
+
+            cloudMesh.rotation.y -= 0.001;
+
+            productObjects.forEach(obj => {
+                const currentSpeed = config.speed * obj.localSpeedMult * obj.data.speedOffset;
+
+                obj.t += delta * 0.5 * currentSpeed;
+                const pos = calculateOrbitalPosition(obj.data.orbitType, obj.data.scale, obj.t, obj.data.phase);
+                obj.mesh.position.copy(pos);
+
+                // --- Smoke Tail ---
+                const auraFactor = config.globalAuraMultiplier * obj.localAuraIntensity;
+                const spawnRate = 0.05 / Math.max(0.1, auraFactor);
+
+                if (elapsedTime - obj.lastSpawnTime > Math.max(0.02, spawnRate)) {
+                    const partMat = new THREE.SpriteMaterial({
+                        map: smokeTexture,
+                        color: obj.data.color,
+                        transparent: true,
+                        opacity: 0.25,
+                        blending: THREE.AdditiveBlending,
+                        depthWrite: false
+                    });
+                    const particle = new THREE.Sprite(partMat);
+                    const jitter = 0.1 * auraFactor;
+                    particle.position.copy(obj.mesh.position).add(new THREE.Vector3(
+                        (Math.random() - 0.5) * jitter, (Math.random() - 0.5) * jitter, (Math.random() - 0.5) * jitter
+                    ));
+                    particle.scale.setScalar(0.6 * auraFactor);
+                    particle.userData = {
+                        life: 1.5 + (auraFactor * 0.5),
+                        maxLife: 1.5 + (auraFactor * 0.5),
+                        growthRate: 0.5 + (Math.random() * 0.5)
+                    };
+                    scene.add(particle);
+                    obj.tailParticles.push(particle);
+                    obj.lastSpawnTime = elapsedTime;
+                }
+
+                for (let i = obj.tailParticles.length - 1; i >= 0; i--) {
+                    const p = obj.tailParticles[i];
+                    p.userData.life -= delta;
+
+                    if (p.userData.life <= 0) {
+                        scene.remove(p);
+                        p.material.dispose();
+                        obj.tailParticles.splice(i, 1);
+                    } else {
+                        const lifeRatio = 1 - (p.userData.life / p.userData.maxLife);
+                        const size = (0.6 * auraFactor) + (lifeRatio * 3.0 * p.userData.growthRate * auraFactor);
+                        p.scale.setScalar(size);
+                        p.material.opacity = (p.userData.life / p.userData.maxLife) * 0.2;
+                    }
+                }
+
+                // --- Label Visibility ---
+                const screenPos = pos.clone().project(camera);
+                const x = (screenPos.x * .5 + .5) * window.innerWidth;
+                const y = (-(screenPos.y * .5) + .5) * window.innerHeight;
+
+                if (screenPos.z < 1 && Math.abs(screenPos.x) < 0.95 && Math.abs(screenPos.y) < 0.95) {
+                    obj.label.style.transform = `translate(-50%, -50%) translate(${x}px, ${y - 25}px)`;
+                    const dist = camera.position.distanceTo(pos);
+                    const opacity = (hoveredObj === obj.mesh) ? 1 : Math.max(0.7, 1 - (dist / 60));
+                    obj.label.style.opacity = opacity;
+                    obj.label.style.zIndex = opacity > 0.8 ? 10 : 1;
+                } else {
+                    obj.label.style.opacity = 0;
+                }
             });
 
-            // Animate particles
-            particlesMesh.rotation.y += 0.0005;
-            particlesMesh.rotation.x += 0.0003;
+            if (window.matchMedia("(pointer: fine)").matches) {
+                checkIntersection(false);
+            }
 
-            // Animate lights
-            pointLight1.position.x = Math.sin(Date.now() * 0.001) * 10;
-            pointLight1.position.z = Math.cos(Date.now() * 0.001) * 10;
-            
-            pointLight2.position.x = Math.cos(Date.now() * 0.0015) * 10;
-            pointLight2.position.z = Math.sin(Date.now() * 0.0015) * 10;
-
+            controls.update();
             composer.render();
         }
 
         animate();
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+            updateCameraPosition();
         });
 
-        // Firebase connection placeholder
-        // Initialize Firebase here when ready
-        const initFirebase = () => {
-            // const firebaseConfig = {
-            //     apiKey: "your-api-key",
-            //     authDomain: "your-auth-domain",
-            //     projectId: "your-project-id",
-            //     storageBucket: "your-storage-bucket",
-            //     messagingSenderId: "your-messaging-sender-id",
-            //     appId: "your-app-id"
-            // };
-            // firebase.initializeApp(firebaseConfig);
-            console.log('Firebase connection ready to be configured');
+        window.resetCamera = () => {
+            controls.reset();
+            updateCameraPosition();
         };
 
-        // Venture card click handlers
-        document.querySelectorAll('.venture-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const ventureId = this.id;
-                console.log(`Opening ${ventureId} details...`);
-                // Navigate to individual app pages
-                const ventureUrls = {
-                    'bevybeats': 'bevybeats.html',
-                    'savitri': 'savitri.html',
-                    'zaphy': 'zaphy.html',
-                    'agentic': 'agentic.html',
-                    'yuj': 'yuj.html',
-                    'adaptivision': 'adaptivision.html',
-                    'chipos': 'chipos.html',
-                    'systemverilog': 'systemverilog.html'
-                };
-                if (ventureUrls[ventureId]) {
-                    window.location.href = ventureUrls[ventureId];
-                }
-            });
-        });
+        // --- Product Modal ---
+        const modal = document.getElementById('product-modal');
+        window.openModal = (data) => {
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.name;
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-emoji').innerText = data.icon;
+            document.getElementById('modal-title').style.color = '#' + data.color.toString(16).padStart(6, '0');
+
+            const btn = document.getElementById('initiate-btn');
+            btn.onclick = () => window.location.href = data.url;
+
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('modal-active');
+        };
+        window.closeModal = () => {
+            modal.classList.remove('modal-active');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+
+        // --- About Modal ---
+        const aboutModal = document.getElementById('about-modal');
+        window.openAboutModal = () => {
+            aboutModal.classList.remove('hidden');
+            void aboutModal.offsetWidth;
+            aboutModal.classList.add('modal-active');
+        }
+        window.closeAboutModal = () => {
+            aboutModal.classList.remove('modal-active');
+            setTimeout(() => aboutModal.classList.add('hidden'), 300);
+        }
+
+        // --- Mobile Menu ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+
+        setTimeout(() => document.getElementById('intro-msg').style.opacity = '0', 2000);
+
     </script>
 </body>
+
 </html>
