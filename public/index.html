@@ -7,6 +7,12 @@
     <title>FutureAtoms | Quantum Edition</title>
     <meta name="description"
         content="FutureAtoms: Building Tomorrow's Technology. Visualized with Quantum Orbital Mechanics.">
+    <link rel="icon" type="image/png" href="images/futureatoms-icon.png">
+    <link rel="apple-touch-icon" href="images/futureatoms-icon.png">
+    <meta property="og:image" content="https://futureatoms-website.web.app/images/futureatoms-icon.png">
+    <meta property="og:title" content="FutureAtoms | Evolved Intelligence">
+    <meta property="og:description"
+        content="Building Tomorrow's Technology. Visualized with Quantum Orbital Mechanics.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chat.css">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -174,9 +181,9 @@
     <div id="ui-layer" class="p-4 md:p-8">
         <header class="flex justify-between items-center w-full interactive">
             <div class="flex items-center gap-3 group cursor-pointer" onclick="resetCamera()">
-                <div
-                    class="w-10 h-10 rounded-full border border-cyan-500/50 flex items-center justify-center relative overflow-hidden bg-cyan-900/20 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
-                    <span class="font-['Orbitron'] text-cyan-400 font-bold text-xl">Ψ</span>
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                        class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
                 <div>
                     <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
@@ -259,12 +266,31 @@
             </nav>
         </div>
 
-        <div id="intro-msg"
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none transition-opacity duration-1000 w-full px-4">
-            <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white/10 tracking-tighter">FUTURE OF AI
-            </h2>
-            <p class="text-cyan-500/50 tracking-[0.3em] md:tracking-[0.5em] mt-2 text-xs md:text-sm animate-pulse">
-                LOADING PROBABILITY FIELD...</p>
+        <div id="hero-search-container"
+            class="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4 z-20 transition-all duration-1000 opacity-0 pointer-events-auto">
+
+            <div
+                class="glass-panel rounded-2xl p-1 border border-cyan-500/30 shadow-[0_0_30px_rgba(0,255,255,0.1)] bg-black/40 backdrop-blur-xl">
+                <div class="relative">
+                    <textarea id="hero-input" rows="1"
+                        class="w-full bg-transparent text-white text-lg p-4 pr-12 focus:outline-none resize-none font-['Rajdhani'] placeholder-gray-500"
+                        placeholder="Describe your app or ask a question..."></textarea>
+                    <button id="hero-submit-btn"
+                        class="absolute right-3 bottom-3 text-cyan-500 hover:text-white transition-colors p-2">
+                        <i class="fas fa-arrow-right text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-2 p-3 border-t border-white/5">
+                    <button
+                        class="hero-chip text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-cyan-300/80 border border-white/5 transition-all flex items-center gap-2">
+                        <i class="fas fa-download"></i> Install ChipOS
+                    </button>
+                    <button
+                        class="hero-chip text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-cyan-300/80 border border-white/5 transition-all flex items-center gap-2">
+                        <i class="fas fa-brain"></i> What is Savitri?
+                    </button>
+                </div>
+            </div>
         </div>
 
         <footer class="flex flex-col md:flex-row justify-between items-end w-full mt-auto pointer-events-none">
@@ -324,9 +350,9 @@
             </button>
 
             <div class="text-center mb-8">
-                <div
-                    class="inline-block w-16 h-16 rounded-full border border-cyan-500/50 flex items-center justify-center relative overflow-hidden bg-cyan-900/20 shadow-[0_0_25px_rgba(0,255,255,0.4)] mb-4">
-                    <span class="font-['Orbitron'] text-cyan-400 font-bold text-3xl">Ψ</span>
+                <div class="w-10 h-10 flex items-center justify-center mx-auto mb-4">
+                    <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                        class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
                 <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span
                         class="text-cyan-400">FUTUREATOMS</span></h2>
@@ -363,6 +389,78 @@
         </div>
     </div>
 
+    <!-- AI Chatbox -->
+    <div id="ai-chat-container" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
+        <!-- Chat Window -->
+        <div id="chat-window"
+            class="glass-panel w-80 md:w-96 h-[500px] rounded-2xl mb-4 flex flex-col shadow-2xl transform scale-90 opacity-0 origin-bottom-right transition-all duration-300 pointer-events-auto hidden">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-4 border-b border-cyan-500/20 bg-cyan-900/10 rounded-t-2xl">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_10px_rgba(0,255,255,0.3)]">
+                        <i class="fas fa-sparkles text-white text-xs"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-['Orbitron'] text-sm font-bold text-white tracking-wide">AI ASSISTANT</h3>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                            <span class="text-[10px] text-cyan-300/70 font-mono">GEMINI 2.5 FLASH</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="close-chat" class="text-cyan-500/50 hover:text-cyan-400 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+                <!-- Welcome Message -->
+                <div class="flex gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1">
+                        <i class="fas fa-robot text-white text-xs"></i>
+                    </div>
+                    <div
+                        class="bg-cyan-900/20 border border-cyan-500/20 rounded-2xl rounded-tl-none p-3 text-sm text-gray-200 shadow-[0_0_10px_rgba(0,255,255,0.05)]">
+                        <p>Hello! I'm your quantum-powered assistant. Ask me anything about FutureAtoms products, or
+                            tell me what you're looking for!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 border-t border-cyan-500/20 bg-black/20 rounded-b-2xl">
+                <div class="relative">
+                    <input type="text" id="chat-input" placeholder="Ask about ChipOS, Savitri..."
+                        class="w-full bg-cyan-900/10 border border-cyan-500/30 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-cyan-500/30 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.1)] transition-all font-['Rajdhani']">
+                    <button id="send-btn"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white flex items-center justify-center transition-all">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+                <div class="flex justify-center mt-2 gap-2">
+                    <button
+                        class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">Install
+                        ChipOS</button>
+                    <button
+                        class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">What
+                        is Savitri?</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toggle Button (Hidden on index by default, can be shown via JS if needed, but we rely on Hero Input) -->
+        <button id="chat-toggle-btn"
+            class="hidden w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center text-white text-xl hover:scale-110 transition-transform duration-300 pointer-events-auto group relative overflow-hidden">
+            <div
+                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full">
+            </div>
+            <i class="fas fa-sparkles relative z-10"></i>
+        </button>
+    </div>
+
     <script type="importmap">
         {
             "imports": {
@@ -371,7 +469,7 @@
             }
         }
     </script>
-
+    <script src="js/chat.js"></script>
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -897,7 +995,14 @@
             };
         }
 
-        setTimeout(() => document.getElementById('intro-msg').style.opacity = '0', 2000);
+        // Show Hero Search after a delay
+        setTimeout(() => {
+            const heroSearch = document.getElementById('hero-search-container');
+            if (heroSearch) {
+                heroSearch.classList.remove('opacity-0');
+                heroSearch.classList.add('opacity-100');
+            }
+        }, 500);
 
     </script>
 </body>

@@ -1,0 +1,273 @@
+/* Feedback Button (Floating) */
+.feedback-trigger {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: rgba(5, 12, 25, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.feedback-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    border-color: rgba(0, 255, 255, 0.6);
+}
+
+.feedback-trigger i {
+    font-size: 24px;
+    color: #00ffff;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0% { text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); }
+    50% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.8); }
+    100% { text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); }
+}
+
+/* Modal Overlay */
+.feedback-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.feedback-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Content */
+.feedback-modal {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(5, 12, 25, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
+    font-family: 'Rajdhani', sans-serif;
+    color: #e0f7ff;
+}
+
+.feedback-modal-overlay.active .feedback-modal {
+    transform: translateY(0);
+}
+
+.feedback-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.feedback-close:hover {
+    color: #fff;
+}
+
+.feedback-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.feedback-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #00ffff 0%, #ffffff 50%, #0088ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feedback-subtitle {
+    font-size: 0.9rem;
+    color: rgba(224, 247, 255, 0.6);
+}
+
+/* Atom Rating System */
+.atom-rating-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.atom-radio {
+    display: none;
+}
+
+.atom-label {
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.atom-label:hover {
+    transform: scale(1.2);
+}
+
+.atom-icon {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 0 transparent);
+}
+
+/* Active State for Atoms (Logic handled in JS to fill previous ones) */
+.atom-label.active .atom-icon {
+    color: #00ffff;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+    animation: atom-spin 4s linear infinite;
+}
+
+@keyframes atom-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Form Fields */
+.feedback-form-group {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fade-in-up 0.4s forwards;
+    display: none; /* Hidden by default until rating */
+}
+
+.feedback-form-group.visible {
+    display: block;
+}
+
+@keyframes fade-in-up {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback-label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: rgba(224, 247, 255, 0.8);
+    font-weight: 600;
+}
+
+.feedback-input,
+.feedback-textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.feedback-input:focus,
+.feedback-textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.feedback-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.feedback-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.2));
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    color: #00ffff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.feedback-submit-btn:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Conditional Sections */
+.feedback-mode-title {
+    font-size: 1.1rem;
+    color: #FFD700; /* Gold for high rating */
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+    display: none;
+}
+
+.mode-support .feedback-mode-title {
+    color: #ff4444; /* Red for support */
+    display: block;
+}
+
+.mode-social .feedback-mode-title {
+    color: #00ffff; /* Cyan for social */
+    display: block;
+}
+
+/* Checkbox */
+.feedback-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.feedback-checkbox {
+    accent-color: #00ffff;
+    width: 16px;
+    height: 16px;
+}
