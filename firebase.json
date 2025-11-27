@@ -24,6 +24,10 @@
         "function": "chat"
       },
       {
+        "source": "/app/**",
+        "destination": "/app/index.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
@@ -44,6 +48,15 @@
           {
             "key": "Cache-Control",
             "value": "max-age=604800"
+          }
+        ]
+      },
+      {
+        "source": "/app/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
           }
         ]
       }

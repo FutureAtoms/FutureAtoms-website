@@ -11,56 +11,67 @@ function injectFeedbackSystem() {
         document.head.appendChild(link);
     }
 
+    // Check for inline container
+    const inlineContainer = document.getElementById('feedback-inline-container');
+    const isInline = !!inlineContainer;
+
+    // Get product from URL if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product') || 'General';
+
     // 2. Create HTML Structure
-    const container = document.createElement('div');
-    container.id = 'feedback-system-root';
-    container.innerHTML = `
-        <!-- Trigger Button -->
-        <div class="feedback-trigger" id="feedback-trigger">
-            <i class="fas fa-atom"></i>
-        </div>
-
-        <!-- Modal -->
-        <div class="feedback-modal-overlay" id="feedback-modal-overlay">
-            <div class="feedback-modal">
-                <button class="feedback-close" id="feedback-close">&times;</button>
-                
-                <div class="feedback-header">
-                    <h3 class="feedback-title">FEEDBACK LOOP</h3>
-                    <p class="feedback-subtitle">Help us evolve the FutureAtoms ecosystem.</p>
-                </div>
-
-                <!-- Rating System -->
-                <div class="atom-rating-container" id="atom-rating-container">
-                    ${[1, 2, 3, 4, 5].map(i => `
-                        <label class="atom-label" data-value="${i}">
-                            <i class="fas fa-atom atom-icon"></i>
-                        </label>
-                    `).join('')}
-                </div>
-
-                <!-- Dynamic Form Content -->
-                <form id="feedback-form">
-                    <div id="feedback-dynamic-content"></div>
-                    
-                    <div class="feedback-form-group" id="feedback-submit-group">
-                        <button type="submit" class="feedback-submit-btn">TRANSMIT DATA</button>
-                    </div>
-                </form>
+    const htmlContent = `
+        <div class="${isInline ? 'feedback-inline-wrapper' : 'feedback-modal'}">
+            ${!isInline ? '<button class="feedback-close" id="feedback-close">&times;</button>' : ''}
+            
+            <div class="feedback-header">
+                ${isInline ? '' : '<h3 class="feedback-title">FEEDBACK LOOP</h3>'}
+                <p class="feedback-subtitle">Select atoms below to transmit signal for: <span style="color:#00ffff">${product}</span></p>
             </div>
+
+            <!-- Rating System -->
+            <div class="atom-rating-container" id="atom-rating-container">
+                ${[1, 2, 3, 4, 5].map(i => `
+                    <label class="atom-label" data-value="${i}">
+                        <i class="fas fa-atom atom-icon"></i>
+                    </label>
+                `).join('')}
+            </div>
+
+            <!-- Dynamic Form Content -->
+            <form id="feedback-form">
+                <div id="feedback-dynamic-content"></div>
+                
+                <div class="feedback-form-group" id="feedback-submit-group">
+                    <button type="submit" class="feedback-submit-btn">TRANSMIT DATA</button>
+                </div>
+            </form>
         </div>
     `;
 
-    document.body.appendChild(container);
+    if (isInline) {
+        inlineContainer.innerHTML = htmlContent;
+        initFeedbackLogic(true, product);
+    } else {
+        const container = document.createElement('div');
+        container.id = 'feedback-system-root';
+        container.innerHTML = `
+            <!-- Trigger Button -->
+            <div class="feedback-trigger" id="feedback-trigger">
+                <i class="fas fa-atom"></i>
+            </div>
 
-    // 3. Initialize Logic
-    initFeedbackLogic();
+            <!-- Modal -->
+            <div class="feedback-modal-overlay" id="feedback-modal-overlay">
+                ${htmlContent}
+            </div>
+        `;
+        document.body.appendChild(container);
+        initFeedbackLogic(false, product);
+    }
 }
 
-function initFeedbackLogic() {
-    const trigger = document.getElementById('feedback-trigger');
-    const overlay = document.getElementById('feedback-modal-overlay');
-    const closeBtn = document.getElementById('feedback-close');
+function initFeedbackLogic(isInline, product) {
     const ratingContainer = document.getElementById('atom-rating-container');
     const atomLabels = document.querySelectorAll('.atom-label');
     const dynamicContent = document.getElementById('feedback-dynamic-content');
@@ -69,12 +80,18 @@ function initFeedbackLogic() {
 
     let currentRating = 0;
 
-    // Toggle Modal
-    trigger.addEventListener('click', () => overlay.classList.add('active'));
-    closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) overlay.classList.remove('active');
-    });
+    if (!isInline) {
+        const trigger = document.getElementById('feedback-trigger');
+        const overlay = document.getElementById('feedback-modal-overlay');
+        const closeBtn = document.getElementById('feedback-close');
+
+        // Toggle Modal
+        trigger.addEventListener('click', () => overlay.classList.add('active'));
+        closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+    }
 
     // Rating Logic
     atomLabels.forEach(label => {
@@ -148,7 +165,7 @@ function initFeedbackLogic() {
                 </div>
                 <div class="feedback-form-group visible">
                     <div class="feedback-checkbox-group">
-                        <input type="checkbox" id="feature-permission" name="permission" class="feedback-checkbox">
+                        <input type="checkbox" id="feature-permission" name="permission" class="feedback-checkbox" checked>
                         <label for="feature-permission">You may feature this signal publicly.</label>
                     </div>
                 </div>
@@ -163,6 +180,7 @@ function initFeedbackLogic() {
         const data = Object.fromEntries(formData.entries());
         data.rating = currentRating;
         data.url = window.location.href;
+        data.product = product;
 
         console.log('Feedback Transmitted:', data);
 
@@ -178,7 +196,10 @@ function initFeedbackLogic() {
             btn.style.color = '#00ff00';
 
             setTimeout(() => {
-                overlay.classList.remove('active');
+                if (!isInline) {
+                    const overlay = document.getElementById('feedback-modal-overlay');
+                    overlay.classList.remove('active');
+                }
                 // Reset form after delay
                 setTimeout(() => {
                     form.reset();

@@ -435,7 +435,14 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
-    <script src="js/feedback.js"></script>
+    <!-- Feedback Button -->
+    <a href="feedback.html?product=Savitri"
+        class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-yellow-500/10 border border-yellow-400/50 rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-500/20 hover:scale-110 hover:shadow-[0_0_30px_rgba(181,166,66,0.4)] transition-all backdrop-blur-md group">
+        <i class="fas fa-comment-dots text-2xl group-hover:animate-pulse"></i>
+        <span
+            class="absolute -top-10 right-0 bg-yellow-900/90 text-yellow-400 text-xs px-3 py-1 rounded border border-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Give
+            Feedback</span>
+    </a>
 </body>
 
 </html>

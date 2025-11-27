@@ -13,6 +13,8 @@
         rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS for Auth -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
@@ -223,6 +225,30 @@
             <a href="about.html" class="nav-link">ABOUT</a>
             <a href="contact.html"
                 class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+            <!-- Auth Section -->
+            <div id="auth-section" class="flex items-center gap-3 ml-4 pl-4 border-l border-cyan-500/30">
+                <div id="auth-loading" class="text-cyan-400 text-sm">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div id="auth-logged-out" class="hidden flex items-center gap-2">
+                    <button onclick="signInWithGoogle()"
+                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
+                        title="Sign in with Google">
+                        <i class="fab fa-google text-sm"></i>
+                    </button>
+                    <button onclick="signInWithMicrosoft()"
+                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
+                        title="Sign in with Microsoft">
+                        <i class="fab fa-microsoft text-sm"></i>
+                    </button>
+                </div>
+                <div id="auth-logged-in" class="hidden flex items-center gap-3">
+                    <span id="user-email" class="text-cyan-300 text-sm truncate max-w-[150px]"></span>
+                    <button onclick="signOut()" class="nav-link text-red-400 hover:text-red-300 text-sm">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
         </nav>
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
@@ -305,6 +331,53 @@
         </div>
         </div>
 
+        <!-- Version Badge -->
+        <div class="text-center mb-12">
+            <span
+                class="inline-block bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 px-4 py-2 rounded-full text-sm font-['Orbitron'] tracking-wider">
+                <i class="fas fa-tag mr-2"></i>Version 2025.11.1
+            </span>
+        </div>
+
+        <!-- What's New Section -->
+        <div class="glass-panel p-8 rounded-2xl metallic-border mb-12">
+            <h3 class="text-2xl font-['Orbitron'] font-bold text-white mb-6 flex items-center gap-3">
+                <i class="fas fa-sparkles text-yellow-400"></i> What's New in 2025.11
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Knowledge Base Sidebar</span>
+                        <p class="text-gray-400 text-sm">Browse and search indexed documentation directly from the
+                            sidebar</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">AI Provider Quick-Connect</span>
+                        <p class="text-gray-400 text-sm">One-click setup for Claude, Cursor, and Windsurf MCP
+                            integration</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Unified Platform Experience</span>
+                        <p class="text-gray-400 text-sm">Identical settings and themes across macOS and Linux</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Redesigned Controls Panel</span>
+                        <p class="text-gray-400 text-sm">Modern glassmorphism UI with improved navigation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Features Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
             <div class="glass-panel p-8 rounded-2xl metallic-border feature-card">
@@ -347,8 +420,51 @@
 
         <!-- Installation Section -->
         <div id="installation" class="mb-24">
-            <h2 class="text-4xl md:text-5xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">INSTALLATION
+            <h2 class="text-4xl md:text-5xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">GET STARTED
             </h2>
+
+            <!-- Web App Launch Button -->
+            <div class="glass-panel p-8 rounded-2xl metallic-border mb-8 text-center">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <i class="fas fa-globe text-4xl text-cyan-400"></i>
+                    <h3 class="text-2xl font-['Orbitron'] font-bold text-white">Try in Browser</h3>
+                </div>
+                <p class="text-gray-300 mb-4">No installation required. Launch ChipOS directly in your browser with the
+                    hosted backend.</p>
+                <p class="text-cyan-400/70 text-sm mb-6"><i class="fas fa-lock mr-2"></i>Enterprise access only:
+                    @futureatoms.com and @axelera.ai emails</p>
+
+                <!-- Not logged in state -->
+                <div id="webapp-logged-out">
+                    <p class="text-gray-400 mb-4">Sign in with your enterprise account to access ChipOS</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="signInWithGoogle()"
+                            class="inline-flex items-center justify-center gap-3 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-['Orbitron'] font-bold rounded-lg transition-all">
+                            <i class="fab fa-google"></i> Sign in with Google
+                        </button>
+                        <button onclick="signInWithMicrosoft()"
+                            class="inline-flex items-center justify-center gap-3 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-['Orbitron'] font-bold rounded-lg transition-all">
+                            <i class="fab fa-microsoft"></i> Sign in with Microsoft
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Logged in state -->
+                <div id="webapp-logged-in" class="hidden">
+                    <p class="text-green-400 mb-4"><i class="fas fa-check-circle mr-2"></i>Signed in as <span
+                            id="webapp-user-email" class="font-bold"></span></p>
+                    <a href="/app/"
+                        class="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-['Orbitron'] font-bold rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/25">
+                        <i class="fas fa-rocket mr-3"></i>Launch ChipOS Web App
+                    </a>
+                    <button onclick="signOut()"
+                        class="block mx-auto mt-4 text-gray-400 hover:text-red-400 text-sm transition-colors">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Sign out
+                    </button>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-['Orbitron'] font-bold text-center mb-8 text-gray-400">Or Download Desktop App</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- macOS -->
                 <div class="glass-panel p-8 rounded-2xl metallic-border">
@@ -375,10 +491,11 @@
                                 3</div>
                             <p class="text-gray-300 pt-1">Drag ChipOS to your Applications folder</p>
                         </div>
-                        <a href="#" onclick="alert('Download coming soon!')"
-                            class="inline-block mt-4 text-cyan-400 hover:text-cyan-300 font-bold border-b border-cyan-400 hover:border-cyan-300 pb-1 transition-all">
-                            Download for Apple Silicon <i class="fas fa-arrow-right ml-2"></i>
+                        <a href="ChipOS-2025.11.1-macOS-arm64.dmg"
+                            class="block w-full text-center bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 text-cyan-400 py-3 rounded-lg transition-colors mt-6">
+                            <i class="fas fa-download mr-2"></i> Download for Apple Silicon
                         </a>
+                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.11.1 • macOS 11+ • Apple Silicon</p>
                     </div>
                 </div>
 
@@ -409,10 +526,11 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="chipos_1.105.0_amd64.deb"
+                        <a href="chipos_2025.11.1_amd64.deb"
                             class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
                             <i class="fas fa-download mr-2"></i> Download for Linux
                         </a>
+                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.11.1 • Ubuntu/Debian • x86_64</p>
                     </div>
                 </div>
             </div>
@@ -452,6 +570,117 @@
         <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
 
+    <!-- Auth Script -->
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://wpgrhvdwdvmknhjzpkwz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ3JodmR3ZHZta25oanpwa3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MTYyODQsImV4cCI6MjA3Mjk5MjI4NH0.qdeRc4qFAFP3nFj2HuVAhGTikZrCCkwxCAfDL5Jq4VM';
+
+        // Initialize Supabase client
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // DOM Elements
+        const authLoading = document.getElementById('auth-loading');
+        const authLoggedOut = document.getElementById('auth-logged-out');
+        const authLoggedIn = document.getElementById('auth-logged-in');
+        const userEmailEl = document.getElementById('user-email');
+        const webappLoggedOut = document.getElementById('webapp-logged-out');
+        const webappLoggedIn = document.getElementById('webapp-logged-in');
+        const webappUserEmail = document.getElementById('webapp-user-email');
+
+        // Update UI based on auth state
+        function updateUI(user) {
+            if (authLoading) authLoading.classList.add('hidden');
+
+            if (user) {
+                // User is logged in
+                if (authLoggedOut) authLoggedOut.classList.add('hidden');
+                if (authLoggedIn) authLoggedIn.classList.remove('hidden');
+                if (userEmailEl) userEmailEl.textContent = user.email;
+
+                if (webappLoggedOut) webappLoggedOut.classList.add('hidden');
+                if (webappLoggedIn) webappLoggedIn.classList.remove('hidden');
+                if (webappUserEmail) webappUserEmail.textContent = user.email;
+            } else {
+                // User is logged out
+                if (authLoggedOut) authLoggedOut.classList.remove('hidden');
+                if (authLoggedIn) authLoggedIn.classList.add('hidden');
+
+                if (webappLoggedOut) webappLoggedOut.classList.remove('hidden');
+                if (webappLoggedIn) webappLoggedIn.classList.add('hidden');
+            }
+        }
+
+        // Sign in with Google - force account selection
+        async function signInWithGoogle() {
+            const { error } = await supabaseClient.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: window.location.origin + '/chipos.html',
+                    queryParams: {
+                        prompt: 'select_account'  // Force Google to show account picker
+                    }
+                }
+            });
+            if (error) {
+                alert('Sign in failed: ' + error.message);
+            }
+        }
+
+        // Sign in with Microsoft - force account selection
+        async function signInWithMicrosoft() {
+            const { error } = await supabaseClient.auth.signInWithOAuth({
+                provider: 'azure',
+                options: {
+                    redirectTo: window.location.origin + '/chipos.html',
+                    scopes: 'email profile openid',
+                    queryParams: {
+                        prompt: 'select_account'  // Force Microsoft to show account picker
+                    }
+                }
+            });
+            if (error) {
+                alert('Sign in failed: ' + error.message);
+            }
+        }
+
+        // Sign out
+        async function signOut() {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) {
+                alert('Sign out failed: ' + error.message);
+            } else {
+                updateUI(null);
+            }
+        }
+
+        // Check auth state on page load
+        async function checkAuth() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            updateUI(session?.user || null);
+
+            // Listen for auth state changes
+            supabaseClient.auth.onAuthStateChange((event, session) => {
+                updateUI(session?.user || null);
+            });
+        }
+
+        // Initialize auth check when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkAuth);
+        } else {
+            checkAuth();
+        }
+    </script>
+    <!-- Feedback Button -->
+    <a href="feedback.html?product=ChipOS"
+        class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-cyan-500/10 border border-cyan-400/50 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all backdrop-blur-md group">
+        <i class="fas fa-comment-dots text-2xl group-hover:animate-pulse"></i>
+        <span
+            class="absolute -top-10 right-0 bg-cyan-900/90 text-cyan-400 text-xs px-3 py-1 rounded border border-cyan-500/30 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Give
+            Feedback</span>
+    </a>
 </body>
 
 </html>
