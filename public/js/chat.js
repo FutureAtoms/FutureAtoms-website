@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         messageDiv.innerHTML = `
             ${avatar}
-            <div class="${bubbleClass} rounded-2xl p-3 text-sm shadow-[0_0_10px_rgba(0,255,255,0.05)] max-w-[80%]">
-                <p>${text}</p>
+            <div class="${bubbleClass} rounded-2xl p-3 text-sm shadow-[0_0_10px_rgba(0,255,255,0.05)] max-w-[90%] chat-content">
+                ${marked.parse(text)}
             </div>
         `;
 
@@ -87,28 +87,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const loadingElement = addLoadingShimmer();
 
-        // Simulate AI Delay & Response (Mock for now)
-        // In a real implementation, this would call the Gemini API via a backend proxy
-        setTimeout(() => {
+        // Collect history for context (last 10 messages)
+        const history = [];
+        const messageElements = chatMessages.querySelectorAll('.message-enter');
+        messageElements.forEach(el => {
+            const isUser = el.classList.contains('flex-row-reverse');
+            const textContent = el.querySelector('p')?.innerText;
+            if (textContent) {
+                history.push({
+                    role: isUser ? 'user' : 'model',
+                    parts: [{ text: textContent }]
+                });
+            }
+        });
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: text,
+                    history: history.slice(-10) // Send last 10 messages for context
+                })
+            });
+
+            const data = await response.json();
             loadingElement.remove();
 
-            // Simple Keyword Matching Logic (Mock RAG)
-            const lowerText = text.toLowerCase();
-            let response = "I'm processing that request through our quantum database...";
-
-            if (lowerText.includes('install') && (lowerText.includes('chip') || lowerText.includes('chipos'))) {
-                response = "To install ChipOS, you can visit the product page. Would you like me to take you there?";
-                // Optional: Auto-redirect logic could go here
-            } else if (lowerText.includes('savitri')) {
-                response = "Savitri is our AI therapy app offering CBT and DBT support. It's designed to be a compassionate digital companion.";
-            } else if (lowerText.includes('price') || lowerText.includes('cost')) {
-                response = "Most of our tools have a free tier for developers. Enterprise solutions are custom quoted.";
+            if (data.error) {
+                addMessage("I'm having trouble connecting to the quantum field. Please try again later.");
+                console.error('API Error:', data.error);
             } else {
-                response = "I can help you navigate FutureAtoms. Try asking about ChipOS, Savitri, or our research.";
+                addMessage(data.response);
             }
 
-            addMessage(response);
-        }, 1500);
+        } catch (error) {
+            loadingElement.remove();
+            addMessage("Connection interrupted. Please check your network.");
+            console.error('Fetch Error:', error);
+        }
     }
 
     sendBtn.addEventListener('click', handleUserMessage);

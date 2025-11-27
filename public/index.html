@@ -21,9 +21,10 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/chat.css?v=2">
 
-    <!-- Tailwind CSS -->
+    <!-- Marked.js for Markdown Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -393,7 +394,7 @@
     <div id="ai-chat-container" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
         <!-- Chat Window -->
         <div id="chat-window"
-            class="glass-panel w-80 md:w-96 h-[500px] rounded-2xl mb-4 flex flex-col shadow-2xl transform scale-90 opacity-0 origin-bottom-right transition-all duration-300 pointer-events-auto hidden">
+            class="glass-panel w-[90vw] md:w-[600px] h-[600px] rounded-2xl mb-4 flex flex-col shadow-2xl transform scale-90 opacity-0 origin-bottom-right transition-all duration-300 pointer-events-auto hidden">
             <!-- Header -->
             <div class="flex items-center justify-between p-4 border-b border-cyan-500/20 bg-cyan-900/10 rounded-t-2xl">
                 <div class="flex items-center gap-3">
@@ -469,7 +470,7 @@
             }
         }
     </script>
-    <script src="js/chat.js"></script>
+    <script src="js/chat.js?v=3"></script>
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -490,7 +491,7 @@
         // --- Products Data ---
         const products = [
             {
-                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xE5E4E2, desc: 'AI-native code editor that auto-builds with advanced semiconductor smarts—powered by your knowledge and MCP superpowers.',
+                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xE5E4E2, desc: 'The AI Operating System for hardware design. Orchestrate verification, generate SystemVerilog, and automate workflows with intelligent agents.',
                 orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html'
             }, // Platinum
             {

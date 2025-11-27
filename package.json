@@ -14,7 +14,9 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "start:server": "node server.js",
+    "ingest": "node scripts/ingest.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1",
@@ -33,5 +35,13 @@
     "zaphy",
     "chipos",
     "technology"
-  ]
+  ],
+  "dependencies": {
+    "@google/genai": "^1.30.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "glob": "^13.0.0",
+    "node-fetch": "^3.3.2"
+  }
 }

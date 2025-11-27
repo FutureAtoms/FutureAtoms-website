@@ -104,3 +104,68 @@
     border-color: rgba(0, 255, 255, 0.3);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
 }
+
+/* Markdown Styles within Chat */
+.chat-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 8px 0;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.chat-content code {
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #a5f3fc;
+    /* cyan-200 */
+}
+
+.chat-content pre code {
+    background: transparent;
+    padding: 0;
+    color: #e0f7ff;
+}
+
+.chat-content a {
+    color: #22d3ee;
+    /* cyan-400 */
+    text-decoration: underline;
+}
+
+.chat-content a:hover {
+    color: #67e8f9;
+    /* cyan-300 */
+}
+
+.chat-content ul,
+.chat-content ol {
+    margin: 8px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.chat-content ol {
+    list-style-type: decimal;
+}
+
+.chat-content li {
+    margin-bottom: 4px;
+}
+
+.chat-content strong {
+    font-weight: 700;
+    color: #fff;
+}
+
+.chat-content p {
+    margin-bottom: 8px;
+}
+
+.chat-content p:last-child {
+    margin-bottom: 0;
+}
