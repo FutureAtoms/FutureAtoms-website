@@ -38,3 +38,23 @@
 *   **Holistic Wellness**: Integrating AI into mental and physical health (Savitri, Yuj).
 *   **Hardware-Software Convergence**: Bridging the gap between software AI and hardware design (ChipOS, SystemVerilogGPT).
 *   **Professional Efficiency**: Enhancing productivity in professional networking (Zaphy).
+
+## ChipOS Documentation Summary (v2025.11.1)
+
+ChipOS is the "AI Operating System for Hardware Design," a custom VS Code distribution with integrated knowledge management.
+
+**Key "World-Leading" Features:**
+1.  **Advanced RAG Engine**: Uses semantic search to understand engineering intent, not just keyword matching.
+2.  **Auto-Code Extraction**: Automatically identifies, extracts, and indexes code snippets from documentation to build a searchable library of examples.
+3.  **MCP Server**: Acts as a central brain, exposing the knowledge base and project context to external AI assistants like Claude, Cursor, and Windsurf via the Model Context Protocol.
+4.  **Knowledge Base**: Crawls websites, indexes PDFs/repos, and organizes hardware knowledge.
+
+**Architecture**:
+- **Desktop App**: Custom VS Code build.
+- **Backend**: "chipos-acf" (Hosted or Local Docker) handles RAG and tasks.
+- **Supabase**: Database backend.
+
+**Core Capabilities**:
+- **Semantic Search**: `perform_rag_query` tool.
+- **Code Search**: `search_code_examples` tool.
+- **Task Management**: Kanban-style tracking with AI assignment.

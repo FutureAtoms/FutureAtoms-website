@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChipOS Changelog | FutureAtoms</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.05);
+        }
+
+        .metallic-text {
+            background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-link {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            color: rgba(224, 247, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(5, 12, 25, 0.95);
+            min-width: 200px;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content a {
+            color: rgba(224, 247, 255, 0.8);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: modalIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Changelog Specific Styles */
+        .version-badge {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .changelog-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .changelog-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background-color: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.1));
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="w-12 h-12 flex items-center justify-center">
+                <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav
+            class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="systemverilog.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="adaptivision.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="bevybeats.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+            </div>
+            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="contact.html"
+                class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="mb-6 inline-block">
+                <img src="chipos-logo.png" alt="ChipOS Logo"
+                    class="w-16 h-16 md:w-24 md:h-24 object-contain drop-shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-['Orbitron'] font-black tracking-tighter mb-4 metallic-text">
+                CHIPOS <span class="text-cyan-400">CHANGELOG</span>
+            </h1>
+            <p class="text-lg text-cyan-100/60 font-light max-w-2xl mx-auto">
+                Track the evolution of the AI Operating System for Hardware Design.
+            </p>
+        </div>
+
+        <!-- Changelog Entries -->
+        <div class="relative pl-8 md:pl-0">
+            <div class="hidden md:block timeline-line left-8"></div>
+
+            <!-- Version 2025.11.1 -->
+            <div class="mb-16 relative md:pl-16">
+                <div class="absolute left-0 top-0 hidden md:flex flex-col items-center w-16">
+                    <div class="w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(0,255,255,0.8)] z-10"></div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl border border-cyan-500/30">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="version-badge bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded text-sm font-bold border border-cyan-500/30">v2025.11.1</span>
+                            <span class="text-gray-400 text-sm font-mono">November 28, 2025</span>
+                        </div>
+                        <span
+                            class="text-xs text-green-400 border border-green-500/30 px-2 py-0.5 rounded bg-green-500/10 uppercase tracking-wider">Stable
+                            Release</span>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">Unified Platform Experience</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        This release brings parity between macOS and Linux environments, introducing a unified settings
+                        interface and consistent theming. We've also integrated direct access to the knowledge base from
+                        the sidebar.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-['Orbitron'] text-cyan-400 mb-3 uppercase tracking-wider">
+                                Improvements</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="changelog-item">
+                                    <span class="font-bold text-white">Knowledge Base Sidebar:</span> Browse and search
+                                    indexed documentation directly from the sidebar without leaving the editor.
+                                </li>
+                                <li class="changelog-item">
+                                    <span class="font-bold text-white">AI Provider Quick-Connect:</span> One-click setup
+                                    for Claude, Cursor, and Windsurf MCP integration.
+                                </li>
+                                <li class="changelog-item">
+                                    <span class="font-bold text-white">Redesigned Controls Panel:</span> Modern
+                                    glassmorphism UI with improved navigation and accessibility.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-sm font-['Orbitron'] text-blue-400 mb-3 uppercase tracking-wider">Fixes</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="changelog-item">Fixed an issue where SystemVerilog syntax highlighting would
+                                    break on large files.</li>
+                                <li class="changelog-item">Resolved a race condition in the UVM testbench generator.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version 2025.10.5 -->
+            <div class="mb-16 relative md:pl-16">
+                <div class="absolute left-0 top-0 hidden md:flex flex-col items-center w-16">
+                    <div class="w-3 h-3 bg-cyan-900 rounded-full border border-cyan-500/50 z-10"></div>
+                </div>
+
+                <div
+                    class="glass-panel p-8 rounded-2xl border border-white/10 opacity-80 hover:opacity-100 transition-opacity">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="version-badge bg-white/10 text-gray-300 px-3 py-1 rounded text-sm font-bold border border-white/10">v2025.10.5</span>
+                            <span class="text-gray-500 text-sm font-mono">October 15, 2025</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">RAG Optimization</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Major performance improvements to the Retrieval-Augmented Generation engine, resulting in 40%
+                        faster query responses for large hardware specifications.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-['Orbitron'] text-cyan-400 mb-3 uppercase tracking-wider">
+                                Improvements</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="changelog-item">
+                                    <span class="font-bold text-white">Smart Context:</span> The AI now better
+                                    understands the context of multi-module designs.
+                                </li>
+                                <li class="changelog-item">
+                                    <span class="font-bold text-white">PDF Parsing:</span> Improved extraction of tables
+                                    and timing diagrams from datasheets.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version 2025.09.0 -->
+            <div class="mb-16 relative md:pl-16">
+                <div class="absolute left-0 top-0 hidden md:flex flex-col items-center w-16">
+                    <div class="w-3 h-3 bg-cyan-900 rounded-full border border-cyan-500/50 z-10"></div>
+                </div>
+
+                <div
+                    class="glass-panel p-8 rounded-2xl border border-white/10 opacity-80 hover:opacity-100 transition-opacity">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="version-badge bg-white/10 text-gray-300 px-3 py-1 rounded text-sm font-bold border border-white/10">v2025.09.0</span>
+                            <span class="text-gray-500 text-sm font-mono">September 1, 2025</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">Initial Release</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        The first public release of ChipOS, the AI Operating System for Hardware Design.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+        if (mobileBtn && mobileMenu && closeMobileBtn) {
+            mobileBtn.onclick = () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
+            closeMobileBtn.onclick = () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+        }
+    </script>
+</body>
+
+</html>

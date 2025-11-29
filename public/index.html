@@ -211,6 +211,9 @@
                         <a href="adaptivision.html">AdaptiveVision</a>
                         <a href="bevybeats.html">BevyBeats</a>
                         <a href="savitri.html">Savitri</a>
+                        <div class="border-t border-cyan-500/30 my-1"></div>
+                        <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i
+                                class="fas fa-history mr-1"></i> Changelog</a>
                     </div>
                 </div>
 
@@ -228,6 +231,15 @@
                 </svg>
             </div>
         </header>
+
+        <!-- Interaction Hint -->
+        <div class="absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none text-center opacity-0 transition-opacity duration-1000"
+            id="interaction-hint">
+            <p
+                class="text-cyan-300/60 font-['Orbitron'] text-[10px] md:text-xs tracking-[0.3em] uppercase animate-pulse">
+                <i class="fas fa-mouse-pointer mr-2"></i>Click atoms to explore
+            </p>
+        </div>
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
@@ -275,7 +287,7 @@
                 <div class="relative">
                     <textarea id="hero-input" rows="1"
                         class="w-full bg-transparent text-white text-lg p-4 pr-12 focus:outline-none resize-none font-['Rajdhani'] placeholder-gray-500"
-                        placeholder="Describe your app or ask a question..."></textarea>
+                        placeholder="Ask me anything about FutureAtoms products..."></textarea>
                     <button id="hero-submit-btn"
                         class="absolute right-3 bottom-3 text-cyan-500 hover:text-white transition-colors p-2">
                         <i class="fas fa-arrow-right text-xl"></i>
@@ -299,7 +311,7 @@
             <div class="flex-1"></div> <!-- Spacer -->
 
             <div class="text-right text-gray-600 text-[10px] font-mono hidden md:block">
-                <p>Probability Cloud Simulation</p>
+
                 <p>© 2025 FutureAtoms</p>
             </div>
         </footer>
@@ -696,12 +708,13 @@
             cloudPos.push(r * Math.sin(phi) * Math.cos(theta), r * Math.sin(phi) * Math.sin(theta), r * Math.cos(phi));
         }
         cloudGeo.setAttribute('position', new THREE.Float32BufferAttribute(cloudPos, 3));
+        const isMobile = window.innerWidth < 768;
         const cloudMat = new THREE.PointsMaterial({
             map: circleTexture,
             color: 0x0088aa,
-            size: 0.12,
+            size: isMobile ? 0.22 : 0.15, // Middle ground: slightly smaller mobile, slightly larger desktop
             transparent: true,
-            opacity: 0.3,
+            opacity: isMobile ? 0.45 : 0.35, // Middle ground opacity
             blending: THREE.AdditiveBlending,
             depthWrite: false
         });
@@ -940,6 +953,11 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             composer.setSize(window.innerWidth, window.innerHeight);
             updateCameraPosition();
+
+            // Dynamic Particle Adjustment
+            const isMobileResize = window.innerWidth < 768;
+            cloudMat.size = isMobileResize ? 0.22 : 0.15;
+            cloudMat.opacity = isMobileResize ? 0.45 : 0.35;
         });
 
         window.resetCamera = () => {
@@ -1002,6 +1020,11 @@
             if (heroSearch) {
                 heroSearch.classList.remove('opacity-0');
                 heroSearch.classList.add('opacity-100');
+            }
+            const hint = document.getElementById('interaction-hint');
+            if (hint) {
+                hint.classList.remove('opacity-0');
+                hint.classList.add('opacity-100');
             }
         }, 500);
 
