@@ -343,14 +343,14 @@
         <div class="text-center mb-12">
             <span
                 class="inline-block bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 px-4 py-2 rounded-full text-sm font-['Orbitron'] tracking-wider">
-                <i class="fas fa-tag mr-2"></i>Version 2025.11.1
+                <i class="fas fa-tag mr-2"></i>Version 2025.12.1
             </span>
         </div>
 
         <!-- What's New Section -->
         <div class="glass-panel p-8 rounded-2xl metallic-border mb-12">
             <h3 class="text-2xl font-['Orbitron'] font-bold text-white mb-6 flex items-center gap-3">
-                <i class="fas fa-sparkles text-yellow-400"></i> What's New in 2025.11
+                <i class="fas fa-sparkles text-yellow-400"></i> What's New in 2025.12
                 <a href="chipos-changelog.html"
                     class="ml-auto text-sm text-cyan-400 hover:text-white transition-colors font-['Rajdhani'] font-normal border border-cyan-500/30 px-3 py-1 rounded hover:bg-cyan-500/20">
                     View Full Changelog <i class="fas fa-arrow-right ml-1"></i>
@@ -360,31 +360,29 @@
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">Knowledge Base Sidebar</span>
-                        <p class="text-gray-400 text-sm">Browse and search indexed documentation directly from the
-                            sidebar</p>
+                        <span class="text-white font-bold">Auto-Install Claude Commands</span>
+                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace on activation</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">AI Provider Quick-Connect</span>
-                        <p class="text-gray-400 text-sm">One-click setup for Claude, Cursor, and Windsurf MCP
-                            integration</p>
+                        <span class="text-white font-bold">AI Chatbot with Syntax Highlighting</span>
+                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware discussions</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">Unified Platform Experience</span>
-                        <p class="text-gray-400 text-sm">Identical settings and themes across macOS and Linux</p>
+                        <span class="text-white font-bold">12 Voyager SDK Commands</span>
+                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /debug, and more built-in</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">Redesigned Controls Panel</span>
-                        <p class="text-gray-400 text-sm">Modern glassmorphism UI with improved navigation</p>
+                        <span class="text-white font-bold">Cross-Platform Support</span>
+                        <p class="text-gray-400 text-sm">Commands work identically on macOS, Linux, and Windows</p>
                     </div>
                 </div>
             </div>
@@ -661,11 +659,12 @@
                                 3</div>
                             <p class="text-gray-300 pt-1">Drag ChipOS to your Applications folder</p>
                         </div>
-                        <a href="ChipOS-2025.11.1-macOS-arm64.dmg"
+                        <a href="ChipOS-2025.12.1-macOS-arm64.dmg" id="macos-download-btn"
+                            onclick="handleDownloadClick(this, 'macOS')"
                             class="block w-full text-center bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 text-cyan-400 py-3 rounded-lg transition-colors mt-6">
                             <i class="fas fa-download mr-2"></i> Download for Apple Silicon
                         </a>
-                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.11.1 • macOS 11+ • Apple Silicon</p>
+                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.12.1 • macOS 11+ • Apple Silicon</p>
                     </div>
                 </div>
 
@@ -696,11 +695,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="chipos_2025.11.1_amd64.deb"
+                        <a href="chipos_2025.12.1_amd64.deb" id="linux-download-btn"
+                            onclick="handleDownloadClick(this, 'Linux')"
                             class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
                             <i class="fas fa-download mr-2"></i> Download for Linux
                         </a>
-                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.11.1 • Ubuntu/Debian • x86_64</p>
+                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.12.1 • Ubuntu/Debian • x86_64</p>
                     </div>
                 </div>
             </div>
@@ -1018,6 +1018,26 @@
             document.addEventListener('DOMContentLoaded', checkAuth);
         } else {
             checkAuth();
+        }
+
+        // Download button state change
+        function handleDownloadClick(btn, platform) {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Downloading...';
+            btn.classList.add('opacity-75', 'cursor-wait');
+
+            // Reset after 3 seconds (download should have started)
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> Download Started!';
+                btn.classList.remove('opacity-75', 'cursor-wait');
+                btn.classList.add('bg-green-500/20', 'border-green-500/50', 'text-green-400');
+
+                // Reset to original after 5 more seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.remove('bg-green-500/20', 'border-green-500/50', 'text-green-400');
+                }, 5000);
+            }, 3000);
         }
     </script>
     <!-- Feedback Button -->
