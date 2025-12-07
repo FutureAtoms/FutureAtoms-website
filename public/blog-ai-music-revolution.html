@@ -15,23 +15,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <script>
-        // --- Mobile Menu ---
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileBtn = document.getElementById('close-mobile-menu');
 
-        if (mobileBtn && mobileMenu && closeMobileBtn) {
-            mobileBtn.onclick = () => {
-                mobileMenu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            };
-            closeMobileBtn.onclick = () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
-        }
-    </script>
     <style>
         body,
         html {
@@ -358,6 +342,25 @@
         <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
 
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>

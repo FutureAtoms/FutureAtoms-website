@@ -65,14 +65,37 @@
             <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
             <a href="contact.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CONTACT</a>
         </nav>
+        <!-- Mobile Menu Button -->
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[100] bg-[#020205] bg-opacity-95 hidden flex flex-col items-center justify-center">
+        <button id="close-mobile-menu" class="absolute top-8 right-8 text-cyan-500 hover:text-cyan-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav class="flex flex-col items-center gap-8 text-xl font-['Orbitron'] tracking-widest">
+            <a href="index.html" class="text-white hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="contact.html" class="text-white hover:text-cyan-400 transition-colors">CONTACT</a>
+        </nav>
+    </div>
 
     <main class="flex-grow flex items-center justify-center pt-32 pb-20 px-4">
         <div class="text-center max-w-2xl mx-auto">
             <div class="mb-8 inline-block text-6xl text-cyan-400 drop-shadow-[0_0_30px_rgba(0,255,255,0.5)]">
                 <i class="fas fa-comments"></i>
             </div>
-            <h1 class="text-5xl md:text-7xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+            <h1
+                class="text-4xl md:text-6xl lg:text-7xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
                 FEEDBACK LOOP
             </h1>
             <p class="text-xl text-cyan-100/60 font-light leading-relaxed mb-10">
@@ -87,6 +110,25 @@
     </footer>
 
     <script src="js/feedback.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>

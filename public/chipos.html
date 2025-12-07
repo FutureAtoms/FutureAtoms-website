@@ -19,20 +19,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script>
         // --- Mobile Menu ---
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileBtn = document.getElementById('close-mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
 
-        if (mobileBtn && mobileMenu && closeMobileBtn) {
-            mobileBtn.onclick = () => {
-                mobileMenu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            };
-            closeMobileBtn.onclick = () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
-        }
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
     </script>
     <style>
         body,
@@ -190,22 +192,24 @@
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
         <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
-            <div class="w-12 h-12 flex items-center justify-center">
+            <div class="w-10 h-10 flex items-center justify-center">
                 <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
                     class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
             </div>
             <div>
-                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
                     FUTURE<span class="text-cyan-400">ATOMS</span>
                 </h1>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
+                    Intelligence</p>
             </div>
         </div>
 
-        <nav class="hidden md:flex gap-8 text-sm items-center">
-            <a href="index.html" class="nav-link">HOME</a>
+        <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
+            <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
 
             <div class="dropdown">
-                <a href="#" class="nav-link flex items-center gap-1">
+                <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
                     PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
                 </a>
                 <div class="dropdown-content">
@@ -223,41 +227,13 @@
                 </div>
             </div>
 
-            <a href="blog.html" class="nav-link">RESEARCH</a>
-            <a href="news.html" class="nav-link">NEWS</a>
-            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="blog.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+            <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
             <a href="contact.html"
-                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
-            <!-- Auth Section -->
-            <div id="auth-section" class="flex items-center gap-3 ml-4 pl-4 border-l border-cyan-500/30">
-                <div id="auth-loading" class="text-cyan-400 text-sm">
-                    <i class="fas fa-spinner fa-spin"></i>
-                </div>
-                <div id="auth-logged-out" class="hidden flex items-center gap-2">
-                    <button onclick="showEmailSignInModal()"
-                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
-                        title="Sign in with Email">
-                        <i class="fas fa-envelope text-sm"></i>
-                    </button>
-                    <button onclick="signInWithGoogle()"
-                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
-                        title="Sign in with Google">
-                        <i class="fab fa-google text-sm"></i>
-                    </button>
-                    <button onclick="signInWithMicrosoft()"
-                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
-                        title="Sign in with Microsoft">
-                        <i class="fab fa-microsoft text-sm"></i>
-                    </button>
-                </div>
-                <div id="auth-logged-in" class="hidden flex items-center gap-3">
-                    <span id="user-email" class="text-cyan-300 text-sm truncate max-w-[150px]"></span>
-                    <button onclick="signOut()" class="nav-link text-red-400 hover:text-red-300 text-sm">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
-            </div>
+                class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
         </nav>
+
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -361,21 +337,24 @@
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">Auto-Install Claude Commands</span>
-                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace on activation</p>
+                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace
+                            on activation</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">AI Chatbot with Syntax Highlighting</span>
-                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware discussions</p>
+                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware
+                            discussions</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">12 Voyager SDK Commands</span>
-                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /debug, and more built-in</p>
+                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /debug, and more built-in
+                        </p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
