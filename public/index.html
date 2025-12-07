@@ -61,6 +61,107 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            pointer-events: none;
+            /* Let clicks pass through to scroll container */
+        }
+
+        #scroll-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            z-index: 20;
+            /* Above UI layer for scrolling */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        #scroll-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
+        }
+
+        .scroll-section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Text at bottom/center */
+            align-items: center;
+            padding-bottom: 12vh;
+            /* Space for text */
+            pointer-events: none;
+            /* Let clicks pass to canvas if needed, but text needs events */
+        }
+
+        .section-content {
+            pointer-events: auto;
+            text-align: center;
+            z-index: 30;
+            max-width: 800px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+            background: transparent;
+            /* backdrop-filter: blur(4px); removed as requested */
+            border-radius: 16px;
+            padding: 20px;
+            border: none;
+        }
+
+        .section-active .section-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            /* Responsive Font Size */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px currentColor;
+            /* Glow matches text color */
+        }
+
+        .product-desc {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            color: #e0f7ff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: color-mix(in srgb, currentColor 10%, transparent);
+            /* Matches text color with transparency */
+            border: 1px solid currentColor;
+            /* Matches text color */
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: currentColor;
+            color: #000;
+            box-shadow: 0 0 30px currentColor;
         }
 
         .interactive {
@@ -177,7 +278,118 @@
 <body>
 
     <div id="canvas-container"></div>
-    <div id="labels-container"></div>
+    <div id="labels-container" style="display: none;"></div> <!-- Hidden in new design -->
+
+    <!-- Scroll Container -->
+    <div id="scroll-container">
+        <!-- Intro Section -->
+        <div class="scroll-section" data-id="intro" data-color="#00ffff">
+            <div class="section-content">
+                <h1 class="product-title" style="color: #00ffff;">FUTUREATOMS</h1>
+                <p class="product-desc">Evolving Intelligence through Quantum Dynamics.</p>
+                <div class="text-cyan-400 animate-bounce mt-4"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE
+                </div>
+            </div>
+        </div>
+        <!-- Sections Reordered -->
+
+        <!-- 1. ChipOS (Metallic Gold) -->
+        <div class="scroll-section" data-id="chipos" data-color="#D4AF37">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #D4AF37;">ChipOS</h2>
+                <p class="product-desc">The AI Operating System for hardware design. Orchestrate verification and
+                    automate workflows.</p>
+                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37;">Recall
+                    Protocol</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 2. BevyBeats (Copper) -->
+        <div class="scroll-section" data-id="bevy" data-color="#B87333">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #B87333;">BevyBeats</h2>
+                <p class="product-desc">AI-powered music platform for generation and streaming.</p>
+                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Listen</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 3. Zaphy (LinkedIn Blue) -->
+        <div class="scroll-section" data-id="zaphy" data-color="#0077B5">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #0077B5;">Zaphy</h2>
+                <p class="product-desc">Smart Chrome extension for LinkedIn. Supercharge your professional networking.
+                </p>
+                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Install
+                    Extension</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 4. Agentic Control (Leaf Green) -->
+        <div class="scroll-section" data-id="agentic" data-color="#69C95E">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #69C95E;">Agentic Control</h2>
+                <p class="product-desc">Advanced CLI tool for agent workflows and autonomous execution.</p>
+                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Execute</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 5. SystemVerilogGPT (Silver) -->
+        <div class="scroll-section" data-id="sv_gpt" data-color="#C0C0C0">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #C0C0C0;">SystemVerilogGPT</h2>
+                <p class="product-desc">Specialized GPT for hardware verification and code generation.</p>
+                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Access
+                    Node</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 6. Yuj (Orange) -->
+        <div class="scroll-section" data-id="yuj" data-color="#FFA500">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #FFA500;">Yuj</h2>
+                <p class="product-desc">Holistic yoga and workout app for physical and mental balance.</p>
+                <a href="yuj.html" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Begin Journey</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 7. Savitri (Purple) -->
+        <div class="scroll-section" data-id="savitri" data-color="#A020F0">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #A020F0;">Savitri</h2>
+                <p class="product-desc">AI therapy companion offering CBT/DBT support.</p>
+                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Connect</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 8. AdaptiveVision (Kept at end, default Blue) -->
+        <div class="scroll-section" data-id="adaptive" data-color="#4682B4">
+            <div class="section-content">
+                <h2 class="product-title" style="color: #4682B4;">AdaptiveVision</h2>
+                <p class="product-desc">Next-generation adaptive object detection algorithms.</p>
+                <a href="adaptivision.html" class="cta-button"
+                    style="color: #4682B4; border-color: #4682B4;">Analyze</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
+                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- Spacer for bottom -->
+        <div class="h-20 w-full"></div>
+    </div>
 
     <div id="ui-layer" class="p-4 md:p-8">
         <header class="flex justify-between items-center w-full interactive">
@@ -232,14 +444,7 @@
             </div>
         </header>
 
-        <!-- Interaction Hint -->
-        <div class="absolute top-[65%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none text-center opacity-0 transition-opacity duration-1000"
-            id="interaction-hint">
-            <p
-                class="text-cyan-300/60 font-['Orbitron'] text-[10px] md:text-xs tracking-[0.3em] uppercase animate-pulse">
-                <i class="fas fa-mouse-pointer mr-2"></i>Click atoms to explore
-            </p>
-        </div>
+        <!-- Interaction Hint Removed (replaced by scroll prompt) -->
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
@@ -279,32 +484,7 @@
             </nav>
         </div>
 
-        <div id="hero-search-container"
-            class="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4 z-20 transition-all duration-1000 opacity-0 pointer-events-auto">
-
-            <div
-                class="glass-panel rounded-2xl p-1 border border-cyan-500/30 shadow-[0_0_30px_rgba(0,255,255,0.1)] bg-black/40 backdrop-blur-xl">
-                <div class="relative">
-                    <textarea id="hero-input" rows="1"
-                        class="w-full bg-transparent text-white text-lg p-4 pr-12 focus:outline-none resize-none font-['Rajdhani'] placeholder-gray-500"
-                        placeholder="Ask me anything about FutureAtoms products..."></textarea>
-                    <button id="hero-submit-btn"
-                        class="absolute right-3 bottom-3 text-cyan-500 hover:text-white transition-colors p-2">
-                        <i class="fas fa-arrow-right text-xl"></i>
-                    </button>
-                </div>
-                <div class="flex flex-wrap gap-2 p-3 border-t border-white/5">
-                    <button
-                        class="hero-chip text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-cyan-300/80 border border-white/5 transition-all flex items-center gap-2">
-                        <i class="fas fa-download"></i> Install ChipOS
-                    </button>
-                    <button
-                        class="hero-chip text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-cyan-300/80 border border-white/5 transition-all flex items-center gap-2">
-                        <i class="fas fa-brain"></i> What is Savitri?
-                    </button>
-                </div>
-            </div>
-        </div>
+        <!-- Hero Search Container Removed (Confusing with scroll) or moved to be fixed? Let's hide it for now as requested "text scaling issues" suggests focus on content -->
 
         <footer class="flex flex-col md:flex-row justify-between items-end w-full mt-auto pointer-events-none">
             <!-- Control Matrix removed as requested -->
@@ -497,43 +677,49 @@
             bgColor: 0x020205,
             nucleusColor: 0x00ffff,
             nucleusEnergy: 1.8,
-            globalAuraMultiplier: 1.4
+            globalAuraMultiplier: 1.4,
+            currentHexColor: 0x00ffff // Track current color for lerping elsewhere if needed
         };
 
         // --- Products Data ---
+        // --- Products Data ---
         const products = [
             {
-                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xE5E4E2, desc: 'The AI Operating System for hardware design. Orchestrate verification, generate SystemVerilog, and automate workflows with intelligent agents.',
+                id: 'intro', name: 'FUTUREATOMS', icon: '⚛️', color: 0x00ffff, desc: 'Evolving Intelligence through Quantum Dynamics.',
+                orbitType: 's', scale: 0, speedOffset: 1.0, phase: 0, url: '#'
+            },
+            {
+                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: 'The AI Operating System for hardware design.',
                 orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html'
-            }, // Platinum
+            },
+            {
+                id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB87333, desc: 'AI music platform and streaming.',
+                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html'
+            },
+            {
+                id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0x0077B5, desc: 'Smart Chrome extension for LinkedIn.',
+                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html'
+            },
+            {
+                id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0x69C95E, desc: 'Advanced CLI tool for agent workflows.',
+                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html'
+            },
             {
                 id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Specialized GPT for hardware verification.',
                 orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html'
-            }, // Silver
+            },
             {
-                id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0xFFD700, desc: 'Smart Chrome extension for LinkedIn.',
-                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html'
-            }, // Gold
-            {
-                id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0xB87333, desc: 'Advanced CLI tool for agent workflows.',
-                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html'
-            }, // Copper
-            {
-                id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xCD7F32, desc: 'Holistic yoga and workout app.',
+                id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xFFA500, desc: 'Holistic yoga and workout app.',
                 orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html'
-            }, // Bronze
+            },
+            {
+                id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xA020F0, desc: 'AI therapy companion offering CBT/DBT support.',
+                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html'
+            },
             {
                 id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Adaptive object detection algorithms.',
                 orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html'
-            }, // Steel Blue
-            {
-                id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB76E79, desc: 'AI music platform and streaming.',
-                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html'
-            }, // Rose Gold
-            {
-                id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xB5A642, desc: 'AI therapy app offering CBT/DBT.',
-                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html'
-            } // Brass
+            }
         ];
         // --- Scene Setup ---
         const container = document.getElementById('canvas-container');
@@ -587,6 +773,9 @@
         controls.maxDistance = 90;
         controls.autoRotate = true;
         controls.autoRotateSpeed = 0.5;
+        // Move center of attention down, so the Atom (at 0,0,0) appears higher
+        controls.target.set(0, -3.5, 0);
+        controls.saveState();
 
         // --- Helper: Create Soft Smoke Texture ---
         function createSoftParticleTexture() {
@@ -722,9 +911,119 @@
         scene.add(cloudMesh);
 
 
-        // --- Products (The Electrons) ---
-        const productObjects = [];
+        // --- GENERIC ELECTRONS (Replaces Products Loops) ---
+        const electrons = [];
+        // We use the products array (excluding intro) to color the electrons in the "Intro" state
+        const productData = products.slice(1); // Skip 'intro'
+        const electronCount = productData.length; // Should be 8 matching the products
 
+        for (let i = 0; i < electronCount; i++) {
+            const pData = productData[i];
+            // Mesh
+            const geo = new THREE.SphereGeometry(0.3, 32, 32);
+            const mat = new THREE.MeshStandardMaterial({
+                color: pData.color, // Start with product color
+                metalness: 0.9,
+                roughness: 0.2,
+                emissive: pData.color,
+                emissiveIntensity: 0.5
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+
+            // Bright core sprite
+            const spriteMat = new THREE.SpriteMaterial({
+                map: new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/spark1.png'),
+                color: pData.color,
+                transparent: true,
+                blending: THREE.AdditiveBlending
+            });
+            const sprite = new THREE.Sprite(spriteMat);
+            sprite.scale.set(3, 3, 1);
+            mesh.add(sprite);
+
+            scene.add(mesh);
+
+            // Assign orbit params based on the product's original orbit type to keep "same colors of electrons that it had before" roughly implies keeping that diversity
+            electrons.push({
+                mesh,
+                sprite,
+                tailParticles: [],
+                lastSpawnTime: 0,
+                orbitParams: {
+                    type: pData.orbitType, // Use original orbit type
+                    scale: pData.scale, // Use original scale
+                    speedOffset: pData.speedOffset,
+                    phase: pData.phase
+                },
+                t: Math.random() * 100,
+                color: new THREE.Color(pData.color), // Current color (starts at product color)
+                baseColor: new THREE.Color(pData.color) // The "Intro" color
+            });
+        }
+
+        // --- ATOM TRANSITION LOGIC ---
+        let currentProduct = products[0]; // Start with Intro
+        let targetColor = new THREE.Color(products[0].color);
+
+        function transitionAtom(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || product === currentProduct) return;
+
+            currentProduct = product;
+            targetColor.setHex(product.color);
+
+            // Allow immediate text/UI updates here if needed, but HTML intersection handles that.
+            // This function focuses on 3D visuals.
+        }
+
+        // --- Intersection Observer for Scrolling ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.dataset.id;
+                    transitionAtom(id);
+
+                    // Activate CSS animations
+                    document.querySelectorAll('.scroll-section').forEach(s => s.classList.remove('section-active'));
+                    entry.target.classList.add('section-active');
+
+                    // Update URL hash without jumping (optional, better for history)
+                    // history.replaceState(null, null, '#' + id);
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger when 50% visible
+        });
+
+        document.querySelectorAll('.scroll-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Raycaster simple click on nucleus logic
+        // We will make the ENTIRE atom clickable to go to current product
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        window.addEventListener('click', (e) => {
+            if (currentProduct && currentProduct.url && currentProduct.url !== '#') {
+                // If clicking center of screen roughly (Atom position)
+                // or we can allow the whole canvas to be a link for the current product
+                // but that might annoy scrolling. 
+                // Let's rely on the CTA buttons in the scroll sections for navigation
+                // BUT user asked for "each atom should be clickable for each product".
+
+                // Only if clicking canvas (not UI)
+                if (e.target.tagName === 'CANVAS') {
+                    window.location.href = currentProduct.url;
+                }
+            }
+        });
+
+
+        // --- Animation ---
+        const clock = new THREE.Clock();
+
+        // Helper needs to be redefined or moved up scope if removed from previous block
         function calculateOrbitalPosition(type, scale, time, phase) {
             let x, y, z;
             const t = time + phase;
@@ -742,118 +1041,32 @@
             return vec;
         }
 
-        products.forEach(v => {
-            // Mesh
-            const geo = new THREE.SphereGeometry(0.4, 32, 32);
-            const mat = new THREE.MeshStandardMaterial({
-                color: v.color,
-                metalness: 0.9,
-                roughness: 0.2,
-                emissive: v.color,
-                emissiveIntensity: 0.2
-            });
-            const mesh = new THREE.Mesh(geo, mat);
-
-            // Bright core sprite
-            const spriteMat = new THREE.SpriteMaterial({
-                map: new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/spark1.png'),
-                color: v.color,
-                transparent: true,
-                blending: THREE.AdditiveBlending
-            });
-            const sprite = new THREE.Sprite(spriteMat);
-            sprite.scale.set(4, 4, 1);
-            mesh.add(sprite);
-
-            scene.add(mesh);
-            mesh.userData = { data: v };
-
-            // Label
-            const label = document.createElement('div');
-            label.className = 'atom-label';
-            label.innerText = v.name;
-            label.style.borderColor = '#' + v.color.toString(16).padStart(6, '0');
-            document.getElementById('labels-container').appendChild(label);
-
-            productObjects.push({
-                mesh,
-                label,
-                tailParticles: [],
-                lastSpawnTime: 0,
-                data: v,
-                t: Math.random() * 100,
-                localSpeedMult: 1.0,
-                localAuraIntensity: 1.0
-            });
-        });
-
-        // --- Raycaster ---
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
-        let hoveredObj = null;
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        window.addEventListener('touchstart', (e) => {
-            mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
-            checkIntersection(true);
-        }, { passive: false });
-
-        window.addEventListener('click', (e) => {
-            if (!e.target.closest('.interactive')) checkIntersection(true);
-        });
-
-        function checkIntersection(isClick) {
-            raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects(productObjects.map(v => v.mesh), true);
-
-            if (intersects.length > 0) {
-                let hitObj = intersects[0].object;
-                if (!hitObj.userData.data && hitObj.parent && hitObj.parent.userData.data) {
-                    hitObj = hitObj.parent;
-                }
-
-                const data = hitObj.userData.data;
-
-                if (data) {
-                    if (isClick) {
-                        openModal(data);
-                    } else {
-                        if (hoveredObj !== hitObj) {
-                            if (hoveredObj) hoveredObj.scale.setScalar(1);
-                            hoveredObj = hitObj;
-                            document.body.style.cursor = 'pointer';
-                            hoveredObj.scale.setScalar(1.5);
-                        }
-                    }
-                }
-            } else {
-                if (hoveredObj) {
-                    hoveredObj.scale.setScalar(1);
-                    hoveredObj = null;
-                    document.body.style.cursor = 'default';
-                }
-            }
-        }
-
-        // --- Animation ---
-        const clock = new THREE.Clock();
-
         function animate() {
             requestAnimationFrame(animate);
 
             const delta = clock.getDelta();
             const elapsedTime = clock.getElapsedTime();
 
-            // --- Nucleus Logic Update ---
+            // --- Nucleus Logic Update & Transition ---
+            const lerpFactor = delta * 12.0; // Much faster transition speed
+            config.currentHexColor = new THREE.Color(config.currentHexColor).lerp(targetColor, lerpFactor).getHex();
+
+            // Apply new color to nucleus components
+            nucMat.color.setHex(config.currentHexColor);
+            nucMat.emissive.setHex(config.currentHexColor);
+            coreLight.color.setHex(config.currentHexColor);
+            cageMat.color.setHex(config.currentHexColor);
+            featheredGlowMat.color.setHex(config.currentHexColor);
+            pointLight2.color.setHex(config.currentHexColor); // Background ambience
+
             const nEnergy = config.nucleusEnergy;
 
             nucleusGroup.rotation.y += 0.005 * nEnergy;
             nucleusGroup.rotation.z += 0.003 * nEnergy;
+
+            // Subtle breathing of nucleus
+            const breath = 1 + 0.1 * Math.sin(elapsedTime * 2);
+            nucleusGroup.scale.setScalar(breath);
 
             cage.rotation.x -= 0.01 * nEnergy;
             cage.rotation.y -= 0.01 * nEnergy;
@@ -868,22 +1081,42 @@
             grandGlow.scale.set(glowScale, glowScale, 1);
 
             cloudMesh.rotation.y -= 0.001;
+            // Tint cloud mesh slightly towards current product
+            cloudMat.color.lerp(new THREE.Color(config.currentHexColor).multiplyScalar(0.5).addScalar(0.1), lerpFactor * 0.1);
 
-            productObjects.forEach(obj => {
-                const currentSpeed = config.speed * obj.localSpeedMult * obj.data.speedOffset;
+
+            // --- Generic Electrons Update ---
+            electrons.forEach(obj => {
+                const currentSpeed = config.speed * obj.orbitParams.speedOffset;
 
                 obj.t += delta * 0.5 * currentSpeed;
-                const pos = calculateOrbitalPosition(obj.data.orbitType, obj.data.scale, obj.t, obj.data.phase);
+                const pos = calculateOrbitalPosition(obj.orbitParams.type, obj.orbitParams.scale, obj.t, obj.orbitParams.phase);
                 obj.mesh.position.copy(pos);
 
+                // Color Transition Logic
+                // If intro, target is baseColor. If specific product, target is that product's color (uniform).
+                let targetElectronColor;
+                if (currentProduct.id === 'intro') {
+                    targetElectronColor = obj.baseColor;
+                } else {
+                    // If we are in a product section, all electrons become that product's color
+                    targetElectronColor = new THREE.Color(config.currentHexColor);
+                }
+
+                obj.color.lerp(targetElectronColor, lerpFactor);
+
+                obj.mesh.material.color.copy(obj.color);
+                obj.mesh.material.emissive.copy(obj.color);
+                obj.sprite.material.color.copy(obj.color);
+
                 // --- Smoke Tail ---
-                const auraFactor = config.globalAuraMultiplier * obj.localAuraIntensity;
+                const auraFactor = config.globalAuraMultiplier; // Simplified
                 const spawnRate = 0.05 / Math.max(0.1, auraFactor);
 
                 if (elapsedTime - obj.lastSpawnTime > Math.max(0.02, spawnRate)) {
                     const partMat = new THREE.SpriteMaterial({
                         map: smokeTexture,
-                        color: obj.data.color,
+                        color: obj.color, // Use current electron color
                         transparent: true,
                         opacity: 0.25,
                         blending: THREE.AdditiveBlending,
@@ -909,6 +1142,10 @@
                     const p = obj.tailParticles[i];
                     p.userData.life -= delta;
 
+                    // Update particle color to match the head electron's current color
+                    // This ensures the trail changes color instantly along with the head
+                    p.material.color.copy(obj.color);
+
                     if (p.userData.life <= 0) {
                         scene.remove(p);
                         p.material.dispose();
@@ -920,25 +1157,10 @@
                         p.material.opacity = (p.userData.life / p.userData.maxLife) * 0.2;
                     }
                 }
-
-                // --- Label Visibility ---
-                const screenPos = pos.clone().project(camera);
-                const x = (screenPos.x * .5 + .5) * window.innerWidth;
-                const y = (-(screenPos.y * .5) + .5) * window.innerHeight;
-
-                if (screenPos.z < 1 && Math.abs(screenPos.x) < 0.95 && Math.abs(screenPos.y) < 0.95) {
-                    obj.label.style.transform = `translate(-50%, -50%) translate(${x}px, ${y - 25}px)`;
-                    const dist = camera.position.distanceTo(pos);
-                    const opacity = (hoveredObj === obj.mesh) ? 1 : Math.max(0.7, 1 - (dist / 60));
-                    obj.label.style.opacity = opacity;
-                    obj.label.style.zIndex = opacity > 0.8 ? 10 : 1;
-                } else {
-                    obj.label.style.opacity = 0;
-                }
             });
 
             if (window.matchMedia("(pointer: fine)").matches) {
-                checkIntersection(false);
+                // checkIntersection(false); // Removed raycaster logic for generic electrons
             }
 
             controls.update();
@@ -963,27 +1185,6 @@
         window.resetCamera = () => {
             controls.reset();
             updateCameraPosition();
-        };
-
-        // --- Product Modal ---
-        const modal = document.getElementById('product-modal');
-        window.openModal = (data) => {
-            if (!data) return;
-            document.getElementById('modal-title').innerText = data.name;
-            document.getElementById('modal-desc').innerText = data.desc;
-            document.getElementById('modal-emoji').innerText = data.icon;
-            document.getElementById('modal-title').style.color = '#' + data.color.toString(16).padStart(6, '0');
-
-            const btn = document.getElementById('initiate-btn');
-            btn.onclick = () => window.location.href = data.url;
-
-            modal.classList.remove('hidden');
-            void modal.offsetWidth;
-            modal.classList.add('modal-active');
-        };
-        window.closeModal = () => {
-            modal.classList.remove('modal-active');
-            setTimeout(() => modal.classList.add('hidden'), 300);
         };
 
         // --- About Modal ---
