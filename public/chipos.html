@@ -192,24 +192,22 @@
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
         <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
-            <div class="w-10 h-10 flex items-center justify-center">
+            <div class="w-12 h-12 flex items-center justify-center">
                 <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
                     class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
             </div>
             <div>
-                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
                     FUTURE<span class="text-cyan-400">ATOMS</span>
                 </h1>
-                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
-                    Intelligence</p>
             </div>
         </div>
 
-        <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
-            <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
 
             <div class="dropdown">
-                <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
+                <a href="#" class="nav-link flex items-center gap-1">
                     PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
                 </a>
                 <div class="dropdown-content">
@@ -222,18 +220,48 @@
                     <a href="bevybeats.html">BevyBeats</a>
                     <a href="savitri.html">Savitri</a>
                     <div class="border-t border-cyan-500/30 my-1"></div>
+                    <a href="chipos-docs.html" class="text-xs text-purple-400/70"><i class="fas fa-book mr-1"></i>
+                        Documentation</a>
                     <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i>
                         Changelog</a>
                 </div>
             </div>
 
-            <a href="blog.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
-            <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
-            <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
             <a href="contact.html"
-                class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+            <!-- Auth Section -->
+            <div id="auth-section" class="flex items-center gap-3 ml-4 pl-4 border-l border-cyan-500/30">
+                <div id="auth-loading" class="text-cyan-400 text-sm">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div id="auth-logged-out" class="hidden flex items-center gap-2">
+                    <button onclick="showEmailSignInModal()"
+                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
+                        title="Sign in with Email">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </button>
+                    <button onclick="signInWithGoogle()"
+                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
+                        title="Sign in with Google">
+                        <i class="fab fa-google text-sm"></i>
+                    </button>
+                    <button onclick="signInWithMicrosoft()"
+                        class="nav-link flex items-center gap-2 bg-cyan-500/10 px-3 py-1.5 rounded hover:bg-cyan-500/20"
+                        title="Sign in with Microsoft">
+                        <i class="fab fa-microsoft text-sm"></i>
+                    </button>
+                </div>
+                <div id="auth-logged-in" class="hidden flex items-center gap-3">
+                    <span id="user-email" class="text-cyan-300 text-sm truncate max-w-[150px]"></span>
+                    <button onclick="signOut()" class="nav-link text-red-400 hover:text-red-300 text-sm">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
         </nav>
-
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -298,6 +326,10 @@
                     class="cta-btn bg-cyan-500/20 border border-cyan-400 text-cyan-400 px-8 py-4 rounded-full font-bold hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]">
                     <i class="fas fa-download mr-2"></i> DOWNLOAD CHIPOS
                 </a>
+                <a href="chipos-docs.html"
+                    class="cta-btn bg-purple-500/20 border border-purple-400 text-purple-400 px-8 py-4 rounded-full font-bold hover:bg-purple-500/30 hover:shadow-[0_0_20px_rgba(147,51,234,0.3)]">
+                    <i class="fas fa-book mr-2"></i> DOCUMENTATION
+                </a>
                 <a href="https://github.com/futureatoms/chipos" target="_blank"
                     class="cta-btn bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10">
                     <i class="fab fa-github mr-2"></i> VIEW SOURCE
@@ -337,24 +369,21 @@
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">Auto-Install Claude Commands</span>
-                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace
-                            on activation</p>
+                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace on activation</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">AI Chatbot with Syntax Highlighting</span>
-                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware
-                            discussions</p>
+                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware discussions</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">12 Voyager SDK Commands</span>
-                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /debug, and more built-in
-                        </p>
+                        <span class="text-white font-bold">13 Voyager SDK Commands</span>
+                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /init-chipos, and more built-in</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -425,27 +454,27 @@
 
                 <div class="text-center mb-12">
                     <span
-                        class="inline-block bg-purple-500/20 border border-purple-500/50 text-purple-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">EXCLUSIVE
+                        class="inline-block bg-purple-500/20 border border-purple-500/50 text-purple-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">RESEARCH-BACKED
                         TECHNOLOGY</span>
                     <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6">UNMATCHED <span
                             class="text-purple-400">INTELLIGENCE</span></h2>
                     <p class="text-gray-300 max-w-3xl mx-auto text-lg">ChipOS features a proprietary RAG architecture
-                        designed specifically for the complexity of semiconductor design. It's not just a search
-                        bar—it's an engineering super-mind.</p>
+                        designed specifically for the complexity of semiconductor design. Built on peer-reviewed research
+                        and cutting-edge AI techniques.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     <!-- Capability 1 -->
                     <div
                         class="bg-black/40 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/50 transition-colors group">
                         <div
                             class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-network-wired text-purple-400 text-xl"></i>
+                            <i class="fas fa-layer-group text-purple-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Semantic Understanding</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Unlike standard tools that match keywords,
-                            ChipOS understands engineering intent. It connects concepts across datasheets, verification
-                            plans, and RTL code to answer "how" and "why", not just "where".</p>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Multi-Embedding Strategy</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Simultaneously uses 3 embedding models — OpenAI (1536d),
+                            UniXcoder for code semantics (768d), and Jina for late-chunking (1024d) — providing unmatched
+                            retrieval coverage across natural language and source code.</p>
                     </div>
 
                     <!-- Capability 2 -->
@@ -455,10 +484,10 @@
                             class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                             <i class="fas fa-code text-pink-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Auto-Code Extraction</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">A world-first capability: ChipOS automatically
-                            identifies, extracts, and indexes code snippets from your documentation. It builds a
-                            searchable library of usage examples without you lifting a finger.</p>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">cAST Code Chunking</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Context-aware AST chunking via tree-sitter preserves
+                            syntactic structure across 25+ languages. Extracts imports, definitions, calls, and scopes —
+                            research-backed for superior code retrieval.</p>
                     </div>
 
                     <!-- Capability 3 -->
@@ -466,12 +495,299 @@
                         class="bg-black/40 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/50 transition-colors group">
                         <div
                             class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-robot text-cyan-400 text-xl"></i>
+                            <i class="fas fa-sync text-cyan-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Universal Context (MCP)</h3>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">5-Agent Corrective RAG</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Self-correcting pipeline with relevance evaluation,
+                            query refinement, and external knowledge fallback. Automatically rewrites queries when initial
+                            results are poor — answers that improve themselves.</p>
+                    </div>
+                </div>
+
+                <!-- Technology Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                        <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-1">3</div>
+                        <div class="text-gray-500 text-xs uppercase tracking-wider">Embedding Models</div>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                        <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-1">25+</div>
+                        <div class="text-gray-500 text-xs uppercase tracking-wider">Languages</div>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                        <div class="text-3xl font-['Orbitron'] font-bold text-pink-400 mb-1">&lt;1ms</div>
+                        <div class="text-gray-500 text-xs uppercase tracking-wider">Vector Search</div>
+                    </div>
+                    <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                        <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-1">5</div>
+                        <div class="text-gray-500 text-xs uppercase tracking-wider">RAG Agents</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Hybrid Search -->
+                    <div
+                        class="bg-black/40 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/50 transition-colors group">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-search-plus text-cyan-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Hybrid Search Engine</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Combines vector similarity with BM25 keyword matching
+                            for comprehensive coverage. Handles CamelCase/snake_case identifiers and technical terms that
+                            pure semantic search misses.</p>
+                    </div>
+
+                    <!-- MCP Universal Context -->
+                    <div
+                        class="bg-black/40 p-6 rounded-xl border border-yellow-500/20 hover:border-yellow-500/50 transition-colors group">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-plug text-yellow-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Universal AI Context (MCP)</h3>
                         <p class="text-gray-400 text-sm leading-relaxed">ChipOS acts as the central brain for all your
-                            AI tools. Through our Model Context Protocol server, Claude, Cursor, and Windsurf gain
+                            AI tools. Through our HTTP-based MCP server, Claude, Cursor, Windsurf, and Gemini gain
                             instant access to your entire hardware knowledge base.</p>
+                    </div>
+                </div>
+
+                <!-- Learn More Link -->
+                <div class="text-center mt-8">
+                    <a href="chipos-docs.html#rag-overview" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-['Orbitron'] text-sm transition-colors">
+                        <i class="fas fa-book-open"></i>
+                        Explore the Technology in Documentation
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap Section -->
+        <div class="mb-24 relative" id="roadmap">
+            <!-- Background Effects -->
+            <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/5 via-purple-900/10 to-cyan-900/5 rounded-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden">
+                <!-- Animated Circuit Lines Background -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                                <path d="M0 50 H40 L50 40 H60 L70 50 H100" stroke="cyan" fill="none" stroke-width="0.5"/>
+                                <path d="M50 0 V30 L60 40 V60 L50 70 V100" stroke="cyan" fill="none" stroke-width="0.5"/>
+                                <circle cx="50" cy="50" r="3" fill="cyan"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#circuit)"/>
+                    </svg>
+                </div>
+
+                <div class="text-center mb-12 relative z-10">
+                    <span class="inline-block bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-cyan-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">
+                        <i class="fas fa-rocket mr-2"></i>THE FUTURE OF CHIP DESIGN
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6">
+                        DEVELOPMENT <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ROADMAP</span>
+                    </h2>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+                        ChipOS is evolving into a complete AI-powered hardware development platform. From RTL design to GDSII — all driven by intelligent automation.
+                    </p>
+                </div>
+
+                <!-- Current Features (Live) -->
+                <div class="mb-12 relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse shadow-lg shadow-green-400/50"></div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-green-400">AVAILABLE NOW</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-green-500/50 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                    <i class="fas fa-sliders-h text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Controls Dashboard</h4>
+                                    <p class="text-gray-400 text-xs">AI provider connections</p>
+                                </div>
+                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                    <i class="fas fa-database text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Knowledge Base</h4>
+                                    <p class="text-gray-400 text-xs">Multi-embedding RAG</p>
+                                </div>
+                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                    <i class="fas fa-robot text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">AI Chatbot</h4>
+                                    <p class="text-gray-400 text-xs">Hardware-aware conversations</p>
+                                </div>
+                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Future Features (Coming Soon) -->
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse shadow-lg shadow-cyan-400/50"></div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-cyan-400">COMING SOON</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- RTL Design -->
+                        <div class="roadmap-card group relative bg-black/40 border border-cyan-500/20 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-cyan-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-microchip text-2xl text-cyan-400"></i>
+                                    </div>
+                                    <span class="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">RTL Design</h4>
+                                <p class="text-gray-400 text-sm mb-4">AI-assisted Verilog & SystemVerilog generation from natural language specifications.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> Natural language to RTL</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> FSM synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> Module scaffolding</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Verification Automation -->
+                        <div class="roadmap-card group relative bg-black/40 border border-purple-500/20 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-check-double text-2xl text-purple-400"></i>
+                                    </div>
+                                    <span class="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Verification Automation</h4>
+                                <p class="text-gray-400 text-sm mb-4">Auto-generate UVM testbenches, coverage plans, and constrained random stimulus.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> UVM testbench generation</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> Coverage planning</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> Assertion synthesis</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Intelligent Debug -->
+                        <div class="roadmap-card group relative bg-black/40 border border-pink-500/20 rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-pink-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-bug text-2xl text-pink-400"></i>
+                                    </div>
+                                    <span class="bg-pink-500/20 text-pink-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Intelligent Debug</h4>
+                                <p class="text-gray-400 text-sm mb-4">AI-powered waveform analysis, signal tracing, and automatic root cause detection.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> Waveform anomaly detection</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> Signal path tracing</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> AI-suggested fixes</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Formal Verification -->
+                        <div class="roadmap-card group relative bg-black/40 border border-yellow-500/20 rounded-2xl p-6 hover:border-yellow-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-yellow-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-yellow-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-shield-halved text-2xl text-yellow-400"></i>
+                                    </div>
+                                    <span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Formal Verification</h4>
+                                <p class="text-gray-400 text-sm mb-4">Automatic property extraction, assertion-based verification, and proof-based bug hunting.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Property extraction</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Bounded model checking</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Cover synthesis</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Simulation & Waveforms -->
+                        <div class="roadmap-card group relative bg-black/40 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-wave-square text-2xl text-green-400"></i>
+                                    </div>
+                                    <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Simulation & Waveforms</h4>
+                                <p class="text-gray-400 text-sm mb-4">Integrated simulation tools with GHDL, Icarus, Verilator and intelligent waveform analysis.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> GTKWave integration</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> Surfer waveform viewer</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> AI waveform insights</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Synthesis & Physical Design -->
+                        <div class="roadmap-card group relative bg-black/40 border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-500/10 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-layer-group text-2xl text-blue-400"></i>
+                                    </div>
+                                    <span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded font-bold">2026</span>
+                                </div>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Synthesis & Physical</h4>
+                                <p class="text-gray-400 text-sm mb-4">Full RTL to GDSII flow with Yosys, OpenROAD, and AI optimization at every step.</p>
+                                <ul class="space-y-2 text-xs text-gray-500">
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> Yosys synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> OpenROAD P&R</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> AI optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision Statement -->
+                <div class="mt-12 text-center relative z-10">
+                    <div class="inline-block bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 rounded-2xl p-6 md:p-8 max-w-3xl">
+                        <i class="fas fa-quote-left text-3xl text-cyan-400/30 mb-4"></i>
+                        <p class="text-xl md:text-2xl text-gray-300 font-light italic mb-4">
+                            "ChipOS isn't just a knowledge base. It's becoming the <span class="text-cyan-400 font-bold">entire chip design workflow</span> — powered by AI."
+                        </p>
+                        <div class="flex items-center justify-center gap-4">
+                            <a href="chipos-pitch.html" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-['Orbitron'] text-sm transition-colors">
+                                <i class="fas fa-play-circle"></i>
+                                Watch the Vision
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

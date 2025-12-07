@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChipOS Settings Guide - Complete Configuration Reference | FutureAtoms</title>
+    <meta name="description" content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --cyan-glow: rgba(0, 255, 255, 0.3);
+            --purple-glow: rgba(147, 51, 234, 0.3);
+            --green-glow: rgba(34, 197, 94, 0.3);
+            --orange-glow: rgba(249, 115, 22, 0.3);
+            --pink-glow: rgba(236, 72, 153, 0.3);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
+            scroll-behavior: smooth;
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Sidebar */
+        .docs-sidebar {
+            background: rgba(5, 12, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .sidebar-link {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link:hover, .sidebar-link.active {
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: #00ffff;
+            color: #00ffff;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 0.7rem;
+        }
+
+        /* Content */
+        .docs-content {
+            background: linear-gradient(135deg, rgba(5, 12, 25, 0.8) 0%, rgba(10, 20, 40, 0.6) 100%);
+        }
+
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        /* Settings cards */
+        .settings-card {
+            background: rgba(10, 20, 40, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .settings-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        .settings-card.green { border-left: 4px solid #22c55e; }
+        .settings-card.orange { border-left: 4px solid #f97316; }
+        .settings-card.pink { border-left: 4px solid #ec4899; }
+        .settings-card.purple { border-left: 4px solid #a855f7; }
+        .settings-card.cyan { border-left: 4px solid #00ffff; }
+        .settings-card.blue { border-left: 4px solid #3b82f6; }
+
+        /* Table styles */
+        .docs-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .docs-table th {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .docs-table td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px;
+        }
+
+        .docs-table tr:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* Code inline */
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: #00ffff;
+        }
+
+        /* Callout boxes */
+        .callout {
+            border-left: 4px solid;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout-info {
+            background: rgba(0, 150, 255, 0.1);
+            border-color: #0096ff;
+        }
+
+        .callout-tip {
+            background: rgba(0, 255, 150, 0.1);
+            border-color: #00ff96;
+        }
+
+        .callout-warning {
+            background: rgba(255, 200, 0, 0.1);
+            border-color: #ffc800;
+        }
+
+        /* Toggle visual */
+        .toggle-visual {
+            width: 48px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .toggle-visual.on {
+            background: rgba(34, 197, 94, 0.3);
+        }
+
+        .toggle-visual::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.2s;
+        }
+
+        .toggle-visual.on::after {
+            transform: translateX(24px);
+            background: #22c55e;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.5);
+        }
+
+        /* Mobile menu */
+        .mobile-nav-btn {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .docs-sidebar {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                height: 100vh;
+                z-index: 100;
+                transition: left 0.3s ease;
+            }
+
+            .docs-sidebar.open {
+                left: 0;
+            }
+
+            .mobile-nav-btn {
+                display: flex;
+            }
+
+            .docs-main {
+                margin-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Mobile Nav Button -->
+    <button id="mobileNavBtn" class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
+        <i class="fas fa-bars text-lg"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="docs-sidebar fixed left-0 top-0 w-72 h-screen overflow-y-auto py-8 px-4">
+        <!-- Logo -->
+        <a href="chipos.html" class="flex items-center gap-3 mb-8 px-4">
+            <img src="chipos-logo.png" alt="ChipOS" class="w-10 h-10">
+            <span class="font-orbitron text-xl font-bold text-white">ChipOS</span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="space-y-6">
+            <!-- Features Section -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Features</h3>
+                <a href="#features" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Feature Toggles</a>
+                <a href="#dark-mode" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Dark Mode</a>
+                <a href="#projects" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Projects</a>
+                <a href="#logfire" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Pydantic Logfire</a>
+            </div>
+
+            <!-- API Keys Section -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Credentials</h3>
+                <a href="#api-keys" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">API Keys</a>
+                <a href="#github-token" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">GitHub Token</a>
+                <a href="#supabase" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Supabase</a>
+            </div>
+
+            <!-- RAG Section -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">RAG Settings</h3>
+                <a href="#rag-settings" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
+                <a href="#llm-provider" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">LLM Provider</a>
+                <a href="#rag-strategy" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">RAG Strategy</a>
+                <a href="#crawling" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Crawling Performance</a>
+                <a href="#storage" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Storage Performance</a>
+            </div>
+
+            <!-- Code Extraction Section -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Code Extraction</h3>
+                <a href="#code-extraction" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
+                <a href="#code-length" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Block Length</a>
+                <a href="#code-detection" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Detection Features</a>
+                <a href="#code-filtering" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Content Filtering</a>
+            </div>
+
+            <!-- Recommendations -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Guides</h3>
+                <a href="#recommended" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Recommended Configs</a>
+                <a href="#troubleshooting" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Troubleshooting</a>
+            </div>
+
+            <!-- Back to docs -->
+            <div class="pt-6 border-t border-gray-700">
+                <a href="chipos-docs.html" class="sidebar-link block py-2 px-4 text-cyan-400 text-sm">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Documentation
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-main ml-72 min-h-screen">
+        <div class="docs-content min-h-screen p-8 lg:p-12">
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Header -->
+                <header class="mb-12">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
+                            <i class="fas fa-cog text-2xl text-cyan-400"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-orbitron text-4xl font-bold text-white">Settings Guide</h1>
+                            <p class="text-gray-400">Complete configuration reference for ChipOS</p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Features Section -->
+                <section id="features" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-palette text-purple-400"></i>
+                        Features
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        The Features section controls which functionality is enabled in ChipOS. Toggle these settings to customize your experience.
+                    </p>
+
+                    <!-- Dark Mode -->
+                    <div id="dark-mode" class="settings-card purple p-6 mb-6">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="font-orbitron text-lg text-white mb-2">Dark Mode</h3>
+                                <p class="text-gray-400 text-sm mb-4">Switch between light and dark color themes</p>
+                                <table class="docs-table text-sm">
+                                    <tr><td class="font-semibold w-32">Default</td><td>Enabled (Dark)</td></tr>
+                                    <tr><td class="font-semibold">Effect</td><td>Changes entire UI color scheme</td></tr>
+                                    <tr><td class="font-semibold">When to Use</td><td>Personal preference; dark mode reduces eye strain in low light</td></tr>
+                                </table>
+                            </div>
+                            <div class="toggle-visual on"></div>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div id="projects" class="settings-card blue p-6 mb-6">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="font-orbitron text-lg text-white mb-2">Projects</h3>
+                                <p class="text-gray-400 text-sm mb-4">Enable Projects and Tasks functionality</p>
+                                <table class="docs-table text-sm">
+                                    <tr><td class="font-semibold w-32">Default</td><td>Enabled</td></tr>
+                                    <tr><td class="font-semibold">Effect</td><td>Shows Projects sidebar, allows task management</td></tr>
+                                    <tr><td class="font-semibold">Requirements</td><td><code>archon_tasks.sql</code> migration must be installed</td></tr>
+                                </table>
+                                <div class="callout callout-warning mt-4">
+                                    <p class="text-sm"><strong>Note:</strong> If you see "Projects table not detected", run the database migration in Supabase SQL Editor.</p>
+                                </div>
+                            </div>
+                            <div class="toggle-visual on"></div>
+                        </div>
+                    </div>
+
+                    <!-- Logfire -->
+                    <div id="logfire" class="settings-card orange p-6 mb-6">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="font-orbitron text-lg text-white mb-2">Pydantic Logfire</h3>
+                                <p class="text-gray-400 text-sm mb-4">Structured logging and observability platform</p>
+                                <table class="docs-table text-sm">
+                                    <tr><td class="font-semibold w-32">Default</td><td>Disabled</td></tr>
+                                    <tr><td class="font-semibold">Effect</td><td>Sends telemetry data to Pydantic Logfire for debugging</td></tr>
+                                    <tr><td class="font-semibold">Requirements</td><td><code>LOGFIRE_TOKEN</code> in environment</td></tr>
+                                </table>
+                            </div>
+                            <div class="toggle-visual"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Keys Section -->
+                <section id="api-keys" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-key text-pink-400"></i>
+                        API Keys
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        Manage credentials for external services. API keys power the AI features, embeddings, and external integrations.
+                    </p>
+
+                    <div class="settings-card pink p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Supported API Keys</h3>
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Key Name</th>
+                                    <th>Service</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>OPENAI_API_KEY</code></td>
+                                    <td>OpenAI</td>
+                                    <td>RAG queries, embeddings, AI chat</td>
+                                </tr>
+                                <tr>
+                                    <td><code>GOOGLE_API_KEY</code></td>
+                                    <td>Google Gemini</td>
+                                    <td>Alternative LLM provider</td>
+                                </tr>
+                                <tr>
+                                    <td><code>GITHUB_TOKEN</code></td>
+                                    <td>GitHub</td>
+                                    <td>Crawling private repositories</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="settings-card pink p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Key Features</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <i class="fas fa-lock text-pink-400 text-2xl mb-2"></i>
+                                <h4 class="text-white font-semibold mb-1">Encryption</h4>
+                                <p class="text-gray-400 text-sm">Click lock icon to encrypt sensitive values</p>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <i class="fas fa-eye text-pink-400 text-2xl mb-2"></i>
+                                <h4 class="text-white font-semibold mb-1">Show/Hide</h4>
+                                <p class="text-gray-400 text-sm">Click eye icon to reveal masked values</p>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <i class="fas fa-plus text-pink-400 text-2xl mb-2"></i>
+                                <h4 class="text-white font-semibold mb-1">Add New</h4>
+                                <p class="text-gray-400 text-sm">Add custom API keys as needed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-tip">
+                        <p class="text-sm"><strong>Security Tip:</strong> Always encrypt API keys. Encrypted credentials are stored securely and cannot be viewed after saving.</p>
+                    </div>
+                </section>
+
+                <!-- RAG Settings Section -->
+                <section id="rag-settings" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-brain text-green-400"></i>
+                        RAG Settings
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        RAG (Retrieval-Augmented Generation) settings control how ChipOS retrieves and processes knowledge from your documentation.
+                    </p>
+
+                    <!-- LLM Provider -->
+                    <div id="llm-provider" class="settings-card green p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">LLM Provider & Models</h3>
+                        <table class="docs-table mb-6">
+                            <thead>
+                                <tr>
+                                    <th>Provider</th>
+                                    <th>Recommended Chat Model</th>
+                                    <th>Embedding Model</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>OpenAI</strong> (default)</td>
+                                    <td><code>gpt-4o-mini</code>, <code>gpt-4o</code></td>
+                                    <td><code>text-embedding-3-small</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Google Gemini</strong></td>
+                                    <td><code>gemini-1.5-flash</code></td>
+                                    <td><code>text-embedding-004</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ollama</strong> (local)</td>
+                                    <td><code>llama2</code>, <code>mistral</code></td>
+                                    <td><code>nomic-embed-text</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- RAG Strategy -->
+                    <div id="rag-strategy" class="settings-card green p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">RAG Strategy Toggles</h3>
+
+                        <div class="space-y-4">
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Contextual Embeddings</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Enhances embeddings with surrounding context for better retrieval</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Disabled | <strong>Workers:</strong> 1-10 (default 3)</p>
+                                    </div>
+                                    <div class="toggle-visual"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Hybrid Search</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Combines vector similarity with BM25 keyword search</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Better for exact identifiers like <code>AXI_AWREADY</code></p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Agentic RAG</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Enables code extraction and specialized search for technical content</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Creates separate embeddings for code blocks</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Reranking</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Applies cross-encoder reranking to improve result relevance</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Re-scores top results for better accuracy</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crawling Performance -->
+                    <div id="crawling" class="settings-card green p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Crawling Performance Settings</h3>
+                        <table class="docs-table mb-6">
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>Default</th>
+                                    <th>Range</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Batch Size</strong></td>
+                                    <td>50</td>
+                                    <td>10-100</td>
+                                    <td>URLs to queue per crawl batch</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Max Concurrent</strong></td>
+                                    <td>10</td>
+                                    <td>1-20</td>
+                                    <td>Pages to crawl simultaneously</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Wait Strategy</strong></td>
+                                    <td>DOM Loaded</td>
+                                    <td>-</td>
+                                    <td>When to consider page loaded</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Page Timeout</strong></td>
+                                    <td>60 sec</td>
+                                    <td>5-120</td>
+                                    <td>Max time to wait for page</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Render Delay</strong></td>
+                                    <td>0.5 sec</td>
+                                    <td>0.1-5</td>
+                                    <td>Wait after load before extracting</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="text-white font-semibold mb-3">Wait Strategy Options</h4>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-black/30 rounded-lg p-3 text-center">
+                                <div class="text-green-400 font-semibold">DOM Loaded</div>
+                                <div class="text-gray-400 text-xs">Fast • Good for static docs</div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-3 text-center">
+                                <div class="text-yellow-400 font-semibold">Network Idle</div>
+                                <div class="text-gray-400 text-xs">Medium • JS-rendered pages</div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-3 text-center">
+                                <div class="text-orange-400 font-semibold">Full Load</div>
+                                <div class="text-gray-400 text-xs">Slow • Complex SPAs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Storage Performance -->
+                    <div id="storage" class="settings-card green p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Storage Performance Settings</h3>
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>Default</th>
+                                    <th>Range</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Document Batch Size</strong></td>
+                                    <td>50</td>
+                                    <td>10-100</td>
+                                    <td>Chunks per database insert batch</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Embedding Batch Size</strong></td>
+                                    <td>100</td>
+                                    <td>20-200</td>
+                                    <td>Embeddings per API call</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Code Extraction Workers</strong></td>
+                                    <td>3</td>
+                                    <td>1-10</td>
+                                    <td>Parallel code summary workers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Enable Parallel Batches</strong></td>
+                                    <td>Enabled</td>
+                                    <td>-</td>
+                                    <td>Process multiple batches simultaneously</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Code Extraction Section -->
+                <section id="code-extraction" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-code text-orange-400"></i>
+                        Code Extraction Settings
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        These settings control how code blocks are detected and extracted from crawled documents.
+                    </p>
+
+                    <!-- Block Length -->
+                    <div id="code-length" class="settings-card orange p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Code Block Length</h3>
+                        <table class="docs-table mb-4">
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>Default</th>
+                                    <th>Range</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Minimum Length</strong></td>
+                                    <td>250 chars</td>
+                                    <td>50-2000</td>
+                                    <td>Shortest code block to extract</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Maximum Length</strong></td>
+                                    <td>5000 chars</td>
+                                    <td>1000-20000</td>
+                                    <td>Longest code block to extract</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="callout callout-tip mt-0">
+                            <p class="text-sm"><strong>Tip:</strong> Increase minimum for higher quality (fewer snippets). Decrease to capture short examples.</p>
+                        </div>
+                    </div>
+
+                    <!-- Detection Features -->
+                    <div id="code-detection" class="settings-card orange p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Detection Features</h3>
+                        <div class="space-y-4">
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Complete Block Detection</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Extend code blocks to natural boundaries (closing braces, etc.)</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Language-Specific Patterns</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Use specialized patterns for TypeScript, Python, Verilog, etc.</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Contextual Length Adjustment</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Adjust minimum length based on context (example, snippet, implementation)</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Filtering -->
+                    <div id="code-filtering" class="settings-card orange p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">Content Filtering</h3>
+                        <div class="space-y-4">
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Filter Prose Content</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Remove documentation text mistakenly wrapped in code blocks</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Filter Diagram Languages</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Exclude Mermaid, PlantUML, and other diagram formats</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Generate Code Summaries</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Use AI to create summaries and names for code examples</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recommended Configurations -->
+                <section id="recommended" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        Recommended Configurations
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Hardware Docs -->
+                        <div class="settings-card cyan p-6">
+                            <h3 class="font-orbitron text-lg text-white mb-4">
+                                <i class="fas fa-microchip text-cyan-400 mr-2"></i>
+                                Hardware Documentation
+                            </h3>
+                            <ul class="text-gray-300 text-sm space-y-2">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Contextual Embeddings: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Hybrid Search: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Agentic RAG: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Wait Strategy: <strong>DOM Loaded</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Generate Code Summaries: <strong>Enabled</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- Large Codebases -->
+                        <div class="settings-card cyan p-6">
+                            <h3 class="font-orbitron text-lg text-white mb-4">
+                                <i class="fab fa-github text-cyan-400 mr-2"></i>
+                                Large Codebases
+                            </h3>
+                            <ul class="text-gray-300 text-sm space-y-2">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Discovered Pages: <strong>50,000</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size: <strong>200</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Code Extraction Workers: <strong>5</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Parallel Batches: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use path regex filters</li>
+                            </ul>
+                        </div>
+
+                        <!-- Low Resource -->
+                        <div class="settings-card cyan p-6">
+                            <h3 class="font-orbitron text-lg text-white mb-4">
+                                <i class="fas fa-memory text-cyan-400 mr-2"></i>
+                                Low-Resource Systems
+                            </h3>
+                            <ul class="text-gray-300 text-sm space-y-2">
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Use Contextual Embeddings: <strong>Disabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Batch Size: <strong>25</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Concurrent: <strong>3</strong></li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Parallel Batches: <strong>Disabled</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- Cost Optimization -->
+                        <div class="settings-card cyan p-6">
+                            <h3 class="font-orbitron text-lg text-white mb-4">
+                                <i class="fas fa-dollar-sign text-cyan-400 mr-2"></i>
+                                API Cost Optimization
+                            </h3>
+                            <ul class="text-gray-300 text-sm space-y-2">
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Contextual Embeddings: <strong>Disabled</strong></li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Code Summaries: <strong>Disabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size: <strong>50</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Model: <strong>gpt-4o-mini</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Troubleshooting -->
+                <section id="troubleshooting" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-wrench text-red-400"></i>
+                        Troubleshooting
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div class="settings-card p-6">
+                            <h3 class="text-white font-semibold mb-2">"Failed to save settings"</h3>
+                            <ul class="text-gray-400 text-sm list-disc list-inside">
+                                <li>Check Supabase connection</li>
+                                <li>Verify using <strong>service_role key</strong> (NOT anon key)</li>
+                                <li>Check browser console for detailed error</li>
+                            </ul>
+                        </div>
+
+                        <div class="settings-card p-6">
+                            <h3 class="text-white font-semibold mb-2">"Projects table not detected"</h3>
+                            <ul class="text-gray-400 text-sm list-disc list-inside">
+                                <li>Run database migration: <code>migration/archon_tasks.sql</code></li>
+                                <li>Restart the server after migration</li>
+                            </ul>
+                        </div>
+
+                        <div class="settings-card p-6">
+                            <h3 class="text-white font-semibold mb-2">Slow crawling</h3>
+                            <ul class="text-gray-400 text-sm list-disc list-inside">
+                                <li>Reduce Max Concurrent to 3-5</li>
+                                <li>Use "DOM Loaded" wait strategy</li>
+                                <li>Check network/server response times</li>
+                            </ul>
+                        </div>
+
+                        <div class="settings-card p-6">
+                            <h3 class="text-white font-semibold mb-2">Poor search results</h3>
+                            <ul class="text-gray-400 text-sm list-disc list-inside">
+                                <li>Enable Hybrid Search</li>
+                                <li>Enable Reranking</li>
+                                <li>Increase Context Window Size</li>
+                                <li>Re-crawl sources with updated settings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="pt-12 border-t border-gray-800">
+                    <div class="flex items-center justify-between">
+                        <p class="text-gray-500 text-sm">Last updated: December 2025</p>
+                        <div class="flex gap-4">
+                            <a href="chipos-docs.html" class="text-cyan-400 text-sm hover:text-cyan-300">
+                                <i class="fas fa-book mr-1"></i> Full Documentation
+                            </a>
+                            <a href="chipos.html" class="text-cyan-400 text-sm hover:text-cyan-300">
+                                <i class="fas fa-download mr-1"></i> Download ChipOS
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile sidebar toggle
+        const mobileNavBtn = document.getElementById('mobileNavBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileNavBtn?.addEventListener('click', () => {
+            sidebar?.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024 &&
+                !sidebar?.contains(e.target) &&
+                !mobileNavBtn?.contains(e.target)) {
+                sidebar?.classList.remove('open');
+            }
+        });
+
+        // Highlight active section in sidebar
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

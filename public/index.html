@@ -1200,20 +1200,22 @@
         }
 
         // --- Mobile Menu ---
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileBtn = document.getElementById('close-mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
 
-        if (mobileBtn && mobileMenu && closeMobileBtn) {
-            mobileBtn.onclick = () => {
-                mobileMenu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            };
-            closeMobileBtn.onclick = () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            };
-        }
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
 
         // Show Hero Search after a delay
         setTimeout(() => {

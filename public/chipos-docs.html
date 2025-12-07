@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChipOS Documentation - Complete User Guide | FutureAtoms</title>
+    <meta name="description" content="Complete documentation for ChipOS - The AI Operating System for Hardware Design. Learn about RAG technology, MCP integration, Claude commands, and more.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Prism.js for code highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+    <style>
+        :root {
+            --cyan-glow: rgba(0, 255, 255, 0.3);
+            --purple-glow: rgba(147, 51, 234, 0.3);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #020205;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0f7ff;
+            scroll-behavior: smooth;
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Sidebar */
+        .docs-sidebar {
+            background: rgba(5, 12, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .sidebar-link {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link:hover, .sidebar-link.active {
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: #00ffff;
+            color: #00ffff;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 0.7rem;
+        }
+
+        /* Content */
+        .docs-content {
+            background: linear-gradient(135deg, rgba(5, 12, 25, 0.8) 0%, rgba(10, 20, 40, 0.6) 100%);
+        }
+
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        /* Feature cards */
+        .feature-card {
+            background: rgba(10, 20, 40, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        /* Tech badge */
+        .tech-badge {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+        }
+
+        /* Architecture diagram */
+        .arch-layer {
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .arch-connector {
+            border-left: 2px dashed rgba(0, 255, 255, 0.3);
+        }
+
+        /* Table styles */
+        .docs-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .docs-table th {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 12px;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .docs-table td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px;
+        }
+
+        .docs-table tr:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        /* Callout boxes */
+        .callout {
+            border-left: 4px solid;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout-info {
+            background: rgba(0, 150, 255, 0.1);
+            border-color: #0096ff;
+        }
+
+        .callout-tip {
+            background: rgba(0, 255, 150, 0.1);
+            border-color: #00ff96;
+        }
+
+        .callout-warning {
+            background: rgba(255, 200, 0, 0.1);
+            border-color: #ffc800;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.5);
+        }
+
+        /* Mobile menu */
+        .mobile-nav-btn {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .docs-sidebar {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                height: 100vh;
+                z-index: 100;
+                transition: left 0.3s ease;
+            }
+
+            .docs-sidebar.open {
+                left: 0;
+            }
+
+            .mobile-nav-btn {
+                display: flex;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 99;
+            }
+
+            .sidebar-overlay.open {
+                display: block;
+            }
+        }
+
+        /* Anchor offset for fixed header */
+        .section-anchor {
+            scroll-margin-top: 100px;
+        }
+
+        /* Animated gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #00ffff, #9333ea, #00ffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center justify-between px-4 py-3 lg:px-8">
+            <div class="flex items-center gap-4">
+                <!-- Mobile menu button -->
+                <button onclick="toggleSidebar()" class="mobile-nav-btn lg:hidden text-cyan-400 p-2 hover:bg-cyan-500/20 rounded-lg">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <a href="chipos.html" class="flex items-center gap-3">
+                    <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8 object-contain">
+                    <span class="font-orbitron text-xl font-bold text-white">ChipOS <span class="text-cyan-400">Docs</span></span>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:inline-block text-xs font-mono bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">
+                    v2025.12.1
+                </span>
+                <a href="chipos.html" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to ChipOS
+                </a>
+                <a href="https://github.com/futureatoms/chipos" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Main Layout -->
+    <div class="flex pt-14">
+        <!-- Sidebar Navigation -->
+        <aside id="docs-sidebar" class="docs-sidebar w-72 h-screen sticky top-14 overflow-y-auto flex-shrink-0">
+            <nav class="p-4 space-y-6">
+                <!-- Getting Started -->
+                <div>
+                    <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Getting Started</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#introduction" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Introduction</a></li>
+                        <li><a href="#installation" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Installation</a></li>
+                        <li><a href="#quick-start" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Quick Start</a></li>
+                        <li><a href="#configuration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Configuration</a></li>
+                    </ul>
+                </div>
+
+                <!-- Core Features -->
+                <div>
+                    <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Core Features</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#knowledge-base" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Knowledge Base</a></li>
+                        <li><a href="#ai-chatbot" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">AI Chatbot</a></li>
+                        <li><a href="#mcp-server" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">MCP Server</a></li>
+                        <li><a href="#claude-commands" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Commands</a></li>
+                    </ul>
+                </div>
+
+                <!-- RAG Technology -->
+                <div>
+                    <h3 class="sidebar-section-title text-purple-400 uppercase mb-3 px-3 flex items-center gap-2">
+                        <i class="fas fa-brain text-xs"></i> RAG Technology
+                    </h3>
+                    <ul class="space-y-1">
+                        <li><a href="#rag-overview" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Overview</a></li>
+                        <li><a href="#embeddings" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Embeddings</a></li>
+                        <li><a href="#semantic-search" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Semantic Search</a></li>
+                        <li><a href="#hybrid-search" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Hybrid Search</a></li>
+                        <li><a href="#auto-code-extraction" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Auto-Code Extraction</a></li>
+                        <li><a href="#corrective-rag" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Corrective RAG</a></li>
+                    </ul>
+                </div>
+
+                <!-- Architecture -->
+                <div>
+                    <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Architecture</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#system-architecture" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">System Overview</a></li>
+                        <li><a href="#tech-stack" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Tech Stack</a></li>
+                        <li><a href="#database" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Database Schema</a></li>
+                    </ul>
+                </div>
+
+                <!-- Integrations -->
+                <div>
+                    <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Integrations</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#claude-integration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Code</a></li>
+                        <li><a href="#cursor-integration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Cursor</a></li>
+                        <li><a href="#windsurf-integration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Windsurf</a></li>
+                    </ul>
+                </div>
+
+                <!-- Reference -->
+                <div>
+                    <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Reference</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#commands-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Commands Reference</a></li>
+                        <li><a href="#api-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">API Reference</a></li>
+                        <li><a href="#settings" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Settings</a></li>
+                        <li><a href="chipos-settings.html" class="sidebar-link block px-3 py-2 rounded text-sm text-cyan-400">
+                            <i class="fas fa-external-link-alt text-xs mr-1"></i>Full Settings Guide
+                        </a></li>
+                        <li><a href="#troubleshooting" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content flex-1 min-h-screen">
+            <div class="max-w-4xl mx-auto px-6 py-12 lg:px-12">
+
+                <!-- Hero Section -->
+                <section id="introduction" class="section-anchor mb-16">
+                    <div class="text-center mb-12">
+                        <div class="inline-block mb-6">
+                            <span class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
+                                OFFICIAL DOCUMENTATION
+                            </span>
+                        </div>
+                        <h1 class="text-4xl lg:text-5xl font-orbitron font-bold mb-6">
+                            <span class="gradient-text">ChipOS</span>
+                            <span class="text-white">Documentation</span>
+                        </h1>
+                        <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                            The complete guide to the AI Operating System for Hardware Design.
+                            Learn how to leverage world-leading RAG technology for semiconductor development.
+                        </p>
+                    </div>
+
+                    <!-- Quick links -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="#quick-start" class="feature-card p-6 rounded-xl text-center hover:border-cyan-500/50">
+                            <i class="fas fa-rocket text-3xl text-cyan-400 mb-4"></i>
+                            <h3 class="font-orbitron font-bold text-white mb-2">Quick Start</h3>
+                            <p class="text-sm text-gray-400">Get up and running in 5 minutes</p>
+                        </a>
+                        <a href="#rag-overview" class="feature-card p-6 rounded-xl text-center hover:border-purple-500/50">
+                            <i class="fas fa-brain text-3xl text-purple-400 mb-4"></i>
+                            <h3 class="font-orbitron font-bold text-white mb-2">RAG Technology</h3>
+                            <p class="text-sm text-gray-400">Learn about our AI architecture</p>
+                        </a>
+                        <a href="#claude-commands" class="feature-card p-6 rounded-xl text-center hover:border-green-500/50">
+                            <i class="fas fa-terminal text-3xl text-green-400 mb-4"></i>
+                            <h3 class="font-orbitron font-bold text-white mb-2">Commands</h3>
+                            <p class="text-sm text-gray-400">12 built-in slash commands</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- What is ChipOS -->
+                <section class="mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-microchip text-cyan-400 text-sm"></i>
+                        </span>
+                        What is ChipOS?
+                    </h2>
+
+                    <div class="prose prose-invert max-w-none">
+                        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                            ChipOS is a complete AI operating system designed specifically for semiconductor engineers.
+                            Built on top of VS Code, it provides a standalone development environment with integrated
+                            knowledge management, AI-powered assistance, and seamless integration with modern AI tools.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="glass-panel p-6 rounded-xl">
+                                <h4 class="font-orbitron text-cyan-400 mb-3">For Hardware Engineers</h4>
+                                <ul class="space-y-2 text-gray-300 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Store and search datasheets, RTL specs, and verification plans</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Generate SystemVerilog and UVM testbenches with AI</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Query your knowledge base using natural language</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="glass-panel p-6 rounded-xl">
+                                <h4 class="font-orbitron text-purple-400 mb-3">For AI/ML Engineers</h4>
+                                <ul class="space-y-2 text-gray-300 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Deploy and benchmark models on Metis hardware</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Create inference pipelines with YAML configuration</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check text-green-400 mt-1"></i>
+                                        <span>Access SDK documentation through RAG-powered search</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Installation -->
+                <section id="installation" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-download text-cyan-400 text-sm"></i>
+                        </span>
+                        Installation
+                    </h2>
+
+                    <div class="callout callout-info">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-info-circle text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">No conflicts with VS Code</strong>
+                                <p class="text-gray-300 text-sm mt-1">ChipOS is a standalone application with its own data folder. It won't interfere with your existing VS Code installation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platform tabs -->
+                    <div class="mt-8">
+                        <div class="flex gap-2 mb-6">
+                            <button onclick="showPlatform('macos')" id="tab-macos" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                                <i class="fab fa-apple mr-2"></i>macOS
+                            </button>
+                            <button onclick="showPlatform('linux')" id="tab-linux" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
+                                <i class="fab fa-linux mr-2"></i>Linux
+                            </button>
+                            <button onclick="showPlatform('web')" id="tab-web" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
+                                <i class="fas fa-globe mr-2"></i>Web
+                            </button>
+                        </div>
+
+                        <!-- macOS -->
+                        <div id="platform-macos" class="platform-content">
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                    <div>
+                                        <p class="text-white font-bold mb-2">Download the DMG</p>
+                                        <a href="ChipOS-2025.12.1-macOS-arm64.dmg" class="inline-block bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 px-4 py-2 rounded-lg transition-colors text-sm">
+                                            <i class="fas fa-download mr-2"></i>ChipOS-2025.12.1-macOS-arm64.dmg
+                                        </a>
+                                        <p class="text-gray-500 text-xs mt-2">Requires macOS 11+ • Apple Silicon</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                    <div>
+                                        <p class="text-white font-bold mb-2">Open the DMG and drag to Applications</p>
+                                        <p class="text-gray-400 text-sm">The app is notarized by Apple — no security warnings.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">3</div>
+                                    <div>
+                                        <p class="text-white font-bold mb-2">Launch ChipOS</p>
+                                        <p class="text-gray-400 text-sm">Find it in your Applications folder or Spotlight.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linux -->
+                        <div id="platform-linux" class="platform-content hidden">
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                    <div class="flex-1">
+                                        <p class="text-white font-bold mb-2">Download the .deb package</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-bash">wget https://futureatoms.com/chipos_2025.12.1_amd64.deb</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                    <div class="flex-1">
+                                        <p class="text-white font-bold mb-2">Install with dpkg</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-bash">sudo dpkg -i chipos_2025.12.1_amd64.deb</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">3</div>
+                                    <div>
+                                        <p class="text-white font-bold mb-2">Launch from terminal or application menu</p>
+                                        <div class="code-block">
+                                            <pre><code class="language-bash">chipos</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="callout callout-tip mt-6">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-lightbulb text-green-400 mt-1"></i>
+                                    <div>
+                                        <strong class="text-white">GNOME Keyring Support</strong>
+                                        <p class="text-gray-300 text-sm mt-1">ChipOS integrates with GNOME keyring for secure credential storage in enterprise environments.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Web -->
+                        <div id="platform-web" class="platform-content hidden">
+                            <div class="glass-panel p-6 rounded-xl text-center">
+                                <i class="fas fa-cloud text-5xl text-cyan-400 mb-4"></i>
+                                <h3 class="font-orbitron text-xl font-bold text-white mb-3">ChipOS Web App</h3>
+                                <p class="text-gray-400 mb-6">No installation required. Run ChipOS directly in your browser with our hosted backend.</p>
+                                <a href="/app/" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-orbitron font-bold px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-blue-400 transition-all">
+                                    <i class="fas fa-rocket mr-2"></i>Launch Web App
+                                </a>
+                                <p class="text-gray-500 text-xs mt-4">
+                                    <i class="fas fa-lock mr-1"></i>Enterprise access: @futureatoms.com and @axelera.ai emails only
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Start -->
+                <section id="quick-start" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-rocket text-green-400 text-sm"></i>
+                        </span>
+                        Quick Start
+                    </h2>
+
+                    <p class="text-gray-400 mb-8">Get ChipOS connected to your AI assistant in under 5 minutes.</p>
+
+                    <div class="space-y-6">
+                        <div class="feature-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">1</div>
+                                <div class="flex-1">
+                                    <h4 class="text-white font-bold mb-2">Open a Workspace</h4>
+                                    <p class="text-gray-400 text-sm mb-4">In the Controls panel, click "Open Workspace" to select your project folder. ChipOS automatically installs 12 Voyager SDK commands to <code class="bg-black/30 px-2 py-1 rounded text-cyan-400">.claude/commands/</code></p>
+                                    <div class="bg-black/30 rounded-lg p-4 border border-white/10">
+                                        <p class="text-cyan-400 text-sm font-mono">Controls → Open Workspace → Select Folder</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">2</div>
+                                <div class="flex-1">
+                                    <h4 class="text-white font-bold mb-2">Connect AI Provider</h4>
+                                    <p class="text-gray-400 text-sm mb-4">Click "Connect AI Provider" and select your preferred tool:</p>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        <div class="bg-black/30 rounded-lg p-3 text-center border border-white/10">
+                                            <i class="fas fa-terminal text-purple-400 text-xl mb-2"></i>
+                                            <p class="text-white text-sm font-bold">Claude Code</p>
+                                        </div>
+                                        <div class="bg-black/30 rounded-lg p-3 text-center border border-white/10">
+                                            <i class="fas fa-mouse-pointer text-blue-400 text-xl mb-2"></i>
+                                            <p class="text-white text-sm font-bold">Cursor</p>
+                                        </div>
+                                        <div class="bg-black/30 rounded-lg p-3 text-center border border-white/10">
+                                            <i class="fas fa-wind text-cyan-400 text-xl mb-2"></i>
+                                            <p class="text-white text-sm font-bold">Windsurf</p>
+                                        </div>
+                                        <div class="bg-black/30 rounded-lg p-3 text-center border border-white/10">
+                                            <i class="fas fa-gem text-yellow-400 text-xl mb-2"></i>
+                                            <p class="text-white text-sm font-bold">Gemini</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">3</div>
+                                <div class="flex-1">
+                                    <h4 class="text-white font-bold mb-2">Open Dashboard (Optional)</h4>
+                                    <p class="text-gray-400 text-sm mb-4">Click "Open Dashboard" to access the full ChipOS UI with Knowledge Base, AI Chatbot, and more.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-card p-6 rounded-xl border-green-500/30">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-orbitron font-bold shrink-0">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-white font-bold mb-2">Start Using Commands</h4>
+                                    <p class="text-gray-400 text-sm mb-4">In Claude Code terminal, try your first command:</p>
+                                    <div class="code-block">
+                                        <pre><code class="language-bash">/voyager-help How do I create a detection pipeline?</code></pre>
+                                    </div>
+                                    <p class="text-green-400 text-sm mt-4"><i class="fas fa-magic mr-2"></i>Claude will query the ChipOS knowledge base and provide contextual answers!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Configuration -->
+                <section id="configuration" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-cog text-cyan-400 text-sm"></i>
+                        </span>
+                        Configuration
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">ChipOS settings can be configured through VS Code's settings UI or settings.json.</p>
+
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Setting</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.backend.mode</td>
+                                <td class="text-gray-400">"hosted"</td>
+                                <td class="text-gray-300 text-sm">Backend mode: "hosted" (cloud) or "local" (Docker)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.backend.hostedUrl</td>
+                                <td class="text-gray-400 text-xs">https://chipos-server-*.run.app</td>
+                                <td class="text-gray-300 text-sm">Cloud backend API URL</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.backend.apiUrl</td>
+                                <td class="text-gray-400">http://localhost:8181</td>
+                                <td class="text-gray-300 text-sm">Local backend API URL</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.showWelcomeOnStartup</td>
+                                <td class="text-gray-400">true</td>
+                                <td class="text-gray-300 text-sm">Open dashboard on startup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Knowledge Base -->
+                <section id="knowledge-base" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-book text-cyan-400 text-sm"></i>
+                        </span>
+                        Knowledge Base
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        The Knowledge Base is your central repository for hardware documentation. Store datasheets,
+                        RTL specifications, verification plans, and SDK documentation — all searchable with AI.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="font-orbitron text-cyan-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-globe"></i> Web Crawling
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">Automatically crawl documentation websites using sitemap discovery.</p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Sitemap-first crawling</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Recursive link following</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>HTML to markdown conversion</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="font-orbitron text-purple-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fab fa-github"></i> Repository Ingestion
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">Index entire GitHub repositories with AST-aware code parsing.</p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>25+ programming languages</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Function/class extraction</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Dependency graph building</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="font-orbitron text-yellow-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-file-pdf"></i> Document Upload
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">Upload and index PDF datasheets and documentation.</p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>PDF text extraction</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>DOCX support</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Markdown/text files</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="font-orbitron text-green-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-folder-tree"></i> Sidebar Browser
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">Browse all indexed sources directly in the sidebar.</p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Tree view navigation</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Source filtering</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Quick search</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Chatbot -->
+                <section id="ai-chatbot" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-comments text-cyan-400 text-sm"></i>
+                        </span>
+                        AI Chatbot
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        The built-in AI chatbot provides hardware-aware conversations with full syntax highlighting for code.
+                    </p>
+
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <h4 class="text-white font-bold mb-4">Supported Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded text-sm">Python</span>
+                            <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded text-sm">SystemVerilog</span>
+                            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded text-sm">Verilog</span>
+                            <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded text-sm">YAML</span>
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded text-sm">JSON</span>
+                            <span class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded text-sm">Bash</span>
+                        </div>
+                    </div>
+
+                    <div class="callout callout-tip">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-lightbulb text-green-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">RAG-Connected</strong>
+                                <p class="text-gray-300 text-sm mt-1">The chatbot automatically queries your knowledge base for hardware-specific questions, providing accurate, contextual answers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- MCP Server -->
+                <section id="mcp-server" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-plug text-yellow-400 text-sm"></i>
+                        </span>
+                        MCP Server
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        The Model Context Protocol (MCP) server enables AI assistants to access your knowledge base.
+                        ChipOS runs a lightweight HTTP-based MCP server on port 8051.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="feature-card p-5 rounded-xl text-center">
+                            <i class="fas fa-bolt text-yellow-400 text-2xl mb-3"></i>
+                            <h4 class="text-white font-bold mb-2">Lightweight</h4>
+                            <p class="text-gray-400 text-xs">HTTP-based protocol, no process spawning</p>
+                        </div>
+                        <div class="feature-card p-5 rounded-xl text-center">
+                            <i class="fas fa-tools text-cyan-400 text-2xl mb-3"></i>
+                            <h4 class="text-white font-bold mb-2">Auto-Discovery</h4>
+                            <p class="text-gray-400 text-xs">Tools automatically registered and documented</p>
+                        </div>
+                        <div class="feature-card p-5 rounded-xl text-center">
+                            <i class="fas fa-shield-alt text-green-400 text-2xl mb-3"></i>
+                            <h4 class="text-white font-bold mb-2">Rate-Limited</h4>
+                            <p class="text-gray-400 text-xs">Built-in quota management for LLM APIs</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-white font-bold mb-4">Available MCP Tools</h4>
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">perform_rag_query</td>
+                                <td class="text-gray-300 text-sm">Search the knowledge base with semantic understanding</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">get_available_sources</td>
+                                <td class="text-gray-300 text-sm">List all indexed documentation sources</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">health_check</td>
+                                <td class="text-gray-300 text-sm">Check backend service health status</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">session_info</td>
+                                <td class="text-gray-300 text-sm">Get current session and user information</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Claude Commands -->
+                <section id="claude-commands" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-terminal text-green-400 text-sm"></i>
+                        </span>
+                        Claude Commands
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        When you open a workspace in ChipOS, 12 Voyager SDK slash commands are automatically installed
+                        to <code class="bg-black/30 px-2 py-1 rounded text-cyan-400">.claude/commands/</code>. These work on macOS, Linux, and Windows.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-green-400 font-bold">/voyager-help</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Get help from the ChipOS RAG knowledge base</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-cyan-400 font-bold">/new-pipeline</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Create a complete YAML pipeline configuration</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-purple-400 font-bold">/deploy</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Compile and deploy a model for Metis hardware</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-blue-400 font-bold">/run</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Run inference with various input sources</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-yellow-400 font-bold">/bench</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Benchmark model performance metrics</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-pink-400 font-bold">/new-app</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Create a Python app using InferenceStream</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-red-400 font-bold">/debug</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Debug pipeline, model, or inference issues</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-orange-400 font-bold">/test</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Run tests for SDK components</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-teal-400 font-bold">/build</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Build native operators and examples</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-indigo-400 font-bold">/add-model</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Add a custom model to the model zoo</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-lime-400 font-bold">/list-models</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">List and search available models</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RAG Technology Section -->
+                <section id="rag-overview" class="section-anchor mb-16">
+                    <div class="text-center mb-12">
+                        <span class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
+                            <i class="fas fa-brain mr-2"></i>ADVANCED TECHNOLOGY
+                        </span>
+                        <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
+                            RAG <span class="text-purple-400">Technology</span>
+                        </h2>
+                        <p class="text-gray-400 max-w-2xl mx-auto">
+                            ChipOS features a proprietary Retrieval-Augmented Generation architecture designed specifically
+                            for the complexity of semiconductor design.
+                        </p>
+                    </div>
+
+                    <!-- Key differentiators -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        <div class="glass-panel p-6 rounded-xl border-purple-500/30">
+                            <h4 class="font-orbitron text-purple-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-fingerprint"></i> Multi-Embedding Strategy
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Simultaneously uses 3 different embedding models for comprehensive coverage:
+                            </p>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                                    <span class="text-white">OpenAI</span>
+                                    <span class="text-gray-500">— Linguistic understanding (1536-3072 dims)</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                    <span class="text-white">UniXcoder</span>
+                                    <span class="text-gray-500">— Code-specific semantics (768 dims)</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                                    <span class="text-white">Jina</span>
+                                    <span class="text-gray-500">— Late-chunking context (1024 dims)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl border-cyan-500/30">
+                            <h4 class="font-orbitron text-cyan-400 font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-sitemap"></i> cAST Chunking
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Context-aware Abstract Syntax Tree chunking preserves code structure:
+                            </p>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-sm">
+                                    <i class="fas fa-check text-green-400"></i>
+                                    <span class="text-gray-300">Syntactically-aware chunk boundaries</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <i class="fas fa-check text-green-400"></i>
+                                    <span class="text-gray-300">Extracts imports, definitions, calls</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <i class="fas fa-check text-green-400"></i>
+                                    <span class="text-gray-300">Supports 25+ languages via tree-sitter</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <i class="fas fa-check text-green-400"></i>
+                                    <span class="text-gray-300">Research-backed (peer-reviewed paper)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Embeddings -->
+                <section id="embeddings" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-vector-square text-purple-400 text-xs"></i>
+                        </span>
+                        Embedding Models
+                    </h3>
+
+                    <p class="text-gray-400 mb-6">
+                        ChipOS supports multiple embedding providers with automatic fallback and no vendor lock-in.
+                    </p>
+
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Model</th>
+                                <th>Dimensions</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-white font-bold">OpenAI</td>
+                                <td class="font-mono text-cyan-400 text-sm">text-embedding-3-small</td>
+                                <td class="text-gray-400">1536</td>
+                                <td class="text-gray-300 text-sm">Default semantic search</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">OpenAI</td>
+                                <td class="font-mono text-cyan-400 text-sm">text-embedding-3-large</td>
+                                <td class="text-gray-400">3072</td>
+                                <td class="text-gray-300 text-sm">High-precision retrieval</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Google</td>
+                                <td class="font-mono text-cyan-400 text-sm">Gemini embeddings</td>
+                                <td class="text-gray-400">768</td>
+                                <td class="text-gray-300 text-sm">Alternative provider</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Ollama</td>
+                                <td class="font-mono text-cyan-400 text-sm">mxbai-embed</td>
+                                <td class="text-gray-400">1024</td>
+                                <td class="text-gray-300 text-sm">Local/on-premise deployment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="callout callout-info mt-6">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-info-circle text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Batch Processing</strong>
+                                <p class="text-gray-300 text-sm mt-1">Embeddings are generated in batches of 100 with automatic rate limiting and exponential backoff for API quota management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Semantic Search -->
+                <section id="semantic-search" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-search text-cyan-400 text-xs"></i>
+                        </span>
+                        Semantic Search
+                    </h3>
+
+                    <p class="text-gray-400 mb-6">
+                        Unlike keyword matching, ChipOS understands engineering intent and connects concepts across documents.
+                    </p>
+
+                    <div class="feature-card p-6 rounded-xl mb-6">
+                        <h4 class="text-white font-bold mb-4">How It Works</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">1</div>
+                                <div>
+                                    <p class="text-white font-bold">Query Embedding</p>
+                                    <p class="text-gray-400 text-sm">Your question is converted to a vector using the same embedding model</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">2</div>
+                                <div>
+                                    <p class="text-white font-bold">Vector Similarity</p>
+                                    <p class="text-gray-400 text-sm">HNSW index finds nearest neighbors using cosine similarity (sub-millisecond on millions of vectors)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">3</div>
+                                <div>
+                                    <p class="text-white font-bold">Context Retrieval</p>
+                                    <p class="text-gray-400 text-sm">Top-K relevant chunks are retrieved with source attribution</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hybrid Search -->
+                <section id="hybrid-search" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-green-400 text-xs"></i>
+                        </span>
+                        Hybrid Search
+                    </h3>
+
+                    <p class="text-gray-400 mb-6">
+                        Combines vector similarity with BM25 keyword matching for comprehensive coverage.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-xl">
+                            <h4 class="text-cyan-400 font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-brain"></i> Semantic Component
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Understands meaning and context</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Handles synonyms and paraphrasing</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Connects related concepts</li>
+                            </ul>
+                        </div>
+                        <div class="glass-panel p-6 rounded-xl">
+                            <h4 class="text-purple-400 font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-font"></i> Lexical Component
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Exact term matching (BM25)</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>CamelCase/snake_case aware</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Handles technical identifiers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Auto-Code Extraction -->
+                <section id="auto-code-extraction" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-pink-500/20 flex items-center justify-center">
+                            <i class="fas fa-code text-pink-400 text-xs"></i>
+                        </span>
+                        Auto-Code Extraction
+                    </h3>
+
+                    <div class="callout callout-tip mb-6">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-star text-yellow-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">World-First Capability</strong>
+                                <p class="text-gray-300 text-sm mt-1">ChipOS automatically identifies, extracts, and indexes code snippets from documentation — no manual tagging required.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-400 mb-6">
+                        When you ask "show me an example of a UVM sequence", ChipOS doesn't just find pages that mention
+                        sequences — it finds actual, runnable code examples.
+                    </p>
+
+                    <div class="feature-card p-6 rounded-xl">
+                        <h4 class="text-white font-bold mb-4">Extracted Metadata</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <i class="fas fa-file-import text-cyan-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Imports</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-cube text-purple-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Definitions</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-phone text-green-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Function Calls</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-sitemap text-yellow-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Parent Scope</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-tags text-pink-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Node Types</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-project-diagram text-blue-400 text-xl mb-2"></i>
+                                <p class="text-gray-300 text-sm">Dependencies</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Corrective RAG -->
+                <section id="corrective-rag" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-sync text-orange-400 text-xs"></i>
+                        </span>
+                        Corrective RAG
+                    </h3>
+
+                    <p class="text-gray-400 mb-6">
+                        ChipOS implements a 5-agent self-correcting RAG pipeline based on academic research.
+                    </p>
+
+                    <!-- Pipeline visualization -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <h4 class="text-white font-bold mb-6 text-center">Five-Agent Pipeline</h4>
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div class="arch-layer p-4 rounded-lg text-center flex-1">
+                                <i class="fas fa-search text-cyan-400 text-xl mb-2"></i>
+                                <p class="text-white text-sm font-bold">Context Retrieval</p>
+                                <p class="text-gray-500 text-xs">Initial document search</p>
+                            </div>
+                            <i class="fas fa-arrow-right text-cyan-500/50 hidden md:block"></i>
+                            <i class="fas fa-arrow-down text-cyan-500/50 block md:hidden"></i>
+                            <div class="arch-layer p-4 rounded-lg text-center flex-1">
+                                <i class="fas fa-check-double text-green-400 text-xl mb-2"></i>
+                                <p class="text-white text-sm font-bold">Relevance Eval</p>
+                                <p class="text-gray-500 text-xs">Grade with confidence</p>
+                            </div>
+                            <i class="fas fa-arrow-right text-cyan-500/50 hidden md:block"></i>
+                            <i class="fas fa-arrow-down text-cyan-500/50 block md:hidden"></i>
+                            <div class="arch-layer p-4 rounded-lg text-center flex-1">
+                                <i class="fas fa-pen text-purple-400 text-xl mb-2"></i>
+                                <p class="text-white text-sm font-bold">Query Refine</p>
+                                <p class="text-gray-500 text-xs">Rewrite if poor results</p>
+                            </div>
+                            <i class="fas fa-arrow-right text-cyan-500/50 hidden md:block"></i>
+                            <i class="fas fa-arrow-down text-cyan-500/50 block md:hidden"></i>
+                            <div class="arch-layer p-4 rounded-lg text-center flex-1">
+                                <i class="fas fa-globe text-yellow-400 text-xl mb-2"></i>
+                                <p class="text-white text-sm font-bold">External KB</p>
+                                <p class="text-gray-500 text-xs">Web search fallback</p>
+                            </div>
+                            <i class="fas fa-arrow-right text-cyan-500/50 hidden md:block"></i>
+                            <i class="fas fa-arrow-down text-cyan-500/50 block md:hidden"></i>
+                            <div class="arch-layer p-4 rounded-lg text-center flex-1 border-green-500/30">
+                                <i class="fas fa-magic text-pink-400 text-xl mb-2"></i>
+                                <p class="text-white text-sm font-bold">Synthesize</p>
+                                <p class="text-gray-500 text-xs">Generate answer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-card p-4 rounded-xl">
+                            <p class="text-cyan-400 font-bold mb-1">Iterative Refinement</p>
+                            <p class="text-gray-400 text-sm">Up to 2 query rewrites if initial results are poor</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <p class="text-purple-400 font-bold mb-1">Confidence Scoring</p>
+                            <p class="text-gray-400 text-sm">LLM-based relevance grading with thresholds</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <p class="text-yellow-400 font-bold mb-1">External Fallback</p>
+                            <p class="text-gray-400 text-sm">Web search when internal KB is insufficient</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <p class="text-green-400 font-bold mb-1">Source Attribution</p>
+                            <p class="text-gray-400 text-sm">Full query history and citation tracking</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- System Architecture -->
+                <section id="system-architecture" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-cyan-400 text-sm"></i>
+                        </span>
+                        System Architecture
+                    </h2>
+
+                    <!-- Architecture diagram -->
+                    <div class="glass-panel p-8 rounded-xl mb-8">
+                        <div class="space-y-6">
+                            <!-- Desktop App Layer -->
+                            <div class="arch-layer p-4 rounded-lg">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-desktop text-cyan-400"></i>
+                                    <span class="font-orbitron text-white font-bold">ChipOS Desktop App</span>
+                                    <span class="text-gray-500 text-xs ml-auto">VS Code Fork</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 text-sm">
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300">Welcome Extension</div>
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300">Theme</div>
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300">AI Toolkit</div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <div class="arch-connector h-8"></div>
+                            </div>
+
+                            <!-- Backend Services -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="arch-layer p-4 rounded-lg">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-server text-purple-400"></i>
+                                        <span class="text-white font-bold text-sm">Main Server</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Port 8181 • FastAPI + Socket.IO</p>
+                                </div>
+                                <div class="arch-layer p-4 rounded-lg">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-plug text-yellow-400"></i>
+                                        <span class="text-white font-bold text-sm">MCP Server</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Port 8051 • HTTP-based MCP</p>
+                                </div>
+                                <div class="arch-layer p-4 rounded-lg">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-robot text-green-400"></i>
+                                        <span class="text-white font-bold text-sm">Agents Service</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Port 8052 • PydanticAI</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <div class="arch-connector h-8"></div>
+                            </div>
+
+                            <!-- Database Layer -->
+                            <div class="arch-layer p-4 rounded-lg">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-database text-green-400"></i>
+                                    <span class="font-orbitron text-white font-bold">Supabase</span>
+                                    <span class="text-gray-500 text-xs ml-auto">PostgreSQL 15+ with pgvector</span>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 text-sm">
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300 text-xs">Crawled Pages</div>
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300 text-xs">Code Examples</div>
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300 text-xs">Embeddings</div>
+                                    <div class="bg-black/30 p-2 rounded text-center text-gray-300 text-xs">Relationships</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tech Stack -->
+                <section id="tech-stack" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-cubes text-purple-400 text-xs"></i>
+                        </span>
+                        Technology Stack
+                    </h3>
+
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Technology</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-white font-bold">Desktop App</td>
+                                <td class="text-gray-300">VS Code (Electron)</td>
+                                <td class="text-gray-400 text-sm">Cross-platform native app</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">UI Framework</td>
+                                <td class="text-gray-300">React + TypeScript + Vite</td>
+                                <td class="text-gray-400 text-sm">Webview panels and sidebar</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">UI Components</td>
+                                <td class="text-gray-300">Radix UI + TanStack Query</td>
+                                <td class="text-gray-400 text-sm">Accessible primitives + data fetching</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Backend</td>
+                                <td class="text-gray-300">Python + FastAPI + uv</td>
+                                <td class="text-gray-400 text-sm">High-performance API server</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Vector DB</td>
+                                <td class="text-gray-300">PostgreSQL + pgvector</td>
+                                <td class="text-gray-400 text-sm">HNSW indexes for similarity search</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Code Parsing</td>
+                                <td class="text-gray-300">tree-sitter</td>
+                                <td class="text-gray-400 text-sm">AST-aware chunking (25+ languages)</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">MCP Protocol</td>
+                                <td class="text-gray-300">FastMCP (HTTP)</td>
+                                <td class="text-gray-400 text-sm">AI assistant integration</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">AI Agents</td>
+                                <td class="text-gray-300">PydanticAI</td>
+                                <td class="text-gray-400 text-sm">Corrective RAG pipeline</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Observability</td>
+                                <td class="text-gray-300">Logfire</td>
+                                <td class="text-gray-400 text-sm">Distributed tracing and logging</td>
+                            </tr>
+                            <tr>
+                                <td class="text-white font-bold">Deployment</td>
+                                <td class="text-gray-300">Docker + Google Cloud Run</td>
+                                <td class="text-gray-400 text-sm">Containerized microservices</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Database -->
+                <section id="database" class="section-anchor mb-16">
+                    <h3 class="text-xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-6 h-6 rounded bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-database text-green-400 text-xs"></i>
+                        </span>
+                        Database Schema
+                    </h3>
+
+                    <p class="text-gray-400 mb-6">
+                        ChipOS uses Supabase (PostgreSQL 15+) with the pgvector extension for efficient vector similarity search.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="text-cyan-400 font-bold mb-4">chipos_crawled_pages</h4>
+                            <p class="text-gray-400 text-sm mb-3">Stores crawled documentation with embeddings</p>
+                            <ul class="space-y-1 text-gray-300 text-xs font-mono">
+                                <li>• embedding: vector(1536)</li>
+                                <li>• bm25_tokens: tsvector</li>
+                                <li>• url, title, content</li>
+                                <li>• source_id, metadata</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="text-purple-400 font-bold mb-4">chipos_code_examples</h4>
+                            <p class="text-gray-400 text-sm mb-3">Indexed code with multi-dimensional embeddings</p>
+                            <ul class="space-y-1 text-gray-300 text-xs font-mono">
+                                <li>• embedding: vector(1536)</li>
+                                <li>• code_embedding: vector(768)</li>
+                                <li>• late_embedding: vector(1024)</li>
+                                <li>• definitions, calls, imports[]</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="text-yellow-400 font-bold mb-4">chipos_sources</h4>
+                            <p class="text-gray-400 text-sm mb-3">Registered documentation sources</p>
+                            <ul class="space-y-1 text-gray-300 text-xs font-mono">
+                                <li>• name, url, type</li>
+                                <li>• status, last_crawled</li>
+                                <li>• page_count, metadata</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card p-6 rounded-xl">
+                            <h4 class="text-pink-400 font-bold mb-4">chipos_code_relationships</h4>
+                            <p class="text-gray-400 text-sm mb-3">Code dependency graph</p>
+                            <ul class="space-y-1 text-gray-300 text-xs font-mono">
+                                <li>• source_id, target_id</li>
+                                <li>• relationship_type</li>
+                                <li>• weight, metadata</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Integrations -->
+                <section id="claude-integration" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-link text-purple-400 text-sm"></i>
+                        </span>
+                        AI Integrations
+                    </h2>
+
+                    <p class="text-gray-400 mb-8">
+                        ChipOS connects seamlessly with your favorite AI coding assistants through the MCP server.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="glass-panel p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                <i class="fas fa-terminal text-purple-400 text-2xl"></i>
+                            </div>
+                            <h4 class="font-orbitron text-white font-bold mb-2">Claude Code</h4>
+                            <p class="text-gray-400 text-sm mb-4">Full integration with auto-installed slash commands</p>
+                            <span class="text-green-400 text-xs"><i class="fas fa-check-circle mr-1"></i>Fully Supported</span>
+                        </div>
+
+                        <div id="cursor-integration" class="section-anchor glass-panel p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-mouse-pointer text-blue-400 text-2xl"></i>
+                            </div>
+                            <h4 class="font-orbitron text-white font-bold mb-2">Cursor</h4>
+                            <p class="text-gray-400 text-sm mb-4">MCP server configuration for context injection</p>
+                            <span class="text-green-400 text-xs"><i class="fas fa-check-circle mr-1"></i>Fully Supported</span>
+                        </div>
+
+                        <div id="windsurf-integration" class="section-anchor glass-panel p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                                <i class="fas fa-wind text-cyan-400 text-2xl"></i>
+                            </div>
+                            <h4 class="font-orbitron text-white font-bold mb-2">Windsurf</h4>
+                            <p class="text-gray-400 text-sm mb-4">Native MCP tool access for knowledge queries</p>
+                            <span class="text-green-400 text-xs"><i class="fas fa-check-circle mr-1"></i>Fully Supported</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Commands Reference -->
+                <section id="commands-reference" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-book text-green-400 text-sm"></i>
+                        </span>
+                        Commands Reference
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div class="glass-panel p-6 rounded-xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="font-mono text-green-400 font-bold text-lg">/voyager-help</span>
+                                <span class="text-gray-500 text-sm">&lt;query&gt;</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Query the ChipOS knowledge base for hardware-related help.</p>
+                            <div class="code-block">
+                                <pre><code class="language-bash">/voyager-help How do I configure a detection pipeline with YOLOv8?</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="font-mono text-cyan-400 font-bold text-lg">/new-pipeline</span>
+                                <span class="text-gray-500 text-sm">&lt;model&gt; &lt;options&gt;</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Create a complete YAML pipeline configuration for inference.</p>
+                            <div class="code-block">
+                                <pre><code class="language-bash">/new-pipeline yolov8n --input camera --output display</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="font-mono text-purple-400 font-bold text-lg">/deploy</span>
+                                <span class="text-gray-500 text-sm">&lt;model&gt; [--target &lt;device&gt;]</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Compile and deploy a model to Metis hardware.</p>
+                            <div class="code-block">
+                                <pre><code class="language-bash">/deploy yolov8n --target m.2</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="font-mono text-yellow-400 font-bold text-lg">/bench</span>
+                                <span class="text-gray-500 text-sm">&lt;model&gt; [--iterations &lt;n&gt;]</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">Benchmark model performance metrics (latency, throughput, power).</p>
+                            <div class="code-block">
+                                <pre><code class="language-bash">/bench yolov8n --iterations 1000</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Reference -->
+                <section id="api-reference" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                            <i class="fas fa-code text-cyan-400 text-sm"></i>
+                        </span>
+                        API Reference
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        The ChipOS backend exposes REST and MCP APIs for integration.
+                    </p>
+
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <h4 class="text-white font-bold mb-4">REST Endpoints</h4>
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Endpoint</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-green-400 font-mono">GET</td>
+                                    <td class="font-mono text-cyan-400 text-sm">/api/health</td>
+                                    <td class="text-gray-300 text-sm">Health check</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-blue-400 font-mono">POST</td>
+                                    <td class="font-mono text-cyan-400 text-sm">/api/rag/query</td>
+                                    <td class="text-gray-300 text-sm">RAG query with context</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-green-400 font-mono">GET</td>
+                                    <td class="font-mono text-cyan-400 text-sm">/api/sources</td>
+                                    <td class="text-gray-300 text-sm">List indexed sources</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-blue-400 font-mono">POST</td>
+                                    <td class="font-mono text-cyan-400 text-sm">/api/sources/crawl</td>
+                                    <td class="text-gray-300 text-sm">Start web crawl</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-blue-400 font-mono">POST</td>
+                                    <td class="font-mono text-cyan-400 text-sm">/api/sources/ingest</td>
+                                    <td class="text-gray-300 text-sm">Ingest GitHub repository</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Settings Overview -->
+                <section id="settings" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-cog text-purple-400 text-sm"></i>
+                        </span>
+                        Settings Overview
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        ChipOS provides extensive configuration options to customize RAG behavior, code extraction, and system performance.
+                    </p>
+
+                    <!-- Settings Categories -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-purple-500">
+                            <h4 class="font-orbitron text-purple-400 mb-3 flex items-center gap-2">
+                                <i class="fas fa-palette"></i> Features
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><strong>Dark Mode</strong> - Toggle light/dark theme</li>
+                                <li><strong>Projects</strong> - Enable task management</li>
+                                <li><strong>Logfire</strong> - Structured logging</li>
+                                <li><strong>Disconnect Screen</strong> - Server status display</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-pink-500">
+                            <h4 class="font-orbitron text-pink-400 mb-3 flex items-center gap-2">
+                                <i class="fas fa-key"></i> API Keys
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><strong>OpenAI</strong> - RAG queries & embeddings</li>
+                                <li><strong>Google</strong> - Alternative LLM provider</li>
+                                <li><strong>GitHub</strong> - Private repo crawling</li>
+                                <li>Encrypted storage with show/hide toggle</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-green-500">
+                            <h4 class="font-orbitron text-green-400 mb-3 flex items-center gap-2">
+                                <i class="fas fa-brain"></i> RAG Settings
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><strong>LLM Provider</strong> - OpenAI, Gemini, Ollama</li>
+                                <li><strong>Hybrid Search</strong> - Vector + keyword search</li>
+                                <li><strong>Agentic RAG</strong> - Code-aware retrieval</li>
+                                <li><strong>Reranking</strong> - Cross-encoder scoring</li>
+                                <li><strong>Crawling</strong> - Batch size, concurrency</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl border-l-4 border-orange-500">
+                            <h4 class="font-orbitron text-orange-400 mb-3 flex items-center gap-2">
+                                <i class="fas fa-code"></i> Code Extraction
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li><strong>Block Length</strong> - Min/max characters</li>
+                                <li><strong>Language Patterns</strong> - Per-language detection</li>
+                                <li><strong>Prose Filtering</strong> - Remove non-code content</li>
+                                <li><strong>Code Summaries</strong> - AI-generated descriptions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Full Guide Link -->
+                    <div class="callout callout-tip">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-book-open text-green-400 mt-1"></i>
+                                <div>
+                                    <strong class="text-white">Complete Settings Documentation</strong>
+                                    <p class="text-gray-300 text-sm mt-1">For detailed descriptions of all 50+ settings, recommended configurations, and troubleshooting tips.</p>
+                                </div>
+                            </div>
+                            <a href="chipos-settings.html" class="ml-4 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm font-orbitron whitespace-nowrap">
+                                <i class="fas fa-external-link-alt mr-2"></i>Full Settings Guide
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Troubleshooting -->
+                <section id="troubleshooting" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center">
+                            <i class="fas fa-wrench text-red-400 text-sm"></i>
+                        </span>
+                        Troubleshooting
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div class="glass-panel p-6 rounded-xl">
+                            <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                MCP Server Not Connecting
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-3">If Claude/Cursor can't find the MCP server:</p>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                <li>Verify the backend is running (check Controls panel)</li>
+                                <li>Ensure port 8051 is not blocked by firewall</li>
+                                <li>Try restarting ChipOS with <code class="bg-black/30 px-2 py-1 rounded">Cmd+Shift+P → Restart Services</code></li>
+                            </ol>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl">
+                            <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                Slash Commands Not Working
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-3">If /voyager-help doesn't respond:</p>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                <li>Check that <code class="bg-black/30 px-2 py-1 rounded">.claude/commands/</code> exists in your workspace</li>
+                                <li>Verify commands were auto-installed (12 .md files should exist)</li>
+                                <li>Restart Claude Code terminal session</li>
+                            </ol>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-xl">
+                            <h4 class="text-white font-bold mb-3 flex items-center gap-2">
+                                <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                Empty RAG Results
+                            </h4>
+                            <p class="text-gray-400 text-sm mb-3">If queries return no results:</p>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                <li>Check that sources are indexed in the Knowledge Base sidebar</li>
+                                <li>Verify embeddings were generated (check server logs)</li>
+                                <li>Try a broader query to test the connection</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="border-t border-white/10 pt-8 mt-16">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8">
+                            <span class="text-gray-400 text-sm">© 2025 FutureAtoms. All rights reserved.</span>
+                        </div>
+                        <div class="flex gap-6">
+                            <a href="chipos.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">ChipOS Home</a>
+                            <a href="chipos-changelog.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Changelog</a>
+                            <a href="https://github.com/futureatoms/chipos" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">GitHub</a>
+                            <a href="contact.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Contact</a>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Platform tabs
+        function showPlatform(platform) {
+            // Hide all content
+            document.querySelectorAll('.platform-content').forEach(el => el.classList.add('hidden'));
+            // Reset all tabs
+            document.querySelectorAll('.platform-tab').forEach(el => {
+                el.classList.remove('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+                el.classList.add('bg-white/5', 'text-gray-400', 'border-white/10');
+            });
+
+            // Show selected
+            document.getElementById('platform-' + platform).classList.remove('hidden');
+            const activeTab = document.getElementById('tab-' + platform);
+            activeTab.classList.remove('bg-white/5', 'text-gray-400', 'border-white/10');
+            activeTab.classList.add('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+        }
+
+        // Mobile sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('docs-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        // Active sidebar link on scroll
+        const sections = document.querySelectorAll('.section-anchor');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+
+        // Close mobile menu when clicking a link
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toggleSidebar();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
