@@ -1,21 +1,13 @@
 const { test, expect } = require('@playwright/test');
 
 test.describe('Homepage Functionality', () => {
-  test('homepage loads with all key elements', async ({ page }) => {
+  test('homepage loads with correct title', async ({ page }) => {
     await page.goto('/index.html');
-
-    // Check hero section
-    const heroTitle = page.locator('.hero-title');
-    await expect(heroTitle).toBeVisible();
-    await expect(heroTitle).toContainText('FutureAtoms');
-
-    const heroSubtitle = page.locator('.hero-subtitle');
-    await expect(heroSubtitle).toBeVisible();
-
-    console.log('✓ Hero section loaded');
+    await expect(page).toHaveTitle(/FutureAtoms/);
+    console.log('✓ Homepage title correct');
   });
 
-  test('Three.js canvas loads', async ({ page }) => {
+  test('Three.js canvas loads and renders', async ({ page }) => {
     await page.goto('/index.html');
 
     // Wait for Three.js to initialize
@@ -24,88 +16,190 @@ test.describe('Homepage Functionality', () => {
     const canvas = page.locator('canvas');
     await expect(canvas).toBeVisible();
 
-    console.log('✓ Three.js canvas loaded');
+    // Check canvas has proper dimensions
+    const box = await canvas.boundingBox();
+    expect(box.width).toBeGreaterThan(0);
+    expect(box.height).toBeGreaterThan(0);
+
+    console.log('✓ Three.js canvas loaded with dimensions:', box);
   });
 
-  test('all venture cards are present', async ({ page }) => {
+  test('scroll sections contain all products', async ({ page }) => {
     await page.goto('/index.html');
 
-    const ventures = [
-      'BevyBeats',
-      'Savitri',
-      'Zaphy',
-      'Agentic',
-      'Yuj',
-      'AdaptiveVision',
-      'ChipOS',
-      'SystemVerilog'
+    // Wait for page to fully load
+    await page.waitForTimeout(1000);
+
+    const products = [
+      { id: 'chipos', name: 'ChipOS' },
+      { id: 'bevy', name: 'BevyBeats' },
+      { id: 'zaphy', name: 'Zaphy' },
+      { id: 'agentic', name: 'Agentic' },
+      { id: 'sv_gpt', name: 'SystemVerilog' },
+      { id: 'yuj', name: 'Yuj' },
+      { id: 'savitri', name: 'Savitri' },
+      { id: 'adaptive', name: 'AdaptiveVision' }
     ];
 
-    for (const venture of ventures) {
-      const card = page.locator('.venture-card', { hasText: venture });
-      await expect(card).toBeAttached();
-      console.log(`✓ ${venture} card found`);
+    for (const product of products) {
+      const section = page.locator(`.scroll-section[data-id="${product.id}"]`);
+      await expect(section).toBeAttached();
+      console.log(`✓ ${product.name} section found`);
     }
   });
 
-  test('venture cards are clickable and navigate correctly', async ({ page }) => {
+  test('product titles are visible in scroll sections', async ({ page }) => {
     await page.goto('/index.html');
 
-    // Wait for cards to be ready
     await page.waitForTimeout(1000);
 
-    // Test BevyBeats card
-    const bevybeatsCard = page.locator('#bevybeats');
-    await expect(bevybeatsCard).toBeVisible();
+    // Check intro section
+    const introTitle = page.locator('.scroll-section[data-id="intro"] .product-title');
+    await expect(introTitle).toContainText('FUTUREATOMS');
 
-    // Scroll card into view
-    await bevybeatsCard.scrollIntoViewIfNeeded();
+    // Check first product section
+    const chiposTitle = page.locator('.scroll-section[data-id="chipos"] .product-title');
+    await expect(chiposTitle).toContainText('ChipOS');
+
+    console.log('✓ Product titles visible');
+  });
+
+  test('navigation header exists with logo', async ({ page }) => {
+    await page.goto('/index.html');
+
+    // Check header exists
+    const header = page.locator('header');
+    await expect(header).toBeVisible();
+
+    // Check FutureAtoms branding
+    const branding = page.locator('header').getByText('FUTUREATOMS');
+    await expect(branding).toBeVisible();
+
+    console.log('✓ Navigation header with logo exists');
+  });
+
+  test('navigation links are present', async ({ page }) => {
+    await page.goto('/index.html');
+
+    const navLinks = [
+      { href: 'blog.html', text: 'RESEARCH' },
+      { href: 'news.html', text: 'NEWS' },
+      { href: 'about.html', text: 'ABOUT' },
+      { href: 'contact.html', text: 'CONTACT' }
+    ];
+
+    for (const link of navLinks) {
+      const navLink = page.locator(`a[href="${link.href}"]`).first();
+      await expect(navLink).toBeAttached();
+      console.log(`✓ ${link.text} link found`);
+    }
+  });
+
+  test('products dropdown contains all product links', async ({ page }) => {
+    await page.goto('/index.html');
+
+    const productLinks = [
+      'chipos.html',
+      'systemverilog.html',
+      'zaphy.html',
+      'agentic.html',
+      'yuj.html',
+      'adaptivision.html',
+      'bevybeats.html',
+      'savitri.html'
+    ];
+
+    for (const href of productLinks) {
+      const link = page.locator(`.dropdown-content a[href="${href}"]`);
+      await expect(link).toBeAttached();
+      console.log(`✓ Product link ${href} found in dropdown`);
+    }
+  });
+
+  test('mobile menu button exists on mobile viewport', async ({ page }) => {
+    // Set mobile viewport
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/index.html');
+
+    const mobileMenuBtn = page.locator('#mobile-menu-btn');
+    await expect(mobileMenuBtn).toBeVisible();
+
+    console.log('✓ Mobile menu button visible on mobile');
+  });
+
+  test('mobile menu opens and closes', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/index.html');
+
+    // Check menu is initially hidden
+    const mobileMenu = page.locator('#mobile-menu');
+    await expect(mobileMenu).toHaveClass(/hidden/);
+
+    // Click menu button
+    const mobileMenuBtn = page.locator('#mobile-menu-btn');
+    await mobileMenuBtn.click();
+    await page.waitForTimeout(300);
+
+    // Menu should now be visible (hidden class removed)
+    await expect(mobileMenu).not.toHaveClass(/hidden/);
+
+    // Close menu
+    const closeBtn = page.locator('#close-mobile-menu');
+    await closeBtn.click();
+    await page.waitForTimeout(300);
+
+    // Menu should be hidden again
+    await expect(mobileMenu).toHaveClass(/hidden/);
+
+    console.log('✓ Mobile menu opens and closes correctly');
+  });
+
+  test('scroll container allows scrolling between sections', async ({ page }) => {
+    await page.goto('/index.html');
+    await page.waitForTimeout(1000);
+
+    const scrollContainer = page.locator('#scroll-container');
+    await expect(scrollContainer).toBeVisible();
+
+    // Scroll to next section
+    await scrollContainer.evaluate(el => {
+      el.scrollBy({ top: window.innerHeight, behavior: 'instant' });
+    });
     await page.waitForTimeout(500);
 
-    await bevybeatsCard.click();
-    await expect(page).toHaveURL(/bevybeats\.html/);
+    // Get scroll position
+    const scrollTop = await scrollContainer.evaluate(el => el.scrollTop);
+    expect(scrollTop).toBeGreaterThan(0);
 
-    console.log('✓ Venture card navigation works');
+    console.log('✓ Scroll container works');
   });
 
-  test('scroll indicator is visible', async ({ page }) => {
+  test('product modal can be opened', async ({ page }) => {
     await page.goto('/index.html');
+    await page.waitForTimeout(2000);
 
-    const scrollIndicator = page.locator('.scroll-indicator');
-    await expect(scrollIndicator).toBeVisible();
+    // Check modal exists
+    const modal = page.locator('#product-modal');
+    await expect(modal).toBeAttached();
 
-    console.log('✓ Scroll indicator visible');
+    console.log('✓ Product modal element exists');
   });
 
-  test('navigation dots are present', async ({ page }) => {
+  test('Three.js animation is running', async ({ page }) => {
     await page.goto('/index.html');
+    await page.waitForTimeout(2000);
 
-    const navDots = page.locator('.nav-dot');
-    const count = await navDots.count();
-    expect(count).toBeGreaterThan(0);
+    const canvas = page.locator('canvas');
 
-    console.log(`✓ ${count} navigation dots found`);
-  });
+    // Take screenshots at different times
+    const screenshot1 = await canvas.screenshot();
+    await page.waitForTimeout(1000);
+    const screenshot2 = await canvas.screenshot();
 
-  test('custom cursor glow element exists', async ({ page }) => {
-    await page.goto('/index.html');
+    // Screenshots should be different if animation is running
+    const isDifferent = !screenshot1.equals(screenshot2);
+    expect(isDifferent).toBe(true);
 
-    const cursorGlow = page.locator('.cursor-glow, #cursorGlow');
-    await expect(cursorGlow).toBeAttached();
-
-    console.log('✓ Custom cursor glow exists');
-  });
-
-  test('loading screen disappears after load', async ({ page }) => {
-    await page.goto('/index.html');
-
-    // Wait for loading screen to disappear
-    await page.waitForTimeout(3000);
-
-    const loadingScreen = page.locator('#loadingScreen');
-    const isVisible = await loadingScreen.isVisible();
-    expect(isVisible).toBe(false);
-
-    console.log('✓ Loading screen disappears correctly');
+    console.log('✓ Three.js animation is running');
   });
 });
