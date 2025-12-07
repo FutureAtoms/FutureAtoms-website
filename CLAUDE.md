@@ -39,6 +39,9 @@ npm install
 # Run all Playwright tests
 npm test
 
+# Run a single test file
+npx playwright test tests/homepage.spec.js
+
 # Run tests with visible browser
 npm run test:headed
 
@@ -47,6 +50,13 @@ npm run test:ui
 
 # View test report
 npm run test:report
+```
+
+### Content Ingestion (for AI/Search)
+```bash
+# Extract text content from all HTML files into website_content.txt
+# Requires GEMINI_API_KEY in .env file
+npm run ingest
 ```
 
 ### Setup (First Time)
@@ -73,6 +83,7 @@ The website follows a multi-page architecture where each venture has its own ded
 - `news.html` - News page with 3D globe visualization
 - `about.html` - About page
 - `contact.html` - Contact page
+- `feedback.html` - User feedback page
 
 **Venture Pages:**
 - `bevybeats.html` - AI Music Generation Platform
@@ -89,6 +100,7 @@ The website follows a multi-page architecture where each venture has its own ded
 - `blog-ai-therapy.html`
 - `blog-semiconductor-ai.html`
 - `blog-linkedin-automation.html`
+- `blog-chipos-mcp.html` - ChipOS MCP integration article
 
 ### Design Patterns
 
@@ -288,3 +300,9 @@ When adding new features or pages:
 - Custom cursor implemented via fixed div following mouse events
 - Responsive design uses media queries within each page
 - Glass morphism: `backdrop-filter: blur(20px)` with rgba backgrounds
+
+## Scripts Directory
+
+- `scripts/ingest.js` - Extracts text content from HTML files for AI/search indexing (uses Cheerio)
+- `scripts/check-store.js` - Utility for checking store data
+- `scripts/test-live.js` - Live testing utility
