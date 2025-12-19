@@ -35,8 +35,34 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository with LFS
         uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Pull LFS files
+        run: git lfs pull
+
+      - name: Verify LFS files are real binaries (not pointers)
+        run: |
+          echo "Checking .deb files..."
+          for file in public/*.deb; do
+            if [ -f "$file" ]; then
+              # Check if file starts with LFS pointer signature
+              if head -c 50 "$file" | grep -q "version https://git-lfs"; then
+                echo "ERROR: $file is an LFS pointer, not the actual binary!"
+                exit 1
+              fi
+              # Verify it's a real Debian package
+              if head -c 10 "$file" | grep -q "!<arch>"; then
+                SIZE=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file")
+                echo "✓ $file is a valid Debian package (${SIZE} bytes)"
+              else
+                echo "WARNING: $file may not be a valid Debian package"
+              fi
+            fi
+          done
+          echo "All LFS files verified!"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
