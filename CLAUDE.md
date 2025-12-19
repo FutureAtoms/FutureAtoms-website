@@ -22,13 +22,24 @@ firebase serve
 
 ### Deployment
 ```bash
-# Deploy to Firebase Hosting
-npm run deploy
-# or
-firebase deploy --only hosting
+# Deploy to Firebase Hosting (auto-verifies LFS files)
+npm run deploy:hosting
 
 # Full deployment (all Firebase services)
-firebase deploy
+npm run deploy
+```
+
+**Important:** The deploy scripts automatically run `git lfs pull` and verify that `.deb` files are real binaries (not LFS pointers). If deploying manually with `firebase deploy`, always run `git lfs pull` first.
+
+### Git LFS
+Large binary files (`.deb` packages) are tracked with Git LFS. The verification script prevents deploying LFS pointer files instead of actual binaries.
+
+```bash
+# Pull actual LFS content
+git lfs pull
+
+# Verify LFS files manually
+node scripts/verify-lfs.js
 ```
 
 ### Testing

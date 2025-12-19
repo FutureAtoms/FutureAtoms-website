@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "serve": "firebase serve",
+    "predeploy": "git lfs pull && node scripts/verify-lfs.js",
     "deploy": "firebase deploy",
-    "deploy:hosting": "firebase deploy --only hosting",
+    "deploy:hosting": "npm run predeploy && firebase deploy --only hosting",
     "init": "firebase init",
     "build": "echo 'No build required for static site'",
     "start": "python3 -m http.server 8000 -d public",
