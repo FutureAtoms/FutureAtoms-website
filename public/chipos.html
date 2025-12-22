@@ -36,147 +36,18 @@
             }
         });
     </script>
+    <link rel="stylesheet" href="css/main.css">
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: #020205;
-            font-family: 'Rajdhani', sans-serif;
-            color: #e0f7ff;
-            overflow-x: hidden;
-        }
-
-        .glass-panel {
-            background: rgba(5, 12, 25, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0, 200, 255, 0.05);
-        }
-
-        .metallic-text {
-            background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-
-        .metallic-border {
-            border: 1px solid rgba(229, 228, 226, 0.3);
-            box-shadow: 0 0 15px rgba(229, 228, 226, 0.1);
-        }
-
-        .nav-link {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.1em;
-            color: rgba(224, 247, 255, 0.7);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .feature-card {
-            transition: all 0.3s ease;
-        }
-
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
             border-color: rgba(0, 255, 255, 0.3);
         }
 
-        .cta-btn {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .cta-btn:hover::before {
-            left: 100%;
-        }
-
         .code-block {
             font-family: 'Monaco', 'Courier New', monospace;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 255, 255, 0.1);
-        }
-
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(5, 12, 25, 0.95);
-            min-width: 200px;
-            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 100;
-            border-radius: 8px;
-            top: 100%;
-            left: 0;
-            padding: 0.5rem 0;
-        }
-
-        .dropdown-content a {
-            color: rgba(224, 247, 255, 0.8);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            border-left: 2px solid #00ffff;
-            padding-left: 20px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            animation: modalIn 0.2s ease-out forwards;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
@@ -369,21 +240,24 @@
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">Auto-Install Claude Commands</span>
-                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace on activation</p>
+                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace
+                            on activation</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">AI Chatbot with Syntax Highlighting</span>
-                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware discussions</p>
+                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware
+                            discussions</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">13 Voyager SDK Commands</span>
-                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /init-chipos, and more built-in</p>
+                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /init-chipos, and more
+                            built-in</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -459,7 +333,8 @@
                     <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6">UNMATCHED <span
                             class="text-purple-400">INTELLIGENCE</span></h2>
                     <p class="text-gray-300 max-w-3xl mx-auto text-lg">ChipOS features a proprietary RAG architecture
-                        designed specifically for the complexity of semiconductor design. Built on peer-reviewed research
+                        designed specifically for the complexity of semiconductor design. Built on peer-reviewed
+                        research
                         and cutting-edge AI techniques.</p>
                 </div>
 
@@ -472,8 +347,10 @@
                             <i class="fas fa-layer-group text-purple-400 text-xl"></i>
                         </div>
                         <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Multi-Embedding Strategy</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Simultaneously uses 3 embedding models — OpenAI (1536d),
-                            UniXcoder for code semantics (768d), and Jina for late-chunking (1024d) — providing unmatched
+                        <p class="text-gray-400 text-sm leading-relaxed">Simultaneously uses 3 embedding models — OpenAI
+                            (1536d),
+                            UniXcoder for code semantics (768d), and Jina for late-chunking (1024d) — providing
+                            unmatched
                             retrieval coverage across natural language and source code.</p>
                     </div>
 
@@ -485,7 +362,8 @@
                             <i class="fas fa-code text-pink-400 text-xl"></i>
                         </div>
                         <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">cAST Code Chunking</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Context-aware AST chunking via tree-sitter preserves
+                        <p class="text-gray-400 text-sm leading-relaxed">Context-aware AST chunking via tree-sitter
+                            preserves
                             syntactic structure across 25+ languages. Extracts imports, definitions, calls, and scopes —
                             research-backed for superior code retrieval.</p>
                     </div>
@@ -498,8 +376,10 @@
                             <i class="fas fa-sync text-cyan-400 text-xl"></i>
                         </div>
                         <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">5-Agent Corrective RAG</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Self-correcting pipeline with relevance evaluation,
-                            query refinement, and external knowledge fallback. Automatically rewrites queries when initial
+                        <p class="text-gray-400 text-sm leading-relaxed">Self-correcting pipeline with relevance
+                            evaluation,
+                            query refinement, and external knowledge fallback. Automatically rewrites queries when
+                            initial
                             results are poor — answers that improve themselves.</p>
                     </div>
                 </div>
@@ -533,8 +413,10 @@
                             <i class="fas fa-search-plus text-cyan-400 text-xl"></i>
                         </div>
                         <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-3">Hybrid Search Engine</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Combines vector similarity with BM25 keyword matching
-                            for comprehensive coverage. Handles CamelCase/snake_case identifiers and technical terms that
+                        <p class="text-gray-400 text-sm leading-relaxed">Combines vector similarity with BM25 keyword
+                            matching
+                            for comprehensive coverage. Handles CamelCase/snake_case identifiers and technical terms
+                            that
                             pure semantic search misses.</p>
                     </div>
 
@@ -554,7 +436,8 @@
 
                 <!-- Learn More Link -->
                 <div class="text-center mt-8">
-                    <a href="chipos-docs.html#rag-overview" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-['Orbitron'] text-sm transition-colors">
+                    <a href="chipos-docs.html#rag-overview"
+                        class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-['Orbitron'] text-sm transition-colors">
                         <i class="fas fa-book-open"></i>
                         Explore the Technology in Documentation
                         <i class="fas fa-arrow-right"></i>
@@ -566,8 +449,12 @@
         <!-- Roadmap Section -->
         <div class="mb-24 relative" id="roadmap">
             <!-- Background Effects -->
-            <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/5 via-purple-900/10 to-cyan-900/5 rounded-3xl pointer-events-none"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-cyan-900/5 via-purple-900/10 to-cyan-900/5 rounded-3xl pointer-events-none">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none">
+            </div>
 
             <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden">
                 <!-- Animated Circuit Lines Background -->
@@ -575,36 +462,43 @@
                     <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                                <path d="M0 50 H40 L50 40 H60 L70 50 H100" stroke="cyan" fill="none" stroke-width="0.5"/>
-                                <path d="M50 0 V30 L60 40 V60 L50 70 V100" stroke="cyan" fill="none" stroke-width="0.5"/>
-                                <circle cx="50" cy="50" r="3" fill="cyan"/>
+                                <path d="M0 50 H40 L50 40 H60 L70 50 H100" stroke="cyan" fill="none"
+                                    stroke-width="0.5" />
+                                <path d="M50 0 V30 L60 40 V60 L50 70 V100" stroke="cyan" fill="none"
+                                    stroke-width="0.5" />
+                                <circle cx="50" cy="50" r="3" fill="cyan" />
                             </pattern>
                         </defs>
-                        <rect width="100%" height="100%" fill="url(#circuit)"/>
+                        <rect width="100%" height="100%" fill="url(#circuit)" />
                     </svg>
                 </div>
 
                 <div class="text-center mb-12 relative z-10">
-                    <span class="inline-block bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-cyan-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">
+                    <span
+                        class="inline-block bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-cyan-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">
                         <i class="fas fa-rocket mr-2"></i>THE FUTURE OF CHIP DESIGN
                     </span>
                     <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6">
-                        DEVELOPMENT <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ROADMAP</span>
+                        DEVELOPMENT <span
+                            class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">ROADMAP</span>
                     </h2>
                     <p class="text-gray-300 max-w-3xl mx-auto text-lg">
-                        ChipOS is evolving into a complete AI-powered hardware development platform. From RTL design to GDSII — all driven by intelligent automation.
+                        ChipOS is evolving into a complete AI-powered hardware development platform. From RTL design to
+                        GDSII — all driven by intelligent automation.
                     </p>
                 </div>
 
                 <!-- Current Features (Live) -->
                 <div class="mb-12 relative z-10">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse shadow-lg shadow-green-400/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse shadow-lg shadow-green-400/50">
+                        </div>
                         <h3 class="text-xl font-['Orbitron'] font-bold text-green-400">AVAILABLE NOW</h3>
                         <div class="flex-1 h-px bg-gradient-to-r from-green-500/50 to-transparent"></div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                        <div
+                            class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                                     <i class="fas fa-sliders-h text-green-400"></i>
@@ -613,10 +507,12 @@
                                     <h4 class="font-bold text-white">Controls Dashboard</h4>
                                     <p class="text-gray-400 text-xs">AI provider connections</p>
                                 </div>
-                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                                <span
+                                    class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
                             </div>
                         </div>
-                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                        <div
+                            class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                                     <i class="fas fa-database text-green-400"></i>
@@ -625,10 +521,12 @@
                                     <h4 class="font-bold text-white">Knowledge Base</h4>
                                     <p class="text-gray-400 text-xs">Multi-embedding RAG</p>
                                 </div>
-                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                                <span
+                                    class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
                             </div>
                         </div>
-                        <div class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
+                        <div
+                            class="bg-green-500/10 border border-green-500/30 p-4 rounded-xl group hover:bg-green-500/20 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/10">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                                     <i class="fas fa-robot text-green-400"></i>
@@ -637,7 +535,8 @@
                                     <h4 class="font-bold text-white">AI Chatbot</h4>
                                     <p class="text-gray-400 text-xs">Hardware-aware conversations</p>
                                 </div>
-                                <span class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
+                                <span
+                                    class="ml-auto bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">LIVE</span>
                             </div>
                         </div>
                     </div>
@@ -653,121 +552,178 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- RTL Design -->
-                        <div class="roadmap-card group relative bg-black/40 border border-cyan-500/20 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-cyan-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-cyan-500/20 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-cyan-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-microchip text-2xl text-cyan-400"></i>
                                     </div>
-                                    <span class="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                    <span
+                                        class="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded font-bold">2025</span>
                                 </div>
                                 <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">RTL Design</h4>
-                                <p class="text-gray-400 text-sm mb-4">AI-assisted Verilog & SystemVerilog generation from natural language specifications.</p>
+                                <p class="text-gray-400 text-sm mb-4">AI-assisted Verilog & SystemVerilog generation
+                                    from natural language specifications.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> Natural language to RTL</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> FSM synthesis</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i> Module scaffolding</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i>
+                                        Natural language to RTL</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i>
+                                        FSM synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400/50"></i>
+                                        Module scaffolding</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Verification Automation -->
-                        <div class="roadmap-card group relative bg-black/40 border border-purple-500/20 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-purple-500/20 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-purple-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-check-double text-2xl text-purple-400"></i>
                                     </div>
-                                    <span class="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                    <span
+                                        class="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded font-bold">2025</span>
                                 </div>
-                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Verification Automation</h4>
-                                <p class="text-gray-400 text-sm mb-4">Auto-generate UVM testbenches, coverage plans, and constrained random stimulus.</p>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Verification Automation
+                                </h4>
+                                <p class="text-gray-400 text-sm mb-4">Auto-generate UVM testbenches, coverage plans, and
+                                    constrained random stimulus.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> UVM testbench generation</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> Coverage planning</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i> Assertion synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i>
+                                        UVM testbench generation</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i>
+                                        Coverage planning</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400/50"></i>
+                                        Assertion synthesis</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Intelligent Debug -->
-                        <div class="roadmap-card group relative bg-black/40 border border-pink-500/20 rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-pink-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-pink-500/20 rounded-2xl p-6 hover:border-pink-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-pink-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-bug text-2xl text-pink-400"></i>
                                     </div>
-                                    <span class="bg-pink-500/20 text-pink-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                    <span
+                                        class="bg-pink-500/20 text-pink-400 text-xs px-2 py-1 rounded font-bold">2025</span>
                                 </div>
                                 <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Intelligent Debug</h4>
-                                <p class="text-gray-400 text-sm mb-4">AI-powered waveform analysis, signal tracing, and automatic root cause detection.</p>
+                                <p class="text-gray-400 text-sm mb-4">AI-powered waveform analysis, signal tracing, and
+                                    automatic root cause detection.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> Waveform anomaly detection</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> Signal path tracing</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i> AI-suggested fixes</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i>
+                                        Waveform anomaly detection</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i>
+                                        Signal path tracing</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-pink-400/50"></i>
+                                        AI-suggested fixes</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Formal Verification -->
-                        <div class="roadmap-card group relative bg-black/40 border border-yellow-500/20 rounded-2xl p-6 hover:border-yellow-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-yellow-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-yellow-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-yellow-500/20 rounded-2xl p-6 hover:border-yellow-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-yellow-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-yellow-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-shield-halved text-2xl text-yellow-400"></i>
                                     </div>
-                                    <span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                    <span
+                                        class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-bold">2025</span>
                                 </div>
                                 <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Formal Verification</h4>
-                                <p class="text-gray-400 text-sm mb-4">Automatic property extraction, assertion-based verification, and proof-based bug hunting.</p>
+                                <p class="text-gray-400 text-sm mb-4">Automatic property extraction, assertion-based
+                                    verification, and proof-based bug hunting.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Property extraction</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Bounded model checking</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i> Cover synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i>
+                                        Property extraction</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i>
+                                        Bounded model checking</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400/50"></i>
+                                        Cover synthesis</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Simulation & Waveforms -->
-                        <div class="roadmap-card group relative bg-black/40 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-green-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-wave-square text-2xl text-green-400"></i>
                                     </div>
-                                    <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">2025</span>
+                                    <span
+                                        class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">2025</span>
                                 </div>
-                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Simulation & Waveforms</h4>
-                                <p class="text-gray-400 text-sm mb-4">Integrated simulation tools with GHDL, Icarus, Verilator and intelligent waveform analysis.</p>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Simulation & Waveforms
+                                </h4>
+                                <p class="text-gray-400 text-sm mb-4">Integrated simulation tools with GHDL, Icarus,
+                                    Verilator and intelligent waveform analysis.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> GTKWave integration</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> Surfer waveform viewer</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i> AI waveform insights</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i>
+                                        GTKWave integration</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i>
+                                        Surfer waveform viewer</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-green-400/50"></i>
+                                        AI waveform insights</li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Synthesis & Physical Design -->
-                        <div class="roadmap-card group relative bg-black/40 border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-500/10 transition-all"></div>
+                        <div
+                            class="roadmap-card group relative bg-black/40 border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 overflow-hidden">
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-500/10 transition-all">
+                            </div>
                             <div class="relative z-10">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <i class="fas fa-layer-group text-2xl text-blue-400"></i>
                                     </div>
-                                    <span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded font-bold">2026</span>
+                                    <span
+                                        class="bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded font-bold">2026</span>
                                 </div>
-                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Synthesis & Physical</h4>
-                                <p class="text-gray-400 text-sm mb-4">Full RTL to GDSII flow with Yosys, OpenROAD, and AI optimization at every step.</p>
+                                <h4 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Synthesis & Physical
+                                </h4>
+                                <p class="text-gray-400 text-sm mb-4">Full RTL to GDSII flow with Yosys, OpenROAD, and
+                                    AI optimization at every step.</p>
                                 <ul class="space-y-2 text-xs text-gray-500">
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> Yosys synthesis</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> OpenROAD P&R</li>
-                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> AI optimization</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i>
+                                        Yosys synthesis</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i>
+                                        OpenROAD P&R</li>
+                                    <li class="flex items-center gap-2"><i class="fas fa-check text-blue-400/50"></i> AI
+                                        optimization</li>
                                 </ul>
                             </div>
                         </div>
@@ -776,13 +732,16 @@
 
                 <!-- Vision Statement -->
                 <div class="mt-12 text-center relative z-10">
-                    <div class="inline-block bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 rounded-2xl p-6 md:p-8 max-w-3xl">
+                    <div
+                        class="inline-block bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 border border-white/10 rounded-2xl p-6 md:p-8 max-w-3xl">
                         <i class="fas fa-quote-left text-3xl text-cyan-400/30 mb-4"></i>
                         <p class="text-xl md:text-2xl text-gray-300 font-light italic mb-4">
-                            "ChipOS isn't just a knowledge base. It's becoming the <span class="text-cyan-400 font-bold">entire chip design workflow</span> — powered by AI."
+                            "ChipOS isn't just a knowledge base. It's becoming the <span
+                                class="text-cyan-400 font-bold">entire chip design workflow</span> — powered by AI."
                         </p>
                         <div class="flex items-center justify-center gap-4">
-                            <a href="chipos-pitch.html" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-['Orbitron'] text-sm transition-colors">
+                            <a href="chipos-pitch.html"
+                                class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-['Orbitron'] text-sm transition-colors">
                                 <i class="fas fa-play-circle"></i>
                                 Watch the Vision
                                 <i class="fas fa-arrow-right"></i>
@@ -990,7 +949,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="chipos_1.106.0_amd64.deb" id="linux-download-btn"
+                        <a href="chipos_latest.deb" id="linux-download-btn"
                             onclick="handleDownloadClick(this, 'Linux')"
                             class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
                             <i class="fas fa-download mr-2"></i> Download for Linux
