@@ -4,421 +4,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChipOS: The Revolutionary AI Assistant for Silicon Design - FutureAtoms Tech Herald</title>
-    <!-- Newspaper fonts -->
+    <title>ChipOS: The Revolutionary AI Assistant for Silicon Design | FutureAtoms Research</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Libre Baskerville', serif;
-            background: #1a1a1a;
-            color: #2c2c2c;
-            line-height: 1.8;
-        }
-
-        .newspaper-header {
-            background: #fff;
-            border-bottom: 4px solid #000;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .newspaper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-date {
-            font-size: 0.9rem;
-            color: #888;
-            font-family: 'Old Standard TT', serif;
-        }
-
-        .nav-bar {
-            background: #000;
-            padding: 0.8rem 0;
-            text-align: center;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ccc;
-        }
-
-        .article-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-            border-radius: 8px;
-        }
-
-        .article-header {
-            border-bottom: 3px solid #000;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .article-category {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #8B4513;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: #000;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .article-subheadline {
-            font-family: 'Old Standard TT', serif;
-            font-size: 1.3rem;
-            color: #444;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-meta {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .byline {
-            font-weight: 700;
-            color: #000;
-        }
-
-        .article-content {
-            padding: 2rem 0;
-            column-count: 2;
-            column-gap: 3rem;
-            column-rule: 1px solid #ddd;
-            text-align: justify;
-            hyphens: auto;
-        }
-
         .article-content p {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            break-inside: avoid-column;
-        }
-
-        .article-content p:first-child::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            float: left;
-            line-height: 3rem;
-            margin: 0.5rem 0.5rem 0 0;
-            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
 
         .article-content h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #000;
-            margin: 1.5rem 0 0.8rem 0;
-            break-after: avoid-column;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .code-sample {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            font-family: 'Courier New', monospace;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-
-        .code-sample h4 {
-            font-family: 'Playfair Display', serif;
+        .article-content h4 {
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
+            color: #00ffff;
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            color: #fff;
-            text-align: center;
+        }
+
+        .quote-box {
+            border-left: 4px solid #00ffff;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #a5f3fc;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: #d4d4d4;
         }
 
         .code-line {
-            margin: 0.3rem 0;
-            white-space: pre;
-        }
-
-        .keyword {
-            color: #569cd6;
-        }
-
-        .string {
-            color: #ce9178;
-        }
-
-        .comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-
-        .number {
-            color: #b5cea8;
-        }
-
-        .industry-impact {
-            background: #fff8dc;
-            border: 2px solid #8B4513;
-            padding: 2rem;
-            margin: 2rem 0;
-            column-span: all;
-            border-radius: 8px;
-        }
-
-        .industry-impact h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-align: center;
-            color: #8B4513;
+            margin-bottom: 0.25rem;
         }
 
         .impact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
         }
 
         .impact-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(139, 69, 19, 0.05);
-            border-radius: 4px;
-        }
-
-        .impact-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #8B4513;
-            margin-bottom: 0.5rem;
-        }
-
-        .impact-label {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .quote-box {
-            background: #f5f5f5;
-            border-left: 4px solid #8B4513;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
             padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            font-style: italic;
-            font-size: 1.1rem;
             text-align: center;
         }
 
-        .tech-specs {
-            background: #f0f8ff;
-            border: 1px solid #4682b4;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            border-radius: 4px;
+        /* Dropdown Styles Overrides */
+        .dropdown-content {
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
-        .tech-specs h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #4682b4;
-            text-align: center;
-        }
-
-        .specs-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            list-style: none;
-        }
-
-        .specs-list li {
-            padding: 0.5rem;
-            background: rgba(70, 130, 180, 0.1);
-            border-radius: 4px;
-            font-family: 'Old Standard TT', serif;
-        }
-
-        .specs-list strong {
-            color: #4682b4;
-            font-weight: 700;
-        }
-
-        .decorative-border {
-            height: 4px;
-            background: repeating-linear-gradient(to right,
-                    #000,
-                    #000 10px,
-                    #fff 10px,
-                    #fff 20px);
-            margin: 2rem 0;
-        }
-
-        .related-articles {
-            border-top: 2px solid #000;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        .related-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .related-item {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .related-item:hover {
-            background: #f9f9f9;
-        }
-
-        .related-item h5 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .article-content {
-                column-count: 1;
-            }
-
-            .article-headline {
-                font-size: 2rem;
-            }
-
-            .newspaper-title {
-                font-size: 2rem;
-            }
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
         }
     </style>
 </head>
 
 <body>
-    <header class="newspaper-header">
-        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
-        <div class="newspaper-date">December 8, 2024 • Volume 1, Issue 1</div>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
+                    Intelligence</p>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-link active">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
     </header>
 
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Herald</a></li>
-            <li><a href="news.html">Breaking News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav
+            class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
-    <main class="article-container">
-        <header class="article-header">
-            <div class="article-category">Semiconductor Design</div>
-            <h1 class="article-headline">ChipOS: The Revolutionary AI Assistant for Silicon Design</h1>
-            <p class="article-subheadline">AI-native code editor that auto-builds with advanced semiconductor
-                smarts—powered by your knowledge and MCP superpowers.</p>
-            <div class="article-meta">
-                <span class="byline">By Semiconductor Technology Team</span> • Hardware Engineering Correspondents •
-                December 8, 2024 • 7 min read
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="systemverilog.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="adaptivision.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="bevybeats.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
             </div>
-        </header>
 
-        <div class="decorative-border"></div>
+            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="contact.html"
+                class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
 
-        <article class="article-content">
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
+
+        <!-- Article Header -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block px-4 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-['Orbitron'] tracking-widest mb-6">
+                SEMICONDUCTOR DESIGN
+            </div>
+            <h1 class="text-4xl md:text-6xl font-['Orbitron'] font-bold leading-tight mb-8 metallic-text">
+                ChipOS: The Revolutionary AI Assistant for Silicon Design
+            </h1>
+            <div
+                class="flex items-center justify-center gap-6 text-sm text-gray-400 font-mono border-t border-b border-white/10 py-4">
+                <span>DEC 08, 2024</span>
+                <span>•</span>
+                <span>BY SEMICONDUCTOR TECH TEAM</span>
+                <span>•</span>
+                <span>7 MIN READ</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="glass-panel p-8 md:p-12 rounded-2xl metallic-border article-content">
             <p>The semiconductor industry faces an unprecedented challenge: chip complexity is exponentially increasing
                 while design timelines continue to compress. Enter ChipOS, the revolutionary AI-powered development
                 environment that's transforming how engineers approach SystemVerilog design and hardware development.
                 This isn't just another code editor—it's a fundamental reimagining of the semiconductor design process.
             </p>
 
-            <p>Developed by FutureAtoms in collaboration with leading semiconductor firms, ChipOS represents the first
+            <p class="text-xl text-cyan-100 font-light leading-relaxed mb-8">
+                Developed by FutureAtoms in collaboration with leading semiconductor firms, ChipOS represents the first
                 AI assistant specifically trained on hardware description languages and semiconductor engineering
                 principles. The platform understands not just code syntax, but the underlying physics and engineering
-                constraints that drive silicon design.</p>
+                constraints that drive silicon design.
+            </p>
 
             <h3>The Semiconductor Design Crisis</h3>
 
@@ -432,25 +239,22 @@
                 design effort, with engineers manually writing testbenches, debugging timing issues, and ensuring design
                 rule compliance.</p>
 
-            <div class="industry-impact">
-                <h4>The Scale of Modern Chip Design</h4>
-                <div class="impact-grid">
-                    <div class="impact-item">
-                        <div class="impact-number">50B+</div>
-                        <div class="impact-label">Transistors in Modern Processors</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">18-36</div>
-                        <div class="impact-label">Months Typical Design Cycle</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">70%</div>
-                        <div class="impact-label">Time Spent on Verification</div>
-                    </div>
-                    <div class="impact-item">
-                        <div class="impact-number">$500M+</div>
-                        <div class="impact-label">Cost of Advanced Chip Development</div>
-                    </div>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-2">50B+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Transistors in Modern Processors</div>
+                </div>
+                <div class="impact-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-2">18-36</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Months Typical Design Cycle</div>
+                </div>
+                <div class="impact-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-pink-400 mb-2">70%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Time Spent on Verification</div>
+                </div>
+                <div class="impact-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-2">$500M+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Cost of Advanced Chip Development</div>
                 </div>
             </div>
 
@@ -465,31 +269,35 @@
                 languages, semiconductor physics, and industry best practices. The system doesn't just complete code—it
                 understands the engineering intent behind hardware designs.</p>
 
-            <div class="code-sample">
-                <h4>ChipOS in Action: Automatic Cache Controller Generation</h4>
-                <div class="code-line"><span class="comment">// User prompt: "Create a 4-way set-associative cache
+            <div class="code-block">
+                <div class="text-cyan-400 font-bold mb-4 font-sans">// ChipOS in Action: Automatic Cache Controller
+                    Generation</div>
+                <div class="code-line"><span class="text-gray-500">// User prompt: "Create a 4-way set-associative cache
                         controller"</span></div>
                 <div class="code-line"></div>
-                <div class="code-line"><span class="keyword">module</span> cache_controller #(</div>
-                <div class="code-line"> <span class="keyword">parameter</span> CACHE_SIZE = <span
-                        class="number">16384</span>, <span class="comment">// 16KB cache</span></div>
-                <div class="code-line"> <span class="keyword">parameter</span> BLOCK_SIZE = <span
-                        class="number">64</span>, <span class="comment">// 64-byte blocks</span></div>
-                <div class="code-line"> <span class="keyword">parameter</span> ASSOCIATIVITY = <span
-                        class="number">4</span> <span class="comment">// 4-way set associative</span></div>
-                <div class="code-line">)(<span class="keyword">input</span> clk, rst_n, <span
-                        class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>]
+                <div class="code-line"><span class="text-purple-400">module</span> cache_controller #(</div>
+                <div class="code-line"> <span class="text-purple-400">parameter</span> CACHE_SIZE = <span
+                        class="text-orange-400">16384</span>, <span class="text-gray-500">// 16KB cache</span></div>
+                <div class="code-line"> <span class="text-purple-400">parameter</span> BLOCK_SIZE = <span
+                        class="text-orange-400">64</span>, <span class="text-gray-500">// 64-byte blocks</span></div>
+                <div class="code-line"> <span class="text-purple-400">parameter</span> ASSOCIATIVITY = <span
+                        class="text-orange-400">4</span> <span class="text-gray-500">// 4-way set associative</span>
+                </div>
+                <div class="code-line">)(<span class="text-purple-400">input</span> clk, rst_n, <span
+                        class="text-purple-400">input</span> [<span class="text-orange-400">31</span>:<span
+                        class="text-orange-400">0</span>]
                     addr,</div>
-                <div class="code-line"> <span class="keyword">output</span> cache_hit, <span
-                        class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>]
+                <div class="code-line"> <span class="text-purple-400">output</span> cache_hit, <span
+                        class="text-purple-400">output</span> [<span class="text-orange-400">31</span>:<span
+                        class="text-orange-400">0</span>]
                     data_out);</div>
                 <div class="code-line"></div>
-                <div class="code-line"> <span class="comment">// Automatically generates complete cache logic
+                <div class="code-line"> <span class="text-gray-500">// Automatically generates complete cache logic
                         with</span></div>
-                <div class="code-line"> <span class="comment">// tag comparison, LRU replacement, and write
+                <div class="code-line"> <span class="text-gray-500">// tag comparison, LRU replacement, and write
                         policies</span></div>
                 <div class="code-line"></div>
-                <div class="code-line"><span class="keyword">endmodule</span></div>
+                <div class="code-line"><span class="text-purple-400">endmodule</span></div>
             </div>
 
             <p>The AI understands that cache design involves complex trade-offs between access speed, power consumption,
@@ -504,19 +312,15 @@
                 reduction techniques.</p>
 
             <div class="quote-box">
-                ChipOS doesn't just write code—it thinks like a hardware engineer. It understands the physical
-                constraints and performance requirements that drive every design decision.
-                <br><br><em>— Dr. Chen Wei, Principal Engineer at Advanced Micro Designs</em>
+                "ChipOS doesn't just write code—it thinks like a hardware engineer. It understands the physical
+                constraints and performance requirements that drive every design decision."
+                <div class="mt-4 text-sm font-bold not-italic text-cyan-400">— Dr. Chen Wei, Principal Engineer at
+                    Advanced Micro Designs</div>
             </div>
 
             <p>The platform integrates with existing Electronic Design Automation (EDA) tools, providing seamless
                 workflow integration. Engineers can work within familiar environments while leveraging AI assistance for
                 complex design tasks.</p>
-
-            <p>One of ChipOS's most powerful features is its ability to perform automated design space exploration.
-                Given high-level specifications, the AI can generate multiple architectural alternatives, compare their
-                performance characteristics, and recommend optimal implementations based on specific design constraints.
-            </p>
 
             <h3>Verification Revolution</h3>
 
@@ -524,20 +328,29 @@
                 automatically generate comprehensive testbenches, identify corner cases that human engineers might miss,
                 and create directed tests for specific coverage goals.</p>
 
-            <p>The AI understands verification methodologies like UVM (Universal Verification Methodology) and can
-                generate sophisticated test environments that would typically require weeks of manual development. It
-                can also analyze coverage reports and automatically generate additional tests to close coverage gaps.
-            </p>
-
-            <div class="tech-specs">
-                <h4>ChipOS Technical Capabilities</h4>
-                <ul class="specs-list">
-                    <li><strong>Language Support:</strong> SystemVerilog, Verilog, VHDL, SystemC</li>
-                    <li><strong>Verification:</strong> UVM, OVM, VMM testbench generation</li>
-                    <li><strong>Synthesis:</strong> Timing-aware code optimization</li>
-                    <li><strong>Power Analysis:</strong> Automated low-power design techniques</li>
-                    <li><strong>Formal Verification:</strong> Property generation and assertion checking</li>
-                    <li><strong>EDA Integration:</strong> Synopsys, Cadence, Mentor Graphics workflows</li>
+            <div class="my-8 p-6 bg-white/5 rounded-xl border border-white/10">
+                <h4 class="text-lg font-['Orbitron'] font-bold text-white mb-4">ChipOS Technical Capabilities</h4>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-check text-cyan-400"></i>
+                        <span><strong>Language Support:</strong> SystemVerilog, Verilog, VHDL</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-check text-cyan-400"></i>
+                        <span><strong>Verification:</strong> UVM, OVM, VMM testbench generation</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-check text-cyan-400"></i>
+                        <span><strong>Synthesis:</strong> Timing-aware code optimization</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-check text-cyan-400"></i>
+                        <span><strong>Power Analysis:</strong> Automated low-power design techniques</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-check text-cyan-400"></i>
+                        <span><strong>EDA Integration:</strong> Synopsys, Cadence, Mentor workflows</span>
+                    </li>
                 </ul>
             </div>
 
@@ -545,75 +358,57 @@
                 and coverage closure. This dramatic improvement allows teams to achieve higher quality designs in
                 shorter timeframes.</p>
 
-            <h3>Industry Transformation</h3>
-
-            <p>Leading semiconductor companies are already integrating ChipOS into their design flows with remarkable
-                results. One major processor manufacturer reported a 40% reduction in design time for their latest CPU
-                architecture, while maintaining the same quality and performance standards.</p>
-
-            <p>The platform is particularly valuable for emerging technologies like AI accelerators, where traditional
-                design approaches may not apply. ChipOS can quickly adapt to new architectural paradigms and generate
-                optimized implementations for specialized computing workloads.</p>
-
-            <p>Startup semiconductor companies find particular value in ChipOS's ability to amplify small teams.
-                Engineers with limited hardware experience can leverage the AI's expertise to produce
-                professional-quality designs, democratizing access to advanced semiconductor development capabilities.
-            </p>
-
-            <h3>Training the Next Generation</h3>
-
-            <p>Educational institutions are incorporating ChipOS into their hardware design curricula. Students can
-                focus on learning design principles and architectural concepts rather than spending months mastering
-                syntax and debugging tools.</p>
-
-            <p>The platform serves as an intelligent tutor, explaining design decisions and suggesting improvements in
-                real-time. This accelerates the learning process and helps bridge the industry's growing skills gap.</p>
-
-            <p>Universities report that students using ChipOS complete complex design projects 3-4 times faster than
-                traditional methods, while achieving better understanding of underlying hardware principles.</p>
-
             <h3>The Future of Silicon Design</h3>
 
             <p>As semiconductor complexity continues to increase, tools like ChipOS become not just helpful but
                 essential for maintaining competitive development cycles. The platform represents a paradigm shift
                 toward AI-assisted hardware design that promises to reshape the entire industry.</p>
-
-            <p>Future developments include integration with advanced packaging technologies, support for emerging memory
-                architectures, and automated design optimization for specific manufacturing processes. The goal is
-                creating a comprehensive AI-powered design environment that can handle the complete chip development
-                lifecycle.</p>
-
-            <p>Industry analysts predict that AI-assisted design tools will become standard practice within five years,
-                with ChipOS leading the transformation of how we approach semiconductor development in an increasingly
-                complex technological landscape.</p>
         </article>
 
-        <div class="decorative-border"></div>
-
-        <section class="related-articles">
-            <h3 class="related-title">Related Stories</h3>
-            <div class="related-grid">
-                <div class="related-item" onclick="window.location.href='blog-ai-music-revolution.html'">
-                    <h5>The Future of AI Music Generation: BevyBeats Revolution</h5>
-                    <p>How advanced neural networks are transforming music creation...</p>
+        <!-- Related Stories -->
+        <div class="mt-24">
+            <h3 class="text-2xl font-['Orbitron'] font-bold mb-8 metallic-text">RELATED RESEARCH</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-ai-music-revolution.html'">
+                    <div class="text-xs text-purple-400 font-mono mb-2">AI CREATIVITY</div>
+                    <h4 class="text-lg font-bold text-white mb-2">The Future of AI Music Generation</h4>
+                    <p class="text-sm text-gray-400">How BevyBeats is revolutionizing creativity...</p>
                 </div>
-                <div class="related-item" onclick="window.location.href='blog-computer-vision.html'">
-                    <h5>AdaptiveVision: Real-time Object Detection at Scale</h5>
-                    <p>Next-generation computer vision processes 60+ FPS with unprecedented accuracy...</p>
-                </div>
-                <div class="related-item" onclick="window.location.href='blog-agent-orchestration.html'">
-                    <h5>Building Autonomous Systems with Agentic Control Framework</h5>
-                    <p>Enterprise-grade solution for orchestrating multi-agent workflows...</p>
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-agent-orchestration.html'">
+                    <div class="text-xs text-green-400 font-mono mb-2">SYSTEMS ENGINEERING</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Autonomous Systems with Agentic Control</h4>
+                    <p class="text-sm text-gray-400">Enterprise-grade multi-agent workflows...</p>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-    <footer class="newspaper-footer">
-        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and
-            artificial intelligence advancement</p>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono mt-20">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
 </body>
 
 </html>

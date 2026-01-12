@@ -27,255 +27,26 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        /* --- Core Styles --- */
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #020205;
-            font-family: 'Rajdhani', sans-serif;
-            color: #e0f7ff;
-        }
-
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        #ui-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 40;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
-            /* Let clicks pass through to scroll container */
-        }
-
-        #scroll-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            z-index: 20;
-            /* Above UI layer for scrolling */
-            scrollbar-width: none;
-            /* Firefox */
-        }
-
-        #scroll-container::-webkit-scrollbar {
-            display: none;
-            /* Chrome/Safari */
-        }
-
-        .scroll-section {
-            height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            /* Text at bottom/center */
-            align-items: center;
-            padding-bottom: 12vh;
-            /* Space for text */
-            pointer-events: none;
-            /* Let clicks pass to canvas if needed, but text needs events */
-        }
-
-        .section-content {
-            pointer-events: auto;
-            text-align: center;
-            z-index: 30;
-            max-width: 800px;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
-            background: transparent;
-            /* backdrop-filter: blur(4px); removed as requested */
-            border-radius: 16px;
-            padding: 20px;
-            border: none;
-        }
-
-        .section-active .section-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .product-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            /* Responsive Font Size */
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px currentColor;
-            /* Glow matches text color */
-        }
-
-        .product-desc {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 1.5rem auto;
-            color: #e0f7ff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 12px 32px;
-            background: color-mix(in srgb, currentColor 10%, transparent);
-            /* Matches text color with transparency */
-            border: 1px solid currentColor;
-            /* Matches text color */
-            color: white;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .cta-button:hover {
-            background: currentColor;
-            color: #000;
-            box-shadow: 0 0 30px currentColor;
-        }
-
-        .interactive {
-            pointer-events: auto;
-        }
-
-        .glass-panel {
-            background: rgba(5, 12, 25, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 0 0 40px rgba(0, 200, 255, 0.1);
-        }
-
-        .atom-label {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.1s;
-            z-index: 5;
-            background: rgba(0, 0, 0, 0.75);
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            white-space: nowrap;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        /* Modal Animation */
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal-active {
-            display: flex !important;
-            animation: modalIn 0.3s ease-out forwards;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 3px;
-        }
-
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(5, 12, 25, 0.95);
-            min-width: 200px;
-            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 100;
-            border-radius: 8px;
-            top: 100%;
-            left: 0;
-            padding: 0.5rem 0;
-        }
-
-        .dropdown-content a {
-            color: rgba(224, 247, 255, 0.8);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            border-left: 2px solid transparent;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            border-left: 2px solid #00ffff;
-            padding-left: 20px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            animation: modalIn 0.2s ease-out forwards;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css?v=9999">
 </head>
 
 <body>
+    <!-- Subdomain Routing -->
+    <script>
+        // Route subdomains to specific pages
+        const hostname = window.location.hostname;
+
+        if (hostname === 'docs.futureatoms.com') {
+            window.location.replace('/chipos-docs.html');
+        } else if (hostname === 'hub.futureatoms.com') {
+            window.location.replace('/hub-coming-soon.html');
+        } else if (hostname === 'chipos.futureatoms.com') {
+            window.location.replace('/chipos.html');
+        } else if (hostname === 'changelog.futureatoms.com') {
+            window.location.replace('/chipos-changelog.html');
+        }
+        // Otherwise stay on index.html (main futureatoms.com site)
+    </script>
 
     <div id="canvas-container"></div>
     <div id="labels-container" style="display: none;"></div> <!-- Hidden in new design -->
@@ -400,7 +171,7 @@
                 </div>
                 <div>
                     <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
-                        FUTURE<span class="text-cyan-400">ATOMS</span>
+                        FUTURE<span class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">ATOMS</span>
                     </h1>
                     <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
                         Intelligence</p>
@@ -548,7 +319,7 @@
                         class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
                 <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span
-                        class="text-cyan-400">FUTUREATOMS</span></h2>
+                        class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">FUTUREATOMS</span></h2>
                 <div class="h-0.5 w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-4">
                 </div>
             </div>

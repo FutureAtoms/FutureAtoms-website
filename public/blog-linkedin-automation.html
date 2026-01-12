@@ -1,220 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement - FutureAtoms Tech Herald</title>
-    <!-- Newspaper fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement | FutureAtoms Research</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Libre Baskerville', serif;
-            background: #1a1a1a;
-            color: #2c2c2c;
-            line-height: 1.8;
-        }
-
-        .newspaper-header {
-            background: #fff;
-            border-bottom: 4px solid #000;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .newspaper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-date {
-            font-size: 0.9rem;
-            color: #888;
-            font-family: 'Old Standard TT', serif;
-        }
-
-        .nav-bar {
-            background: #000;
-            padding: 0.8rem 0;
-            text-align: center;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ccc;
-        }
-
-        .article-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            border-radius: 8px;
-        }
-
-        .article-header {
-            border-bottom: 3px solid #000;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .article-category {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #0066cc;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: #000;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .article-subheadline {
-            font-family: 'Old Standard TT', serif;
-            font-size: 1.3rem;
-            color: #444;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-meta {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .byline {
-            font-weight: 700;
-            color: #000;
-        }
-
-        .article-content {
-            padding: 2rem 0;
-            column-count: 2;
-            column-gap: 3rem;
-            column-rule: 1px solid #ddd;
-            text-align: justify;
-            hyphens: auto;
-        }
-
         .article-content p {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            break-inside: avoid-column;
-        }
-
-        .article-content p:first-child::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            float: left;
-            line-height: 3rem;
-            margin: 0.5rem 0.5rem 0 0;
-            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
 
         .article-content h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #000;
-            margin: 1.5rem 0 0.8rem 0;
-            break-after: avoid-column;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .demo-box {
-            background: #f0f8ff;
-            border: 2px solid #0066cc;
-            padding: 2rem;
-            margin: 2rem 0;
-            column-span: all;
-            border-radius: 8px;
-        }
-
-        .demo-box h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+        .article-content h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
             font-weight: 700;
+            color: #00ffff;
+            margin-top: 2rem;
             margin-bottom: 1rem;
+        }
+
+        .quote-box {
+            border-left: 4px solid #00ffff;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #a5f3fc;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
             text-align: center;
-            color: #0066cc;
+        }
+
+        /* Linkedin Demo Styles */
+        .demo-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
         }
 
         .linkedin-post {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 1.5rem;
-            margin: 1rem 0;
+            background: #ffffff;
+            color: #333;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            background: #0066cc;
-            border-radius: 50%;
-            margin-right: 1rem;
-        }
-
-        .user-info {
-            font-family: 'Old Standard TT', serif;
-        }
-
-        .user-name {
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-
-        .user-title {
-            font-size: 0.9rem;
-            color: #666;
+            padding: 1.5rem;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
         }
 
         .ai-response {
@@ -223,296 +89,288 @@
             padding: 1rem;
             margin-top: 1rem;
             font-style: italic;
+            font-size: 0.95rem;
+            color: #1a1a1a;
             position: relative;
         }
 
-        .ai-response::before {
-            content: "AI Generated Response:";
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #28a745;
-            position: absolute;
-            top: -0.5rem;
-            left: 1rem;
-            background: #fff;
-            padding: 0 0.5rem;
+        /* Dropdown Styles Overrides */
+        .dropdown-content {
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
-        .usage-stats {
-            background: #fff;
-            border: 2px solid #000;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #0066cc;
-        }
-
-        .stat-label {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .quote-box {
-            background: #f5f5f5;
-            border-left: 4px solid #0066cc;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            font-style: italic;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .decorative-border {
-            height: 4px;
-            background: repeating-linear-gradient(
-                to right,
-                #000,
-                #000 10px,
-                #fff 10px,
-                #fff 20px
-            );
-            margin: 2rem 0;
-        }
-
-        .related-articles {
-            border-top: 2px solid #000;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        .related-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .related-item {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .related-item:hover {
-            background: #f9f9f9;
-        }
-
-        .related-item h5 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .article-content {
-                column-count: 1;
-            }
-            
-            .article-headline {
-                font-size: 2rem;
-            }
-            
-            .newspaper-title {
-                font-size: 2rem;
-            }
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
         }
     </style>
 </head>
+
 <body>
-    <header class="newspaper-header">
-        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
-        <div class="newspaper-date">December 10, 2024 • Volume 1, Issue 1</div>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="w-12 h-12 flex items-center justify-center">
+                <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-link active">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
     </header>
 
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Herald</a></li>
-            <li><a href="news.html">Breaking News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav
+            class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
-    <main class="article-container">
-        <header class="article-header">
-            <div class="article-category">Professional Productivity</div>
-            <h1 class="article-headline">Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement</h1>
-            <p class="article-subheadline">Chrome extension leverages advanced natural language processing to generate contextually appropriate professional responses while maintaining authentic voice</p>
-            <div class="article-meta">
-                <span class="byline">By Product Development Team</span> • Technology Reporters • December 10, 2024 • 5 min read
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="systemverilog.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="adaptivision.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="bevybeats.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
             </div>
-        </header>
 
-        <div class="decorative-border"></div>
+            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="contact.html"
+                class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
 
-        <article class="article-content">
-            <p>Professional networking has become increasingly crucial in today's digital-first business environment, yet the time investment required for meaningful LinkedIn engagement often overwhelms busy professionals. This challenge has given rise to Zaphy, an innovative Chrome extension that's revolutionizing how professionals manage their LinkedIn presence without sacrificing authenticity.</p>
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
 
-            <p>Unlike generic automation tools that flood networks with spam-like content, Zaphy employs sophisticated natural language processing to understand context, tone, and professional relationships. The result is AI-generated responses that maintain the user's authentic voice while dramatically improving networking efficiency.</p>
+        <!-- Article Header -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block px-4 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-['Orbitron'] tracking-widest mb-6">
+                PROFESSIONAL PRODUCTIVITY
+            </div>
+            <h1 class="text-4xl md:text-6xl font-['Orbitron'] font-bold leading-tight mb-8 metallic-text">
+                Automating Professional Networks: How Zaphy Transforms LinkedIn Engagement
+            </h1>
+            <div
+                class="flex items-center justify-center gap-6 text-sm text-gray-400 font-mono border-t border-b border-white/10 py-4">
+                <span>DEC 10, 2024</span>
+                <span>•</span>
+                <span>BY PRODUCT DEV TEAM</span>
+                <span>•</span>
+                <span>5 MIN READ</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="glass-panel p-8 md:p-12 rounded-2xl metallic-border article-content">
+            <p>Professional networking has become increasingly crucial in today's digital-first business environment,
+                yet the time investment required for meaningful LinkedIn engagement often overwhelms busy professionals.
+                This challenge has given rise to Zaphy, an innovative Chrome extension that's revolutionizing how
+                professionals manage their LinkedIn presence without sacrificing authenticity.</p>
+
+            <p>Unlike generic automation tools that flood networks with spam-like content, Zaphy employs sophisticated
+                natural language processing to understand context, tone, and professional relationships. The result is
+                AI-generated responses that maintain the user's authentic voice while dramatically improving networking
+                efficiency.</p>
 
             <h3>The Professional Networking Challenge</h3>
 
-            <p>Research by professional networking experts reveals that effective LinkedIn engagement requires an average of 2-3 hours daily for optimal results. This includes reading posts, crafting thoughtful responses, sharing relevant content, and maintaining ongoing conversations with professional contacts.</p>
+            <p>Research by professional networking experts reveals that effective LinkedIn engagement requires an
+                average of 2-3 hours daily for optimal results. This includes reading posts, crafting thoughtful
+                responses, sharing relevant content, and maintaining ongoing conversations with professional contacts.
+            </p>
 
-            <p>For busy executives, entrepreneurs, and professionals juggling multiple responsibilities, this time investment often becomes unsustainable. Many resort to basic "like" interactions or abandon LinkedIn engagement entirely, missing valuable networking opportunities and career advancement prospects.</p>
-
-            <div class="usage-stats">
-                <h4>Professional Networking Time Investment</h4>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">2.5hrs</div>
-                        <div class="stat-label">Daily Time for Effective LinkedIn Engagement</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">68%</div>
-                        <div class="stat-label">Professionals Too Busy for Consistent Networking</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3x</div>
-                        <div class="stat-label">Engagement Impact on Career Advancement</div>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-2">2.5hrs</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Daily Time Required</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-2">68%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Too Busy for Consistency</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-2">3x</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Career Impact</div>
                 </div>
             </div>
 
-            <p>Zaphy addresses this fundamental challenge by serving as an intelligent networking assistant that understands professional communication nuances. The extension analyzes post content, considers the user's professional background and relationship with the poster, and generates responses that sound natural and personally meaningful.</p>
+            <p>Zaphy addresses this fundamental challenge by serving as an intelligent networking assistant that
+                understands professional communication nuances. The extension analyzes post content, considers the
+                user's professional background and relationship with the poster, and generates responses that sound
+                natural and personally meaningful.</p>
 
             <h3>Advanced Natural Language Processing</h3>
 
-            <p>The technology behind Zaphy represents a significant advancement in contextual AI communication. The system doesn't simply generate generic responses; it performs deep analysis of multiple factors to craft appropriate professional communications.</p>
-
-            <p>The AI considers the original post's topic, sentiment, and professional context. It analyzes the relationship between the user and the poster—whether they're colleagues, industry peers, potential clients, or casual connections—and adjusts the tone and content accordingly.</p>
+            <p>The technology behind Zaphy represents a significant advancement in contextual AI communication. The
+                system doesn't simply generate generic responses; it performs deep analysis of multiple factors to craft
+                appropriate professional communications.</p>
 
             <div class="demo-box">
-                <h4>Zaphy in Action: Real LinkedIn Interaction</h4>
-                
+                <h4 class="text-lg font-['Orbitron'] font-bold text-cyan-400 mb-4 text-center">Zaphy in Action: Real
+                    Interaction</h4>
+
                 <div class="linkedin-post">
-                    <div class="post-header">
-                        <div class="avatar"></div>
-                        <div class="user-info">
-                            <div class="user-name">Jennifer Martinez</div>
-                            <div class="user-title">VP of Engineering at TechCorp</div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full mr-3"></div>
+                        <div>
+                            <div class="font-bold text-gray-900">Jennifer Martinez</div>
+                            <div class="text-xs text-gray-500">VP of Engineering at TechCorp</div>
                         </div>
                     </div>
-                    <p>"Exciting milestone: Our team just deployed a machine learning model that reduced customer support response time by 40%! Proud of what we've accomplished with this cross-functional collaboration."</p>
-                    
+                    <p class="mb-4 text-sm text-gray-800">"Exciting milestone: Our team just deployed a machine learning
+                        model that reduced customer support response time by 40%! Proud of what we've accomplished with
+                        this cross-functional collaboration."</p>
+
                     <div class="ai-response">
-                        Congratulations on this impressive achievement, Jennifer! A 40% improvement in response time is substantial—your team's work will have a real impact on customer satisfaction. I'd be interested to learn more about how you structured the cross-functional collaboration. In my experience, the coordination between ML teams and support operations can be challenging, but clearly you've found an effective approach.
+                        <strong class="text-green-600 text-xs uppercase block mb-1">AI Generated Response:</strong>
+                        Congratulations on this impressive achievement, Jennifer! A 40% improvement in response time is
+                        substantial—your team's work will have a real impact on customer satisfaction. I'd be interested
+                        to learn more about how you structured the cross-functional collaboration.
                     </div>
                 </div>
-                
-                <p style="font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 1rem;">
-                    <strong>Generated in 2.3 seconds</strong> • Contextually aware • Professionally appropriate • Maintains authentic voice
+
+                <p class="text-sm text-center text-gray-400 italic mt-4">
+                    Generated in 2.3 seconds • Contextually aware • Professionally appropriate
                 </p>
             </div>
 
-            <p>This level of sophistication requires training on vast datasets of professional communications, understanding industry-specific terminology, and recognizing appropriate response patterns for different types of professional interactions.</p>
+            <p>This level of sophistication requires training on vast datasets of professional communications,
+                understanding industry-specific terminology, and recognizing appropriate response patterns for different
+                types of professional interactions.</p>
 
             <h3>Maintaining Authenticity at Scale</h3>
 
-            <p>One of Zaphy's most impressive features is its ability to learn and replicate individual communication styles. During initial setup, users provide examples of their typical professional communications—emails, previous LinkedIn comments, and professional writing samples.</p>
+            <p>One of Zaphy's most impressive features is its ability to learn and replicate individual communication
+                styles. During initial setup, users provide examples of their typical professional
+                communications—emails, previous LinkedIn comments, and professional writing samples.</p>
 
             <div class="quote-box">
-                The goal isn't to replace human thought in professional networking, but to eliminate the time barrier that prevents meaningful engagement. Zaphy handles the mechanics while preserving the authenticity.
-                <br><br><em>— Sarah Chen, Lead Product Manager</em>
+                "The goal isn't to replace human thought in professional networking, but to eliminate the time barrier
+                that prevents meaningful engagement. Zaphy handles the mechanics while preserving the authenticity."
+                <div class="mt-4 text-sm font-bold not-italic text-cyan-400">— Sarah Chen, Lead Product Manager</div>
             </div>
 
-            <p>The AI analyzes linguistic patterns, preferred vocabulary, typical response lengths, and communication style preferences. This creates a personalized language model that generates responses consistent with how the user naturally communicates professionally.</p>
-
-            <p>Users report that colleagues often comment on the thoughtfulness of their LinkedIn responses, unaware that AI assistance was involved. This authenticity preservation is crucial for maintaining professional relationships and building genuine network connections.</p>
-
-            <h3>Beyond Basic Automation</h3>
-
-            <p>Zaphy goes far beyond simple response generation. The platform includes intelligent conversation threading, allowing it to maintain context across multi-exchange interactions. It can reference previous conversations, acknowledge shared professional experiences, and build upon established professional relationships.</p>
-
-            <p>The extension also provides strategic networking insights, suggesting when to engage with specific types of content, identifying high-value networking opportunities, and recommending optimal engagement timing based on audience activity patterns.</p>
-
-            <p>Privacy and professional ethics remain paramount. Zaphy operates entirely locally within the browser extension, ensuring that professional communications and networking data remain private and secure. The AI doesn't store or analyze user data beyond what's necessary for immediate response generation.</p>
+            <p>The AI analyzes linguistic patterns, preferred vocabulary, typical response lengths, and communication
+                style preferences. This creates a personalized language model that generates responses consistent with
+                how the user naturally communicates professionally.</p>
 
             <h3>Impact on Professional Development</h3>
 
-            <p>Early adopters report significant improvements in their professional networking outcomes. Users maintain higher engagement rates, participate in more meaningful professional discussions, and expand their networks more effectively than manual networking alone.</p>
+            <p>Early adopters report significant improvements in their professional networking outcomes. Users maintain
+                higher engagement rates, participate in more meaningful professional discussions, and expand their
+                networks more effectively than manual networking alone.</p>
 
-            <p>The time savings are substantial—users report reducing LinkedIn management time by 80% while actually increasing the quality and quantity of their professional interactions. This allows professionals to focus on strategic relationship building rather than routine engagement mechanics.</p>
-
-            <p>Sales professionals using Zaphy report improved lead generation and relationship nurturing. Business development executives maintain more consistent communication with prospects and industry contacts. Entrepreneurs find it easier to build thought leadership through regular, meaningful participation in industry discussions.</p>
-
-            <h3>The Future of Professional Networking</h3>
-
-            <p>Zaphy represents a broader trend toward intelligent automation that enhances rather than replaces human capability. As professional networking becomes increasingly digital and time-constrained, tools that can maintain authenticity while improving efficiency become invaluable.</p>
-
-            <p>The platform continues evolving with new features planned for cross-platform networking support, advanced relationship mapping, and integration with CRM systems for comprehensive professional relationship management.</p>
-
-            <p>As AI becomes more sophisticated in understanding professional communication nuances, tools like Zaphy may become as essential to professional success as email clients or calendar management systems are today.</p>
+            <p>The time savings are substantial—users report reducing LinkedIn management time by 80% while actually
+                increasing the quality and quantity of their professional interactions. This allows professionals to
+                focus on strategic relationship building rather than routine engagement mechanics.</p>
         </article>
 
-        <div class="decorative-border"></div>
-
-        <section class="related-articles">
-            <h3 class="related-title">Related Stories</h3>
-            <div class="related-grid">
-                <div class="related-item" onclick="window.location.href='blog-ai-music-revolution.html'">
-                    <h5>The Future of AI Music Generation: BevyBeats Revolution</h5>
-                    <p>How advanced neural networks are transforming music creation...</p>
+        <!-- Related Stories -->
+        <div class="mt-24">
+            <h3 class="text-2xl font-['Orbitron'] font-bold mb-8 metallic-text">RELATED RESEARCH</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-ai-music-revolution.html'">
+                    <div class="text-xs text-purple-400 font-mono mb-2">AI CREATIVITY</div>
+                    <h4 class="text-lg font-bold text-white mb-2">The Future of AI Music Generation</h4>
+                    <p class="text-sm text-gray-400">How BevyBeats is revolutionizing creativity...</p>
                 </div>
-                <div class="related-item" onclick="window.location.href='blog-ai-therapy.html'">
-                    <h5>AI Therapy Breakthrough: The Science Behind Savitri's Success</h5>
-                    <p>Revolutionary platform combines multiple therapeutic methodologies...</p>
-                </div>
-                <div class="related-item" onclick="window.location.href='blog-semiconductor-ai.html'">
-                    <h5>ChipOS: The Revolutionary AI Assistant for Silicon Design</h5>
-                    <p>Industry first: AI-powered development environment for SystemVerilog...</p>
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-ai-therapy.html'">
+                    <div class="text-xs text-green-400 font-mono mb-2">MENTAL HEALTH</div>
+                    <h4 class="text-lg font-bold text-white mb-2">AI Therapy Breakthrough</h4>
+                    <p class="text-sm text-gray-400">Revolutionary platform combines multiple methodologies...</p>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-    <footer class="newspaper-footer">
-        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and artificial intelligence advancement</p>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono mt-20">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
 </body>
+
 </html>

@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChipOS Settings Guide - Complete Configuration Reference | FutureAtoms</title>
-    <meta name="description" content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
+    <meta name="description"
+        content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
         :root {
             --cyan-glow: rgba(0, 255, 255, 0.3);
@@ -25,17 +29,13 @@
             --pink-glow: rgba(236, 72, 153, 0.3);
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #020205;
-            font-family: 'Rajdhani', sans-serif;
-            color: #e0f7ff;
-            scroll-behavior: smooth;
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
         }
 
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
 
         /* Sidebar */
         .docs-sidebar {
@@ -49,7 +49,8 @@
             border-left: 3px solid transparent;
         }
 
-        .sidebar-link:hover, .sidebar-link.active {
+        .sidebar-link:hover,
+        .sidebar-link.active {
             background: rgba(0, 255, 255, 0.1);
             border-left-color: #00ffff;
             color: #00ffff;
@@ -86,12 +87,29 @@
             box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
         }
 
-        .settings-card.green { border-left: 4px solid #22c55e; }
-        .settings-card.orange { border-left: 4px solid #f97316; }
-        .settings-card.pink { border-left: 4px solid #ec4899; }
-        .settings-card.purple { border-left: 4px solid #a855f7; }
-        .settings-card.cyan { border-left: 4px solid #00ffff; }
-        .settings-card.blue { border-left: 4px solid #3b82f6; }
+        .settings-card.green {
+            border-left: 4px solid #22c55e;
+        }
+
+        .settings-card.orange {
+            border-left: 4px solid #f97316;
+        }
+
+        .settings-card.pink {
+            border-left: 4px solid #ec4899;
+        }
+
+        .settings-card.purple {
+            border-left: 4px solid #a855f7;
+        }
+
+        .settings-card.cyan {
+            border-left: 4px solid #00ffff;
+        }
+
+        .settings-card.blue {
+            border-left: 4px solid #3b82f6;
+        }
 
         /* Table styles */
         .docs-table {
@@ -232,7 +250,8 @@
 
 <body class="min-h-screen">
     <!-- Mobile Nav Button -->
-    <button id="mobileNavBtn" class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
+    <button id="mobileNavBtn"
+        class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
         <i class="fas fa-bars text-lg"></i>
     </button>
 
@@ -269,8 +288,10 @@
                 <a href="#rag-settings" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
                 <a href="#llm-provider" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">LLM Provider</a>
                 <a href="#rag-strategy" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">RAG Strategy</a>
-                <a href="#crawling" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Crawling Performance</a>
-                <a href="#storage" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Storage Performance</a>
+                <a href="#crawling" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Crawling
+                    Performance</a>
+                <a href="#storage" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Storage
+                    Performance</a>
             </div>
 
             <!-- Code Extraction Section -->
@@ -278,15 +299,19 @@
                 <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Code Extraction</h3>
                 <a href="#code-extraction" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
                 <a href="#code-length" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Block Length</a>
-                <a href="#code-detection" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Detection Features</a>
-                <a href="#code-filtering" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Content Filtering</a>
+                <a href="#code-detection" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Detection
+                    Features</a>
+                <a href="#code-filtering" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Content
+                    Filtering</a>
             </div>
 
             <!-- Recommendations -->
             <div>
                 <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Guides</h3>
-                <a href="#recommended" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Recommended Configs</a>
-                <a href="#troubleshooting" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Troubleshooting</a>
+                <a href="#recommended" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Recommended
+                    Configs</a>
+                <a href="#troubleshooting"
+                    class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Troubleshooting</a>
             </div>
 
             <!-- Back to docs -->
@@ -306,7 +331,8 @@
                 <!-- Header -->
                 <header class="mb-12">
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
                             <i class="fas fa-cog text-2xl text-cyan-400"></i>
                         </div>
                         <div>
@@ -324,7 +350,8 @@
                     </h2>
 
                     <p class="text-gray-300 mb-8">
-                        The Features section controls which functionality is enabled in ChipOS. Toggle these settings to customize your experience.
+                        The Features section controls which functionality is enabled in ChipOS. Toggle these settings to
+                        customize your experience.
                     </p>
 
                     <!-- Dark Mode -->
@@ -334,9 +361,18 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Dark Mode</h3>
                                 <p class="text-gray-400 text-sm mb-4">Switch between light and dark color themes</p>
                                 <table class="docs-table text-sm">
-                                    <tr><td class="font-semibold w-32">Default</td><td>Enabled (Dark)</td></tr>
-                                    <tr><td class="font-semibold">Effect</td><td>Changes entire UI color scheme</td></tr>
-                                    <tr><td class="font-semibold">When to Use</td><td>Personal preference; dark mode reduces eye strain in low light</td></tr>
+                                    <tr>
+                                        <td class="font-semibold w-32">Default</td>
+                                        <td>Enabled (Dark)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Effect</td>
+                                        <td>Changes entire UI color scheme</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">When to Use</td>
+                                        <td>Personal preference; dark mode reduces eye strain in low light</td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="toggle-visual on"></div>
@@ -350,12 +386,22 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Projects</h3>
                                 <p class="text-gray-400 text-sm mb-4">Enable Projects and Tasks functionality</p>
                                 <table class="docs-table text-sm">
-                                    <tr><td class="font-semibold w-32">Default</td><td>Enabled</td></tr>
-                                    <tr><td class="font-semibold">Effect</td><td>Shows Projects sidebar, allows task management</td></tr>
-                                    <tr><td class="font-semibold">Requirements</td><td><code>archon_tasks.sql</code> migration must be installed</td></tr>
+                                    <tr>
+                                        <td class="font-semibold w-32">Default</td>
+                                        <td>Enabled</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Effect</td>
+                                        <td>Shows Projects sidebar, allows task management</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Requirements</td>
+                                        <td><code>archon_tasks.sql</code> migration must be installed</td>
+                                    </tr>
                                 </table>
                                 <div class="callout callout-warning mt-4">
-                                    <p class="text-sm"><strong>Note:</strong> If you see "Projects table not detected", run the database migration in Supabase SQL Editor.</p>
+                                    <p class="text-sm"><strong>Note:</strong> If you see "Projects table not detected",
+                                        run the database migration in Supabase SQL Editor.</p>
                                 </div>
                             </div>
                             <div class="toggle-visual on"></div>
@@ -369,9 +415,18 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Pydantic Logfire</h3>
                                 <p class="text-gray-400 text-sm mb-4">Structured logging and observability platform</p>
                                 <table class="docs-table text-sm">
-                                    <tr><td class="font-semibold w-32">Default</td><td>Disabled</td></tr>
-                                    <tr><td class="font-semibold">Effect</td><td>Sends telemetry data to Pydantic Logfire for debugging</td></tr>
-                                    <tr><td class="font-semibold">Requirements</td><td><code>LOGFIRE_TOKEN</code> in environment</td></tr>
+                                    <tr>
+                                        <td class="font-semibold w-32">Default</td>
+                                        <td>Disabled</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Effect</td>
+                                        <td>Sends telemetry data to Pydantic Logfire for debugging</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-semibold">Requirements</td>
+                                        <td><code>LOGFIRE_TOKEN</code> in environment</td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="toggle-visual"></div>
@@ -387,7 +442,8 @@
                     </h2>
 
                     <p class="text-gray-300 mb-8">
-                        Manage credentials for external services. API keys power the AI features, embeddings, and external integrations.
+                        Manage credentials for external services. API keys power the AI features, embeddings, and
+                        external integrations.
                     </p>
 
                     <div class="settings-card pink p-6 mb-6">
@@ -401,6 +457,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td><code>VOYAGE_API_KEY</code></td>
+                                    <td>Voyage AI</td>
+                                    <td>Default embeddings (voyage-code-3)</td>
+                                </tr>
                                 <tr>
                                     <td><code>OPENAI_API_KEY</code></td>
                                     <td>OpenAI</td>
@@ -442,7 +503,8 @@
                     </div>
 
                     <div class="callout callout-tip">
-                        <p class="text-sm"><strong>Security Tip:</strong> Always encrypt API keys. Encrypted credentials are stored securely and cannot be viewed after saving.</p>
+                        <p class="text-sm"><strong>Security Tip:</strong> Always encrypt API keys. Encrypted credentials
+                            are stored securely and cannot be viewed after saving.</p>
                     </div>
                 </section>
 
@@ -454,8 +516,24 @@
                     </h2>
 
                     <p class="text-gray-300 mb-8">
-                        RAG (Retrieval-Augmented Generation) settings control how ChipOS retrieves and processes knowledge from your documentation.
+                        RAG (Retrieval-Augmented Generation) settings control how ChipOS retrieves and processes
+                        knowledge from your documentation.
                     </p>
+
+                    <!-- Voyage AI Callout -->
+                    <div class="callout callout-tip mb-6">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-rocket text-green-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">New Default: Voyage AI</strong>
+                                <p class="text-gray-300 text-sm mt-1">Voyage AI's <code>voyage-code-3</code> is now the
+                                    default embedding model, offering <strong>13-17% better code retrieval</strong> than
+                                    OpenAI while using 33% less memory (1024 vs 1536 dimensions). Get your API key at <a
+                                        href="https://voyage.ai" target="_blank"
+                                        class="text-cyan-400 hover:underline">voyage.ai</a>.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- LLM Provider -->
                     <div id="llm-provider" class="settings-card green p-6 mb-6">
@@ -470,7 +548,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>OpenAI</strong> (default)</td>
+                                    <td><strong>Voyage AI</strong> (default)</td>
+                                    <td><code>gpt-4o-mini</code> via OpenAI</td>
+                                    <td><code>voyage-code-3</code> (1024 dims)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OpenAI</strong></td>
                                     <td><code>gpt-4o-mini</code>, <code>gpt-4o</code></td>
                                     <td><code>text-embedding-3-small</code></td>
                                 </tr>
@@ -497,8 +580,11 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Use Contextual Embeddings</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Enhances embeddings with surrounding context for better retrieval</p>
-                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Disabled | <strong>Workers:</strong> 1-10 (default 3)</p>
+                                        <p class="text-gray-400 text-sm mt-1">Enhances embeddings with surrounding
+                                            context for better retrieval</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Disabled |
+                                            <strong>Workers:</strong> 1-10 (default 3)
+                                        </p>
                                     </div>
                                     <div class="toggle-visual"></div>
                                 </div>
@@ -508,8 +594,10 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Use Hybrid Search</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Combines vector similarity with BM25 keyword search</p>
-                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Better for exact identifiers like <code>AXI_AWREADY</code></p>
+                                        <p class="text-gray-400 text-sm mt-1">Combines vector similarity with BM25
+                                            keyword search</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
+                                            Better for exact identifiers like <code>AXI_AWREADY</code></p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -519,8 +607,10 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Use Agentic RAG</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Enables code extraction and specialized search for technical content</p>
-                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Creates separate embeddings for code blocks</p>
+                                        <p class="text-gray-400 text-sm mt-1">Enables code extraction and specialized
+                                            search for technical content</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
+                                            Creates separate embeddings for code blocks</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -530,8 +620,36 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Use Reranking</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Applies cross-encoder reranking to improve result relevance</p>
-                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled | Re-scores top results for better accuracy</p>
+                                        <p class="text-gray-400 text-sm mt-1">Applies cross-encoder reranking to improve
+                                            result relevance</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
+                                            Re-scores top results for better accuracy</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Query Classification</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Analyzes query intent and routes to the
+                                            optimal search strategy</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
+                                            Distinguishes code queries from conceptual queries</p>
+                                    </div>
+                                    <div class="toggle-visual on"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-black/30 rounded-lg p-4">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Use Context Expansion</h4>
+                                        <p class="text-gray-400 text-sm mt-1">Retrieves surrounding chunks from the same
+                                            file for better context</p>
+                                        <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
+                                            Essential for code queries to understand full context</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -683,7 +801,8 @@
                             </tbody>
                         </table>
                         <div class="callout callout-tip mt-0">
-                            <p class="text-sm"><strong>Tip:</strong> Increase minimum for higher quality (fewer snippets). Decrease to capture short examples.</p>
+                            <p class="text-sm"><strong>Tip:</strong> Increase minimum for higher quality (fewer
+                                snippets). Decrease to capture short examples.</p>
                         </div>
                     </div>
 
@@ -695,7 +814,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Complete Block Detection</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Extend code blocks to natural boundaries (closing braces, etc.)</p>
+                                        <p class="text-gray-400 text-sm mt-1">Extend code blocks to natural boundaries
+                                            (closing braces, etc.)</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -704,7 +824,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Language-Specific Patterns</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Use specialized patterns for TypeScript, Python, Verilog, etc.</p>
+                                        <p class="text-gray-400 text-sm mt-1">Use specialized patterns for TypeScript,
+                                            Python, Verilog, etc.</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -713,7 +834,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Contextual Length Adjustment</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Adjust minimum length based on context (example, snippet, implementation)</p>
+                                        <p class="text-gray-400 text-sm mt-1">Adjust minimum length based on context
+                                            (example, snippet, implementation)</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -729,7 +851,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Filter Prose Content</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Remove documentation text mistakenly wrapped in code blocks</p>
+                                        <p class="text-gray-400 text-sm mt-1">Remove documentation text mistakenly
+                                            wrapped in code blocks</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -738,7 +861,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Filter Diagram Languages</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Exclude Mermaid, PlantUML, and other diagram formats</p>
+                                        <p class="text-gray-400 text-sm mt-1">Exclude Mermaid, PlantUML, and other
+                                            diagram formats</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -747,7 +871,8 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Generate Code Summaries</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Use AI to create summaries and names for code examples</p>
+                                        <p class="text-gray-400 text-sm mt-1">Use AI to create summaries and names for
+                                            code examples</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -771,11 +896,20 @@
                                 Hardware Documentation
                             </h3>
                             <ul class="text-gray-300 text-sm space-y-2">
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Contextual Embeddings: <strong>Enabled</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Hybrid Search: <strong>Enabled</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Agentic RAG: <strong>Enabled</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Wait Strategy: <strong>DOM Loaded</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Generate Code Summaries: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Contextual Embeddings:
+                                    <strong>Enabled</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Hybrid Search:
+                                    <strong>Enabled</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use Agentic RAG:
+                                    <strong>Enabled</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Wait Strategy: <strong>DOM
+                                        Loaded</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Generate Code Summaries:
+                                    <strong>Enabled</strong>
+                                </li>
                             </ul>
                         </div>
 
@@ -786,10 +920,18 @@
                                 Large Codebases
                             </h3>
                             <ul class="text-gray-300 text-sm space-y-2">
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Discovered Pages: <strong>50,000</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size: <strong>200</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Code Extraction Workers: <strong>5</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Parallel Batches: <strong>Enabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Discovered Pages:
+                                    <strong>50,000</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size:
+                                    <strong>200</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Code Extraction Workers:
+                                    <strong>5</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Parallel Batches:
+                                    <strong>Enabled</strong>
+                                </li>
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Use path regex filters</li>
                             </ul>
                         </div>
@@ -801,10 +943,15 @@
                                 Low-Resource Systems
                             </h3>
                             <ul class="text-gray-300 text-sm space-y-2">
-                                <li><i class="fas fa-times text-red-400 mr-2"></i>Use Contextual Embeddings: <strong>Disabled</strong></li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Use Contextual Embeddings:
+                                    <strong>Disabled</strong>
+                                </li>
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Batch Size: <strong>25</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Concurrent: <strong>3</strong></li>
-                                <li><i class="fas fa-times text-red-400 mr-2"></i>Parallel Batches: <strong>Disabled</strong></li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Max Concurrent: <strong>3</strong>
+                                </li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Parallel Batches:
+                                    <strong>Disabled</strong>
+                                </li>
                             </ul>
                         </div>
 
@@ -815,10 +962,17 @@
                                 API Cost Optimization
                             </h3>
                             <ul class="text-gray-300 text-sm space-y-2">
-                                <li><i class="fas fa-times text-red-400 mr-2"></i>Contextual Embeddings: <strong>Disabled</strong></li>
-                                <li><i class="fas fa-times text-red-400 mr-2"></i>Code Summaries: <strong>Disabled</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size: <strong>50</strong></li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Model: <strong>gpt-4o-mini</strong></li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Contextual Embeddings:
+                                    <strong>Disabled</strong>
+                                </li>
+                                <li><i class="fas fa-times text-red-400 mr-2"></i>Code Summaries:
+                                    <strong>Disabled</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size:
+                                    <strong>50</strong>
+                                </li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Model: <strong>gpt-4o-mini</strong>
+                                </li>
                             </ul>
                         </div>
                     </div>

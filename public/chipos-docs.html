@@ -18,7 +18,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css?v=9999">
 
     <!-- Prism.js for code highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
@@ -335,15 +335,18 @@
                     </h3>
                     <ul class="space-y-1">
                         <li><a href="#unified-search"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Unified Search</a></li>
+                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Unified Search</a>
+                        </li>
                         <li><a href="#query-classification"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Query Classification</a></li>
+                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Query
+                                Classification</a></li>
                         <li><a href="#context-expansion"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Context Expansion</a></li>
+                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Context Expansion</a>
+                        </li>
                         <li><a href="#reranking"
                                 class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Reranking</a></li>
-                        <li><a href="#rag-health"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG Health</a></li>
+                        <li><a href="#rag-health" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG
+                                Health</a></li>
                         <li><a href="#voyage-ai"
                                 class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Voyage AI</a></li>
                     </ul>
@@ -1415,14 +1418,16 @@
                 <!-- Unified Search -->
                 <section id="unified-search" class="section-anchor mb-16">
                     <div class="text-center mb-8">
-                        <span class="tech-badge text-green-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
+                        <span
+                            class="tech-badge text-green-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
                             <i class="fas fa-rocket mr-2"></i>2025 ENHANCEMENT
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
                             Advanced <span class="text-green-400">RAG</span>
                         </h2>
                         <p class="text-gray-400 max-w-2xl mx-auto">
-                            State-of-the-art retrieval enhancements based on RAPTOR, GraphRAG, and production RAG research.
+                            State-of-the-art retrieval enhancements based on RAPTOR, GraphRAG, and production RAG
+                            research.
                         </p>
                     </div>
 
@@ -1438,14 +1443,18 @@
                             <i class="fas fa-star text-yellow-400 mt-1"></i>
                             <div>
                                 <strong class="text-white">Critical Fix</strong>
-                                <p class="text-gray-300 text-sm mt-1">Unified Search resolves the issue where repository-ingested content wasn't searchable through the knowledge base API. Now all content sources are searched simultaneously.</p>
+                                <p class="text-gray-300 text-sm mt-1">Unified Search resolves the issue where
+                                    repository-ingested content wasn't searchable through the knowledge base API. Now
+                                    all content sources are searched simultaneously.</p>
                             </div>
                         </div>
                     </div>
 
                     <p class="text-gray-400 mb-6">
-                        ChipOS stores content in two tables: <code class="text-cyan-400">chipos_crawled_pages</code> for web documentation and
-                        <code class="text-cyan-400">chipos_code_examples</code> for repository code. Unified Search queries both simultaneously with content-type awareness.
+                        ChipOS stores content in two tables: <code class="text-cyan-400">chipos_crawled_pages</code> for
+                        web documentation and
+                        <code class="text-cyan-400">chipos_code_examples</code> for repository code. Unified Search
+                        queries both simultaneously with content-type awareness.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -1465,7 +1474,8 @@
                             </h4>
                             <ul class="space-y-2 text-gray-300 text-sm">
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Repository-ingested code</li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Documentation from repos (README, docs/)</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Documentation from repos (README,
+                                    docs/)</li>
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Config files (YAML, JSON, TOML)</li>
                             </ul>
                         </div>
@@ -1473,7 +1483,8 @@
 
                     <div class="feature-card p-6 rounded-xl mb-6">
                         <h4 class="text-white font-bold mb-4">Content Type Classification</h4>
-                        <p class="text-gray-400 text-sm mb-4">Every chunk is automatically tagged with a content type during ingestion:</p>
+                        <p class="text-gray-400 text-sm mb-4">Every chunk is automatically tagged with a content type
+                            during ingestion:</p>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="text-center bg-black/30 p-4 rounded-lg">
                                 <i class="fas fa-code text-cyan-400 text-2xl mb-2"></i>
@@ -1504,7 +1515,8 @@
                     </h3>
 
                     <p class="text-gray-400 mb-6">
-                        ChipOS analyzes query intent using keyword patterns to route queries to the optimal search strategy.
+                        ChipOS analyzes query intent using keyword patterns to route queries to the optimal search
+                        strategy.
                     </p>
 
                     <table class="docs-table mb-6">
@@ -1550,12 +1562,14 @@
                     </h3>
 
                     <p class="text-gray-400 mb-6">
-                        When retrieving code chunks, ChipOS automatically includes surrounding chunks from the same file to provide full context.
+                        When retrieving code chunks, ChipOS automatically includes surrounding chunks from the same file
+                        to provide full context.
                     </p>
 
                     <div class="glass-panel p-6 rounded-xl mb-6">
                         <h4 class="text-white font-bold mb-4">Parent-Child Relationships</h4>
-                        <p class="text-gray-400 text-sm mb-4">Each code chunk stores metadata about its position in the original file:</p>
+                        <p class="text-gray-400 text-sm mb-4">Each code chunk stores metadata about its position in the
+                            original file:</p>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div class="bg-black/30 p-3 rounded-lg text-center">
                                 <i class="fas fa-fingerprint text-cyan-400 text-xl mb-2"></i>
@@ -1585,7 +1599,9 @@
                             <i class="fas fa-info-circle text-blue-400 mt-1"></i>
                             <div>
                                 <strong class="text-white">How It Works</strong>
-                                <p class="text-gray-300 text-sm mt-1">When a code chunk is retrieved, Context Expansion fetches adjacent chunks (before and after) to provide surrounding code, making it easier for AI assistants to understand the full context.</p>
+                                <p class="text-gray-300 text-sm mt-1">When a code chunk is retrieved, Context Expansion
+                                    fetches adjacent chunks (before and after) to provide surrounding code, making it
+                                    easier for AI assistants to understand the full context.</p>
                             </div>
                         </div>
                     </div>
@@ -1601,7 +1617,8 @@
                     </h3>
 
                     <p class="text-gray-400 mb-6">
-                        Two-stage retrieval: first fetch candidates with vector search, then rerank with a CrossEncoder model for <strong class="text-green-400">15-20% better relevance</strong>.
+                        Two-stage retrieval: first fetch candidates with vector search, then rerank with a CrossEncoder
+                        model for <strong class="text-green-400">15-20% better relevance</strong>.
                     </p>
 
                     <div class="feature-card p-6 rounded-xl mb-6">
@@ -1672,12 +1689,14 @@
                     </h3>
 
                     <p class="text-gray-400 mb-6">
-                        ChipOS automatically evaluates RAG quality after content is uploaded or crawled, detecting issues before they impact users.
+                        ChipOS automatically evaluates RAG quality after content is uploaded or crawled, detecting
+                        issues before they impact users.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div class="glass-panel p-6 rounded-xl text-center border-green-500/30">
-                            <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div
+                                class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-check-circle text-green-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Healthy</h4>
@@ -1685,7 +1704,8 @@
                             <p class="text-gray-500 text-xs mt-2">RAG working well</p>
                         </div>
                         <div class="glass-panel p-6 rounded-xl text-center border-yellow-500/30">
-                            <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div
+                                class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-exclamation-triangle text-yellow-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Degraded</h4>
@@ -1693,7 +1713,8 @@
                             <p class="text-gray-500 text-xs mt-2">Some issues detected</p>
                         </div>
                         <div class="glass-panel p-6 rounded-xl text-center border-red-500/30">
-                            <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-times-circle text-red-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Unhealthy</h4>
@@ -1728,7 +1749,9 @@
                             <i class="fas fa-rocket text-green-400 mt-1"></i>
                             <div>
                                 <strong class="text-white">New Default Provider</strong>
-                                <p class="text-gray-300 text-sm mt-1">Voyage AI's <code>voyage-code-3</code> is now the default embedding model, offering 13-17% better code retrieval than OpenAI with 33% less memory usage.</p>
+                                <p class="text-gray-300 text-sm mt-1">Voyage AI's <code>voyage-code-3</code> is now the
+                                    default embedding model, offering 13-17% better code retrieval than OpenAI with 33%
+                                    less memory usage.</p>
                             </div>
                         </div>
                     </div>

@@ -15,27 +15,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="css/main.css?v=9999">
+    <link rel="stylesheet" href="css/feedback.css">
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #020205;
-            font-family: 'Rajdhani', sans-serif;
-            color: #e0f7ff;
-            overflow-x: hidden;
-        }
-
-        .glass-panel {
-            background: rgba(5, 12, 25, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.05);
-        }
-
         .metallic-text {
             background: linear-gradient(135deg, #00ffff 0%, #ffffff 50%, #0088ff 100%);
             -webkit-background-clip: text;
@@ -51,14 +33,16 @@
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
         <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
-            <div class="w-12 h-12 flex items-center justify-center">
+            <div class="w-10 h-10 flex items-center justify-center">
                 <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
                     class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
             </div>
             <div>
-                <h1 class="font-['Orbitron'] text-2xl font-bold tracking-wider text-white">
+                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
                     FUTURE<span class="text-cyan-400">ATOMS</span>
                 </h1>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
+                    Intelligence</p>
             </div>
         </div>
         <nav class="hidden md:flex gap-8 text-sm items-center">

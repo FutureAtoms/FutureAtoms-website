@@ -1,487 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Therapy Breakthrough: The Science Behind Savitri's Success - FutureAtoms Tech Herald</title>
-    <!-- Newspaper fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>AI Therapy Breakthrough: The Science Behind Savitri's Success | FutureAtoms Research</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Libre Baskerville', serif;
-            background: #1a1a1a;
-            color: #2c2c2c;
-            line-height: 1.8;
-        }
-
-        .newspaper-header {
-            background: #fff;
-            border-bottom: 4px solid #000;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .newspaper-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-date {
-            font-size: 0.9rem;
-            color: #888;
-            font-family: 'Old Standard TT', serif;
-        }
-
-        .nav-bar {
-            background: #000;
-            padding: 0.8rem 0;
-            text-align: center;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: inline-flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ccc;
-        }
-
-        .article-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: #fff;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            border-radius: 8px;
-        }
-
-        .article-header {
-            border-bottom: 3px solid #000;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .article-category {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #cc0000;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .article-headline {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #000;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .article-subheadline {
-            font-family: 'Old Standard TT', serif;
-            font-size: 1.3rem;
-            color: #444;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-meta {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-
-        .byline {
-            font-weight: 700;
-            color: #000;
-        }
-
-        .article-content {
-            padding: 2rem 0;
-            column-count: 2;
-            column-gap: 3rem;
-            column-rule: 1px solid #ddd;
-            text-align: justify;
-            hyphens: auto;
-        }
-
         .article-content p {
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            break-inside: avoid-column;
-        }
-
-        .article-content p:first-child::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            float: left;
-            line-height: 3rem;
-            margin: 0.5rem 0.5rem 0 0;
-            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
 
         .article-content h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #000;
-            margin: 1.5rem 0 0.8rem 0;
-            break-after: avoid-column;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
         .quote-box {
-            background: #f5f5f5;
-            border-left: 4px solid #cc0000;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
+            border-left: 4px solid #00ffff;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 2rem;
+            margin: 2.5rem 0;
             font-style: italic;
-            font-size: 1.1rem;
-            text-align: center;
+            font-size: 1.2rem;
+            color: #a5f3fc;
         }
 
-        .clinical-data {
-            background: #fff;
-            border: 2px solid #000;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            column-span: all;
-            text-align: center;
-        }
-
-        .clinical-data h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
+        .methods-grid,
         .data-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
+            margin: 2rem 0;
         }
 
+        .method-item,
         .data-item {
-            text-align: center;
-            padding: 1rem;
-            border: 1px solid #ddd;
-        }
-
-        .data-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: #cc0000;
-        }
-
-        .data-label {
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .therapy-methods {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 2rem;
-            margin: 2rem 0;
-            column-span: all;
-        }
-
-        .therapy-methods h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .methods-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+        /* Dropdown Styles Overrides */
+        .dropdown-content {
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
         }
 
-        .method-item {
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .method-item strong {
-            font-family: 'Old Standard TT', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-        }
-
-        .decorative-border {
-            height: 4px;
-            background: repeating-linear-gradient(
-                to right,
-                #000,
-                #000 10px,
-                #fff 10px,
-                #fff 20px
-            );
-            margin: 2rem 0;
-        }
-
-        .related-articles {
-            border-top: 2px solid #000;
-            padding: 2rem 0;
-            margin-top: 2rem;
-        }
-
-        .related-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .related-item {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .related-item:hover {
-            background: #f9f9f9;
-        }
-
-        .related-item h5 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .newspaper-footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-family: 'Old Standard TT', serif;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .article-content {
-                column-count: 1;
-            }
-            
-            .article-headline {
-                font-size: 2rem;
-            }
-            
-            .newspaper-title {
-                font-size: 2rem;
-            }
+        .dropdown-content a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            border-left: 2px solid #00ffff;
         }
     </style>
 </head>
+
 <body>
-    <header class="newspaper-header">
-        <h1 class="newspaper-title">FutureAtoms Tech Herald</h1>
-        <div class="newspaper-date">December 12, 2024 • Volume 1, Issue 1</div>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            </div>
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </h1>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
+                    Intelligence</p>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+
+            <a href="blog.html" class="nav-link active">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html"
+                class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
     </header>
 
-    <nav class="nav-bar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Tech Herald</a></li>
-            <li><a href="news.html">Breaking News</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav
+            class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
-    <main class="article-container">
-        <header class="article-header">
-            <div class="article-category">Mental Health Technology</div>
-            <h1 class="article-headline">AI Therapy Breakthrough: The Science Behind Savitri's Success</h1>
-            <p class="article-subheadline">Revolutionary platform combines CBT, DBT, and ACT methodologies in groundbreaking approach to mental health care</p>
-            <div class="article-meta">
-                <span class="byline">By Medical Technology Team</span> • Health Technology Correspondents • December 12, 2024 • 6 min read
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="systemverilog.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="adaptivision.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="bevybeats.html"
+                    class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
             </div>
-        </header>
 
-        <div class="decorative-border"></div>
+            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="contact.html"
+                class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
 
-        <article class="article-content">
-            <p>The mental health crisis has reached unprecedented levels worldwide, with traditional therapy resources stretched thin and millions struggling to access adequate care. Enter Savitri, an AI-powered therapy platform that's not just addressing the access problem—it's revolutionizing how therapeutic intervention itself is delivered and experienced.</p>
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
 
-            <p>Developed by FutureAtoms, Savitri represents the culmination of three years of research combining advanced artificial intelligence with evidence-based therapeutic methodologies. The platform seamlessly integrates Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), and Acceptance and Commitment Therapy (ACT) into a personalized, accessible format that's showing remarkable clinical results.</p>
+        <!-- Article Header -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block px-4 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-['Orbitron'] tracking-widest mb-6">
+                MENTAL HEALTH TECHNOLOGY
+            </div>
+            <h1 class="text-4xl md:text-6xl font-['Orbitron'] font-bold leading-tight mb-8 metallic-text">
+                AI Therapy Breakthrough: The Science Behind Savitri's Success
+            </h1>
+            <div
+                class="flex items-center justify-center gap-6 text-sm text-gray-400 font-mono border-t border-b border-white/10 py-4">
+                <span>DEC 12, 2024</span>
+                <span>•</span>
+                <span>BY MEDICAL TECH TEAM</span>
+                <span>•</span>
+                <span>6 MIN READ</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="glass-panel p-8 md:p-12 rounded-2xl metallic-border article-content">
+            <p>The mental health crisis has reached unprecedented levels worldwide, with traditional therapy resources
+                stretched thin and millions struggling to access adequate care. Enter Savitri, an AI-powered therapy
+                platform that's not just addressing the access problem—it's revolutionizing how therapeutic intervention
+                itself is delivered and experienced.</p>
+
+            <p>Developed by FutureAtoms, Savitri represents the culmination of three years of research combining
+                advanced artificial intelligence with evidence-based therapeutic methodologies. The platform seamlessly
+                integrates Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), and Acceptance and
+                Commitment Therapy (ACT) into a personalized, accessible format that's showing remarkable clinical
+                results.</p>
 
             <h3>The Clinical Foundation</h3>
 
-            <p>Unlike chatbots or simple mood-tracking apps, Savitri is built on rigorous clinical research. The development team, led by Dr. Maria Santos, a licensed clinical psychologist with 20 years of experience, worked closely with AI researchers to ensure that the platform maintains therapeutic integrity while leveraging technology's scaling capabilities.</p>
+            <p>Unlike chatbots or simple mood-tracking apps, Savitri is built on rigorous clinical research. The
+                development team, led by Dr. Maria Santos, a licensed clinical psychologist with 20 years of experience,
+                worked closely with AI researchers to ensure that the platform maintains therapeutic integrity while
+                leveraging technology's scaling capabilities.</p>
 
-            <div class="therapy-methods">
-                <h4>Integrated Therapeutic Approaches</h4>
-                <div class="methods-grid">
-                    <div class="method-item">
-                        <strong>CBT</strong><br>
-                        Identifies and challenges negative thought patterns through structured exercises and real-time cognitive reframing
-                    </div>
-                    <div class="method-item">
-                        <strong>DBT</strong><br>
-                        Teaches emotional regulation and distress tolerance through mindfulness and interpersonal effectiveness skills
-                    </div>
-                    <div class="method-item">
-                        <strong>ACT</strong><br>
-                        Promotes psychological flexibility through acceptance, mindfulness, and values-based action planning
-                    </div>
+            <div class="methods-grid">
+                <div class="method-item">
+                    <div class="text-xl font-['Orbitron'] font-bold text-cyan-400 mb-2">CBT</div>
+                    <p class="text-sm text-gray-400">Identifies and challenges negative thought patterns through
+                        structured exercises</p>
+                </div>
+                <div class="method-item">
+                    <div class="text-xl font-['Orbitron'] font-bold text-cyan-400 mb-2">DBT</div>
+                    <p class="text-sm text-gray-400">Teaches emotional regulation and distress tolerance through
+                        mindfulness</p>
+                </div>
+                <div class="method-item">
+                    <div class="text-xl font-['Orbitron'] font-bold text-cyan-400 mb-2">ACT</div>
+                    <p class="text-sm text-gray-400">Promotes psychological flexibility through acceptance and
+                        values-based action</p>
                 </div>
             </div>
 
-            <p>The AI system is trained on thousands of hours of actual therapy sessions (with proper anonymization and consent), allowing it to recognize patterns in speech, emotion, and behavior that typically take human therapists years to develop. This doesn't replace human intuition but rather amplifies therapeutic insight with data-driven precision.</p>
+            <p>The AI system is trained on thousands of hours of actual therapy sessions (with proper anonymization and
+                consent), allowing it to recognize patterns in speech, emotion, and behavior that typically take human
+                therapists years to develop. This doesn't replace human intuition but rather amplifies therapeutic
+                insight with data-driven precision.</p>
 
             <h3>Revolutionary User Experience</h3>
 
-            <p>What sets Savitri apart is its sophisticated understanding of therapeutic rapport and timing. The AI can recognize when a user is ready for challenging interventions versus when they need supportive listening. It adapts its approach based on the user's emotional state, progress patterns, and personal history.</p>
+            <p>What sets Savitri apart is its sophisticated understanding of therapeutic rapport and timing. The AI can
+                recognize when a user is ready for challenging interventions versus when they need supportive listening.
+                It adapts its approach based on the user's emotional state, progress patterns, and personal history.</p>
 
             <div class="quote-box">
-                Savitri doesn't just deliver therapy—it understands therapy. The AI recognizes the subtle emotional cues that indicate readiness for change, resistance to intervention, or the need for crisis support.
-                <br><br><em>— Dr. Maria Santos, Clinical Director</em>
+                "Savitri doesn't just deliver therapy—it understands therapy. The AI recognizes the subtle emotional
+                cues that indicate readiness for change, resistance to intervention, or the need for crisis support."
+                <div class="mt-4 text-sm font-bold not-italic text-cyan-400">— Dr. Maria Santos, Clinical Director</div>
             </div>
 
-            <p>Users interact with Savitri through voice and video sessions that feel remarkably natural. The AI maintains eye contact, responds to emotional expressions, and even adjusts its speaking pace based on the user's stress levels. Advanced natural language processing allows for nuanced conversations about complex emotional topics.</p>
-
-            <p>The platform's video therapy feature represents a particular breakthrough. Using computer vision and emotional AI, Savitri can read facial expressions, posture, and micro-expressions to gauge emotional state and therapeutic progress. This multimodal approach creates a more comprehensive understanding of the user's mental health status.</p>
+            <p>Users interact with Savitri through voice and video sessions that feel remarkably natural. The AI
+                maintains eye contact, responds to emotional expressions, and even adjusts its speaking pace based on
+                the user's stress levels. Advanced natural language processing allows for nuanced conversations about
+                complex emotional topics.</p>
 
             <h3>Clinical Trial Results</h3>
 
-            <p>The results from Savitri's clinical trials have surprised even skeptical mental health professionals. In a six-month randomized controlled trial involving 2,400 participants across multiple demographics, Savitri demonstrated efficacy comparable to traditional therapy for mild to moderate anxiety and depression.</p>
+            <p>The results from Savitri's clinical trials have surprised even skeptical mental health professionals. In
+                a six-month randomized controlled trial involving 2,400 participants across multiple demographics,
+                Savitri demonstrated efficacy comparable to traditional therapy for mild to moderate anxiety and
+                depression.</p>
 
-            <div class="clinical-data">
-                <h4>Clinical Trial Outcomes</h4>
-                <div class="data-grid">
-                    <div class="data-item">
-                        <div class="data-number">73%</div>
-                        <div class="data-label">Significant Symptom Improvement</div>
-                    </div>
-                    <div class="data-item">
-                        <div class="data-number">89%</div>
-                        <div class="data-label">User Engagement Rate</div>
-                    </div>
-                    <div class="data-item">
-                        <div class="data-number">4.2x</div>
-                        <div class="data-label">Increase in Therapy Access</div>
-                    </div>
-                    <div class="data-item">
-                        <div class="data-number">94%</div>
-                        <div class="data-label">Would Recommend to Others</div>
-                    </div>
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-2">73%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Symptom Improvement</div>
+                </div>
+                <div class="data-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-2">89%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">User Engagement</div>
+                </div>
+                <div class="data-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-pink-400 mb-2">4.2x</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Access Increase</div>
+                </div>
+                <div class="data-item">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-2">94%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider">Recommendation Rate</div>
                 </div>
             </div>
 
-            <p>Perhaps more importantly, Savitri showed particular effectiveness with populations that have historically struggled to access mental health care: young adults, people in rural areas, and individuals with social anxiety who find traditional therapy settings intimidating.</p>
+            <p>Perhaps more importantly, Savitri showed particular effectiveness with populations that have historically
+                struggled to access mental health care: young adults, people in rural areas, and individuals with social
+                anxiety who find traditional therapy settings intimidating.</p>
 
             <h3>Addressing Professional Concerns</h3>
 
-            <p>The mental health community initially approached AI therapy with significant skepticism. Concerns ranged from the potential for misdiagnosis to the loss of human connection that many consider essential to therapeutic healing. The Savitri team has worked diligently to address these concerns through transparency, clinical rigor, and collaborative design with practicing therapists.</p>
+            <p>The mental health community initially approached AI therapy with significant skepticism. Concerns ranged
+                from the potential for misdiagnosis to the loss of human connection that many consider essential to
+                therapeutic healing. The Savitri team has worked diligently to address these concerns through
+                transparency, clinical rigor, and collaborative design with practicing therapists.</p>
 
-            <p>Rather than replacing human therapists, Savitri is designed to work alongside them. The platform can handle initial assessments, provide ongoing support between sessions, and flag cases that require human intervention. Many therapists report that Savitri allows them to focus on more complex cases while ensuring that clients receive consistent support.</p>
-
-            <p>The platform includes robust crisis detection protocols. If the AI identifies indicators of severe depression, suicidal ideation, or other crisis situations, it immediately connects users with human crisis counselors and provides emergency resources.</p>
+            <p>Rather than replacing human therapists, Savitri is designed to work alongside them. The platform can
+                handle initial assessments, provide ongoing support between sessions, and flag cases that require human
+                intervention. Many therapists report that Savitri allows them to focus on more complex cases while
+                ensuring that clients receive consistent support.</p>
 
             <h3>The Personalization Revolution</h3>
 
-            <p>One of Savitri's most innovative features is its ability to personalize therapeutic approaches at a granular level. The AI analyzes patterns in user responses, engagement levels, and progress indicators to continuously refine its approach. What works for one user may not work for another, and Savitri adapts in real-time.</p>
-
-            <p>The platform maintains detailed progress tracking that would be impractical for human therapists to monitor manually. It tracks mood patterns, coping strategy effectiveness, medication adherence (when applicable), and life event correlations to provide insights that inform treatment adjustments.</p>
-
-            <p>Users report feeling "understood" by Savitri in ways that sometimes surpass their experiences with human therapists. The AI's perfect memory of past sessions, combined with its ability to detect subtle patterns in behavior and mood, creates a sense of deep therapeutic alliance.</p>
+            <p>One of Savitri's most innovative features is its ability to personalize therapeutic approaches at a
+                granular level. The AI analyzes patterns in user responses, engagement levels, and progress indicators
+                to continuously refine its approach. What works for one user may not work for another, and Savitri
+                adapts in real-time.</p>
 
             <h3>Global Mental Health Impact</h3>
 
-            <p>The implications of successful AI therapy extend far beyond individual treatment. With one in four people worldwide affected by mental health disorders and a severe shortage of mental health professionals, scalable solutions like Savitri could transform global mental health care.</p>
-
-            <p>The platform is being piloted in underserved communities where traditional therapy resources are scarce. Initial results from rural implementations show particular promise, with users maintaining engagement rates comparable to urban centers despite having no prior therapy experience.</p>
-
-            <p>Savitri's multilingual capabilities and cultural adaptability make it uniquely positioned to address mental health needs across diverse populations. The AI can be trained to understand cultural contexts, communication styles, and therapy preferences specific to different communities.</p>
-
-            <h3>Looking Forward</h3>
-
-            <p>As Savitri continues to evolve, the platform is incorporating new therapeutic modalities and expanding its capabilities. Upcoming features include group therapy sessions, family therapy modules, and specialized programs for specific conditions like PTSD and eating disorders.</p>
-
-            <p>The success of Savitri signals a new era in mental health care—one where technology doesn't replace human connection but enhances and democratizes access to healing. As the platform continues to prove its effectiveness, it may well represent the future of how we approach mental wellness in an increasingly complex world.</p>
+            <p>The implications of successful AI therapy extend far beyond individual treatment. With one in four people
+                worldwide affected by mental health disorders and a severe shortage of mental health professionals,
+                scalable solutions like Savitri could transform global mental health care.</p>
         </article>
 
-        <div class="decorative-border"></div>
-
-        <section class="related-articles">
-            <h3 class="related-title">Related Stories</h3>
-            <div class="related-grid">
-                <div class="related-item" onclick="window.location.href='blog-ai-music-revolution.html'">
-                    <h5>The Future of AI Music Generation: BevyBeats Revolution</h5>
-                    <p>How advanced neural networks are transforming music creation...</p>
+        <!-- Related Stories -->
+        <div class="mt-24">
+            <h3 class="text-2xl font-['Orbitron'] font-bold mb-8 metallic-text">RELATED RESEARCH</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-ai-music-revolution.html'">
+                    <div class="text-xs text-purple-400 font-mono mb-2">AI CREATIVITY</div>
+                    <h4 class="text-lg font-bold text-white mb-2">The Future of AI Music Generation</h4>
+                    <p class="text-sm text-gray-400">How BevyBeats is revolutionizing creativity...</p>
                 </div>
-                <div class="related-item" onclick="window.location.href='blog-fitness-wellness.html'">
-                    <h5>Yuj: Where Ancient Wisdom Meets Modern Fitness Science</h5>
-                    <p>Innovative wellness app combines yoga with AI-driven personalization...</p>
-                </div>
-                <div class="related-item" onclick="window.location.href='blog-linkedin-automation.html'">
-                    <h5>Automating Professional Networks: Zaphy's LinkedIn Revolution</h5>
-                    <p>Chrome extension leverages NLP for contextual professional responses...</p>
+                <div class="glass-panel p-6 rounded-xl border border-white/10 cursor-pointer hover:border-cyan-500/30 transition-colors"
+                    onclick="window.location.href='blog-fitness-wellness.html'">
+                    <div class="text-xs text-orange-400 font-mono mb-2">WELLNESS INNOVATION</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Yuj: Where Ancient Wisdom Meets AI</h4>
+                    <p class="text-sm text-gray-400">Innovative wellness app combines yoga with AI...</p>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
-    <footer class="newspaper-footer">
-        <p>© 2024 FutureAtoms Tech Herald • Published by Abhilash Chadhar • All Rights Reserved</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Committed to accurate reporting on technology innovation and artificial intelligence advancement</p>
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono mt-20">
+        <p>© 2025 FutureAtoms. All rights reserved.</p>
     </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
 </body>
+
 </html>
