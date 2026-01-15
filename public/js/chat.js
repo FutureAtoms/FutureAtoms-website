@@ -34,6 +34,51 @@ document.addEventListener('DOMContentLoaded', () => {
     chatToggleBtn.addEventListener('click', toggleChat);
     closeChatBtn.addEventListener('click', toggleChat);
 
+    // Sanitize HTML to prevent XSS attacks
+    function sanitizeHTML(html) {
+        const allowedTags = ['p', 'br', 'strong', 'em', 'b', 'i', 'u', 'a', 'ul', 'ol', 'li', 'code', 'pre', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        const allowedAttributes = { 'a': ['href', 'target', 'rel'] };
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+
+        // Remove script tags and event handlers
+        const scripts = tempDiv.querySelectorAll('script, style, iframe, object, embed, form');
+        scripts.forEach(el => el.remove());
+
+        // Remove all elements that aren't in the allowed list
+        const allElements = tempDiv.querySelectorAll('*');
+        allElements.forEach(el => {
+            const tagName = el.tagName.toLowerCase();
+            if (!allowedTags.includes(tagName)) {
+                // Replace with text content for disallowed tags
+                el.replaceWith(document.createTextNode(el.textContent));
+                return;
+            }
+
+            // Remove all attributes except allowed ones
+            const attrs = Array.from(el.attributes);
+            attrs.forEach(attr => {
+                const allowedAttrs = allowedAttributes[tagName] || [];
+                if (!allowedAttrs.includes(attr.name.toLowerCase())) {
+                    el.removeAttribute(attr.name);
+                }
+                // Sanitize href to prevent javascript: URLs
+                if (attr.name === 'href' && el.getAttribute('href')?.toLowerCase().startsWith('javascript:')) {
+                    el.setAttribute('href', '#');
+                }
+            });
+
+            // Add security attributes to links
+            if (tagName === 'a') {
+                el.setAttribute('target', '_blank');
+                el.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+
+        return tempDiv.innerHTML;
+    }
+
     // Add Message to Chat
     function addMessage(text, isUser = false) {
         const messageDiv = document.createElement('div');
@@ -47,10 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-100 rounded-tr-none'
             : 'bg-cyan-900/20 border border-cyan-500/20 text-gray-200 rounded-tl-none';
 
+        // Parse markdown and sanitize to prevent XSS
+        const sanitizedContent = sanitizeHTML(marked.parse(text));
+
         messageDiv.innerHTML = `
             ${avatar}
             <div class="${bubbleClass} rounded-2xl p-3 text-sm shadow-[0_0_10px_rgba(0,255,255,0.05)] max-w-[90%] chat-content">
-                ${marked.parse(text)}
+                ${sanitizedContent}
             </div>
         `;
 

@@ -4,30 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureAtoms | Quantum Edition</title>
+    <link rel="canonical" href="https://futureatoms.com/">
+    <title>FutureAtoms - AI Tools That Build the Future | ChipOS, AI Development, Automation</title>
     <meta name="description"
-        content="FutureAtoms: Building Tomorrow's Technology. Visualized with Quantum Orbital Mechanics.">
-    <link rel="icon" type="image/png" href="images/futureatoms-icon.png">
-    <link rel="apple-touch-icon" href="images/futureatoms-icon.png">
-    <meta property="og:image" content="https://futureatoms-website.web.app/images/futureatoms-icon.png">
-    <meta property="og:title" content="FutureAtoms | Evolved Intelligence">
-    <meta property="og:description"
-        content="Building Tomorrow's Technology. Visualized with Quantum Orbital Mechanics.">
+        content="Build faster with AI. ChipOS for chip development, automation tools for workflows, and AI companions for creators. 8+ products. 50M+ processes automated. Try free.">
 
-    <!-- Google Fonts -->
+    <!-- Optimized favicon and icons (13KB instead of 1.2MB) -->
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:title" content="FutureAtoms | AI Tools That Build the Future">
+    <meta property="og:description"
+        content="Build faster with AI. ChipOS for chip development, automation tools, and AI companions. 8+ products. Try free.">
+    <meta property="og:url" content="https://futureatoms.com/">
+
+    <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/main.css?v=9999" as="style">
+    <link rel="preload" href="images/optimized/futureatoms-icon-64w.webp" as="image" type="image/webp">
+
+    <!-- Google Fonts with display=swap for faster text rendering -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font Awesome - loaded async to not block rendering -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Critical CSS first -->
+    <link rel="stylesheet" href="css/main.css?v=9999">
     <link rel="stylesheet" href="css/chat.css?v=2">
 
-    <!-- Marked.js for Markdown Rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inline critical styles for new UI elements -->
+    <style>
+        /* Progress Dots */
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .progress-dot:hover {
+            background: rgba(0, 255, 255, 0.4);
+            transform: scale(1.3);
+        }
+        .progress-dot.active {
+            background: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transform: scale(1.2);
+        }
 
-    <link rel="stylesheet" href="css/main.css?v=9999">
+        /* Sticky CTA visible state */
+        #sticky-cta.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, 0);
+        }
+
+        /* Chat bubble pulse animation */
+        @keyframes chat-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.7); }
+        }
+        #chat-toggle-btn.pulse {
+            animation: chat-pulse 2s ease-in-out infinite;
+        }
+
+        /* Proactive chat prompt */
+        #chat-prompt {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            background: rgba(0, 20, 30, 0.95);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            max-width: 250px;
+            z-index: 99;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        #chat-prompt.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        #chat-prompt::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 24px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid rgba(0, 255, 255, 0.3);
+        }
+    </style>
+
+    <!-- Defer non-critical scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -53,25 +140,69 @@
 
     <!-- Scroll Container -->
     <div id="scroll-container">
-        <!-- Intro Section -->
+        <!-- Intro Section - Benefit-Driven Hero -->
         <div class="scroll-section" data-id="intro" data-color="#00ffff">
             <div class="section-content">
-                <h1 class="product-title" style="color: #00ffff;">FUTUREATOMS</h1>
-                <p class="product-desc">Evolving Intelligence through Quantum Dynamics.</p>
-                <div class="text-cyan-400 animate-bounce mt-4"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE
+                <p class="text-cyan-400/60 text-xs tracking-[0.3em] uppercase mb-2">FUTUREATOMS</p>
+                <h1 class="product-title" style="color: #00ffff;">Build Faster with AI</h1>
+                <p class="product-desc max-w-xl mx-auto">The operating system for the AI age. Design chips, automate workflows, and create with intelligent tools — all in one ecosystem.</p>
+
+                <!-- Social Proof Stats -->
+                <div class="flex flex-wrap justify-center gap-6 mt-6 text-sm">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-cyan-400">8+</div>
+                        <div class="text-gray-400 text-xs">AI Products</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-cyan-400">50M+</div>
+                        <div class="text-gray-400 text-xs">Processes Automated</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-cyan-400">14</div>
+                        <div class="text-gray-400 text-xs">AI Models</div>
+                    </div>
+                </div>
+
+                <!-- Single Primary CTA -->
+                <div class="flex flex-col items-center gap-3 mt-6">
+                    <a href="chipos.html" class="cta-button text-lg px-8 py-3" style="color: #00ffff; border-color: #00ffff; background: rgba(0,255,255,0.15); box-shadow: 0 0 20px rgba(0,255,255,0.2);">
+                        <i class="fas fa-rocket mr-2"></i>Try ChipOS Free
+                    </a>
+                    <a href="#products" class="text-cyan-400/60 hover:text-cyan-400 text-xs tracking-wider transition-colors">
+                        or explore all 8 products ↓
+                    </a>
+                </div>
+
+                <!-- Trust Signals / Social Proof -->
+                <div class="mt-10 pt-6 border-t border-cyan-500/10">
+                    <p class="text-gray-500 text-[10px] tracking-widest uppercase mb-4">Trusted by engineers at</p>
+                    <div class="flex flex-wrap justify-center items-center gap-6 opacity-50 grayscale hover:opacity-70 hover:grayscale-0 transition-all">
+                        <span class="text-gray-400 text-sm font-semibold">ASML</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="text-gray-400 text-sm font-semibold">Axelera AI</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="text-gray-400 text-sm font-semibold">NVIDIA</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="text-gray-400 text-sm font-semibold">Qualcomm</span>
+                        <span class="text-gray-500">•</span>
+                        <span class="text-gray-400 text-sm font-semibold">Intel</span>
+                    </div>
+                </div>
+
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase">
+                    <i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE
                 </div>
             </div>
         </div>
         <!-- Sections Reordered -->
 
-        <!-- 1. ChipOS (Metallic Gold) -->
-        <div class="scroll-section" data-id="chipos" data-color="#D4AF37">
+        <!-- 1. ChipOS (Metallic Gold) - FLAGSHIP PRODUCT -->
+        <div id="products" class="scroll-section" data-id="chipos" data-color="#D4AF37">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">⭐ Flagship • For Chip Developers</p>
                 <h2 class="product-title" style="color: #D4AF37;">ChipOS</h2>
-                <p class="product-desc">The AI Operating System for hardware design. Orchestrate verification and
-                    automate workflows.</p>
-                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37;">Recall
-                    Protocol</a>
+                <p class="product-desc">Design and verify chips 10x faster. The complete AI operating system with 13 specialized apps, 14 AI models, and integrated RAG knowledge base. Used by teams at leading semiconductor companies.</p>
+                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37; background: rgba(212,175,55,0.15);">Start Building Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -80,9 +211,10 @@
         <!-- 2. BevyBeats (Copper) -->
         <div class="scroll-section" data-id="bevy" data-color="#B87333">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Creators</p>
                 <h2 class="product-title" style="color: #B87333;">BevyBeats</h2>
-                <p class="product-desc">AI-powered music platform for generation and streaming.</p>
-                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Listen</a>
+                <p class="product-desc">Create unique music in seconds. AI generates custom tracks for your videos, games, and content — no musical experience needed.</p>
+                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Start Creating</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -91,11 +223,10 @@
         <!-- 3. Zaphy (LinkedIn Blue) -->
         <div class="scroll-section" data-id="zaphy" data-color="#0077B5">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Professionals</p>
                 <h2 class="product-title" style="color: #0077B5;">Zaphy</h2>
-                <p class="product-desc">Smart Chrome extension for LinkedIn. Supercharge your professional networking.
-                </p>
-                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Install
-                    Extension</a>
+                <p class="product-desc">10x your LinkedIn outreach. AI writes personalized messages, manages connections, and grows your network while you sleep.</p>
+                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Get the Extension</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -104,9 +235,10 @@
         <!-- 4. Agentic Control (Leaf Green) -->
         <div class="scroll-section" data-id="agentic" data-color="#69C95E">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Developers</p>
                 <h2 class="product-title" style="color: #69C95E;">Agentic Control</h2>
-                <p class="product-desc">Advanced CLI tool for agent workflows and autonomous execution.</p>
-                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Execute</a>
+                <p class="product-desc">Automate any workflow from the terminal. Let AI agents handle repetitive tasks, deployments, and complex multi-step operations.</p>
+                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Start Automating</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -115,10 +247,10 @@
         <!-- 5. SystemVerilogGPT (Silver) -->
         <div class="scroll-section" data-id="sv_gpt" data-color="#C0C0C0">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Hardware Engineers</p>
                 <h2 class="product-title" style="color: #C0C0C0;">SystemVerilogGPT</h2>
-                <p class="product-desc">Specialized GPT for hardware verification and code generation.</p>
-                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Access
-                    Node</a>
+                <p class="product-desc">Write RTL and UVM testbenches 10x faster. AI that understands hardware verification, timing constraints, and synthesis requirements.</p>
+                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Try Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -127,9 +259,10 @@
         <!-- 6. Yuj (Orange) -->
         <div class="scroll-section" data-id="yuj" data-color="#FFA500">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Wellbeing</p>
                 <h2 class="product-title" style="color: #FFA500;">Yuj</h2>
-                <p class="product-desc">Holistic yoga and workout app for physical and mental balance.</p>
-                <a href="yuj.html" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Begin Journey</a>
+                <p class="product-desc">Find balance in 15 minutes a day. AI-personalized yoga and meditation routines that adapt to your stress levels and schedule.</p>
+                <a href="yuj.html" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Start Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -138,45 +271,65 @@
         <!-- 7. Savitri (Purple) -->
         <div class="scroll-section" data-id="savitri" data-color="#A020F0">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Wellbeing</p>
                 <h2 class="product-title" style="color: #A020F0;">Savitri</h2>
-                <p class="product-desc">AI therapy companion offering CBT/DBT support.</p>
-                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Connect</a>
+                <p class="product-desc">Mental wellness support anytime you need it. Evidence-based CBT and DBT techniques in a compassionate AI companion — private and judgment-free.</p>
+                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Talk to Savitri</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
-        <!-- 8. AdaptiveVision (Kept at end, default Blue) -->
+        <!-- 8. AdaptiveVision (Steel Blue) -->
         <div class="scroll-section" data-id="adaptive" data-color="#4682B4">
             <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For AI/ML Engineers</p>
                 <h2 class="product-title" style="color: #4682B4;">AdaptiveVision</h2>
-                <p class="product-desc">Next-generation adaptive object detection algorithms.</p>
-                <a href="adaptivision.html" class="cta-button"
-                    style="color: #4682B4; border-color: #4682B4;">Analyze</a>
+                <p class="product-desc">Deploy computer vision in minutes, not months. Self-adapting object detection that improves accuracy over time — no retraining needed.</p>
+                <a href="adaptivision.html" class="cta-button" style="color: #4682B4; border-color: #4682B4;">See Demo</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
                         class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
-        <!-- Spacer for bottom -->
-        <div class="h-20 w-full"></div>
+    </div>
+
+    <!-- Progress Dots (Scroll Indicator) -->
+    <div id="progress-dots" class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
+        <div class="progress-dot active" data-target="intro" title="Home"></div>
+        <div class="progress-dot" data-target="chipos" title="ChipOS ⭐"></div>
+        <div class="progress-dot" data-target="bevy" title="BevyBeats"></div>
+        <div class="progress-dot" data-target="zaphy" title="Zaphy"></div>
+        <div class="progress-dot" data-target="agentic" title="Agentic Control"></div>
+        <div class="progress-dot" data-target="sv_gpt" title="SystemVerilogGPT"></div>
+        <div class="progress-dot" data-target="yuj" title="Yuj"></div>
+        <div class="progress-dot" data-target="savitri" title="Savitri"></div>
+        <div class="progress-dot" data-target="adaptive" title="AdaptiveVision"></div>
+    </div>
+
+    <!-- Sticky CTA (appears after scrolling past hero) -->
+    <div id="sticky-cta" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4">
+        <a href="chipos.html" class="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-full shadow-lg shadow-cyan-500/30 transition-all">
+            <i class="fas fa-rocket"></i>
+            <span>Try ChipOS Free</span>
+        </a>
     </div>
 
     <div id="ui-layer" class="p-4 md:p-8">
         <header class="flex justify-between items-center w-full interactive">
-            <div class="flex items-center gap-3 group cursor-pointer" onclick="resetCamera()">
+            <button class="flex items-center gap-3 group cursor-pointer bg-transparent border-none p-0" onclick="resetCamera()" aria-label="Reset camera view">
                 <div class="w-10 h-10 flex items-center justify-center">
-                    <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon"
                         class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
-                <div>
-                    <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                <div class="text-left">
+                    <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
                         FUTURE<span class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">ATOMS</span>
-                    </h1>
-                    <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
-                        Intelligence</p>
+                    </p>
+                    <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">AI Tools
+                        That Build</p>
                 </div>
-            </div>
+            </button>
 
             <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
                 <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
@@ -220,9 +373,9 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
             class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
-            <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close mobile menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                    stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -257,13 +410,31 @@
 
         <!-- Hero Search Container Removed (Confusing with scroll) or moved to be fixed? Let's hide it for now as requested "text scaling issues" suggests focus on content -->
 
-        <footer class="flex flex-col md:flex-row justify-between items-end w-full mt-auto pointer-events-none">
-            <!-- Control Matrix removed as requested -->
-            <div class="flex-1"></div> <!-- Spacer -->
+        <footer class="flex flex-col md:flex-row justify-between items-center w-full mt-auto pointer-events-auto py-4 border-t border-cyan-500/10">
+            <!-- Quick Links -->
+            <div class="flex gap-4 text-[10px] text-gray-500 mb-2 md:mb-0">
+                <a href="about.html" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a>
+                <a href="blog.html" class="hover:text-cyan-400 transition-colors">Research</a>
+                <a href="chipos-docs.html" class="hover:text-cyan-400 transition-colors">Docs</a>
+            </div>
 
-            <div class="text-right text-gray-600 text-[10px] font-mono hidden md:block">
+            <!-- Social Links -->
+            <div class="flex items-center gap-4">
+                <a href="https://linkedin.com/company/futureatoms" target="_blank" rel="noopener" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/FutureAtoms" target="_blank" rel="noopener" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://twitter.com/futureatoms" target="_blank" rel="noopener" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
 
-                <p>© 2025 FutureAtoms</p>
+            <!-- Copyright -->
+            <div class="text-gray-600 text-[10px] font-mono mt-2 md:mt-0">
+                <p>© 2026 FutureAtoms</p>
             </div>
         </footer>
     </div>
@@ -275,9 +446,9 @@
         <div
             class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border-l-4 border-cyan-500 relative transform transition-all shadow-2xl">
             <button onclick="closeModal()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors">
+                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close product modal">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                    stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -306,16 +477,16 @@
         <div
             class="glass-panel w-full max-w-2xl p-8 rounded-2xl border-t-2 border-b-2 border-cyan-500 relative transform transition-all shadow-2xl">
             <button onclick="closeAboutModal()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors">
+                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close about modal">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                    stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
 
             <div class="text-center mb-8">
                 <div class="w-10 h-10 flex items-center justify-center mx-auto mb-4">
-                    <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon"
                         class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
                 <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span
@@ -373,8 +544,8 @@
                         </div>
                     </div>
                 </div>
-                <button id="close-chat" class="text-cyan-500/50 hover:text-cyan-400 transition-colors">
-                    <i class="fas fa-times"></i>
+                <button id="close-chat" class="text-cyan-500/50 hover:text-cyan-400 transition-colors" aria-label="Close chat">
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -398,10 +569,12 @@
             <div class="p-4 border-t border-cyan-500/20 bg-black/20 rounded-b-2xl">
                 <div class="relative">
                     <input type="text" id="chat-input" placeholder="Ask about ChipOS, Savitri..."
-                        class="w-full bg-cyan-900/10 border border-cyan-500/30 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-cyan-500/30 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.1)] transition-all font-['Rajdhani']">
+                        class="w-full bg-cyan-900/10 border border-cyan-500/30 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-cyan-500/30 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.1)] transition-all font-['Rajdhani']"
+                        aria-label="Chat message input">
                     <button id="send-btn"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white flex items-center justify-center transition-all">
-                        <i class="fas fa-paper-plane text-xs"></i>
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white flex items-center justify-center transition-all"
+                        aria-label="Send message">
+                        <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="flex justify-center mt-2 gap-2">
@@ -415,13 +588,25 @@
             </div>
         </div>
 
-        <!-- Toggle Button (Hidden on index by default, can be shown via JS if needed, but we rely on Hero Input) -->
+        <!-- Proactive Chat Prompt -->
+        <div id="chat-prompt">
+            <p class="text-cyan-100 text-sm font-medium mb-1">Need help choosing?</p>
+            <p class="text-gray-400 text-xs">I can recommend the right product for you.</p>
+            <button onclick="dismissChatPrompt()" class="absolute top-2 right-2 text-gray-500 hover:text-white text-xs">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Toggle Button (Shows after 30 seconds) -->
         <button id="chat-toggle-btn"
-            class="hidden w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center text-white text-xl hover:scale-110 transition-transform duration-300 pointer-events-auto group relative overflow-hidden">
+            class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center text-white text-xl hover:scale-110 transition-transform duration-300 pointer-events-auto group relative overflow-hidden opacity-0 scale-0 transition-all duration-500"
+            aria-label="Open chat assistant">
             <div
                 class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full">
             </div>
-            <i class="fas fa-sparkles relative z-10"></i>
+            <i class="fas fa-sparkles relative z-10" aria-hidden="true"></i>
+            <!-- Notification badge -->
+            <span id="chat-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-[10px] flex items-center justify-center font-bold hidden">1</span>
         </button>
     </div>
 
@@ -453,42 +638,41 @@
         };
 
         // --- Products Data ---
-        // --- Products Data ---
         const products = [
             {
-                id: 'intro', name: 'FUTUREATOMS', icon: '⚛️', color: 0x00ffff, desc: 'Evolving Intelligence through Quantum Dynamics.',
+                id: 'intro', name: 'FUTUREATOMS', icon: '⚛️', color: 0x00ffff, desc: 'Build Faster with AI — 8+ products, 50M+ automated.',
                 orbitType: 's', scale: 0, speedOffset: 1.0, phase: 0, url: '#'
             },
             {
-                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: 'The AI Operating System for hardware design.',
+                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: '⭐ Design chips 10x faster — AI OS with 14 models.',
                 orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html'
             },
             {
-                id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB87333, desc: 'AI music platform and streaming.',
+                id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB87333, desc: 'Create music in seconds — AI-generated tracks.',
                 orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html'
             },
             {
-                id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0x0077B5, desc: 'Smart Chrome extension for LinkedIn.',
+                id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0x0077B5, desc: '10x your LinkedIn outreach — AI networking.',
                 orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html'
             },
             {
-                id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0x69C95E, desc: 'Advanced CLI tool for agent workflows.',
+                id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0x69C95E, desc: 'Automate any workflow — AI agents from CLI.',
                 orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html'
             },
             {
-                id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Specialized GPT for hardware verification.',
+                id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Write RTL 10x faster — AI for hardware.',
                 orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html'
             },
             {
-                id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xFFA500, desc: 'Holistic yoga and workout app.',
+                id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xFFA500, desc: 'Find balance in 15min — AI-personalized wellness.',
                 orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html'
             },
             {
-                id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xA020F0, desc: 'AI therapy companion offering CBT/DBT support.',
+                id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xA020F0, desc: 'Mental wellness anytime — compassionate AI.',
                 orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html'
             },
             {
-                id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Adaptive object detection algorithms.',
+                id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Deploy vision in minutes — self-improving AI.',
                 orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html'
             }
         ];
@@ -684,16 +868,16 @@
 
         // --- GENERIC ELECTRONS (Replaces Products Loops) ---
         const electrons = [];
-        // We use the products array (excluding intro) to color the electrons in the "Intro" state
+        // We use the products array (excluding intro) to color the electrons
         const productData = products.slice(1); // Skip 'intro'
-        const electronCount = productData.length; // Should be 8 matching the products
+        const electronCount = productData.length; // 8 products
 
         for (let i = 0; i < electronCount; i++) {
             const pData = productData[i];
             // Mesh
             const geo = new THREE.SphereGeometry(0.3, 32, 32);
             const mat = new THREE.MeshStandardMaterial({
-                color: pData.color, // Start with product color
+                color: pData.color,
                 metalness: 0.9,
                 roughness: 0.2,
                 emissive: pData.color,
@@ -714,21 +898,21 @@
 
             scene.add(mesh);
 
-            // Assign orbit params based on the product's original orbit type to keep "same colors of electrons that it had before" roughly implies keeping that diversity
+            // Assign orbit params based on product data
             electrons.push({
                 mesh,
                 sprite,
                 tailParticles: [],
                 lastSpawnTime: 0,
                 orbitParams: {
-                    type: pData.orbitType, // Use original orbit type
-                    scale: pData.scale, // Use original scale
+                    type: pData.orbitType,
+                    scale: pData.scale,
                     speedOffset: pData.speedOffset,
                     phase: pData.phase
                 },
                 t: Math.random() * 100,
-                color: new THREE.Color(pData.color), // Current color (starts at product color)
-                baseColor: new THREE.Color(pData.color) // The "Intro" color
+                color: new THREE.Color(pData.color),
+                baseColor: new THREE.Color(pData.color)
             });
         }
 
@@ -1001,6 +1185,93 @@
                 hint.classList.add('opacity-100');
             }
         }, 500);
+
+        // === PROGRESS DOTS ===
+        const progressDots = document.querySelectorAll('.progress-dot');
+        progressDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.dataset.target;
+                const targetSection = document.querySelector(`.scroll-section[data-id="${targetId}"]`);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update progress dots on scroll (integrated with existing observer)
+        const originalObserverCallback = observer.callback;
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.dataset.id;
+                    // Update progress dots
+                    progressDots.forEach(dot => {
+                        dot.classList.toggle('active', dot.dataset.target === id);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.scroll-section').forEach(section => {
+            progressObserver.observe(section);
+        });
+
+        // === STICKY CTA ===
+        const stickyCTA = document.getElementById('sticky-cta');
+        const heroSection = document.querySelector('.scroll-section[data-id="intro"]');
+
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Show sticky CTA when hero is NOT visible
+                if (!entry.isIntersecting) {
+                    stickyCTA.classList.add('visible');
+                } else {
+                    stickyCTA.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (heroSection) {
+            stickyObserver.observe(heroSection);
+        }
+
+        // === PROACTIVE CHAT ===
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatPrompt = document.getElementById('chat-prompt');
+        const chatBadge = document.getElementById('chat-badge');
+        let chatPromptDismissed = false;
+
+        // Show chat button after 3 seconds
+        setTimeout(() => {
+            if (chatToggleBtn) {
+                chatToggleBtn.classList.remove('opacity-0', 'scale-0');
+                chatToggleBtn.classList.add('opacity-100', 'scale-100');
+            }
+        }, 3000);
+
+        // Show proactive chat prompt after 30 seconds
+        setTimeout(() => {
+            if (!chatPromptDismissed && chatPrompt && chatToggleBtn) {
+                chatPrompt.classList.add('visible');
+                chatToggleBtn.classList.add('pulse');
+                chatBadge.classList.remove('hidden');
+            }
+        }, 30000);
+
+        // Dismiss chat prompt function
+        window.dismissChatPrompt = () => {
+            chatPromptDismissed = true;
+            if (chatPrompt) chatPrompt.classList.remove('visible');
+            if (chatToggleBtn) chatToggleBtn.classList.remove('pulse');
+            if (chatBadge) chatBadge.classList.add('hidden');
+        };
+
+        // Also dismiss when chat is opened
+        if (chatToggleBtn) {
+            chatToggleBtn.addEventListener('click', () => {
+                dismissChatPrompt();
+            });
+        }
 
     </script>
 </body>
