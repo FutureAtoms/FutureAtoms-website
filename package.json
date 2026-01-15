@@ -16,12 +16,24 @@
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",
+    "test:security": "npm audit",
+    "test:a11y": "pa11y-ci",
+    "test:html": "html-validate public/**/*.html",
+    "test:quality": "lighthouse",
+    "scan:all": "node scripts/scan-all.js",
     "start:server": "node server.js",
-    "ingest": "node scripts/ingest.js"
+    "ingest": "node scripts/ingest.js",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1",
-    "firebase-tools": "^13.0.0"
+    "concurrently": "^9.2.1",
+    "firebase-tools": "^13.0.0",
+    "html-validate": "^10.5.0",
+    "husky": "^9.1.7",
+    "lighthouse": "^13.0.1",
+    "pa11y-ci": "^4.0.1",
+    "wait-on": "^9.0.3"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 50000,
+    "wait": 1000
+  },
+  "urls": [
+    "http://localhost:8000/",
+    "http://localhost:8000/index.html",
+    "http://localhost:8000/about.html",
+    "http://localhost:8000/vision.html",
+    "http://localhost:8000/adaptivision.html",
+    "http://localhost:8000/chipos.html",
+    "http://localhost:8000/contact.html"
+  ]
+}
