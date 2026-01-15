@@ -4,7 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChipOS - The AI Operating System for Hardware Design | FutureAtoms</title>
+    <link rel="canonical" href="https://futureatoms.com/chipos.html">
+    <meta name="description" content="ChipOS by FutureAtoms - Revolutionary semiconductor design operating system for next-generation chip development and automation.">
+    <meta property="og:title" content="ChipOS - AI Operating System for Chip Development">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:description" content="ChipOS by FutureAtoms - Revolutionary semiconductor design operating system for next-generation chip development and automation.">
+    <meta property="og:url" content="https://futureatoms.com/chipos.html">
+    <title>ChipOS - AI OS for Chip Development</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,19 +72,19 @@
     <!-- Navigation -->
     <header
         class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+        <a href="index.html" class="flex items-center gap-3">
             <div class="w-10 h-10 flex items-center justify-center">
-                <img src="images/futureatoms-icon.png" alt="FutureAtoms Icon"
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon"
                     class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
             </div>
             <div>
-                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
                     FUTURE<span class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">ATOMS</span>
-                </h1>
+                </p>
                 <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving
                     Intelligence</p>
             </div>
-        </div>
+        </a>
 
         <nav class="hidden md:flex gap-8 text-sm items-center">
             <a href="index.html" class="nav-link">HOME</a>
@@ -129,8 +139,8 @@
                 </div>
                 <div id="auth-logged-in" class="hidden flex items-center gap-3">
                     <span id="user-email" class="text-cyan-300 text-sm truncate max-w-[150px]"></span>
-                    <button onclick="signOut()" class="nav-link text-red-400 hover:text-red-300 text-sm">
-                        <i class="fas fa-sign-out-alt"></i>
+                    <button onclick="signOut()" class="nav-link text-red-400 hover:text-red-300 text-sm" aria-label="Sign out">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -146,9 +156,9 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
         class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
-        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close mobile menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
@@ -188,11 +198,11 @@
                     class="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-[0_0_30px_rgba(0,255,255,0.3)]">
             </div>
             <h1 class="text-5xl md:text-7xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
-                THE AI OPERATING SYSTEM<br><span class="text-cyan-400 text-4xl md:text-6xl">FOR HARDWARE DESIGN</span>
+                THE AI OPERATING SYSTEM<br><span class="text-cyan-400 text-4xl md:text-6xl">FOR CHIP DEVELOPMENT</span>
             </h1>
             <p class="text-xl md:text-2xl text-cyan-100/60 font-light max-w-3xl mx-auto leading-relaxed mb-10">
-                Orchestrate your entire verification workflow. From SystemVerilog generation to UVM testbench
-                automation, ChipOS is the intelligent layer that powers modern hardware development.
+                Like macOS for chip development. Log in, pick a workspace, choose Agent/Chat/Zendesk mode, and open the
+                dashboard for knowledge, projects, and MCP-powered AI workflows.
             </p>
             <div class="flex flex-col md:flex-row gap-6 justify-center">
                 <a href="#installation"
@@ -224,14 +234,14 @@
         <div class="text-center mb-12">
             <span
                 class="inline-block bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 px-4 py-2 rounded-full text-sm font-['Orbitron'] tracking-wider">
-                <i class="fas fa-tag mr-2"></i>Version 2025.12.1
+                <i class="fas fa-tag mr-2"></i>Version 2026.01.05
             </span>
         </div>
 
         <!-- What's New Section -->
         <div class="glass-panel p-8 rounded-2xl metallic-border mb-12">
             <h3 class="text-2xl font-['Orbitron'] font-bold text-white mb-6 flex items-center gap-3">
-                <i class="fas fa-sparkles text-yellow-400"></i> What's New in 2025.12
+                <i class="fas fa-sparkles text-yellow-400"></i> What's New in 2026.01
                 <a href="chipos-changelog.html"
                     class="ml-auto text-sm text-cyan-400 hover:text-white transition-colors font-['Rajdhani'] font-normal border border-cyan-500/30 px-3 py-1 rounded hover:bg-cyan-500/20">
                     View Full Changelog <i class="fas fa-arrow-right ml-1"></i>
@@ -241,33 +251,507 @@
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">Auto-Install Claude Commands</span>
-                        <p class="text-gray-400 text-sm">Voyager SDK slash commands automatically installed to workspace
-                            on activation</p>
+                        <span class="text-white font-bold">OS-Like Experience</span>
+                        <p class="text-gray-400 text-sm">Disabled all VS Code welcome pages, walkthroughs, and prompts for a clean startup</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">AI Chatbot with Syntax Highlighting</span>
-                        <p class="text-gray-400 text-sm">Sophisticated ChatWindow with code highlighting for hardware
-                            discussions</p>
+                        <span class="text-white font-bold">Zen Mode Fullscreen Chat</span>
+                        <p class="text-gray-400 text-sm">Distraction-free chat mode (Cmd+Shift+F) with no UI chrome</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">13 Voyager SDK Commands</span>
-                        <p class="text-gray-400 text-sm">/deploy, /run, /bench, /new-pipeline, /init-chipos, and more
-                            built-in</p>
+                        <span class="text-white font-bold">Agent Packs & Workspace Selector</span>
+                        <p class="text-gray-400 text-sm">Pick an agent pack during workspace selection to install commands and context</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">Cross-Platform Support</span>
-                        <p class="text-gray-400 text-sm">Commands work identically on macOS, Linux, and Windows</p>
+                        <span class="text-white font-bold">Three Powerful Modes</span>
+                        <p class="text-gray-400 text-sm">Agent, Chat, and Zendesk startup modes for every workflow</p>
                     </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Multi-Provider AI Routing</span>
+                        <p class="text-gray-400 text-sm">Connect OpenAI, Anthropic, Google, OpenRouter, or local Ollama</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Silent & Private</span>
+                        <p class="text-gray-400 text-sm">No telemetry, no auto-updates, no release notes popups</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started in 3 Steps -->
+        <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border mb-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div class="text-center mb-10 relative z-10">
+                <span class="inline-block bg-green-500/20 border border-green-500/50 text-green-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">SIMPLE AS 1-2-3</span>
+                <h2 class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-4">GET STARTED IN <span class="text-cyan-400">3 STEPS</span></h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">No complicated setup. Just log in and start building.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                <div class="text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform border border-cyan-500/30">
+                        <span class="text-3xl font-['Orbitron'] font-bold text-cyan-400">1</span>
+                    </div>
+                    <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Log In</h3>
+                    <p class="text-gray-400 text-sm">Sign in with email/password, Google, or GitHub. Sessions stay active across restarts.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform border border-purple-500/30">
+                        <span class="text-3xl font-['Orbitron'] font-bold text-purple-400">2</span>
+                    </div>
+                    <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Select an Agent Pack</h3>
+                    <p class="text-gray-400 text-sm">Choose a pack like RTL Verification, CPU Development, or Documentation.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform border border-green-500/30">
+                        <span class="text-3xl font-['Orbitron'] font-bold text-green-400">3</span>
+                    </div>
+                    <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-2">Choose Your Mode</h3>
+                    <p class="text-gray-400 text-sm">Agent for IDE workflows, Chat for fullscreen discussions, Zendesk for support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security & Compliance Section -->
+        <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border mb-12 relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            <div class="text-center mb-10 relative z-10">
+                <span class="inline-block bg-green-500/20 border border-green-500/50 text-green-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">ENTERPRISE READY</span>
+                <h2 class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-4">SECURITY & <span class="text-green-400">COMPLIANCE</span></h2>
+                <p class="text-gray-300 max-w-3xl mx-auto">Built for enterprise with OWASP LLM Top 10 (2025), OWASP API Top 10 (2023), and NIST AI RMF alignment.</p>
+            </div>
+
+            <!-- Compliance Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 relative z-10">
+                <div class="bg-black/40 p-6 rounded-xl border border-green-500/20 text-center group hover:border-green-500/50 transition-colors">
+                    <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-halved text-2xl text-green-400"></i>
+                    </div>
+                    <h4 class="font-['Orbitron'] font-bold text-white text-sm mb-1">NIST AI RMF</h4>
+                    <p class="text-gray-500 text-xs">Fully Compliant</p>
+                </div>
+                <div class="bg-black/40 p-6 rounded-xl border border-blue-500/20 text-center group hover:border-blue-500/50 transition-colors">
+                    <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-halved text-2xl text-blue-400"></i>
+                    </div>
+                    <h4 class="font-['Orbitron'] font-bold text-white text-sm mb-1">OWASP API</h4>
+                    <p class="text-gray-500 text-xs">Top 10 2023</p>
+                </div>
+                <div class="bg-black/40 p-6 rounded-xl border border-purple-500/20 text-center group hover:border-purple-500/50 transition-colors">
+                    <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bug-slash text-2xl text-purple-400"></i>
+                    </div>
+                    <h4 class="font-['Orbitron'] font-bold text-white text-sm mb-1">OWASP LLM</h4>
+                    <p class="text-gray-500 text-xs">Top 10 2025</p>
+                </div>
+                <div class="bg-black/40 p-6 rounded-xl border border-cyan-500/20 text-center group hover:border-cyan-500/50 transition-colors">
+                    <div class="w-16 h-16 rounded-full bg-cyan-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-server text-2xl text-cyan-400"></i>
+                    </div>
+                    <h4 class="font-['Orbitron'] font-bold text-white text-sm mb-1">CIS Benchmark</h4>
+                    <p class="text-gray-500 text-xs">Container Hardened</p>
+                </div>
+            </div>
+
+            <!-- Security Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 relative z-10">
+                <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-green-400 mb-1">0</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Critical CVEs</div>
+                </div>
+                <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-cyan-400 mb-1">161+</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Security Tests</div>
+                </div>
+                <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-purple-400 mb-1">100%</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Jailbreak Resistance</div>
+                </div>
+                <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-yellow-400 mb-1">RLS</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Row-Level Security</div>
+                </div>
+            </div>
+
+            <!-- Security Features -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">JWT Authentication</span>
+                        <p class="text-gray-400 text-sm">Supabase-based auth with OIDC support</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Prompt Injection Protection</span>
+                        <p class="text-gray-400 text-sm">Content filtering with 8 detection categories</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">SSRF Protection</span>
+                        <p class="text-gray-400 text-sm">Domain whitelisting and private IP blocking</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">PII Redaction</span>
+                        <p class="text-gray-400 text-sm">Automatic detection and masking of personal data</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Audit Logging</span>
+                        <p class="text-gray-400 text-sm">Comprehensive request logging for compliance</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                    <div>
+                        <span class="text-white font-bold">Rate Limiting</span>
+                        <p class="text-gray-400 text-sm">Per-user/IP protection on all endpoints</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Drawer Section -->
+        <div class="mb-24 relative" id="apps">
+            <div class="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-transparent rounded-3xl pointer-events-none"></div>
+            <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+                <div class="text-center mb-12 relative z-10">
+                    <span class="inline-block bg-purple-500/20 border border-purple-500/50 text-purple-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">SPECIALIZED ENVIRONMENTS</span>
+                    <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6"><span class="text-purple-400">AGENT</span> PACKS</h2>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-lg">Choose an agent pack during workspace selection to tailor commands, prompts, and workflows for your domain.</p>
+                </div>
+
+                <!-- Free Tier -->
+                <div class="mb-10 relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-green-400 shadow-lg shadow-green-400/50"></div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-green-400">CORE PACKS</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-green-500/50 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-green-500/10 border border-green-500/30 p-5 rounded-xl hover:bg-green-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                                    <i class="fas fa-file-alt text-emerald-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Documentation</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Generate and maintain project documentation, READMEs, and API docs.</p>
+                        </div>
+                        <div class="bg-green-500/10 border border-green-500/30 p-5 rounded-xl hover:bg-green-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                    <i class="fas fa-code text-blue-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Web Development</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Modern web development with React, Vue, Tailwind, and full-stack tools.</p>
+                        </div>
+                        <div class="bg-green-500/10 border border-green-500/30 p-5 rounded-xl hover:bg-green-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center">
+                                    <i class="fas fa-clipboard-list text-pink-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Spec Developer</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Hardware requirements, specs, and design checklists.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="mb-10 relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50"></div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-cyan-400">RTL & PHYSICAL PACKS</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-cyan-500/10 border border-cyan-500/30 p-5 rounded-xl hover:bg-cyan-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                    <i class="fas fa-check-double text-purple-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">RTL Verification</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">SystemVerilog + UVM verification workflows and checklists.</p>
+                        </div>
+                        <div class="bg-cyan-500/10 border border-cyan-500/30 p-5 rounded-xl hover:bg-cyan-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                                    <i class="fas fa-bug text-amber-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">RTL Debug</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Waveform analysis, assertions, and failure triage.</p>
+                        </div>
+                        <div class="bg-cyan-500/10 border border-cyan-500/30 p-5 rounded-xl hover:bg-cyan-500/20 transition-all relative">
+                            <span class="absolute top-2 right-2 bg-cyan-500 text-black text-xs px-2 py-0.5 rounded font-bold">FEATURED</span>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                                    <i class="fas fa-drafting-compass text-cyan-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Physical Design</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Place-and-route guidance and physical flow checks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Tier -->
+                <div class="mb-10 relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-purple-400 shadow-lg shadow-purple-400/50"></div>
+                        <h3 class="text-xl font-['Orbitron'] font-bold text-purple-400">SYSTEMS & SDK PACKS</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-purple-500/10 border border-purple-500/30 p-5 rounded-xl hover:bg-purple-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+                                    <i class="fas fa-microchip text-indigo-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Hardware Programmer</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Low-level programming, firmware, and driver workflows.</p>
+                        </div>
+                        <div class="bg-purple-500/10 border border-purple-500/30 p-5 rounded-xl hover:bg-purple-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
+                                    <i class="fas fa-cpu text-red-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">CPU Development</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">RISC-V architecture planning and subsystem design.</p>
+                        </div>
+                        <div class="bg-purple-500/10 border border-purple-500/30 p-5 rounded-xl hover:bg-purple-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center">
+                                    <i class="fas fa-raspberry-pi text-teal-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Raspberry Pi</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Embedded workflows for Pi-based prototyping.</p>
+                        </div>
+                        <div class="bg-purple-500/10 border border-purple-500/30 p-5 rounded-xl hover:bg-purple-500/20 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                                    <i class="fas fa-rocket text-orange-400"></i>
+                                </div>
+                                <h4 class="font-bold text-white">Axelera Voyager SDK</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">AI acceleration pipelines and Metis tooling.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Three Modes Section -->
+        <div class="mb-24 relative" id="modes">
+            <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/10 to-transparent rounded-3xl pointer-events-none"></div>
+            <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden">
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+                <div class="text-center mb-12 relative z-10">
+                    <span class="inline-block bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">WORK YOUR WAY</span>
+                    <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-6">THREE <span class="text-cyan-400">MODES</span></h2>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-lg">Choose a startup mode in the workspace selector to match your workflow.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    <!-- Agent Mode -->
+                    <div class="bg-black/40 p-8 rounded-2xl border border-purple-500/30 hover:border-purple-500/60 transition-all group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-robot text-2xl text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-['Orbitron'] font-bold text-white">Agent Mode</h3>
+                                    <span class="text-purple-400 text-xs font-bold">IDE-FIRST</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">IDE-first workflow with agent packs, projects, and MCP tools.</p>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400"></i> Claude Code + MCP tools</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400"></i> Agent pack commands in .claude/commands</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400"></i> Knowledge base and repo ingestion</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400"></i> Projects, tasks, and agent work orders</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-purple-400"></i> Hosted or local backend support</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chat Mode -->
+                    <div class="bg-black/40 p-8 rounded-2xl border border-cyan-500/30 hover:border-cyan-500/60 transition-all group relative overflow-hidden">
+                        <span class="absolute top-4 right-4 bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">FREE</span>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-comments text-2xl text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-['Orbitron'] font-bold text-white">Chat Mode</h3>
+                                    <span class="text-green-400 text-xs font-bold">FREE FOR ALL</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">Fullscreen LibreChat with provider choice and MCP tools.</p>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> ChipOS OAuth sign-in</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Multi-provider models (OpenAI, Anthropic, Google, OpenRouter)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> MCP server tools for knowledge and projects</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> File upload and RAG search</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Fullscreen toggle (Cmd/Ctrl+Shift+F)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Zendesk Mode -->
+                    <div class="bg-black/40 p-8 rounded-2xl border border-yellow-500/30 hover:border-yellow-500/60 transition-all group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-headset text-2xl text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-['Orbitron'] font-bold text-white">Zendesk Mode</h3>
+                                    <span class="text-yellow-400 text-xs font-bold">SUPPORT TEAMS</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-6">LLM-powered customer support workflows via Zendesk MCP.</p>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Authenticate with admin or personal accounts</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Search tickets, comments, and Help Center</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Draft and post replies using any LLM</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> MCP server connected for tool access</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Automate vendor ticket responses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Providers Section -->
+        <div class="mb-24 relative" id="chip-model">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden bg-gradient-to-br from-cyan-900/20 to-purple-900/20">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-radial from-cyan-500/20 to-transparent rounded-full blur-3xl"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-12 relative z-10">
+                    <div class="md:w-1/3 text-center">
+                        <div class="w-32 h-32 rounded-3xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center mx-auto mb-6 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,255,255,0.3)]">
+                            <i class="fas fa-network-wired text-5xl text-cyan-400"></i>
+                        </div>
+                        <span class="inline-block bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-['Orbitron'] font-bold">MODEL ROUTING</span>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl md:text-5xl font-['Orbitron'] font-bold text-white mb-4">Multi-Provider <span class="text-cyan-400">AI</span></h2>
+                        <p class="text-xl text-gray-300 mb-6 leading-relaxed">
+                            Connect OpenAI, Anthropic, Google, OpenRouter, and local models. ChipOS routes tasks across
+                            providers while keeping your workspace context consistent.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-['Orbitron'] font-bold text-cyan-400">OpenAI</div>
+                                <div class="text-gray-500 text-xs uppercase">GPT Family</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-['Orbitron'] font-bold text-purple-400">Anthropic</div>
+                                <div class="text-gray-500 text-xs uppercase">Claude Family</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-['Orbitron'] font-bold text-green-400">Google</div>
+                                <div class="text-gray-500 text-xs uppercase">Gemini Family</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-['Orbitron'] font-bold text-yellow-400">Local</div>
+                                <div class="text-gray-500 text-xs uppercase">Ollama / On-Prem</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm">MCP Tools</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">RAG Search</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Provider Status</span>
+                            <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Hosted + Local</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multi-LLM Comparison Section -->
+
+        <div class="mb-24 relative" id="compare">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl metallic-border relative overflow-hidden">
+                <div class="text-center mb-10 relative z-10">
+                    <span class="inline-block bg-pink-500/20 border border-pink-500/50 text-pink-300 px-4 py-1 rounded-full text-xs font-['Orbitron'] tracking-widest mb-4">UNIQUE FEATURE</span>
+                    <h2 class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-4">COMPARE <span class="text-pink-400">SIDE-BY-SIDE</span></h2>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-lg">Ask the same question to multiple providers and compare their answers instantly.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8 relative z-10">
+                    <div class="bg-black/40 p-4 rounded-xl border border-purple-500/30 text-center hover:border-purple-500/60 transition-all">
+                        <i class="fas fa-robot text-purple-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">Claude</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-green-500/30 text-center hover:border-green-500/60 transition-all">
+                        <i class="fas fa-brain text-green-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">GPT-4 Class</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-blue-500/30 text-center hover:border-blue-500/60 transition-all">
+                        <i class="fas fa-gem text-blue-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">Gemini</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-cyan-500/30 text-center hover:border-cyan-500/60 transition-all">
+                        <i class="fas fa-plug text-cyan-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">OpenRouter</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-orange-500/30 text-center hover:border-orange-500/60 transition-all">
+                        <i class="fas fa-bolt text-orange-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">Grok</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-pink-500/30 text-center hover:border-pink-500/60 transition-all">
+                        <i class="fas fa-server text-pink-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">Ollama</div>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-yellow-500/30 text-center hover:border-yellow-500/60 transition-all">
+                        <i class="fas fa-plus text-yellow-400 text-2xl mb-2"></i>
+                        <div class="text-white text-sm font-bold">+ More</div>
+                    </div>
+                </div>
+
+                <div class="text-center relative z-10">
+                    <p class="text-gray-400 text-lg">In the same chat, query any model. Compare responses. Pick the best answer.</p>
                 </div>
             </div>
         </div>
@@ -767,25 +1251,24 @@
                 </div>
                 <p class="text-gray-300 mb-4">No installation required. Launch ChipOS directly in your browser with the
                     hosted backend.</p>
-                <p class="text-cyan-400/70 text-sm mb-6"><i class="fas fa-lock mr-2"></i>Enterprise access only:
-                    @futureatoms.com and @axelera.ai emails</p>
+                <p class="text-cyan-400/70 text-sm mb-6"><i class="fas fa-unlock mr-2"></i>Open to everyone: Sign in with Google, GitHub, or any email</p>
 
                 <!-- Not logged in state -->
                 <div id="webapp-logged-out">
-                    <p class="text-gray-400 mb-4">Sign in with your enterprise account to access ChipOS</p>
+                    <p class="text-gray-400 mb-4">Sign in with your Google, GitHub, or email account</p>
 
                     <!-- Email Sign-in Form -->
                     <div id="email-signin-form" class="max-w-md mx-auto mb-6">
                         <form onsubmit="handleEmailSignIn(event)" class="space-y-4">
                             <div>
-                                <input type="email" id="signin-email" placeholder="Enter your enterprise email"
+                                <input type="email" id="signin-email" placeholder="Enter your email address"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    required>
+                                    aria-label="Email address for sign in" required>
                             </div>
                             <div>
                                 <input type="password" id="signin-password" placeholder="Password"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    required>
+                                    aria-label="Password for sign in" required>
                             </div>
                             <div id="signin-error" class="hidden text-red-400 text-sm text-left"></div>
                             <div id="signin-success" class="hidden text-green-400 text-sm text-left"></div>
@@ -806,20 +1289,20 @@
                     <div id="signup-form" class="hidden max-w-md mx-auto mb-6">
                         <form onsubmit="handleEmailSignUp(event)" class="space-y-4">
                             <div>
-                                <input type="email" id="signup-email" placeholder="Enter your enterprise email"
+                                <input type="email" id="signup-email" placeholder="Enter your email address"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    required>
+                                    aria-label="Email address for sign up" required>
                             </div>
                             <div>
                                 <input type="password" id="signup-password"
                                     placeholder="Create password (min 6 characters)"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    minlength="6" required>
+                                    aria-label="Create password" minlength="6" required>
                             </div>
                             <div>
                                 <input type="password" id="signup-confirm-password" placeholder="Confirm password"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    minlength="6" required>
+                                    aria-label="Confirm password" minlength="6" required>
                             </div>
                             <div id="signup-error" class="hidden text-red-400 text-sm text-left"></div>
                             <div id="signup-success" class="hidden text-green-400 text-sm text-left"></div>
@@ -838,9 +1321,9 @@
                     <div id="forgot-password-form" class="hidden max-w-md mx-auto mb-6">
                         <form onsubmit="handleForgotPassword(event)" class="space-y-4">
                             <div>
-                                <input type="email" id="reset-email" placeholder="Enter your enterprise email"
+                                <input type="email" id="reset-email" placeholder="Enter your email address"
                                     class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
-                                    required>
+                                    aria-label="Email address for password reset" required>
                             </div>
                             <div id="reset-error" class="hidden text-red-400 text-sm text-left"></div>
                             <div id="reset-success" class="hidden text-green-400 text-sm text-left"></div>
@@ -915,12 +1398,12 @@
                                 3</div>
                             <p class="text-gray-300 pt-1">Drag ChipOS to your Applications folder</p>
                         </div>
-                        <a href="ChipOS-2025.12.1-macOS-arm64.dmg" id="macos-download-btn"
+                        <a href="https://futureatoms.com/ChipOS-latest-macOS-arm64.dmg" id="macos-download-btn"
                             onclick="handleDownloadClick(this, 'macOS')"
                             class="block w-full text-center bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 text-cyan-400 py-3 rounded-lg transition-colors mt-6">
                             <i class="fas fa-download mr-2"></i> Download for Apple Silicon
                         </a>
-                        <p class="text-gray-500 text-xs mt-2 text-center">v2025.12.1 • macOS 11+ • Apple Silicon</p>
+                        <p class="text-gray-500 text-xs mt-2 text-center">Latest • macOS 11+ • Apple Silicon</p>
                     </div>
                 </div>
 
@@ -966,33 +1449,33 @@
             <h2 class="text-3xl font-['Orbitron'] font-bold mb-12 metallic-text">BUILT WITH MODERN TECH</h2>
             <div class="flex flex-wrap justify-center gap-8 md:gap-16">
                 <div class="flex flex-col items-center gap-4 group">
-                    <i class="fab fa-react text-5xl text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+                    <i class="fab fa-react text-5xl text-gray-400 group-hover:text-cyan-400 transition-colors"></i>
                     <span
-                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">React
+                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">React
                         + TS</span>
                 </div>
                 <div class="flex flex-col items-center gap-4 group">
-                    <i class="fab fa-python text-5xl text-gray-500 group-hover:text-yellow-400 transition-colors"></i>
+                    <i class="fab fa-python text-5xl text-gray-400 group-hover:text-yellow-400 transition-colors"></i>
                     <span
-                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Python</span>
+                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">Python</span>
                 </div>
                 <div class="flex flex-col items-center gap-4 group">
-                    <i class="fas fa-database text-5xl text-gray-500 group-hover:text-green-400 transition-colors"></i>
+                    <i class="fas fa-database text-5xl text-gray-400 group-hover:text-green-400 transition-colors"></i>
                     <span
-                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Supabase</span>
+                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">Supabase</span>
                 </div>
                 <div class="flex flex-col items-center gap-4 group">
-                    <i class="fab fa-docker text-5xl text-gray-500 group-hover:text-blue-400 transition-colors"></i>
+                    <i class="fab fa-docker text-5xl text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                     <span
-                        class="font-['Rajdhani'] font-bold text-gray-500 group-hover:text-white transition-colors">Docker</span>
+                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">Docker</span>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm font-mono">
-        <p>© 2025 FutureAtoms. All rights reserved.</p>
+    <footer class="border-t border-white/10 py-8 text-center text-sm font-mono">
+        <p style="color: #fbfcff;">© 2026 FutureAtoms. All rights reserved.</p>
     </footer>
 
     <!-- Auth Script -->
@@ -1146,10 +1629,9 @@
             const password = document.getElementById('signin-password').value;
             const btn = document.getElementById('signin-btn');
 
-            // Validate enterprise email
-            const emailDomain = email.split('@')[1]?.toLowerCase();
-            if (!['futureatoms.com', 'axelera.ai'].includes(emailDomain)) {
-                showError('signin-error', 'Only @futureatoms.com and @axelera.ai emails are allowed.');
+            // Email validation - any valid email is allowed
+            if (!email || !email.includes('@')) {
+                showError('signin-error', 'Please enter a valid email address.');
                 return;
             }
 
@@ -1182,10 +1664,9 @@
             const confirmPassword = document.getElementById('signup-confirm-password').value;
             const btn = document.getElementById('signup-btn');
 
-            // Validate enterprise email
-            const emailDomain = email.split('@')[1]?.toLowerCase();
-            if (!['futureatoms.com', 'axelera.ai'].includes(emailDomain)) {
-                showError('signup-error', 'Only @futureatoms.com and @axelera.ai emails are allowed.');
+            // Email validation - any valid email is allowed
+            if (!email || !email.includes('@')) {
+                showError('signup-error', 'Please enter a valid email address.');
                 return;
             }
 
@@ -1233,10 +1714,9 @@
             const email = document.getElementById('reset-email').value;
             const btn = document.getElementById('reset-btn');
 
-            // Validate enterprise email
-            const emailDomain = email.split('@')[1]?.toLowerCase();
-            if (!['futureatoms.com', 'axelera.ai'].includes(emailDomain)) {
-                showError('reset-error', 'Only @futureatoms.com and @axelera.ai emails are allowed.');
+            // Email validation - any valid email is allowed
+            if (!email || !email.includes('@')) {
+                showError('reset-error', 'Please enter a valid email address.');
                 return;
             }
 

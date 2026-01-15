@@ -4,9 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChipOS Settings Guide - Complete Configuration Reference | FutureAtoms</title>
+    <link rel="canonical" href="https://futureatoms.com/chipos-settings.html">
+    <title>ChipOS Settings & Configuration Guide</title>
     <meta name="description"
         content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
+    <meta property="og:title" content="ChipOS Settings | FutureAtoms">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -282,6 +289,14 @@
                 <a href="#supabase" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Supabase</a>
             </div>
 
+            <!-- Chat & MCP Section -->
+            <div>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Chat & MCP</h3>
+                <a href="#chat-mcp" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
+                <a href="#chat-ui" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Chat UI</a>
+                <a href="#mcp-url" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">MCP Endpoint</a>
+            </div>
+
             <!-- RAG Section -->
             <div>
                 <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">RAG Settings</h3>
@@ -468,9 +483,19 @@
                                     <td>RAG queries, embeddings, AI chat</td>
                                 </tr>
                                 <tr>
+                                    <td><code>ANTHROPIC_API_KEY</code></td>
+                                    <td>Anthropic</td>
+                                    <td>Claude models for chat and reasoning</td>
+                                </tr>
+                                <tr>
                                     <td><code>GOOGLE_API_KEY</code></td>
                                     <td>Google Gemini</td>
                                     <td>Alternative LLM provider</td>
+                                </tr>
+                                <tr>
+                                    <td><code>OPENROUTER_API_KEY</code></td>
+                                    <td>OpenRouter</td>
+                                    <td>Multi-provider model routing</td>
                                 </tr>
                                 <tr>
                                     <td><code>GITHUB_TOKEN</code></td>
@@ -479,6 +504,18 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="settings-card pink p-6 mb-6">
+                        <h3 id="github-token" class="font-orbitron text-lg text-white mb-3">GitHub Token</h3>
+                        <p class="text-gray-400 text-sm">Add a GitHub token to enable private repository ingestion and
+                            higher API rate limits.</p>
+                    </div>
+
+                    <div class="settings-card pink p-6 mb-6">
+                        <h3 id="supabase" class="font-orbitron text-lg text-white mb-3">Supabase</h3>
+                        <p class="text-gray-400 text-sm">Configure Supabase URL and project ref for hosted mode or
+                            enterprise deployments.</p>
                     </div>
 
                     <div class="settings-card pink p-6 mb-6">
@@ -505,6 +542,69 @@
                     <div class="callout callout-tip">
                         <p class="text-sm"><strong>Security Tip:</strong> Always encrypt API keys. Encrypted credentials
                             are stored securely and cannot be viewed after saving.</p>
+                    </div>
+                </section>
+
+                <!-- Chat & MCP Settings -->
+                <section id="chat-mcp" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-comments text-cyan-400"></i>
+                        Chat & MCP Settings
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        Configure Chat Mode and MCP endpoints for external assistants. These settings control how
+                        ChipOS connects LibreChat and MCP clients.
+                    </p>
+
+                    <div class="settings-card cyan p-6 mb-6">
+                        <h3 id="chat-ui" class="font-orbitron text-lg text-white mb-4">Chat UI</h3>
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>chipos.chat.uiUrl</code></td>
+                                    <td>https://chat.futureatoms.com</td>
+                                    <td>LibreChat fullscreen UI endpoint</td>
+                                </tr>
+                                <tr>
+                                    <td><code>chipos.chat.defaultModel</code></td>
+                                    <td>Configured</td>
+                                    <td>Default chat model identifier</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="settings-card cyan p-6">
+                        <h3 id="mcp-url" class="font-orbitron text-lg text-white mb-4">MCP Endpoint</h3>
+                        <table class="docs-table">
+                            <thead>
+                                <tr>
+                                    <th>Setting</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>chipos.mcp.hostedUrl</code></td>
+                                    <td>https://mcp.futureatoms.com/mcp</td>
+                                    <td>Hosted MCP server endpoint</td>
+                                </tr>
+                                <tr>
+                                    <td><code>chipos.backend.mode</code></td>
+                                    <td>hosted</td>
+                                    <td>Hosted or local backend selection</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
@@ -1027,7 +1127,7 @@
                 <!-- Footer -->
                 <footer class="pt-12 border-t border-gray-800">
                     <div class="flex items-center justify-between">
-                        <p class="text-gray-500 text-sm">Last updated: December 2025</p>
+                        <p class="text-gray-500 text-sm">Last updated: January 2026</p>
                         <div class="flex gap-4">
                             <a href="chipos-docs.html" class="text-cyan-400 text-sm hover:text-cyan-300">
                                 <i class="fas fa-book mr-1"></i> Full Documentation
