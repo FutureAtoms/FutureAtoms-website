@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     injectFeedbackSystem();
 });
 
+// Sanitize text to prevent XSS
+function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 function injectFeedbackSystem() {
     // 1. Inject CSS if not present (fallback)
     if (!document.querySelector('link[href*="feedback.css"]')) {
@@ -15,15 +22,17 @@ function injectFeedbackSystem() {
     const inlineContainer = document.getElementById('feedback-inline-container');
     const isInline = !!inlineContainer;
 
-    // Get product from URL if available
+    // Get product from URL if available - SANITIZED to prevent XSS
     const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product') || 'General';
+    const rawProduct = urlParams.get('product') || 'General';
+    // Sanitize: only allow alphanumeric, spaces, and hyphens
+    const product = escapeHTML(rawProduct.replace(/[^a-zA-Z0-9\s\-]/g, '').substring(0, 50));
 
     // 2. Create HTML Structure
     const htmlContent = `
         <div class="${isInline ? 'feedback-inline-wrapper' : 'feedback-modal'}">
             ${!isInline ? '<button class="feedback-close" id="feedback-close">&times;</button>' : ''}
-            
+
             <div class="feedback-header">
                 ${isInline ? '' : '<h3 class="feedback-title">FEEDBACK LOOP</h3>'}
                 <p class="feedback-subtitle">Select atoms below to transmit signal for: <span style="color:#00ffff">${product}</span></p>

@@ -55,7 +55,7 @@ test.describe('Homepage Functionality', () => {
 
     // Check intro section
     const introTitle = page.locator('.scroll-section[data-id="intro"] .product-title');
-    await expect(introTitle).toContainText('FUTUREATOMS');
+    await expect(introTitle).toContainText('Build Faster with AI');
 
     // Check first product section
     const chiposTitle = page.locator('.scroll-section[data-id="chipos"] .product-title');

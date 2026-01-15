@@ -144,7 +144,7 @@ test.describe('Interactive Elements Tests', () => {
 
       // Check for copyright text (regardless of element structure)
       const bodyText = await page.locator('body').textContent();
-      expect(bodyText).toContain('2025');
+      expect(bodyText).toContain('2026');
       expect(bodyText).toContain('FutureAtoms');
 
       console.log(`✓ ${pagePath} has copyright information`);

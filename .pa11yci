@@ -8,9 +8,17 @@
     "http://localhost:8000/",
     "http://localhost:8000/index.html",
     "http://localhost:8000/about.html",
-    "http://localhost:8000/vision.html",
     "http://localhost:8000/adaptivision.html",
+    "http://localhost:8000/agentic.html",
+    "http://localhost:8000/bevybeats.html",
+    "http://localhost:8000/blog.html",
     "http://localhost:8000/chipos.html",
-    "http://localhost:8000/contact.html"
+    "http://localhost:8000/contact.html",
+    "http://localhost:8000/feedback.html",
+    "http://localhost:8000/news.html",
+    "http://localhost:8000/savitri.html",
+    "http://localhost:8000/systemverilog.html",
+    "http://localhost:8000/yuj.html",
+    "http://localhost:8000/zaphy.html"
   ]
 }

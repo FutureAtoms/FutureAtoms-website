@@ -1,12 +1,46 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
-const fs = require('fs');
-const path = require('path');
 const { GoogleGenAI } = require("@google/genai");
 
 // Define Secrets
 const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
 const GEMINI_STORE_NAME = defineSecret("GEMINI_STORE_NAME");
+
+// Allowed origins for CORS
+const ALLOWED_ORIGINS = [
+    'https://futureatoms.com',
+    'https://www.futureatoms.com',
+    'https://futureatoms-website.web.app',
+    'http://localhost:8000', // Local development
+    'http://localhost:5000'  // Firebase emulator
+];
+
+// Simple in-memory rate limiting (resets on cold start)
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 20; // 20 requests per minute per IP
+
+function isRateLimited(ip) {
+    const now = Date.now();
+    const record = rateLimitMap.get(ip);
+
+    if (!record) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+
+    if (now > record.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+
+    if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+        return true;
+    }
+
+    record.count++;
+    return false;
+}
 
 exports.chat = onRequest({ secrets: [GEMINI_API_KEY, GEMINI_STORE_NAME] }, async (req, res) => {
     // Force SDK to ignore default credentials and use API Key
@@ -14,13 +48,26 @@ exports.chat = onRequest({ secrets: [GEMINI_API_KEY, GEMINI_STORE_NAME] }, async
     delete process.env.GCLOUD_PROJECT;
     delete process.env.GOOGLE_CLOUD_PROJECT;
 
-    // Enable CORS
-    res.set("Access-Control-Allow-Origin", "*");
-    res.set("Access-Control-Allow-Methods", "POST");
+    // CORS - Only allow specific origins
+    const origin = req.headers.origin;
+    if (ALLOWED_ORIGINS.includes(origin)) {
+        res.set("Access-Control-Allow-Origin", origin);
+    } else {
+        res.set("Access-Control-Allow-Origin", "https://futureatoms.com");
+    }
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.set("Access-Control-Max-Age", "3600");
 
     if (req.method === "OPTIONS") {
         res.status(204).send("");
+        return;
+    }
+
+    // Rate limiting
+    const clientIP = req.headers['x-forwarded-for'] || req.connection?.remoteAddress || 'unknown';
+    if (isRateLimited(clientIP)) {
+        res.status(429).json({ error: "Rate limit exceeded. Please wait before making more requests." });
         return;
     }
 
@@ -57,21 +104,21 @@ exports.chat = onRequest({ secrets: [GEMINI_API_KEY, GEMINI_STORE_NAME] }, async
             parts: [{ text: message }]
         });
 
-        // Sitemap for Knowledge Base
+        // Sitemap for Knowledge Base - Using canonical domain
         const SITEMAP = `
-- Home: https://futureatoms-website.web.app/index.html
-- ChipOS (AI OS for Hardware): https://futureatoms-website.web.app/chipos.html
-- SystemVerilogGPT (Hardware Verification): https://futureatoms-website.web.app/systemverilog.html
-- Zaphy (LinkedIn AI): https://futureatoms-website.web.app/zaphy.html
-- Agentic Control (CLI Tool): https://futureatoms-website.web.app/agentic.html
-- Yuj (Yoga & Wellness): https://futureatoms-website.web.app/yuj.html
-- AdaptiveVision (Computer Vision): https://futureatoms-website.web.app/adaptivision.html
-- BevyBeats (AI Music): https://futureatoms-website.web.app/bevybeats.html
-- Savitri (AI Therapy): https://futureatoms-website.web.app/savitri.html
-- Blog/Research: https://futureatoms-website.web.app/blog.html
-- News: https://futureatoms-website.web.app/news.html
-- About: https://futureatoms-website.web.app/about.html
-- Contact: https://futureatoms-website.web.app/contact.html
+- Home: https://futureatoms.com/
+- ChipOS (AI OS for Hardware): https://futureatoms.com/chipos.html
+- SystemVerilogGPT (Hardware Verification): https://futureatoms.com/systemverilog.html
+- Zaphy (LinkedIn AI): https://futureatoms.com/zaphy.html
+- Agentic Control (CLI Tool): https://futureatoms.com/agentic.html
+- Yuj (Yoga & Wellness): https://futureatoms.com/yuj.html
+- AdaptiveVision (Computer Vision): https://futureatoms.com/adaptivision.html
+- BevyBeats (AI Music): https://futureatoms.com/bevybeats.html
+- Savitri (AI Therapy): https://futureatoms.com/savitri.html
+- Blog/Research: https://futureatoms.com/blog.html
+- News: https://futureatoms.com/news.html
+- About: https://futureatoms.com/about.html
+- Contact: https://futureatoms.com/contact.html
 `;
 
         // System Instruction
