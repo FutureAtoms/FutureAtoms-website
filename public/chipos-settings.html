@@ -286,7 +286,7 @@
                 <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Credentials</h3>
                 <a href="#api-keys" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">API Keys</a>
                 <a href="#github-token" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">GitHub Token</a>
-                <a href="#supabase" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Supabase</a>
+                <a href="#supabase" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Hosted Auth</a>
             </div>
 
             <!-- Chat & MCP Section -->
@@ -520,8 +520,8 @@
                     </div>
 
                     <div class="settings-card pink p-6 mb-6">
-                        <h3 id="supabase" class="font-orbitron text-lg text-white mb-3">Supabase</h3>
-                        <p class="text-gray-400 text-sm">Configure Supabase URL and project ref for hosted mode or
+                        <h3 id="supabase" class="font-orbitron text-lg text-white mb-3">Hosted Auth</h3>
+                        <p class="text-gray-400 text-sm">Configure hosted auth URL and project ref for hosted mode or
                             enterprise deployments.</p>
                     </div>
 
@@ -561,7 +561,7 @@
 
                     <p class="text-gray-300 mb-8">
                         Configure Chat Mode and MCP endpoints for external assistants. These settings control how
-                        ChipOS connects LibreChat and MCP clients.
+                        ChipOS connects ChipChat and MCP clients.
                     </p>
 
                     <div class="settings-card cyan p-6 mb-6">
@@ -578,7 +578,7 @@
                                 <tr>
                                     <td><code>chipos.chat.uiUrl</code></td>
                                     <td>https://chat.futureatoms.com</td>
-                                    <td>LibreChat fullscreen UI endpoint</td>
+                                    <td>ChipChat fullscreen UI endpoint</td>
                                 </tr>
                                 <tr>
                                     <td><code>chipos.chat.defaultModel</code></td>
@@ -593,7 +593,7 @@
                                 <tr>
                                     <td><code>chipos.chat.allowedOrigins</code></td>
                                     <td>chat.futureatoms.com, futureatoms-website.web.app, chipos-chat-215670141857.us-central1.run.app</td>
-                                    <td>Allowed origins for embedded Chat authentication</td>
+                                    <td>Allowed origins for Chat Mode access</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1134,7 +1134,7 @@
                         <div class="settings-card p-6">
                             <h3 class="text-white font-semibold mb-2">"Failed to save settings"</h3>
                             <ul class="text-gray-400 text-sm list-disc list-inside">
-                                <li>Check Supabase connection</li>
+                                <li>Check hosted auth connection</li>
                                 <li>Verify using <strong>service_role key</strong> (NOT anon key)</li>
                                 <li>Check browser console for detailed error</li>
                             </ul>

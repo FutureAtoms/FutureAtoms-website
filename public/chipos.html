@@ -23,7 +23,6 @@
         rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase JS for Auth -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -251,8 +250,8 @@
                 <div class="flex items-start gap-3">
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
-                        <span class="text-white font-bold">LibreChat Auth Bridge</span>
-                        <p class="text-gray-400 text-sm">SSO token handoff + session refresh for Chat Mode</p>
+                        <span class="text-white font-bold">ChipChat Sign-In Improvements</span>
+                        <p class="text-gray-400 text-sm">Smoother sign-in and session continuity for Chat Mode</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -383,7 +382,7 @@
                 </div>
                 <div class="bg-black/30 p-4 rounded-lg text-center border border-white/5">
                     <div class="text-3xl font-['Orbitron'] font-bold text-yellow-400 mb-1">JWT</div>
-                    <div class="text-gray-500 text-xs uppercase tracking-wider">Supabase auth</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">SSO auth</div>
                 </div>
             </div>
 
@@ -393,7 +392,7 @@
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">JWT Authentication</span>
-                        <p class="text-gray-400 text-sm">Supabase-based auth with OIDC support</p>
+                        <p class="text-gray-400 text-sm">Secure SSO with OAuth support</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -414,7 +413,7 @@
                     <i class="fas fa-check-circle text-green-400 mt-1"></i>
                     <div>
                         <span class="text-white font-bold">Row-Level Security</span>
-                        <p class="text-gray-400 text-sm">Supabase RLS policies enforced across data tables</p>
+                        <p class="text-gray-400 text-sm">Row-level security policies enforced across data tables</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -624,9 +623,9 @@
                                     <span class="text-green-400 text-xs font-bold">FREE FOR ALL</span>
                                 </div>
                             </div>
-                            <p class="text-gray-300 mb-6">Fullscreen LibreChat with provider choice and MCP tools.</p>
+                            <p class="text-gray-300 mb-6">Fullscreen ChipChat with provider choice and MCP tools.</p>
                             <ul class="space-y-3 text-sm text-gray-400">
-                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> ChipOS SSO (Supabase OIDC)</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> ChipOS SSO</li>
                                 <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Multi-provider models (OpenAI, Anthropic, Google, OpenRouter, Grok)</li>
                                 <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Hosted MCP endpoint for Chat Mode</li>
                                 <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> File upload and RAG search</li>
@@ -1001,7 +1000,7 @@
                                     <i class="fas fa-comments text-green-400"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white">Chat Mode (LibreChat)</h4>
+                                    <h4 class="font-bold text-white">Chat Mode (ChipChat)</h4>
                                     <p class="text-gray-400 text-xs">SSO + hosted MCP context</p>
                                 </div>
                                 <span
@@ -1501,7 +1500,7 @@
                 <div class="flex flex-col items-center gap-4 group">
                     <i class="fas fa-database text-5xl text-gray-400 group-hover:text-green-400 transition-colors"></i>
                     <span
-                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">Supabase</span>
+                        class="font-['Rajdhani'] font-bold text-gray-300 group-hover:text-white transition-colors">Managed Postgres</span>
                 </div>
                 <div class="flex flex-col items-center gap-4 group">
                     <i class="fab fa-docker text-5xl text-gray-400 group-hover:text-blue-400 transition-colors"></i>
@@ -1519,11 +1518,11 @@
 
     <!-- Auth Script -->
     <script>
-        // Supabase Configuration
+        // Auth Configuration
         const SUPABASE_URL = 'https://wpgrhvdwdvmknhjzpkwz.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ3JodmR3ZHZta25oanpwa3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MTYyODQsImV4cCI6MjA3Mjk5MjI4NH0.qdeRc4qFAFP3nFj2HuVAhGTikZrCCkwxCAfDL5Jq4VM';
 
-        // Initialize Supabase client
+        // Initialize auth client
         const { createClient } = supabase;
         const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 

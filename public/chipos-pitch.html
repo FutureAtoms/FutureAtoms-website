@@ -590,6 +590,7 @@
                 </p>
                 <div class="flex justify-center gap-6 fade-up d3">
                     <span class="glass px-6 py-3 font-display text-sm tracking-wider text-white/60">Q1 2026</span>
+                    <span class="glass px-6 py-3 font-display text-sm tracking-wider text-white/60">Shipping v2026.01.05</span>
                 </div>
             </div>
         </div>
@@ -598,8 +599,8 @@
         <div class="slide" data-slide="1">
             <div class="slide-content text-center">
                 <p class="text-2xl md:text-3xl leading-relaxed text-gray-300 mb-12 max-w-4xl mx-auto fade-up">
-                    AI assistants can generate code in seconds. In hardware, correctness is unforgiving.
-                    Specs, errata, and vendor SDKs decide whether a design works or fails.
+                    AI assistants can generate code in seconds. In hardware, a single missed constraint can derail a
+                    roadmap. Specs, errata, and vendor SDKs decide whether a design works or fails.
                 </p>
                 <h2 class="font-display text-8xl md:text-[11rem] font-black text-gradient mb-16 fade-up d1">
                     CONTEXT
@@ -622,23 +623,25 @@
                     <div class="space-y-6 fade-up d1">
                         <p class="text-xl text-gray-300 leading-relaxed">
                             Verification, debug, and onboarding dominate schedules for hardware teams.
+                            Every missed detail becomes a rework loop.
                         </p>
                         <p class="text-xl text-gray-300 leading-relaxed">
-                            Specs live in PDFs, repos, wikis, and vendor SDKs that AI copilots cannot see.
+                            Specs live in PDFs, repos, wikis, vendor SDKs, and issue trackers that AI copilots cannot
+                            see end to end.
                         </p>
                         <p class="text-xl text-gray-300 leading-relaxed">
-                            Every session starts from scratch, so teams re-explain context instead of shipping work.
+                            Each session resets context, so teams re-explain what matters instead of shipping work.
                         </p>
                     </div>
 
                     <div class="space-y-4 fade-up d2">
                         <div class="stat-card glass-card p-6">
-                            <div class="font-display text-3xl font-black text-red-400">Verification Heavy</div>
-                            <p class="text-gray-400 mt-2">Debug loops stall milestones and confidence.</p>
+                            <div class="font-display text-3xl font-black text-red-400">Respin Risk</div>
+                            <p class="text-gray-400 mt-2">Hidden constraints surface late, when fixes are expensive.</p>
                         </div>
                         <div class="stat-card glass-card p-6">
                             <div class="font-display text-3xl font-black text-red-400">Context Debt</div>
-                            <p class="text-gray-400 mt-2">Critical knowledge is fragmented and unsearchable.</p>
+                            <p class="text-gray-400 mt-2">Knowledge fragments across tools and never compounds.</p>
                         </div>
                     </div>
                 </div>
@@ -655,7 +658,8 @@
 
                 <p class="text-2xl md:text-3xl text-gray-300 leading-relaxed mb-16 max-w-4xl mx-auto fade-up d1">
                     There is no shared system of record for hardware knowledge.
-                    Context is <span class="text-red-400 font-bold">fragmented</span> across docs, repos, and tools.
+                    Context is <span class="text-red-400 font-bold">fragmented</span> across docs, repos, and tools, so
+                    answers are not repeatable.
                 </p>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 fade-up d2">
@@ -705,17 +709,16 @@
                 </p>
 
                 <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto fade-up d4">
-                    Transform your entire hardware documentation into an
-                    <span class="text-purple-400 font-semibold">AI-queryable knowledge brain</span>
+                    Turn specs, repos, and workflows into a
+                    <span class="text-purple-400 font-semibold">shared system of record</span> so every assistant
+                    answers with grounded context
                 </p>
 
                 <div class="flex flex-wrap justify-center gap-4 fade-up d5">
                     <span class="glass px-5 py-3 text-sm"><i
-                            class="fas fa-cloud-upload-alt text-cyan-400 mr-2"></i>Upload Datasheets</span>
-                    <span class="glass px-5 py-3 text-sm"><i class="fas fa-spider text-purple-400 mr-2"></i>Crawl
-                        Documentation</span>
-                    <span class="glass px-5 py-3 text-sm"><i class="fab fa-github text-pink-400 mr-2"></i>Index
-                        Repositories</span>
+                            class="fas fa-cloud-upload-alt text-cyan-400 mr-2"></i>Index Specs</span>
+                    <span class="glass px-5 py-3 text-sm"><i class="fab fa-github text-purple-400 mr-2"></i>Ingest Repos</span>
+                    <span class="glass px-5 py-3 text-sm"><i class="fas fa-plug text-pink-400 mr-2"></i>Expose MCP Tools</span>
                 </div>
             </div>
         </div>
@@ -729,9 +732,7 @@
                 </div>
 
                 <p class="text-xl text-gray-300 mb-16 max-w-3xl mx-auto fade-up d1">
-                    Ask a question. Get answers from your <span class="text-cyan-400 font-semibold">actual
-                        specifications</span> -
-                    not hallucinations. Your knowledge, with source attribution.
+                    Ask a question. Get grounded answers with citations, then turn them into action.
                 </p>
 
                 <div class="grid md:grid-cols-3 gap-8">
@@ -742,7 +743,7 @@
                         </div>
                         <div class="pt-6">
                             <h3 class="font-display text-xl text-white mb-3">Ingest</h3>
-                            <p class="text-gray-400 text-sm">Upload PDFs, crawl sites, index repositories</p>
+                            <p class="text-gray-400 text-sm">Specs, docs, repos, URLs, SDKs, tickets</p>
                         </div>
                     </div>
                     <div class="glass-card p-8 relative fade-up d3">
@@ -751,8 +752,8 @@
                             <span class="font-display text-xl font-bold text-white">2</span>
                         </div>
                         <div class="pt-6">
-                            <h3 class="font-display text-xl text-white mb-3">Index</h3>
-                            <p class="text-gray-400 text-sm">Multi-embedding RAG with semantic understanding</p>
+                            <h3 class="font-display text-xl text-white mb-3">Ground</h3>
+                            <p class="text-gray-400 text-sm">Hybrid search, reranking, code-aware chunking, citations</p>
                         </div>
                     </div>
                     <div class="glass-card p-8 relative fade-up d4">
@@ -761,8 +762,8 @@
                             <span class="font-display text-xl font-bold text-white">3</span>
                         </div>
                         <div class="pt-6">
-                            <h3 class="font-display text-xl text-white mb-3">Query</h3>
-                            <p class="text-gray-400 text-sm">Get accurate answers with source citations</p>
+                            <h3 class="font-display text-xl text-white mb-3">Execute</h3>
+                            <p class="text-gray-400 text-sm">Projects, tasks, MCP tools, Agent Work Orders</p>
                         </div>
                     </div>
                 </div>
@@ -774,48 +775,44 @@
             <div class="slide-content">
                 <div class="flex items-center gap-4 mb-10 fade-up">
                     <div class="w-3 h-3 rounded-full bg-purple-500 animate-pulse shadow-lg shadow-purple-500/50"></div>
-                    <h2 class="font-display text-xl text-purple-400 tracking-wider">THE TECHNOLOGY</h2>
+                    <h2 class="font-display text-xl text-purple-400 tracking-wider">THE TRUST LAYER</h2>
                 </div>
 
                 <p class="text-xl text-gray-300 mb-12 max-w-3xl fade-up d1">
-                    Under the hood, ChipOS is <span class="text-purple-400 font-semibold">years ahead</span> of anything
-                    else in the market.
+                    ChipOS is built for accuracy, traceability, and control in hardware workflows.
                 </p>
 
                 <div class="grid md:grid-cols-3 gap-6 mb-10">
                     <div class="glass-card p-6 border-t-4 border-t-purple-500/50 fade-up d2">
-                        <h3 class="font-display text-base text-purple-400 mb-3">Multi-Embedding RAG</h3>
-                        <p class="text-gray-400 text-sm">3 models: OpenAI for language, UniXcoder for code, Jina for
-                            context</p>
+                        <h3 class="font-display text-base text-purple-400 mb-3">Grounded Retrieval</h3>
+                        <p class="text-gray-400 text-sm">BM25 + vectors with cross-encoder rerank for precision</p>
                     </div>
                     <div class="glass-card p-6 border-t-4 border-t-pink-500/50 fade-up d3">
-                        <h3 class="font-display text-base text-pink-400 mb-3">cAST Chunking</h3>
-                        <p class="text-gray-400 text-sm">Context-aware AST parsing across 25+ languages including
-                            SystemVerilog</p>
+                        <h3 class="font-display text-base text-pink-400 mb-3">Code-First Ingestion</h3>
+                        <p class="text-gray-400 text-sm">Repo ingestion with cAST metadata for trusted examples</p>
                     </div>
                     <div class="glass-card p-6 border-t-4 border-t-cyan-500/50 fade-up d4">
-                        <h3 class="font-display text-base text-cyan-400 mb-3">5-Agent Pipeline</h3>
-                        <p class="text-gray-400 text-sm">Self-correcting RAG with query rewriting and relevance
-                            evaluation</p>
+                        <h3 class="font-display text-base text-cyan-400 mb-3">Workflow Execution</h3>
+                        <p class="text-gray-400 text-sm">MCP tools + Agent Work Orders to turn answers into action</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-up d5">
                     <div class="stat-card glass p-5 text-center">
-                        <div class="font-display text-4xl font-bold text-cyan-400">3</div>
-                        <div class="text-gray-500 text-xs uppercase mt-1">Embedding Models</div>
+                        <div class="font-display text-3xl font-bold text-cyan-400">Hybrid</div>
+                        <div class="text-gray-500 text-xs uppercase mt-1">Vector + BM25</div>
                     </div>
                     <div class="stat-card glass p-5 text-center">
-                        <div class="font-display text-4xl font-bold text-purple-400">25+</div>
-                        <div class="text-gray-500 text-xs uppercase mt-1">Languages</div>
+                        <div class="font-display text-3xl font-bold text-purple-400">Rerank</div>
+                        <div class="text-gray-500 text-xs uppercase mt-1">Cross-encoder</div>
                     </div>
                     <div class="stat-card glass p-5 text-center">
-                        <div class="font-display text-4xl font-bold text-pink-400">&lt;1ms</div>
-                        <div class="text-gray-500 text-xs uppercase mt-1">Latency</div>
+                        <div class="font-display text-3xl font-bold text-pink-400">MCP</div>
+                        <div class="text-gray-500 text-xs uppercase mt-1">Tooling Layer</div>
                     </div>
                     <div class="stat-card glass p-5 text-center">
-                        <div class="font-display text-4xl font-bold text-green-400">5</div>
-                        <div class="text-gray-500 text-xs uppercase mt-1">RAG Agents</div>
+                        <div class="font-display text-3xl font-bold text-green-400">Local</div>
+                        <div class="text-gray-500 text-xs uppercase mt-1">Hosted Ready</div>
                     </div>
                 </div>
             </div>
@@ -830,12 +827,12 @@
                 </div>
 
                 <p class="text-xl text-gray-300 mb-6 max-w-3xl mx-auto fade-up d1">
-                    ChipOS connects to <span class="text-cyan-400 font-semibold">every</span> AI coding assistant
-                    through our Model Context Protocol server.
+                    ChipOS connects to <span class="text-cyan-400 font-semibold">every</span> MCP-compatible assistant
+                    through a single config. No switching cost.
                 </p>
 
                 <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto fade-up d2">
-                    One click, and they all have access to your complete hardware knowledge base.
+                    Keep your preferred assistant and give it trusted hardware context.
                 </p>
 
                 <div class="flex flex-wrap justify-center gap-6 mb-12 fade-up d3">
@@ -852,16 +849,16 @@
                         <p class="font-display text-xs text-white font-bold">Windsurf</p>
                     </div>
                     <div class="glass-card p-6 w-32 text-center">
-                        <i class="fas fa-gem text-yellow-400 text-3xl mb-3"></i>
-                        <p class="font-display text-xs text-white font-bold">Gemini</p>
+                        <i class="fas fa-comments text-yellow-400 text-3xl mb-3"></i>
+                        <p class="font-display text-xs text-white font-bold">Chat Mode</p>
                     </div>
                 </div>
 
                 <div class="glass p-6 max-w-xl mx-auto fade-up d4">
                     <p class="text-gray-300">
-                        Auto-installs <span class="text-green-400 font-semibold">12 SDK commands</span> into your
-                        workspace.
-                        Your AI assistant becomes a hardware expert - instantly.
+                        Auto-installs <span class="text-green-400 font-semibold">14 bundled commands</span> plus
+                        <span class="text-green-400 font-semibold">10 specialized packs</span> into your workspace.
+                        Your AI assistant becomes a hardware expert from day one.
                     </p>
                 </div>
             </div>
@@ -886,7 +883,7 @@
                                     <i class="fas fa-microchip text-xl text-cyan-400"></i>
                                 </div>
                                 <span
-                                    class="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded font-display font-bold">2025</span>
+                                    class="bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded font-display font-bold">2026+</span>
                             </div>
                             <h4 class="font-display text-lg text-white mb-2">RTL Design</h4>
                             <p class="text-gray-400 text-sm">AI-assisted Verilog & SystemVerilog from natural language
@@ -904,7 +901,7 @@
                                     <i class="fas fa-check-double text-xl text-purple-400"></i>
                                 </div>
                                 <span
-                                    class="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded font-display font-bold">2025</span>
+                                    class="bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded font-display font-bold">2026+</span>
                             </div>
                             <h4 class="font-display text-lg text-white mb-2">Verification</h4>
                             <p class="text-gray-400 text-sm">Auto-generate UVM testbenches and coverage plans</p>
@@ -921,7 +918,7 @@
                                     <i class="fas fa-bug text-xl text-pink-400"></i>
                                 </div>
                                 <span
-                                    class="bg-pink-500/20 text-pink-400 text-xs px-2 py-1 rounded font-display font-bold">2025</span>
+                                    class="bg-pink-500/20 text-pink-400 text-xs px-2 py-1 rounded font-display font-bold">2026+</span>
                             </div>
                             <h4 class="font-display text-lg text-white mb-2">Intelligent Debug</h4>
                             <p class="text-gray-400 text-sm">AI-powered waveform analysis and root cause detection</p>
@@ -938,7 +935,7 @@
                                     <i class="fas fa-shield-halved text-xl text-yellow-400"></i>
                                 </div>
                                 <span
-                                    class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-display font-bold">2025</span>
+                                    class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-display font-bold">2026+</span>
                             </div>
                             <h4 class="font-display text-lg text-white mb-2">Formal Verification</h4>
                             <p class="text-gray-400 text-sm">Property extraction and proof-based bug hunting</p>
@@ -952,50 +949,50 @@
             </div>
         </div>
 
-        <!-- SLIDE 10: Market -->
+        <!-- SLIDE 10: Wedge -->
         <div class="slide" data-slide="9">
             <div class="slide-content">
                 <div class="flex items-center gap-4 mb-10 fade-up">
                     <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse shadow-lg shadow-green-500/50"></div>
-                    <h2 class="font-display text-xl text-green-400 tracking-wider">THE MARKET</h2>
+                    <h2 class="font-display text-xl text-green-400 tracking-wider">THE WEDGE</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6 fade-up d1">
                         <div class="flex items-baseline gap-3">
-                            <span class="font-display text-4xl font-black text-cyan-400">$627B</span>
-                            <span class="text-gray-400">semiconductor market 2024</span>
+                            <span class="font-display text-3xl font-black text-cyan-400">Wedge</span>
+                            <span class="text-gray-400">Verification + SDK workflows</span>
                         </div>
                         <div class="flex items-baseline gap-3">
-                            <span class="font-display text-4xl font-black text-cyan-400">$1T+</span>
-                            <span class="text-gray-400">by 2030</span>
+                            <span class="font-display text-3xl font-black text-purple-400">Expand</span>
+                            <span class="text-gray-400">RTL, firmware, bring-up, debug</span>
                         </div>
                         <div class="flex items-baseline gap-3">
-                            <span class="font-display text-4xl font-black text-purple-400">$17B</span>
-                            <span class="text-gray-400">EDA market (10% CAGR)</span>
+                            <span class="font-display text-3xl font-black text-green-400">Platform</span>
+                            <span class="text-gray-400">Cross-assistant hardware workflow OS</span>
                         </div>
                         <div class="flex items-baseline gap-3">
-                            <span class="font-display text-4xl font-black text-green-400">$232B</span>
-                            <span class="text-gray-400">AI in semiconductors by 2034</span>
+                            <span class="font-display text-3xl font-black text-yellow-400">Why now</span>
+                            <span class="text-gray-400">MCP standardizes distribution + model quality is ready</span>
                         </div>
                     </div>
 
                     <div class="flex justify-center fade-up d2">
                         <div class="market-visual">
-                            <!-- Nested circles: TAM contains SAM contains SOM -->
+                            <!-- Nested circles: Platform contains Expand contains Wedge -->
                             <div class="market-ring ring-tam">
                                 <div class="absolute top-4 left-1/2 -translate-x-1/2 text-center">
-                                    <span class="font-display text-xs text-cyan-400/80 block">TAM</span>
-                                    <span class="font-display text-lg font-bold text-cyan-400">$627B</span>
+                                    <span class="font-display text-xs text-cyan-400/80 block">PLATFORM</span>
+                                    <span class="font-display text-lg font-bold text-cyan-400">ChipOS OS</span>
                                 </div>
                                 <div class="market-ring ring-sam">
                                     <div class="absolute top-3 left-1/2 -translate-x-1/2 text-center">
-                                        <span class="font-display text-xs text-purple-400/80 block">SAM</span>
-                                        <span class="font-display text-base font-bold text-purple-400">$17B</span>
+                                        <span class="font-display text-xs text-purple-400/80 block">EXPAND</span>
+                                        <span class="font-display text-base font-bold text-purple-400">RTL + FW</span>
                                     </div>
                                     <div class="market-ring ring-som">
-                                        <span class="font-display text-[10px] text-green-400/80">SOM</span>
-                                        <span class="font-display text-sm font-bold text-green-400">$500M</span>
+                                        <span class="font-display text-[10px] text-green-400/80">WEDGE</span>
+                                        <span class="font-display text-sm font-bold text-green-400">Verification</span>
                                     </div>
                                 </div>
                             </div>
@@ -1014,24 +1011,23 @@
                 </div>
 
                 <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto fade-up d1">
-                    Every AI model, every autonomous vehicle, every medical device depends on chips.
+                    Every AI product depends on reliable silicon.
                 </p>
 
                 <p class="text-2xl md:text-3xl text-gray-200 mb-8 max-w-3xl mx-auto fade-up d2">
-                    The bottleneck isn't compute. It's <span class="text-red-400 font-bold">human bandwidth</span>.
+                    The bottleneck is <span class="text-red-400 font-bold">correctness, context, and repeatability</span>.
                 </p>
 
                 <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto fade-up d3">
-                    ChipOS removes that bottleneck. We're
-                    <span class="text-cyan-400 font-semibold">multiplying engineer capability</span>
-                    across the entire design flow.
+                    ChipOS turns domain knowledge into trusted context and reusable workflows that compound with every
+                    project.
                 </p>
 
                 <div class="glass p-10 max-w-2xl mx-auto fade-up d4">
                     <p class="font-display text-2xl md:text-3xl font-bold text-white leading-relaxed">
-                        The companies that adopt ChipOS<br>
-                        won't just move faster.<br>
-                        <span class="text-green-400">They'll win.</span>
+                        The teams that adopt ChipOS<br>
+                        ship with confidence and speed.<br>
+                        <span class="text-green-400">Correctness first.</span>
                     </p>
                 </div>
             </div>
@@ -1052,8 +1048,8 @@
 
                 <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto fade-up d2">
                     ChipOS is available today - as a
-                    <span class="text-cyan-400 font-semibold">desktop app</span> or in your browser with
-                    <span class="text-purple-400 font-semibold">hosted mode</span>.
+                    <span class="text-cyan-400 font-semibold">desktop app</span>, in your browser with
+                    <span class="text-purple-400 font-semibold">hosted mode</span>, or locally for privacy.
                 </p>
 
                 <div class="flex flex-col md:flex-row gap-5 justify-center mb-12 fade-up d3">
@@ -1065,10 +1061,18 @@
                         <i class="fas fa-rocket"></i>
                         Try in Browser
                     </a>
+                    <a href="chipos-docs.html" class="btn-outline">
+                        <i class="fas fa-book"></i>
+                        View Docs
+                    </a>
                 </div>
 
-                <p class="font-display text-4xl font-black text-gradient mb-6 fade-up d4">
-                    futureatoms.com
+                <p class="text-sm text-gray-400 mb-6 fade-up d4">
+                    Prefer a walkthrough? <a href="contact.html" class="text-cyan-400 hover:text-cyan-300">Talk to the team</a>.
+                </p>
+
+                <p class="font-display text-4xl font-black text-gradient mb-6 fade-up d5">
+                    futureatoms.com/chipos
                 </p>
 
                 <p class="text-lg text-gray-500 italic fade-up d5">
@@ -1201,7 +1205,7 @@
         animateCounters();
     </script>
     <footer style="position: fixed; bottom: 10px; right: 20px; color: rgba(255,255,255,0.3); font-size: 0.75rem; z-index: 100;">
-        &copy; 2025 FutureAtoms | <a href="index.html" style="color: rgba(0,212,255,0.5); text-decoration: none;">Home</a>
+        &copy; 2026 FutureAtoms | <a href="index.html" style="color: rgba(0,212,255,0.5); text-decoration: none;">Home</a>
     </footer>
 </body>
 

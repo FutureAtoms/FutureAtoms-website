@@ -41,7 +41,7 @@
 
 ## ChipOS Documentation Summary (v2025.11.1)
 
-ChipOS is the "AI Operating System for Hardware Design," a custom VS Code distribution with integrated knowledge management.
+ChipOS is the "AI Operating System for Hardware Design," a dedicated desktop environment - think macOS for chips - with integrated knowledge management.
 
 **Key "World-Leading" Features:**
 1.  **Advanced RAG Engine**: Uses semantic search to understand engineering intent, not just keyword matching.
@@ -50,9 +50,9 @@ ChipOS is the "AI Operating System for Hardware Design," a custom VS Code distri
 4.  **Knowledge Base**: Crawls websites, indexes PDFs/repos, and organizes hardware knowledge.
 
 **Architecture**:
-- **Desktop App**: Custom VS Code build.
+- **Desktop App**: Dedicated ChipOS desktop app with a macOS-like UX for chip teams.
 - **Backend**: "chipos-acf" (Hosted or Local Docker) handles RAG and tasks.
-- **Supabase**: Database backend.
+- **Managed Database**: Database backend.
 
 **Core Capabilities**:
 - **Semantic Search**: `perform_rag_query` tool.

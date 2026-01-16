@@ -1,5 +1,5 @@
 /* Local font definitions for ChipOS */
-/* These fonts are bundled to avoid CSP issues in VS Code webviews */
+/* These fonts are bundled to avoid CSP issues in embedded webviews */
 
 /* Inter - UI/Body font */
 @font-face {

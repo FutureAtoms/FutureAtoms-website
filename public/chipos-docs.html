@@ -480,8 +480,9 @@
                     <div class="prose prose-invert max-w-none">
                         <p class="text-gray-300 text-lg leading-relaxed mb-6">
                             ChipOS is the <strong class="text-cyan-400">AI Operating System for chip development</strong> —
-                            think macOS for chips. It combines a VS Code-based desktop app, an embedded dashboard, and a
-                            cloud or local backend so you can build, search, and automate with AI across your entire workflow.
+                            think macOS for chips, with AI woven into design, verification, and knowledge.
+                            It combines a dedicated desktop environment, an embedded dashboard, and a cloud or local backend
+                            so you can build, search, and automate with AI across your entire workflow.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -526,7 +527,7 @@
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check text-green-400 mt-1"></i>
-                                        <span>LibreChat fullscreen Chat Mode with provider choice</span>
+                                        <span>ChipChat fullscreen Chat Mode with provider choice</span>
                                     </li>
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check text-green-400 mt-1"></i>
@@ -576,7 +577,7 @@
                             <h4 class="font-orbitron text-cyan-400 mb-3">Chat Mode Path</h4>
                             <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
                                 <li>Pick Chat Mode in the workspace selector.</li>
-                                <li>ChipOS SSO launches LibreChat fullscreen.</li>
+                                <li>ChipOS SSO launches ChipChat fullscreen.</li>
                                 <li>Select a model and chat with MCP-powered context.</li>
                             </ol>
                         </div>
@@ -609,9 +610,9 @@
 
                     <div class="prose prose-invert max-w-none">
                         <p class="text-gray-300 mb-6">
-                            ChipOS uses Supabase authentication with a dedicated sign-in panel when required and stores
-                            tokens in VS Code secrets. Sessions refresh automatically so you can reopen ChipOS without
-                            re-auth each time.
+                            ChipOS uses secure authentication with a dedicated sign-in panel when required and stores
+                            credentials securely. Sessions refresh automatically so you can reopen ChipOS without
+                            signing in each time.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -652,9 +653,9 @@
                         <div class="flex items-start gap-3">
                             <i class="fas fa-info-circle text-blue-400 mt-1"></i>
                             <div>
-                                <strong class="text-white">No conflicts with VS Code</strong>
+                                <strong class="text-white">Standalone by design</strong>
                                 <p class="text-gray-300 text-sm mt-1">ChipOS is a standalone application with its own
-                                    data folder. It won't interfere with your existing VS Code installation.</p>
+                                    data folder. It won't interfere with your existing editors or IDEs.</p>
                             </div>
                         </div>
                     </div>
@@ -871,7 +872,7 @@
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Launch Your Mode</h4>
                                     <p class="text-gray-400 text-sm mb-4">Agent Mode opens the ChipOS sidebar and (if
-                                        enabled) the dashboard. Chat Mode launches LibreChat fullscreen with the hosted
+                                        enabled) the dashboard. Chat Mode launches ChipChat fullscreen with the hosted
                                         MCP endpoint and default model.</p>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         <div class="bg-black/30 rounded-lg p-3 border border-white/10">
@@ -880,7 +881,7 @@
                                         </div>
                                         <div class="bg-black/30 rounded-lg p-3 border border-white/10">
                                             <p class="text-green-400 text-sm font-bold mb-1">Chat Mode</p>
-                                            <p class="text-gray-400 text-xs">LibreChat fullscreen + MCP context</p>
+                                            <p class="text-gray-400 text-xs">ChipChat fullscreen + MCP context</p>
                                         </div>
                                     </div>
                                 </div>
@@ -918,7 +919,7 @@
                         Configuration
                     </h2>
 
-                    <p class="text-gray-400 mb-6">ChipOS settings can be configured through VS Code's settings UI or
+                    <p class="text-gray-400 mb-6">ChipOS settings can be configured through the Settings panel or
                         settings.json.</p>
 
                     <table class="docs-table">
@@ -958,12 +959,12 @@
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.backend.supabaseUrl</td>
                                 <td class="text-gray-400">""</td>
-                                <td class="text-gray-300 text-sm">Supabase project URL for hosted auth</td>
+                                <td class="text-gray-300 text-sm">Hosted auth project URL</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.backend.projectRef</td>
                                 <td class="text-gray-400">""</td>
-                                <td class="text-gray-300 text-sm">Supabase project ref (Settings → General)</td>
+                                <td class="text-gray-300 text-sm">Hosted auth project ref (Settings → General)</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.mcp.hostedUrl</td>
@@ -973,7 +974,7 @@
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.chat.uiUrl</td>
                                 <td class="text-gray-400">https://chat.futureatoms.com</td>
-                                <td class="text-gray-300 text-sm">LibreChat UI URL for Chat Mode</td>
+                                <td class="text-gray-300 text-sm">ChipChat UI URL for Chat Mode</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.chat.fallbackUrl</td>
@@ -987,7 +988,7 @@
                                     https://futureatoms-website.web.app<br>
                                     https://chipos-chat-215670141857.us-central1.run.app
                                 </td>
-                                <td class="text-gray-300 text-sm">Allowed origins for embedded Chat auth</td>
+                                <td class="text-gray-300 text-sm">Allowed origins for Chat Mode access</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.chat.defaultModel</td>
@@ -1167,15 +1168,15 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-orbitron font-bold text-white">Chat Mode</h3>
-                                <span class="text-green-400 text-sm">LibreChat fullscreen</span>
+                                <span class="text-green-400 text-sm">ChipChat fullscreen</span>
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Chat Mode opens LibreChat in a fullscreen webview. ChipOS SSO (Supabase OIDC) bridges your
-                            session, then the chat UI loads with the hosted MCP endpoint and your default model.
+                            Chat Mode opens ChipChat in a fullscreen webview. ChipOS SSO signs you in, then the chat UI
+                            loads with the hosted MCP endpoint and your default model.
                         </p>
                         <ul class="space-y-2 text-gray-300 text-sm">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> ChipOS SSO + token bridge for embedded LibreChat</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> ChipOS SSO for ChipChat</li>
                             <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Multi-provider model selection (OpenAI, Anthropic, Google, OpenRouter, Grok)</li>
                             <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Hosted MCP endpoint for Chat Mode (even if backend is local)</li>
                             <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Default model: <span class="font-mono text-cyan-300">zai-org/GLM-4.7:fastest</span></li>
@@ -1465,8 +1466,8 @@
                                 </div>
                             </div>
                             <p class="text-gray-300 text-sm mb-3">
-                                VS Code telemetry is disabled by default. Secrets are stored securely and Supabase
-                                RLS isolates tenant data in hosted mode.
+                                Telemetry is disabled by default. Secrets are stored securely and row-level
+                                security isolates tenant data in hosted mode.
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Zero Telemetry</span>
@@ -1586,7 +1587,7 @@
 
                     <p class="text-gray-400 mb-6">
                         The dashboard Assistant provides hardware-aware chat with syntax highlighting and citations.
-                        For fullscreen chat, use Chat Mode (LibreChat) from the workspace selector.
+                        For fullscreen chat, use ChipChat from the workspace selector.
                     </p>
 
                     <div class="glass-panel p-6 rounded-xl mb-6">
@@ -1606,8 +1607,8 @@
                             <i class="fas fa-info-circle text-blue-400 mt-1"></i>
                             <div>
                                 <strong class="text-white">Chat surfaces</strong>
-                                <p class="text-gray-300 text-sm mt-1">Chip AI (Continue.dev fork) is available but
-                                    disabled by default. Chat Mode uses LibreChat as the primary fullscreen experience.</p>
+                                <p class="text-gray-300 text-sm mt-1">Chip AI is available but disabled by default.
+                                    Chat Mode uses ChipChat as the primary fullscreen experience.</p>
                             </div>
                         </div>
                     </div>
@@ -1995,7 +1996,7 @@
                                 <div class="flex items-center gap-3 mb-3">
                                     <i class="fas fa-desktop text-cyan-400"></i>
                                     <span class="font-orbitron text-white font-bold">ChipOS Desktop App</span>
-                                    <span class="text-gray-500 text-xs ml-auto">VS Code Fork</span>
+                                    <span class="text-gray-500 text-xs ml-auto">Desktop Shell</span>
                                 </div>
                                 <div class="grid grid-cols-3 gap-2 text-sm">
                                     <div class="bg-black/30 p-2 rounded text-center text-gray-300">Workspace Selector
@@ -2035,7 +2036,7 @@
                                 <div class="arch-layer p-4 rounded-lg">
                                     <div class="flex items-center gap-2 mb-2">
                                         <i class="fas fa-comments text-cyan-400"></i>
-                                        <span class="text-white font-bold text-sm">Chat (LibreChat)</span>
+                                        <span class="text-white font-bold text-sm">Chat (ChipChat)</span>
                                     </div>
                                     <p class="text-gray-500 text-xs">Port 3080 • Fullscreen chat UI</p>
                                 </div>
@@ -2067,7 +2068,7 @@
                             <div class="arch-layer p-4 rounded-lg">
                                 <div class="flex items-center gap-3 mb-3">
                                     <i class="fas fa-database text-green-400"></i>
-                                    <span class="font-orbitron text-white font-bold">Supabase</span>
+                                    <span class="font-orbitron text-white font-bold">Managed Postgres</span>
                                     <span class="text-gray-500 text-xs ml-auto">PostgreSQL 15+ with pgvector</span>
                                 </div>
                                 <div class="grid grid-cols-4 gap-2 text-sm">
@@ -2328,7 +2329,7 @@
                             <ul class="space-y-2 text-gray-300 text-sm">
                                 <li><strong>Hosted vs Local</strong> - Switch backend mode</li>
                                 <li><strong>Ollama</strong> - Validate local instances</li>
-                                <li><strong>Supabase</strong> - Configure project and URL</li>
+                                <li><strong>Hosted Auth</strong> - Configure project and URL</li>
                             </ul>
                         </div>
                     </div>
@@ -2370,10 +2371,10 @@
                             <p class="text-gray-400 text-sm mb-3">If the login screen loops or Chat Mode is blank:</p>
                             <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
                                 <li>Confirm your network access to <code class="bg-black/30 px-2 py-1 rounded">chat.futureatoms.com</code></li>
-                                <li>Sign out and re-open ChipOS to refresh tokens</li>
+                                <li>Sign out and sign back in to reset your session</li>
                                 <li>Verify <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.uiUrl</code> in Settings</li>
                                 <li>Try <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.fallbackUrl</code> or confirm
-                                    <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.allowedOrigins</code></li>
+                                    the Chat Mode URL settings</li>
                             </ol>
                         </div>
 
