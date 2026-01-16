@@ -83,3 +83,4 @@ public/ChipOS-macOS-arm64.dmg
 # Large distribution files (deploy via Firebase only)
 ChipOS-*.dmg
 *.sha256
+analysis/
