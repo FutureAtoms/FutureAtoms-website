@@ -295,6 +295,7 @@
                 <a href="#chat-mcp" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
                 <a href="#chat-ui" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Chat UI</a>
                 <a href="#mcp-url" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">MCP Endpoint</a>
+                <a href="#ollama" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Ollama</a>
             </div>
 
             <!-- RAG Section -->
@@ -411,12 +412,13 @@
                                     </tr>
                                     <tr>
                                         <td class="font-semibold">Requirements</td>
-                                        <td><code>archon_tasks.sql</code> migration must be installed</td>
+                                        <td>ChipOS schema migrations applied (chipos_projects + chipos_tasks tables)</td>
                                     </tr>
                                 </table>
                                 <div class="callout callout-warning mt-4">
                                     <p class="text-sm"><strong>Note:</strong> If you see "Projects table not detected",
-                                        run the database migration in Supabase SQL Editor.</p>
+                                        apply the latest ChipOS migrations in <code>chipos-acf/migration/</code>
+                                        (start with <code>complete_setup.sql</code>) or use hosted mode.</p>
                                 </div>
                             </div>
                             <div class="toggle-visual on"></div>
@@ -498,6 +500,11 @@
                                     <td>Multi-provider model routing</td>
                                 </tr>
                                 <tr>
+                                    <td><code>GROK_API_KEY</code></td>
+                                    <td>Grok</td>
+                                    <td>Grok models and provider status checks</td>
+                                </tr>
+                                <tr>
                                     <td><code>GITHUB_TOKEN</code></td>
                                     <td>GitHub</td>
                                     <td>Crawling private repositories</td>
@@ -575,8 +582,18 @@
                                 </tr>
                                 <tr>
                                     <td><code>chipos.chat.defaultModel</code></td>
-                                    <td>Configured</td>
-                                    <td>Default chat model identifier</td>
+                                    <td>zai-org/GLM-4.7:fastest</td>
+                                    <td>Default chat model (also supports gpt-4o-mini, claude-3-5-sonnet-20241022)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>chipos.chat.fallbackUrl</code></td>
+                                    <td>https://chipos-chat-215670141857.us-central1.run.app</td>
+                                    <td>Fallback Chat UI if custom domain is unavailable</td>
+                                </tr>
+                                <tr>
+                                    <td><code>chipos.chat.allowedOrigins</code></td>
+                                    <td>chat.futureatoms.com, futureatoms-website.web.app, chipos-chat-215670141857.us-central1.run.app</td>
+                                    <td>Allowed origins for embedded Chat authentication</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -605,6 +622,34 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </section>
+
+                <!-- Ollama Section -->
+                <section id="ollama" class="mb-16">
+                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-server text-blue-400"></i>
+                        Ollama (Local Models)
+                    </h2>
+
+                    <p class="text-gray-300 mb-8">
+                        The Ollama panel validates local instances, discovers models, and reports health for on-prem
+                        deployments.
+                    </p>
+
+                    <div class="settings-card blue p-6 mb-6">
+                        <h3 class="font-orbitron text-lg text-white mb-4">What You Can Do</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Validate instance URL and connectivity</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Discover and store available models</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>View stored models and instance health</li>
+                        </ul>
+                    </div>
+
+                    <div class="callout callout-tip">
+                        <p class="text-sm"><strong>Docker tip:</strong> If the backend runs in Docker, use
+                            <code>http://host.docker.internal:11434</code> (or <code>http://172.17.0.1:11434</code> on
+                            Linux) as the instance URL.</p>
                     </div>
                 </section>
 
@@ -649,12 +694,12 @@
                             <tbody>
                                 <tr>
                                     <td><strong>Voyage AI</strong> (default)</td>
-                                    <td><code>gpt-4o-mini</code> via OpenAI</td>
+                                    <td>N/A (embeddings-only)</td>
                                     <td><code>voyage-code-3</code> (1024 dims)</td>
                                 </tr>
                                 <tr>
                                     <td><strong>OpenAI</strong></td>
-                                    <td><code>gpt-4o-mini</code>, <code>gpt-4o</code></td>
+                                    <td><code>gpt-4.1-nano</code> (default), <code>gpt-4o-mini</code>, <code>gpt-4o</code></td>
                                     <td><code>text-embedding-3-small</code></td>
                                 </tr>
                                 <tr>
@@ -664,7 +709,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Ollama</strong> (local)</td>
-                                    <td><code>llama2</code>, <code>mistral</code></td>
+                                    <td><code>llama3</code>, <code>mistral</code></td>
                                     <td><code>nomic-embed-text</code></td>
                                 </tr>
                             </tbody>
@@ -707,10 +752,10 @@
                                 <div class="flex items-start justify-between">
                                     <div>
                                         <h4 class="text-white font-semibold">Use Agentic RAG</h4>
-                                        <p class="text-gray-400 text-sm mt-1">Enables code extraction and specialized
-                                            search for technical content</p>
+                                        <p class="text-gray-400 text-sm mt-1">Enables agentic code-example retrieval and
+                                            enhanced code search</p>
                                         <p class="text-green-400 text-xs mt-2"><strong>Default:</strong> Enabled |
-                                            Creates separate embeddings for code blocks</p>
+                                            Improves code-specific queries</p>
                                     </div>
                                     <div class="toggle-visual on"></div>
                                 </div>
@@ -778,7 +823,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Max Concurrent</strong></td>
-                                    <td>10</td>
+                                    <td>3</td>
                                     <td>1-20</td>
                                     <td>Pages to crawl simultaneously</td>
                                 </tr>
@@ -1071,7 +1116,7 @@
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Embedding Batch Size:
                                     <strong>50</strong>
                                 </li>
-                                <li><i class="fas fa-check text-green-400 mr-2"></i>Model: <strong>gpt-4o-mini</strong>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Model: <strong>gpt-4.1-nano</strong>
                                 </li>
                             </ul>
                         </div>
@@ -1098,7 +1143,7 @@
                         <div class="settings-card p-6">
                             <h3 class="text-white font-semibold mb-2">"Projects table not detected"</h3>
                             <ul class="text-gray-400 text-sm list-disc list-inside">
-                                <li>Run database migration: <code>migration/archon_tasks.sql</code></li>
+                                <li>Apply ChipOS migrations in <code>chipos-acf/migration/</code> (start with <code>complete_setup.sql</code>)</li>
                                 <li>Restart the server after migration</li>
                             </ul>
                         </div>

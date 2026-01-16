@@ -232,6 +232,27 @@
                 background-position: 200% center;
             }
         }
+
+        /* Core flow */
+        .flow-map {
+            background: radial-gradient(1200px 400px at 50% -20%, rgba(0, 255, 255, 0.12), transparent 60%),
+                linear-gradient(135deg, rgba(8, 16, 32, 0.85) 0%, rgba(6, 12, 24, 0.75) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+        }
+
+        .flow-step {
+            background: rgba(12, 22, 40, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 0.6rem 1.1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .flow-step strong {
+            color: #00ffff;
+        }
     </style>
 </head>
 
@@ -283,6 +304,8 @@
                     <ul class="space-y-1">
                         <li><a href="#introduction"
                                 class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Introduction</a></li>
+                        <li><a href="#core-flow"
+                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Core Flow</a></li>
                         <li><a href="#login"
                                 class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Login & Auth</a></li>
                         <li><a href="#installation"
@@ -515,6 +538,59 @@
                     </div>
                 </section>
 
+                <!-- Core Flow -->
+                <section id="core-flow" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-route text-purple-400 text-sm"></i>
+                        </span>
+                        Core Flow
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        ChipOS is designed as a simple, repeatable loop: sign in, pick a workspace, choose your mode,
+                        configure providers, add knowledge, and connect MCP for your assistants.
+                    </p>
+
+                    <div class="flow-map rounded-2xl p-6 mb-8">
+                        <div class="flex flex-wrap items-center justify-center gap-3">
+                            <span class="flow-step font-orbitron text-gray-300"><strong>1</strong> Sign In</span>
+                            <i class="fas fa-arrow-right text-cyan-400"></i>
+                            <span class="flow-step font-orbitron text-gray-300"><strong>2</strong> Workspace</span>
+                            <i class="fas fa-arrow-right text-cyan-400"></i>
+                            <span class="flow-step font-orbitron text-gray-300"><strong>3</strong> Mode</span>
+                            <i class="fas fa-arrow-right text-cyan-400"></i>
+                            <span class="flow-step font-orbitron text-gray-300"><strong>4</strong> Dashboard</span>
+                            <i class="fas fa-arrow-right text-cyan-400"></i>
+                            <span class="flow-step font-orbitron text-gray-300"><strong>5</strong> Knowledge</span>
+                            <i class="fas fa-arrow-right text-cyan-400"></i>
+                            <span class="flow-step font-orbitron text-gray-300"><strong>6</strong> MCP</span>
+                        </div>
+                        <p class="text-gray-500 text-xs text-center mt-4">
+                            Chat Mode always uses the hosted MCP endpoint, even if your backend is set to local.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-xl border-cyan-500/30">
+                            <h4 class="font-orbitron text-cyan-400 mb-3">Chat Mode Path</h4>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                <li>Pick Chat Mode in the workspace selector.</li>
+                                <li>ChipOS SSO launches LibreChat fullscreen.</li>
+                                <li>Select a model and chat with MCP-powered context.</li>
+                            </ol>
+                        </div>
+                        <div class="glass-panel p-6 rounded-xl border-purple-500/30">
+                            <h4 class="font-orbitron text-purple-400 mb-3">Agent Mode Path</h4>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                <li>Choose Agent Mode and a pack for your domain.</li>
+                                <li>Open the dashboard to configure providers and knowledge.</li>
+                                <li>Connect MCP to Claude Code, Cursor, or Windsurf.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Login & Authentication -->
                 <section id="login" class="section-anchor mb-16">
                     <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
@@ -526,18 +602,19 @@
 
                     <div class="callout callout-tip mb-6">
                         <p class="text-green-300">
-                            <strong>Single sign-in flow.</strong> Use email/password or OAuth (Google, GitHub).
-                            Admins can require login, and local mode can skip sign-in if enabled.
+                            <strong>Unified sign-in.</strong> Use email/password or OAuth (Google + GitHub on desktop,
+                            Google + Microsoft on web/chat). Admins can require login, and local mode can skip sign-in if enabled.
                         </p>
                     </div>
 
                     <div class="prose prose-invert max-w-none">
                         <p class="text-gray-300 mb-6">
-                            ChipOS uses a single fullscreen login panel on desktop and stores tokens securely.
-                            Once signed in, your session persists so you can reopen ChipOS without re-auth each time.
+                            ChipOS uses Supabase authentication with a dedicated sign-in panel when required and stores
+                            tokens in VS Code secrets. Sessions refresh automatically so you can reopen ChipOS without
+                            re-auth each time.
                         </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
                             <div class="glass-panel p-5 rounded-xl text-center hover:border-cyan-500/50 transition-colors">
                                 <i class="fab fa-google text-3xl text-red-400 mb-3"></i>
                                 <h4 class="font-bold text-white mb-1">Google</h4>
@@ -552,6 +629,11 @@
                                 <i class="fas fa-envelope text-3xl text-cyan-400 mb-3"></i>
                                 <h4 class="font-bold text-white mb-1">Email + Password</h4>
                                 <p class="text-gray-400 text-sm">Standard login with recovery options</p>
+                            </div>
+                            <div class="glass-panel p-5 rounded-xl text-center hover:border-cyan-500/50 transition-colors">
+                                <i class="fab fa-microsoft text-3xl text-blue-400 mb-3"></i>
+                                <h4 class="font-bold text-white mb-1">Microsoft</h4>
+                                <p class="text-gray-400 text-sm">Web dashboard + Chat</p>
                             </div>
                         </div>
                     </div>
@@ -613,7 +695,7 @@
                                                 <i class="fas fa-download mr-2"></i>Intel (x64)
                                             </a>
                                         </div>
-                                        <p class="text-gray-500 text-xs mt-2">macOS 11+ recommended</p>
+                                        <p class="text-gray-500 text-xs mt-2">macOS 10.15+ supported (11+ recommended)</p>
                                     </div>
                                 </div>
                                 <div class="flex gap-4">
@@ -740,11 +822,11 @@
                                     1</div>
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Sign In (If Required)</h4>
-                                    <p class="text-gray-400 text-sm mb-4">Use the fullscreen login panel to sign in with
-                                        email/password, Google, or GitHub. In local mode, admins can allow sign-in to be
-                                        skipped.</p>
+                                    <p class="text-gray-400 text-sm mb-4">If login is required, a secure sign-in panel
+                                        appears (non-blocking). Use email/password, Google, or GitHub. In local mode,
+                                        admins can allow sign-in to be skipped.</p>
                                     <div class="bg-black/30 rounded-lg p-4 border border-white/10">
-                                        <p class="text-cyan-400 text-sm font-mono">ChipOS → Sign In → Continue to workspace</p>
+                                        <p class="text-cyan-400 text-sm font-mono">ChipOS → Sign In → Continue</p>
                                     </div>
                                 </div>
                             </div>
@@ -787,9 +869,20 @@
                                     class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
                                     3</div>
                                 <div class="flex-1">
-                                    <h4 class="text-white font-bold mb-2">Open Dashboard + Onboarding</h4>
-                                    <p class="text-gray-400 text-sm mb-4">Open the ChipOS Dashboard to configure AI
-                                        providers, add API keys, and verify onboarding status for your workspace.</p>
+                                    <h4 class="text-white font-bold mb-2">Launch Your Mode</h4>
+                                    <p class="text-gray-400 text-sm mb-4">Agent Mode opens the ChipOS sidebar and (if
+                                        enabled) the dashboard. Chat Mode launches LibreChat fullscreen with the hosted
+                                        MCP endpoint and default model.</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <div class="bg-black/30 rounded-lg p-3 border border-white/10">
+                                            <p class="text-cyan-400 text-sm font-bold mb-1">Agent Mode</p>
+                                            <p class="text-gray-400 text-xs">Controls + Dashboard + Claude commands</p>
+                                        </div>
+                                        <div class="bg-black/30 rounded-lg p-3 border border-white/10">
+                                            <p class="text-green-400 text-sm font-bold mb-1">Chat Mode</p>
+                                            <p class="text-gray-400 text-xs">LibreChat fullscreen + MCP context</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -803,7 +896,8 @@
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Connect MCP + Start a Command</h4>
                                     <p class="text-gray-400 text-sm mb-4">Copy the MCP config from Controls and add it
-                                        to Claude Code, Cursor, or Windsurf. Then try your first command:</p>
+                                        to Claude Code, Cursor, or Windsurf. Chat Mode uses hosted MCP by default. Then
+                                        try your first command:</p>
                                     <div class="code-block">
                                         <pre><code class="language-bash">/init-chipos Setup this workspace for ChipOS tracking</code></pre>
                                     </div>
@@ -858,8 +952,18 @@
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.backend.apiUrl</td>
-                                <td class="text-gray-400">http://localhost:8181</td>
-                                <td class="text-gray-300 text-sm">Local backend API URL</td>
+                                <td class="text-gray-400">https://api.futureatoms.com</td>
+                                <td class="text-gray-300 text-sm">Local API override (set to http://localhost:8181 in local mode)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.backend.supabaseUrl</td>
+                                <td class="text-gray-400">""</td>
+                                <td class="text-gray-300 text-sm">Supabase project URL for hosted auth</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.backend.projectRef</td>
+                                <td class="text-gray-400">""</td>
+                                <td class="text-gray-300 text-sm">Supabase project ref (Settings → General)</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.mcp.hostedUrl</td>
@@ -870,6 +974,25 @@
                                 <td class="font-mono text-cyan-400 text-sm">chipos.chat.uiUrl</td>
                                 <td class="text-gray-400">https://chat.futureatoms.com</td>
                                 <td class="text-gray-300 text-sm">LibreChat UI URL for Chat Mode</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.fallbackUrl</td>
+                                <td class="text-gray-400">https://chipos-chat-215670141857.us-central1.run.app</td>
+                                <td class="text-gray-300 text-sm">Fallback Chat UI if custom domain is unavailable</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.allowedOrigins</td>
+                                <td class="text-gray-400 text-xs">
+                                    https://chat.futureatoms.com<br>
+                                    https://futureatoms-website.web.app<br>
+                                    https://chipos-chat-215670141857.us-central1.run.app
+                                </td>
+                                <td class="text-gray-300 text-sm">Allowed origins for embedded Chat auth</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.defaultModel</td>
+                                <td class="text-gray-400">zai-org/GLM-4.7:fastest</td>
+                                <td class="text-gray-300 text-sm">Default model for Chat Mode</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.auth.requireLogin</td>
@@ -1048,14 +1171,16 @@
                             </div>
                         </div>
                         <p class="text-gray-300 mb-4">
-                            Chat Mode opens LibreChat in a fullscreen webview. Use ChipOS OAuth to sign in and choose
-                            your preferred LLM provider with a familiar chat interface.
+                            Chat Mode opens LibreChat in a fullscreen webview. ChipOS SSO (Supabase OIDC) bridges your
+                            session, then the chat UI loads with the hosted MCP endpoint and your default model.
                         </p>
                         <ul class="space-y-2 text-gray-300 text-sm">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Hosted Chat UI with ChipOS authentication</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Multi-provider model selection (OpenAI, Anthropic, Google, OpenRouter)</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> ChipOS SSO + token bridge for embedded LibreChat</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Multi-provider model selection (OpenAI, Anthropic, Google, OpenRouter, Grok)</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Hosted MCP endpoint for Chat Mode (even if backend is local)</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Default model: <span class="font-mono text-cyan-300">zai-org/GLM-4.7:fastest</span></li>
                             <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> MCP tools available for knowledge and project context</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Press Cmd+Shift+F / Ctrl+Shift+F to toggle fullscreen</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Press Cmd+Shift+F / Ctrl+Shift+F to toggle fullscreen, Esc to exit</li>
                             <li class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Chip AI extension is available but disabled by default</li>
                         </ul>
                     </div>
@@ -1203,9 +1328,9 @@
                                 </ul>
                             </div>
                             <div class="glass-panel p-4 rounded-xl">
-                                <h4 class="font-bold text-cyan-400 mb-3">Aggregators</h4>
+                                <h4 class="font-bold text-cyan-400 mb-3">Aggregators / Gateways</h4>
                                 <ul class="space-y-1 text-gray-300 text-sm">
-                                    <li>• OpenRouter, Grok, and more</li>
+                                    <li>• OpenRouter and other gateways</li>
                                     <li>• One key, multiple vendors</li>
                                 </ul>
                             </div>
@@ -1229,16 +1354,18 @@
                     <!-- Model Comparison -->
                     <div id="model-comparison" class="glass-panel p-6 rounded-xl border-cyan-500/30">
                         <h3 class="text-xl font-orbitron font-bold text-white mb-4">
-                            <i class="fas fa-columns text-cyan-400 mr-2"></i>Side-by-Side Model Comparison
+                            <i class="fas fa-signal text-cyan-400 mr-2"></i>Provider Status & Routing
                         </h3>
                         <p class="text-gray-300 mb-4">
-                            Compare responses from different providers in the same chat session. This helps teams pick the
-                            best model for a task, whether it's specs, verification, or support automation.
+                            The Settings dashboard shows live connectivity for OpenAI, Anthropic, Google, OpenRouter,
+                            Grok, and Ollama. Use health checks to verify keys and pick the best model for specs,
+                            verification, or support automation.
                         </p>
                         <div class="callout callout-tip">
                             <p class="text-green-300">
-                                <strong>Pro Tip:</strong> Use comparison for design reviews and ticket drafts, then save the
-                                preferred model as your default in Settings.
+                                <strong>Pro Tip:</strong> Keep a fast default for Chat Mode via
+                                <span class="font-mono text-cyan-300">chipos.chat.defaultModel</span>, then switch models per
+                                task in Agent Mode.
                             </p>
                         </div>
                     </div>
@@ -1258,7 +1385,7 @@
                         </h2>
                         <p class="text-gray-400 max-w-2xl mx-auto">
                             ChipOS is built with security-first principles. OWASP LLM Top 10 (2025) and OWASP API Top 10
-                            (2023) aligned, NIST AI RMF documented, and 160+ security tests in CI.
+                            (2023) aligned, NIST AI RMF documented, with Trivy + Gitleaks security scans in CI.
                         </p>
                     </div>
 
@@ -1321,8 +1448,8 @@
                                 automated security tests.
                             </p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded">160+ Security Tests</span>
-                                <span class="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded">0 Critical/High</span>
+                                <span class="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded">Trivy Scans</span>
+                                <span class="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded">Gitleaks Scans</span>
                             </div>
                         </div>
 
@@ -1386,6 +1513,7 @@
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Code chunking with line ranges</li>
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Language detection and metadata</li>
                                 <li><i class="fas fa-check text-green-400 mr-2"></i>Stores snippets as code examples</li>
+                                <li><i class="fas fa-check text-green-400 mr-2"></i>Use “Repository (Best for Code)” in Add Knowledge</li>
                             </ul>
                         </div>
                         <div class="feature-card p-6 rounded-xl">
@@ -1539,13 +1667,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="font-mono text-cyan-400 text-sm">perform_rag_query</td>
-                                <td class="text-gray-300 text-sm">Search the knowledge base with semantic understanding
-                                </td>
+                                <td class="font-mono text-cyan-400 text-sm">rag_search_knowledge_base</td>
+                                <td class="text-gray-300 text-sm">Semantic search across indexed docs</td>
                             </tr>
                             <tr>
-                                <td class="font-mono text-cyan-400 text-sm">search_code_examples</td>
+                                <td class="font-mono text-cyan-400 text-sm">rag_search_code_examples</td>
                                 <td class="text-gray-300 text-sm">Find code snippets from indexed repositories</td>
+                            </tr>
+                            <tr>
+                                <td class="font-mono text-cyan-400 text-sm">rag_get_available_sources</td>
+                                <td class="text-gray-300 text-sm">List indexed knowledge sources</td>
                             </tr>
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">list_projects</td>
@@ -1554,10 +1685,6 @@
                             <tr>
                                 <td class="font-mono text-cyan-400 text-sm">create_task</td>
                                 <td class="text-gray-300 text-sm">Create tasks linked to a project</td>
-                            </tr>
-                            <tr>
-                                <td class="font-mono text-cyan-400 text-sm">get_available_sources</td>
-                                <td class="text-gray-300 text-sm">List indexed documentation sources</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1573,7 +1700,7 @@
                     </h2>
 
                     <p class="text-gray-400 mb-4">
-                        When you open a workspace in Agent Mode, ChipOS installs bundled Claude Code commands to
+                        When you open a workspace in Agent Mode, ChipOS installs 14 bundled Claude Code commands to
                         <code class="bg-black/30 px-2 py-1 rounded text-cyan-400">.claude/commands/</code>.
                         These commands work across macOS and Linux builds.
                     </p>
@@ -1603,6 +1730,12 @@
                                 <span class="font-mono text-green-400 font-bold">/voyager-help</span>
                             </div>
                             <p class="text-gray-400 text-sm">Query the ChipOS knowledge base with RAG</p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-mono text-orange-400 font-bold">/agent</span>
+                            </div>
+                            <p class="text-gray-400 text-sm">Axelera Voyager SDK workflow agent</p>
                         </div>
                         <div class="feature-card p-4 rounded-xl">
                             <div class="flex items-center gap-3 mb-2">
@@ -2239,6 +2372,8 @@
                                 <li>Confirm your network access to <code class="bg-black/30 px-2 py-1 rounded">chat.futureatoms.com</code></li>
                                 <li>Sign out and re-open ChipOS to refresh tokens</li>
                                 <li>Verify <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.uiUrl</code> in Settings</li>
+                                <li>Try <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.fallbackUrl</code> or confirm
+                                    <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.allowedOrigins</code></li>
                             </ol>
                         </div>
 
