@@ -178,7 +178,7 @@
         <div class="relative pl-8 md:pl-0">
             <div class="hidden md:block timeline-line left-8"></div>
 
-            <!-- Version 2026.01.14 - AI OS Transformation -->
+            <!-- Version 2026.01.05 - Auth Bridge + Knowledge Expansion -->
             <div class="mb-16 relative md:pl-16">
                 <div class="absolute left-0 top-0 hidden md:flex flex-col items-center w-16">
                     <div class="w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(0,255,255,0.8)] z-10"></div>
@@ -188,20 +188,18 @@
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
                         <div class="flex items-center gap-3">
                             <span
-                                class="version-badge bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded text-sm font-bold border border-cyan-500/30">v2026.01.14</span>
-                            <span class="text-gray-400 text-sm font-mono">January 14, 2026</span>
+                                class="version-badge bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded text-sm font-bold border border-cyan-500/30">v2026.01.05</span>
+                            <span class="text-gray-400 text-sm font-mono">January 5, 2026</span>
                         </div>
                         <span
                             class="text-xs text-green-400 border border-green-500/30 px-2 py-0.5 rounded bg-green-500/10 uppercase tracking-wider">Latest
                             Release</span>
                     </div>
 
-                    <h3 class="text-xl font-bold text-white mb-4">AI OS Transformation — The macOS for Chip Development</h3>
+                    <h3 class="text-xl font-bold text-white mb-4">LibreChat Auth Bridge + Knowledge Expansion</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        ChipOS has been completely transformed into a true AI Operating System for chip development.
-                        This landmark release introduces the App Drawer with 13 specialized apps, three distinct modes
-                        (Agent, Chat, Zendesk), and our flagship ChipOS Chip 1.0 model. Authentication is now open to everyone —
-                        use Google, GitHub, or any email to get started instantly.
+                        ChipOS 2026.01.05 strengthens Chat Mode reliability and expands knowledge workflows with
+                        repository ingestion, a Knowledge Inspector, and provider status dashboards.
                     </p>
 
                     <div class="space-y-6">
@@ -210,73 +208,62 @@
                                 Major Features</h4>
                             <ul class="space-y-3 text-gray-300">
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Open Authentication:</span> Sign in with Google,
-                                    GitHub, or any email address. No more domain restrictions — everyone can use ChipOS.
+                                    <span class="font-bold text-white">LibreChat Auth Bridge:</span> Secure token handoff and
+                                    session refresh for embedded Chat Mode.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">App Drawer with 13 Apps:</span> Choose from specialized
-                                    apps across 4 tiers — Documentation, Web Development, Raspberry Pi (Free), Spec Developer,
-                                    Hardware Programmer, Voyager SDK (Pro $19), RTL Verification, RTL Debug, CPU Development,
-                                    Physical Design (Enterprise $99), Physical Design Verification (Enterprise+ $299).
+                                    <span class="font-bold text-white">Repository Ingestion:</span> GitHub tarball ingestion with
+                                    code-aware chunking for better code retrieval.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Three Modes:</span> Agent Mode for full AI coding with
-                                    Claude Code, Chat Mode for multi-LLM conversations with 14 models, and Zendesk Mode for
-                                    LLM-powered support ticket management.
+                                    <span class="font-bold text-white">Knowledge Inspector:</span> Browse and debug ingested
+                                    chunks directly in the dashboard.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">ChipOS Chip 1.0:</span> Our flagship model offering best
-                                    value for money with smart task orchestration that routes to appropriate model sizes.
-                                </li>
-                                <li class="changelog-item">
-                                    <span class="font-bold text-white">Multi-LLM Comparison:</span> Compare outputs from all
-                                    14 models side-by-side in the same chat — a unique feature not available elsewhere.
+                                    <span class="font-bold text-white">Agent Work Orders:</span> New AWO UI with streaming logs
+                                    and repository tracking (capabilities-gated).
                                 </li>
                             </ul>
                         </div>
 
                         <div>
                             <h4 class="text-sm font-['Orbitron'] text-purple-400 mb-3 uppercase tracking-wider">
-                                OS-Like Experience</h4>
+                                Chat & MCP</h4>
                             <ul class="space-y-3 text-gray-300">
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Zen Mode Fullscreen Chat:</span> Press Cmd+Shift+F
-                                    for distraction-free chat with all UI chrome eliminated.
+                                    <span class="font-bold text-white">Chat Commands:</span> New commands to open, toggle, and
+                                    exit fullscreen chat.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Clean Startup:</span> Disabled all VS Code welcome
-                                    pages, walkthroughs, and extension recommendations.
+                                    <span class="font-bold text-white">Hosted MCP in Chat Mode:</span> Chat Mode always uses
+                                    the hosted MCP endpoint with the default model <span class="font-mono">zai-org/GLM-4.7:fastest</span>.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Workspace Trust Disabled:</span> No more "Do you trust
-                                    this folder?" prompts — all workspaces trusted by default.
+                                    <span class="font-bold text-white">Claude Code Packs:</span> Command packs and 14 bundled
+                                    slash commands auto-install in <span class="font-mono">.claude/commands</span>.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">Silent Updates:</span> Disabled auto-updates, update
-                                    notifications, and release notes popups.
-                                </li>
-                                <li class="changelog-item">
-                                    <span class="font-bold text-white">Privacy First:</span> All VS Code telemetry disabled
-                                    by default. Your data stays yours.
+                                    <span class="font-bold text-white">Chip Chat Status:</span> The embedded Continue.dev
+                                    chat remains disabled by default.
                                 </li>
                             </ul>
                         </div>
 
                         <div>
                             <h4 class="text-sm font-['Orbitron'] text-green-400 mb-3 uppercase tracking-wider">
-                                Security & Compliance</h4>
+                                Providers & RAG</h4>
                             <ul class="space-y-3 text-gray-300">
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">NIST AI RMF Compliant:</span> All 4 functions
-                                    (GOVERN, MAP, MEASURE, MANAGE) fully implemented with 100+ controls.
+                                    <span class="font-bold text-white">Provider Status:</span> Health checks for OpenAI,
+                                    Anthropic, Google, OpenRouter, and Grok.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">GDPR Compliant:</span> PII redaction, DSAR
-                                    export/erase, retention enforcement, and full audit trail.
+                                    <span class="font-bold text-white">Ollama Panel:</span> Validate instances, discover models,
+                                    and monitor health for local deployments.
                                 </li>
                                 <li class="changelog-item">
-                                    <span class="font-bold text-white">OWASP LLM Top 10 2025:</span> Zero P0/P1 vulnerabilities,
-                                    161+ security tests, 100% jailbreak resistance.
+                                    <span class="font-bold text-white">RAG Upgrades:</span> Hybrid search, reranking, context
+                                    expansion, and pagination fixes for large sources.
                                 </li>
                             </ul>
                         </div>
