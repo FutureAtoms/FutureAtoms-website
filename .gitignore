@@ -84,3 +84,9 @@ public/ChipOS-macOS-arm64.dmg
 ChipOS-*.dmg
 *.sha256
 analysis/
+
+# Generated build info (created during CI)
+public/build-info.json
+
+# Lighthouse reports (generated)
+lighthouse-report.html

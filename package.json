@@ -11,6 +11,7 @@
     "deploy:hosting": "npm run predeploy && firebase deploy --only hosting",
     "init": "firebase init",
     "build": "echo 'No build required for static site'",
+    "build:info": "node scripts/inject-build-info.js",
     "start": "python3 -m http.server 8000 -d public",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
@@ -26,6 +27,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@playwright/test": "^1.55.1",
     "@tailwindcss/cli": "^4.1.18",
     "autoprefixer": "^10.4.23",

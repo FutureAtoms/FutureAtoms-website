@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Check for uncommitted changes before pushing
+if ! git diff-index --quiet HEAD --; then
+    echo "ERROR: You have uncommitted changes!"
+    echo "Please commit or stash changes before pushing."
+    echo ""
+    git status --short
+    exit 1
+fi
+
+# Check for untracked files that might need to be committed
+UNTRACKED=$(git ls-files --others --exclude-standard)
+if [ -n "$UNTRACKED" ]; then
+    echo "WARNING: You have untracked files that won't be pushed:"
+    echo "$UNTRACKED"
+    echo ""
+fi
+
+echo "Pre-push check passed: Working directory is clean."
