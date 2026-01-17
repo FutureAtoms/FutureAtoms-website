@@ -967,35 +967,6 @@
                                 <td class="text-gray-300 text-sm">Hosted auth project ref (Settings → General)</td>
                             </tr>
                             <tr>
-                                <td class="font-mono text-cyan-400 text-sm">chipos.mcp.hostedUrl</td>
-                                <td class="text-gray-400">https://mcp.futureatoms.com/mcp</td>
-                                <td class="text-gray-300 text-sm">Hosted MCP server endpoint</td>
-                            </tr>
-                            <tr>
-                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.uiUrl</td>
-                                <td class="text-gray-400">https://chat.futureatoms.com</td>
-                                <td class="text-gray-300 text-sm">ChipChat UI URL for Chat Mode</td>
-                            </tr>
-                            <tr>
-                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.fallbackUrl</td>
-                                <td class="text-gray-400">https://chipos-chat-215670141857.us-central1.run.app</td>
-                                <td class="text-gray-300 text-sm">Fallback Chat UI if custom domain is unavailable</td>
-                            </tr>
-                            <tr>
-                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.allowedOrigins</td>
-                                <td class="text-gray-400 text-xs">
-                                    https://chat.futureatoms.com<br>
-                                    https://futureatoms-website.web.app<br>
-                                    https://chipos-chat-215670141857.us-central1.run.app
-                                </td>
-                                <td class="text-gray-300 text-sm">Allowed origins for Chat Mode access</td>
-                            </tr>
-                            <tr>
-                                <td class="font-mono text-cyan-400 text-sm">chipos.chat.defaultModel</td>
-                                <td class="text-gray-400">zai-org/GLM-4.7:fastest</td>
-                                <td class="text-gray-300 text-sm">Default model for Chat Mode</td>
-                            </tr>
-                            <tr>
                                 <td class="font-mono text-cyan-400 text-sm">chipos.auth.requireLogin</td>
                                 <td class="text-gray-400">true</td>
                                 <td class="text-gray-300 text-sm">Require login on startup</td>
@@ -1364,9 +1335,8 @@
                         </p>
                         <div class="callout callout-tip">
                             <p class="text-green-300">
-                                <strong>Pro Tip:</strong> Keep a fast default for Chat Mode via
-                                <span class="font-mono text-cyan-300">chipos.chat.defaultModel</span>, then switch models per
-                                task in Agent Mode.
+                                <strong>Pro Tip:</strong> Use health checks to verify your API keys are working, then switch models per
+                                task in Agent Mode based on your needs.
                             </p>
                         </div>
                     </div>
@@ -1636,8 +1606,7 @@
 
                     <p class="text-gray-400 mb-6">
                         The Model Context Protocol (MCP) server connects external assistants to your knowledge base,
-                        projects, and tasks. Hosted mode uses <span class="font-mono text-cyan-300">https://mcp.futureatoms.com/mcp</span>;
-                        local mode runs at <span class="font-mono text-cyan-300">http://localhost:8051/mcp</span>.
+                        projects, and tasks. Choose between hosted mode for convenience or local mode for privacy.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -2370,11 +2339,9 @@
                             </h4>
                             <p class="text-gray-400 text-sm mb-3">If the login screen loops or Chat Mode is blank:</p>
                             <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
-                                <li>Confirm your network access to <code class="bg-black/30 px-2 py-1 rounded">chat.futureatoms.com</code></li>
+                                <li>Check your network connectivity</li>
                                 <li>Sign out and sign back in to reset your session</li>
-                                <li>Verify <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.uiUrl</code> in Settings</li>
-                                <li>Try <code class="bg-black/30 px-2 py-1 rounded">chipos.chat.fallbackUrl</code> or confirm
-                                    the Chat Mode URL settings</li>
+                                <li>Try restarting ChipOS with <code class="bg-black/30 px-2 py-1 rounded">Cmd+Shift+P → Restart Services</code></li>
                             </ol>
                         </div>
 

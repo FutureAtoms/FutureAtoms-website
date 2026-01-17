@@ -289,13 +289,10 @@
                 <a href="#supabase" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Hosted Auth</a>
             </div>
 
-            <!-- Chat & MCP Section -->
+            <!-- Local Models Section -->
             <div>
-                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Chat & MCP</h3>
-                <a href="#chat-mcp" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Overview</a>
-                <a href="#chat-ui" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Chat UI</a>
-                <a href="#mcp-url" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">MCP Endpoint</a>
-                <a href="#ollama" class="sidebar-link block py-2 px-4 text-gray-300 text-sm pl-8">Ollama</a>
+                <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Local Models</h3>
+                <a href="#ollama" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Ollama</a>
             </div>
 
             <!-- RAG Section -->
@@ -549,79 +546,6 @@
                     <div class="callout callout-tip">
                         <p class="text-sm"><strong>Security Tip:</strong> Always encrypt API keys. Encrypted credentials
                             are stored securely and cannot be viewed after saving.</p>
-                    </div>
-                </section>
-
-                <!-- Chat & MCP Settings -->
-                <section id="chat-mcp" class="mb-16">
-                    <h2 class="font-orbitron text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <i class="fas fa-comments text-cyan-400"></i>
-                        Chat & MCP Settings
-                    </h2>
-
-                    <p class="text-gray-300 mb-8">
-                        Configure Chat Mode and MCP endpoints for external assistants. These settings control how
-                        ChipOS connects ChipChat and MCP clients.
-                    </p>
-
-                    <div class="settings-card cyan p-6 mb-6">
-                        <h3 id="chat-ui" class="font-orbitron text-lg text-white mb-4">Chat UI</h3>
-                        <table class="docs-table">
-                            <thead>
-                                <tr>
-                                    <th>Setting</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>chipos.chat.uiUrl</code></td>
-                                    <td>https://chat.futureatoms.com</td>
-                                    <td>ChipChat fullscreen UI endpoint</td>
-                                </tr>
-                                <tr>
-                                    <td><code>chipos.chat.defaultModel</code></td>
-                                    <td>zai-org/GLM-4.7:fastest</td>
-                                    <td>Default chat model (also supports gpt-4o-mini, claude-3-5-sonnet-20241022)</td>
-                                </tr>
-                                <tr>
-                                    <td><code>chipos.chat.fallbackUrl</code></td>
-                                    <td>https://chipos-chat-215670141857.us-central1.run.app</td>
-                                    <td>Fallback Chat UI if custom domain is unavailable</td>
-                                </tr>
-                                <tr>
-                                    <td><code>chipos.chat.allowedOrigins</code></td>
-                                    <td>chat.futureatoms.com, futureatoms-website.web.app, chipos-chat-215670141857.us-central1.run.app</td>
-                                    <td>Allowed origins for Chat Mode access</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="settings-card cyan p-6">
-                        <h3 id="mcp-url" class="font-orbitron text-lg text-white mb-4">MCP Endpoint</h3>
-                        <table class="docs-table">
-                            <thead>
-                                <tr>
-                                    <th>Setting</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>chipos.mcp.hostedUrl</code></td>
-                                    <td>https://mcp.futureatoms.com/mcp</td>
-                                    <td>Hosted MCP server endpoint</td>
-                                </tr>
-                                <tr>
-                                    <td><code>chipos.backend.mode</code></td>
-                                    <td>hosted</td>
-                                    <td>Hosted or local backend selection</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </section>
 
