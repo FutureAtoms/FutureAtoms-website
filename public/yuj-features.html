@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://futureatoms.com/yuj-features.html">
+    <meta name="description" content="Submit and vote on feature requests for Yuj - Help shape the future of AI yoga and wellness.">
+    <meta property="og:title" content="Yuj Feature Requests | FutureAtoms">
+    <meta property="og:description" content="Submit and vote on feature requests for Yuj - Help shape the future of AI yoga and wellness.">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:url" content="https://futureatoms.com/yuj-features.html">
+    <title>Yuj Feature Requests | FutureAtoms</title>
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css?v=9999">
+    <link rel="stylesheet" href="css/features.css?v=9999">
+    <style>
+        /* Yuj-specific accent colors - Pink/Yellow */
+        .metallic-text {
+            background: linear-gradient(135deg, #fa709a 0%, #ffffff 50%, #fee140 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(250, 112, 154, 0.3);
+        }
+        .features-hero-icon { color: #fa709a; }
+        .stat-value { color: #fa709a !important; }
+        .submit-feature-btn {
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.2), rgba(254, 225, 64, 0.2));
+            border-color: rgba(250, 112, 154, 0.4);
+            color: #fa709a;
+        }
+        .submit-feature-btn:hover {
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+            box-shadow: 0 6px 30px rgba(250, 112, 154, 0.3);
+        }
+        .filter-tab.active {
+            background: rgba(250, 112, 154, 0.15);
+            border-color: rgba(250, 112, 154, 0.4);
+            color: #fa709a;
+            box-shadow: 0 0 15px rgba(250, 112, 154, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(250,112,154,0.05),transparent_70%)]"></div>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            </div>
+            <div>
+                <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">FUTURE<span class="text-cyan-400">ATOMS</span></p>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Evolving Intelligence</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex gap-8 text-sm items-center">
+            <a href="index.html" class="nav-link">HOME</a>
+            <div class="dropdown">
+                <a href="#" class="nav-link flex items-center gap-1">PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i></a>
+                <div class="dropdown-content">
+                    <a href="chipos.html">ChipOS</a>
+                    <a href="systemverilog.html">SystemVerilogGPT</a>
+                    <a href="zaphy.html">Zaphy</a>
+                    <a href="agentic.html">Agentic Control</a>
+                    <a href="yuj.html">Yuj</a>
+                    <a href="adaptivision.html">AdaptiveVision</a>
+                    <a href="bevybeats.html">BevyBeats</a>
+                    <a href="savitri.html">Savitri</a>
+                </div>
+            </div>
+            <a href="blog.html" class="nav-link">RESEARCH</a>
+            <a href="news.html" class="nav-link">NEWS</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="careers.html" class="nav-link">CAREERS</a>
+            <a href="contact.html" class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+        </nav>
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest">
+            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+            <a href="yuj.html" class="text-white/70 hover:text-white">Yuj</a>
+            <a href="contact.html" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full">CONTACT</a>
+        </nav>
+    </div>
+
+    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8">
+        <div class="features-container">
+            <a href="yuj.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Yuj</a>
+            <div class="features-hero">
+                <div class="features-hero-icon"><i class="fas fa-spa"></i></div>
+                <h1 class="metallic-text">YUJ FEATURE REQUESTS</h1>
+                <p>Help shape the future of AI yoga and wellness. Submit ideas, vote on requests, and track the roadmap.</p>
+            </div>
+            <div class="features-stats">
+                <div class="stat-item"><span class="stat-value" id="stat-total">-</span><span class="stat-label">Total</span></div>
+                <div class="stat-item"><span class="stat-value" id="stat-planned" style="color: #ffd700;">-</span><span class="stat-label">Planned</span></div>
+                <div class="stat-item"><span class="stat-value" id="stat-progress" style="color: #4facfe;">-</span><span class="stat-label">In Progress</span></div>
+                <div class="stat-item"><span class="stat-value" id="stat-completed" style="color: #00ff00;">-</span><span class="stat-label">Completed</span></div>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-status="all">All</button>
+                <button class="filter-tab" data-status="submitted">Submitted</button>
+                <button class="filter-tab" data-status="planned">Planned</button>
+                <button class="filter-tab" data-status="in_progress">In Progress</button>
+                <button class="filter-tab" data-status="completed">Completed</button>
+            </div>
+            <div class="sort-controls">
+                <span class="sort-label">Sort by:</span>
+                <select id="sort-select" class="sort-select">
+                    <option value="votes">Most Voted</option>
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+            </div>
+            <div id="features-grid" class="features-grid"></div>
+        </div>
+    </main>
+
+    <button id="submit-feature-btn" class="submit-feature-btn"><i class="fas fa-plus"></i><span>Request Feature</span></button>
+
+    <div id="submit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="modal-close" class="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                <h2 class="modal-title">Request a Feature</h2>
+                <p class="modal-subtitle">Share your idea for Yuj</p>
+            </div>
+            <div class="modal-body">
+                <form id="feature-form">
+                    <div class="form-group">
+                        <label class="form-label" for="feature-title">Title <span class="required">*</span></label>
+                        <input type="text" id="feature-title" class="form-input" placeholder="Brief description of your feature idea" maxlength="200" required>
+                        <div class="char-counter" id="title-counter">0/200</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feature-description">Description</label>
+                        <textarea id="feature-description" class="form-textarea" placeholder="Explain your feature request in detail..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="submitter-name">Your Name <span style="opacity:0.5">(optional)</span></label>
+                        <input type="text" id="submitter-name" class="form-input" placeholder="Anonymous if left blank">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="submitter-email">Email <span style="opacity:0.5">(optional)</span></label>
+                        <input type="email" id="submitter-email" class="form-input" placeholder="Get notified when status changes">
+                    </div>
+                    <button type="submit" id="form-submit-btn" class="form-submit-btn"><i class="fas fa-paper-plane mr-2"></i> Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="relative z-10 border-t border-white/10 py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 FutureAtoms. All rights reserved.</p>
+    </footer>
+
+    <script src="js/features.js?v=9999"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+                closeMobileBtn.onclick = () => { mobileMenu.classList.add('hidden'); document.body.style.overflow = ''; };
+            }
+            initFeatures('yuj');
+        });
+    </script>
+</body>
+</html>
