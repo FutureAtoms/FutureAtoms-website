@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "futureatoms-website"
+  },
+  "targets": {
+    "futureatoms-website": {
+      "hosting": {
+        "main": [
+          "futureatoms-website"
+        ],
+        "releases": [
+          "futureatoms-releases"
+        ]
+      }
+    }
   }
 }

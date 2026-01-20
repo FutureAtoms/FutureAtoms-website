@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FutureAtoms Releases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0c0d10;
+        --surface: rgba(255, 255, 255, 0.06);
+        --surface-strong: rgba(255, 255, 255, 0.12);
+        --text: #f7f5f2;
+        --muted: #a1a6b3;
+        --accent: #ffb000;
+        --accent-2: #ff6a00;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(255, 176, 0, 0.15), transparent 50%),
+          radial-gradient(circle at 80% 10%, rgba(255, 106, 0, 0.18), transparent 55%),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 48px 24px 72px;
+      }
+      .wrap { max-width: 1100px; margin: 0 auto; }
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 36px;
+      }
+      .eyebrow {
+        font-family: 'IBM Plex Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      h1 {
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 700;
+      }
+      .lead {
+        max-width: 720px;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-family: 'IBM Plex Mono', monospace;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .meta span {
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 220px;
+        position: relative;
+        overflow: hidden;
+        animation: rise 0.6s ease forwards;
+        animation-delay: var(--delay, 0s);
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      .card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 40%, rgba(255, 176, 0, 0.12));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      .card:hover::after { opacity: 1; }
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      .pill {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--surface-strong);
+      }
+      .repo {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .card h3 { font-size: 18px; }
+      .card p {
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 14px;
+      }
+      .actions {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .btn {
+        text-decoration: none;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--text);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #1b1b1b;
+        border: none;
+      }
+      .btn.ghost {
+        background: rgba(0, 0, 0, 0.25);
+      }
+      footer {
+        margin-top: 40px;
+        color: var(--muted);
+        font-size: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+      footer code {
+        font-family: 'IBM Plex Mono', monospace;
+        background: rgba(0, 0, 0, 0.35);
+        padding: 4px 8px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+      @keyframes rise {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <span class="eyebrow">FutureAtoms Release Hub</span>
+        <h1>ChipOS App Packs</h1>
+        <p class="lead">Direct links to the latest ChipOS app pack builds. Downloads are served via GitHub Releases and routed through releases.futureatoms.com.</p>
+        <div class="meta">
+          <span>Apps: 12</span>
+          <span>Updated: 2026-01-19 15:12 UTC</span>
+          <span>Host: releases.futureatoms.com</span>
+        </div>
+      </header>
+      <section class="grid">
+        
+      <article class="card" style="--delay:0.00s">
+        <div class="card-top">
+          <span class="pill">Enterprise</span>
+          <span class="repo">chipos-cpu-development</span>
+        </div>
+        <h3>CPU Development</h3>
+        <p>CPU architecture and microarchitecture workflows for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-cpu-development/latest/futureatoms.chipos-cpu-development-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-cpu-development/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.04s">
+        <div class="card-top">
+          <span class="pill">Free</span>
+          <span class="repo">chipos-documentation</span>
+        </div>
+        <h3>Documentation</h3>
+        <p>Intelligent documentation generation, analysis, and management for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-documentation/latest/futureatoms.chipos-documentation-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-documentation/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.08s">
+        <div class="card-top">
+          <span class="pill">Pro</span>
+          <span class="repo">chipos-hardware-programmer</span>
+        </div>
+        <h3>Hardware Programmer</h3>
+        <p>Hardware programming and bring-up workflows for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-hardware-programmer/latest/futureatoms.chipos-hardware-programmer-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-hardware-programmer/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.12s">
+        <div class="card-top">
+          <span class="pill">Enterprise</span>
+          <span class="repo">chipos-physical-design</span>
+        </div>
+        <h3>Physical Design</h3>
+        <p>Physical design, timing analysis, and place & route tools for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-physical-design/latest/futureatoms.chipos-physical-design-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-physical-design/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.16s">
+        <div class="card-top">
+          <span class="pill">Enterprise Plus</span>
+          <span class="repo">chipos-physical-design-verification</span>
+        </div>
+        <h3>Physical Design Verification</h3>
+        <p>LVS/DRC and physical design verification workflows for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-physical-design-verification/latest/futureatoms.chipos-physical-design-verification-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-physical-design-verification/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.20s">
+        <div class="card-top">
+          <span class="pill">Free</span>
+          <span class="repo">chipos-raspberry-pi</span>
+        </div>
+        <h3>Raspberry Pi</h3>
+        <p>AI-powered tools for Raspberry Pi GPIO, sensors, and IoT development</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-raspberry-pi/latest/futureatoms.chipos-raspberry-pi-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-raspberry-pi/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.24s">
+        <div class="card-top">
+          <span class="pill">Enterprise</span>
+          <span class="repo">chipos-rtl-debug</span>
+        </div>
+        <h3>RTL Debug</h3>
+        <p>Systematic RTL debugging tools with triaging strategies for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-rtl-debug/latest/futureatoms.chipos-rtl-debug-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-rtl-debug/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.28s">
+        <div class="card-top">
+          <span class="pill">Enterprise</span>
+          <span class="repo">chipos-rtl-design</span>
+        </div>
+        <h3>RTL Design</h3>
+        <p>RTL design workflows with SystemVerilog LRM guidance for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-rtl-design/latest/futureatoms.chipos-rtl-design-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-rtl-design/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.32s">
+        <div class="card-top">
+          <span class="pill">Enterprise</span>
+          <span class="repo">chipos-rtl-verification</span>
+        </div>
+        <h3>RTL Verification</h3>
+        <p>SystemVerilog verification tools with UVM support for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-rtl-verification/latest/futureatoms.chipos-rtl-verification-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-rtl-verification/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.36s">
+        <div class="card-top">
+          <span class="pill">Pro</span>
+          <span class="repo">chipos-spec-developer</span>
+        </div>
+        <h3>Spec Developer</h3>
+        <p>Specification authoring and review workflows for ChipOS</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-spec-developer/latest/futureatoms.chipos-spec-developer-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-spec-developer/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.40s">
+        <div class="card-top">
+          <span class="pill">Pro</span>
+          <span class="repo">chipos-voyager-sdk</span>
+        </div>
+        <h3>Voyager SDK</h3>
+        <p>AI-powered pipeline builder for Axelera Metis NPU hardware. Create, deploy, and optimize ML inference pipelines with Claude Code integration.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-voyager-sdk/latest/futureatoms.chipos-voyager-sdk-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-voyager-sdk/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      <article class="card" style="--delay:0.44s">
+        <div class="card-top">
+          <span class="pill">Free</span>
+          <span class="repo">chipos-web-development</span>
+        </div>
+        <h3>Web Development</h3>
+        <p>AI-powered web development tools with framework detection and MCP integration</p>
+        <div class="actions">
+          <a class="btn primary" href="https://releases.futureatoms.com/chipos-web-development/latest/futureatoms.chipos-web-development-latest.vsix">Latest VSIX</a>
+          <a class="btn ghost" href="https://github.com/FutureAtoms/chipos-web-development/releases/latest">Release Notes</a>
+        </div>
+      </article>
+    
+      </section>
+      <footer>
+        <span>Direct pattern:</span>
+        <code>https://releases.futureatoms.com/&lt;repo&gt;/latest/&lt;file&gt;</code>
+      </footer>
+    </div>
+  </body>
+</html>

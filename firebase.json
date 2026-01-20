@@ -11,55 +11,102 @@
       ]
     }
   ],
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/api/chat",
-        "function": "chat"
-      },
-      {
-        "source": "/app/**",
-        "destination": "/app/index.html"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
-    "headers": [
-      {
-        "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=604800"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(js|css)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=604800"
-          }
-        ]
-      },
-      {
-        "source": "/app/**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "main",
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/api/chat",
+          "function": "chat"
+        },
+        {
+          "source": "/app/**",
+          "destination": "/app/index.html"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=604800"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(deb|dmg|zip|tar.gz)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=86400"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ]
+        },
+        {
+          "source": "/app/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "releases",
+      "public": "public-releases",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "redirects": [
+        {
+          "source": "/:repo",
+          "destination": "https://github.com/FutureAtoms/:repo/releases/latest",
+          "type": 302
+        },
+        {
+          "source": "/:repo/latest",
+          "destination": "https://github.com/FutureAtoms/:repo/releases/latest",
+          "type": 302
+        },
+        {
+          "source": "/:repo/latest/:file",
+          "destination": "https://github.com/FutureAtoms/:repo/releases/latest/download/:file",
+          "type": 302
+        },
+        {
+          "source": "/:repo/:tag/:file",
+          "destination": "https://github.com/FutureAtoms/:repo/releases/download/:tag/:file",
+          "type": 302
+        }
+      ]
+    }
+  ]
 }

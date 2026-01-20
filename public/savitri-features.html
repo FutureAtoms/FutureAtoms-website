@@ -128,6 +128,7 @@
                 <button class="filter-tab" data-status="in_progress">In Progress</button>
                 <button class="filter-tab" data-status="completed">Completed</button>
             </div>
+            <div id="category-tabs" class="category-tabs"></div>
             <div class="sort-controls">
                 <span class="sort-label">Sort by:</span>
                 <select id="sort-select" class="sort-select">
@@ -155,6 +156,10 @@
                         <label class="form-label" for="feature-title">Title <span class="required">*</span></label>
                         <input type="text" id="feature-title" class="form-input" placeholder="Brief description of your feature idea" maxlength="200" required>
                         <div class="char-counter" id="title-counter">0/200</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feature-category">Category</label>
+                        <select id="feature-category" class="form-select"></select>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="feature-description">Description</label>
@@ -187,6 +192,15 @@
             if (mobileBtn && mobileMenu && closeMobileBtn) {
                 mobileBtn.onclick = () => { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
                 closeMobileBtn.onclick = () => { mobileMenu.classList.add('hidden'); document.body.style.overflow = ''; };
+            }
+            // Populate category tabs and select
+            const categoryTabsEl = document.getElementById('category-tabs');
+            if (categoryTabsEl && typeof generateCategoryTabs === 'function') {
+                categoryTabsEl.innerHTML = generateCategoryTabs();
+            }
+            const categorySelect = document.getElementById('feature-category');
+            if (categorySelect && typeof generateCategoryOptions === 'function') {
+                categorySelect.innerHTML = generateCategoryOptions();
             }
             initFeatures('savitri');
         });

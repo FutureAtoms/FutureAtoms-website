@@ -11,9 +11,22 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 let supabaseClient = null;
 let currentProduct = '';
 let currentFilter = 'all';
+let currentCategory = 'all';
 let currentSort = 'votes';
 let features = [];
 let votedFeatures = new Set();
+
+// Category definitions - can be customized per product
+const CATEGORIES = {
+    'general': { label: 'General', icon: 'fa-circle', color: '#00ffff' },
+    'ui': { label: 'UI/UX', icon: 'fa-palette', color: '#ff6b9d' },
+    'performance': { label: 'Performance', icon: 'fa-bolt', color: '#ffd700' },
+    'integration': { label: 'Integration', icon: 'fa-plug', color: '#4facfe' },
+    'workflow': { label: 'Workflow', icon: 'fa-sitemap', color: '#00ff88' },
+    'documentation': { label: 'Docs', icon: 'fa-book', color: '#c084fc' },
+    'ai': { label: 'AI/ML', icon: 'fa-brain', color: '#ff8c00' },
+    'security': { label: 'Security', icon: 'fa-shield-halved', color: '#ef4444' }
+};
 
 // Local storage key for voted features
 const VOTED_STORAGE_KEY = 'futureatoms_voted_features';
@@ -74,12 +87,22 @@ function saveVotedFeatures() {
  * Set up all event listeners
  */
 function setupEventListeners() {
-    // Filter tabs
+    // Status filter tabs
     document.querySelectorAll('.filter-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             currentFilter = tab.dataset.status || 'all';
+            renderFeatures();
+        });
+    });
+
+    // Category filter tabs
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentCategory = tab.dataset.category || 'all';
             renderFeatures();
         });
     });
@@ -171,20 +194,28 @@ function updateStats() {
 }
 
 /**
- * Render features based on current filter and sort
+ * Render features based on current filter, category, and sort
  */
 function renderFeatures() {
     const grid = document.getElementById('features-grid');
     if (!grid) return;
 
-    // Filter features
+    // Filter features by status
     let filtered = features;
     if (currentFilter !== 'all') {
         filtered = features.filter(f => f.status === currentFilter);
     }
 
+    // Filter by category
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(f => (f.category || 'general') === currentCategory);
+    }
+
     // Sort features
     filtered = sortFeatures(filtered, currentSort);
+
+    // Update category counts
+    updateCategoryCounts();
 
     // Render
     if (filtered.length === 0) {
@@ -197,6 +228,27 @@ function renderFeatures() {
     // Add click handlers to upvote buttons
     grid.querySelectorAll('.upvote-btn').forEach(btn => {
         btn.addEventListener('click', () => handleUpvote(btn.dataset.id));
+    });
+}
+
+/**
+ * Update category counts in filter tabs
+ */
+function updateCategoryCounts() {
+    const categoryCounts = {};
+    features.forEach(f => {
+        const cat = f.category || 'general';
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    });
+
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        const category = tab.dataset.category;
+        const countEl = tab.querySelector('.category-count');
+        if (countEl && category !== 'all') {
+            countEl.textContent = categoryCounts[category] || 0;
+        } else if (countEl && category === 'all') {
+            countEl.textContent = features.length;
+        }
     });
 }
 
@@ -227,11 +279,19 @@ function createFeatureCard(feature) {
     const submitter = feature.submitter_name
         ? escapeHtml(feature.submitter_name)
         : 'Anonymous';
+    const category = feature.category || 'general';
+    const categoryInfo = CATEGORIES[category] || CATEGORIES.general;
 
     return `
         <div class="feature-card" data-id="${feature.id}" style="--card-accent: var(--status-${feature.status.replace('_', '-')})">
             <div class="feature-card-header">
-                <span class="status-badge ${feature.status}">${statusLabel}</span>
+                <div class="feature-badges">
+                    <span class="status-badge ${feature.status}">${statusLabel}</span>
+                    <span class="category-badge" style="--category-color: ${categoryInfo.color}">
+                        <i class="fas ${categoryInfo.icon}"></i>
+                        ${categoryInfo.label}
+                    </span>
+                </div>
                 <button class="upvote-btn ${isVoted ? 'voted' : ''}"
                         data-id="${feature.id}"
                         ${isVoted ? 'disabled' : ''}>
@@ -465,6 +525,8 @@ async function handleFormSubmit(e) {
     const description = document.getElementById('feature-description').value.trim();
     const name = document.getElementById('submitter-name').value.trim();
     const email = document.getElementById('submitter-email').value.trim();
+    const categorySelect = document.getElementById('feature-category');
+    const category = categorySelect ? categorySelect.value : 'general';
 
     // Validation
     if (!title) {
@@ -498,6 +560,7 @@ async function handleFormSubmit(e) {
                 description: description || null,
                 submitter_name: name || null,
                 submitter_email: email || null,
+                category: category,
                 status: 'submitted',
                 vote_count: 0
             })
@@ -623,5 +686,34 @@ function showToast(message, type = 'info') {
     }, 4000);
 }
 
+/**
+ * Generate category select options HTML
+ */
+function generateCategoryOptions() {
+    return Object.entries(CATEGORIES).map(([key, info]) =>
+        `<option value="${key}">${info.label}</option>`
+    ).join('');
+}
+
+/**
+ * Generate category filter tabs HTML
+ */
+function generateCategoryTabs() {
+    let html = `<button class="category-tab active" data-category="all">
+        <i class="fas fa-layer-group"></i> All <span class="category-count">0</span>
+    </button>`;
+
+    Object.entries(CATEGORIES).forEach(([key, info]) => {
+        html += `<button class="category-tab" data-category="${key}" style="--tab-color: ${info.color}">
+            <i class="fas ${info.icon}"></i> ${info.label} <span class="category-count">0</span>
+        </button>`;
+    });
+
+    return html;
+}
+
 // Export for use in HTML
 window.initFeatures = initFeatures;
+window.CATEGORIES = CATEGORIES;
+window.generateCategoryOptions = generateCategoryOptions;
+window.generateCategoryTabs = generateCategoryTabs;
