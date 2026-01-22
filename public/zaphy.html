@@ -319,18 +319,50 @@
             }
         });
     </script>
-    <script>
+    <script type="module">
+        // Import performance modules
+        import { GPUDetector } from './js/gpu-detector.js';
+        import { FPSMonitor, FrameRateLimiter } from './js/fps-monitor.js';
+
+        // GPU Detection
+        const gpuDetector = new GPUDetector();
+        const detection = gpuDetector.detect();
+        const qualityPreset = detection.presets;
+        console.log(`Zaphy GPU Tier: ${detection.tier}`);
+
+        if (detection.tier === 'none') {
+            document.getElementById('network-container').style.background = 'radial-gradient(ellipse at center, rgba(255,215,0,0.1) 0%, transparent 70%)';
+            throw new Error('WebGL not available');
+        }
+
+        const fpsMonitor = new FPSMonitor();
+        const frameLimiter = new FrameRateLimiter(qualityPreset.targetFPS);
+        let isAnimating = true;
+        let animationFrameId = null;
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                fpsMonitor.pause();
+            } else {
+                isAnimating = true;
+                fpsMonitor.resume();
+                animate();
+            }
+        });
+
         // Scene setup for network visualization
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ antialias: qualityPreset.antialias, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(qualityPreset.pixelRatio, 2));
         document.getElementById('network-container').appendChild(renderer.domElement);
 
-        // Create network nodes (Gold)
-        const nodeCount = 30;
+        // Create network nodes (Gold) - quality-adaptive
+        const nodeCount = Math.floor(30 * (qualityPreset.cloudParticles / 3000));
         const nodes = [];
         const nodeGroup = new THREE.Group();
 
@@ -401,9 +433,12 @@
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
+        // Animation loop with performance optimizations
+        function animate(timestamp) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+            if (!frameLimiter.shouldRender(timestamp || performance.now())) return;
+            fpsMonitor.tick();
 
             // Rotate network
             nodeGroup.rotation.y += 0.002;
@@ -424,7 +459,7 @@
             renderer.render(scene, camera);
         }
 
-        animate();
+        animationFrameId = requestAnimationFrame(animate);
 
         // Resize handler
         window.addEventListener('resize', () => {

@@ -1,0 +1,414 @@
+/**
+ * CSS Fallback Animations
+ * Pure CSS atomic visualization for devices without WebGL
+ */
+
+/* Container for the CSS atom */
+#css-atom-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: #020205;
+    display: none;
+}
+
+#css-atom-container.active {
+    display: block;
+}
+
+/* Hide Three.js canvas when using CSS fallback */
+.css-fallback-active #canvas-container {
+    display: none !important;
+}
+
+/* Nucleus */
+.css-nucleus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #66ffff, #00cccc, #006666);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.8),
+        0 0 40px rgba(0, 255, 255, 0.5),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: nucleus-pulse 3s ease-in-out infinite;
+}
+
+@keyframes nucleus-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.8),
+            0 0 40px rgba(0, 255, 255, 0.5),
+            0 0 60px rgba(0, 255, 255, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 1),
+            0 0 60px rgba(0, 255, 255, 0.6),
+            0 0 90px rgba(0, 255, 255, 0.4),
+            inset 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Orbital rings */
+.css-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.css-orbit-1 {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+    margin-top: -75px;
+    transform: rotateX(60deg) rotateY(15deg);
+    animation: orbit-rotate-1 8s linear infinite;
+}
+
+.css-orbit-2 {
+    width: 220px;
+    height: 220px;
+    margin-left: -110px;
+    margin-top: -110px;
+    transform: rotateX(-45deg) rotateY(30deg);
+    animation: orbit-rotate-2 12s linear infinite;
+}
+
+.css-orbit-3 {
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    transform: rotateX(30deg) rotateY(-45deg);
+    animation: orbit-rotate-3 15s linear infinite;
+}
+
+@keyframes orbit-rotate-1 {
+    from { transform: rotateX(60deg) rotateY(15deg) rotateZ(0deg); }
+    to { transform: rotateX(60deg) rotateY(15deg) rotateZ(360deg); }
+}
+
+@keyframes orbit-rotate-2 {
+    from { transform: rotateX(-45deg) rotateY(30deg) rotateZ(0deg); }
+    to { transform: rotateX(-45deg) rotateY(30deg) rotateZ(-360deg); }
+}
+
+@keyframes orbit-rotate-3 {
+    from { transform: rotateX(30deg) rotateY(-45deg) rotateZ(0deg); }
+    to { transform: rotateX(30deg) rotateY(-45deg) rotateZ(360deg); }
+}
+
+/* Electrons */
+.css-electron {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff, var(--electron-color, #00ffff));
+    box-shadow:
+        0 0 8px var(--electron-color, rgba(0, 255, 255, 0.8)),
+        0 0 16px var(--electron-color, rgba(0, 255, 255, 0.5));
+}
+
+/* Electron positions and animations */
+.css-electron-1 {
+    --electron-color: #D4AF37;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-1 4s linear infinite;
+}
+
+.css-electron-2 {
+    --electron-color: #B87333;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-2 5s linear infinite;
+}
+
+.css-electron-3 {
+    --electron-color: #0077B5;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-3 6s linear infinite;
+}
+
+.css-electron-4 {
+    --electron-color: #69C95E;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-4 4.5s linear infinite;
+}
+
+.css-electron-5 {
+    --electron-color: #C0C0C0;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-5 5.5s linear infinite;
+}
+
+.css-electron-6 {
+    --electron-color: #FFA500;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-6 7s linear infinite;
+}
+
+.css-electron-7 {
+    --electron-color: #A020F0;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-7 6.5s linear infinite;
+}
+
+.css-electron-8 {
+    --electron-color: #4682B4;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+    animation: electron-orbit-8 8s linear infinite;
+}
+
+@keyframes electron-orbit-1 {
+    from { transform: rotate(0deg) translateX(75px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(75px) rotate(-360deg); }
+}
+
+@keyframes electron-orbit-2 {
+    from { transform: rotate(45deg) translateX(110px) rotate(-45deg); }
+    to { transform: rotate(405deg) translateX(110px) rotate(-405deg); }
+}
+
+@keyframes electron-orbit-3 {
+    from { transform: rotate(90deg) translateX(150px) rotate(-90deg); }
+    to { transform: rotate(450deg) translateX(150px) rotate(-450deg); }
+}
+
+@keyframes electron-orbit-4 {
+    from { transform: rotate(135deg) translateX(75px) rotate(-135deg); }
+    to { transform: rotate(495deg) translateX(75px) rotate(-495deg); }
+}
+
+@keyframes electron-orbit-5 {
+    from { transform: rotate(180deg) translateX(110px) rotate(-180deg); }
+    to { transform: rotate(540deg) translateX(110px) rotate(-540deg); }
+}
+
+@keyframes electron-orbit-6 {
+    from { transform: rotate(225deg) translateX(150px) rotate(-225deg); }
+    to { transform: rotate(585deg) translateX(150px) rotate(-585deg); }
+}
+
+@keyframes electron-orbit-7 {
+    from { transform: rotate(270deg) translateX(110px) rotate(-270deg); }
+    to { transform: rotate(630deg) translateX(110px) rotate(-630deg); }
+}
+
+@keyframes electron-orbit-8 {
+    from { transform: rotate(315deg) translateX(150px) rotate(-315deg); }
+    to { transform: rotate(675deg) translateX(150px) rotate(-675deg); }
+}
+
+/* Background particles */
+.css-bg-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.css-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(0, 136, 170, 0.5);
+    border-radius: 50%;
+    animation: particle-float 20s linear infinite;
+}
+
+/* Generate 50 particles with staggered positions and delays */
+.css-particle:nth-child(1) { left: 5%; top: 10%; animation-delay: 0s; }
+.css-particle:nth-child(2) { left: 15%; top: 30%; animation-delay: -1s; }
+.css-particle:nth-child(3) { left: 25%; top: 50%; animation-delay: -2s; }
+.css-particle:nth-child(4) { left: 35%; top: 70%; animation-delay: -3s; }
+.css-particle:nth-child(5) { left: 45%; top: 20%; animation-delay: -4s; }
+.css-particle:nth-child(6) { left: 55%; top: 40%; animation-delay: -5s; }
+.css-particle:nth-child(7) { left: 65%; top: 60%; animation-delay: -6s; }
+.css-particle:nth-child(8) { left: 75%; top: 80%; animation-delay: -7s; }
+.css-particle:nth-child(9) { left: 85%; top: 15%; animation-delay: -8s; }
+.css-particle:nth-child(10) { left: 95%; top: 35%; animation-delay: -9s; }
+.css-particle:nth-child(11) { left: 10%; top: 55%; animation-delay: -10s; }
+.css-particle:nth-child(12) { left: 20%; top: 75%; animation-delay: -11s; }
+.css-particle:nth-child(13) { left: 30%; top: 25%; animation-delay: -12s; }
+.css-particle:nth-child(14) { left: 40%; top: 45%; animation-delay: -13s; }
+.css-particle:nth-child(15) { left: 50%; top: 65%; animation-delay: -14s; }
+.css-particle:nth-child(16) { left: 60%; top: 85%; animation-delay: -15s; }
+.css-particle:nth-child(17) { left: 70%; top: 5%; animation-delay: -16s; }
+.css-particle:nth-child(18) { left: 80%; top: 35%; animation-delay: -17s; }
+.css-particle:nth-child(19) { left: 90%; top: 55%; animation-delay: -18s; }
+.css-particle:nth-child(20) { left: 3%; top: 75%; animation-delay: -19s; }
+.css-particle:nth-child(21) { left: 13%; top: 5%; animation-delay: -0.5s; }
+.css-particle:nth-child(22) { left: 23%; top: 35%; animation-delay: -1.5s; }
+.css-particle:nth-child(23) { left: 33%; top: 55%; animation-delay: -2.5s; }
+.css-particle:nth-child(24) { left: 43%; top: 85%; animation-delay: -3.5s; }
+.css-particle:nth-child(25) { left: 53%; top: 15%; animation-delay: -4.5s; }
+.css-particle:nth-child(26) { left: 63%; top: 45%; animation-delay: -5.5s; }
+.css-particle:nth-child(27) { left: 73%; top: 65%; animation-delay: -6.5s; }
+.css-particle:nth-child(28) { left: 83%; top: 95%; animation-delay: -7.5s; }
+.css-particle:nth-child(29) { left: 93%; top: 25%; animation-delay: -8.5s; }
+.css-particle:nth-child(30) { left: 8%; top: 45%; animation-delay: -9.5s; }
+.css-particle:nth-child(31) { left: 18%; top: 65%; animation-delay: -10.5s; }
+.css-particle:nth-child(32) { left: 28%; top: 90%; animation-delay: -11.5s; }
+.css-particle:nth-child(33) { left: 38%; top: 8%; animation-delay: -12.5s; }
+.css-particle:nth-child(34) { left: 48%; top: 38%; animation-delay: -13.5s; }
+.css-particle:nth-child(35) { left: 58%; top: 58%; animation-delay: -14.5s; }
+.css-particle:nth-child(36) { left: 68%; top: 78%; animation-delay: -15.5s; }
+.css-particle:nth-child(37) { left: 78%; top: 12%; animation-delay: -16.5s; }
+.css-particle:nth-child(38) { left: 88%; top: 42%; animation-delay: -17.5s; }
+.css-particle:nth-child(39) { left: 98%; top: 62%; animation-delay: -18.5s; }
+.css-particle:nth-child(40) { left: 2%; top: 82%; animation-delay: -19.5s; }
+.css-particle:nth-child(41) { left: 12%; top: 22%; animation-delay: -0.25s; }
+.css-particle:nth-child(42) { left: 22%; top: 42%; animation-delay: -1.25s; }
+.css-particle:nth-child(43) { left: 32%; top: 62%; animation-delay: -2.25s; }
+.css-particle:nth-child(44) { left: 42%; top: 92%; animation-delay: -3.25s; }
+.css-particle:nth-child(45) { left: 52%; top: 3%; animation-delay: -4.25s; }
+.css-particle:nth-child(46) { left: 62%; top: 33%; animation-delay: -5.25s; }
+.css-particle:nth-child(47) { left: 72%; top: 53%; animation-delay: -6.25s; }
+.css-particle:nth-child(48) { left: 82%; top: 73%; animation-delay: -7.25s; }
+.css-particle:nth-child(49) { left: 92%; top: 93%; animation-delay: -8.25s; }
+.css-particle:nth-child(50) { left: 7%; top: 88%; animation-delay: -9.25s; }
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-50px) translateX(30px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) translateX(-20px);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translateY(-70px) translateX(10px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .css-nucleus,
+    .css-orbit,
+    .css-electron,
+    .css-particle {
+        animation: none !important;
+    }
+
+    .css-nucleus {
+        transform: translate(-50%, -50%);
+    }
+
+    .css-electron-1 { transform: translateX(75px); }
+    .css-electron-2 { transform: rotate(45deg) translateX(110px); }
+    .css-electron-3 { transform: rotate(90deg) translateX(150px); }
+    .css-electron-4 { transform: rotate(135deg) translateX(75px); }
+    .css-electron-5 { transform: rotate(180deg) translateX(110px); }
+    .css-electron-6 { transform: rotate(225deg) translateX(150px); }
+    .css-electron-7 { transform: rotate(270deg) translateX(110px); }
+    .css-electron-8 { transform: rotate(315deg) translateX(150px); }
+}
+
+/* Color transition classes */
+.css-atom-container[data-color="chipos"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #f0d890, #D4AF37, #8b6914);
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.8),
+        0 0 40px rgba(212, 175, 55, 0.5),
+        0 0 60px rgba(212, 175, 55, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="bevy"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #dba674, #B87333, #7d4e24);
+    box-shadow:
+        0 0 20px rgba(184, 115, 51, 0.8),
+        0 0 40px rgba(184, 115, 51, 0.5),
+        0 0 60px rgba(184, 115, 51, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="zaphy"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #4da3e0, #0077B5, #004d7a);
+    box-shadow:
+        0 0 20px rgba(0, 119, 181, 0.8),
+        0 0 40px rgba(0, 119, 181, 0.5),
+        0 0 60px rgba(0, 119, 181, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="agentic"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #9ae090, #69C95E, #478e3e);
+    box-shadow:
+        0 0 20px rgba(105, 201, 94, 0.8),
+        0 0 40px rgba(105, 201, 94, 0.5),
+        0 0 60px rgba(105, 201, 94, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="sv_gpt"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #e0e0e0, #C0C0C0, #808080);
+    box-shadow:
+        0 0 20px rgba(192, 192, 192, 0.8),
+        0 0 40px rgba(192, 192, 192, 0.5),
+        0 0 60px rgba(192, 192, 192, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="yuj"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #ffcc66, #FFA500, #cc8400);
+    box-shadow:
+        0 0 20px rgba(255, 165, 0, 0.8),
+        0 0 40px rgba(255, 165, 0, 0.5),
+        0 0 60px rgba(255, 165, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="savitri"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #c060ff, #A020F0, #6b15a0);
+    box-shadow:
+        0 0 20px rgba(160, 32, 240, 0.8),
+        0 0 40px rgba(160, 32, 240, 0.5),
+        0 0 60px rgba(160, 32, 240, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.css-atom-container[data-color="adaptive"] .css-nucleus {
+    background: radial-gradient(circle at 30% 30%, #7ab0d6, #4682B4, #2d5777);
+    box-shadow:
+        0 0 20px rgba(70, 130, 180, 0.8),
+        0 0 40px rgba(70, 130, 180, 0.5),
+        0 0 60px rgba(70, 130, 180, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+}

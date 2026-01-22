@@ -304,14 +304,46 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
+    <script type="module">
+        // Import performance modules
+        import { GPUDetector } from './js/gpu-detector.js';
+        import { FPSMonitor, FrameRateLimiter } from './js/fps-monitor.js';
+
+        // GPU Detection
+        const gpuDetector = new GPUDetector();
+        const detection = gpuDetector.detect();
+        const qualityPreset = detection.presets;
+        console.log(`AdaptiveVision GPU Tier: ${detection.tier}`);
+
+        if (detection.tier === 'none') {
+            document.getElementById('vision-container').style.background = 'radial-gradient(ellipse at center, rgba(70,130,180,0.1) 0%, transparent 70%)';
+            throw new Error('WebGL not available');
+        }
+
+        const fpsMonitor = new FPSMonitor();
+        const frameLimiter = new FrameRateLimiter(qualityPreset.targetFPS);
+        let isAnimating = true;
+        let animationFrameId = null;
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                fpsMonitor.pause();
+            } else {
+                isAnimating = true;
+                fpsMonitor.resume();
+                animate();
+            }
+        });
+
         // Scene setup for vision grid
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ antialias: qualityPreset.antialias, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(qualityPreset.pixelRatio, 2));
         document.getElementById('vision-container').appendChild(renderer.domElement);
 
         // Create scanning grid (Steel Blue)
@@ -332,8 +364,8 @@
         const scanLine = new THREE.Mesh(scanLineGeometry, scanLineMaterial);
         scene.add(scanLine);
 
-        // Create detection cubes
-        const cubeCount = 8;
+        // Create detection cubes (quality-adaptive)
+        const cubeCount = Math.max(3, Math.floor(8 * (qualityPreset.cloudParticles / 3000)));
         const cubes = [];
 
         for (let i = 0; i < cubeCount; i++) {
@@ -390,9 +422,12 @@
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
+        // Animation loop with performance optimizations
+        function animate(timestamp) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+            if (!frameLimiter.shouldRender(timestamp || performance.now())) return;
+            fpsMonitor.tick();
 
             const time = Date.now() * 0.001;
 
@@ -421,7 +456,7 @@
             renderer.render(scene, camera);
         }
 
-        animate();
+        animationFrameId = requestAnimationFrame(animate);
 
         // Resize handler
         window.addEventListener('resize', () => {

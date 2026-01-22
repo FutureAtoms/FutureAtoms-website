@@ -348,14 +348,53 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
+    <script type="module">
+        // Import performance modules
+        import { GPUDetector } from './js/gpu-detector.js';
+        import { FPSMonitor, FrameRateLimiter } from './js/fps-monitor.js';
+
+        // GPU Detection for adaptive quality
+        const gpuDetector = new GPUDetector();
+        const detection = gpuDetector.detect();
+        const qualityPreset = detection.presets;
+        console.log(`BevyBeats GPU Tier: ${detection.tier}`, detection.info);
+
+        // Skip WebGL if not available
+        if (detection.tier === 'none') {
+            document.getElementById('wave-container').style.background = 'radial-gradient(ellipse at center, rgba(183,110,121,0.1) 0%, transparent 70%)';
+            throw new Error('WebGL not available, using CSS fallback');
+        }
+
+        // FPS Monitor and Frame Limiter
+        const fpsMonitor = new FPSMonitor();
+        const frameLimiter = new FrameRateLimiter(qualityPreset.targetFPS);
+
+        // Visibility API - pause when hidden
+        let isAnimating = true;
+        let animationFrameId = null;
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                fpsMonitor.pause();
+            } else {
+                isAnimating = true;
+                fpsMonitor.resume();
+                animate();
+            }
+        });
+
         // Scene setup for audio waves
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        const renderer = new THREE.WebGLRenderer({ antialias: qualityPreset.antialias, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(qualityPreset.pixelRatio, 2));
         document.getElementById('wave-container').appendChild(renderer.domElement);
 
         // Create audio wave mesh (Rose Gold)
@@ -375,8 +414,8 @@
         wave.rotation.x = -Math.PI / 3;
         scene.add(wave);
 
-        // Add particles for musical notes
-        const noteCount = 100;
+        // Add particles for musical notes (quality-adaptive)
+        const noteCount = Math.floor(100 * (qualityPreset.cloudParticles / 3000));
         const noteGeometry = new THREE.BufferGeometry();
         const notePositions = new Float32Array(noteCount * 3);
 
@@ -420,9 +459,17 @@
             mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
         });
 
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
+        // Animation loop with performance optimizations
+        function animate(timestamp) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+
+            // Frame rate limiting
+            if (!frameLimiter.shouldRender(timestamp || performance.now())) {
+                return;
+            }
+
+            fpsMonitor.tick();
 
             // Animate wave vertices
             const time = Date.now() * 0.001;
@@ -459,7 +506,8 @@
             renderer.render(scene, camera);
         }
 
-        animate();
+        // Start animation
+        animationFrameId = requestAnimationFrame(animate);
 
         // Resize handler
         window.addEventListener('resize', () => {

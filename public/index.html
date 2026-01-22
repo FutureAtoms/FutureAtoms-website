@@ -41,6 +41,8 @@
     <!-- Critical CSS first -->
     <link rel="stylesheet" href="css/main.css?v=9999">
     <link rel="stylesheet" href="css/chat.css?v=2">
+    <!-- CSS Fallback for devices without WebGL -->
+    <link rel="stylesheet" href="css/fallback-animations.css?v=1">
 
     <!-- Inline critical styles for new UI elements -->
     <style>
@@ -78,6 +80,55 @@
         }
         #chat-toggle-btn.pulse {
             animation: chat-pulse 2s ease-in-out infinite;
+        }
+
+        /* Cute Atomos Eyes */
+        .atomos-face {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+        .atomos-eye {
+            width: 12px;
+            height: 16px;
+            background: #000;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+        .atomos-eye::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            top: 3px;
+            left: 2px;
+        }
+        .atomos-eye::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            top: 7px;
+            right: 2px;
+        }
+        @keyframes blink {
+            0%, 96%, 100% { transform: scaleY(1); }
+            98% { transform: scaleY(0.1); }
+        }
+        #chat-toggle-btn:hover .atomos-eye {
+            animation: look 0.5s ease;
+        }
+        @keyframes look {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(2px); }
         }
 
         /* Proactive chat prompt */
@@ -137,6 +188,41 @@
 
     <div id="canvas-container"></div>
     <div id="labels-container" style="display: none;"></div> <!-- Hidden in new design -->
+
+    <!-- CSS Fallback Atom (shown when WebGL unavailable) -->
+    <div id="css-atom-container" data-color="intro">
+        <div class="css-nucleus"></div>
+        <div class="css-orbit css-orbit-1"></div>
+        <div class="css-orbit css-orbit-2"></div>
+        <div class="css-orbit css-orbit-3"></div>
+        <div class="css-electron css-electron-1"></div>
+        <div class="css-electron css-electron-2"></div>
+        <div class="css-electron css-electron-3"></div>
+        <div class="css-electron css-electron-4"></div>
+        <div class="css-electron css-electron-5"></div>
+        <div class="css-electron css-electron-6"></div>
+        <div class="css-electron css-electron-7"></div>
+        <div class="css-electron css-electron-8"></div>
+        <div class="css-bg-particles">
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div><div class="css-particle"></div>
+        </div>
+    </div>
 
     <!-- Scroll Container -->
     <div id="scroll-container">
@@ -536,7 +622,10 @@
                 <div class="flex items-center gap-3">
                     <div
                         class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_10px_rgba(0,255,255,0.3)]">
-                        <i class="fas fa-sparkles text-white text-xs"></i>
+                        <div class="atomos-face" style="gap: 4px;">
+                            <div class="atomos-eye" style="width: 6px; height: 8px;"></div>
+                            <div class="atomos-eye" style="width: 6px; height: 8px;"></div>
+                        </div>
                     </div>
                     <div>
                         <h3 class="font-['Orbitron'] text-sm font-bold text-white tracking-wide">ATOMOS AI</h3>
@@ -606,7 +695,10 @@
             <div
                 class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full">
             </div>
-            <i class="fas fa-sparkles relative z-10" aria-hidden="true"></i>
+            <div class="atomos-face" aria-hidden="true">
+                <div class="atomos-eye"></div>
+                <div class="atomos-eye"></div>
+            </div>
             <!-- Notification badge -->
             <span id="chat-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-[10px] flex items-center justify-center font-bold hidden">1</span>
         </button>
@@ -628,16 +720,108 @@
         import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-        // --- Config (Defaults Preserved) ---
+        // --- Performance Optimization: GPU Detection & Quality System ---
+        import { GPUDetector } from './js/gpu-detector.js';
+        import { FPSMonitor, FrameRateLimiter } from './js/fps-monitor.js';
+        import { ParticlePool } from './js/particle-pool.js';
+
+        // Initialize GPU detector
+        const gpuDetector = new GPUDetector();
+        const detection = gpuDetector.detect();
+        let qualityPreset = detection.presets;
+        let currentTier = detection.tier;
+
+        console.log(`GPU Tier: ${currentTier}`, detection.info);
+
+        // Check for CSS fallback mode
+        if (currentTier === 'none' || qualityPreset.useCSSFallback) {
+            document.getElementById('css-atom-container').classList.add('active');
+            document.body.classList.add('css-fallback-active');
+            // Skip Three.js initialization entirely
+            console.log('WebGL not available, using CSS fallback');
+        }
+
+        // --- Config (Quality-Adaptive) ---
         const config = {
             speed: 0.7,
-            bloomStrength: 1.8,
+            bloomStrength: qualityPreset.bloom.strength,
             bgColor: 0x020205,
             nucleusColor: 0x00ffff,
             nucleusEnergy: 1.8,
             globalAuraMultiplier: 1.4,
-            currentHexColor: 0x00ffff // Track current color for lerping elsewhere if needed
+            currentHexColor: 0x00ffff,
+            // Quality settings
+            cloudParticles: qualityPreset.cloudParticles,
+            nucleusSpheres: qualityPreset.nucleusSpheres,
+            trailMaxPerElectron: qualityPreset.trailMaxPerElectron,
+            useBloom: qualityPreset.bloom.enabled,
+            pixelRatio: qualityPreset.pixelRatio
         };
+
+        // FPS Monitor for adaptive quality
+        const fpsMonitor = new FPSMonitor({
+            onDegrade: (fps) => {
+                console.log(`FPS low (${fps.toFixed(1)}), consider reducing quality`);
+                // Auto-degrade quality if needed
+                degradeQuality();
+            },
+            onUpgrade: (fps) => {
+                console.log(`FPS high (${fps.toFixed(1)}), can upgrade quality`);
+            }
+        });
+
+        // Frame rate limiter (cap at 60fps)
+        const frameLimiter = new FrameRateLimiter(qualityPreset.targetFPS);
+
+        // Animation frame ID for visibility API
+        let animationFrameId = null;
+        let isAnimating = true;
+
+        // Visibility API - pause when tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                fpsMonitor.pause();
+                console.log('Animation paused (tab hidden)');
+            } else {
+                isAnimating = true;
+                fpsMonitor.resume();
+                animate();
+                console.log('Animation resumed (tab visible)');
+            }
+        });
+
+        // Quality degradation function
+        const tierOrder = ['low', 'medium', 'high', 'ultra'];
+        function degradeQuality() {
+            const currentIndex = tierOrder.indexOf(currentTier);
+            if (currentIndex > 0) {
+                currentTier = tierOrder[currentIndex - 1];
+                applyQualityPreset(currentTier);
+                fpsMonitor.reset();
+            }
+        }
+
+        function applyQualityPreset(tier) {
+            const presets = {
+                low: { cloudParticles: 500, bloom: { enabled: false }, trailMax: 10, nucleusSpheres: 8, pixelRatio: 1.0 },
+                medium: { cloudParticles: 1000, bloom: { enabled: true, strength: 0.8 }, trailMax: 30, nucleusSpheres: 15, pixelRatio: 1.5 },
+                high: { cloudParticles: 2000, bloom: { enabled: true, strength: 1.2 }, trailMax: 60, nucleusSpheres: 20, pixelRatio: 2.0 },
+                ultra: { cloudParticles: 3000, bloom: { enabled: true, strength: 1.8 }, trailMax: 100, nucleusSpheres: 25, pixelRatio: Math.min(window.devicePixelRatio, 3) }
+            };
+            const preset = presets[tier];
+            if (preset && typeof bloomPass !== 'undefined') {
+                config.useBloom = preset.bloom.enabled;
+                if (preset.bloom.strength) bloomPass.strength = preset.bloom.strength;
+                config.trailMaxPerElectron = preset.trailMax;
+                if (particlePool) particlePool.resize(preset.trailMax * 8);
+            }
+            console.log(`Quality set to: ${tier}`);
+        }
 
         // --- Products Data ---
         const products = [
@@ -706,9 +890,9 @@
         }
         updateCameraPosition();
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        const renderer = new THREE.WebGLRenderer({ antialias: qualityPreset.antialias, alpha: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(config.pixelRatio, 2));
         container.appendChild(renderer.domElement);
 
         // --- Post Processing ---
@@ -781,7 +965,7 @@
         const nucleusGroup = new THREE.Group();
         scene.add(nucleusGroup);
 
-        // 1. Central Mass (Protons/Neutrons)
+        // 1. Central Mass (Protons/Neutrons) - Using InstancedMesh for performance
         const nucMat = new THREE.MeshStandardMaterial({
             color: 0xccffff,
             emissive: 0x00ffff,
@@ -789,16 +973,29 @@
             roughness: 0.1,
             metalness: 0.9
         });
-        const nucleusParticles = [];
-        for (let i = 0; i < 25; i++) {
-            const geo = new THREE.SphereGeometry(0.35, 16, 16);
-            const mesh = new THREE.Mesh(geo, nucMat);
-            mesh.position.set(
-                (Math.random() - 0.5) * 1.8, (Math.random() - 0.5) * 1.8, (Math.random() - 0.5) * 1.8
+
+        // Use InstancedMesh instead of individual meshes (reduces draw calls)
+        const nucleusSphereCount = config.nucleusSpheres;
+        const nucleusGeo = new THREE.SphereGeometry(0.35, 16, 16);
+        const nucleusInstances = new THREE.InstancedMesh(nucleusGeo, nucMat, nucleusSphereCount);
+
+        // Store original positions for animation
+        const nucleusPositions = [];
+        const dummy = new THREE.Object3D();
+
+        for (let i = 0; i < nucleusSphereCount; i++) {
+            const pos = new THREE.Vector3(
+                (Math.random() - 0.5) * 1.8,
+                (Math.random() - 0.5) * 1.8,
+                (Math.random() - 0.5) * 1.8
             );
-            nucleusGroup.add(mesh);
-            nucleusParticles.push(mesh);
+            nucleusPositions.push(pos);
+            dummy.position.copy(pos);
+            dummy.updateMatrix();
+            nucleusInstances.setMatrixAt(i, dummy.matrix);
         }
+        nucleusInstances.instanceMatrix.needsUpdate = true;
+        nucleusGroup.add(nucleusInstances);
 
         // 2. Inner Light Source
         const coreLight = new THREE.PointLight(0x00ffff, 5, 25);
@@ -843,8 +1040,8 @@
         scene.add(grandGlow);
 
 
-        // --- Background Swarm ---
-        const cloudCount = 3000;
+        // --- Background Swarm (Quality-adaptive particle count) ---
+        const cloudCount = config.cloudParticles;
         const cloudGeo = new THREE.BufferGeometry();
         const cloudPos = [];
         for (let i = 0; i < cloudCount; i++) {
@@ -867,6 +1064,9 @@
         const cloudMesh = new THREE.Points(cloudGeo, cloudMat);
         scene.add(cloudMesh);
 
+
+        // --- PARTICLE POOL for smoke trails (replaces per-frame allocation) ---
+        const particlePool = new ParticlePool(THREE, scene, smokeTexture, config.trailMaxPerElectron * 8);
 
         // --- GENERIC ELECTRONS (Replaces Products Loops) ---
         const electrons = [];
@@ -944,6 +1144,12 @@
                     document.querySelectorAll('.scroll-section').forEach(s => s.classList.remove('section-active'));
                     entry.target.classList.add('section-active');
 
+                    // Update CSS fallback atom color (for devices without WebGL)
+                    const cssAtom = document.getElementById('css-atom-container');
+                    if (cssAtom) {
+                        cssAtom.setAttribute('data-color', id);
+                    }
+
                     // Update URL hash without jumping (optional, better for history)
                     // history.replaceState(null, null, '#' + id);
                 }
@@ -998,8 +1204,17 @@
             return vec;
         }
 
-        function animate() {
-            requestAnimationFrame(animate);
+        function animate(timestamp) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+
+            // Frame rate limiting - skip frame if too soon
+            if (!frameLimiter.shouldRender(timestamp || performance.now())) {
+                return;
+            }
+
+            // FPS monitoring
+            fpsMonitor.tick();
 
             const delta = clock.getDelta();
             const elapsedTime = clock.getElapsedTime();
@@ -1066,52 +1281,30 @@
                 obj.mesh.material.emissive.copy(obj.color);
                 obj.sprite.material.color.copy(obj.color);
 
-                // --- Smoke Tail ---
-                const auraFactor = config.globalAuraMultiplier; // Simplified
+                // --- Smoke Tail (Using Object Pool - no GC pressure) ---
+                const auraFactor = config.globalAuraMultiplier;
                 const spawnRate = 0.05 / Math.max(0.1, auraFactor);
 
+                // Spawn new particle from pool (instead of creating new every frame)
                 if (elapsedTime - obj.lastSpawnTime > Math.max(0.02, spawnRate)) {
-                    const partMat = new THREE.SpriteMaterial({
-                        map: smokeTexture,
-                        color: obj.color, // Use current electron color
-                        transparent: true,
-                        opacity: 0.25,
-                        blending: THREE.AdditiveBlending,
-                        depthWrite: false
-                    });
-                    const particle = new THREE.Sprite(partMat);
-                    const jitter = 0.1 * auraFactor;
-                    particle.position.copy(obj.mesh.position).add(new THREE.Vector3(
-                        (Math.random() - 0.5) * jitter, (Math.random() - 0.5) * jitter, (Math.random() - 0.5) * jitter
-                    ));
-                    particle.scale.setScalar(0.6 * auraFactor);
-                    particle.userData = {
-                        life: 1.5 + (auraFactor * 0.5),
-                        maxLife: 1.5 + (auraFactor * 0.5),
-                        growthRate: 0.5 + (Math.random() * 0.5)
-                    };
-                    scene.add(particle);
-                    obj.tailParticles.push(particle);
+                    const particle = particlePool.acquire(obj.mesh.position, obj.color, auraFactor);
+                    if (particle) {
+                        particle.userData.electronIndex = electrons.indexOf(obj); // Track which electron owns this
+                        obj.tailParticles.push(particle);
+                    }
                     obj.lastSpawnTime = elapsedTime;
                 }
 
+                // Update tail particles (pool handles lifecycle)
                 for (let i = obj.tailParticles.length - 1; i >= 0; i--) {
                     const p = obj.tailParticles[i];
-                    p.userData.life -= delta;
 
-                    // Update particle color to match the head electron's current color
-                    // This ensures the trail changes color instantly along with the head
+                    // Update color to match electron's current color
                     p.material.color.copy(obj.color);
 
-                    if (p.userData.life <= 0) {
-                        scene.remove(p);
-                        p.material.dispose();
+                    // Check if particle was released by the pool
+                    if (!p.userData.inUse || !p.visible) {
                         obj.tailParticles.splice(i, 1);
-                    } else {
-                        const lifeRatio = 1 - (p.userData.life / p.userData.maxLife);
-                        const size = (0.6 * auraFactor) + (lifeRatio * 3.0 * p.userData.growthRate * auraFactor);
-                        p.scale.setScalar(size);
-                        p.material.opacity = (p.userData.life / p.userData.maxLife) * 0.2;
                     }
                 }
             });
@@ -1120,11 +1313,21 @@
                 // checkIntersection(false); // Removed raycaster logic for generic electrons
             }
 
+            // Update particle pool (handles lifecycle for all pooled particles)
+            particlePool.updateAll(delta, config.globalAuraMultiplier);
+
             controls.update();
-            composer.render();
+
+            // Conditional bloom rendering (skip post-processing on low-end devices)
+            if (config.useBloom) {
+                composer.render();
+            } else {
+                renderer.render(scene, camera);
+            }
         }
 
-        animate();
+        // Start animation loop
+        animationFrameId = requestAnimationFrame(animate);
 
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
@@ -1274,6 +1477,153 @@
                 dismissChatPrompt();
             });
         }
+
+        // === QUALITY SETTINGS UI ===
+        function createQualityUI() {
+            const panel = document.createElement('div');
+            panel.id = 'quality-settings-panel';
+            panel.innerHTML = `
+                <style>
+                    #quality-settings-panel {
+                        position: fixed;
+                        bottom: 80px;
+                        left: 20px;
+                        z-index: 1000;
+                    }
+                    #quality-toggle-btn {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: rgba(0, 20, 30, 0.8);
+                        border: 1px solid rgba(0, 255, 255, 0.3);
+                        color: rgba(0, 255, 255, 0.7);
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.3s ease;
+                    }
+                    #quality-toggle-btn:hover {
+                        background: rgba(0, 40, 60, 0.9);
+                        border-color: rgba(0, 255, 255, 0.6);
+                        color: rgba(0, 255, 255, 1);
+                    }
+                    #quality-menu {
+                        position: absolute;
+                        bottom: 50px;
+                        left: 0;
+                        background: rgba(0, 20, 30, 0.95);
+                        border: 1px solid rgba(0, 255, 255, 0.3);
+                        border-radius: 8px;
+                        padding: 12px;
+                        min-width: 180px;
+                        display: none;
+                        backdrop-filter: blur(10px);
+                    }
+                    #quality-menu.visible { display: block; }
+                    #quality-menu h4 {
+                        color: rgba(0, 255, 255, 0.8);
+                        font-size: 11px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        margin: 0 0 10px 0;
+                        padding-bottom: 6px;
+                        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+                    }
+                    .quality-option {
+                        display: flex;
+                        align-items: center;
+                        padding: 6px 8px;
+                        margin: 2px 0;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        color: rgba(255, 255, 255, 0.7);
+                        font-size: 12px;
+                        transition: all 0.2s ease;
+                    }
+                    .quality-option:hover { background: rgba(0, 255, 255, 0.1); color: white; }
+                    .quality-option.active { background: rgba(0, 255, 255, 0.2); color: #00ffff; }
+                    .quality-option input { margin-right: 8px; }
+                    #fps-display {
+                        margin-top: 10px;
+                        padding-top: 8px;
+                        border-top: 1px solid rgba(0, 255, 255, 0.2);
+                        font-size: 10px;
+                        color: rgba(255, 255, 255, 0.5);
+                        font-family: monospace;
+                    }
+                </style>
+                <button id="quality-toggle-btn" title="Quality Settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+                <div id="quality-menu">
+                    <h4>Graphics Quality</h4>
+                    <label class="quality-option ${currentTier === 'low' ? 'active' : ''}" data-tier="low">
+                        <input type="radio" name="quality" value="low" ${currentTier === 'low' ? 'checked' : ''}>
+                        Low (Basic)
+                    </label>
+                    <label class="quality-option ${currentTier === 'medium' ? 'active' : ''}" data-tier="medium">
+                        <input type="radio" name="quality" value="medium" ${currentTier === 'medium' ? 'checked' : ''}>
+                        Medium (Balanced)
+                    </label>
+                    <label class="quality-option ${currentTier === 'high' ? 'active' : ''}" data-tier="high">
+                        <input type="radio" name="quality" value="high" ${currentTier === 'high' ? 'checked' : ''}>
+                        High (Quality)
+                    </label>
+                    <label class="quality-option ${currentTier === 'ultra' ? 'active' : ''}" data-tier="ultra">
+                        <input type="radio" name="quality" value="ultra" ${currentTier === 'ultra' ? 'checked' : ''}>
+                        Ultra (Maximum)
+                    </label>
+                    <div id="fps-display">FPS: -- (${currentTier})</div>
+                </div>
+            `;
+            document.body.appendChild(panel);
+
+            // Event handlers
+            const toggleBtn = document.getElementById('quality-toggle-btn');
+            const menu = document.getElementById('quality-menu');
+            const fpsDisplay = document.getElementById('fps-display');
+
+            toggleBtn.addEventListener('click', () => menu.classList.toggle('visible'));
+
+            document.addEventListener('click', (e) => {
+                if (!panel.contains(e.target)) menu.classList.remove('visible');
+            });
+
+            document.querySelectorAll('.quality-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const tier = option.dataset.tier;
+                    currentTier = tier;
+                    applyQualityPreset(tier);
+                    document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                    option.querySelector('input').checked = true;
+                    // Save preference
+                    try { localStorage.setItem('futureAtoms_quality', tier); } catch(e) {}
+                });
+            });
+
+            // Update FPS display
+            setInterval(() => {
+                const stats = fpsMonitor.getStats();
+                fpsDisplay.textContent = `FPS: ${stats.averageFPS} (${currentTier})`;
+            }, 500);
+        }
+
+        // Create quality UI after short delay
+        setTimeout(createQualityUI, 1000);
+
+        // Load saved quality preference
+        try {
+            const savedTier = localStorage.getItem('futureAtoms_quality');
+            if (savedTier && tierOrder.includes(savedTier)) {
+                currentTier = savedTier;
+                applyQualityPreset(savedTier);
+            }
+        } catch(e) {}
 
     </script>
 </body>
