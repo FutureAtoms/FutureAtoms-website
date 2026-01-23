@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const avatar = isUser
             ? `<div class="w-8 h-8 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex-shrink-0 flex items-center justify-center mt-1"><i class="fas fa-user text-cyan-400 text-xs"></i></div>`
-            : `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1"><i class="fas fa-robot text-white text-xs"></i></div>`;
+            : `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1"><div class="atomos-face" style="gap:4px;"><div class="atomos-eye" style="width:6px;height:8px;"></div><div class="atomos-eye" style="width:6px;height:8px;"></div></div></div>`;
 
         const bubbleClass = isUser
             ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-100 rounded-tr-none'
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         shimmerDiv.className = 'flex gap-3 message-enter';
         shimmerDiv.innerHTML = `
             <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1">
-                <i class="fas fa-robot text-white text-xs"></i>
+                <div class="atomos-face" style="gap:4px;"><div class="atomos-eye" style="width:6px;height:8px;"></div><div class="atomos-eye" style="width:6px;height:8px;"></div></div>
             </div>
             <div class="bg-cyan-900/20 border border-cyan-500/20 rounded-2xl rounded-tl-none p-4 text-sm shadow-[0_0_10px_rgba(0,255,255,0.05)] w-48">
                 <div class="shimmer-wrapper rounded mb-2 h-2.5 w-full"></div>

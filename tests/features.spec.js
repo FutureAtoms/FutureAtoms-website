@@ -1001,3 +1001,484 @@ test.describe('Product Page Feature Links', () => {
         console.log('✓ Feature Requests link navigation works');
     });
 });
+
+// ============================================================================
+// CATEGORY SYSTEM TESTS
+// ============================================================================
+
+test.describe('Feature Request Pages - Category System', () => {
+
+    // Expected categories with their properties
+    const EXPECTED_CATEGORIES = [
+        { key: 'all', label: 'All' },
+        { key: 'general', label: 'General', icon: 'fa-circle', color: '#00ffff' },
+        { key: 'ui', label: 'UI/UX', icon: 'fa-palette', color: '#ff6b9d' },
+        { key: 'performance', label: 'Performance', icon: 'fa-bolt', color: '#ffd700' },
+        { key: 'integration', label: 'Integration', icon: 'fa-plug', color: '#4facfe' },
+        { key: 'workflow', label: 'Workflow', icon: 'fa-sitemap', color: '#00ff88' },
+        { key: 'documentation', label: 'Docs', icon: 'fa-book', color: '#c084fc' },
+        { key: 'ai', label: 'AI/ML', icon: 'fa-brain', color: '#ff8c00' },
+        { key: 'security', label: 'Security', icon: 'fa-shield-halved', color: '#ef4444' }
+    ];
+
+    test('category tabs container exists', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const categoryTabs = page.locator('#category-tabs');
+        await expect(categoryTabs).toBeAttached();
+
+        console.log('✓ Category tabs container exists');
+    });
+
+    test('all category tabs are present (9 total including All)', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const categoryTabs = page.locator('.category-tab');
+        await expect(categoryTabs).toHaveCount(9);
+
+        console.log('✓ All 9 category tabs present');
+    });
+
+    test('category tabs have correct data attributes', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        for (const category of EXPECTED_CATEGORIES) {
+            const tab = page.locator(`.category-tab[data-category="${category.key}"]`);
+            await expect(tab).toBeAttached();
+        }
+
+        console.log('✓ Category tabs have correct data-category attributes');
+    });
+
+    test('category tabs display correct labels', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        for (const category of EXPECTED_CATEGORIES) {
+            const tab = page.locator(`.category-tab[data-category="${category.key}"]`);
+            await expect(tab).toContainText(category.label);
+        }
+
+        console.log('✓ Category tabs display correct labels');
+    });
+
+    test('"All" category tab is active by default', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const allTab = page.locator('.category-tab[data-category="all"]');
+        await expect(allTab).toHaveClass(/active/);
+
+        console.log('✓ All category tab active by default');
+    });
+
+    test('clicking category tab changes active state', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Click UI/UX tab
+        const uiTab = page.locator('.category-tab[data-category="ui"]');
+        await uiTab.click();
+        await page.waitForTimeout(300);
+
+        // Check UI/UX is now active
+        await expect(uiTab).toHaveClass(/active/);
+
+        // Check All is no longer active
+        const allTab = page.locator('.category-tab[data-category="all"]');
+        await expect(allTab).not.toHaveClass(/active/);
+
+        console.log('✓ Category tab click changes active state');
+    });
+
+    test('all category tabs are clickable', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const categoryTabs = page.locator('.category-tab');
+        const count = await categoryTabs.count();
+
+        for (let i = 0; i < count; i++) {
+            await categoryTabs.nth(i).click();
+            await page.waitForTimeout(200);
+            await expect(categoryTabs.nth(i)).toHaveClass(/active/);
+        }
+
+        console.log('✓ All category tabs clickable');
+    });
+
+    test('category tabs have icons (except All)', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Check that category tabs with icons have them
+        for (const category of EXPECTED_CATEGORIES.filter(c => c.icon)) {
+            const tab = page.locator(`.category-tab[data-category="${category.key}"]`);
+            const icon = tab.locator('i.fas, i.fa-solid');
+            await expect(icon).toBeAttached();
+        }
+
+        console.log('✓ Category tabs have icons');
+    });
+});
+
+test.describe('Feature Request Pages - Category Form Dropdown', () => {
+
+    test('category dropdown exists in form', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Open modal
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const categorySelect = page.locator('#feature-category');
+        await expect(categorySelect).toBeVisible();
+
+        console.log('✓ Category dropdown exists in form');
+    });
+
+    test('category dropdown has all 8 category options', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const categorySelect = page.locator('#feature-category');
+        const options = categorySelect.locator('option');
+
+        // Should have 8 categories
+        await expect(options).toHaveCount(8);
+
+        console.log('✓ Category dropdown has 8 options');
+    });
+
+    test('category dropdown options have correct values', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const expectedValues = ['general', 'ui', 'performance', 'integration', 'workflow', 'documentation', 'ai', 'security'];
+
+        for (const value of expectedValues) {
+            const option = page.locator(`#feature-category option[value="${value}"]`);
+            await expect(option).toBeAttached();
+        }
+
+        console.log('✓ Category dropdown options have correct values');
+    });
+
+    test('category dropdown default is "general"', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const categorySelect = page.locator('#feature-category');
+        await expect(categorySelect).toHaveValue('general');
+
+        console.log('✓ Category dropdown defaults to general');
+    });
+
+    test('category dropdown can be changed', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const categorySelect = page.locator('#feature-category');
+
+        // Change to different categories
+        await categorySelect.selectOption('ui');
+        await expect(categorySelect).toHaveValue('ui');
+
+        await categorySelect.selectOption('security');
+        await expect(categorySelect).toHaveValue('security');
+
+        await categorySelect.selectOption('ai');
+        await expect(categorySelect).toHaveValue('ai');
+
+        console.log('✓ Category dropdown can be changed');
+    });
+
+    test('category dropdown has label', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        await page.click('#submit-feature-btn');
+        await page.waitForTimeout(300);
+
+        const label = page.locator('label[for="feature-category"]');
+        await expect(label).toBeAttached();
+        await expect(label).toContainText('Category');
+
+        console.log('✓ Category dropdown has label');
+    });
+});
+
+test.describe('Feature Request Pages - Category Helper Functions', () => {
+
+    test('CATEGORIES constant is exported to window', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const categoriesExist = await page.evaluate(() => {
+            return typeof window.CATEGORIES === 'object' && window.CATEGORIES !== null;
+        });
+
+        expect(categoriesExist).toBe(true);
+
+        console.log('✓ CATEGORIES constant exported');
+    });
+
+    test('CATEGORIES has all 8 categories', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const categoryCount = await page.evaluate(() => {
+            return Object.keys(window.CATEGORIES).length;
+        });
+
+        expect(categoryCount).toBe(8);
+
+        console.log('✓ CATEGORIES has 8 entries');
+    });
+
+    test('each category has label, icon, and color', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const allCategoriesValid = await page.evaluate(() => {
+            const categories = window.CATEGORIES;
+            for (const key of Object.keys(categories)) {
+                const cat = categories[key];
+                if (!cat.label || !cat.icon || !cat.color) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        expect(allCategoriesValid).toBe(true);
+
+        console.log('✓ All categories have required properties');
+    });
+
+    test('generateCategoryTabs function is exported', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const functionExists = await page.evaluate(() => {
+            return typeof window.generateCategoryTabs === 'function';
+        });
+
+        expect(functionExists).toBe(true);
+
+        console.log('✓ generateCategoryTabs function exported');
+    });
+
+    test('generateCategoryOptions function is exported', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const functionExists = await page.evaluate(() => {
+            return typeof window.generateCategoryOptions === 'function';
+        });
+
+        expect(functionExists).toBe(true);
+
+        console.log('✓ generateCategoryOptions function exported');
+    });
+
+    test('generateCategoryTabs returns valid HTML', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const html = await page.evaluate(() => {
+            return window.generateCategoryTabs();
+        });
+
+        // Should contain category-tab class
+        expect(html).toContain('category-tab');
+        // Should contain data-category attributes
+        expect(html).toContain('data-category');
+        // Should have All tab
+        expect(html).toContain('All');
+
+        console.log('✓ generateCategoryTabs returns valid HTML');
+    });
+
+    test('generateCategoryOptions returns valid HTML options', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(1000);
+
+        const html = await page.evaluate(() => {
+            return window.generateCategoryOptions();
+        });
+
+        // Should contain option tags
+        expect(html).toContain('<option');
+        // Should have all category values
+        expect(html).toContain('value="general"');
+        expect(html).toContain('value="ui"');
+        expect(html).toContain('value="security"');
+
+        console.log('✓ generateCategoryOptions returns valid HTML');
+    });
+});
+
+test.describe('Feature Request Pages - Category Filtering Integration', () => {
+
+    test('category and status filters can be combined', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Set status filter to Submitted
+        const submittedTab = page.locator('.filter-tab[data-status="submitted"]');
+        await submittedTab.click();
+        await page.waitForTimeout(300);
+
+        // Set category filter to UI/UX
+        const uiTab = page.locator('.category-tab[data-category="ui"]');
+        await uiTab.click();
+        await page.waitForTimeout(300);
+
+        // Both should be active
+        await expect(submittedTab).toHaveClass(/active/);
+        await expect(uiTab).toHaveClass(/active/);
+
+        console.log('✓ Category and status filters can be combined');
+    });
+
+    test('changing category preserves status filter', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Set status filter to Planned
+        const plannedTab = page.locator('.filter-tab[data-status="planned"]');
+        await plannedTab.click();
+        await page.waitForTimeout(300);
+
+        // Change category
+        const performanceTab = page.locator('.category-tab[data-category="performance"]');
+        await performanceTab.click();
+        await page.waitForTimeout(300);
+
+        // Status should still be Planned
+        await expect(plannedTab).toHaveClass(/active/);
+
+        console.log('✓ Changing category preserves status filter');
+    });
+
+    test('changing status preserves category filter', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        // Set category filter
+        const securityTab = page.locator('.category-tab[data-category="security"]');
+        await securityTab.click();
+        await page.waitForTimeout(300);
+
+        // Change status
+        const completedTab = page.locator('.filter-tab[data-status="completed"]');
+        await completedTab.click();
+        await page.waitForTimeout(300);
+
+        // Category should still be Security
+        await expect(securityTab).toHaveClass(/active/);
+
+        console.log('✓ Changing status preserves category filter');
+    });
+});
+
+test.describe('Feature Request Pages - Category Styling', () => {
+
+    test('category tabs have proper styling class', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const categoryTabs = page.locator('.category-tabs');
+        await expect(categoryTabs).toBeVisible();
+
+        console.log('✓ Category tabs container has proper class');
+    });
+
+    test('active category tab has visual distinction', async ({ page }) => {
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const activeTab = page.locator('.category-tab.active');
+        await expect(activeTab).toBeVisible();
+
+        // Check it has visual styling (background or border)
+        const hasStyles = await page.evaluate(() => {
+            const tab = document.querySelector('.category-tab.active');
+            const styles = getComputedStyle(tab);
+            return styles.backgroundColor !== 'rgba(0, 0, 0, 0)' ||
+                   styles.borderColor !== 'rgba(0, 0, 0, 0)';
+        });
+
+        expect(hasStyles).toBe(true);
+
+        console.log('✓ Active category tab has visual distinction');
+    });
+
+    test('category tabs are horizontally scrollable on mobile', async ({ page }) => {
+        await page.setViewportSize({ width: 375, height: 667 });
+        await page.goto('/chipos-features.html');
+        await page.waitForTimeout(500);
+
+        const categoryTabs = page.locator('.category-tabs');
+
+        // Check overflow-x is set to auto or scroll
+        const overflowX = await categoryTabs.evaluate(el => {
+            return getComputedStyle(el).overflowX;
+        });
+
+        expect(['auto', 'scroll']).toContain(overflowX);
+
+        console.log('✓ Category tabs scrollable on mobile');
+    });
+});
+
+test.describe('Feature Request Pages - Category in All Products', () => {
+
+    for (const pageInfo of FEATURE_PAGES) {
+        test(`${pageInfo.name} has category tabs`, async ({ page }) => {
+            await page.goto(pageInfo.url);
+            await page.waitForTimeout(500);
+
+            const categoryTabs = page.locator('#category-tabs');
+            await expect(categoryTabs).toBeAttached();
+
+            const tabs = page.locator('.category-tab');
+            await expect(tabs).toHaveCount(9);
+
+            console.log(`✓ ${pageInfo.name} has category tabs`);
+        });
+
+        test(`${pageInfo.name} has category dropdown in form`, async ({ page }) => {
+            await page.goto(pageInfo.url);
+            await page.waitForTimeout(500);
+
+            await page.click('#submit-feature-btn');
+            await page.waitForTimeout(300);
+
+            const categorySelect = page.locator('#feature-category');
+            await expect(categorySelect).toBeVisible();
+
+            const options = categorySelect.locator('option');
+            await expect(options).toHaveCount(8);
+
+            console.log(`✓ ${pageInfo.name} has category dropdown`);
+        });
+    }
+});

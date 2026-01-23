@@ -16,6 +16,20 @@ let currentSort = 'votes';
 let features = [];
 let votedFeatures = new Set();
 
+// Product list (same as bug report form)
+const PRODUCTS = [
+    { value: 'ChipOS', label: 'ChipOS' },
+    { value: 'SystemVerilog', label: 'SystemVerilog' },
+    { value: 'BevyBeats', label: 'BevyBeats' },
+    { value: 'Savitri', label: 'Savitri' },
+    { value: 'Zaphy', label: 'Zaphy' },
+    { value: 'Agentic', label: 'Agentic' },
+    { value: 'Yuj', label: 'Yuj' },
+    { value: 'AdaptiveVision', label: 'AdaptiveVision' },
+    { value: 'Website', label: 'FutureAtoms Website' },
+    { value: 'Other', label: 'Other' }
+];
+
 // Category definitions - can be customized per product
 const CATEGORIES = {
     'general': { label: 'General', icon: 'fa-circle', color: '#00ffff' },
@@ -457,6 +471,9 @@ function openSubmitModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
+        // Inject product select if needed
+        injectProductSelect();
+
         // Focus first input
         setTimeout(() => {
             const titleInput = document.getElementById('feature-title');
@@ -512,7 +529,7 @@ function updateTitleCounter() {
 }
 
 /**
- * Handle form submission
+ * Handle form submission - Routes to GitHub for consolidated tracking
  */
 async function handleFormSubmit(e) {
     e.preventDefault();
@@ -528,9 +545,18 @@ async function handleFormSubmit(e) {
     const categorySelect = document.getElementById('feature-category');
     const category = categorySelect ? categorySelect.value : 'general';
 
+    // Get product from dropdown (falls back to currentProduct if dropdown doesn't exist)
+    const productSelect = document.getElementById('feature-product');
+    const selectedProduct = productSelect ? productSelect.value : currentProduct;
+
     // Validation
     if (!title) {
         showToast('Please enter a title for your feature request', 'error');
+        return;
+    }
+
+    if (!selectedProduct) {
+        showToast('Please select a product', 'error');
         return;
     }
 
@@ -551,40 +577,67 @@ async function handleFormSubmit(e) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Submitting...';
 
     try {
-        // Insert feature request
-        const { data, error } = await supabaseClient
-            .from('feature_requests')
-            .insert({
-                product: currentProduct,
+        // Submit to GitHub via Cloud Function
+        const response = await fetch('/api/report-feature', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
                 title: title,
-                description: description || null,
-                submitter_name: name || null,
-                submitter_email: email || null,
-                category: category,
-                status: 'submitted',
-                vote_count: 0
+                description: description,
+                name: name,
+                email: email,
+                product: selectedProduct,
+                category: category
             })
-            .select()
-            .single();
+        });
 
-        if (error) throw error;
+        const result = await response.json();
+
+        if (!result.success) {
+            throw new Error(result.error || 'Failed to submit');
+        }
 
         // Success
         submitBtn.classList.remove('loading');
         submitBtn.classList.add('success');
-        submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Submitted!';
+        submitBtn.innerHTML = `<i class="fas fa-check mr-2"></i> Created <a href="${result.issueUrl}" target="_blank" style="color:#00ffff;">#${result.issueNumber}</a>`;
 
-        showToast('Feature request submitted successfully!', 'success');
+        showToast('Feature request submitted to GitHub!', 'success');
 
-        // Add to local array and re-render
-        features.unshift(data);
-        updateStats();
-        renderFeatures();
+        // Also save to Supabase for voting/display (if available)
+        if (supabaseClient) {
+            try {
+                const { data } = await supabaseClient
+                    .from('feature_requests')
+                    .insert({
+                        product: selectedProduct,
+                        title: title,
+                        description: description || null,
+                        submitter_name: name || null,
+                        submitter_email: email || null,
+                        category: category,
+                        status: 'submitted',
+                        vote_count: 0,
+                        github_issue_url: result.issueUrl,
+                        github_issue_number: result.issueNumber
+                    })
+                    .select()
+                    .single();
+
+                if (data) {
+                    features.unshift(data);
+                    updateStats();
+                    renderFeatures();
+                }
+            } catch (supabaseError) {
+                console.warn('Could not save to Supabase:', supabaseError);
+            }
+        }
 
         // Close modal after delay
         setTimeout(() => {
             closeSubmitModal();
-        }, 1500);
+        }, 2500);
 
     } catch (error) {
         console.error('Error submitting feature:', error);
@@ -696,6 +749,46 @@ function generateCategoryOptions() {
 }
 
 /**
+ * Generate product select options HTML
+ */
+function generateProductOptions(selectedProduct = '') {
+    return PRODUCTS.map(p =>
+        `<option value="${p.value}" ${p.value === selectedProduct ? 'selected' : ''}>${p.label}</option>`
+    ).join('');
+}
+
+/**
+ * Inject product select into form if not exists
+ */
+function injectProductSelect() {
+    const form = document.getElementById('feature-form');
+    if (!form) return;
+
+    // Check if product select already exists
+    if (document.getElementById('feature-product')) return;
+
+    // Find the title form group to insert after
+    const titleGroup = form.querySelector('.form-group');
+    if (!titleGroup) return;
+
+    // Create product select group
+    const productGroup = document.createElement('div');
+    productGroup.className = 'form-group';
+    productGroup.innerHTML = `
+        <label class="form-label" for="feature-product">
+            Product <span class="required">*</span>
+        </label>
+        <select id="feature-product" class="form-select" required>
+            <option value="">Select a product...</option>
+            ${generateProductOptions(currentProduct)}
+        </select>
+    `;
+
+    // Insert after title
+    titleGroup.after(productGroup);
+}
+
+/**
  * Generate category filter tabs HTML
  */
 function generateCategoryTabs() {
@@ -715,5 +808,7 @@ function generateCategoryTabs() {
 // Export for use in HTML
 window.initFeatures = initFeatures;
 window.CATEGORIES = CATEGORIES;
+window.PRODUCTS = PRODUCTS;
 window.generateCategoryOptions = generateCategoryOptions;
 window.generateCategoryTabs = generateCategoryTabs;
+window.generateProductOptions = generateProductOptions;

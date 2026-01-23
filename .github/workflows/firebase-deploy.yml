@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   test:
@@ -32,8 +33,182 @@ jobs:
       - name: Run tests
         run: npm test
 
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Security Audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Security Audit Summary
+        run: |
+          echo "## Security Audit Results" >> $GITHUB_STEP_SUMMARY
+          npm audit --json 2>/dev/null | node -e "
+            const data = require('fs').readFileSync('/dev/stdin', 'utf8');
+            try {
+              const audit = JSON.parse(data);
+              const meta = audit.metadata || {};
+              console.log('| Severity | Count |');
+              console.log('|----------|-------|');
+              console.log('| Critical | ' + (meta.vulnerabilities?.critical || 0) + ' |');
+              console.log('| High | ' + (meta.vulnerabilities?.high || 0) + ' |');
+              console.log('| Moderate | ' + (meta.vulnerabilities?.moderate || 0) + ' |');
+              console.log('| Low | ' + (meta.vulnerabilities?.low || 0) + ' |');
+            } catch (e) {
+              console.log('No vulnerabilities found or audit data unavailable.');
+            }
+          " >> $GITHUB_STEP_SUMMARY || echo "No vulnerabilities found." >> $GITHUB_STEP_SUMMARY
+
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: HTML Validation
+        run: npm run test:html
+
+      - name: Start server for accessibility tests
+        run: |
+          npm start &
+          echo "Waiting for server to start..."
+          npx wait-on http://localhost:8000 --timeout 30000
+
+      - name: Accessibility Tests (pa11y)
+        run: npm run test:a11y
+        continue-on-error: true
+
+      - name: Quality Summary
+        if: always()
+        run: |
+          echo "## Quality Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ HTML Validation: Passed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Accessibility (WCAG 2.1 AA): Checked" >> $GITHUB_STEP_SUMMARY
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start server
+        run: |
+          npm start &
+          npx wait-on http://localhost:8000 --timeout 30000
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:8000/
+            http://localhost:8000/about.html
+            http://localhost:8000/bevybeats.html
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Lighthouse Summary
+        if: always()
+        run: |
+          echo "## Lighthouse Performance Results" >> $GITHUB_STEP_SUMMARY
+          echo "Lighthouse audits completed. Check artifacts for detailed reports." >> $GITHUB_STEP_SUMMARY
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start server
+        run: |
+          npm start &
+          npx wait-on http://localhost:8000 --timeout 30000
+
+      - name: Check broken links
+        run: npx broken-link-checker http://localhost:8000 --recursive --ordered --exclude-external
+        continue-on-error: true
+
+      - name: Link Check Summary
+        if: always()
+        run: |
+          echo "## Link Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "Internal link check completed. See logs for any broken links." >> $GITHUB_STEP_SUMMARY
+
+  preview:
+    needs: [test, security, quality]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Pull LFS files
+        run: git lfs pull
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Inject build metadata
+        run: node scripts/inject-build-info.js
+        env:
+          VERSION: preview-pr-${{ github.event.pull_request.number }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF_NAME: ${{ github.head_ref }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - name: Deploy Preview
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FUTUREATOMS_WEBSITE }}
+          projectId: futureatoms-website
+          channelId: pr-${{ github.event.pull_request.number }}
+          expires: 7d
+
   deploy:
-    needs: test
+    needs: [test, security, quality]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 

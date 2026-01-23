@@ -1,10 +1,12 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const { GoogleGenAI } = require("@google/genai");
+const { Octokit } = require("@octokit/rest");
 
 // Define Secrets
 const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
 const GEMINI_STORE_NAME = defineSecret("GEMINI_STORE_NAME");
+const GITHUB_TOKEN = defineSecret("GITHUB_TOKEN");
 
 // Allowed origins for CORS
 const ALLOWED_ORIGINS = [
@@ -175,5 +177,245 @@ ${SITEMAP}
             error: "Failed to generate response",
             details: error.message
         });
+    }
+});
+
+// Feature Request Function - Creates GitHub Issues with enhancement label
+exports.reportFeature = onRequest({ secrets: [GITHUB_TOKEN] }, async (req, res) => {
+    // CORS - Only allow specific origins
+    const origin = req.headers.origin;
+    if (ALLOWED_ORIGINS.includes(origin)) {
+        res.set("Access-Control-Allow-Origin", origin);
+    } else {
+        res.set("Access-Control-Allow-Origin", "https://futureatoms.com");
+    }
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.set("Access-Control-Max-Age", "3600");
+
+    if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return;
+    }
+
+    if (req.method !== "POST") {
+        res.status(405).json({ error: "Method not allowed" });
+        return;
+    }
+
+    // Rate limiting
+    const clientIP = req.headers['x-forwarded-for'] || req.connection?.remoteAddress || 'unknown';
+    if (isRateLimited(clientIP)) {
+        res.status(429).json({ error: "Rate limit exceeded. Please wait before submitting more requests." });
+        return;
+    }
+
+    try {
+        const { title, description, name, email, product, category } = req.body;
+
+        // Validate required fields
+        if (!title || !product) {
+            res.status(400).json({ error: "Missing required fields: title and product are required" });
+            return;
+        }
+
+        const token = GITHUB_TOKEN.value();
+        if (!token) {
+            console.error("GITHUB_TOKEN is missing");
+            res.status(500).json({ error: "Server configuration error" });
+            return;
+        }
+
+        const octokit = new Octokit({ auth: token });
+
+        // Sanitize inputs
+        const sanitizedTitle = String(title).substring(0, 200);
+        const sanitizedDescription = String(description || '').substring(0, 5000);
+        const sanitizedName = String(name || 'Anonymous').substring(0, 100);
+        const sanitizedEmail = String(email || 'Not provided').substring(0, 100);
+        const sanitizedProduct = String(product).substring(0, 50);
+        const sanitizedCategory = String(category || 'general').substring(0, 50);
+
+        const issueTitle = `[Feature] ${sanitizedProduct}: ${sanitizedTitle}`;
+
+        const issueBody = `## Feature Request
+
+**Product:** ${sanitizedProduct}
+**Category:** ${sanitizedCategory}
+**Requested by:** ${sanitizedName}
+**Email:** ${sanitizedEmail}
+
+## Description
+${sanitizedDescription || sanitizedTitle}
+
+---
+*Submitted via FutureAtoms feature request form*`;
+
+        // Create GitHub issue with enhancement label
+        const response = await octokit.issues.create({
+            owner: 'FutureAtoms',
+            repo: 'feedback',
+            title: issueTitle,
+            body: issueBody,
+            labels: ['enhancement', 'feature-request', sanitizedProduct.toLowerCase()]
+        });
+
+        console.log(`Feature request created: ${response.data.html_url}`);
+
+        res.json({
+            success: true,
+            issueUrl: response.data.html_url,
+            issueNumber: response.data.number
+        });
+
+    } catch (error) {
+        console.error("Error creating feature request:", error);
+
+        if (error.status === 404) {
+            res.status(500).json({
+                error: "Repository not found. Please check server configuration."
+            });
+        } else if (error.status === 401) {
+            res.status(500).json({
+                error: "Authentication failed"
+            });
+        } else {
+            res.status(500).json({
+                error: "Failed to create feature request",
+                details: error.message
+            });
+        }
+    }
+});
+
+// Bug Report Function - Creates GitHub Issues
+exports.reportBug = onRequest({ secrets: [GITHUB_TOKEN] }, async (req, res) => {
+    // CORS - Only allow specific origins
+    const origin = req.headers.origin;
+    if (ALLOWED_ORIGINS.includes(origin)) {
+        res.set("Access-Control-Allow-Origin", origin);
+    } else {
+        res.set("Access-Control-Allow-Origin", "https://futureatoms.com");
+    }
+    res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.set("Access-Control-Max-Age", "3600");
+
+    if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return;
+    }
+
+    if (req.method !== "POST") {
+        res.status(405).json({ error: "Method not allowed" });
+        return;
+    }
+
+    // Rate limiting
+    const clientIP = req.headers['x-forwarded-for'] || req.connection?.remoteAddress || 'unknown';
+    if (isRateLimited(clientIP)) {
+        res.status(429).json({ error: "Rate limit exceeded. Please wait before submitting more reports." });
+        return;
+    }
+
+    try {
+        const { name, email, issue, rating, url, product, screenshot_url } = req.body;
+
+        // Validate required fields
+        if (!name || !email || !issue) {
+            res.status(400).json({ error: "Missing required fields: name, email, and issue are required" });
+            return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            res.status(400).json({ error: "Invalid email format" });
+            return;
+        }
+
+        const token = GITHUB_TOKEN.value();
+        if (!token) {
+            console.error("GITHUB_TOKEN is missing");
+            res.status(500).json({ error: "Server configuration error" });
+            return;
+        }
+
+        const octokit = new Octokit({ auth: token });
+
+        // Sanitize inputs for GitHub issue
+        const sanitizedName = String(name).substring(0, 100);
+        const sanitizedEmail = String(email).substring(0, 100);
+        const sanitizedIssue = String(issue).substring(0, 5000);
+        const sanitizedUrl = String(url || 'Not provided').substring(0, 500);
+        const sanitizedProduct = String(product || 'General').substring(0, 50);
+        const sanitizedRating = Math.min(Math.max(parseInt(rating) || 0, 1), 5);
+
+        // Sanitize screenshot URL (basic URL validation)
+        let screenshotSection = '';
+        if (screenshot_url && screenshot_url.trim()) {
+            const sanitizedScreenshot = String(screenshot_url).substring(0, 500).trim();
+            // Basic URL validation
+            if (sanitizedScreenshot.match(/^https?:\/\/.+/i)) {
+                screenshotSection = `\n## Screenshot\n![Screenshot](${sanitizedScreenshot})\n`;
+            }
+        }
+
+        // Create issue title (truncate if needed)
+        const titlePreview = sanitizedIssue.substring(0, 50).replace(/\n/g, ' ');
+        const issueTitle = `[Bug] ${sanitizedProduct}: ${titlePreview}${sanitizedIssue.length > 50 ? '...' : ''}`;
+
+        const issueBody = `## Bug Report
+
+**Reporter:** ${sanitizedName}
+**Email:** ${sanitizedEmail}
+**Rating:** ${sanitizedRating}/5
+**Page:** ${sanitizedUrl}
+**Product:** ${sanitizedProduct}
+
+## Description
+${sanitizedIssue}
+${screenshotSection}
+---
+*Submitted via FutureAtoms feedback form*`;
+
+        // Create GitHub issue
+        // NOTE: Update owner and repo to match your GitHub organization/repository
+        const response = await octokit.issues.create({
+            owner: 'FutureAtoms',
+            repo: 'feedback',
+            title: issueTitle,
+            body: issueBody,
+            labels: ['bug', 'user-reported']
+        });
+
+        console.log(`Bug report created: ${response.data.html_url}`);
+
+        res.json({
+            success: true,
+            issueUrl: response.data.html_url,
+            issueNumber: response.data.number
+        });
+
+    } catch (error) {
+        console.error("Error creating bug report:", error);
+
+        // Handle specific GitHub API errors
+        if (error.status === 404) {
+            res.status(500).json({
+                error: "Repository not found. Please check server configuration.",
+                details: "The configured GitHub repository does not exist or is not accessible."
+            });
+        } else if (error.status === 401) {
+            res.status(500).json({
+                error: "Authentication failed",
+                details: "GitHub token is invalid or expired."
+            });
+        } else {
+            res.status(500).json({
+                error: "Failed to create bug report",
+                details: error.message
+            });
+        }
     }
 });

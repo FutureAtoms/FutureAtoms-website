@@ -34,8 +34,8 @@ function injectFeedbackSystem() {
             ${!isInline ? '<button class="feedback-close" id="feedback-close">&times;</button>' : ''}
 
             <div class="feedback-header">
-                ${isInline ? '' : '<h3 class="feedback-title">FEEDBACK LOOP</h3>'}
-                <p class="feedback-subtitle">Select atoms below to transmit signal for: <span style="color:#00ffff">${product}</span></p>
+                ${isInline ? '' : '<h3 class="feedback-title">Share Your Feedback</h3>'}
+                <p class="feedback-subtitle">How's your experience with <span style="color:#00ffff">${product}</span>?</p>
             </div>
 
             <!-- Rating System -->
@@ -52,7 +52,7 @@ function injectFeedbackSystem() {
                 <div id="feedback-dynamic-content"></div>
                 
                 <div class="feedback-form-group" id="feedback-submit-group">
-                    <button type="submit" class="feedback-submit-btn">TRANSMIT DATA</button>
+                    <button type="submit" class="feedback-submit-btn">Submit Feedback</button>
                 </div>
             </form>
         </div>
@@ -136,54 +136,94 @@ function initFeedbackLogic(isInline, product) {
         dynamicContent.innerHTML = ''; // Clear previous
 
         if (rating <= 3) {
-            // --- Support Ticket Mode ---
+            // --- Bug Report Mode ---
             dynamicContent.innerHTML = `
                 <div class="feedback-mode-title mode-support">
-                    <i class="fas fa-wrench"></i> SYSTEM DIAGNOSTIC
+                    <i class="fas fa-bug"></i> Report an Issue
                 </div>
                 <div class="feedback-form-group visible">
-                    <label class="feedback-label">Name</label>
-                    <input type="text" class="feedback-input" name="name" placeholder="Observer Name" required>
+                    <label class="feedback-label">Which product?</label>
+                    <select class="feedback-input feedback-select" name="selected_product" required>
+                        <option value="">Select a product...</option>
+                        <option value="ChipOS">ChipOS</option>
+                        <option value="SystemVerilog">SystemVerilog</option>
+                        <option value="BevyBeats">BevyBeats</option>
+                        <option value="Savitri">Savitri</option>
+                        <option value="Zaphy">Zaphy</option>
+                        <option value="Agentic">Agentic</option>
+                        <option value="Yuj">Yuj</option>
+                        <option value="AdaptiveVision">AdaptiveVision</option>
+                        <option value="Website">FutureAtoms Website</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="feedback-form-group visible">
+                    <label class="feedback-label">Your Name</label>
+                    <input type="text" class="feedback-input" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="feedback-form-group visible">
                     <label class="feedback-label">Email</label>
-                    <input type="email" class="feedback-input" name="email" placeholder="contact@example.com" required>
+                    <input type="email" class="feedback-input" name="email" placeholder="you@company.com" required>
                 </div>
                 <div class="feedback-form-group visible">
-                    <label class="feedback-label">What seems to be the issue?</label>
-                    <textarea class="feedback-textarea" name="issue" placeholder="Describe the anomaly..." required></textarea>
+                    <label class="feedback-label">What went wrong?</label>
+                    <textarea class="feedback-textarea" name="issue" placeholder="Describe the issue and how we can reproduce it..." required></textarea>
+                </div>
+                <div class="feedback-form-group visible">
+                    <label class="feedback-label">Screenshot <span style="opacity:0.5">(optional)</span></label>
+                    <input type="url" class="feedback-input" name="screenshot_url" placeholder="Paste image URL (use imgur.com, snipboard.io, etc.)">
+                    <p class="feedback-hint">Tip: Take a screenshot, upload to <a href="https://imgur.com/upload" target="_blank" style="color:#00ffff">imgur.com</a>, paste the link here</p>
                 </div>
             `;
         } else {
-            // --- Social Proof Mode ---
+            // --- Testimonial Mode ---
             dynamicContent.innerHTML = `
                 <div class="feedback-mode-title mode-social">
-                    <i class="fas fa-star"></i> SIGNAL AMPLIFIED
+                    <i class="fas fa-heart"></i> We'd Love a Testimonial!
                 </div>
                 <div class="feedback-form-group visible">
-                    <label class="feedback-label">Name</label>
-                    <input type="text" class="feedback-input" name="name" placeholder="Visionary Name" required>
+                    <label class="feedback-label">Your Name</label>
+                    <input type="text" class="feedback-input" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="feedback-form-group visible">
-                    <label class="feedback-label">Role & Company (Vital for Signal)</label>
-                    <input type="text" class="feedback-input" name="role_company" placeholder="e.g. Senior Engineer @ TechCorp" required>
+                    <label class="feedback-label">Role & Company</label>
+                    <input type="text" class="feedback-input" name="role_company" placeholder="e.g. CTO @ Acme Inc" required>
                 </div>
                 <div class="feedback-form-group visible">
-                    <label class="feedback-label">What is your favorite feature?</label>
-                    <textarea class="feedback-textarea" name="favorite_feature" placeholder="The quantum interface..." required></textarea>
+                    <label class="feedback-label">What do you love about our product?</label>
+                    <textarea class="feedback-textarea" name="favorite_feature" placeholder="Share what made a difference for you..." required></textarea>
                 </div>
                 <div class="feedback-form-group visible">
                     <div class="feedback-checkbox-group">
                         <input type="checkbox" id="feature-permission" name="permission" class="feedback-checkbox" checked>
-                        <label for="feature-permission">You may feature this signal publicly.</label>
+                        <label for="feature-permission">You can feature my testimonial on your website.</label>
                     </div>
                 </div>
+                <div class="feedback-form-group visible" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0,255,255,0.2);">
+                    <p class="feedback-hint" style="text-align: center;">
+                        Still have an issue to report?
+                        <a href="#" id="switch-to-bug" style="color:#ff6b6b; text-decoration: underline;">Report a bug instead</a>
+                    </p>
+                </div>
             `;
+
+            // Add click handler for switching to bug mode
+            setTimeout(() => {
+                const switchLink = document.getElementById('switch-to-bug');
+                if (switchLink) {
+                    switchLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentRating = 2; // Set to bug report mode
+                        highlightAtoms(currentRating);
+                        renderFormFields(currentRating);
+                    });
+                }
+            }, 0);
         }
     }
 
     // Form Submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
@@ -191,25 +231,48 @@ function initFeedbackLogic(isInline, product) {
         data.url = window.location.href;
         data.product = product;
 
-        console.log('Feedback Transmitted:', data);
-
-        // Simulate network request
         const btn = form.querySelector('.feedback-submit-btn');
         const originalText = btn.innerText;
-        btn.innerText = 'TRANSMITTING...';
+        btn.innerText = 'Submitting...';
         btn.disabled = true;
 
-        setTimeout(() => {
-            btn.innerText = 'TRANSMISSION COMPLETE';
-            btn.style.borderColor = '#00ff00';
-            btn.style.color = '#00ff00';
+        // Use selected product for bug reports, fallback to URL param
+        if (data.selected_product) {
+            data.product = data.selected_product;
+        }
 
+        try {
+            // Bug reports (ratings 1-3) go to GitHub
+            if (currentRating <= 3) {
+                const response = await fetch('/api/report-bug', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    btn.innerHTML = `Thanks! Issue <a href="${escapeHTML(result.issueUrl)}" target="_blank" style="color:#00ffff;text-decoration:underline;">#${result.issueNumber}</a> created`;
+                    btn.style.borderColor = '#00ff00';
+                    btn.style.color = '#00ff00';
+                } else {
+                    throw new Error(result.error || 'Failed to submit report');
+                }
+            } else {
+                // Testimonials (ratings 4-5) - store locally for now
+                console.log('Testimonial Received:', data);
+                btn.innerText = 'Thanks for the love!';
+                btn.style.borderColor = '#00ff00';
+                btn.style.color = '#00ff00';
+            }
+
+            // Reset form after delay
             setTimeout(() => {
                 if (!isInline) {
                     const overlay = document.getElementById('feedback-modal-overlay');
                     overlay.classList.remove('active');
                 }
-                // Reset form after delay
                 setTimeout(() => {
                     form.reset();
                     currentRating = 0;
@@ -217,11 +280,25 @@ function initFeedbackLogic(isInline, product) {
                     dynamicContent.innerHTML = '';
                     submitGroup.classList.remove('visible');
                     btn.innerText = originalText;
+                    btn.innerHTML = originalText;
                     btn.disabled = false;
                     btn.style.borderColor = '';
                     btn.style.color = '';
                 }, 500);
-            }, 1500);
-        }, 1000);
+            }, 2500);
+
+        } catch (error) {
+            console.error('Feedback submission error:', error);
+            btn.innerText = 'Something went wrong. Try again?';
+            btn.style.borderColor = '#ff4444';
+            btn.style.color = '#ff4444';
+
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 3000);
+        }
     });
 }

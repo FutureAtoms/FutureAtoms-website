@@ -26,6 +26,14 @@
           "function": "chat"
         },
         {
+          "source": "/api/report-bug",
+          "function": "reportBug"
+        },
+        {
+          "source": "/api/report-feature",
+          "function": "reportFeature"
+        },
+        {
           "source": "/app/**",
           "destination": "/app/index.html"
         },
