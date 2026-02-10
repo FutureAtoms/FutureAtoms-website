@@ -118,18 +118,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start server
-        run: |
-          npm start &
-          npx wait-on http://localhost:8000 --timeout 30000
-
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
-          urls: |
-            http://localhost:8000/
-            http://localhost:8000/about.html
-            http://localhost:8000/bevybeats.html
+          configPath: ./lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
 
@@ -138,6 +130,58 @@ jobs:
         run: |
           echo "## Lighthouse Performance Results" >> $GITHUB_STEP_SUMMARY
           echo "Lighthouse audits completed. Check artifacts for detailed reports." >> $GITHUB_STEP_SUMMARY
+
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate sitemap
+        run: npm run generate:sitemap
+
+      - name: Validate SEO
+        run: npm run validate:seo
+
+      - name: Validate sitemap XML structure
+        run: |
+          if ! head -1 public/sitemap.xml | grep -q '<?xml'; then
+            echo "ERROR: sitemap.xml is not valid XML"
+            exit 1
+          fi
+          echo "Sitemap XML structure is valid"
+
+      - name: Check structured data presence
+        run: |
+          PAGES_WITH_SCHEMA=$(grep -rl 'application/ld+json' public/*.html | wc -l)
+          echo "Pages with structured data: $PAGES_WITH_SCHEMA"
+          if [ "$PAGES_WITH_SCHEMA" -lt 10 ]; then
+            echo "WARNING: Only $PAGES_WITH_SCHEMA pages have structured data"
+          fi
+
+      - name: SEO Summary
+        if: always()
+        run: |
+          echo "## SEO Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Files Check" >> $GITHUB_STEP_SUMMARY
+          echo "- $(test -f public/robots.txt && echo '✅' || echo '❌') robots.txt" >> $GITHUB_STEP_SUMMARY
+          echo "- $(test -f public/sitemap.xml && echo '✅' || echo '❌') sitemap.xml" >> $GITHUB_STEP_SUMMARY
+          echo "- $(test -f public/llm.txt && echo '✅' || echo '❌') llm.txt" >> $GITHUB_STEP_SUMMARY
+          echo "- $(test -f public/llms-full.txt && echo '✅' || echo '❌') llms-full.txt" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          SITEMAP_URLS=$(grep -c '<url>' public/sitemap.xml || echo 0)
+          echo "### Sitemap: ${SITEMAP_URLS} URLs" >> $GITHUB_STEP_SUMMARY
+          SCHEMA_PAGES=$(grep -rl 'application/ld+json' public/*.html | wc -l | tr -d ' ')
+          echo "### Structured Data: ${SCHEMA_PAGES} pages with JSON-LD" >> $GITHUB_STEP_SUMMARY
 
   links:
     runs-on: ubuntu-latest
@@ -169,7 +213,7 @@ jobs:
           echo "Internal link check completed. See logs for any broken links." >> $GITHUB_STEP_SUMMARY
 
   preview:
-    needs: [test, security, quality]
+    needs: [test, security, quality, seo]
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
 
@@ -208,7 +252,7 @@ jobs:
           expires: 7d
 
   deploy:
-    needs: [test, security, quality]
+    needs: [test, security, quality, seo]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 

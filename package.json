@@ -24,6 +24,12 @@
     "scan:all": "node scripts/scan-all.js",
     "start:server": "node server.js",
     "ingest": "node scripts/ingest.js",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "fix:social-meta": "node scripts/fix-social-meta.js",
+    "inject:schema": "node scripts/inject-structured-data.js",
+    "inject:analytics": "node scripts/inject-analytics.js",
+    "validate:seo": "node scripts/validate-seo.js",
+    "report:seo": "node scripts/generate-seo-report.js",
     "prepare": "husky"
   },
   "devDependencies": {

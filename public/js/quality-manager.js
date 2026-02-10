@@ -22,8 +22,8 @@ class QualityManager {
         this.autoAdjustEnabled = true;
 
         // Callbacks
-        this.onQualityChange = options.onQualityChange || (() => {});
-        this.onFPSUpdate = options.onFPSUpdate || (() => {});
+        this.onQualityChange = options.onQualityChange || (() => { });
+        this.onFPSUpdate = options.onFPSUpdate || (() => { });
 
         // Settings storage key
         this.storageKey = 'futureAtoms_qualitySettings';

@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://futureatoms.com/chipos-settings.html">
-    <title>ChipOS Settings & Configuration Guide</title>
-    <meta name="description"
-        content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
+    <title>ChipOS Settings &amp; Configuration Guide</title>
+    <meta name="description" content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
     <meta property="og:title" content="ChipOS Settings | FutureAtoms">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FutureAtoms">
+    <meta name="twitter:title" content="ChipOS Settings | FutureAtoms">
+    <meta name="twitter:description" content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
+    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
     <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
@@ -17,10 +19,8 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -257,8 +257,7 @@
 
 <body class="min-h-screen">
     <!-- Mobile Nav Button -->
-    <button id="mobileNavBtn"
-        class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
+    <button id="mobileNavBtn" class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
         <i class="fas fa-bars text-lg"></i>
     </button>
 
@@ -323,8 +322,7 @@
                 <h3 class="sidebar-section-title text-gray-500 uppercase px-4 mb-2">Guides</h3>
                 <a href="#recommended" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Recommended
                     Configs</a>
-                <a href="#troubleshooting"
-                    class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Troubleshooting</a>
+                <a href="#troubleshooting" class="sidebar-link block py-2 px-4 text-gray-300 text-sm">Troubleshooting</a>
             </div>
 
             <!-- Back to docs -->
@@ -344,8 +342,7 @@
                 <!-- Header -->
                 <header class="mb-12">
                     <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/30">
                             <i class="fas fa-cog text-2xl text-cyan-400"></i>
                         </div>
                         <div>
@@ -374,7 +371,7 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Dark Mode</h3>
                                 <p class="text-gray-400 text-sm mb-4">Switch between light and dark color themes</p>
                                 <table class="docs-table text-sm">
-                                    <tr>
+                                    <tbody><tr>
                                         <td class="font-semibold w-32">Default</td>
                                         <td>Enabled (Dark)</td>
                                     </tr>
@@ -386,7 +383,7 @@
                                         <td class="font-semibold">When to Use</td>
                                         <td>Personal preference; dark mode reduces eye strain in low light</td>
                                     </tr>
-                                </table>
+                                </tbody></table>
                             </div>
                             <div class="toggle-visual on"></div>
                         </div>
@@ -399,7 +396,7 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Projects</h3>
                                 <p class="text-gray-400 text-sm mb-4">Enable Projects and Tasks functionality</p>
                                 <table class="docs-table text-sm">
-                                    <tr>
+                                    <tbody><tr>
                                         <td class="font-semibold w-32">Default</td>
                                         <td>Enabled</td>
                                     </tr>
@@ -411,7 +408,7 @@
                                         <td class="font-semibold">Requirements</td>
                                         <td>ChipOS schema migrations applied (chipos_projects + chipos_tasks tables)</td>
                                     </tr>
-                                </table>
+                                </tbody></table>
                                 <div class="callout callout-warning mt-4">
                                     <p class="text-sm"><strong>Note:</strong> If you see "Projects table not detected",
                                         apply the latest ChipOS migrations in <code>chipos-acf/migration/</code>
@@ -429,7 +426,7 @@
                                 <h3 class="font-orbitron text-lg text-white mb-2">Pydantic Logfire</h3>
                                 <p class="text-gray-400 text-sm mb-4">Structured logging and observability platform</p>
                                 <table class="docs-table text-sm">
-                                    <tr>
+                                    <tbody><tr>
                                         <td class="font-semibold w-32">Default</td>
                                         <td>Disabled</td>
                                     </tr>
@@ -441,7 +438,7 @@
                                         <td class="font-semibold">Requirements</td>
                                         <td><code>LOGFIRE_TOKEN</code> in environment</td>
                                     </tr>
-                                </table>
+                                </tbody></table>
                             </div>
                             <div class="toggle-visual"></div>
                         </div>
@@ -597,16 +594,14 @@
                                 <strong class="text-white">New Default: Voyage AI</strong>
                                 <p class="text-gray-300 text-sm mt-1">Voyage AI's <code>voyage-code-3</code> is now the
                                     default embedding model, offering <strong>13-17% better code retrieval</strong> than
-                                    OpenAI while using 33% less memory (1024 vs 1536 dimensions). Get your API key at <a
-                                        href="https://voyage.ai" target="_blank"
-                                        class="text-cyan-400 hover:underline">voyage.ai</a>.</p>
+                                    OpenAI while using 33% less memory (1024 vs 1536 dimensions). Get your API key at <a href="https://voyage.ai" target="_blank" class="text-cyan-400 hover:underline">voyage.ai</a>.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- LLM Provider -->
                     <div id="llm-provider" class="settings-card green p-6 mb-6">
-                        <h3 class="font-orbitron text-lg text-white mb-4">LLM Provider & Models</h3>
+                        <h3 class="font-orbitron text-lg text-white mb-4">LLM Provider &amp; Models</h3>
                         <table class="docs-table mb-6">
                             <thead>
                                 <tr>
@@ -1152,6 +1147,7 @@
             });
         });
     </script>
-</body>
 
-</html>
+
+
+</body></html>

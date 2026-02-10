@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://futureatoms.com/">
-    <title>FutureAtoms - AI Tools That Build the Future | ChipOS, AI Development, Automation</title>
-    <meta name="description"
-        content="Build faster with AI. ChipOS for chip development, automation tools for workflows, and AI companions for creators. 8+ products. 50M+ processes automated. Try free.">
+    <title>FutureAtoms | AI Tools for ChipOS, Automation &amp; Creators</title>
+    <meta name="description" content="Build faster with AI: ChipOS for chip development, automation tools for workflows, and AI companions for creators. 8+ products. Try free.">
 
     <!-- Optimized favicon and icons (13KB instead of 1.2MB) -->
     <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
@@ -15,28 +11,33 @@
     <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
     <meta property="og:title" content="FutureAtoms | AI Tools That Build the Future">
-    <meta property="og:description"
-        content="Build faster with AI. ChipOS for chip development, automation tools, and AI companions. 8+ products. Try free.">
+    <meta property="og:description" content="Build faster with AI: ChipOS for chip development, automation tools for workflows, and AI companions for creators. 8+ products. Try free.">
     <meta property="og:url" content="https://futureatoms.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FutureAtoms">
+    <meta name="twitter:title" content="FutureAtoms | AI Tools That Build the Future">
+    <meta name="twitter:description" content="Build faster with AI: ChipOS for chip development, automation tools for workflows, and AI companions for creators. 8+ products. Try free.">
+    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
 
     <!-- Preconnect to external domains for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="">
 
     <!-- Preload critical resources -->
     <link rel="preload" href="css/main.css?v=9999" as="style">
     <link rel="preload" href="images/optimized/futureatoms-icon-64w.webp" as="image" type="image/webp">
 
     <!-- Google Fonts with display=swap for faster text rendering -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@300;500;700&amp;display=swap" rel="stylesheet">
 
     <!-- Font Awesome - loaded async to not block rendering -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <!-- Critical CSS first -->
     <link rel="stylesheet" href="css/main.css?v=9999">
@@ -56,10 +57,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .progress-dot:hover {
             background: rgba(0, 255, 255, 0.4);
             transform: scale(1.3);
         }
+
         .progress-dot.active {
             background: #00ffff;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
@@ -75,9 +78,17 @@
 
         /* Chat bubble pulse animation */
         @keyframes chat-pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.7); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+            }
         }
+
         #chat-toggle-btn.pulse {
             animation: chat-pulse 2s ease-in-out infinite;
         }
@@ -91,6 +102,7 @@
             position: relative;
             z-index: 10;
         }
+
         .atomos-eye {
             width: 12px;
             height: 16px;
@@ -99,6 +111,7 @@
             position: relative;
             animation: blink 4s infinite;
         }
+
         .atomos-eye::before {
             content: '';
             position: absolute;
@@ -109,26 +122,45 @@
             top: 3px;
             left: 2px;
         }
+
         .atomos-eye::after {
             content: '';
             position: absolute;
             width: 3px;
             height: 3px;
-            background: rgba(255,255,255,0.6);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             top: 7px;
             right: 2px;
         }
+
         @keyframes blink {
-            0%, 96%, 100% { transform: scaleY(1); }
-            98% { transform: scaleY(0.1); }
+
+            0%,
+            96%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            98% {
+                transform: scaleY(0.1);
+            }
         }
+
         #chat-toggle-btn:hover .atomos-eye {
             animation: look 0.5s ease;
         }
+
         @keyframes look {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(2px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(2px);
+            }
         }
 
         /* Proactive chat prompt */
@@ -147,11 +179,13 @@
             transition: all 0.3s ease;
             pointer-events: none;
         }
+
         #chat-prompt.visible {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
         }
+
         #chat-prompt::after {
             content: '';
             position: absolute;
@@ -164,8 +198,41 @@
     </style>
 
     <!-- Defer non-critical scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/gpu-detector.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FutureAtoms",
+  "url": "https://futureatoms.com",
+  "logo": "https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp",
+  "description": "Building the next generation of AI tools and platforms for developers, engineers, and creators.",
+  "sameAs": [
+    "https://github.com/FutureAtoms",
+    "https://twitter.com/FutureAtoms"
+  ],
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Abhilash Chadhar"
+  }
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FutureAtoms",
+  "url": "https://futureatoms.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://futureatoms.com/blog.html?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}</script>
 </head>
 
 <body>
@@ -204,23 +271,56 @@
         <div class="css-electron css-electron-7"></div>
         <div class="css-electron css-electron-8"></div>
         <div class="css-bg-particles">
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div><div class="css-particle"></div>
-            <div class="css-particle"></div><div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
+            <div class="css-particle"></div>
         </div>
     </div>
 
@@ -231,7 +331,8 @@
             <div class="section-content">
                 <p class="text-cyan-400/60 text-xs tracking-[0.3em] uppercase mb-2">FUTUREATOMS</p>
                 <h1 class="product-title" style="color: #00ffff;">Build Faster with AI</h1>
-                <p class="product-desc max-w-xl mx-auto">The operating system for the AI age. Design chips, automate workflows, and create with intelligent tools — all in one ecosystem.</p>
+                <p class="product-desc max-w-xl mx-auto">The operating system for the AI age. Design chips, automate
+                    workflows, and create with intelligent tools — all in one ecosystem.</p>
 
                 <!-- Social Proof Stats -->
                 <div class="flex flex-wrap justify-center gap-6 mt-6 text-sm">
@@ -287,10 +388,12 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">⭐ Flagship • For Chip Developers</p>
                 <h2 class="product-title" style="color: #D4AF37;">ChipOS</h2>
-                <p class="product-desc">Design and verify chips 10x faster. The complete AI operating system with 13 specialized apps, 14 AI models, and integrated RAG knowledge base. Used by teams at leading semiconductor companies.</p>
-                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37; background: rgba(212,175,55,0.15);">Start Building Free</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Design and verify chips 10x faster. The complete AI operating system with 13
+                    specialized apps, 14 AI models, and integrated RAG knowledge base. Used by teams at leading
+                    semiconductor companies.</p>
+                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37; background: rgba(212,175,55,0.15);">Start Building
+                    Free</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -299,10 +402,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Creators</p>
                 <h2 class="product-title" style="color: #B87333;">BevyBeats</h2>
-                <p class="product-desc">Create unique music in seconds. AI generates custom tracks for your videos, games, and content — no musical experience needed.</p>
-                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Start Creating</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Create unique music in seconds. AI generates custom tracks for your videos,
+                    games, and content — no musical experience needed.</p>
+                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Start
+                    Creating</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -311,10 +415,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Professionals</p>
                 <h2 class="product-title" style="color: #0077B5;">Zaphy</h2>
-                <p class="product-desc">10x your LinkedIn outreach. AI writes personalized messages, manages connections, and grows your network while you sleep.</p>
-                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Get the Extension</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">10x your LinkedIn outreach. AI writes personalized messages, manages
+                    connections, and grows your network while you sleep.</p>
+                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Get the
+                    Extension</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -323,10 +428,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Developers</p>
                 <h2 class="product-title" style="color: #69C95E;">Agentic Control</h2>
-                <p class="product-desc">Automate any workflow from the terminal. Let AI agents handle repetitive tasks, deployments, and complex multi-step operations.</p>
-                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Start Automating</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Automate any workflow from the terminal. Let AI agents handle repetitive tasks,
+                    deployments, and complex multi-step operations.</p>
+                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Start
+                    Automating</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -335,10 +441,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Hardware Engineers</p>
                 <h2 class="product-title" style="color: #C0C0C0;">SystemVerilogGPT</h2>
-                <p class="product-desc">Write RTL and UVM testbenches 10x faster. AI that understands hardware verification, timing constraints, and synthesis requirements.</p>
-                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Try Free</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Write RTL and UVM testbenches 10x faster. AI that understands hardware
+                    verification, timing constraints, and synthesis requirements.</p>
+                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Try
+                    Free</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -347,10 +454,10 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Wellbeing</p>
                 <h2 class="product-title" style="color: #FFA500;">Yuj</h2>
-                <p class="product-desc">Find balance in 15 minutes a day. AI-personalized yoga and meditation routines that adapt to your stress levels and schedule.</p>
+                <p class="product-desc">Find balance in 15 minutes a day. AI-personalized yoga and meditation routines
+                    that adapt to your stress levels and schedule.</p>
                 <a href="yuj.html" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Start Free</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -359,10 +466,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Wellbeing</p>
                 <h2 class="product-title" style="color: #A020F0;">Savitri</h2>
-                <p class="product-desc">Mental wellness support anytime you need it. Evidence-based CBT and DBT techniques in a compassionate AI companion — private and judgment-free.</p>
-                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Talk to Savitri</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Mental wellness support anytime you need it. Evidence-based CBT and DBT
+                    techniques in a compassionate AI companion — private and judgment-free.</p>
+                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Talk to
+                    Savitri</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -371,10 +479,11 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For AI/ML Engineers</p>
                 <h2 class="product-title" style="color: #4682B4;">AdaptiveVision</h2>
-                <p class="product-desc">Deploy computer vision in minutes, not months. Self-adapting object detection that improves accuracy over time — no retraining needed.</p>
-                <a href="adaptivision.html" class="cta-button" style="color: #4682B4; border-color: #4682B4;">See Demo</a>
-                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i
-                        class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+                <p class="product-desc">Deploy computer vision in minutes, not months. Self-adapting object detection
+                    that improves accuracy over time — no retraining needed.</p>
+                <a href="adaptivision.html" class="cta-button" style="color: #4682B4; border-color: #4682B4;">See
+                    Demo</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
@@ -405,8 +514,7 @@
         <header class="flex justify-between items-center w-full interactive">
             <button class="flex items-center gap-3 group cursor-pointer bg-transparent border-none p-0" onclick="resetCamera()" aria-label="Reset camera view">
                 <div class="w-10 h-10 flex items-center justify-center">
-                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon"
-                        class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
                 <div class="text-left">
                     <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
@@ -434,8 +542,7 @@
                         <a href="bevybeats.html">BevyBeats</a>
                         <a href="savitri.html">Savitri</a>
                         <div class="border-t border-cyan-500/30 my-1"></div>
-                        <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i
-                                class="fas fa-history mr-1"></i> Changelog</a>
+                        <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i> Changelog</a>
                     </div>
                 </div>
 
@@ -443,14 +550,12 @@
                 <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
                 <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
                 <a href="careers.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
-                <a href="contact.html"
-                    class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+                <a href="contact.html" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
             </nav>
 
             <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </div>
         </header>
@@ -458,41 +563,33 @@
         <!-- Interaction Hint Removed (replaced by scroll prompt) -->
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
             <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close mobile menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <nav
-                class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
                 <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
                 <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
                     <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
                     <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
-                    <a href="systemverilog.html"
-                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                    <a href="systemverilog.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
                     <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
                     <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
                         Control</a>
                     <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
-                    <a href="adaptivision.html"
-                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
-                    <a href="bevybeats.html"
-                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
-                    <a href="savitri.html"
-                        class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+                    <a href="adaptivision.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                    <a href="bevybeats.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                    <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
                 </div>
 
                 <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
                 <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
                 <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
                 <a href="careers.html" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
-                <a href="contact.html"
-                    class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+                <a href="contact.html" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
             </nav>
         </div>
 
@@ -528,29 +625,21 @@
     </div>
 
     <!-- Product Details Modal -->
-    <div id="product-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-lg interactive px-4"
-        onclick="if(event.target === this) closeModal()">
-        <div
-            class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border-l-4 border-cyan-500 relative transform transition-all shadow-2xl">
-            <button onclick="closeModal()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close product modal">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-lg interactive px-4" onclick="if(event.target === this) closeModal()">
+        <div class="glass-panel w-full max-w-lg p-6 md:p-8 rounded-2xl border-l-4 border-cyan-500 relative transform transition-all shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close product modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
             <div class="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-                <div class="text-5xl md:text-6xl pt-1 self-center md:self-start drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                    id="modal-emoji">⚛️</div>
+                <div class="text-5xl md:text-6xl pt-1 self-center md:self-start drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" id="modal-emoji">⚛️</div>
                 <div class="text-center md:text-left">
-                    <h2 id="modal-title"
-                        class="text-2xl md:text-3xl font-['Orbitron'] text-white mb-2 font-bold tracking-wide">Title
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-['Orbitron'] text-white mb-2 font-bold tracking-wide">Title
                     </h2>
                     <p id="modal-desc" class="text-white font-normal leading-relaxed text-sm md:text-base opacity-90">
                         Description</p>
-                    <button id="initiate-btn"
-                        class="mt-6 px-6 py-3 border border-cyan-500 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500 hover:text-white rounded font-['Rajdhani'] font-bold tracking-wider text-sm w-full md:w-auto transition-all shadow-[0_0_15px_rgba(0,255,255,0.1)]">
+                    <button id="initiate-btn" class="mt-6 px-6 py-3 border border-cyan-500 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500 hover:text-white rounded font-['Rajdhani'] font-bold tracking-wider text-sm w-full md:w-auto transition-all shadow-[0_0_15px_rgba(0,255,255,0.1)]">
                         EXPLORE PRODUCT
                     </button>
                 </div>
@@ -559,26 +648,19 @@
     </div>
 
     <!-- About Modal -->
-    <div id="about-modal"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-xl interactive px-4"
-        onclick="if(event.target === this) closeAboutModal()">
-        <div
-            class="glass-panel w-full max-w-2xl p-8 rounded-2xl border-t-2 border-b-2 border-cyan-500 relative transform transition-all shadow-2xl">
-            <button onclick="closeAboutModal()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close about modal">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    <div id="about-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-xl interactive px-4" onclick="if(event.target === this) closeAboutModal()">
+        <div class="glass-panel w-full max-w-2xl p-8 rounded-2xl border-t-2 border-b-2 border-cyan-500 relative transform transition-all shadow-2xl">
+            <button onclick="closeAboutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 transition-colors" aria-label="Close about modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
 
             <div class="text-center mb-8">
                 <div class="w-10 h-10 flex items-center justify-center mx-auto mb-4">
-                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon"
-                        class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
                 </div>
-                <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span
-                        class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">FUTUREATOMS</span></h2>
+                <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">FUTUREATOMS</span></h2>
                 <div class="h-0.5 w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-4">
                 </div>
             </div>
@@ -615,13 +697,11 @@
     <!-- AI Chatbox -->
     <div id="ai-chat-container" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
         <!-- Chat Window -->
-        <div id="chat-window"
-            class="glass-panel w-[90vw] md:w-[600px] h-[600px] rounded-2xl mb-4 flex flex-col shadow-2xl transform scale-90 opacity-0 origin-bottom-right transition-all duration-300 pointer-events-auto hidden">
+        <div id="chat-window" class="glass-panel w-[90vw] md:w-[600px] h-[600px] rounded-2xl mb-4 flex flex-col shadow-2xl transform scale-90 opacity-0 origin-bottom-right transition-all duration-300 pointer-events-auto hidden">
             <!-- Header -->
             <div class="flex items-center justify-between p-4 border-b border-cyan-500/20 bg-cyan-900/10 rounded-t-2xl">
                 <div class="flex items-center gap-3">
-                    <div
-                        class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_10px_rgba(0,255,255,0.3)]">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_10px_rgba(0,255,255,0.3)]">
                         <div class="atomos-face" style="gap: 4px;">
                             <div class="atomos-eye" style="width: 6px; height: 8px;"></div>
                             <div class="atomos-eye" style="width: 6px; height: 8px;"></div>
@@ -644,12 +724,10 @@
             <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
                 <!-- Welcome Message -->
                 <div class="flex gap-3">
-                    <div
-                        class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex-shrink-0 flex items-center justify-center mt-1">
                         <i class="fas fa-robot text-white text-xs"></i>
                     </div>
-                    <div
-                        class="bg-cyan-900/20 border border-cyan-500/20 rounded-2xl rounded-tl-none p-3 text-sm text-gray-200 shadow-[0_0_10px_rgba(0,255,255,0.05)]">
+                    <div class="bg-cyan-900/20 border border-cyan-500/20 rounded-2xl rounded-tl-none p-3 text-sm text-gray-200 shadow-[0_0_10px_rgba(0,255,255,0.05)]">
                         <p>Hello! I'm your quantum-powered assistant. Ask me anything about FutureAtoms products, or
                             tell me what you're looking for!</p>
                     </div>
@@ -659,21 +737,15 @@
             <!-- Input Area -->
             <div class="p-4 border-t border-cyan-500/20 bg-black/20 rounded-b-2xl">
                 <div class="relative">
-                    <input type="text" id="chat-input" placeholder="Ask about ChipOS, Savitri..."
-                        class="w-full bg-cyan-900/10 border border-cyan-500/30 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-cyan-500/30 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.1)] transition-all font-['Rajdhani']"
-                        aria-label="Chat message input">
-                    <button id="send-btn"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white flex items-center justify-center transition-all"
-                        aria-label="Send message">
+                    <input type="text" id="chat-input" placeholder="Ask about ChipOS, Savitri..." class="w-full bg-cyan-900/10 border border-cyan-500/30 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-cyan-500/30 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.1)] transition-all font-['Rajdhani']" aria-label="Chat message input">
+                    <button id="send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-white flex items-center justify-center transition-all" aria-label="Send message">
                         <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="flex justify-center mt-2 gap-2">
-                    <button
-                        class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">Install
+                    <button class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">Install
                         ChipOS</button>
-                    <button
-                        class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">What
+                    <button class="quick-action text-[10px] px-2 py-1 rounded border border-cyan-500/20 text-cyan-400/60 hover:text-cyan-300 hover:border-cyan-400/50 transition-all">What
                         is Savitri?</button>
                 </div>
             </div>
@@ -689,11 +761,8 @@
         </div>
 
         <!-- Toggle Button (Shows after 30 seconds) -->
-        <button id="chat-toggle-btn"
-            class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center text-white text-xl hover:scale-110 transition-transform duration-300 pointer-events-auto group relative overflow-hidden opacity-0 scale-0 transition-all duration-500"
-            aria-label="Open chat assistant">
-            <div
-                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full">
+        <button id="chat-toggle-btn" class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_20px_rgba(0,255,255,0.4)] flex items-center justify-center text-white text-xl hover:scale-110 transition-transform duration-300 pointer-events-auto group relative overflow-hidden opacity-0 scale-0 transition-all duration-500" aria-label="Open chat assistant">
+            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full">
             </div>
             <div class="atomos-face" aria-hidden="true">
                 <div class="atomos-eye"></div>
@@ -788,12 +857,95 @@
                 fpsMonitor.pause();
                 console.log('Animation paused (tab hidden)');
             } else {
-                isAnimating = true;
-                fpsMonitor.resume();
-                animate();
-                console.log('Animation resumed (tab visible)');
+                // Only resume if NOT idle
+                if (!idleController.isIdle) {
+                    isAnimating = true;
+                    fpsMonitor.resume();
+                    animate();
+                    console.log('Animation resumed (tab visible)');
+                }
             }
         });
+
+        // --- IDLE TIMER (Performance Optimization) ---
+        // Pauses the animation loop after 10 seconds of inactivity to save 100% GPU/CPU
+        class IdleController {
+            constructor(timeoutMs = 10000) {
+                this.timeoutMs = timeoutMs;
+                this.isIdle = false;
+                this.timerId = null;
+
+                // Events that count as interaction
+                this.events = ['mousemove', 'mousedown', 'scroll', 'touchstart', 'keydown', 'click', 'wheel'];
+
+                // Throttle resetTimer to run at most once per second (1000ms)
+                this.throttledReset = this.throttle(this.resetTimer, 1000);
+
+                this.init();
+            }
+
+            init() {
+                // Attach listeners using the throttled version
+                this.events.forEach(event => {
+                    window.addEventListener(event, this.throttledReset, { passive: true });
+                });
+
+                // Start initial timer
+                this.resetTimer();
+                console.log('Idle Controller initialized');
+            }
+
+            // Throttle utility to prevent excessive function calls during scroll
+            throttle(func, limit) {
+                let inThrottle;
+                return function () {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                }
+            }
+
+            resetTimer() {
+                // Clear pending idle trigger
+                if (this.timerId) clearTimeout(this.timerId);
+
+                // If we were idle, resume!
+                if (this.isIdle) {
+                    this.isIdle = false;
+                    console.log('User active: Resuming animation');
+
+                    // Resume animation loop if it was stopped
+                    if (!isAnimating && !document.hidden) {
+                        isAnimating = true;
+                        fpsMonitor.resume();
+                        animate();
+                    }
+                }
+
+                // Set new timer
+                this.timerId = setTimeout(this.goIdle, this.timeoutMs);
+            }
+
+            goIdle() {
+                this.isIdle = true;
+                console.log('User idle: Pausing animation to save resources');
+
+                // Stop animation loop
+                isAnimating = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                fpsMonitor.pause();
+            }
+        }
+
+        // Initialize Idle Controller
+        const idleController = new IdleController(10000); // 10 seconds
 
         // Quality degradation function
         const tierOrder = ['low', 'medium', 'high', 'ultra'];
@@ -823,43 +975,52 @@
             console.log(`Quality set to: ${tier}`);
         }
 
-        // --- Products Data ---
+        // --- Products Data with Spatial Coordinates ---
         const products = [
             {
                 id: 'intro', name: 'FUTUREATOMS', icon: '⚛️', color: 0x00ffff, desc: 'Build Faster with AI — 8+ products, 50M+ automated.',
-                orbitType: 's', scale: 0, speedOffset: 1.0, phase: 0, url: '#'
+                orbitType: 's', scale: 0, speedOffset: 1.0, phase: 0, url: '#',
+                view: { rx: 0, ry: 0, rz: 0, dist: 32 }
             },
             {
                 id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: '⭐ Design chips 10x faster — AI OS with 14 models.',
-                orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html'
+                orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html',
+                view: { rx: 0.5, ry: 0.5, rz: 0, dist: 28 } // Tilted closer
             },
             {
                 id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB87333, desc: 'Create music in seconds — AI-generated tracks.',
-                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html'
+                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html',
+                view: { rx: -0.5, ry: 1.2, rz: 0.2, dist: 40 } // Wide angle
             },
             {
                 id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0x0077B5, desc: '10x your LinkedIn outreach — AI networking.',
-                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html'
+                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html',
+                view: { rx: 0.2, ry: -0.8, rz: 0.5, dist: 30 }
             },
             {
                 id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0x69C95E, desc: 'Automate any workflow — AI agents from CLI.',
-                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html'
+                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html',
+                view: { rx: 1.0, ry: 0.2, rz: -0.5, dist: 45 }
             },
             {
                 id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Write RTL 10x faster — AI for hardware.',
-                orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html'
+                orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html',
+                view: { rx: -0.3, ry: 2.0, rz: 0, dist: 35 }
             },
             {
                 id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xFFA500, desc: 'Find balance in 15min — AI-personalized wellness.',
-                orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html'
+                orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html',
+                view: { rx: 0, ry: 0, rz: 1.5, dist: 50 } // Vertical alignment
             },
             {
                 id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xA020F0, desc: 'Mental wellness anytime — compassionate AI.',
-                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html'
+                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html',
+                view: { rx: 0.8, ry: 0.8, rz: 0.8, dist: 42 }
             },
             {
                 id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Deploy vision in minutes — self-improving AI.',
-                orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html'
+                orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html',
+                view: { rx: -1.0, ry: -1.0, rz: 0, dist: 30 }
             }
         ];
         // --- Scene Setup ---
@@ -911,12 +1072,16 @@
         controls.dampingFactor = 0.05;
         controls.enablePan = false;
         controls.minDistance = 10;
-        controls.maxDistance = 90;
+        controls.maxDistance = 120; // Increased max distance for "another dimension"
         controls.autoRotate = true;
         controls.autoRotateSpeed = 0.5;
         // Move center of attention down, so the Atom (at 0,0,0) appears higher
         controls.target.set(0, -6, 0);
         controls.saveState();
+
+        // --- ATOM GROUP WRAPPER (For Global Rotation Tests) ---
+        const atomGroup = new THREE.Group();
+        scene.add(atomGroup);
 
         // --- Helper: Create Soft Smoke Texture ---
         function createSoftParticleTexture() {
@@ -963,7 +1128,7 @@
 
         // --- GRAND NUCLEUS SETUP ---
         const nucleusGroup = new THREE.Group();
-        scene.add(nucleusGroup);
+        atomGroup.add(nucleusGroup); // Add to atomGroup instead of scene
 
         // 1. Central Mass (Protons/Neutrons) - Using InstancedMesh for performance
         const nucMat = new THREE.MeshStandardMaterial({
@@ -1037,7 +1202,7 @@
         });
         const grandGlow = new THREE.Sprite(featheredGlowMat);
         grandGlow.scale.set(9, 9, 1);
-        scene.add(grandGlow);
+        atomGroup.add(grandGlow); // Add to atomGroup
 
 
         // --- Background Swarm (Quality-adaptive particle count) ---
@@ -1066,7 +1231,7 @@
 
 
         // --- PARTICLE POOL for smoke trails (replaces per-frame allocation) ---
-        const particlePool = new ParticlePool(THREE, scene, smokeTexture, config.trailMaxPerElectron * 8);
+        const particlePool = new ParticlePool(THREE, atomGroup, smokeTexture, config.trailMaxPerElectron * 8);
 
         // --- GENERIC ELECTRONS (Replaces Products Loops) ---
         const electrons = [];
@@ -1098,7 +1263,7 @@
             sprite.scale.set(3, 3, 1);
             mesh.add(sprite);
 
-            scene.add(mesh);
+            atomGroup.add(mesh); // Add to atomGroup
 
             // Assign orbit params based on product data
             electrons.push({
@@ -1122,12 +1287,28 @@
         let currentProduct = products[0]; // Start with Intro
         let targetColor = new THREE.Color(products[0].color);
 
+        // Spatial Transition Targets
+        let targetView = {
+            rx: 0, ry: 0, rz: 0,
+            dist: 32 // Default base distance
+        };
+        // Current actual values (for lerping)
+        let currentView = { rx: 0, ry: 0, rz: 0, dist: 32 };
+
         function transitionAtom(productId) {
             const product = products.find(p => p.id === productId);
             if (!product || product === currentProduct) return;
 
             currentProduct = product;
             targetColor.setHex(product.color);
+
+            // Update spatial targets
+            if (product.view) {
+                targetView.rx = product.view.rx || 0;
+                targetView.ry = product.view.ry || 0;
+                targetView.rz = product.view.rz || 0;
+                targetView.dist = product.view.dist || 32;
+            }
 
             // Allow immediate text/UI updates here if needed, but HTML intersection handles that.
             // This function focuses on 3D visuals.
@@ -1230,6 +1411,35 @@
             cageMat.color.setHex(config.currentHexColor);
             featheredGlowMat.color.setHex(config.currentHexColor);
             pointLight2.color.setHex(config.currentHexColor); // Background ambience
+
+            // --- SPATIAL TRANSITIONS (The "Another Dimension" Effect) ---
+            const viewLerp = delta * 1.5; // Smooth transition speed
+
+            // 1. Lerp Atom Rotation
+            currentView.rx += (targetView.rx - currentView.rx) * viewLerp;
+            currentView.ry += (targetView.ry - currentView.ry) * viewLerp;
+            currentView.rz += (targetView.rz - currentView.rz) * viewLerp;
+
+            atomGroup.rotation.x = currentView.rx;
+            atomGroup.rotation.y = currentView.ry;
+            atomGroup.rotation.z = currentView.rz;
+
+            // 2. Lerp Camera Distance (Zoom)
+            currentView.dist += (targetView.dist - currentView.dist) * viewLerp;
+
+            // Apply zoom by moving camera along its vector relative to target
+            // We'll trust autoRotate to handle azimuth, we just handle distance
+            const direction = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
+            // Clamp min distance to avoid clipping
+            const safeDist = Math.max(10, currentView.dist);
+
+            // Softly adjust camera position to match target distance
+            const currentDist = camera.position.distanceTo(controls.target);
+            if (Math.abs(currentDist - safeDist) > 0.1) {
+                const newPos = controls.target.clone().add(direction.multiplyScalar(safeDist));
+                // We lerp the camera position vector itself for smoothness
+                camera.position.lerp(newPos, delta * 2.0);
+            }
 
             const nEnergy = config.nucleusEnergy;
 
@@ -1602,7 +1812,7 @@
                     option.classList.add('active');
                     option.querySelector('input').checked = true;
                     // Save preference
-                    try { localStorage.setItem('futureAtoms_quality', tier); } catch(e) {}
+                    try { localStorage.setItem('futureAtoms_quality', tier); } catch (e) { }
                 });
             });
 
@@ -1617,15 +1827,34 @@
         setTimeout(createQualityUI, 1000);
 
         // Load saved quality preference
+        // Auto-detect or load saved quality
         try {
+            let targetTier = 'medium'; // Default fallback
+
+            // 1. Try saved preference
             const savedTier = localStorage.getItem('futureAtoms_quality');
-            if (savedTier && tierOrder.includes(savedTier)) {
-                currentTier = savedTier;
-                applyQualityPreset(savedTier);
+            if (savedTier && ['low', 'medium', 'high', 'ultra'].includes(savedTier)) {
+                targetTier = savedTier;
+                console.log('Using saved quality:', targetTier);
+            } else if (typeof GPUDetector !== 'undefined') {
+                // 2. Auto-detect if no save
+                const detector = new GPUDetector();
+                const result = detector.detect();
+                if (result.tier && ['low', 'medium', 'high', 'ultra'].includes(result.tier)) {
+                    targetTier = result.tier;
+                    console.log('Auto-detected GPU Tier:', targetTier, result.info);
+                }
             }
-        } catch(e) {}
+
+            currentTier = targetTier;
+            applyQualityPreset(targetTier);
+
+        } catch (e) {
+            console.error('Quality setup failed:', e);
+            applyQualityPreset('medium');
+        }
 
     </script>
-</body>
 
-</html>
+
+</body></html>

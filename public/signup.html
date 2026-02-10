@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://futureatoms.com/signup.html">
+    <meta name="description" content="Sign up for ChipOS - Create your organization and start building AI-powered chip designs.">
+    <meta property="og:title" content="Sign Up | ChipOS by FutureAtoms">
+    <meta property="og:description" content="Create your organization and start building AI-powered chip designs with ChipOS.">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:url" content="https://futureatoms.com/signup.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sign Up | ChipOS by FutureAtoms">
+    <title>Sign Up | ChipOS by FutureAtoms</title>
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/main.css?v=9999">
+    <style>
+        .signup-card {
+            background: rgba(10, 10, 20, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 1.5rem;
+        }
+        .input-field {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            color: #e0f7ff;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+            outline: none;
+        }
+        .input-field::placeholder {
+            color: rgba(224, 247, 255, 0.3);
+        }
+        .plan-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .plan-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .plan-card.selected {
+            border-color: rgba(0, 255, 255, 0.6);
+            background: rgba(0, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #00ffff 0%, #0088ff 100%);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center py-12 px-4">
+    <!-- Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_30%,rgba(0,255,255,0.08),transparent_60%)]"></div>
+        <div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_80%,rgba(138,43,226,0.05),transparent_50%)]"></div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm items-center justify-center hidden">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-cyan-400 font-['Orbitron'] text-sm tracking-wider">Creating your account...</p>
+        </div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-xl">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-3 mb-6">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms" class="w-12 h-12 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                <span class="font-['Orbitron'] text-2xl font-bold text-white">CHIP<span class="text-cyan-400">OS</span></span>
+            </a>
+            <h1 class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white mb-2">
+                CREATE YOUR <span class="text-cyan-400">ORGANIZATION</span>
+            </h1>
+            <p class="text-gray-400 font-['Rajdhani'] text-lg">Start building AI-powered chip designs</p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="signup-card p-8">
+            <form id="signup-form" class="space-y-6">
+                <!-- Organization Name -->
+                <div>
+                    <label class="block text-sm font-['Orbitron'] text-gray-400 mb-2">
+                        <i class="fas fa-building mr-2 text-cyan-400/50"></i>ORGANIZATION NAME
+                    </label>
+                    <input type="text" id="org-name" class="w-full p-4 rounded-xl input-field" placeholder="Acme Corp" required>
+                    <p id="slug-preview" class="text-xs text-gray-500 mt-1 font-['Rajdhani']"></p>
+                </div>
+
+                <!-- Full Name -->
+                <div>
+                    <label class="block text-sm font-['Orbitron'] text-gray-400 mb-2">
+                        <i class="fas fa-user mr-2 text-cyan-400/50"></i>YOUR FULL NAME
+                    </label>
+                    <input type="text" id="full-name" class="w-full p-4 rounded-xl input-field" placeholder="Jane Doe" required>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-['Orbitron'] text-gray-400 mb-2">
+                        <i class="fas fa-envelope mr-2 text-cyan-400/50"></i>WORK EMAIL
+                    </label>
+                    <input type="email" id="email" class="w-full p-4 rounded-xl input-field" placeholder="admin@acme.com" required>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="block text-sm font-['Orbitron'] text-gray-400 mb-2">
+                        <i class="fas fa-lock mr-2 text-cyan-400/50"></i>PASSWORD
+                    </label>
+                    <input type="password" id="password" class="w-full p-4 rounded-xl input-field" placeholder="Min 8 characters" required minlength="8">
+                </div>
+
+                <!-- Plan Selection -->
+                <div>
+                    <label class="block text-sm font-['Orbitron'] text-gray-400 mb-3">
+                        <i class="fas fa-rocket mr-2 text-cyan-400/50"></i>SELECT PLAN
+                    </label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="plan-card p-4 text-center selected" data-plan="free">
+                            <div class="font-['Orbitron'] text-white text-sm mb-1">FREE</div>
+                            <div class="text-cyan-400 font-['Rajdhani'] text-xs">1 user</div>
+                        </div>
+                        <div class="plan-card p-4 text-center" data-plan="pro">
+                            <div class="font-['Orbitron'] text-white text-sm mb-1">PRO</div>
+                            <div class="text-cyan-400 font-['Rajdhani'] text-xs">€18/seat/mo</div>
+                        </div>
+                        <div class="plan-card p-4 text-center" data-plan="enterprise">
+                            <div class="font-['Orbitron'] text-amber-400 text-sm mb-1">ENTERPRISE</div>
+                            <div class="text-amber-400/70 font-['Rajdhani'] text-xs">€59/seat/mo</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selected-plan" value="free">
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message p-4 rounded-xl hidden">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="error-text"></span>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl submit-btn text-lg">
+                    CREATE ACCOUNT & ORGANIZATION
+                </button>
+
+                <p class="text-center text-gray-500 text-sm font-['Rajdhani']">
+                    Already have an account?
+                    <a href="https://chipos.futureatoms.com" class="text-cyan-400 hover:text-cyan-300">Sign in</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="text-center mt-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-['Rajdhani']">
+                <i class="fas fa-shield-alt text-cyan-400/50"></i>
+                Enterprise-grade security with Supabase Auth
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'https://wpgrhvdwdvmknhjzpkwz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ3JodmR3ZHZta25oanpwa3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY2ODg2MjAsImV4cCI6MjA1MjI2NDYyMH0.segfUE_LbyWJYcKvYne9W4u1E1lLpJKbF5VFJN7Lels';
+        const API_URL = 'https://api.futureatoms.com';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Generate slug from org name
+        function generateSlug(name) {
+            return name.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+
+        // Update slug preview
+        document.getElementById('org-name').addEventListener('input', (e) => {
+            const slug = generateSlug(e.target.value);
+            const preview = document.getElementById('slug-preview');
+            if (slug) {
+                preview.textContent = `Slug: ${slug}`;
+            } else {
+                preview.textContent = '';
+            }
+        });
+
+        // Plan selection
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                document.getElementById('selected-plan').value = card.dataset.plan;
+            });
+        });
+
+        // Show error
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            document.getElementById('error-text').textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+        // Hide error
+        function hideError() {
+            document.getElementById('error-message').classList.add('hidden');
+        }
+
+        // Show/hide loading
+        function showLoading(show) {
+            const overlay = document.getElementById('loading-overlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+            } else {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+            }
+        }
+
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideError();
+
+            const orgName = document.getElementById('org-name').value.trim();
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const plan = document.getElementById('selected-plan').value;
+            const slug = generateSlug(orgName);
+
+            // Validation
+            if (!orgName || !fullName || !email || !password) {
+                showError('All fields are required');
+                return;
+            }
+            if (password.length < 8) {
+                showError('Password must be at least 8 characters');
+                return;
+            }
+            if (!slug) {
+                showError('Please enter a valid organization name');
+                return;
+            }
+
+            showLoading(true);
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+
+            try {
+                // Step 1: Create Supabase account
+                const { data: authData, error: authError } = await supabaseClient.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: fullName
+                        }
+                    }
+                });
+
+                if (authError) throw authError;
+
+                // Step 2: Create organization via API
+                const { data: { session } } = await supabaseClient.auth.getSession();
+
+                if (session) {
+                    const orgResponse = await fetch(`${API_URL}/api/organizations`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${session.access_token}`
+                        },
+                        body: JSON.stringify({
+                            name: orgName,
+                            slug: slug
+                        })
+                    });
+
+                    if (!orgResponse.ok) {
+                        const errData = await orgResponse.json();
+                        throw new Error(errData.detail || 'Failed to create organization');
+                    }
+                }
+
+                // Success - redirect based on plan
+                if (plan === 'free') {
+                    window.location.href = 'billing-dashboard.html?welcome=true';
+                } else {
+                    // Start checkout for paid plan
+                    window.location.href = `chipos-pricing.html?checkout=${plan}&signup=true`;
+                }
+
+            } catch (err) {
+                console.error('Signup error:', err);
+                showError(err.message || 'Signup failed. Please try again.');
+                submitBtn.disabled = false;
+            } finally {
+                showLoading(false);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -18,6 +18,7 @@
       "ignore": [
         "firebase.json",
         "**/.*",
+        "!.well-known/**",
         "**/node_modules/**"
       ],
       "rewrites": [
@@ -36,10 +37,6 @@
         {
           "source": "/app/**",
           "destination": "/app/index.html"
-        },
-        {
-          "source": "**",
-          "destination": "/index.html"
         }
       ],
       "headers": [
@@ -80,6 +77,64 @@
             {
               "key": "Cache-Control",
               "value": "no-cache"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/admin/**",
+          "headers": [
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ]
+        },
+        {
+          "source": "/robots.txt",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "source": "/sitemap.xml",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/xml; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "source": "/llm.txt",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "source": "/llms-full.txt",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            }
+          ]
+        },
+        {
+          "source": "/chipos-settings.html",
+          "headers": [
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
             }
           ]
         }

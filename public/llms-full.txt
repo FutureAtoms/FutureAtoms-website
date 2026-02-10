@@ -1,0 +1,524 @@
+# FutureAtoms - Complete Documentation for LLMs
+
+> FutureAtoms is a technology company building the next generation of AI tools and platforms. Founded in 2024 by Abhilash Chadhar, FutureAtoms develops products for semiconductor engineering, music creation, mental wellness, professional networking, computer vision, and multi-agent orchestration.
+
+Website: https://futureatoms.com
+Founded: 2024
+Founder: Abhilash Chadhar
+Location: India
+GitHub: https://github.com/FutureAtoms
+
+---
+
+## Table of Contents
+
+1. Company Overview
+2. Product Catalog (8 Products)
+3. ChipOS Deep Dive
+4. BevyBeats Deep Dive
+5. Savitri Deep Dive
+6. Zaphy Deep Dive
+7. Agentic Control Deep Dive
+8. Yuj Deep Dive
+9. AdaptiveVision Deep Dive
+10. SystemVerilogGPT Deep Dive
+11. Technical Architecture
+12. MCP Integration Guide
+13. API & Developer Resources
+14. Pricing & Plans
+15. Comparisons
+16. FAQ (Comprehensive)
+
+---
+
+## 1. Company Overview
+
+FutureAtoms is a visionary technology company that believes AI should be accessible, practical, and transformative. The company operates at the intersection of:
+
+- **Developer Tooling**: Making AI useful for engineers building silicon chips and software
+- **Creative AI**: Empowering musicians and content creators with generative tools
+- **Wellness Tech**: Using AI to support mental and physical health
+- **Professional Productivity**: Automating tedious professional networking tasks
+
+### Core Values
+- Open technology (MCP protocol support, API-first design)
+- User privacy (local-first processing where possible)
+- Evidence-based approaches (particularly for wellness products)
+- Accessibility (free tiers for all products)
+
+### Company Metrics (2025)
+- 8 active products
+- Multiple platforms (macOS, Linux, iOS, Android, Chrome, Web)
+- Open-source contributions on GitHub
+
+---
+
+## 2. Product Catalog
+
+| Product | Category | Platforms | Pricing |
+|---------|----------|-----------|---------|
+| ChipOS | Developer Tools | macOS, Linux | Free / $29 Pro / Enterprise |
+| BevyBeats | Creative AI | Web, iOS, Android | Freemium |
+| Savitri | Wellness | iOS, Android | Free / Premium |
+| Zaphy | Productivity | Chrome Extension | Free / Pro |
+| Agentic Control | Developer Tools | macOS, Linux, Windows | Open Source |
+| Yuj | Wellness | iOS, Android | Free / Premium |
+| AdaptiveVision | Computer Vision | Linux, Windows | SDK License |
+| SystemVerilogGPT | Developer Tools | Web | Free / API |
+
+---
+
+## 3. ChipOS - AI Operating System for Chip Development
+
+### Overview
+ChipOS is a dedicated desktop application designed as an "AI Operating System for Hardware Design." Think of it as macOS for chip teams - a complete environment integrating code editing, knowledge management, and AI assistance for semiconductor engineers.
+
+### Key Features
+
+#### Advanced RAG Engine
+- Semantic search across hardware documentation
+- Understands engineering intent, not just keywords
+- Indexes PDFs, websites, GitHub repos, and code
+- Vector embeddings for accurate similarity matching
+- Supports multiple embedding models
+
+#### Auto-Code Extraction
+- Automatically identifies code snippets in documentation
+- Extracts SystemVerilog, Verilog, VHDL, Python, TCL
+- Builds searchable library of examples
+- Tags by language, purpose, and source
+- Enables "search by example" workflows
+
+#### MCP Server Integration
+- Exposes knowledge base to external AI assistants
+- Compatible with Claude, Cursor, Windsurf, VS Code
+- Tools: perform_rag_query, search_code_examples, manage_tasks
+- Acts as a central brain for the hardware team
+- Supports the Model Context Protocol (MCP) standard
+
+#### Knowledge Base Management
+- Web crawler for documentation sites
+- PDF indexer with table/figure extraction
+- GitHub repository ingestion
+- Automatic categorization and tagging
+- Version tracking for documentation updates
+
+#### Task Management
+- Kanban-style board (todo, doing, review, done)
+- AI-assisted task assignment
+- Feature grouping and labeling
+- Integration with knowledge base context
+- Source and code example linking per task
+
+### Architecture
+```
+┌─────────────────────────┐
+│   ChipOS Desktop App    │ ← Electron, macOS-like UX
+│   (Editor + UI)         │
+└──────────┬──────────────┘
+           │
+┌──────────▼──────────────┐
+│   chipos-acf Backend    │ ← Python, FastAPI
+│   (RAG + Tasks + MCP)   │
+└──────────┬──────────────┘
+           │
+┌──────────▼──────────────┐
+│   Supabase Database     │ ← PostgreSQL + pgvector
+│   (Vectors + Tasks)     │
+└─────────────────────────┘
+```
+
+### Pricing
+- **Free**: 1 knowledge source, basic RAG, no MCP
+- **Pro ($29/month)**: Unlimited sources, MCP server, priority support
+- **Enterprise**: Custom deployment, SSO, dedicated support
+
+### System Requirements
+- macOS 12+ (Apple Silicon or Intel) or Linux (Ubuntu 20.04+)
+- 8GB RAM minimum, 16GB recommended
+- 2GB disk space for application
+- Internet connection for cloud features (local mode available)
+
+### Download
+- macOS: https://futureatoms.com/chipos.html (DMG installer)
+- Linux: .deb package available on releases page
+
+---
+
+## 4. BevyBeats - AI Music Generation Platform
+
+### Overview
+BevyBeats is an AI-powered music generation and streaming platform that enables anyone to create professional-quality music using artificial intelligence. From text descriptions to full multi-track compositions.
+
+### Key Features
+- **Text-to-Music**: Describe your desired track in natural language
+- **Style Transfer**: Apply the style of one genre/artist to another composition
+- **Multi-Track Composition**: Generate individual instrument tracks
+- **Real-Time Collaboration**: Work with others on compositions simultaneously
+- **Streaming Library**: Access and share AI-generated music
+- **Export Options**: WAV, MP3, MIDI, stems
+
+### Use Cases
+- Content creators needing royalty-free background music
+- Musicians seeking inspiration or demo tracks
+- Game developers creating adaptive soundtracks
+- Podcast producers generating intros/outros
+- Film/video creators needing custom scores
+
+### Technical Details
+- Custom transformer-based music generation models
+- Trained on diverse, licensed music datasets
+- Supports 120+ musical genres
+- Up to 10-minute track generation
+- 44.1kHz, 16-bit output quality
+
+---
+
+## 5. Savitri - AI Therapy & Mental Wellness
+
+### Overview
+Savitri is an AI therapy companion that provides evidence-based therapeutic support through conversational AI. Named after the legendary figure from Indian mythology who conquered death through wisdom, Savitri aims to help users overcome mental health challenges.
+
+### Therapeutic Approaches
+- **CBT (Cognitive Behavioral Therapy)**: Identifies and challenges negative thought patterns
+- **DBT (Dialectical Behavior Therapy)**: Teaches emotional regulation and distress tolerance
+- **ACT (Acceptance and Commitment Therapy)**: Builds psychological flexibility
+
+### Features
+- Daily mood tracking and journaling
+- Guided therapeutic sessions (15-45 minutes)
+- Crisis support resources and grounding exercises
+- Sleep hygiene tools and wind-down routines
+- Progress tracking with insights and patterns
+- Meditation and breathing exercises
+- Customizable notification reminders
+
+### Important Disclaimer
+Savitri is a wellness companion, not a medical device. It does not diagnose conditions, prescribe treatments, or replace professional mental health care. Users experiencing crisis should contact emergency services or crisis hotlines.
+
+### Privacy
+- End-to-end encryption for all conversations
+- No data sold to third parties
+- Users can export and delete all data
+- HIPAA-informed security practices
+
+---
+
+## 6. Zaphy - LinkedIn Automation
+
+### Overview
+Zaphy is a Chrome extension that automates repetitive LinkedIn tasks while maintaining authenticity and compliance. It helps professionals expand their network efficiently.
+
+### Features
+- **Smart Connection Requests**: Personalized messages based on profile analysis
+- **Automated Sequences**: Multi-step outreach campaigns
+- **Profile Viewing**: Strategic visibility campaigns
+- **InMail Automation**: Template-based messaging with personalization
+- **Analytics Dashboard**: Connection rates, response tracking, campaign performance
+- **Safety Limits**: Respects LinkedIn's usage limits to protect accounts
+
+### Use Cases
+- Sales professionals building prospect lists
+- Recruiters sourcing candidates
+- Entrepreneurs building business networks
+- Job seekers expanding connections
+- Thought leaders growing audiences
+
+### Compliance
+- Respects LinkedIn's Terms of Service rate limits
+- Human-like activity patterns
+- Built-in daily limits and cool-down periods
+- No data scraping or storage of others' information
+
+---
+
+## 7. Agentic Control - Multi-Agent Orchestration
+
+### Overview
+Agentic Control is a CLI tool for orchestrating complex multi-agent AI workflows. It enables developers to spawn, coordinate, and manage multiple AI agents working together on tasks.
+
+### Features
+- **Agent Spawning**: Create specialized agents for specific tasks
+- **Task Orchestration**: Distribute work across agents with dependency management
+- **Workflow Automation**: Define repeatable multi-step processes
+- **Swarm Intelligence**: Agents collaborate and share context
+- **MCP Integration**: Agents can access external tools via MCP protocol
+- **Monitoring**: Real-time visibility into agent activity and progress
+
+### Commands
+```bash
+agentic spawn --type researcher --task "analyze codebase"
+agentic orchestrate --workflow deploy-pipeline.yaml
+agentic swarm --agents 5 --goal "comprehensive code review"
+agentic monitor --real-time
+```
+
+### Use Cases
+- Automated code review pipelines
+- Documentation generation from codebase
+- Multi-stage testing workflows
+- Research and analysis tasks
+- DevOps automation
+
+---
+
+## 8. Yuj - Yoga & Fitness App
+
+### Overview
+Yuj (Sanskrit for "union") is a holistic yoga and fitness application that combines ancient yogic wisdom with modern exercise science. It provides personalized routines adapted to each user's goals, flexibility level, and schedule.
+
+### Features
+- **Personalized Sequences**: AI-generated yoga flows based on goals
+- **Workout Plans**: Strength, flexibility, balance, and cardio routines
+- **Progress Tracking**: Flexibility metrics, consistency streaks, strength gains
+- **Guided Sessions**: Video and audio instruction
+- **Meditation**: Guided and timer-based meditation sessions
+- **Breathing Exercises**: Pranayama techniques with visual guidance
+
+### Yoga Styles Supported
+- Hatha, Vinyasa, Ashtanga, Yin, Restorative, Power, Kundalini
+
+---
+
+## 9. AdaptiveVision - Computer Vision
+
+### Overview
+AdaptiveVision provides real-time adaptive object detection algorithms optimized for production deployment. The system adapts its detection parameters based on environmental conditions.
+
+### Features
+- **Multi-Object Tracking**: Track hundreds of objects simultaneously
+- **Real-Time Inference**: <20ms latency on standard hardware
+- **Edge Deployment**: Optimized for NVIDIA Jetson, Intel NCS, Raspberry Pi
+- **Custom Model Training**: Fine-tune on your specific objects/scenes
+- **Adaptive Parameters**: Auto-adjusts confidence thresholds based on scene complexity
+- **SDK**: Python and C++ APIs for integration
+
+### Supported Frameworks
+- PyTorch, TensorFlow, ONNX, TensorRT
+- Export to mobile (CoreML, TFLite)
+
+---
+
+## 10. SystemVerilogGPT - Hardware AI Assistant
+
+### Overview
+SystemVerilogGPT is a specialized language model fine-tuned for hardware description languages, verification methodologies, and chip design workflows.
+
+### Capabilities
+- SystemVerilog/Verilog code generation
+- UVM testbench creation
+- Assertion writing (SVA)
+- FSM design and optimization
+- CDC (Clock Domain Crossing) analysis
+- RTL-to-gate optimization suggestions
+- Timing constraint generation
+- Design specification to RTL conversion
+
+### Supported Languages & Standards
+- SystemVerilog IEEE 1800-2017
+- Verilog IEEE 1364-2005
+- VHDL IEEE 1076-2008
+- UVM 1.2
+- PSL (Property Specification Language)
+
+---
+
+## 11. Technical Architecture
+
+### Website
+- Static multi-page site hosted on Firebase Hosting
+- Three.js 3D visualizations unique to each page
+- Tailwind CSS for styling
+- GSAP ScrollTrigger for animations
+- No build step required (pure HTML/CSS/JS)
+
+### Design System: "Quantum Theme"
+- Dark background (#0a0a0f)
+- Glassmorphism (backdrop-filter blur)
+- Metallic accents per product (Rose Gold, Platinum, etc.)
+- Custom cursor glow effects
+- 3D atomic structure on homepage
+
+### Backend Services
+- Firebase Hosting (static content)
+- Firebase Functions (API endpoints: /api/chat, /api/report-bug, /api/report-feature)
+- Supabase (database for ChipOS)
+- Express.js server capabilities
+
+---
+
+## 12. MCP Integration Guide
+
+### What is MCP?
+Model Context Protocol (MCP) is a standard for connecting AI assistants to external data sources and tools. ChipOS implements an MCP server that exposes its knowledge base to AI coding assistants.
+
+### ChipOS MCP Tools
+```
+perform_rag_query(query, source_id, match_count)
+  → Searches knowledge base with semantic understanding
+
+search_code_examples(query, source_id, match_count)
+  → Finds relevant code snippets from indexed documentation
+
+create_task(project_id, title, description, assignee)
+  → Creates tasks in the Kanban board
+
+update_task(task_id, status, description)
+  → Updates task status and details
+
+list_tasks(filter_by, filter_value)
+  → Lists tasks with filtering options
+```
+
+### Connecting to ChipOS MCP
+1. Install ChipOS desktop app
+2. Enable MCP server in settings
+3. Configure your AI assistant with the MCP endpoint
+4. Start querying your hardware knowledge base
+
+### Compatible Assistants
+- Claude (via Claude Code or API)
+- Cursor IDE
+- Windsurf
+- VS Code with MCP extensions
+- Any MCP-compatible tool
+
+---
+
+## 13. API & Developer Resources
+
+### Firebase Functions API
+- POST /api/chat - AI chat endpoint
+- POST /api/report-bug - Bug reporting
+- POST /api/report-feature - Feature requests
+
+### ChipOS Backend API (chipos-acf)
+- RAG query endpoints
+- Code example search
+- Task management CRUD
+- Knowledge source management
+- Document versioning
+
+### GitHub Repositories
+- https://github.com/FutureAtoms - Organization page
+- Individual product repos available
+
+---
+
+## 14. Pricing & Plans
+
+### ChipOS
+| Feature | Free | Pro ($29/mo) | Enterprise |
+|---------|------|--------------|------------|
+| Knowledge Sources | 1 | Unlimited | Unlimited |
+| RAG Queries | 50/day | Unlimited | Unlimited |
+| MCP Server | No | Yes | Yes |
+| Code Extraction | Basic | Advanced | Advanced |
+| Support | Community | Priority | Dedicated |
+| SSO | No | No | Yes |
+| On-Premise | No | No | Yes |
+
+### Other Products
+- BevyBeats: Free tier (5 tracks/month), Pro (unlimited)
+- Savitri: Free (daily check-ins), Premium (full therapy sessions)
+- Zaphy: Free (25 connections/week), Pro (unlimited)
+- Yuj: Free (basic routines), Premium (personalized plans)
+- Agentic Control: Open source
+- AdaptiveVision: SDK license (contact sales)
+- SystemVerilogGPT: Free web interface, API pricing
+
+---
+
+## 15. Comparisons
+
+### ChipOS vs. Traditional Code Editors (VS Code, etc.)
+- ChipOS: Purpose-built for semiconductor teams, has RAG knowledge base, MCP integration, task management
+- VS Code: General-purpose, requires extensions for hardware languages, no built-in knowledge management
+
+### ChipOS vs. EDA Tools (Synopsys, Cadence)
+- ChipOS: AI-first approach, knowledge management, lighter weight, modern UX
+- EDA Tools: Full synthesis/simulation, industry-standard, heavier resource requirements
+
+### BevyBeats vs. Other AI Music Tools (Suno, Udio)
+- BevyBeats: Multi-track output, streaming platform, collaboration features
+- Others: Single-track output, no collaboration, no streaming
+
+### Savitri vs. Other Mental Health Apps (Headspace, Calm, Woebot)
+- Savitri: Multiple therapy modalities (CBT, DBT, ACT), AI conversational
+- Headspace/Calm: Primarily meditation/sleep focused
+- Woebot: CBT-only, less conversational
+
+---
+
+## 16. FAQ (Comprehensive)
+
+**Q: What is FutureAtoms?**
+A: FutureAtoms is a technology company building AI-powered tools for developers, engineers, musicians, and wellness seekers. Founded in 2024 by Abhilash Chadhar, it offers 8 products spanning chip design, music generation, therapy, networking, and more.
+
+**Q: What is ChipOS?**
+A: ChipOS is an AI-native desktop operating system for semiconductor chip development. It features advanced RAG search, auto-code extraction from documentation, MCP server integration for AI assistants, and Kanban task management. Available for macOS and Linux.
+
+**Q: How much does ChipOS cost?**
+A: ChipOS offers a Free tier (1 source, 50 queries/day), Pro at $29/month (unlimited), and Enterprise with custom pricing for on-premise deployment and SSO.
+
+**Q: What is the MCP protocol and how does ChipOS use it?**
+A: MCP (Model Context Protocol) is a standard for connecting AI assistants to external data. ChipOS implements an MCP server that exposes your hardware knowledge base, code examples, and tasks to AI tools like Claude, Cursor, and VS Code.
+
+**Q: Who founded FutureAtoms?**
+A: Abhilash Chadhar founded FutureAtoms in 2024.
+
+**Q: What makes ChipOS different from VS Code with extensions?**
+A: ChipOS is purpose-built for semiconductor teams. Unlike VS Code + extensions, it has native RAG-powered knowledge management, automatic code extraction from hardware docs, built-in MCP server for AI integration, and a macOS-like dedicated desktop experience.
+
+**Q: How does BevyBeats generate music?**
+A: BevyBeats uses custom transformer-based AI models trained on diverse, licensed music datasets. Users can generate music from text descriptions, apply style transfer, or create multi-track compositions. Output quality is 44.1kHz/16-bit.
+
+**Q: Is Savitri safe to use? Can it replace my therapist?**
+A: Savitri uses evidence-based therapeutic techniques (CBT, DBT, ACT) and is designed as a wellness companion, not a medical device. It should complement, not replace, professional mental health care. All conversations are end-to-end encrypted.
+
+**Q: Does Zaphy violate LinkedIn's Terms of Service?**
+A: Zaphy is designed to respect LinkedIn's rate limits and usage policies. It uses human-like activity patterns, built-in daily limits, and cool-down periods. However, users should review LinkedIn's current terms before using any automation tool.
+
+**Q: Is Agentic Control open source?**
+A: Yes, Agentic Control is open source and available on GitHub. It's a CLI tool for orchestrating multi-agent AI workflows.
+
+**Q: What hardware does AdaptiveVision support?**
+A: AdaptiveVision runs on standard Linux/Windows machines with GPU support. It's also optimized for edge devices including NVIDIA Jetson, Intel Neural Compute Stick, and Raspberry Pi.
+
+**Q: What languages does SystemVerilogGPT support?**
+A: SystemVerilogGPT supports SystemVerilog (IEEE 1800-2017), Verilog (IEEE 1364-2005), VHDL (IEEE 1076-2008), and related standards like UVM 1.2 and PSL.
+
+**Q: How do I contact FutureAtoms?**
+A: Visit https://futureatoms.com/contact.html or email through the contact form on the website.
+
+**Q: Are there any FutureAtoms blog posts?**
+A: Yes, the blog covers AI innovation topics including:
+- The Future of AI Music Generation
+- ChipOS: AI Command Center (MCP integration)
+- AI Therapy Breakthrough
+- Automating Professional Networks
+- ChipOS for Silicon Design
+Visit: https://futureatoms.com/blog.html
+
+**Q: Does FutureAtoms have a careers page?**
+A: Yes, visit https://futureatoms.com/careers.html for current openings.
+
+**Q: What is the Quantum Theme?**
+A: The Quantum Theme is FutureAtoms' design system featuring glassmorphism effects, metallic accents (each product has unique colors), Three.js 3D animations, and a dark (#0a0a0f) aesthetic throughout the website.
+
+**Q: Can I use ChipOS offline?**
+A: ChipOS has a local mode for basic features. The RAG engine and code search work locally with downloaded indices. Cloud features (MCP, sync, updates) require internet.
+
+**Q: What AI models does FutureAtoms use?**
+A: FutureAtoms uses a mix of custom models and integrations. ChipOS uses custom embedding models for RAG. BevyBeats has proprietary music generation models. The website uses Gemini API for chat features. Individual products may use different AI backends optimized for their use case.
+
+---
+
+## Document Metadata
+
+- Last Updated: 2025-01-24
+- Version: 2.0
+- Format: Plain text (Markdown)
+- Purpose: Comprehensive reference for LLM systems to accurately answer questions about FutureAtoms
+- Canonical URL: https://futureatoms.com/llms-full.txt
+- Short version: https://futureatoms.com/llm.txt

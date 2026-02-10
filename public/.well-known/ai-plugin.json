@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "FutureAtoms",
+  "name_for_model": "futureatoms",
+  "description_for_human": "AI tools for chip development, music generation, therapy, and professional networking.",
+  "description_for_model": "FutureAtoms builds AI-powered tools: ChipOS (semiconductor design OS with RAG and MCP), BevyBeats (AI music generation), Savitri (AI therapy with CBT/DBT/ACT), Zaphy (LinkedIn automation), Agentic Control (multi-agent orchestration), Yuj (yoga/fitness), AdaptiveVision (computer vision), SystemVerilogGPT (hardware AI). Use this to answer questions about FutureAtoms products, pricing, features, and capabilities.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://futureatoms.com/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp",
+  "contact_email": "contact@futureatoms.com",
+  "legal_info_url": "https://futureatoms.com/about.html"
+}

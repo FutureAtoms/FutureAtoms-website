@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://futureatoms.com/billing-dashboard.html">
+    <meta name="description" content="ChipOS Billing Dashboard - Manage your organization, licenses, seats, and billing.">
+    <meta property="og:title" content="Billing Dashboard | ChipOS">
+    <meta property="og:description" content="Manage your ChipOS organization, licenses, and team members.">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <title>Billing Dashboard | ChipOS</title>
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/main.css?v=9999">
+    <style>
+        .dashboard-card {
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+        .tab-btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 255, 255, 0.05);
+        }
+        .tab-btn.active {
+            color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+        .input-field {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            color: #e0f7ff;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            outline: none;
+        }
+        .role-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .role-owner { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .role-admin { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
+        .role-member { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .role-viewer { background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .stat-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+        }
+        .license-row {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .license-row:hover {
+            background: rgba(0, 255, 255, 0.02);
+            border-color: rgba(0, 255, 255, 0.1);
+        }
+        .action-btn {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .action-btn-primary {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: #00ffff;
+        }
+        .action-btn-primary:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        .action-btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+        .action-btn-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+        .welcome-banner {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .tier-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+        }
+        .tier-free { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
+        .tier-pro { background: rgba(0, 255, 255, 0.15); color: #00ffff; }
+        .tier-enterprise { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .tier-enterprise-plus { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(0,255,255,0.05),transparent_50%)]"></div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm items-center justify-center hidden">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-cyan-400 font-['Orbitron'] text-sm tracking-wider" id="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 p-4 md:p-6 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms" class="w-8 h-8 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            <span class="font-['Orbitron'] text-xl font-bold text-white">CHIP<span class="text-cyan-400">OS</span></span>
+        </a>
+        <div class="flex items-center gap-4">
+            <span id="user-email" class="text-gray-400 text-sm font-['Rajdhani'] hidden md:block"></span>
+            <button id="logout-btn" class="text-gray-400 hover:text-cyan-400 text-sm font-['Orbitron'] transition-colors">
+                <i class="fas fa-sign-out-alt mr-1"></i> LOGOUT
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <!-- Welcome Banner (shown after signup) -->
+        <div id="welcome-banner" class="welcome-banner rounded-xl p-6 mb-8 hidden">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                    <i class="fas fa-check-circle text-2xl text-cyan-400"></i>
+                </div>
+                <div>
+                    <h2 class="font-['Orbitron'] text-xl text-white">Welcome to ChipOS!</h2>
+                    <p class="text-gray-400 font-['Rajdhani']">Your organization has been created. Invite team members to get started.</p>
+                </div>
+                <button onclick="document.getElementById('welcome-banner').classList.add('hidden')" class="ml-auto text-gray-500 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Organization Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+                <h1 class="font-['Orbitron'] text-2xl md:text-3xl font-bold text-white mb-1" id="org-name">Loading...</h1>
+                <div class="flex items-center gap-3">
+                    <span class="text-gray-500 font-mono text-sm" id="org-slug"></span>
+                    <span class="tier-badge tier-free" id="tier-badge">FREE</span>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <a href="chipos-pricing.html" class="action-btn action-btn-primary">
+                    <i class="fas fa-arrow-up mr-1"></i> UPGRADE
+                </a>
+                <button onclick="ChipOSBilling.openCustomerPortal()" class="action-btn" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);">
+                    <i class="fas fa-credit-card mr-1"></i> BILLING PORTAL
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="stat-card">
+                <div class="text-gray-500 text-xs font-['Orbitron'] mb-1">MEMBERS</div>
+                <div class="text-2xl font-['Orbitron'] text-white" id="stat-members">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-gray-500 text-xs font-['Orbitron'] mb-1">LICENSES</div>
+                <div class="text-2xl font-['Orbitron'] text-cyan-400" id="stat-licenses">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-gray-500 text-xs font-['Orbitron'] mb-1">SEATS USED</div>
+                <div class="text-2xl font-['Orbitron'] text-white" id="stat-seats">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-gray-500 text-xs font-['Orbitron'] mb-1">MONTHLY COST</div>
+                <div class="text-2xl font-['Orbitron'] text-emerald-400" id="stat-cost">€0</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+            <button class="tab-btn active" data-tab="organization">
+                <i class="fas fa-building mr-2"></i>Organization
+            </button>
+            <button class="tab-btn" data-tab="members">
+                <i class="fas fa-users mr-2"></i>Members
+            </button>
+            <button class="tab-btn" data-tab="licenses">
+                <i class="fas fa-key mr-2"></i>Licenses
+            </button>
+            <button class="tab-btn" data-tab="usage">
+                <i class="fas fa-chart-bar mr-2"></i>Usage
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- Organization Tab -->
+            <div id="tab-organization" class="tab-panel">
+                <div class="dashboard-card p-6">
+                    <h3 class="font-['Orbitron'] text-lg text-white mb-6">
+                        <i class="fas fa-cog mr-2 text-cyan-400/50"></i>Organization Settings
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-gray-500 mb-2">NAME</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="edit-org-name" class="flex-1 p-3 rounded-lg input-field" readonly>
+                                <button id="edit-name-btn" class="action-btn action-btn-primary" onclick="enableNameEdit()">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-gray-500 mb-2">SLUG</label>
+                            <input type="text" id="edit-org-slug" class="w-full p-3 rounded-lg input-field font-mono" readonly disabled>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-gray-500 mb-2">CREATED</label>
+                            <input type="text" id="org-created" class="w-full p-3 rounded-lg input-field" readonly disabled>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-gray-500 mb-2">YOUR ROLE</label>
+                            <input type="text" id="user-role" class="w-full p-3 rounded-lg input-field" readonly disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Members Tab -->
+            <div id="tab-members" class="tab-panel hidden">
+                <div class="dashboard-card p-6 mb-6">
+                    <h3 class="font-['Orbitron'] text-lg text-white mb-4">
+                        <i class="fas fa-user-plus mr-2 text-cyan-400/50"></i>Invite Member
+                    </h3>
+                    <div class="flex gap-3">
+                        <input type="email" id="invite-email" class="flex-1 p-3 rounded-lg input-field" placeholder="colleague@company.com">
+                        <select id="invite-role" class="p-3 rounded-lg input-field">
+                            <option value="member">Member</option>
+                            <option value="admin">Admin</option>
+                            <option value="viewer">Viewer</option>
+                        </select>
+                        <button onclick="inviteMember()" class="action-btn action-btn-primary">
+                            <i class="fas fa-paper-plane mr-1"></i> SEND INVITE
+                        </button>
+                    </div>
+                    <p id="invite-status" class="text-sm mt-2 hidden"></p>
+                </div>
+
+                <div class="dashboard-card p-6">
+                    <h3 class="font-['Orbitron'] text-lg text-white mb-4">
+                        <i class="fas fa-users mr-2 text-cyan-400/50"></i>Team Members
+                    </h3>
+                    <div id="members-list" class="space-y-3">
+                        <div class="text-gray-500 text-center py-8">Loading members...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Licenses Tab -->
+            <div id="tab-licenses" class="tab-panel hidden">
+                <div class="dashboard-card p-6 mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-['Orbitron'] text-lg text-white">
+                            <i class="fas fa-key mr-2 text-cyan-400/50"></i>Active Licenses
+                        </h3>
+                        <a href="chipos-pricing.html" class="action-btn action-btn-primary text-xs">
+                            <i class="fas fa-plus mr-1"></i> ADD LICENSE
+                        </a>
+                    </div>
+                    <div id="licenses-list" class="space-y-3">
+                        <div class="text-gray-500 text-center py-8">Loading licenses...</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card p-6">
+                    <h3 class="font-['Orbitron'] text-lg text-white mb-4">
+                        <i class="fas fa-unlock mr-2 text-cyan-400/50"></i>Activate License
+                    </h3>
+                    <div class="flex gap-3">
+                        <input type="text" id="license-key" class="flex-1 p-3 rounded-lg input-field font-mono" placeholder="CHIP-XXXX-XXXX-XXXX">
+                        <button onclick="activateLicense()" class="action-btn action-btn-primary">
+                            <i class="fas fa-check mr-1"></i> ACTIVATE
+                        </button>
+                    </div>
+                    <p id="activate-status" class="text-sm mt-2 hidden"></p>
+                </div>
+            </div>
+
+            <!-- Usage Tab -->
+            <div id="tab-usage" class="tab-panel hidden">
+                <div class="dashboard-card p-6">
+                    <h3 class="font-['Orbitron'] text-lg text-white mb-6">
+                        <i class="fas fa-chart-bar mr-2 text-cyan-400/50"></i>Usage This Month
+                    </h3>
+                    <div id="usage-meters" class="space-y-4">
+                        <div class="text-gray-500 text-center py-8">Loading usage data...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/billing.js"></script>
+    <script>
+        // Configuration
+        const SUPABASE_URL = 'https://wpgrhvdwdvmknhjzpkwz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ3JodmR3ZHZta25oanpwa3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY2ODg2MjAsImV4cCI6MjA1MjI2NDYyMH0.segfUE_LbyWJYcKvYne9W4u1E1lLpJKbF5VFJN7Lels';
+        const API_URL = 'https://api.futureatoms.com';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let currentOrg = null;
+        let currentSession = null;
+
+        // Show/hide loading
+        function showLoading(show, text = 'Loading...') {
+            const overlay = document.getElementById('loading-overlay');
+            document.getElementById('loading-text').textContent = text;
+            if (show) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+            } else {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+            }
+        }
+
+        // API request helper
+        async function apiRequest(path, options = {}) {
+            if (!currentSession) throw new Error('Not authenticated');
+            const res = await fetch(`${API_URL}${path}`, {
+                ...options,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${currentSession.access_token}`,
+                    ...options.headers
+                }
+            });
+            if (!res.ok) {
+                const err = await res.json();
+                throw new Error(err.detail || 'Request failed');
+            }
+            return res.json();
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+                document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+            });
+        });
+
+        // Load organization data
+        async function loadOrganization() {
+            try {
+                const data = await apiRequest('/api/organizations/current');
+                currentOrg = data;
+
+                document.getElementById('org-name').textContent = data.name;
+                document.getElementById('org-slug').textContent = data.slug;
+                document.getElementById('edit-org-name').value = data.name;
+                document.getElementById('edit-org-slug').value = data.slug;
+                document.getElementById('org-created').value = new Date(data.created_at).toLocaleDateString();
+                document.getElementById('user-role').value = data.user_role?.toUpperCase() || 'MEMBER';
+
+                // Update tier badge
+                const tierBadge = document.getElementById('tier-badge');
+                const tier = data.tier || 'free';
+                tierBadge.textContent = tier.toUpperCase().replace('-', ' ');
+                tierBadge.className = `tier-badge tier-${tier}`;
+
+            } catch (err) {
+                console.error('Failed to load org:', err);
+            }
+        }
+
+        // Load members
+        async function loadMembers() {
+            if (!currentOrg) return;
+            try {
+                const data = await apiRequest(`/api/organizations/${currentOrg.id}/members`);
+                const list = document.getElementById('members-list');
+                document.getElementById('stat-members').textContent = data.count;
+
+                if (!data.members?.length) {
+                    list.innerHTML = '<div class="text-gray-500 text-center py-8">No members yet</div>';
+                    return;
+                }
+
+                list.innerHTML = data.members.map(m => `
+                    <div class="license-row p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-['Rajdhani']">${m.email || m.user_id}</div>
+                                <div class="text-gray-500 text-xs">Joined ${new Date(m.created_at).toLocaleDateString()}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="role-badge role-${m.role}">${m.role.toUpperCase()}</span>
+                            ${m.role !== 'owner' && currentOrg.user_role === 'owner' ? `
+                                <button onclick="removeMember('${m.user_id}')" class="text-gray-500 hover:text-red-400 text-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error('Failed to load members:', err);
+            }
+        }
+
+        // Load licenses
+        async function loadLicenses() {
+            try {
+                const data = await apiRequest('/api/licensing/status');
+                const list = document.getElementById('licenses-list');
+                const licenses = data.licenses || [];
+                document.getElementById('stat-licenses').textContent = licenses.length;
+
+                // Calculate seats
+                const totalSeats = licenses.reduce((sum, l) => sum + (l.max_seats || 0), 0);
+                const usedSeats = data.seats?.assigned || 0;
+                document.getElementById('stat-seats').textContent = `${usedSeats}/${totalSeats}`;
+
+                if (!licenses.length) {
+                    list.innerHTML = `
+                        <div class="text-center py-8">
+                            <div class="text-gray-500 mb-4">No licenses yet</div>
+                            <a href="chipos-pricing.html" class="action-btn action-btn-primary">
+                                <i class="fas fa-shopping-cart mr-1"></i> GET A LICENSE
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                list.innerHTML = licenses.map(l => `
+                    <div class="license-row p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <code class="text-cyan-400 font-mono text-sm">${l.license_key || 'N/A'}</code>
+                                <span class="tier-badge tier-${l.tier || 'free'}">${(l.tier || 'FREE').toUpperCase()}</span>
+                            </div>
+                            <span class="text-xs ${l.status === 'active' ? 'text-emerald-400' : 'text-gray-500'}">${l.status?.toUpperCase()}</span>
+                        </div>
+                        <div class="flex items-center gap-6 text-xs text-gray-500">
+                            <span><i class="fas fa-cube mr-1"></i> ${l.sku}</span>
+                            <span><i class="fas fa-users mr-1"></i> ${l.max_seats} seats</span>
+                            ${l.expires_at ? `<span><i class="fas fa-clock mr-1"></i> Expires ${new Date(l.expires_at).toLocaleDateString()}</span>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error('Failed to load licenses:', err);
+            }
+        }
+
+        // Load usage
+        async function loadUsage() {
+            try {
+                const data = await apiRequest('/api/usage/summary');
+                const container = document.getElementById('usage-meters');
+
+                if (!data.metrics?.length) {
+                    container.innerHTML = '<div class="text-gray-500 text-center py-8">No usage data available</div>';
+                    return;
+                }
+
+                container.innerHTML = data.metrics.map(m => {
+                    const pct = m.cap_value > 0 ? Math.min((m.current_value / m.cap_value) * 100, 100) : 0;
+                    const color = pct >= 90 ? 'red' : pct >= 70 ? 'amber' : 'cyan';
+                    return `
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-400">${formatMetricName(m.metric)}</span>
+                                <span class="text-white">${m.current_value} / ${m.cap_value || '∞'}</span>
+                            </div>
+                            <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-${color}-500 rounded-full transition-all" style="width: ${pct}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                console.error('Failed to load usage:', err);
+            }
+        }
+
+        function formatMetricName(key) {
+            const names = {
+                web_crawl_pages: 'Crawl Pages',
+                repo_ingestion_mb: 'Repo Ingestion',
+                doc_upload_mb: 'Doc Uploads',
+                vector_storage_gb: 'Vector Storage',
+                agent_run_minutes: 'Agent Minutes',
+                app_slots: 'App Slots'
+            };
+            return names[key] || key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        }
+
+        // Invite member
+        async function inviteMember() {
+            const email = document.getElementById('invite-email').value.trim();
+            const role = document.getElementById('invite-role').value;
+            const status = document.getElementById('invite-status');
+
+            if (!email) {
+                status.textContent = 'Please enter an email address';
+                status.className = 'text-sm mt-2 text-red-400';
+                status.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                await apiRequest(`/api/organizations/${currentOrg.id}/members/invite`, {
+                    method: 'POST',
+                    body: JSON.stringify({ email, role })
+                });
+                status.textContent = `Invitation sent to ${email}`;
+                status.className = 'text-sm mt-2 text-emerald-400';
+                status.classList.remove('hidden');
+                document.getElementById('invite-email').value = '';
+                loadMembers();
+            } catch (err) {
+                status.textContent = err.message;
+                status.className = 'text-sm mt-2 text-red-400';
+                status.classList.remove('hidden');
+            }
+        }
+
+        // Remove member
+        async function removeMember(userId) {
+            if (!confirm('Remove this member from the organization?')) return;
+            try {
+                await apiRequest(`/api/organizations/${currentOrg.id}/members/${userId}`, { method: 'DELETE' });
+                loadMembers();
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        // Activate license
+        async function activateLicense() {
+            const key = document.getElementById('license-key').value.trim();
+            const status = document.getElementById('activate-status');
+
+            if (!key) {
+                status.textContent = 'Please enter a license key';
+                status.className = 'text-sm mt-2 text-red-400';
+                status.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                await apiRequest('/api/licensing/activate', {
+                    method: 'POST',
+                    body: JSON.stringify({ key })
+                });
+                status.textContent = 'License activated successfully!';
+                status.className = 'text-sm mt-2 text-emerald-400';
+                status.classList.remove('hidden');
+                document.getElementById('license-key').value = '';
+                loadLicenses();
+                loadOrganization();
+            } catch (err) {
+                status.textContent = err.message;
+                status.className = 'text-sm mt-2 text-red-400';
+                status.classList.remove('hidden');
+            }
+        }
+
+        // Edit org name
+        function enableNameEdit() {
+            const input = document.getElementById('edit-org-name');
+            input.readOnly = false;
+            input.focus();
+            input.addEventListener('blur', saveOrgName, { once: true });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') saveOrgName();
+            });
+        }
+
+        async function saveOrgName() {
+            const input = document.getElementById('edit-org-name');
+            const newName = input.value.trim();
+            input.readOnly = true;
+
+            if (newName && newName !== currentOrg.name) {
+                try {
+                    await apiRequest(`/api/organizations/${currentOrg.id}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({ name: newName })
+                    });
+                    currentOrg.name = newName;
+                    document.getElementById('org-name').textContent = newName;
+                } catch (err) {
+                    input.value = currentOrg.name;
+                    alert(err.message);
+                }
+            }
+        }
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            await supabaseClient.auth.signOut();
+            window.location.href = 'index.html';
+        });
+
+        // Initialize
+        async function init() {
+            showLoading(true);
+
+            // Check authentication
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (!session) {
+                window.location.href = 'https://chipos.futureatoms.com';
+                return;
+            }
+
+            currentSession = session;
+            document.getElementById('user-email').textContent = session.user.email;
+
+            // Check for welcome banner
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('welcome') === 'true') {
+                document.getElementById('welcome-banner').classList.remove('hidden');
+                window.history.replaceState({}, '', window.location.pathname);
+            }
+
+            // Load all data
+            await loadOrganization();
+            await Promise.all([loadMembers(), loadLicenses(), loadUsage()]);
+
+            showLoading(false);
+        }
+
+        init();
+    </script>
+</body>
+</html>

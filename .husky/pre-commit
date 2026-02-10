@@ -1,1 +1,8 @@
 npm run scan:all
+
+# Regenerate sitemap if HTML files changed
+if git diff --cached --name-only | grep -q '\.html$'; then
+  echo "HTML files changed - regenerating sitemap..."
+  npm run generate:sitemap
+  git add public/sitemap.xml
+fi
