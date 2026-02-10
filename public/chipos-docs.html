@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://futureatoms.com/chipos-docs.html">
     <title>ChipOS Documentation - Complete User Guide | FutureAtoms</title>
-    <meta name="description" content="Complete documentation for ChipOS, the AI OS for chip development. From login and workspace setup to Agent, Chat, and Zendesk modes, knowledge workflows, MCP integration, and multi-provider AI.">
+    <meta name="description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
     <meta property="og:title" content="ChipOS Documentation | FutureAtoms">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:description" content="Complete documentation for ChipOS, the AI OS for chip development. From login and workspace setup to Agent, Chat, and Zendesk modes, knowledge workflows, MCP integration, and multi-provider AI.">
+    <meta property="og:description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FutureAtoms">
+    <meta name="twitter:title" content="ChipOS Documentation | FutureAtoms">
+    <meta name="twitter:description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
+    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
     <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
@@ -17,10 +20,8 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -254,6 +255,25 @@
             color: #00ffff;
         }
     </style>
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://futureatoms.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ChipOS Documentation",
+      "item": "https://futureatoms.com/chipos-docs.html"
+    }
+  ]
+}</script>
 </head>
 
 <body>
@@ -262,28 +282,24 @@
         <div class="flex items-center justify-between px-4 py-3 lg:px-8">
             <div class="flex items-center gap-4">
                 <!-- Mobile menu button -->
-                <button onclick="toggleSidebar()"
-                    class="mobile-nav-btn lg:hidden text-cyan-400 p-2 hover:bg-cyan-500/20 rounded-lg">
+                <button onclick="toggleSidebar()" class="mobile-nav-btn lg:hidden text-cyan-400 p-2 hover:bg-cyan-500/20 rounded-lg">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
 
                 <a href="chipos.html" class="flex items-center gap-3">
                     <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8 object-contain">
-                    <span class="font-orbitron text-xl font-bold text-white">ChipOS <span
-                            class="text-cyan-400">Docs</span></span>
+                    <span class="font-orbitron text-xl font-bold text-white">ChipOS <span class="text-cyan-400">Docs</span></span>
                 </a>
             </div>
 
             <div class="flex items-center gap-4">
-                <span
-                    class="hidden sm:inline-block text-xs font-mono bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">
+                <span class="hidden sm:inline-block text-xs font-mono bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">
                     v2026.01.05
                 </span>
                 <a href="chipos.html" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
                     <i class="fas fa-arrow-left mr-2"></i>Back to ChipOS
                 </a>
-                <a href="https://github.com/futureatoms/chipos" target="_blank"
-                    class="text-gray-400 hover:text-white transition-colors">
+                <a href="https://github.com/futureatoms/chipos" target="_blank" class="text-gray-400 hover:text-white transition-colors">
                     <i class="fab fa-github text-xl"></i>
                 </a>
             </div>
@@ -302,38 +318,29 @@
                 <div>
                     <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Getting Started</h3>
                     <ul class="space-y-1">
-                        <li><a href="#introduction"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Introduction</a></li>
-                        <li><a href="#navigation-toolbar"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-yellow-400 flex items-center gap-2">
+                        <li><a href="#introduction" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Introduction</a></li>
+                        <li><a href="#navigation-toolbar" class="sidebar-link block px-3 py-2 rounded text-sm text-yellow-400 flex items-center gap-2">
                                 <i class="fas fa-star text-xs"></i> Navigation Toolbar</a></li>
-                        <li><a href="#core-flow"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Core Flow</a></li>
-                        <li><a href="#login"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Login & Auth</a></li>
-                        <li><a href="#installation"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Installation</a></li>
-                        <li><a href="#quick-start"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">First Launch</a></li>
-                        <li><a href="#configuration"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Configuration</a></li>
+                        <li><a href="#core-flow" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Core Flow</a></li>
+                        <li><a href="#login" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Login &amp; Auth</a></li>
+                        <li><a href="#installation" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Installation</a></li>
+                        <li><a href="#quick-start" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">First Launch</a></li>
+                        <li><a href="#configuration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Configuration</a></li>
                     </ul>
                 </div>
 
                 <!-- Modes & Packs -->
                 <div>
                     <h3 class="sidebar-section-title text-cyan-400 uppercase mb-3 px-3 flex items-center gap-2">
-                        <i class="fas fa-th-large text-xs"></i> Modes & Packs
+                        <i class="fas fa-th-large text-xs"></i> Modes &amp; Packs
                     </h3>
                     <ul class="space-y-1">
-                        <li><a href="#apps-overview"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Agent Packs</a></li>
-                        <li><a href="#agent-mode"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Modes Overview</a></li>
-                        <li><a href="#chat-mode"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Chat Mode</a></li>
-                        <li><a href="#zendesk-mode"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Zendesk Mode</a></li>
+                        <li><a href="#apps-overview" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Agent Packs</a></li>
+                        <li><a href="#agent-mode" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Modes Overview</a></li>
+                        <li><a href="#chat-mode" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Chat Mode</a></li>
+                        <li><a href="#zendesk-mode" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Zendesk Mode</a></li>
+                        <li><a href="#zendesk-wingman" class="sidebar-link block px-3 py-2 rounded text-sm text-orange-400 flex items-center gap-2">
+                                <i class="fas fa-star text-xs"></i> Zendesk-Wingman</a></li>
                     </ul>
                 </div>
 
@@ -341,37 +348,26 @@
                 <div>
                     <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Core Workflow</h3>
                     <ul class="space-y-1">
-                        <li><a href="#dashboard"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Dashboard</a></li>
-                        <li><a href="#knowledge-base"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Knowledge Base</a></li>
-                        <li><a href="#projects-tasks"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Projects & Tasks</a></li>
-                        <li><a href="#ai-chatbot"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Assistant Chat</a></li>
-                        <li><a href="#mcp-server"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">MCP Server</a></li>
-                        <li><a href="#claude-commands"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Commands</a></li>
+                        <li><a href="#dashboard" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Dashboard</a></li>
+                        <li><a href="#knowledge-base" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Knowledge Base</a></li>
+                        <li><a href="#projects-tasks" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Projects &amp; Tasks</a></li>
+                        <li><a href="#ai-chatbot" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Assistant Chat</a></li>
+                        <li><a href="#mcp-server" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">MCP Server</a></li>
+                        <li><a href="#claude-commands" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Commands</a></li>
                     </ul>
                 </div>
 
                 <!-- AI & RAG -->
                 <div>
                     <h3 class="sidebar-section-title text-green-400 uppercase mb-3 px-3 flex items-center gap-2">
-                        <i class="fas fa-robot text-xs"></i> AI & RAG
+                        <i class="fas fa-robot text-xs"></i> AI &amp; RAG
                     </h3>
                     <ul class="space-y-1">
-                        <li><a href="#chipos-chip"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">AI Providers</a></li>
-                        <li><a href="#rag-overview"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG Overview</a></li>
-                        <li><a href="#embeddings"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Repository Ingestion</a></li>
-                        <li><a href="#semantic-search"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Search & Reranking</a></li>
-                        <li><a href="#rag-health"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG Health</a></li>
+                        <li><a href="#chipos-chip" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">AI Providers</a></li>
+                        <li><a href="#rag-overview" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG Overview</a></li>
+                        <li><a href="#embeddings" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Repository Ingestion</a></li>
+                        <li><a href="#semantic-search" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Search &amp; Reranking</a></li>
+                        <li><a href="#rag-health" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">RAG Health</a></li>
                     </ul>
                 </div>
 
@@ -379,8 +375,7 @@
                 <div>
                     <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Architecture</h3>
                     <ul class="space-y-1">
-                        <li><a href="#system-architecture"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">System Overview</a></li>
+                        <li><a href="#system-architecture" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">System Overview</a></li>
                     </ul>
                 </div>
 
@@ -388,8 +383,7 @@
                 <div>
                     <h3 class="sidebar-section-title text-purple-400 uppercase mb-3 px-3">Integrations</h3>
                     <ul class="space-y-1">
-                        <li><a href="#claude-integration"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Code & MCP</a></li>
+                        <li><a href="#claude-integration" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Claude Code &amp; MCP</a></li>
                     </ul>
                 </div>
 
@@ -399,8 +393,7 @@
                         <i class="fas fa-shield-alt text-xs"></i> Security
                     </h3>
                     <ul class="space-y-1">
-                        <li><a href="#security-overview"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Security Overview</a></li>
+                        <li><a href="#security-overview" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Security Overview</a></li>
                     </ul>
                 </div>
 
@@ -408,18 +401,13 @@
                 <div>
                     <h3 class="sidebar-section-title text-gray-500 uppercase mb-3 px-3">Reference</h3>
                     <ul class="space-y-1">
-                        <li><a href="#commands-reference"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Commands Reference</a></li>
-                        <li><a href="#api-reference"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">API Reference</a></li>
-                        <li><a href="#settings"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Settings</a></li>
-                        <li><a href="chipos-settings.html"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-cyan-400">
+                        <li><a href="#commands-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Commands Reference</a></li>
+                        <li><a href="#api-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">API Reference</a></li>
+                        <li><a href="#settings" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Settings</a></li>
+                        <li><a href="chipos-settings.html" class="sidebar-link block px-3 py-2 rounded text-sm text-cyan-400">
                                 <i class="fas fa-external-link-alt text-xs mr-1"></i>Full Settings Guide
                             </a></li>
-                        <li><a href="#troubleshooting"
-                                class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Troubleshooting</a></li>
+                        <li><a href="#troubleshooting" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Troubleshooting</a></li>
                     </ul>
                 </div>
             </nav>
@@ -433,8 +421,7 @@
                 <section id="introduction" class="section-anchor mb-16">
                     <div class="text-center mb-12">
                         <div class="inline-block mb-6">
-                            <span
-                                class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
+                            <span class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
                                 OFFICIAL DOCUMENTATION
                             </span>
                         </div>
@@ -456,14 +443,12 @@
                             <h3 class="font-orbitron font-bold text-white mb-2">First Launch</h3>
                             <p class="text-sm text-gray-400">Login, choose a mode, and get started fast</p>
                         </a>
-                        <a href="#agent-mode"
-                            class="feature-card p-6 rounded-xl text-center hover:border-purple-500/50">
+                        <a href="#agent-mode" class="feature-card p-6 rounded-xl text-center hover:border-purple-500/50">
                             <i class="fas fa-layer-group text-3xl text-purple-400 mb-4"></i>
-                            <h3 class="font-orbitron font-bold text-white mb-2">Modes & Packs</h3>
+                            <h3 class="font-orbitron font-bold text-white mb-2">Modes &amp; Packs</h3>
                             <p class="text-sm text-gray-400">Agent, Chat, and Zendesk workflows</p>
                         </a>
-                        <a href="#knowledge-base"
-                            class="feature-card p-6 rounded-xl text-center hover:border-green-500/50">
+                        <a href="#knowledge-base" class="feature-card p-6 rounded-xl text-center hover:border-green-500/50">
                             <i class="fas fa-book text-3xl text-green-400 mb-4"></i>
                             <h3 class="font-orbitron font-bold text-white mb-2">Knowledge Base</h3>
                             <p class="text-sm text-gray-400">Index docs, repos, and code examples</p>
@@ -522,7 +507,7 @@
                                 </ul>
                             </div>
                             <div class="glass-panel p-6 rounded-xl">
-                                <h4 class="font-orbitron text-purple-400 mb-3">For Support & Ops</h4>
+                                <h4 class="font-orbitron text-purple-400 mb-3">For Support &amp; Ops</h4>
                                 <ul class="space-y-2 text-gray-300 text-sm">
                                     <li class="flex items-start gap-2">
                                         <i class="fas fa-check text-green-400 mt-1"></i>
@@ -561,8 +546,7 @@
                         <!-- Toolbar Screenshot -->
                         <div class="glass-panel p-6 rounded-xl mb-8">
                             <div class="text-center mb-4">
-                                <img src="images/toolbar.png" alt="ChipOS Navigation Toolbar"
-                                     class="inline-block rounded-lg border border-gray-700 shadow-lg max-w-full">
+                                <img src="images/toolbar.png" alt="ChipOS Navigation Toolbar" class="inline-block rounded-lg border border-gray-700 shadow-lg max-w-full">
                                 <p class="text-gray-500 text-sm mt-2">ChipOS Navigation Toolbar - Always visible at the top</p>
                             </div>
                         </div>
@@ -774,7 +758,7 @@
                         <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
                             <i class="fas fa-user-lock text-cyan-400 text-sm"></i>
                         </span>
-                        Login & Authentication
+                        Login &amp; Authentication
                     </h2>
 
                     <div class="callout callout-tip mb-6">
@@ -839,16 +823,13 @@
                     <!-- Platform tabs -->
                     <div class="mt-8">
                         <div class="flex gap-2 mb-6">
-                            <button onclick="showPlatform('macos')" id="tab-macos"
-                                class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                            <button onclick="showPlatform('macos')" id="tab-macos" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
                                 <i class="fab fa-apple mr-2"></i>macOS
                             </button>
-                            <button onclick="showPlatform('linux')" id="tab-linux"
-                                class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
+                            <button onclick="showPlatform('linux')" id="tab-linux" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
                                 <i class="fab fa-linux mr-2"></i>Linux
                             </button>
-                            <button onclick="showPlatform('web')" id="tab-web"
-                                class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
+                            <button onclick="showPlatform('web')" id="tab-web" class="platform-tab px-4 py-2 rounded-lg font-orbitron text-sm bg-white/5 text-gray-400 border border-white/10">
                                 <i class="fas fa-globe mr-2"></i>Web
                             </button>
                         </div>
@@ -857,18 +838,15 @@
                         <div id="platform-macos" class="platform-content">
                             <div class="space-y-4">
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         1</div>
                                     <div>
                                         <p class="text-white font-bold mb-2">Download the DMG</p>
                                         <div class="flex flex-wrap gap-3">
-                                            <a href="https://futureatoms.com/ChipOS-latest-macOS-arm64.dmg"
-                                                class="inline-block bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 px-4 py-2 rounded-lg transition-colors text-sm">
+                                            <a href="https://futureatoms.com/ChipOS-latest-macOS-arm64.dmg" class="inline-block bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 px-4 py-2 rounded-lg transition-colors text-sm">
                                                 <i class="fas fa-download mr-2"></i>Apple Silicon (ARM64)
                                             </a>
-                                            <a href="https://futureatoms.com/ChipOS-latest-macOS-x64.dmg"
-                                                class="inline-block bg-white/5 hover:bg-white/10 text-gray-300 px-4 py-2 rounded-lg transition-colors text-sm border border-white/10">
+                                            <a href="https://futureatoms.com/ChipOS-latest-macOS-x64.dmg" class="inline-block bg-white/5 hover:bg-white/10 text-gray-300 px-4 py-2 rounded-lg transition-colors text-sm border border-white/10">
                                                 <i class="fas fa-download mr-2"></i>Intel (x64)
                                             </a>
                                         </div>
@@ -876,8 +854,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         2</div>
                                     <div>
                                         <p class="text-white font-bold mb-2">Open the DMG and drag to Applications</p>
@@ -886,8 +863,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         3</div>
                                     <div>
                                         <p class="text-white font-bold mb-2">Launch ChipOS</p>
@@ -902,8 +878,7 @@
                         <div id="platform-linux" class="platform-content hidden">
                             <div class="space-y-4">
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         1</div>
                                     <div class="flex-1">
                                         <p class="text-white font-bold mb-2">Download the .deb package</p>
@@ -913,8 +888,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         2</div>
                                     <div class="flex-1">
                                         <p class="text-white font-bold mb-2">Install with dpkg</p>
@@ -924,8 +898,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
                                         3</div>
                                     <div>
                                         <p class="text-white font-bold mb-2">Launch from terminal or application menu
@@ -968,8 +941,7 @@
                                 <h3 class="font-orbitron text-xl font-bold text-white mb-3">ChipOS Web App</h3>
                                 <p class="text-gray-400 mb-6">Use the hosted dashboard in a browser, or open Chat Mode
                                     directly from the ChipOS desktop app.</p>
-                                <a href="/app/"
-                                    class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-orbitron font-bold px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-blue-400 transition-all">
+                                <a href="/app/" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-orbitron font-bold px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-blue-400 transition-all">
                                     <i class="fas fa-rocket mr-2"></i>Launch Web App
                                 </a>
                                 <p class="text-gray-500 text-xs mt-4">
@@ -994,8 +966,7 @@
                     <div class="space-y-6">
                         <div class="feature-card p-6 rounded-xl">
                             <div class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
                                     1</div>
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Sign In (If Required)</h4>
@@ -1011,8 +982,7 @@
 
                         <div class="feature-card p-6 rounded-xl">
                             <div class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
                                     2</div>
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Choose Workspace + Mode</h4>
@@ -1042,8 +1012,7 @@
 
                         <div class="feature-card p-6 rounded-xl">
                             <div class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-orbitron font-bold shrink-0">
                                     3</div>
                                 <div class="flex-1">
                                     <h4 class="text-white font-bold mb-2">Launch Your Mode</h4>
@@ -1066,8 +1035,7 @@
 
                         <div class="feature-card p-6 rounded-xl border-green-500/30">
                             <div class="flex items-start gap-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-orbitron font-bold shrink-0">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-orbitron font-bold shrink-0">
                                     <i class="fas fa-check"></i>
                                 </div>
                                 <div class="flex-1">
@@ -1171,7 +1139,7 @@
                             <i class="fas fa-th-large mr-2"></i>AGENT PACKS
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
-                            Agent Packs & <span class="text-cyan-400">Contexts</span>
+                            Agent Packs &amp; <span class="text-cyan-400">Contexts</span>
                         </h2>
                         <p class="text-gray-400 max-w-2xl mx-auto">
                             Choose an agent pack in the workspace selector. Packs install Claude Code command sets and
@@ -1207,8 +1175,8 @@
                     <!-- RTL & Physical Packs -->
                     <div id="apps-pro" class="mb-8">
                         <h3 class="text-xl font-orbitron font-bold text-white mb-4 flex items-center gap-3">
-                            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded text-xs">RTL & PHYSICAL</span>
-                            RTL & Physical Packs
+                            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded text-xs">RTL &amp; PHYSICAL</span>
+                            RTL &amp; Physical Packs
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="glass-panel p-5 rounded-xl border-purple-500/30">
@@ -1238,7 +1206,7 @@
                     <div id="apps-enterprise" class="mb-8">
                         <h3 class="text-xl font-orbitron font-bold text-white mb-4 flex items-center gap-3">
                             <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded text-xs">SYSTEMS</span>
-                            Systems & SDK Packs
+                            Systems &amp; SDK Packs
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="glass-panel p-5 rounded-xl border-orange-500/30">
@@ -1275,7 +1243,7 @@
                             <i class="fas fa-layer-group mr-2"></i>STARTUP MODES
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
-                            Agent, Chat & <span class="text-purple-400">Zendesk</span>
+                            Agent, Chat &amp; <span class="text-purple-400">Zendesk</span>
                         </h2>
                         <p class="text-gray-400 max-w-2xl mx-auto">
                             Choose a startup mode in the workspace selector. Each mode opens a different surface and
@@ -1368,13 +1336,326 @@
                     </div>
                 </section>
 
+                <!-- Zendesk-Wingman Tutorial -->
+                <section id="zendesk-wingman" class="section-anchor mb-16">
+                    <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-wand-magic-sparkles text-orange-400 text-sm"></i>
+                        </span>
+                        Zendesk-Wingman
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        Step-by-step guide to set up the <strong class="text-orange-400">Axelera Voyager Wingman</strong> with
+                        Zendesk MCP integration. Query support tickets, search knowledge base articles, and manage your
+                        Zendesk portal directly from Claude Code inside ChipOS.
+                    </p>
+
+                    <!-- Prerequisites -->
+                    <div class="glass-panel p-6 rounded-xl mb-8 border-green-500/30">
+                        <h3 class="font-orbitron text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-clipboard-check text-green-400"></i> Prerequisites
+                        </h3>
+                        <ul class="space-y-3 text-gray-300 text-sm">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-400"></i>
+                                ChipOS Desktop App installed
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-400"></i>
+                                ChipOS account with <strong class="text-yellow-400">Enterprise Plus</strong> plan
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-400"></i>
+                                Zendesk subdomain, agent email, and API token
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-400"></i>
+                                Claude Code available in your environment
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 1: Sign In -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">1</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Sign In to ChipOS</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Open the ChipOS desktop application. You'll be greeted by the sign-in screen.
+                            Enter your email and password, or use one of the OAuth providers (Google, Microsoft, GitHub).
+                        </p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-400 flex items-center justify-center font-bold text-black text-lg">C</div>
+                                <div>
+                                    <div class="text-white font-bold">ChipOS</div>
+                                    <div class="text-gray-500 text-xs">Enter password to unlock</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 mt-3">
+                                <div>
+                                    <div class="text-gray-500 text-xs mb-1">Email</div>
+                                    <div class="bg-black/50 rounded px-3 py-2 text-gray-500 text-sm border border-gray-700">you@company.com</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500 text-xs mb-1">Password</div>
+                                    <div class="bg-black/50 rounded px-3 py-2 text-gray-500 text-sm border border-gray-700">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: App Manager -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">2</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Open the App Manager &amp; Select Zendesk Mode</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            After signing in, the <strong class="text-cyan-400">ChipOS App Manager</strong> opens. This is your
+                            central hub for installing apps and opening workspaces. Select the
+                            <strong class="text-orange-400">Zendesk</strong> mode tab at the top.
+                        </p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+                            <div class="flex items-center justify-center gap-2 mb-4">
+                                <span class="text-gray-500 text-xs">START IN</span>
+                                <span class="px-4 py-1.5 rounded-md text-sm text-gray-400 bg-gray-800">Agent</span>
+                                <span class="px-4 py-1.5 rounded-md text-sm text-gray-400 bg-gray-800">Chat</span>
+                                <span class="px-4 py-1.5 rounded-md text-sm font-semibold text-black bg-orange-500">Zendesk</span>
+                            </div>
+                            <div class="text-center text-gray-500 text-xs">
+                                <span class="inline-flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded text-xs font-bold">Enterprise Plus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Install Voyager Wingman -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">3</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Install Axelera Voyager Wingman</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Scroll down to <strong class="text-white">Available Apps</strong> in the App Manager. Find
+                            <strong class="text-orange-400">Axelera Voyager Wingman</strong> and click
+                            <span class="inline-block px-3 py-0.5 bg-orange-500 text-black font-bold rounded text-xs">Get</span>
+                            to install it.
+                        </p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                                        <i class="fas fa-rocket text-orange-400"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-orange-400 font-semibold text-sm">Axelera Voyager Wingman</div>
+                                        <div class="text-gray-500 text-xs">Free - Included in plan</div>
+                                    </div>
+                                </div>
+                                <span class="px-4 py-1 bg-orange-500 text-black font-bold rounded text-xs">Get</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center gap-2 text-green-400 text-sm">
+                            <i class="fas fa-check-circle"></i>
+                            Axelera Voyager-Wingman added to your Apps grid.
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Select Wingman & Zendesk Setup -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">4</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Configure Zendesk Credentials</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Click the <strong class="text-orange-400">Axelera Voyager Wingman</strong> app icon, then select
+                            <strong class="text-white">Zendesk</strong> mode. The Zendesk Support setup panel will open showing
+                            the MCP server URL and credential fields.
+                        </p>
+                        <div class="bg-gray-900/50 rounded-lg p-4 border border-gray-700 space-y-4">
+                            <!-- MCP Server -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                    <span class="text-white text-sm font-semibold">Zendesk MCP Server</span>
+                                </div>
+                                <div class="bg-black/50 rounded px-3 py-2 text-blue-400 text-xs font-mono border border-gray-700">
+                                    https://chipos-zendesk-XXXXXXXXX.us-central1.run.app/mcp
+                                </div>
+                            </div>
+                            <!-- Credentials -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <i class="fas fa-lock text-gray-400 text-sm"></i>
+                                    <span class="text-white text-sm font-semibold">Zendesk Credentials</span>
+                                    <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded font-semibold">Connected</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div>
+                                        <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Zendesk Subdomain</div>
+                                        <div class="bg-black/50 rounded px-3 py-2 text-gray-300 text-sm border border-gray-700">your-subdomain</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Agent Email</div>
+                                        <div class="bg-black/50 rounded px-3 py-2 text-gray-300 text-sm border border-gray-700">you@company.com</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">API Token</div>
+                                        <div class="bg-black/50 rounded px-3 py-2 text-gray-500 text-sm border border-gray-700">Saved securely (leave blank to keep current)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="callout callout-info mt-4">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-info-circle text-cyan-400 mt-1"></i>
+                                <div>
+                                    <strong class="text-white">Credentials are stored securely</strong>
+                                    <p class="text-gray-300 text-sm mt-1">Click <strong>Save to Keychain &amp; Deploy</strong> to
+                                        store your Zendesk API token in the macOS Keychain. Tokens are never stored in plain text.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Start Claude Code -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">5</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Start Claude Code with Zendesk MCP</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Click the golden <strong class="text-yellow-400">"Start Claude Code with Zendesk MCP"</strong> button.
+                            Select any working directory when prompted. Claude Code will launch with the Zendesk MCP server configured.
+                        </p>
+                        <div class="bg-black rounded-lg p-4 font-mono text-sm border border-gray-700">
+                            <div class="text-gray-500 mb-2"># Claude Code starts and configures MCP servers...</div>
+                            <div class="text-cyan-400">chipos: <span class="text-gray-300">https://mcp.futureatoms.com/mcp (HTTP)</span> <span class="text-green-400">Connected</span></div>
+                            <div class="text-cyan-400">chipos-zendesk: <span class="text-gray-300">https://chipos-zendesk-XXX.run.app/mcp (HTTP)</span> <span class="text-green-400">Connected</span></div>
+                            <div class="mt-2 text-green-400">Starting Claude Code with Zendesk MCP...</div>
+                            <div class="mt-1 text-yellow-400">Accessing workspace:</div>
+                            <div class="text-gray-300">&nbsp;&nbsp;/Users/yourname/projects/my-project</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Verify MCP -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">6</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Verify MCP Connection</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Type <code class="bg-gray-800 px-2 py-0.5 rounded text-cyan-400 text-xs">/mcp</code> in Claude Code
+                            to verify the Zendesk MCP server is connected.
+                        </p>
+                        <div class="bg-black rounded-lg p-4 font-mono text-sm border border-gray-700">
+                            <div><span class="text-purple-400">&#x276F;</span> <span class="text-white">/mcp</span></div>
+                            <div class="mt-2 text-yellow-400 font-bold">Manage MCP servers</div>
+                            <div class="text-gray-500">4 servers</div>
+                            <div class="mt-2 text-cyan-400">Local MCPs</div>
+                            <div class="text-gray-300">&nbsp;&nbsp;chipos &middot; <span class="text-green-400">&#x2714; connected</span></div>
+                            <div class="text-gray-300">&nbsp;&nbsp;chipos-zendesk &middot; <span class="text-green-400">&#x2714; connected</span></div>
+                        </div>
+                        <div class="callout callout-tip mt-4">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                                <div>
+                                    <strong class="text-white">Success!</strong>
+                                    <p class="text-gray-300 text-sm mt-1">You should see <strong class="text-green-400">chipos-zendesk</strong>
+                                        listed as <strong class="text-green-400">"connected"</strong>. If not, go back to the setup
+                                        panel and verify your credentials.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Query Zendesk -->
+                    <div class="glass-panel p-6 rounded-xl mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold text-sm">7</span>
+                            <h3 class="font-orbitron text-lg font-bold text-white">Query Zendesk Tickets</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-4">
+                            You're all set! Ask any question about your Zendesk tickets. Claude will use the MCP tools
+                            to fetch and analyze your support data.
+                        </p>
+                        <div class="bg-black rounded-lg p-4 font-mono text-sm border border-gray-700 mb-4">
+                            <div><span class="text-purple-400">&#x276F;</span> <span class="text-white">Show me the 10 most recent tickets</span></div>
+                            <div class="text-gray-500 mt-1"># chipos-zendesk &rarr; get_tickets (MCP)</div>
+                        </div>
+
+                        <!-- Sample Ticket Results -->
+                        <div class="space-y-2">
+                            <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-700 flex items-center justify-between">
+                                <div>
+                                    <span class="text-orange-400 font-mono text-xs font-bold">#572</span>
+                                    <span class="text-white text-sm ml-2">Missing detections during two-stage object detection</span>
+                                    <span class="text-gray-500 text-xs ml-2">Feb 9</span>
+                                </div>
+                                <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded font-semibold">open</span>
+                            </div>
+                            <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-700 flex items-center justify-between">
+                                <div>
+                                    <span class="text-orange-400 font-mono text-xs font-bold">#571</span>
+                                    <span class="text-white text-sm ml-2">Metis M.2 Not Initialized on Cold Boot</span>
+                                    <span class="text-gray-500 text-xs ml-2">Feb 9</span>
+                                </div>
+                                <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 text-xs rounded font-semibold">pending</span>
+                            </div>
+                            <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-700 flex items-center justify-between">
+                                <div>
+                                    <span class="text-orange-400 font-mono text-xs font-bold">#570</span>
+                                    <span class="text-white text-sm ml-2">Timeout for querying an inference</span>
+                                    <span class="text-gray-500 text-xs ml-2">Feb 9</span>
+                                </div>
+                                <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded font-semibold">open</span>
+                            </div>
+                            <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-700 flex items-center justify-between">
+                                <div>
+                                    <span class="text-orange-400 font-mono text-xs font-bold">#569</span>
+                                    <span class="text-white text-sm ml-2">Technical support &ndash; Axelera AI (YOLOv26 + Basler)</span>
+                                    <span class="text-gray-500 text-xs ml-2">Feb 9</span>
+                                </div>
+                                <span class="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs rounded font-semibold">new</span>
+                            </div>
+                            <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-700 flex items-center justify-between">
+                                <div>
+                                    <span class="text-orange-400 font-mono text-xs font-bold">#564</span>
+                                    <span class="text-white text-sm ml-2">Voyager SDK not pre-installed (Artina MK3588)</span>
+                                    <span class="text-gray-500 text-xs ml-2">Feb 2</span>
+                                </div>
+                                <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded font-semibold">solved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example Queries -->
+                    <div class="callout callout-info mt-6">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-lightbulb text-cyan-400 mt-1"></i>
+                            <div>
+                                <strong class="text-white">Example queries you can try</strong>
+                                <ul class="text-gray-300 text-sm mt-2 space-y-1">
+                                    <li>&bull; "Show me all urgent tickets"</li>
+                                    <li>&bull; "Summarize ticket #572 with all comments"</li>
+                                    <li>&bull; "Search the knowledge base for driver installation"</li>
+                                    <li>&bull; "What are the most common issues this week?"</li>
+                                    <li>&bull; "Draft a reply for ticket #571"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Dashboard Overview -->
                 <section id="dashboard" class="section-anchor mb-16">
                     <h2 class="text-2xl font-orbitron font-bold text-white mb-6 flex items-center gap-3">
                         <span class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
                             <i class="fas fa-window-maximize text-cyan-400 text-sm"></i>
                         </span>
-                        Dashboard & Navigation
+                        Dashboard &amp; Navigation
                     </h2>
 
                     <p class="text-gray-400 mb-6">
@@ -1384,15 +1665,15 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div class="feature-card p-6 rounded-xl">
-                            <h4 class="font-orbitron text-cyan-400 font-bold mb-3">Welcome & Onboarding</h4>
+                            <h4 class="font-orbitron text-cyan-400 font-bold mb-3">Welcome &amp; Onboarding</h4>
                             <p class="text-gray-400 text-sm">Verify API keys, provider setup, and onboarding status.</p>
                         </div>
                         <div class="feature-card p-6 rounded-xl">
-                            <h4 class="font-orbitron text-purple-400 font-bold mb-3">Knowledge & Projects</h4>
+                            <h4 class="font-orbitron text-purple-400 font-bold mb-3">Knowledge &amp; Projects</h4>
                             <p class="text-gray-400 text-sm">Add sources, browse knowledge, and manage project tasks.</p>
                         </div>
                         <div class="feature-card p-6 rounded-xl">
-                            <h4 class="font-orbitron text-green-400 font-bold mb-3">MCP & Providers</h4>
+                            <h4 class="font-orbitron text-green-400 font-bold mb-3">MCP &amp; Providers</h4>
                             <p class="text-gray-400 text-sm">Copy MCP configs and monitor provider connectivity.</p>
                         </div>
                         <div class="feature-card p-6 rounded-xl">
@@ -1423,7 +1704,7 @@
                             <i class="fas fa-robot mr-2"></i>AI MODELS
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
-                            AI Providers & <span class="text-green-400">Models</span>
+                            AI Providers &amp; <span class="text-green-400">Models</span>
                         </h2>
                     </div>
 
@@ -1502,7 +1783,7 @@
                     <!-- Model Comparison -->
                     <div id="model-comparison" class="glass-panel p-6 rounded-xl border-cyan-500/30">
                         <h3 class="text-xl font-orbitron font-bold text-white mb-4">
-                            <i class="fas fa-signal text-cyan-400 mr-2"></i>Provider Status & Routing
+                            <i class="fas fa-signal text-cyan-400 mr-2"></i>Provider Status &amp; Routing
                         </h3>
                         <p class="text-gray-300 mb-4">
                             The Settings dashboard shows live connectivity for OpenAI, Anthropic, Google, OpenRouter,
@@ -1525,7 +1806,7 @@
                 <section id="security-overview" class="section-anchor mb-16">
                     <div class="text-center mb-8">
                         <span class="tech-badge text-red-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
-                            <i class="fas fa-shield-alt mr-2"></i>SECURITY & COMPLIANCE
+                            <i class="fas fa-shield-alt mr-2"></i>SECURITY &amp; COMPLIANCE
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
                             Enterprise-Grade <span class="text-red-400">Security</span>
@@ -1545,7 +1826,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-orbitron font-bold text-white">NIST AI RMF</h3>
-                                    <span class="text-green-400 text-xs">Documented & Tracked</span>
+                                    <span class="text-green-400 text-xs">Documented &amp; Tracked</span>
                                 </div>
                             </div>
                             <p class="text-gray-300 text-sm mb-3">
@@ -1694,7 +1975,7 @@
                         <span class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
                             <i class="fas fa-list-check text-purple-400 text-sm"></i>
                         </span>
-                        Projects & Tasks
+                        Projects &amp; Tasks
                     </h2>
 
                     <p class="text-gray-400 mb-6">
@@ -1851,8 +2132,7 @@
                         These commands work across macOS and Linux builds.
                     </p>
 
-                    <a href="claude-commands.zip" download
-                        class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-lg bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 hover:border-green-400/50 text-green-400 hover:text-green-300 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10">
+                    <a href="claude-commands.zip" download="" class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-lg bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 hover:border-green-400/50 text-green-400 hover:text-green-300 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10">
                         <i class="fas fa-download"></i>
                         <span>Download Command Pack</span>
                         <span class="text-xs text-gray-500">(zip)</span>
@@ -1949,8 +2229,7 @@
                 <!-- RAG Overview Section -->
                 <section id="rag-overview" class="section-anchor mb-16">
                     <div class="text-center mb-12">
-                        <span
-                            class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
+                        <span class="tech-badge text-purple-300 text-xs font-orbitron tracking-widest px-4 py-2 rounded-full">
                             <i class="fas fa-brain mr-2"></i>RAG OVERVIEW
                         </span>
                         <h2 class="text-3xl font-orbitron font-bold text-white mt-6 mb-4">
@@ -1986,7 +2265,7 @@
                         </div>
                         <div class="glass-panel p-6 rounded-xl border-yellow-500/30">
                             <h4 class="font-orbitron text-yellow-400 font-bold mb-4 flex items-center gap-2">
-                                <i class="fas fa-chart-line"></i> Evaluation & Health
+                                <i class="fas fa-chart-line"></i> Evaluation &amp; Health
                             </h4>
                             <p class="text-gray-400 text-sm">Quality scoring and health checks surface missing keys,
                                 slow sources, and low relevance.</p>
@@ -2050,7 +2329,7 @@
                         <span class="w-6 h-6 rounded bg-cyan-500/20 flex items-center justify-center">
                             <i class="fas fa-search text-cyan-400 text-xs"></i>
                         </span>
-                        Search & Reranking
+                        Search &amp; Reranking
                     </h3>
 
                     <p class="text-gray-400 mb-6">
@@ -2074,7 +2353,7 @@
                         <span class="w-6 h-6 rounded bg-red-500/20 flex items-center justify-center">
                             <i class="fas fa-heartbeat text-red-400 text-xs"></i>
                         </span>
-                        RAG Health & Evaluation
+                        RAG Health &amp; Evaluation
                     </h3>
 
                     <p class="text-gray-400 mb-6">
@@ -2084,8 +2363,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div class="glass-panel p-6 rounded-xl text-center border-green-500/30">
-                            <div
-                                class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-check-circle text-green-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Healthy</h4>
@@ -2093,8 +2371,7 @@
                             <p class="text-gray-500 text-xs mt-2">RAG working well</p>
                         </div>
                         <div class="glass-panel p-6 rounded-xl text-center border-yellow-500/30">
-                            <div
-                                class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-exclamation-triangle text-yellow-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Needs Attention</h4>
@@ -2102,8 +2379,7 @@
                             <p class="text-gray-500 text-xs mt-2">Check providers or crawl status</p>
                         </div>
                         <div class="glass-panel p-6 rounded-xl text-center border-red-500/30">
-                            <div
-                                class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3">
+                            <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-3">
                                 <i class="fas fa-times-circle text-red-400 text-2xl"></i>
                             </div>
                             <h4 class="text-white font-bold mb-2">Unhealthy</h4>
@@ -2237,7 +2513,7 @@
                         <span class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
                             <i class="fas fa-link text-purple-400 text-sm"></i>
                         </span>
-                        Claude Code & MCP
+                        Claude Code &amp; MCP
                     </h2>
 
                     <p class="text-gray-400 mb-8">
@@ -2247,8 +2523,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div class="glass-panel p-6 rounded-xl text-center">
-                            <div
-                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-500/20 flex items-center justify-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-500/20 flex items-center justify-center">
                                 <i class="fas fa-terminal text-purple-400 text-2xl"></i>
                             </div>
                             <h4 class="font-orbitron text-white font-bold mb-2">Claude Code</h4>
@@ -2258,8 +2533,7 @@
                         </div>
 
                         <div id="cursor-integration" class="section-anchor glass-panel p-6 rounded-xl text-center">
-                            <div
-                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-500/20 flex items-center justify-center">
                                 <i class="fas fa-mouse-pointer text-blue-400 text-2xl"></i>
                             </div>
                             <h4 class="font-orbitron text-white font-bold mb-2">Cursor</h4>
@@ -2269,8 +2543,7 @@
                         </div>
 
                         <div id="windsurf-integration" class="section-anchor glass-panel p-6 rounded-xl text-center">
-                            <div
-                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-cyan-500/20 flex items-center justify-center">
                                 <i class="fas fa-wind text-cyan-400 text-2xl"></i>
                             </div>
                             <h4 class="font-orbitron text-white font-bold mb-2">Windsurf</h4>
@@ -2280,8 +2553,7 @@
                         </div>
 
                         <div class="glass-panel p-6 rounded-xl text-center">
-                            <div
-                                class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
                                 <i class="fas fa-plug text-green-400 text-2xl"></i>
                             </div>
                             <h4 class="font-orbitron text-white font-bold mb-2">Other MCP Clients</h4>
@@ -2448,7 +2720,7 @@
                                 <i class="fas fa-key"></i> API Keys
                             </h4>
                             <ul class="space-y-2 text-gray-300 text-sm">
-                                <li><strong>OpenAI</strong> - RAG queries & embeddings</li>
+                                <li><strong>OpenAI</strong> - RAG queries &amp; embeddings</li>
                                 <li><strong>Google</strong> - Alternative LLM provider</li>
                                 <li><strong>GitHub</strong> - Private repo crawling</li>
                                 <li>Encrypted storage with show/hide toggle</li>
@@ -2457,7 +2729,7 @@
 
                         <div class="glass-panel p-6 rounded-xl border-l-4 border-green-500">
                             <h4 class="font-orbitron text-green-400 mb-3 flex items-center gap-2">
-                                <i class="fas fa-brain"></i> RAG & Knowledge
+                                <i class="fas fa-brain"></i> RAG &amp; Knowledge
                             </h4>
                             <ul class="space-y-2 text-gray-300 text-sm">
                                 <li><strong>Hybrid Search</strong> - Vector + keyword search</li>
@@ -2469,7 +2741,7 @@
 
                         <div class="glass-panel p-6 rounded-xl border-l-4 border-orange-500">
                             <h4 class="font-orbitron text-orange-400 mb-3 flex items-center gap-2">
-                                <i class="fas fa-server"></i> Backend & Local
+                                <i class="fas fa-server"></i> Backend &amp; Local
                             </h4>
                             <ul class="space-y-2 text-gray-300 text-sm">
                                 <li><strong>Hosted vs Local</strong> - Switch backend mode</li>
@@ -2490,8 +2762,7 @@
                                         recommended configurations, and troubleshooting tips.</p>
                                 </div>
                             </div>
-                            <a href="chipos-settings.html"
-                                class="ml-4 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm font-orbitron whitespace-nowrap">
+                            <a href="chipos-settings.html" class="ml-4 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm font-orbitron whitespace-nowrap">
                                 <i class="fas fa-external-link-alt mr-2"></i>Full Settings Guide
                             </a>
                         </div>
@@ -2530,8 +2801,7 @@
                             <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
                                 <li>Verify the backend is running (check Controls panel)</li>
                                 <li>Confirm the MCP URL (hosted vs local) in Settings</li>
-                                <li>Try restarting ChipOS with <code
-                                        class="bg-black/30 px-2 py-1 rounded">Cmd+Shift+P → Restart Services</code></li>
+                                <li>Try restarting ChipOS with <code class="bg-black/30 px-2 py-1 rounded">Cmd+Shift+P → Restart Services</code></li>
                             </ol>
                         </div>
 
@@ -2572,14 +2842,10 @@
                             <span class="text-gray-400 text-sm">© 2026 FutureAtoms. All rights reserved.</span>
                         </div>
                         <div class="flex gap-6">
-                            <a href="chipos.html"
-                                class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">ChipOS Home</a>
-                            <a href="chipos-changelog.html"
-                                class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Changelog</a>
-                            <a href="https://github.com/futureatoms/chipos"
-                                class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">GitHub</a>
-                            <a href="contact.html"
-                                class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Contact</a>
+                            <a href="chipos.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">ChipOS Home</a>
+                            <a href="chipos-changelog.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Changelog</a>
+                            <a href="https://github.com/futureatoms/chipos" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">GitHub</a>
+                            <a href="contact.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Contact</a>
                         </div>
                     </div>
                 </footer>
@@ -2647,6 +2913,7 @@
             });
         });
     </script>
-</body>
 
-</html>
+
+
+</body></html>
