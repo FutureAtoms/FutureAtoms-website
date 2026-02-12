@@ -1381,28 +1381,63 @@
                         <h3 class="text-2xl font-['Orbitron'] font-bold text-white">Linux</h3>
                     </div>
                     <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
-                                1</div>
-                            <div class="flex-1">
-                                <p class="text-gray-300 mb-2">Download .deb package</p>
-                                <div class="code-block p-3 rounded text-sm text-cyan-300">wget
-                                    https://futureatoms.com/chipos_latest.deb</div>
-                            </div>
+                        <!-- One-line installer -->
+                        <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                            <p class="text-green-400 text-sm font-bold mb-2"><i class="fas fa-bolt mr-1"></i> One-line install (auto-detects architecture)</p>
+                            <div class="code-block p-3 rounded text-sm text-cyan-300">curl -fsSL https://futureatoms.com/install.sh | bash</div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
-                                2</div>
-                            <div class="flex-1">
-                                <p class="text-gray-300 mb-2">Install with dpkg</p>
-                                <div class="code-block p-3 rounded text-sm text-cyan-300">sudo dpkg -i chipos_latest.deb
+
+                        <p class="text-gray-500 text-xs text-center">— or download manually —</p>
+
+                        <!-- Architecture selector -->
+                        <div class="flex gap-2 justify-center">
+                            <button onclick="showLinuxArch('amd64')" id="chipos-tab-amd64" class="px-4 py-2 rounded-lg text-xs font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-colors">x86_64 / amd64</button>
+                            <button onclick="showLinuxArch('arm64')" id="chipos-tab-arm64" class="px-4 py-2 rounded-lg text-xs font-bold bg-white/5 text-gray-400 border border-white/10 transition-colors">ARM64 / aarch64</button>
+                        </div>
+
+                        <!-- amd64 -->
+                        <div id="chipos-linux-amd64" class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                <div class="flex-1">
+                                    <p class="text-gray-300 mb-2">Download .deb package (x86_64)</p>
+                                    <div class="code-block p-3 rounded text-sm text-cyan-300">wget https://futureatoms.com/chipos_latest_amd64.deb</div>
                                 </div>
                             </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                <div class="flex-1">
+                                    <p class="text-gray-300 mb-2">Install with dpkg</p>
+                                    <div class="code-block p-3 rounded text-sm text-cyan-300">sudo dpkg -i chipos_latest_amd64.deb && sudo apt-get install -f</div>
+                                </div>
+                            </div>
+                            <a href="https://futureatoms.com/chipos_latest_amd64.deb" id="linux-download-btn-amd64" onclick="handleDownloadClick(this, 'Linux')" class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-4">
+                                <i class="fas fa-download mr-2"></i> Download for Linux (amd64)
+                            </a>
+                            <p class="text-gray-500 text-xs mt-1 text-center">v1.0.1 • Ubuntu/Debian • x86_64</p>
                         </div>
-                        <a href="https://futureatoms.com/chipos_latest.deb" id="linux-download-btn" onclick="handleDownloadClick(this, 'Linux')" class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
-                            <i class="fas fa-download mr-2"></i> Download for Linux
-                        </a>
-                        <p class="text-gray-500 text-xs mt-2 text-center">v1.0.1 • Ubuntu/Debian • arm64</p>
+
+                        <!-- arm64 (hidden by default) -->
+                        <div id="chipos-linux-arm64" class="space-y-4 hidden">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                <div class="flex-1">
+                                    <p class="text-gray-300 mb-2">Download .deb package (ARM64)</p>
+                                    <div class="code-block p-3 rounded text-sm text-cyan-300">wget https://futureatoms.com/chipos_latest_arm64.deb</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                <div class="flex-1">
+                                    <p class="text-gray-300 mb-2">Install with dpkg</p>
+                                    <div class="code-block p-3 rounded text-sm text-cyan-300">sudo dpkg -i chipos_latest_arm64.deb && sudo apt-get install -f</div>
+                                </div>
+                            </div>
+                            <a href="https://futureatoms.com/chipos_latest_arm64.deb" id="linux-download-btn-arm64" onclick="handleDownloadClick(this, 'Linux')" class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-4">
+                                <i class="fas fa-download mr-2"></i> Download for Linux (arm64)
+                            </a>
+                            <p class="text-gray-500 text-xs mt-1 text-center">v1.0.1 • Ubuntu/Debian • arm64</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1745,6 +1780,26 @@
         }
 
         // Download button state change
+        // Linux architecture tab switcher
+        function showLinuxArch(arch) {
+            // Hide all arch content
+            document.getElementById('chipos-linux-amd64').classList.add('hidden');
+            document.getElementById('chipos-linux-arm64').classList.add('hidden');
+            // Reset tabs
+            ['amd64', 'arm64'].forEach(function(a) {
+                var tab = document.getElementById('chipos-tab-' + a);
+                if (tab) {
+                    tab.classList.remove('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+                    tab.classList.add('bg-white/5', 'text-gray-400', 'border-white/10');
+                }
+            });
+            // Show selected
+            document.getElementById('chipos-linux-' + arch).classList.remove('hidden');
+            var activeTab = document.getElementById('chipos-tab-' + arch);
+            activeTab.classList.remove('bg-white/5', 'text-gray-400', 'border-white/10');
+            activeTab.classList.add('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+        }
+
         function handleDownloadClick(btn, platform) {
             const originalHtml = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Downloading...';
