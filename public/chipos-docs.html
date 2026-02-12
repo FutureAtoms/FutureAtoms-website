@@ -892,16 +892,16 @@
                             <!-- Architecture selector -->
                             <p class="text-gray-400 text-sm mb-3">Or download manually for your architecture:</p>
                             <div class="flex gap-2 mb-4">
-                                <button onclick="showLinuxArch('amd64')" id="tab-linux-amd64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
-                                    x86_64 / amd64
-                                </button>
-                                <button onclick="showLinuxArch('arm64')" id="tab-linux-arm64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-white/5 text-gray-400 border border-white/10">
+                                <button onclick="showLinuxArch('arm64')" id="tab-linux-arm64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
                                     ARM64 / aarch64
+                                </button>
+                                <button onclick="showLinuxArch('amd64')" id="tab-linux-amd64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-white/5 text-gray-400 border border-white/10">
+                                    x86_64 / amd64
                                 </button>
                             </div>
 
-                            <!-- amd64 instructions -->
-                            <div id="linux-amd64" class="linux-arch-content">
+                            <!-- arm64 instructions (default — available now) -->
+                            <div id="linux-arm64" class="linux-arch-content">
                                 <div class="space-y-4">
                                     <div class="flex gap-4">
                                         <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
@@ -933,15 +933,24 @@
                                 </div>
                             </div>
 
-                            <!-- arm64 instructions -->
-                            <div id="linux-arm64" class="linux-arch-content hidden">
-                                <div class="space-y-4">
+                            <!-- amd64 instructions (coming soon) -->
+                            <div id="linux-amd64" class="linux-arch-content hidden">
+                                <div class="callout callout-tip mb-4">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-clock text-yellow-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white">amd64 build coming soon</strong>
+                                            <p class="text-gray-300 text-sm mt-1">The x86_64 .deb package is being prepared. Use the one-line installer above which will auto-detect your architecture once available.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-4 opacity-60">
                                     <div class="flex gap-4">
                                         <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
                                         <div class="flex-1">
-                                            <p class="text-white font-bold mb-2">Download the .deb package (ARM64)</p>
+                                            <p class="text-white font-bold mb-2">Download the .deb package (x86_64)</p>
                                             <div class="code-block">
-                                                <pre><code class="language-bash">wget https://futureatoms.com/chipos_latest_arm64.deb</code></pre>
+                                                <pre><code class="language-bash">wget https://futureatoms.com/chipos_latest_amd64.deb</code></pre>
                                             </div>
                                         </div>
                                     </div>
@@ -950,7 +959,7 @@
                                         <div class="flex-1">
                                             <p class="text-white font-bold mb-2">Install with dpkg</p>
                                             <div class="code-block">
-                                                <pre><code class="language-bash">sudo dpkg -i chipos_latest_arm64.deb && sudo apt-get install -f</code></pre>
+                                                <pre><code class="language-bash">sudo dpkg -i chipos_latest_amd64.deb && sudo apt-get install -f</code></pre>
                                             </div>
                                         </div>
                                     </div>
