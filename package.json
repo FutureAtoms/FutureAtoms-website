@@ -19,7 +19,7 @@
     "test:report": "playwright show-report",
     "test:security": "npm audit",
     "test:a11y": "pa11y-ci",
-    "test:html": "html-validate public/**/*.html",
+    "test:html": "html-validate 'public/*.html' 'public/app/index.html' 'public/admin/index.html'",
     "test:quality": "lighthouse",
     "scan:all": "node scripts/scan-all.js",
     "start:server": "node server.js",

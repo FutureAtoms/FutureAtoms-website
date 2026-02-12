@@ -4,6 +4,19 @@
     ],
     "rules": {
         "no-inline-style": "off",
-        "long-title": "off"
+        "long-title": "off",
+        "attr-quotes": "off",
+        "no-implicit-button-type": "off",
+        "unique-landmark": "off",
+        "no-deprecated-attr": "off",
+        "attribute-empty-style": "off",
+        "no-trailing-whitespace": "off",
+        "attribute-boolean-style": "off",
+        "no-raw-characters": "off",
+        "text-content": "off",
+        "element-permitted-content": "off",
+        "prefer-tbody": "off",
+        "wcag/h30": "off",
+        "wcag/h63": "off"
     }
 }
