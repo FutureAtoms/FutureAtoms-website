@@ -876,35 +876,91 @@
 
                         <!-- Linux -->
                         <div id="platform-linux" class="platform-content hidden">
-                            <div class="space-y-4">
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
-                                        1</div>
+                            <!-- Quick install -->
+                            <div class="callout callout-tip mb-6">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-bolt text-green-400 mt-1"></i>
                                     <div class="flex-1">
-                                        <p class="text-white font-bold mb-2">Download the .deb package</p>
-                                        <div class="code-block">
-                                            <pre><code class="language-bash">wget https://futureatoms.com/chipos_latest.deb</code></pre>
+                                        <strong class="text-white">One-line install (auto-detects architecture)</strong>
+                                        <div class="code-block mt-2">
+                                            <pre><code class="language-bash">curl -fsSL https://futureatoms.com/install.sh | bash</code></pre>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
-                                        2</div>
-                                    <div class="flex-1">
-                                        <p class="text-white font-bold mb-2">Install with dpkg</p>
-                                        <div class="code-block">
-                                            <pre><code class="language-bash">sudo dpkg -i chipos_latest.deb</code></pre>
+                            </div>
+
+                            <!-- Architecture selector -->
+                            <p class="text-gray-400 text-sm mb-3">Or download manually for your architecture:</p>
+                            <div class="flex gap-2 mb-4">
+                                <button onclick="showLinuxArch('amd64')" id="tab-linux-amd64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                                    x86_64 / amd64
+                                </button>
+                                <button onclick="showLinuxArch('arm64')" id="tab-linux-arm64" class="platform-tab px-3 py-1.5 rounded-lg font-orbitron text-xs bg-white/5 text-gray-400 border border-white/10">
+                                    ARM64 / aarch64
+                                </button>
+                            </div>
+
+                            <!-- amd64 instructions -->
+                            <div id="linux-amd64" class="linux-arch-content">
+                                <div class="space-y-4">
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                        <div class="flex-1">
+                                            <p class="text-white font-bold mb-2">Download the .deb package (x86_64)</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">wget https://futureatoms.com/chipos_latest_amd64.deb</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                        <div class="flex-1">
+                                            <p class="text-white font-bold mb-2">Install with dpkg</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">sudo dpkg -i chipos_latest_amd64.deb && sudo apt-get install -f</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">3</div>
+                                        <div>
+                                            <p class="text-white font-bold mb-2">Launch from terminal or application menu</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">chipos</code></pre>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex gap-4">
-                                    <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">
-                                        3</div>
-                                    <div>
-                                        <p class="text-white font-bold mb-2">Launch from terminal or application menu
-                                        </p>
-                                        <div class="code-block">
-                                            <pre><code class="language-bash">chipos</code></pre>
+                            </div>
+
+                            <!-- arm64 instructions -->
+                            <div id="linux-arm64" class="linux-arch-content hidden">
+                                <div class="space-y-4">
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
+                                        <div class="flex-1">
+                                            <p class="text-white font-bold mb-2">Download the .deb package (ARM64)</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">wget https://futureatoms.com/chipos_latest_arm64.deb</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">2</div>
+                                        <div class="flex-1">
+                                            <p class="text-white font-bold mb-2">Install with dpkg</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">sudo dpkg -i chipos_latest_arm64.deb && sudo apt-get install -f</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">3</div>
+                                        <div>
+                                            <p class="text-white font-bold mb-2">Launch from terminal or application menu</p>
+                                            <div class="code-block">
+                                                <pre><code class="language-bash">chipos</code></pre>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -912,12 +968,13 @@
 
                             <div class="callout callout-info mt-6">
                                 <div class="flex items-start gap-3">
-                                    <i class="fas fa-info-circle text-blue-400 mt-1"></i>
+                                    <i class="fas fa-microchip text-blue-400 mt-1"></i>
                                     <div>
-                                        <strong class="text-white">Other Linux formats</strong>
-                                        <p class="text-gray-300 text-sm mt-1">AppImage and Snap packages are also
-                                            supported. Use the same version as your .deb or grab the latest from
-                                            futureatoms.com/downloads.</p>
+                                        <strong class="text-white">System requirements</strong>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            <strong>amd64:</strong> Any x86_64 machine (Intel/AMD) running Ubuntu 20.04+, Debian 11+<br>
+                                            <strong>arm64:</strong> ARM64 machines (Raspberry Pi 4+, AWS Graviton, Ampere) running Ubuntu 22.04+, Debian 12+
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -2868,6 +2925,22 @@
             // Show selected
             document.getElementById('platform-' + platform).classList.remove('hidden');
             const activeTab = document.getElementById('tab-' + platform);
+            activeTab.classList.remove('bg-white/5', 'text-gray-400', 'border-white/10');
+            activeTab.classList.add('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+        }
+
+        // Linux architecture tab switcher
+        function showLinuxArch(arch) {
+            document.querySelectorAll('.linux-arch-content').forEach(el => el.classList.add('hidden'));
+            ['amd64', 'arm64'].forEach(a => {
+                const tab = document.getElementById('tab-linux-' + a);
+                if (tab) {
+                    tab.classList.remove('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
+                    tab.classList.add('bg-white/5', 'text-gray-400', 'border-white/10');
+                }
+            });
+            document.getElementById('linux-' + arch).classList.remove('hidden');
+            const activeTab = document.getElementById('tab-linux-' + arch);
             activeTab.classList.remove('bg-white/5', 'text-gray-400', 'border-white/10');
             activeTab.classList.add('bg-cyan-500/20', 'text-cyan-400', 'border-cyan-500/30');
         }
