@@ -135,6 +135,10 @@ fi
 if [ "$VERSION" = "latest" ]; then
   DEB_URL="${BASE_URL}/chipos_latest_${ARCH}.deb"
   DEB_FILE="chipos_latest_${ARCH}.deb"
+  if [ "$ARCH" = "amd64" ]; then
+    warn "The latest arm64 release is v1.0.1. The latest amd64 build is v1.0.0."
+    warn "You will receive v1.0.0 for amd64. A newer amd64 build is coming soon."
+  fi
 else
   DEB_URL="${BASE_URL}/chipos_${VERSION}_${ARCH}.deb"
   DEB_FILE="chipos_${VERSION}_${ARCH}.deb"

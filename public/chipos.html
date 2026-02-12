@@ -1367,10 +1367,10 @@
                                 3</div>
                             <p class="text-gray-300 pt-1">Drag ChipOS to your Applications folder</p>
                         </div>
-                        <span id="macos-download-btn" class="block w-full text-center bg-gray-500/10 border border-gray-500/30 text-gray-500 py-3 rounded-lg cursor-not-allowed mt-6">
-                            <i class="fas fa-clock mr-2"></i> Coming Soon
-                        </span>
-                        <p class="text-gray-500 text-xs mt-2 text-center">macOS 11+ • Apple Silicon</p>
+                        <a href="https://futureatoms.com/ChipOS-macOS-arm64.dmg" id="macos-download-btn" onclick="handleDownloadClick(this, 'macOS')" class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-6">
+                            <i class="fas fa-download mr-2"></i> Download for macOS (Apple Silicon)
+                        </a>
+                        <p class="text-gray-500 text-xs mt-2 text-center">v2026.02.1 • macOS 11+ • Apple Silicon</p>
                     </div>
                 </div>
 
@@ -1417,7 +1417,7 @@
                             <p class="text-gray-500 text-xs mt-1 text-center">v1.0.1 • Ubuntu/Debian • arm64</p>
                         </div>
 
-                        <!-- amd64 (coming soon) -->
+                        <!-- amd64 (v1.0.0 available) -->
                         <div id="chipos-linux-amd64" class="space-y-4 hidden">
                             <div class="flex gap-4">
                                 <div class="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center text-cyan-400 font-bold shrink-0">1</div>
@@ -1433,10 +1433,10 @@
                                     <div class="code-block p-3 rounded text-sm text-cyan-300">sudo dpkg -i chipos_latest_amd64.deb && sudo apt-get install -f</div>
                                 </div>
                             </div>
-                            <span class="block w-full text-center bg-gray-500/10 border border-gray-500/30 text-gray-500 py-3 rounded-lg cursor-not-allowed mt-4">
-                                <i class="fas fa-clock mr-2"></i> Coming Soon
-                            </span>
-                            <p class="text-gray-500 text-xs mt-1 text-center">amd64 build is in progress — use the install script above for now</p>
+                            <a href="https://futureatoms.com/chipos_latest_amd64.deb" id="linux-download-btn-amd64" onclick="handleDownloadClick(this, 'Linux')" class="block w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 rounded-lg transition-colors mt-4">
+                                <i class="fas fa-download mr-2"></i> Download for Linux (amd64)
+                            </a>
+                            <p class="text-gray-500 text-xs mt-1 text-center">v1.0.0 • Ubuntu/Debian • amd64 — v1.0.1 amd64 build coming soon</p>
                         </div>
                     </div>
                 </div>
