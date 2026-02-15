@@ -6,7 +6,7 @@ const baseUrl = 'https://futureatoms.com';
 
 // Page titles for og:title
 const pageOgTitles = {
-    'about.html': 'About FutureAtoms - Building Tomorrow\'s Technology',
+    'about.html': 'About FutureAtoms - Agentic AI for Semiconductors & Healthcare',
     'adaptivision.html': 'AdaptiveVision - AI Object Detection | FutureAtoms',
     'agentic.html': 'Agentic - AI-Driven CLI Tool | FutureAtoms',
     'bevybeats.html': 'BevyBeats - AI Music Generation | FutureAtoms',
@@ -19,12 +19,12 @@ const pageOgTitles = {
     'chipos.html': 'ChipOS - AI Operating System for Chip Development',
     'chipos-changelog.html': 'ChipOS Changelog - Latest Updates | FutureAtoms',
     'chipos-docs.html': 'ChipOS Documentation | FutureAtoms',
-    'chipos-pitch.html': 'ChipOS - Enterprise Solution Pitch | FutureAtoms',
+    'chipos-pitch.html': 'ChipOS - Investor Pitch Deck | FutureAtoms',
     'chipos-settings.html': 'ChipOS Settings | FutureAtoms',
     'contact.html': 'Contact FutureAtoms - Get in Touch',
     'feedback.html': 'Share Your Feedback | FutureAtoms',
     'hub-coming-soon.html': 'ChipOS Hub - Coming Soon | FutureAtoms',
-    'index.html': 'FutureAtoms - Evolving Intelligence',
+    'index.html': 'FutureAtoms | Agentic AI for Semiconductors & Healthcare',
     'news.html': 'News & Updates | FutureAtoms',
     'savitri.html': 'Savitri - AI Therapy Companion | FutureAtoms',
     'systemverilog.html': 'SystemVerilog AI - Hardware Description | FutureAtoms',

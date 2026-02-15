@@ -42,7 +42,7 @@ const PRIORITY_MAP = {
   'chipos-pricing.html': { priority: '0.7', changefreq: 'monthly' },
   'chipos-docs.html': { priority: '0.7', changefreq: 'weekly' },
   'chipos-changelog.html': { priority: '0.6', changefreq: 'weekly' },
-  'chipos-pitch.html': { priority: '0.5', changefreq: 'monthly' },
+  'chipos-pitch.html': { priority: '0.6', changefreq: 'monthly' },
 };
 
 // Blog posts get 0.7 priority
