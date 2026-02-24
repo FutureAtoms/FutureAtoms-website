@@ -53,6 +53,11 @@
           "source": "/chipos_1.0.1_arm64.deb",
           "destination": "https://github.com/FutureAtoms/chipos-app-releases/releases/download/v1.0.1/chipos_1.0.1_arm64.deb",
           "type": 302
+        },
+        {
+          "source": "/ani-summit",
+          "destination": "/go?url=https://aninews.in/news/business/sam-altman-sundar-pichai-and-demis-hassabis-were-all-at-indias-ai-summit-the-most-important-launch-may-have-been-one-they-missed20260223150805/",
+          "type": 302
         }
       ],
       "rewrites": [
