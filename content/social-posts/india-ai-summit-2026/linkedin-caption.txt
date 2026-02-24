@@ -1,0 +1,39 @@
+I just spent 5 days at the India AI Impact Summit 2026.
+
+There's a lot of noise about crowds and access. That happens at any event with 3,250+ speakers from 100+ countries. Here's what I'm taking away — the signal.
+
+Day 1-2 were about the money:
+→ Adani: $100B committed to AI data centers (largest single corporate pledge at any summit)
+→ Google: $15B. Microsoft: $20B. Amazon: $16B.
+→ Total by Day 2: $150B+
+
+Day 3 was when things shifted from pledges to proof:
+→ India launched Semiconductor Mission 2.0 — ₹40,000 crore ($4.7B)
+→ Micron's Sanand, Gujarat facility began commercial chip production — India's first
+→ Hassabis, Bengio, and LeCun delivered a joint keynote to 500,000+ live viewers
+→ And between those announcements, I launched ChipOS
+
+I've spent 10 years in silicon verification. Intel (Habana AI division). ISRO. Axelera AI. 9 Intel awards. Multiple tapeouts with working silicon — AI accelerators, RISC-V vector CPUs, PCIe Gen4, USB 3.2 SerDes PHYs.
+
+I watched verification eat 70% of every project I touched. With EDA tools whose architectures trace back to the 1990s. Built by Synopsys, Cadence, Siemens — all American or European. India has 100,000+ chip engineers. Not one of their design tools was built here.
+
+ChipOS is an agentic operating system for semiconductor design. Engineers describe intent in plain English. AI agents write the RTL, generate testbenches, run verification, debug waveforms, and iterate autonomously 24/7. Not a copilot. An OS.
+
+Globally, fewer than 10 companies are building this. ChipAgents (Silicon Valley, $74M). Chipmind (Zurich, $2.5M). The EDA incumbents bolting AI onto 30-year-old architectures. In India — zero, until now.
+
+Within hours of launch, CDAC — the Centre for Development of Advanced Computing, the team behind India's first domestically designed RISC-V processor (DHRUV64) — started exploring ChipOS for their next iterations.
+
+Day 4-5 closed the loop:
+→ PM Modi opened the Leaders' Plenary
+→ Altman, Pichai, and Macron sat at one roundtable
+→ India scaled from 38,000 to 58,000 GPUs
+→ Google and Jio partnered on cloud AI clusters for 450M+ users
+→ The summit set a Guinness World Record: $200B+ in investment pledges
+
+You cannot design chips faster with tools from the 1990s. ChipOS is the missing layer.
+
+Try it free → chipos.ai
+Full summit coverage (17 articles) → futureatoms.com/india-ai-summit-2026
+
+---
+What was your biggest takeaway from the summit?

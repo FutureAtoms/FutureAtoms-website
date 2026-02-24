@@ -3,6 +3,15 @@ const { defineSecret } = require("firebase-functions/params");
 const { GoogleGenAI } = require("@google/genai");
 const { Octokit } = require("@octokit/rest");
 
+// Import Summit Pipeline functions
+const { summitPipeline, summitArticles, summitSocial, summitGenerate } = require("./summit-pipeline");
+
+// Export Summit Pipeline functions
+exports.summitPipeline = summitPipeline;
+exports.summitArticles = summitArticles;
+exports.summitSocial = summitSocial;
+exports.summitGenerate = summitGenerate;
+
 // Define Secrets
 const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
 const GEMINI_STORE_NAME = defineSecret("GEMINI_STORE_NAME");

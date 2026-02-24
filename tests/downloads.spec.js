@@ -15,14 +15,14 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('installation section exists and has correct heading', async ({ page }) => {
-    await page.goto('/chipos.html#installation');
+    await page.goto('/chipos#installation');
     const heading = page.locator('#installation h2');
     await expect(heading).toBeVisible();
     await expect(heading).toContainText('GET STARTED');
   });
 
   test('page title and branding are correct', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     await expect(page).toHaveTitle(/ChipOS/);
     const body = await page.locator('body').textContent();
     expect(body.toLowerCase()).toContain('chipos');
@@ -34,7 +34,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('macOS download button is a working link (not Coming Soon)', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     const macBtn = page.locator('#macos-download-btn');
     await expect(macBtn).toBeVisible();
 
@@ -53,7 +53,7 @@ test.describe('ChipOS Download & Installation', () => {
   });
 
   test('macOS download shows version info', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     const macSection = page.locator('#macos-download-btn + p');
     const text = await macSection.textContent();
     expect(text).toContain('macOS');
@@ -67,7 +67,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('Linux ARM64 download button is a working link', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     const arm64Btn = page.locator('#linux-download-btn-arm64');
     await expect(arm64Btn).toBeVisible();
 
@@ -89,7 +89,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('Linux AMD64 download button is a working link', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
 
     // Click the amd64 tab to reveal the section
     await page.click('#chipos-tab-amd64');
@@ -115,7 +115,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('Linux architecture tabs switch correctly', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
 
     // ARM64 section visible by default
     await expect(page.locator('#chipos-linux-arm64')).toBeVisible();
@@ -137,7 +137,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('install.sh one-liner is displayed', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     const installBlock = page.locator('text=curl -fsSL https://futureatoms.com/install.sh | bash');
     await expect(installBlock).toBeVisible();
   });
@@ -155,7 +155,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('browser sign-in form renders', async ({ page }) => {
-    await page.goto('/chipos.html#installation');
+    await page.goto('/chipos#installation');
     await expect(page.locator('#email-signin-form')).toBeVisible();
     await expect(page.locator('#signin-email')).toBeVisible();
     await expect(page.locator('#signin-password')).toBeVisible();
@@ -163,7 +163,7 @@ test.describe('ChipOS Download & Installation', () => {
   });
 
   test('OAuth buttons render', async ({ page }) => {
-    await page.goto('/chipos.html#installation');
+    await page.goto('/chipos#installation');
     const googleBtn = page.locator('button:has-text("Google")');
     const microsoftBtn = page.locator('button:has-text("Microsoft")');
     await expect(googleBtn).toBeVisible();
@@ -171,7 +171,7 @@ test.describe('ChipOS Download & Installation', () => {
   });
 
   test('sign-up form toggles correctly', async ({ page }) => {
-    await page.goto('/chipos.html#installation');
+    await page.goto('/chipos#installation');
     await expect(page.locator('#signup-form')).toBeHidden();
     await page.click('button:has-text("Sign up")');
     await expect(page.locator('#signup-form')).toBeVisible();
@@ -179,7 +179,7 @@ test.describe('ChipOS Download & Installation', () => {
   });
 
   test('forgot password form toggles correctly', async ({ page }) => {
-    await page.goto('/chipos.html#installation');
+    await page.goto('/chipos#installation');
     await expect(page.locator('#forgot-password-form')).toBeHidden();
     await page.click('button:has-text("Forgot password")');
     await expect(page.locator('#forgot-password-form')).toBeVisible();
@@ -190,13 +190,13 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('hero CTA buttons have valid hrefs', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
 
     const ctas = [
       { text: 'DOWNLOAD CHIPOS', expected: '#installation' },
-      { text: 'DOCUMENTATION', expected: 'chipos-docs.html' },
+      { text: 'DOCUMENTATION', expected: '/chipos-docs' },
       { text: 'VIEW SOURCE', expected: 'github.com' },
-      { text: 'FEATURE REQUESTS', expected: 'chipos-features.html' },
+      { text: 'FEATURE REQUESTS', expected: '/chipos-features' },
     ];
 
     for (const cta of ctas) {
@@ -212,18 +212,18 @@ test.describe('ChipOS Download & Installation', () => {
 
   test('all internal page links return 200', async ({ request }) => {
     const pages = [
-      '/chipos.html',
-      '/chipos-docs.html',
-      '/chipos-changelog.html',
-      '/chipos-features.html',
-      '/chipos-pitch.html',
-      '/feedback.html',
-      '/careers.html',
-      '/index.html',
-      '/blog.html',
-      '/news.html',
-      '/about.html',
-      '/contact.html',
+      '/chipos',
+      '/chipos-docs',
+      '/chipos-changelog',
+      '/chipos-features',
+      '/chipos-pitch',
+      '/feedback',
+      '/careers',
+      '/',
+      '/blog',
+      '/news',
+      '/about',
+      '/contact',
     ];
 
     for (const pagePath of pages) {
@@ -237,7 +237,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('no download button says Coming Soon', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
 
     // Check macOS
     const macBtn = page.locator('#macos-download-btn');
@@ -261,7 +261,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('changelog page loads and has content', async ({ page }) => {
-    await page.goto('/chipos-changelog.html');
+    await page.goto('/chipos-changelog');
     await expect(page).toHaveTitle(/Changelog|ChipOS|FutureAtoms/);
     const text = await page.locator('body').textContent();
     expect(text.toLowerCase()).toContain('changelog');
@@ -272,13 +272,13 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('FAQ section has 5 questions', async ({ page }) => {
-    await page.goto('/chipos.html#faq');
+    await page.goto('/chipos#faq');
     const questions = page.locator('#faq details');
     await expect(questions).toHaveCount(5);
   });
 
   test('FAQ accordion opens and closes', async ({ page }) => {
-    await page.goto('/chipos.html#faq');
+    await page.goto('/chipos#faq');
     const firstQuestion = page.locator('#faq details').first();
     const answer = firstQuestion.locator('p');
 
@@ -295,7 +295,7 @@ test.describe('ChipOS Download & Installation', () => {
   // ---------------------------------------------------------------------------
 
   test('version badge shows a version number', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
     const badge = page.locator('text=Version').first();
     await expect(badge).toBeVisible();
     const text = await badge.textContent();

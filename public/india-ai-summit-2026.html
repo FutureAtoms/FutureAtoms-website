@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <title>India AI Impact Summit 2026 - Live Coverage | FutureAtoms</title>
+    <meta name="description" content="24x7 automated coverage of India AI Impact Summit 2026 (Feb 16-22, New Delhi). FutureAtoms ChipOS launch, 3,250+ speakers, $250B+ investment commitments.">
+    <meta property="og:title" content="India AI Impact Summit 2026 | FutureAtoms">
+    <meta property="og:description" content="Live AI-powered coverage: 3,250+ speakers, 100+ countries, $250B+ in commitments. FutureAtoms ChipOS launch at the world's largest AI summit.">
+    <meta property="og:url" content="https://futureatoms.com/india-ai-summit-2026">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FutureAtoms">
+    <meta name="twitter:title" content="India AI Impact Summit 2026 | FutureAtoms">
+    <meta name="twitter:description" content="Live AI-powered coverage of the world's largest AI summit. ChipOS launch, global investment pledges, semiconductor breakthroughs.">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="canonical" href="https://futureatoms.com/india-ai-summit-2026">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        @view-transition { navigation: auto; }
+        .summit-gradient { background: linear-gradient(135deg, #0f172a 0%, #020617 50%, #0c1220 100%); }
+        .india-tricolor { background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%); }
+
+        /* Override main.css article styles — summit cards are NOT blog articles */
+        #articles-grid article,
+        #articles-grid .article-card {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: rgba(5, 12, 25, 0.9) !important;
+            border: 1px solid rgba(229, 228, 226, 0.3) !important;
+            border-radius: 16px !important;
+        }
+        #articles-grid article h1,
+        #articles-grid article p {
+            font-size: inherit;
+            line-height: inherit;
+            margin-bottom: inherit;
+            color: inherit;
+        }
+
+        /* Day tabs */
+        .day-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .day-tab:hover, .day-tab.active {
+            background: rgba(0, 255, 255, 0.15);
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Article cards */
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+            border-color: rgba(0, 255, 255, 0.4) !important;
+        }
+
+        /* Category badges — readable size */
+        .category-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            padding: 4px 12px;
+        }
+
+        /* Pulse animation */
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Social cards */
+        .social-card { transition: all 0.3s ease; }
+        .social-card:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); }
+
+        /* Generator panel */
+        .generator-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .generator-panel.open { max-height: 2000px; }
+
+        /* Stats */
+        .stats-counter { font-variant-numeric: tabular-nums; }
+
+        /* Hide horizontal scrollbar on day tabs */
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+        /* Shimmer loading */
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(0,255,255,0.05) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+        /* Article expand/collapse */
+        .article-body { display: none; }
+        .article-body.expanded { display: block; }
+        .expand-btn { transition: transform 0.3s ease; }
+        .expand-btn.rotated { transform: rotate(180deg); }
+
+        /* Article body inner HTML typography */
+        .article-body-content {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #d1d5db;
+        }
+        .article-body-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 2rem 0 1rem;
+            letter-spacing: 0.03em;
+        }
+        .article-body-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #67e8f9;
+            margin: 1.5rem 0 0.75rem;
+            letter-spacing: 0.02em;
+        }
+        .article-body-content h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #a5b4fc;
+            margin: 1.25rem 0 0.5rem;
+        }
+        .article-body-content p {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #d1d5db;
+            margin-bottom: 1.15rem;
+        }
+        .article-body-content ul, .article-body-content ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+            color: #d1d5db;
+        }
+        .article-body-content li {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin-bottom: 0.5rem;
+        }
+        .article-body-content li::marker {
+            color: #22d3ee;
+        }
+        .article-body-content strong {
+            color: #f1f5f9;
+            font-weight: 700;
+        }
+        .article-body-content em {
+            color: #e2e8f0;
+        }
+        .article-body-content blockquote {
+            border-left: 3px solid #00ffff;
+            padding: 0.75rem 1.25rem;
+            margin: 1.25rem 0;
+            background: rgba(0, 255, 255, 0.05);
+            border-radius: 0 8px 8px 0;
+            color: #e2e8f0;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+        .article-body-content a {
+            color: #22d3ee;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .article-body-content a:hover {
+            color: #67e8f9;
+        }
+        .article-body-content hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 1.5rem 0;
+        }
+
+        /* Featured article highlight */
+        .article-featured {
+            border-color: rgba(0, 255, 255, 0.35) !important;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.08) !important;
+        }
+    </style>
+    <script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "India AI Impact Summit 2026",
+        "startDate": "2026-02-16",
+        "endDate": "2026-02-22",
+        "location": { "@type": "Place", "name": "Bharat Mandapam", "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" } },
+        "description": "The world's largest AI summit, first global AI summit in the Global South. 3,250+ speakers, 100+ countries.",
+        "organizer": { "@type": "Organization", "name": "Government of India" }
+    }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
+</head>
+<body class="summit-gradient">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(0,255,255,0.03),transparent_50%)]"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(255,153,51,0.02),transparent_50%)]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
+            </div>
+            <div>
+                <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </p>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Agentic AI for Semiconductors & Healthcare</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
+            <a href="/" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+            <div class="dropdown">
+                <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/chipos">ChipOS</a>
+                    <a href="/swaastik">Swaastik</a>
+                    <a href="/systemverilog">SystemVerilogGPT</a>
+                    <a href="/zaphy">Zaphy</a>
+                    <a href="/agentic">Agentic Control</a>
+                    <a href="/yuj">Yuj</a>
+                    <a href="/adaptivision">AdaptiveVision</a>
+                    <a href="/bevybeats">BevyBeats</a>
+                    <a href="/savitri">Savitri</a>
+                    <div class="border-t border-cyan-500/30 my-1"></div>
+                    <a href="/chipos-changelog" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i> Changelog</a>
+                </div>
+            </div>
+            <a href="/blog" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+            <a href="/news" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+            <a href="/about" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+            <a href="/careers" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
+            <a href="/contact" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+        </nav>
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="/" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+            <div class="flex flex-col gap-3 border-t border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="/chipos" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="/swaastik" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Swaastik</a>
+                <a href="/systemverilog" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="/zaphy" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="/agentic" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic Control</a>
+                <a href="/yuj" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="/adaptivision" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="/bevybeats" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="/savitri" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+            </div>
+            <a href="/blog" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="/news" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="/about" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="/careers" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
+            <a href="/contact" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
+
+    <main id="main-content" class="relative z-10 pt-32 pb-20 px-4 md:px-8 lg:px-12 max-w-6xl mx-auto">
+
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <!-- India Tricolor accent line -->
+            <div class="india-tricolor h-1 w-40 mx-auto rounded-full mb-10 opacity-80"></div>
+
+            <div class="flex items-center justify-center gap-3 mb-5">
+                <span class="pulse-dot inline-block w-3 h-3 rounded-full bg-red-500"></span>
+                <span class="font-['Orbitron'] text-sm tracking-[0.3em] text-red-400 uppercase font-semibold">Live Coverage</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-['Orbitron'] font-black tracking-tight mb-5">
+                <span class="metallic-text">INDIA AI IMPACT</span><br>
+                <span class="text-cyan-400">SUMMIT 2026</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-cyan-100/50 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Feb 16-22, Bharat Mandapam, New Delhi. The world's largest AI summit.
+                <br>First global AI summit held in the Global South.
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="flex flex-wrap justify-center gap-8 md:gap-14 mb-10">
+                <div class="text-center">
+                    <div class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white stats-counter">3,250+</div>
+                    <div class="text-xs tracking-[0.2em] text-cyan-400/60 uppercase mt-2 font-['Orbitron']">Speakers</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white stats-counter">100+</div>
+                    <div class="text-xs tracking-[0.2em] text-cyan-400/60 uppercase mt-2 font-['Orbitron']">Countries</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white stats-counter">$250B+</div>
+                    <div class="text-xs tracking-[0.2em] text-cyan-400/60 uppercase mt-2 font-['Orbitron']">Investments</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white stats-counter">58K</div>
+                    <div class="text-xs tracking-[0.2em] text-cyan-400/60 uppercase mt-2 font-['Orbitron']">GPUs Target</div>
+                </div>
+            </div>
+
+            <!-- Auto-refresh indicator -->
+            <div id="refresh-indicator" class="flex items-center justify-center gap-2 text-xs text-gray-500 font-mono">
+                <i class="fas fa-sync-alt"></i>
+                <span id="last-updated">Loading...</span>
+                <span class="text-gray-600">| Auto-refreshes every 5 min</span>
+            </div>
+        </section>
+
+        <!-- Day Timeline Tabs -->
+        <section class="mb-12">
+            <div id="day-tabs" class="flex overflow-x-auto md:flex-wrap md:justify-center gap-3 md:gap-4 pb-2 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
+                <button class="day-tab active shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="all">
+                    ALL DAYS
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-16">
+                    FEB 16
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-17">
+                    FEB 17
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-cyan-500/40 text-sm font-['Orbitron'] tracking-wider text-cyan-400" data-day="2026-02-18">
+                    FEB 18 <i class="fas fa-star text-[10px] text-yellow-400 ml-1"></i>
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-19">
+                    FEB 19
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-20">
+                    FEB 20
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-21">
+                    FEB 21
+                </button>
+                <button class="day-tab shrink-0 whitespace-nowrap rounded-lg border border-white/10 text-sm font-['Orbitron'] tracking-wider text-white/70" data-day="2026-02-22">
+                    FEB 22
+                </button>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section id="articles-section" class="mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-['Orbitron'] text-xl md:text-2xl font-bold text-white tracking-wide">
+                    <i class="fas fa-newspaper text-cyan-400 mr-3"></i>SUMMIT COVERAGE
+                </h2>
+                <span id="article-count" class="text-sm text-gray-500 font-mono">0 articles</span>
+            </div>
+
+            <div id="articles-grid" class="grid gap-8">
+                <!-- Loading skeleton -->
+                <div class="shimmer glass-panel p-10 rounded-2xl metallic-border h-52"></div>
+                <div class="shimmer glass-panel p-10 rounded-2xl metallic-border h-40"></div>
+            </div>
+        </section>
+
+        <!-- Social Buzz -->
+        <section id="social-section" class="mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-['Orbitron'] text-xl md:text-2xl font-bold text-white tracking-wide">
+                    <i class="fas fa-hashtag text-cyan-400 mr-3"></i>SOCIAL BUZZ
+                </h2>
+                <span id="social-count" class="text-sm text-gray-500 font-mono">0 mentions</span>
+            </div>
+
+            <div id="social-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="shimmer glass-panel p-6 rounded-xl metallic-border h-36"></div>
+                <div class="shimmer glass-panel p-6 rounded-xl metallic-border h-36"></div>
+                <div class="shimmer glass-panel p-6 rounded-xl metallic-border h-36"></div>
+            </div>
+        </section>
+
+        <!-- Manual Generator (admin only - hidden from public, accessible via ?admin=1) -->
+        <section class="mb-16" id="generator-section" style="display:none;">
+            <button id="generator-toggle" class="w-full flex items-center justify-between glass-panel p-4 rounded-xl metallic-border hover:border-cyan-500/30 transition-all">
+                <span class="font-['Orbitron'] text-sm tracking-wider text-white/70">
+                    <i class="fas fa-wand-magic-sparkles text-cyan-400 mr-2"></i>MANUAL ARTICLE GENERATOR
+                </span>
+                <i class="fas fa-chevron-down text-cyan-400 expand-btn" id="generator-chevron"></i>
+            </button>
+
+            <div id="generator-panel" class="generator-panel">
+                <div class="glass-panel p-6 rounded-b-xl metallic-border border-t-0 space-y-4">
+                    <p class="text-sm text-gray-400">Paste a transcript or text and generate a summit article using Kimi K2.5 via HuggingFace.</p>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-cyan-400/70 mb-1 tracking-wider">HF TOKEN</label>
+                            <input type="password" id="gen-hf-token" placeholder="hf_..." class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-cyan-400/70 mb-1 tracking-wider">ARTICLE TYPE</label>
+                            <select id="gen-type" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                                <option value="news_report">News Report</option>
+                                <option value="feature">Feature</option>
+                                <option value="analysis">Analysis</option>
+                                <option value="event_recap">Event Recap</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-cyan-400/70 mb-1 tracking-wider">SUMMIT DAY</label>
+                            <input type="date" id="gen-day" value="2026-02-18" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-['Orbitron'] text-cyan-400/70 mb-1 tracking-wider">VIDEO URL (optional)</label>
+                            <input type="url" id="gen-video-url" placeholder="https://youtube.com/watch?v=..." class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-['Orbitron'] text-cyan-400/70 mb-1 tracking-wider">TRANSCRIPT / SOURCE TEXT</label>
+                        <textarea id="gen-transcript" rows="6" placeholder="Paste transcript or source text here (minimum 50 characters)..." class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none resize-y"></textarea>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <button id="gen-submit" class="font-['Orbitron'] text-sm tracking-wider bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 px-6 py-2 rounded-lg hover:bg-cyan-500/30 transition-all">
+                            <i class="fas fa-bolt mr-2"></i>GENERATE ARTICLE
+                        </button>
+                        <span id="gen-status" class="text-sm text-gray-500"></span>
+                    </div>
+
+                    <div id="gen-result" class="hidden">
+                        <div class="border-t border-white/10 pt-4 mt-4">
+                            <h3 id="gen-result-title" class="font-['Orbitron'] text-lg font-bold text-white mb-2"></h3>
+                            <div id="gen-result-body" class="text-gray-300 text-sm leading-relaxed prose prose-invert max-w-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/10 py-8 text-center text-gray-300 text-sm font-mono relative z-10">
+        <p>&copy; 2026 FutureAtoms. All rights reserved.</p>
+        <div class="mt-2 flex items-center justify-center gap-4 text-xs text-gray-500">
+            <span>Powered by Kimi K2.5 + HuggingFace</span>
+            <span>&bull;</span>
+            <a href="/news" class="text-cyan-400/50 hover:text-cyan-400 transition-colors">All News</a>
+            <span>&bull;</span>
+            <a href="/chipos-pitch" class="text-cyan-400/50 hover:text-cyan-400 transition-colors">Investors</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        // ─── Supabase Direct (fallback for localhost / when Firebase API unavailable) ──
+        const SUPABASE_URL = 'https://wpgrhvdwdvmknhjzpkwz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ3JodmR3ZHZta25oanpwa3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MTYyODQsImV4cCI6MjA3Mjk5MjI4NH0.qdeRc4qFAFP3nFj2HuVAhGTikZrCCkwxCAfDL5Jq4VM';
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        // ─── State ──────────────────────────────────────────────────────
+        let articles = [];
+        let socialPosts = [];
+        let activeDay = 'all';
+        let refreshInterval = null;
+
+        // ─── DOM References ─────────────────────────────────────────────
+        const articlesGrid = document.getElementById('articles-grid');
+        const socialGrid = document.getElementById('social-grid');
+        const articleCount = document.getElementById('article-count');
+        const socialCount = document.getElementById('social-count');
+        const lastUpdated = document.getElementById('last-updated');
+        const dayTabs = document.getElementById('day-tabs');
+
+        // ─── Category Colors ────────────────────────────────────────────
+        const categoryColors = {
+            'LAUNCH': { bg: 'bg-green-500/20', border: 'border-green-500/30', text: 'text-green-300' },
+            'POLICY': { bg: 'bg-blue-500/20', border: 'border-blue-500/30', text: 'text-blue-300' },
+            'INVESTMENT': { bg: 'bg-yellow-500/20', border: 'border-yellow-500/30', text: 'text-yellow-300' },
+            'RESEARCH': { bg: 'bg-purple-500/20', border: 'border-purple-500/30', text: 'text-purple-300' },
+            'PARTNERSHIP': { bg: 'bg-orange-500/20', border: 'border-orange-500/30', text: 'text-orange-300' },
+            'ANALYSIS': { bg: 'bg-indigo-500/20', border: 'border-indigo-500/30', text: 'text-indigo-300' },
+            'RECAP': { bg: 'bg-pink-500/20', border: 'border-pink-500/30', text: 'text-pink-300' }
+        };
+
+        const categoryIcons = {
+            'LAUNCH': 'fa-rocket', 'POLICY': 'fa-landmark', 'INVESTMENT': 'fa-chart-line',
+            'RESEARCH': 'fa-flask', 'PARTNERSHIP': 'fa-handshake', 'ANALYSIS': 'fa-magnifying-glass-chart',
+            'RECAP': 'fa-calendar-check'
+        };
+
+        // ─── Fetch Articles (Firebase API → Supabase direct fallback) ───
+        async function fetchArticles() {
+            try {
+                let url = '/api/summit/articles?limit=50';
+                if (activeDay !== 'all') url += `&day=${activeDay}`;
+
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                articles = data.articles || [];
+                renderArticles();
+                updateTimestamp();
+            } catch (err) {
+                console.warn('Firebase API unavailable, trying Supabase direct:', err.message);
+                await fetchArticlesFromSupabase();
+            }
+        }
+
+        async function fetchArticlesFromSupabase() {
+            if (!supabaseClient) { if (articles.length === 0) renderFallbackArticles(); return; }
+            try {
+                let query = supabaseClient
+                    .from('content_pieces')
+                    .select('id, title, slug, type, status, content_html, excerpt, tags, categories, ai_generated, ai_provider, ai_model, published_at, reading_time_minutes, word_count, metadata, created_at')
+                    .contains('categories', ['summit-coverage'])
+                    .eq('status', 'published')
+                    .order('published_at', { ascending: false })
+                    .limit(50);
+
+                if (activeDay !== 'all') {
+                    query = query.eq('metadata->>summit_day', activeDay);
+                }
+
+                const { data, error } = await query;
+                if (error) throw new Error(error.message);
+                articles = data || [];
+                renderArticles();
+                updateTimestamp();
+            } catch (err) {
+                console.warn('Supabase direct also failed:', err.message);
+                if (articles.length === 0) renderFallbackArticles();
+            }
+        }
+
+        // ─── Fetch Social (Firebase API → Supabase direct fallback) ────
+        async function fetchSocial() {
+            try {
+                const res = await fetch('/api/summit/social?limit=20');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                socialPosts = data.posts || [];
+                renderSocial();
+            } catch (err) {
+                console.warn('Firebase social API unavailable, trying Supabase:', err.message);
+                await fetchSocialFromSupabase();
+            }
+        }
+
+        async function fetchSocialFromSupabase() {
+            if (!supabaseClient) { if (socialPosts.length === 0) renderFallbackSocial(); return; }
+            try {
+                const { data, error } = await supabaseClient
+                    .from('social_posts')
+                    .select('id, platform, content, external_post_id, external_url, published_at, likes, comments, shares, hashtags, mentions, created_at')
+                    .eq('organization_id', 'a1b2c3d4-e5f6-7890-abcd-ef1234567890')
+                    .order('published_at', { ascending: false })
+                    .limit(20);
+
+                if (error) throw new Error(error.message);
+                socialPosts = data || [];
+                renderSocial();
+            } catch (err) {
+                console.warn('Supabase social also failed:', err.message);
+                if (socialPosts.length === 0) renderFallbackSocial();
+            }
+        }
+
+        // ─── Render Articles ────────────────────────────────────────────
+        function renderArticles() {
+            if (articles.length === 0) {
+                renderFallbackArticles();
+                return;
+            }
+
+            articleCount.textContent = `${articles.length} article${articles.length !== 1 ? 's' : ''}`;
+
+            articlesGrid.innerHTML = articles.map((a, i) => {
+                const cat = (a.metadata?.category || 'LAUNCH').toUpperCase();
+                const colors = categoryColors[cat] || categoryColors['LAUNCH'];
+                const icon = categoryIcons[cat] || 'fa-newspaper';
+                const day = a.metadata?.summit_day || '';
+                const dayLabel = day ? new Date(day + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase() : '';
+                const isFeatured = a.title?.includes('ChipOS') || a.title?.includes('FutureAtoms');
+
+                return `
+                <div class="article-card glass-panel rounded-2xl metallic-border overflow-hidden ${isFeatured ? 'article-featured' : ''}">
+                    <div class="p-6 md:p-10">
+                        <!-- Meta row -->
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="category-badge ${colors.bg} ${colors.border} ${colors.text} border backdrop-blur-md rounded-full">
+                                <i class="fas ${icon} mr-1"></i>${cat}
+                            </span>
+                            ${dayLabel ? `<span class="text-sm text-cyan-400 font-mono font-semibold">${dayLabel}, 2026</span>` : ''}
+                            ${a.reading_time_minutes ? `<span class="text-sm text-gray-500 font-mono">${a.reading_time_minutes} min read</span>` : ''}
+                            ${a.ai_generated ? '<span class="text-sm text-gray-600 font-mono"><i class="fas fa-robot mr-1"></i>AI</span>' : ''}
+                            ${isFeatured ? '<span class="category-badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-full"><i class="fas fa-star mr-1"></i>FEATURED</span>' : ''}
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="font-['Orbitron'] text-xl md:text-2xl lg:text-[1.65rem] font-bold text-white mb-4 leading-snug tracking-tight">
+                            ${escapeHtml(a.title)}
+                        </h3>
+
+                        <!-- Excerpt -->
+                        <p class="text-gray-200 text-base md:text-lg leading-relaxed mb-5 font-['Rajdhani'] font-light">
+                            ${escapeHtml(a.excerpt || '')}
+                        </p>
+
+                        <!-- Expand button -->
+                        <button onclick="toggleArticle(${i})" class="flex items-center gap-2 text-cyan-400 font-['Orbitron'] font-bold tracking-wider text-xs hover:translate-x-1 transition-transform py-2">
+                            <span id="expand-label-${i}">READ FULL ARTICLE</span>
+                            <i class="fas fa-chevron-down expand-btn" id="expand-icon-${i}"></i>
+                        </button>
+
+                        <!-- Expandable body -->
+                        <div class="article-body mt-6 pt-6 border-t border-white/10" id="article-body-${i}">
+                            <div class="article-body-content">
+                                ${a.content_html || '<p>' + escapeHtml(a.content || 'Full article content loading...') + '</p>'}
+                            </div>
+                            ${a.metadata?.source_video_url ? `<a href="${escapeHtml(a.metadata.source_video_url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-6 text-sm text-red-400 hover:text-red-300 font-semibold"><i class="fab fa-youtube text-lg"></i>Watch Source Video</a>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ─── Toggle Article Expand ──────────────────────────────────────
+        window.toggleArticle = function(index) {
+            const body = document.getElementById(`article-body-${index}`);
+            const icon = document.getElementById(`expand-icon-${index}`);
+            const label = document.getElementById(`expand-label-${index}`);
+
+            if (body.classList.contains('expanded')) {
+                body.classList.remove('expanded');
+                icon.classList.remove('rotated');
+                label.textContent = 'READ FULL ARTICLE';
+            } else {
+                body.classList.add('expanded');
+                icon.classList.add('rotated');
+                label.textContent = 'COLLAPSE';
+            }
+        };
+
+        // ─── Render Social Posts ────────────────────────────────────────
+        function renderSocial() {
+            if (socialPosts.length === 0) {
+                renderFallbackSocial();
+                return;
+            }
+
+            socialCount.textContent = `${socialPosts.length} mention${socialPosts.length !== 1 ? 's' : ''}`;
+
+            socialGrid.innerHTML = socialPosts.map(p => {
+                const platformIcon = { twitter: 'fab fa-x-twitter', instagram: 'fab fa-instagram', youtube: 'fab fa-youtube', linkedin: 'fab fa-linkedin' }[p.platform] || 'fas fa-globe';
+                const platformColor = { twitter: 'text-white', instagram: 'text-pink-400', youtube: 'text-red-400', linkedin: 'text-blue-400' }[p.platform] || 'text-gray-400';
+
+                return `
+                <div class="social-card glass-panel p-4 rounded-xl metallic-border">
+                    <div class="flex items-start gap-3">
+                        <i class="${platformIcon} ${platformColor} text-lg mt-1"></i>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm text-gray-300 leading-relaxed line-clamp-3">${escapeHtml(p.content?.substring(0, 200) || '')}</p>
+                            <div class="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                                ${p.likes ? `<span><i class="fas fa-heart mr-1"></i>${p.likes}</span>` : ''}
+                                ${p.comments ? `<span><i class="fas fa-comment mr-1"></i>${p.comments}</span>` : ''}
+                                ${p.shares ? `<span><i class="fas fa-retweet mr-1"></i>${p.shares}</span>` : ''}
+                                ${p.external_url ? `<a href="${escapeHtml(p.external_url)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300"><i class="fas fa-external-link-alt mr-1"></i>View</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ─── Fallback Content ───────────────────────────────────────────
+        function renderFallbackArticles() {
+            articleCount.textContent = 'Loading from Supabase...';
+            articlesGrid.innerHTML = `
+                <div class="glass-panel p-8 rounded-2xl metallic-border text-center">
+                    <i class="fas fa-satellite-dish text-4xl text-cyan-400 mb-4"></i>
+                    <p class="text-gray-400 mb-2">Articles are loaded from Supabase via the <code class="text-cyan-400">/api/summit/articles</code> endpoint.</p>
+                    <p class="text-gray-500 text-sm">The pipeline runs every 2 hours and generates articles from YouTube transcripts using Kimi K2.5.</p>
+                </div>`;
+        }
+
+        function renderFallbackSocial() {
+            socialCount.textContent = 'Monitoring...';
+            socialGrid.innerHTML = `
+                <div class="glass-panel p-6 rounded-xl metallic-border col-span-full text-center">
+                    <i class="fas fa-hashtag text-2xl text-cyan-400 mb-3"></i>
+                    <p class="text-gray-400 text-sm">Social mentions from X/Twitter and Instagram will appear here once the pipeline collects them.</p>
+                </div>`;
+        }
+
+        // ─── Helpers ────────────────────────────────────────────────────
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            lastUpdated.textContent = `Last updated: ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+        }
+
+        // ─── Day Tab Filtering ──────────────────────────────────────────
+        dayTabs.addEventListener('click', (e) => {
+            const tab = e.target.closest('.day-tab');
+            if (!tab) return;
+
+            document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            activeDay = tab.dataset.day;
+            fetchArticles();
+        });
+
+        // ─── Generator (admin only — show via ?admin=1) ──────────────────
+        if (new URLSearchParams(window.location.search).get('admin') === '1') {
+            document.getElementById('generator-section').style.display = '';
+        }
+
+        const genToggle = document.getElementById('generator-toggle');
+        if (genToggle) genToggle.addEventListener('click', () => {
+            const panel = document.getElementById('generator-panel');
+            const chevron = document.getElementById('generator-chevron');
+            panel.classList.toggle('open');
+            chevron.classList.toggle('rotated');
+        });
+
+        const genSubmit = document.getElementById('gen-submit');
+        if (genSubmit) genSubmit.addEventListener('click', async () => {
+            const transcript = document.getElementById('gen-transcript').value;
+            const hfToken = document.getElementById('gen-hf-token').value;
+            const articleType = document.getElementById('gen-type').value;
+            const day = document.getElementById('gen-day').value;
+            const videoUrl = document.getElementById('gen-video-url').value;
+            const status = document.getElementById('gen-status');
+            const result = document.getElementById('gen-result');
+
+            if (!transcript || transcript.length < 50) {
+                status.textContent = 'Transcript must be at least 50 characters.';
+                status.className = 'text-sm text-red-400';
+                return;
+            }
+
+            status.textContent = 'Generating article with Kimi K2.5...';
+            status.className = 'text-sm text-cyan-400';
+            document.getElementById('gen-submit').disabled = true;
+
+            try {
+                const res = await fetch('/api/summit/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transcript, articleType, day, videoUrl, hfTokenOverride: hfToken || undefined })
+                });
+
+                const data = await res.json();
+
+                if (data.success && data.article) {
+                    status.textContent = 'Article generated and stored!';
+                    status.className = 'text-sm text-green-400';
+                    result.classList.remove('hidden');
+                    document.getElementById('gen-result-title').textContent = data.article.headline;
+                    document.getElementById('gen-result-body').innerHTML = data.article.body;
+                    // Refresh articles list
+                    setTimeout(fetchArticles, 1000);
+                } else {
+                    status.textContent = data.error || 'Generation failed.';
+                    status.className = 'text-sm text-red-400';
+                }
+            } catch (err) {
+                status.textContent = 'Error: ' + err.message;
+                status.className = 'text-sm text-red-400';
+            }
+
+            document.getElementById('gen-submit').disabled = false;
+        });
+
+        // ─── Mobile Menu ────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => { mobileMenu.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+                closeMobileBtn.onclick = () => { mobileMenu.classList.add('hidden'); document.body.style.overflow = ''; };
+            }
+        });
+
+        // ─── Initialize ─────────────────────────────────────────────────
+        fetchArticles();
+        fetchSocial();
+
+        // Auto-refresh every 5 minutes
+        refreshInterval = setInterval(() => {
+            fetchArticles();
+            fetchSocial();
+        }, 300000);
+
+    })();
+    </script>
+</body>
+</html>

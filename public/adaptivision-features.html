@@ -1,13 +1,18 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="https://futureatoms.com/adaptivision-features.html">
+    <link rel="canonical" href="https://futureatoms.com/adaptivision-features">
     <meta name="description" content="Submit and vote on feature requests for AdaptiveVision - Help shape the future of object detection technology.">
     <meta property="og:title" content="AdaptiveVision Feature Requests | FutureAtoms">
     <meta property="og:description" content="Submit and vote on feature requests for AdaptiveVision - Help shape the future of object detection technology.">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:url" content="https://futureatoms.com/adaptivision-features.html">
+    <meta property="og:url" content="https://futureatoms.com/adaptivision-features">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@FutureAtoms">
@@ -27,6 +32,7 @@
     <link rel="stylesheet" href="css/main.css?v=9999">
     <link rel="stylesheet" href="css/features.css?v=9999">
     <style>
+        @view-transition { navigation: auto; }
         /* AdaptiveVision-specific accent colors - Cyan/Purple */
         .metallic-text {
             background: linear-gradient(135deg, #30cfd0 0%, #ffffff 50%, #330867 100%);
@@ -68,21 +74,24 @@
       "@type": "ListItem",
       "position": 2,
       "name": "AdaptiveVision Feature Requests",
-      "item": "https://futureatoms.com/adaptivision-features.html"
+      "item": "https://futureatoms.com/adaptivision-features"
     }
   ]
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body class="min-h-screen">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(48,207,208,0.05),transparent_70%)]"></div>
     </div>
 
     <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
-        <a href="index.html" class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3">
             <div class="w-10 h-10 flex items-center justify-center">
-                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
             </div>
             <div>
                 <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">FUTURE<span class="text-cyan-400">ATOMS</span></p>
@@ -90,25 +99,26 @@
             </div>
         </a>
         <nav class="hidden md:flex gap-8 text-sm items-center">
-            <a href="index.html" class="nav-link">HOME</a>
+            <a href="/" class="nav-link">HOME</a>
             <div class="dropdown">
                 <a href="#" class="nav-link flex items-center gap-1">PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i></a>
                 <div class="dropdown-content">
-                    <a href="chipos.html">ChipOS</a>
-                    <a href="systemverilog.html">SystemVerilogGPT</a>
-                    <a href="zaphy.html">Zaphy</a>
-                    <a href="agentic.html">Agentic Control</a>
-                    <a href="yuj.html">Yuj</a>
-                    <a href="adaptivision.html">AdaptiveVision</a>
-                    <a href="bevybeats.html">BevyBeats</a>
-                    <a href="savitri.html">Savitri</a>
+                    <a href="/chipos">ChipOS</a>
+                    <a href="/swaastik">Swaastik</a>
+                    <a href="/systemverilog">SystemVerilogGPT</a>
+                    <a href="/zaphy">Zaphy</a>
+                    <a href="/agentic">Agentic Control</a>
+                    <a href="/yuj">Yuj</a>
+                    <a href="/adaptivision">AdaptiveVision</a>
+                    <a href="/bevybeats">BevyBeats</a>
+                    <a href="/savitri">Savitri</a>
                 </div>
             </div>
-            <a href="blog.html" class="nav-link">RESEARCH</a>
-            <a href="news.html" class="nav-link">NEWS</a>
-            <a href="about.html" class="nav-link">ABOUT</a>
-            <a href="careers.html" class="nav-link">CAREERS</a>
-            <a href="contact.html" class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
+            <a href="/blog" class="nav-link">RESEARCH</a>
+            <a href="/news" class="nav-link">NEWS</a>
+            <a href="/about" class="nav-link">ABOUT</a>
+            <a href="/careers" class="nav-link">CAREERS</a>
+            <a href="/contact" class="nav-link border border-cyan-500/50 px-4 py-1 rounded hover:bg-cyan-500/20">CONTACT</a>
         </nav>
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,15 +134,15 @@
             </svg>
         </button>
         <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest">
-            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
-            <a href="adaptivision.html" class="text-white/70 hover:text-white">AdaptiveVision</a>
-            <a href="contact.html" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full">CONTACT</a>
+            <a href="/" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+            <a href="/adaptivision" class="text-white/70 hover:text-white">AdaptiveVision</a>
+            <a href="/contact" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full">CONTACT</a>
         </nav>
     </div>
 
-    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8">
+    <main id="main-content" class="relative z-10 pt-32 pb-20 px-4 md:px-8">
         <div class="features-container">
-            <a href="adaptivision.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to AdaptiveVision</a>
+            <a href="/adaptivision" class="back-link"><i class="fas fa-arrow-left"></i> Back to AdaptiveVision</a>
             <div class="features-hero">
                 <div class="features-hero-icon"><i class="fas fa-eye"></i></div>
                 <h1 class="metallic-text">ADAPTIVISION FEATURE REQUESTS</h1>
@@ -204,7 +214,7 @@
 
     <footer class="relative z-10 border-t border-white/10 py-8 text-center text-gray-500 text-sm">
         <p>© 2026 FutureAtoms. All rights reserved.</p>
-        <a href="chipos-pitch.html" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
+        <a href="/chipos-pitch" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
     </footer>
 
     <script src="js/features.js?v=10001"></script>

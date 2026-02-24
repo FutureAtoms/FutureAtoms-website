@@ -1,0 +1,701 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/swaastik">
+    <meta name="description" content="Swaastik by FutureAtoms - AI-powered healthcare operating system connecting 150,000+ facilities with OCR, universal health records, and real-time analytics.">
+    <meta property="og:title" content="Swaastik - AI Healthcare OS | FutureAtoms">
+    <meta property="og:description" content="Swaastik by FutureAtoms - AI-powered healthcare operating system connecting 150,000+ facilities with OCR, universal health records, and real-time analytics.">
+    <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <meta property="og:url" content="https://futureatoms.com/swaastik">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@FutureAtoms">
+    <meta name="twitter:title" content="Swaastik - AI Healthcare OS | FutureAtoms">
+    <meta name="twitter:description" content="Swaastik by FutureAtoms - AI-powered healthcare operating system connecting 150,000+ facilities with OCR, universal health records, and real-time analytics.">
+    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
+    <title>Swaastik - AI Healthcare OS | FutureAtoms</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
+    <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
+    <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        @view-transition { navigation: auto; }
+        .glass-panel {
+            background: rgba(5, 12, 25, 0.8);
+            border: 1px solid rgba(0, 137, 123, 0.1);
+            /* Teal tint */
+            box-shadow: 0 0 30px rgba(0, 137, 123, 0.05);
+        }
+
+        .metallic-text {
+            background: linear-gradient(135deg, #00897B 0%, #ffffff 50%, #00695C 100%);
+            /* Teal */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 137, 123, 0.3);
+        }
+
+        .metallic-border {
+            border: 1px solid rgba(0, 137, 123, 0.3);
+            box-shadow: 0 0 15px rgba(0, 137, 123, 0.1);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #00897B;
+            text-shadow: 0 0 10px rgba(0, 137, 123, 0.5);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 137, 123, 0.1);
+            border-color: rgba(0, 137, 123, 0.3);
+        }
+
+        .method-card {
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            background: rgba(0, 137, 123, 0.1);
+            border-color: rgba(0, 137, 123, 0.5);
+        }
+
+        #wave-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Dropdown Styles Overrides */
+        .dropdown-content {
+            box-shadow: 0 0 30px rgba(0, 137, 123, 0.2);
+            border: 1px solid rgba(0, 137, 123, 0.2);
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 137, 123, 0.1);
+            color: #00897B;
+            border-left: 2px solid #00897B;
+        }
+    </style>
+
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Swaastik",
+  "description": "AI-powered healthcare operating system for Indian healthcare facilities with OCR, universal health records, and real-time analytics",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "url": "https://futureatoms.com/swaastik",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "FutureAtoms",
+    "url": "https://futureatoms.com"
+  }
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://futureatoms.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Swaastik",
+      "item": "https://futureatoms.com/swaastik"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Swaastik replace doctors?","acceptedAnswer":{"@type":"Answer","text":"No. Swaastik is an AI healthcare data platform that automates data entry, digitizes records, and coordinates care across facilities. Clinical decisions remain entirely with qualified doctors."}},{"@type":"Question","name":"How does the prescription OCR work?","acceptedAnswer":{"@type":"Answer","text":"Our AI uses CNN-LSTM neural networks trained on 50,000+ Indian prescriptions to achieve 94.7% accuracy on handwritten text. The doctor writes normally, the system processes the image in 30 seconds, and the doctor verifies with a single tap."}},{"@type":"Question","name":"Is patient data secure?","acceptedAnswer":{"@type":"Answer","text":"Yes. All data is encrypted with AES-256 end-to-end encryption. We are ABDM-compliant and follow the DISHA framework. Data residency is maintained in India. Patients control consent for data sharing."}},{"@type":"Question","name":"Which facilities can use Swaastik?","acceptedAnswer":{"@type":"Answer","text":"Swaastik is designed for India's entire public health infrastructure: Sub-Centers, PHCs, CHCs, District Hospitals, and Medical Colleges. Private hospitals can also integrate through our standard APIs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
+</head>
+
+<body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
+    <!-- Three.js Container -->
+    <div id="wave-container"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
+        <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
+            </div>
+            <div>
+                <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
+                    FUTURE<span class="text-cyan-400">ATOMS</span>
+                </p>
+                <p class="text-[10px] md:text-xs tracking-[0.3em] text-cyan-200 opacity-70 uppercase">Agentic AI for Semiconductors &amp; Healthcare</p>
+            </div>
+        </a>
+
+        <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
+            <a href="/" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+
+            <div class="dropdown">
+                <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="/chipos">ChipOS</a>
+                    <a href="/swaastik">Swaastik</a>
+                    <a href="/systemverilog">SystemVerilogGPT</a>
+                    <a href="/zaphy">Zaphy</a>
+                    <a href="/agentic">Agentic Control</a>
+                    <a href="/yuj">Yuj</a>
+                    <a href="/adaptivision">AdaptiveVision</a>
+                    <a href="/bevybeats">BevyBeats</a>
+                    <a href="/savitri">Savitri</a>
+                    <div class="border-t border-cyan-500/30 my-1"></div>
+                    <a href="/chipos-changelog" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i>
+                        Changelog</a>
+                </div>
+            </div>
+
+            <a href="/blog" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+            <a href="/news" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+            <a href="/about" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+            <a href="/careers" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
+            <a href="/contact" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+        </nav>
+
+        <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center transition-all duration-300 interactive">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-cyan-500 hover:text-white" aria-label="Close mobile menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
+            <a href="/" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+
+            <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
+                <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
+                <a href="/chipos" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="/swaastik" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Swaastik</a>
+                <a href="/systemverilog" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="/zaphy" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="/agentic" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    Control</a>
+                <a href="/yuj" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="/adaptivision" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="/bevybeats" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="/savitri" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+            </div>
+
+            <a href="/blog" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="/news" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="/about" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="/careers" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
+            <a href="/contact" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+        </nav>
+    </div>
+
+    <main id="main-content" class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-24">
+            <div class="mb-8 inline-block text-6xl text-teal-400 drop-shadow-[0_0_30px_rgba(0,137,123,0.5)]">
+                <i class="fas fa-hospital"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-8xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
+                SWAASTIK
+            </h1>
+            <p class="text-xl md:text-2xl text-teal-100/60 font-light max-w-3xl mx-auto leading-relaxed mb-10">
+                The AI Operating System for Indian Healthcare. Connect facilities, digitize records, and transform care delivery with AI-powered infrastructure.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="/contact" class="cta-btn bg-teal-500/20 border border-teal-400 text-teal-400 px-8 py-4 rounded-full font-bold hover:bg-teal-500/30 hover:shadow-[0_0_20px_rgba(0,137,123,0.3)]">
+                    <i class="fas fa-envelope mr-2"></i> REQUEST A DEMO
+                </a>
+                <a href="/about" class="cta-btn bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10">
+                    <i class="fas fa-info-circle mr-2"></i> LEARN MORE
+                </a>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-teal-400 mb-6"><i class="fas fa-file-medical-alt"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">AI-Powered OCR</h3>
+                <p class="text-gray-400 leading-relaxed">94.7% accuracy on handwritten prescriptions. CNN-LSTM + Medical NLP processes in 30 seconds. Zero typing required.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-teal-400 mb-6"><i class="fas fa-network-wired"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">3-Tier Integration</h3>
+                <p class="text-gray-400 leading-relaxed">Seamless data flow from Sub-Centers to PHCs to District Hospitals to Medical Colleges. Complete patient journey.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-teal-400 mb-6"><i class="fas fa-notes-medical"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Health Records</h3>
+                <p class="text-gray-400 leading-relaxed">ABDM-compliant lifetime medical history. Accessible anywhere in India. Patient-controlled consent.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl metallic-border feature-card text-center">
+                <div class="text-4xl text-teal-400 mb-6"><i class="fas fa-chart-bar"></i></div>
+                <h3 class="text-xl font-['Orbitron'] font-bold text-white mb-4">Real-Time Analytics</h3>
+                <p class="text-gray-400 leading-relaxed">Public health surveillance, outbreak detection, clinical decision support, and automated IHIP reporting.</p>
+            </div>
+        </div>
+
+        <!-- Product Pillars Section -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-12 metallic-text">PRODUCT PILLARS
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">OCR ENGINE</h4>
+                    <p class="text-sm text-gray-400">94.7% handwritten Rx accuracy</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">FACILITY HUB</h4>
+                    <p class="text-sm text-gray-400">Three-tier integration system</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">HEALTH RECORDS</h4>
+                    <p class="text-sm text-gray-400">ABDM-compliant digital records</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">ANALYTICS</h4>
+                    <p class="text-sm text-gray-400">Real-time public health dashboards</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">PATIENT APP</h4>
+                    <p class="text-sm text-gray-400">22 Indian languages supported</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border method-card text-center">
+                    <h4 class="text-lg font-bold text-white mb-2">SECURITY</h4>
+                    <p class="text-sm text-gray-400">AES-256 end-to-end encryption</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Stats -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-4 metallic-text">THE OPPORTUNITY</h2>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">India's digital health market is one of the fastest-growing in the world. Swaastik is built for this moment.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-2">₹4.1L Cr</div>
+                    <p class="text-sm text-gray-400">Digital health market by 2033</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-2">150K+</div>
+                    <p class="text-sm text-gray-400">Public health facilities in India</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-2">2B+</div>
+                    <p class="text-sm text-gray-400">Prescriptions written annually</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl md:text-4xl font-['Orbitron'] font-bold text-white mb-2">1.4B</div>
+                    <p class="text-sm text-gray-400">People to be served</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-4 metallic-text">HOW IT WORKS</h2>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">From handwritten prescription to structured digital data in 35 seconds.</p>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+                <div class="glass-panel p-5 rounded-xl metallic-border text-center">
+                    <div class="text-2xl text-teal-400 mb-3"><i class="fas fa-pen-fancy"></i></div>
+                    <p class="text-xs text-teal-400/70 font-['Orbitron'] tracking-wider mb-1">STEP 1</p>
+                    <p class="text-sm text-white font-semibold">Doctor writes Rx on paper</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl metallic-border text-center">
+                    <div class="text-2xl text-teal-400 mb-3"><i class="fas fa-camera"></i></div>
+                    <p class="text-xs text-teal-400/70 font-['Orbitron'] tracking-wider mb-1">STEP 2</p>
+                    <p class="text-sm text-white font-semibold">AI OCR processes (30s)</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl metallic-border text-center">
+                    <div class="text-2xl text-teal-400 mb-3"><i class="fas fa-check-circle"></i></div>
+                    <p class="text-xs text-teal-400/70 font-['Orbitron'] tracking-wider mb-1">STEP 3</p>
+                    <p class="text-sm text-white font-semibold">Doctor verifies (5s)</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl metallic-border text-center">
+                    <div class="text-2xl text-teal-400 mb-3"><i class="fas fa-database"></i></div>
+                    <p class="text-xs text-teal-400/70 font-['Orbitron'] tracking-wider mb-1">STEP 4</p>
+                    <p class="text-sm text-white font-semibold">Data saved to lifetime record</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl metallic-border text-center">
+                    <div class="text-2xl text-teal-400 mb-3"><i class="fas fa-mobile-alt"></i></div>
+                    <p class="text-xs text-teal-400/70 font-['Orbitron'] tracking-wider mb-1">STEP 5</p>
+                    <p class="text-sm text-white font-semibold">Patient gets SMS notification</p>
+                </div>
+            </div>
+            <!-- Accuracy stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
+                <div class="glass-panel p-4 rounded-lg text-center border border-teal-500/20">
+                    <div class="text-2xl font-['Orbitron'] font-bold text-teal-400">94.7%</div>
+                    <p class="text-xs text-gray-400 mt-1">OCR accuracy</p>
+                </div>
+                <div class="glass-panel p-4 rounded-lg text-center border border-teal-500/20">
+                    <div class="text-2xl font-['Orbitron'] font-bold text-teal-400">99.6%</div>
+                    <p class="text-xs text-gray-400 mt-1">Region detection</p>
+                </div>
+                <div class="glass-panel p-4 rounded-lg text-center border border-teal-500/20">
+                    <div class="text-2xl font-['Orbitron'] font-bold text-teal-400">96%</div>
+                    <p class="text-xs text-gray-400 mt-1">Spell correction</p>
+                </div>
+                <div class="glass-panel p-4 rounded-lg text-center border border-teal-500/20">
+                    <div class="text-2xl font-['Orbitron'] font-bold text-teal-400">90%</div>
+                    <p class="text-xs text-gray-400 mt-1">Time savings</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Problem We Solve -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-4 metallic-text">THE PROBLEM</h2>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">Healthcare complexity exploded. Data infrastructure did not.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <div class="glass-panel p-6 rounded-xl metallic-border">
+                    <div class="text-sm text-orange-400 font-['Orbitron'] tracking-wider mb-3">PRESCRIPTION ILLEGIBILITY</div>
+                    <h3 class="text-xl font-bold text-white mb-2">75% pharmacist accuracy</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Medical errors from illegible handwriting cause thousands of preventable complications annually.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border">
+                    <div class="text-sm text-orange-400 font-['Orbitron'] tracking-wider mb-3">ZERO CONTINUITY</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Medical history stays on paper</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Patient referred from PHC to district hospital? Records stay behind. Repeated tests, delayed treatment.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border">
+                    <div class="text-sm text-orange-400 font-['Orbitron'] tracking-wider mb-3">DATA ENTRY BOTTLENECK</div>
+                    <h3 class="text-xl font-bold text-white mb-2">167 million hours wasted</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Manual typing takes 5 min per prescription. 2 billion prescriptions/year = 167 million hours wasted on data entry.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border">
+                    <div class="text-sm text-orange-400 font-['Orbitron'] tracking-wider mb-3">RURAL-URBAN DIVIDE</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Unequal access persists</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Workforce shortages, 62% immunization coverage, and among the highest child mortality rates in the world.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Facility Coverage -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-4 metallic-text">BUILT FOR INDIA'S HEALTH INFRASTRUCTURE</h2>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">Seamless integration across every tier of India's public healthcare system.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-white mb-1">158K</div>
+                    <p class="text-sm text-gray-400">Sub-Centers</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-white mb-1">25K</div>
+                    <p class="text-sm text-gray-400">Primary Health Centers</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-white mb-1">5,600</div>
+                    <p class="text-sm text-gray-400">Community Health Centers</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl metallic-border text-center">
+                    <div class="text-3xl font-['Orbitron'] font-bold text-white mb-1">750</div>
+                    <p class="text-sm text-gray-400">District Hospitals</p>
+                </div>
+            </div>
+            <p class="text-center text-gray-500 text-xs mt-6">Also supports private hospitals: Apollo, Fortis, Max, Manipal, Narayana, and 600+ Medical Colleges</p>
+        </div>
+
+        <!-- Why Swaastik -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-['Orbitron'] font-bold text-center mb-4 metallic-text">WHY SWAASTIK</h2>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">The only platform that checks every box for India's healthcare data infrastructure.</p>
+            <div class="overflow-x-auto max-w-4xl mx-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-teal-500/30">
+                            <th class="text-left py-3 px-4 text-teal-400 font-['Orbitron'] text-xs tracking-wider">CAPABILITY</th>
+                            <th class="py-3 px-3 text-gray-400 text-xs">eSanjeevani</th>
+                            <th class="py-3 px-3 text-gray-400 text-xs">Practo</th>
+                            <th class="py-3 px-3 text-gray-400 text-xs">Eka Care</th>
+                            <th class="py-3 px-3 text-gray-400 text-xs">Hospital ERP</th>
+                            <th class="py-3 px-3 text-teal-400 font-bold text-xs">Swaastik</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-white/5"><td class="py-2 px-4">AI-Powered OCR</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400 font-bold">✓</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-2 px-4">3-Tier Integration</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400 font-bold">✓</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-2 px-4">ABDM Compliant</td><td class="text-center text-teal-400">✓</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400">✓</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400 font-bold">✓</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-2 px-4">Public Health Focus</td><td class="text-center text-teal-400">✓</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400 font-bold">✓</td></tr>
+                        <tr><td class="py-2 px-4">AI-Native Platform</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-red-400">✕</td><td class="text-center text-teal-400 font-bold">✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mb-24 text-center">
+            <div class="glass-panel p-10 rounded-2xl metallic-border max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-['Orbitron'] font-bold text-white mb-4">Ready to transform healthcare delivery?</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">Swaastik is pilot-ready for public health facilities and private hospitals. Let's discuss how we can work together.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact" class="bg-teal-500/20 border border-teal-400 text-teal-400 px-8 py-3 rounded-full font-bold hover:bg-teal-500/30 transition-all">
+                        <i class="fas fa-envelope mr-2"></i> CONTACT US
+                    </a>
+                    <a href="mailto:founder@futureatoms.com" class="bg-white/5 border border-white/10 text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all">
+                        <i class="fas fa-paper-plane mr-2"></i> founder@futureatoms.com
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FAQ Section -->
+<section class="py-20 px-4" id="faq">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" style="font-family: 'Orbitron', sans-serif; background: linear-gradient(135deg, #00897B, #26A69A); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+            <details class="rounded-lg p-6 cursor-pointer group" style="background: rgba(5, 12, 25, 0.8); border: 1px solid rgba(0, 137, 123, 0.2);">
+                <summary class="text-lg font-semibold text-white flex justify-between items-center">Does Swaastik replace doctors?<span class="text-teal-400 group-open:rotate-45 transition-transform">+</span></summary>
+                <p class="mt-4 text-gray-300 leading-relaxed">No. Swaastik is an AI healthcare data platform that automates data entry, digitizes records, and coordinates care across facilities. Clinical decisions remain entirely with qualified doctors.</p>
+            </details>
+            <details class="rounded-lg p-6 cursor-pointer group" style="background: rgba(5, 12, 25, 0.8); border: 1px solid rgba(0, 137, 123, 0.2);">
+                <summary class="text-lg font-semibold text-white flex justify-between items-center">How does the prescription OCR work?<span class="text-teal-400 group-open:rotate-45 transition-transform">+</span></summary>
+                <p class="mt-4 text-gray-300 leading-relaxed">Our AI uses CNN-LSTM neural networks trained on 50,000+ Indian prescriptions to achieve 94.7% accuracy on handwritten text. The doctor writes normally, the system processes the image in 30 seconds, and the doctor verifies with a single tap.</p>
+            </details>
+            <details class="rounded-lg p-6 cursor-pointer group" style="background: rgba(5, 12, 25, 0.8); border: 1px solid rgba(0, 137, 123, 0.2);">
+                <summary class="text-lg font-semibold text-white flex justify-between items-center">Is patient data secure?<span class="text-teal-400 group-open:rotate-45 transition-transform">+</span></summary>
+                <p class="mt-4 text-gray-300 leading-relaxed">Yes. All data is encrypted with AES-256 end-to-end encryption. We are ABDM-compliant and follow the DISHA framework. Data residency is maintained in India. Patients control consent for data sharing.</p>
+            </details>
+            <details class="rounded-lg p-6 cursor-pointer group" style="background: rgba(5, 12, 25, 0.8); border: 1px solid rgba(0, 137, 123, 0.2);">
+                <summary class="text-lg font-semibold text-white flex justify-between items-center">Which facilities can use Swaastik?<span class="text-teal-400 group-open:rotate-45 transition-transform">+</span></summary>
+                <p class="mt-4 text-gray-300 leading-relaxed">Swaastik is designed for India's entire public health infrastructure: Sub-Centers, PHCs, CHCs, District Hospitals, and Medical Colleges. Private hospitals can also integrate through our standard APIs.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+    <footer class="border-t border-white/10 py-8 text-center text-gray-300 text-sm font-mono relative z-10">
+        <p>© 2026 FutureAtoms. All rights reserved.</p>
+        <div class="mt-2 flex items-center justify-center gap-4 text-xs text-gray-500">
+            <a href="/contact" class="text-teal-400/50 hover:text-teal-400 transition-colors">Contact</a>
+            <span>&bull;</span>
+            <a href="/about" class="text-teal-400/50 hover:text-teal-400 transition-colors">About</a>
+        </div>
+    </footer>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // --- Mobile Menu ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileBtn = document.getElementById('close-mobile-menu');
+
+            if (mobileBtn && mobileMenu && closeMobileBtn) {
+                mobileBtn.onclick = () => {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                };
+                closeMobileBtn.onclick = () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                };
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module">
+        // Import performance modules
+        import { GPUDetector } from './js/gpu-detector.js';
+        import { FPSMonitor, FrameRateLimiter } from './js/fps-monitor.js';
+
+        // GPU Detection for adaptive quality
+        const gpuDetector = new GPUDetector();
+        const detection = gpuDetector.detect();
+        const qualityPreset = detection.presets;
+        console.log(`Swaastik GPU Tier: ${detection.tier}`, detection.info);
+
+        // Skip WebGL if not available
+        if (detection.tier === 'none') {
+            document.getElementById('wave-container').style.background = 'radial-gradient(ellipse at center, rgba(0,137,123,0.1) 0%, transparent 70%)';
+            throw new Error('WebGL not available, using CSS fallback');
+        }
+
+        // FPS Monitor and Frame Limiter
+        const fpsMonitor = new FPSMonitor();
+        const frameLimiter = new FrameRateLimiter(qualityPreset.targetFPS);
+
+        // Visibility API - pause when hidden
+        let isAnimating = true;
+        let animationFrameId = null;
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                fpsMonitor.pause();
+            } else {
+                isAnimating = true;
+                fpsMonitor.resume();
+                animate();
+            }
+        });
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: qualityPreset.antialias, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(qualityPreset.pixelRatio, 2));
+        document.getElementById('wave-container').appendChild(renderer.domElement);
+
+        // DNA Double Helix visualization
+        const helixGroup = new THREE.Group();
+        scene.add(helixGroup);
+
+        const strandMat1 = new THREE.MeshPhongMaterial({
+            color: 0x00897B, emissive: 0x00897B, emissiveIntensity: 0.3,
+            transparent: true, opacity: 0.8
+        });
+        const strandMat2 = new THREE.MeshPhongMaterial({
+            color: 0x26A69A, emissive: 0x26A69A, emissiveIntensity: 0.3,
+            transparent: true, opacity: 0.8
+        });
+        const rungMat = new THREE.LineBasicMaterial({
+            color: 0x4DB6AC, transparent: true, opacity: 0.4
+        });
+
+        const numPoints = 80;
+        const radius = 3;
+        const height = 20;
+
+        for (let i = 0; i < numPoints; i++) {
+            const t = i / numPoints;
+            const y = (t - 0.5) * height;
+            const angle = t * Math.PI * 4;
+
+            // Strand 1
+            const x1 = Math.cos(angle) * radius;
+            const z1 = Math.sin(angle) * radius;
+            const s1 = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), strandMat1);
+            s1.position.set(x1, y, z1);
+            helixGroup.add(s1);
+
+            // Strand 2
+            const x2 = Math.cos(angle + Math.PI) * radius;
+            const z2 = Math.sin(angle + Math.PI) * radius;
+            const s2 = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), strandMat2);
+            s2.position.set(x2, y, z2);
+            helixGroup.add(s2);
+
+            // Connector rungs every 5th point
+            if (i % 5 === 0) {
+                const points = [new THREE.Vector3(x1, y, z1), new THREE.Vector3(x2, y, z2)];
+                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                helixGroup.add(new THREE.Line(lineGeo, rungMat));
+            }
+        }
+
+        // Lighting (teal colors)
+        const light1 = new THREE.PointLight(0x00897B, 1, 100);
+        light1.position.set(10, 10, 10);
+        scene.add(light1);
+
+        const light2 = new THREE.PointLight(0x00695C, 0.5, 100);
+        light2.position.set(-10, -10, 10);
+        scene.add(light2);
+
+        const ambientLight = new THREE.AmbientLight(0x111111);
+        scene.add(ambientLight);
+
+        camera.position.set(0, 0, 15);
+        camera.lookAt(0, 0, 0);
+
+        // Mouse tracking
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Animation loop with performance optimizations
+        function animate(timestamp) {
+            if (!isAnimating) return;
+            animationFrameId = requestAnimationFrame(animate);
+
+            // Frame rate limiting
+            if (!frameLimiter.shouldRender(timestamp || performance.now())) {
+                return;
+            }
+
+            fpsMonitor.tick();
+
+            const time = Date.now() * 0.001;
+
+            // Rotate helix
+            helixGroup.rotation.y += 0.003;
+
+            // Camera follows mouse
+            camera.position.x = mouseX * 3;
+            camera.position.y = mouseY * 3;
+            camera.lookAt(0, 0, 0);
+
+            renderer.render(scene, camera);
+        }
+
+        // Start animation
+        animationFrameId = requestAnimationFrame(animate);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+    <!-- Feedback Button -->
+    <a href="/feedback?product=Swaastik" class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-teal-500/10 border border-teal-400/50 rounded-full flex items-center justify-center text-teal-400 hover:bg-teal-500/20 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,137,123,0.4)] transition-all backdrop-blur-md group">
+        <i class="fas fa-comment-dots text-2xl group-hover:animate-pulse"></i>
+        <span class="absolute -top-10 right-0 bg-teal-900/90 text-teal-400 text-xs px-3 py-1 rounded border border-teal-500/30 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Give Feedback</span>
+    </a>
+
+
+</body></html>

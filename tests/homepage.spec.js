@@ -2,13 +2,13 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Homepage Functionality', () => {
   test('homepage loads with correct title', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await expect(page).toHaveTitle(/FutureAtoms/);
     console.log('✓ Homepage title correct');
   });
 
   test('Three.js canvas loads and renders', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Wait for Three.js to initialize
     await page.waitForTimeout(2000);
@@ -25,7 +25,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('scroll sections contain all products', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Wait for page to fully load
     await page.waitForTimeout(1000);
@@ -49,7 +49,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('product titles are visible in scroll sections', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     await page.waitForTimeout(1000);
 
@@ -65,7 +65,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('navigation header exists with logo', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Check header exists
     const header = page.locator('header');
@@ -79,13 +79,13 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('navigation links are present', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     const navLinks = [
-      { href: 'blog.html', text: 'RESEARCH' },
-      { href: 'news.html', text: 'NEWS' },
-      { href: 'about.html', text: 'ABOUT' },
-      { href: 'contact.html', text: 'CONTACT' }
+      { href: '/blog', text: 'RESEARCH' },
+      { href: '/news', text: 'NEWS' },
+      { href: '/about', text: 'ABOUT' },
+      { href: '/contact', text: 'CONTACT' }
     ];
 
     for (const link of navLinks) {
@@ -96,17 +96,17 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('products dropdown contains all product links', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     const productLinks = [
-      'chipos.html',
-      'systemverilog.html',
-      'zaphy.html',
-      'agentic.html',
-      'yuj.html',
-      'adaptivision.html',
-      'bevybeats.html',
-      'savitri.html'
+      '/chipos',
+      '/systemverilog',
+      '/zaphy',
+      '/agentic',
+      '/yuj',
+      '/adaptivision',
+      '/bevybeats',
+      '/savitri'
     ];
 
     for (const href of productLinks) {
@@ -119,7 +119,7 @@ test.describe('Homepage Functionality', () => {
   test('mobile menu button exists on mobile viewport', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/index.html');
+    await page.goto('/');
 
     const mobileMenuBtn = page.locator('#mobile-menu-btn');
     await expect(mobileMenuBtn).toBeVisible();
@@ -129,7 +129,7 @@ test.describe('Homepage Functionality', () => {
 
   test('mobile menu opens and closes', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Check menu is initially hidden
     const mobileMenu = page.locator('#mobile-menu');
@@ -155,7 +155,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('scroll container allows scrolling between sections', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     const scrollContainer = page.locator('#scroll-container');
@@ -175,7 +175,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('product modal can be opened', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(2000);
 
     // Check modal exists
@@ -186,7 +186,7 @@ test.describe('Homepage Functionality', () => {
   });
 
   test('Three.js animation is running', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(2000);
 
     const canvas = page.locator('canvas');

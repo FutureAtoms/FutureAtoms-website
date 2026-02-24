@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ChipOS — VC Narrative Deck (Light Theme)</title>
+<meta name="description" content="ChipOS investor deck — The first agentic OS for semiconductor design. Vendor-neutral, hardware-agnostic, full design lifecycle." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f6f8fb;
+  --bg-soft: #eef3f9;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-strong: rgba(255, 255, 255, 0.95);
+  --ink: #0f1e32;
+  --muted: #4e5e77;
+  --subtle: #8da0bd;
+  --line: rgba(21, 48, 88, 0.14);
+  --brand: #0e7490;
+  --brand-2: #1d4ed8;
+  --accent: #d97706;
+  --good: #0f766e;
+  --danger: #b91c1c;
+  --gradient: linear-gradient(130deg, #0e7490 0%, #1d4ed8 55%, #0f766e 100%);
+  --shadow: 0 18px 42px rgba(16, 37, 70, 0.10);
+  --shadow-sm: 0 4px 16px rgba(16, 37, 70, 0.06);
+  --shadow-lg: 0 24px 56px rgba(16, 37, 70, 0.16);
+  --radius-lg: 26px;
+  --radius-md: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at 14% 12%, #e8f6f7 0%, transparent 34%),
+              radial-gradient(circle at 88% 10%, #e8eeff 0%, transparent 35%),
+              var(--bg);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.slide {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 64px;
+  overflow: hidden;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.18;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(246,248,251,0.1) 0%, rgba(246,248,251,0.85) 92%);
+  pointer-events: none;
+}
+
+.slide-inner {
+  width: min(1220px, 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255,255,255,0.65);
+}
+
+.section-kicker::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--brand);
+  box-shadow: 0 0 0 6px rgba(14,116,144,0.14);
+}
+
+h1, h2, h3 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(46px, 7vw, 84px);
+  line-height: 1.02;
+  margin-top: 18px;
+}
+
+h2 {
+  font-size: clamp(34px, 4.8vw, 58px);
+  line-height: 1.06;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.52;
+  color: var(--muted);
+}
+
+p.lead {
+  font-size: 21px;
+  font-weight: 450;
+  line-height: 1.55;
+}
+
+p.small {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  margin-top: 22px;
+  max-width: 760px;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 450;
+  color: #2f4668;
+}
+
+.hero-strip {
+  margin-top: 28px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(14,116,144,0.24);
+  background: rgba(14,116,144,0.08);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: #0f3f5a;
+}
+
+.hero-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 3px 3px 0 0;
+}
+
+.stat-value {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1;
+  color: var(--ink);
+  transition: transform 250ms ease;
+}
+
+.stat-card:hover .stat-value {
+  transform: scale(1.04);
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* Hero stat gradient treatment */
+#s1 .stat-value {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero slide visual anchor */
+#s1 .slide-inner::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(14,116,144,0.08) 0%, rgba(29,78,216,0.04) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.card strong {
+  color: var(--ink);
+}
+
+.problem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #994d00;
+  background: rgba(217,119,6,0.12);
+  border: 1px solid rgba(217,119,6,0.25);
+  border-radius: 999px;
+  padding: 6px 11px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  margin-top: 18px;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(14,116,144,0.24);
+  background: rgba(14,116,144,0.08);
+  color: #123f62;
+  font-size: 17px;
+  font-weight: 450;
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timeline-step {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 12px 10px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-step .k {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--brand-2);
+  margin-bottom: 6px;
+}
+
+.timeline-step .v {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.legend {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.now { background: var(--brand); }
+.next { background: var(--accent); }
+.out { background: var(--subtle); }
+
+.split-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.split-head .mini {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.table th {
+  background: rgba(29,78,216,0.08);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1d4ed8;
+}
+
+.table td {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.table td strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.table tr:last-child td { border-bottom: none; }
+
+.badge-now,
+.badge-next,
+.badge-out {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-now {
+  color: #0b5e74;
+  border: 1px solid rgba(14,116,144,0.24);
+  background: rgba(14,116,144,0.12);
+}
+
+.badge-next {
+  color: #8b4b00;
+  border: 1px solid rgba(217,119,6,0.26);
+  background: rgba(217,119,6,0.12);
+}
+
+.badge-out {
+  color: #516078;
+  border: 1px solid rgba(141,160,189,0.38);
+  background: rgba(141,160,189,0.14);
+}
+
+.logo-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.logo {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  background: var(--card-strong);
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  color: #193258;
+  box-shadow: var(--shadow-sm);
+}
+
+.notice {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #5c6f8c;
+}
+
+.quad {
+  margin-top: 20px;
+  position: relative;
+  height: 430px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card);
+}
+
+.axis {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.axis.top { top: 10px; left: 50%; transform: translateX(-50%); }
+.axis.bottom { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.axis.left { left: 12px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left top; }
+.axis.right { right: 12px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: right top; }
+
+.point {
+  position: absolute;
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  max-width: 220px;
+  box-shadow: 0 8px 20px rgba(12, 30, 56, 0.08);
+  opacity: 0.72;
+  transition: opacity 250ms ease;
+}
+
+.point:hover { opacity: 1; }
+
+.point .t {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.point .s {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.price-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.price-card {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 22px;
+}
+
+.price-card.featured {
+  border: 1px solid rgba(14,116,144,0.35);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.price-tier {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-2);
+}
+
+.price {
+  margin-top: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.price small {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.features {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.features div {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.roadmap {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mile {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--card-strong);
+}
+
+.mile .q {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mile h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.mile p {
+  font-size: 13px;
+}
+
+.ask-wrap {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+}
+
+.ask-amount {
+  border-radius: 22px;
+  border: 1px solid rgba(14,116,144,0.3);
+  background: linear-gradient(155deg, rgba(14,116,144,0.13), rgba(29,78,216,0.08));
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+}
+
+.ask-amount .num {
+  margin-top: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(56px, 8vw, 84px);
+  line-height: 1;
+}
+
+.funds {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 22px;
+}
+
+.funds .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.funds .row:last-child { border-bottom: none; }
+
+.funds .row .pct {
+  font-family: 'Sora', sans-serif;
+  color: var(--ink);
+}
+
+.source-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #617596;
+  line-height: 1.5;
+}
+
+.source-note a {
+  color: #2458b7;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(36,88,183,0.35);
+}
+
+.source-note a:hover { border-bottom-style: solid; }
+
+.slide-number {
+  position: absolute;
+  right: 28px;
+  top: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--subtle);
+}
+
+/* ── Fullscreen toggle ── */
+.fs-btn {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 60;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(21,48,88,0.10);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.22;
+  transition: opacity 250ms ease, background 200ms ease;
+}
+.fs-btn:hover {
+  opacity: 0.70;
+  background: rgba(255,255,255,0.80);
+}
+.fs-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--muted);
+  stroke-width: 2;
+  fill: none;
+}
+
+.nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: grid;
+  gap: 8px;
+}
+
+.dot-btn {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #9db0ca;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dot-btn.active {
+  opacity: 1;
+  transform: scale(1.35);
+  background: #0e7490;
+  box-shadow: 0 0 0 8px rgba(14,116,144,0.14);
+}
+
+/* ── Animations ── */
+.animate {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.animate-right {
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children > *:nth-child(6) { transition-delay: 400ms; }
+.stagger-children > *:nth-child(7) { transition-delay: 480ms; }
+.stagger-children > *:nth-child(8) { transition-delay: 560ms; }
+
+/* ── Market Visual (TAM/SAM/SOM Concentric Circles) ── */
+.market-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 24px;
+}
+
+.tam-circles {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 700ms cubic-bezier(.2,.65,.2,1), transform 700ms cubic-bezier(.2,.65,.2,1);
+}
+
+.circle.circle-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.circle-tam {
+  width: 340px;
+  height: 340px;
+  background: rgba(29,78,216,0.06);
+  border: 2px solid rgba(29,78,216,0.2);
+  top: 0;
+  left: 0;
+  transition-delay: 0ms;
+}
+
+.circle-sam {
+  width: 200px;
+  height: 200px;
+  background: rgba(14,116,144,0.08);
+  border: 2px solid rgba(14,116,144,0.3);
+  top: 70px;
+  left: 70px;
+  transition-delay: 200ms;
+}
+
+.circle-som {
+  width: 90px;
+  height: 90px;
+  background: rgba(217,119,6,0.12);
+  border: 2px solid rgba(217,119,6,0.4);
+  top: 125px;
+  left: 125px;
+  transition-delay: 400ms;
+}
+
+.circle .c-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.circle-tam .c-label { color: #1d4ed8; position: absolute; top: 20px; }
+.circle-tam .c-value { position: absolute; top: 42px; font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+.circle-sam .c-label { color: #0e7490; position: absolute; top: 16px; }
+.circle-sam .c-value { position: absolute; top: 36px; font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); }
+.circle-som .c-label { color: #d97706; }
+.circle-som .c-value { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-top: -4px; }
+
+.market-details {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 420px;
+}
+
+.market-row {
+  display: flex;
+  gap: 14px;
+}
+
+.market-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.market-row h3 { font-size: 17px; margin-bottom: 4px; }
+.market-row p { font-size: 14px; line-height: 1.45; }
+.market-row .methodology { font-size: 12px; color: var(--subtle); margin-top: 2px; }
+
+/* ── Improved Quadrant ── */
+.quad-grid-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.quad-grid-bg > div:nth-child(1) { background: rgba(14,116,144,0.03); }
+.quad-grid-bg > div:nth-child(2) { background: rgba(14,116,144,0.06); }
+.quad-grid-bg > div:nth-child(3) { background: rgba(141,160,189,0.03); }
+.quad-grid-bg > div:nth-child(4) { background: rgba(141,160,189,0.05); }
+
+.quad-sweetspot {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(14,116,144,0.30);
+  z-index: 5;
+}
+
+@keyframes chipOsPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(14,116,144,0.18), 0 0 0 4px rgba(14,116,144,0.06); }
+  50% { box-shadow: 0 8px 28px rgba(14,116,144,0.28), 0 0 0 8px rgba(14,116,144,0.10); }
+}
+
+.point-chipos {
+  border: 1.5px solid rgba(14,116,144,0.45) !important;
+  background: linear-gradient(145deg, rgba(14,116,144,0.14), rgba(29,78,216,0.06)) !important;
+  animation: chipOsPulse 3s ease-in-out infinite;
+  opacity: 1 !important;
+}
+
+.point-chipos:hover { opacity: 1 !important; }
+.point-chipos .t { color: #0b5e74 !important; }
+
+/* ── Fund Bars ── */
+.fund-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fund-row:last-child { border-bottom: none; }
+
+.fund-row-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.fund-row-head .pct {
+  font-family: 'Sora', sans-serif;
+  color: var(--ink);
+}
+
+.fund-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(14,116,144,0.08);
+  overflow: hidden;
+}
+
+.fund-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #0e7490, #1d4ed8);
+  width: 0;
+  transition: width 800ms cubic-bezier(.2,.65,.2,1);
+}
+
+/* ── Connected Roadmap ── */
+.roadmap-line {
+  margin-top: 18px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.roadmap-line::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 6%;
+  right: 6%;
+  height: 3px;
+  background: linear-gradient(90deg, #0e7490 0%, #1d4ed8 33%, #d97706 66%, #0f766e 100%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.rm-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--card-strong);
+  position: relative;
+  z-index: 1;
+}
+
+.rm-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin: 0 auto 10px;
+  border: 2.5px solid white;
+}
+
+.rm-card:nth-child(1) .rm-dot { background: #0e7490; box-shadow: 0 0 0 2px #0e7490; }
+.rm-card:nth-child(2) .rm-dot { background: #1d4ed8; box-shadow: 0 0 0 2px #1d4ed8; }
+.rm-card:nth-child(3) .rm-dot { background: #d97706; box-shadow: 0 0 0 2px #d97706; }
+.rm-card:nth-child(4) .rm-dot { background: #0f766e; box-shadow: 0 0 0 2px #0f766e; }
+
+.rm-card .q {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.rm-card h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.rm-card p { font-size: 13px; }
+
+/* ── Team Slide ── */
+.team-layout {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px;
+}
+
+.founder-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.founder-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.founder-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.founder-title {
+  font-size: 14px;
+  color: var(--brand);
+  margin-top: 2px;
+}
+
+.credential-badges {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.cred-badge {
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.cred-badge strong {
+  font-size: 14px;
+  color: var(--ink);
+  display: block;
+}
+
+.cred-badge span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.advisor-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.advisor-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.advisor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f766e, #0e7490);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.why-team {
+  margin-top: 16px;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(14,116,144,0.24);
+  background: rgba(14,116,144,0.08);
+}
+
+.why-team strong { color: #0b5e74; }
+.why-team p { font-size: 15px; color: #123f62; line-height: 1.5; }
+
+/* ── Product Mockup: ChipOS Dashboard (pure HTML/CSS) ── */
+.ide-mockup {
+  margin-top: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 28px 60px rgba(10,18,36,0.34),
+    0 10px 24px rgba(10,18,36,0.20);
+  background: #111318;
+  font-family: 'Inter', sans-serif;
+  color: #c8ccd4;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* ── Window chrome ── */
+.ide-chrome {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, #2c2e36 0%, #222429 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 7px;
+}
+.ide-chrome .wd { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.ide-chrome .wd-r { background: #ff5f57; }
+.ide-chrome .wd-y { background: #febc2e; }
+.ide-chrome .wd-g { background: #28c840; }
+.ide-chrome .wt {
+  flex: 1; text-align: center;
+  font-size: 11px; color: rgba(255,255,255,0.35);
+}
+
+/* Tab bar below chrome */
+.ide-tabbar {
+  display: flex;
+  align-items: center;
+  background: #1a1c22;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 12px;
+}
+.ide-tab {
+  padding: 7px 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.50);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.ide-tab.active {
+  color: #5fd4e8;
+  border-bottom-color: #0e7490;
+  background: rgba(14,116,144,0.06);
+}
+
+/* ── Main layout: sidebar + content ── */
+.ide-body {
+  display: flex;
+  min-height: 340px;
+}
+
+/* ── Sidebar ── */
+.ide-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: #16181e;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.sb-section {
+  padding: 0 12px;
+  margin-bottom: 10px;
+}
+
+.sb-heading {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 6px;
+}
+
+.sb-item {
+  padding: 3px 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sb-item.active { color: #5fd4e8; }
+
+.sb-provider-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.sb-provider {
+  flex: 1;
+  padding: 5px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  text-align: center;
+  font-size: 9px;
+  color: rgba(255,255,255,0.50);
+  font-weight: 500;
+}
+.sb-provider.active {
+  border-color: rgba(14,116,144,0.4);
+  background: rgba(14,116,144,0.10);
+  color: #5fd4e8;
+}
+
+/* ── Main content area ── */
+.ide-content {
+  flex: 1;
+  background: #111318;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 18px;
+  overflow: hidden;
+}
+
+/* Brand header */
+.dash-brand {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.dash-brand .logo-text {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+.dash-tagline {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto 14px;
+}
+
+/* CTA row */
+.dash-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.dash-btn-primary {
+  padding: 8px 24px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
+  color: #000;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+.dash-btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.60);
+  font-size: 11px;
+}
+
+/* Feature cards grid */
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.dash-card {
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.03);
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.dash-card-icon {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 6px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.dash-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.80);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-card-desc {
+  font-size: 9px;
+  color: rgba(255,255,255,0.30);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.dash-card-btn {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid rgba(14,116,144,0.35);
+  color: #5fd4e8;
+  background: rgba(14,116,144,0.08);
+}
+
+/* Color accents for card icons */
+.ic-blue    { background: rgba(99,179,237,0.15); color: #63b3ed; }
+.ic-teal    { background: rgba(79,209,197,0.15); color: #4fd1c5; }
+.ic-yellow  { background: rgba(246,224,94,0.15); color: #f6e05e; }
+.ic-orange  { background: rgba(251,211,141,0.15); color: #fbd38d; }
+.ic-pink    { background: rgba(252,129,129,0.15); color: #fc8181; }
+.ic-purple  { background: rgba(183,148,244,0.15); color: #b794f4; }
+.ic-green   { background: rgba(104,211,145,0.15); color: #68d391; }
+.ic-red     { background: rgba(252,129,129,0.15); color: #fc8181; }
+.ic-gold    { background: rgba(246,224,94,0.15); color: #f6e05e; }
+
+/* ── Status bar ── */
+.ide-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 14px;
+  background: #1a1c22;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 10px;
+  color: rgba(255,255,255,0.28);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1080px) {
+  .ide-sidebar { width: 160px; }
+  .dash-cards { grid-template-columns: repeat(3, 1fr); }
+  .ide-body { min-height: 280px; }
+}
+
+@media (max-width: 680px) {
+  .ide-sidebar { display: none; }
+  .dash-cards { grid-template-columns: repeat(2, 1fr); }
+  .ide-body { min-height: 240px; }
+  .dash-brand .logo-text { font-size: 22px; }
+}
+
+/* ── Investment Thesis Card ── */
+.thesis-card {
+  margin-top: 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(14,116,144,0.24);
+  background: linear-gradient(135deg, rgba(14,116,144,0.06) 0%, rgba(29,78,216,0.04) 100%);
+  padding: 22px 26px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.thesis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 4px 0 0 4px;
+}
+
+.thesis-card .thesis-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.thesis-card ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.thesis-card li {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a3a5c;
+  padding-left: 20px;
+  position: relative;
+}
+
+.thesis-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+
+/* ── Market Expansion Path ── */
+.expansion-path {
+  margin-top: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(14,116,144,0.24);
+  background: linear-gradient(135deg, rgba(14,116,144,0.06) 0%, rgba(29,78,216,0.04) 100%);
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+}
+
+.expansion-path .exp-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.expansion-arrows {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  justify-content: center;
+}
+
+.exp-stage {
+  flex: 1;
+  text-align: center;
+  padding: 14px 12px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.exp-stage:nth-child(1) {
+  background: rgba(217,119,6,0.10);
+  border: 1px solid rgba(217,119,6,0.25);
+}
+
+.exp-stage:nth-child(2) {
+  background: rgba(14,116,144,0.10);
+  border: 1px solid rgba(14,116,144,0.25);
+}
+
+.exp-stage:nth-child(3) {
+  background: rgba(29,78,216,0.10);
+  border: 1px solid rgba(29,78,216,0.25);
+}
+
+.exp-stage .exp-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.exp-stage .exp-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.exp-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 22px;
+  color: var(--subtle);
+}
+
+.expansion-source {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--subtle);
+  line-height: 1.5;
+}
+
+/* ── Automation Surface Grid ── */
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.scope-column {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.scope-column .scope-badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+.scope-column ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.scope-column li {
+  font-size: 14px;
+  color: var(--muted);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.45;
+}
+
+.scope-column li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.scope-now li::before { background: var(--brand); }
+.scope-next li::before { background: var(--accent); }
+.scope-out li::before { background: var(--subtle); }
+
+@media (max-width: 680px) {
+  .scope-grid { grid-template-columns: 1fr; }
+  .expansion-arrows { flex-direction: column; }
+  .exp-arrow { justify-content: center; transform: rotate(90deg); padding: 4px 0; }
+}
+
+/* ── CTA Warm Accent ── */
+#s13::after {
+  background: linear-gradient(180deg, rgba(246,248,251,0.1) 0%, rgba(246,248,251,0.7) 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(217,119,6,0.06) 0%, transparent 60%);
+}
+
+@media (max-width: 1080px) {
+  .slide { padding: 72px 28px; }
+  .hero-grid,
+  .grid-4,
+  .grid-3,
+  .price-grid,
+  .roadmap,
+  .roadmap-line,
+  .logo-grid,
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-2,
+  .market-stack,
+  .ask-wrap,
+  .team-layout {
+    grid-template-columns: 1fr;
+  }
+  .market-visual {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .tam-circles {
+    width: 280px;
+    height: 280px;
+  }
+  .circle-tam { width: 280px; height: 280px; }
+  .circle-sam { width: 164px; height: 164px; top: 58px; left: 58px; }
+  .circle-som { width: 74px; height: 74px; top: 103px; left: 103px; }
+  .roadmap-line::before { display: none; }
+  .quad { height: 390px; }
+}
+
+@media (max-width: 680px) {
+  .hero-grid,
+  .grid-4,
+  .grid-3,
+  .price-grid,
+  .roadmap,
+  .roadmap-line,
+  .logo-grid,
+  .timeline { grid-template-columns: 1fr; }
+  p { font-size: 17px; }
+  .stat-value { font-size: 34px; }
+  .tam-circles {
+    width: 220px;
+    height: 220px;
+  }
+  .circle-tam { width: 220px; height: 220px; }
+  .circle-sam { width: 130px; height: 130px; top: 45px; left: 45px; }
+  .circle-som { width: 58px; height: 58px; top: 81px; left: 81px; }
+  .circle-tam .c-value { font-size: 18px; }
+  .circle-sam .c-value { font-size: 16px; }
+  .circle-som .c-value { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav" aria-label="slide nav">
+  <button class="dot-btn" data-slide="0"></button>
+  <button class="dot-btn" data-slide="1"></button>
+  <button class="dot-btn" data-slide="2"></button>
+  <button class="dot-btn" data-slide="3"></button>
+  <button class="dot-btn" data-slide="4"></button>
+  <button class="dot-btn" data-slide="5"></button>
+  <button class="dot-btn" data-slide="6"></button>
+  <button class="dot-btn" data-slide="7"></button>
+  <button class="dot-btn" data-slide="8"></button>
+  <button class="dot-btn" data-slide="9"></button>
+  <button class="dot-btn" data-slide="10"></button>
+  <button class="dot-btn" data-slide="11"></button>
+  <button class="dot-btn" data-slide="12"></button>
+</div>
+
+<button class="fs-btn" id="fsBtn" title="Toggle fullscreen (F)">
+  <svg viewBox="0 0 16 16">
+    <polyline points="1 5 1 1 5 1" /><polyline points="11 1 15 1 15 5" />
+    <polyline points="15 11 15 15 11 15" /><polyline points="5 15 1 15 1 11" />
+  </svg>
+</button>
+
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <span class="section-kicker animate">ChipOS / Investor Narrative 2026</span>
+    <h1 class="animate delay-1">The First <span class="gradient-text">Agentic OS</span><br/>for Semiconductor Design</h1>
+    <p class="hero-sub animate delay-2">A vendor-neutral, hardware-agnostic platform that orchestrates the full design lifecycle &mdash; from RTL through verification and physical design to deployment on real silicon. Not a point agent. Not a bolt-on. <strong>The operating system.</strong></p>
+    <div class="hero-strip animate delay-2">Live today: one prompt &rarr; pipeline synthesis &rarr; deployed on Axelera hardware</div>
+
+    <div class="thesis-card animate delay-2">
+      <div class="thesis-label">Investment Thesis</div>
+      <ul>
+        <li>Chip design tools are a <strong>$22B/yr market</strong>. The Big 3 (Synopsys, Cadence, Siemens) built their stacks in the 1990s. AI cannot be bolted on &mdash; the industry needs a new orchestration layer.</li>
+        <li>Competitors ship point agents (ChipAgents, $74M) or vendor-locked workflows (Cadence ChipStack). <strong>No one has built the OS</strong> &mdash; a vendor-neutral, hardware-agnostic platform spanning design through deployment.</li>
+        <li>ChipOS is that OS: built by verification engineers with working-silicon experience. <strong>32 MCP tools, 260+ APIs, live on real hardware today.</strong></li>
+        <li>Early revenue and one live enterprise deployment. <strong>$5M seed</strong> to own the agentic chip-design platform category.</li>
+      </ul>
+    </div>
+
+    <div class="hero-grid stagger-children animate delay-3">
+      <div class="stat-card animate-scale">
+        <div class="stat-value">$791.7B</div>
+        <div class="stat-label">Global semiconductor sales in 2025</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">$5.6B/qtr</div>
+        <div class="stat-label">ESD/EDA+SIP+services (Q3 2025)</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">3 TPU gens</div>
+        <div class="stat-label">AI-assisted floorplanning already in production</div>
+      </div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/" target="_blank" rel="noopener">SIA/WSTS</a> ·
+      <a href="https://www.semi.org/en/semi-press-release/esd-alliance-reports-electronic-system-design-industry-posts-5.6-billion-dollars-in-revenue-in-q3-2025" target="_blank" rel="noopener">SEMI ESD Alliance</a> ·
+      <a href="https://deepmind.google/en/blog/how-alphachip-transformed-computer-chip-design/" target="_blank" rel="noopener">Google DeepMind AlphaChip</a>
+    </div>
+  </div>
+  <span class="slide-number">01 / 13</span>
+</section>
+
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <span class="section-kicker animate">The Problem</span>
+    <h2 class="animate delay-1">Chip complexity exploded.<br/>Design productivity did not.</h2>
+    <p class="lead animate delay-2" style="max-width: 860px;">Foundries execute manufacturing at world-class scale. The bottleneck has shifted upstream: architecture-to-signoff workflows are fragmented, manual, and too slow for AI-era demand.</p>
+
+    <div class="grid-3 stagger-children" style="margin-top: 20px;">
+      <div class="card animate">
+        <div class="problem-badge">Verification bottleneck</div>
+        <h3>Largest share of cycle time</h3>
+        <p>Verification remains the largest design undertaking in modern SoCs and frequently dominates schedules.</p>
+      </div>
+      <div class="card animate">
+        <div class="problem-badge">Advanced-node economics</div>
+        <h3>Design cost is now strategic risk</h3>
+        <p>Advanced-node design costs run into hundreds of millions, increasing pressure for first-pass success.</p>
+      </div>
+      <div class="card animate">
+        <div class="problem-badge">Talent constraint</div>
+        <h3>Workforce supply gap</h3>
+        <p>U.S. semiconductor labor demand outpaces supply, with a projected shortfall of ~67k roles by 2030.</p>
+      </div>
+    </div>
+
+    <div class="highlight animate delay-3">
+      Core thesis: whoever compresses the <strong>design loop</strong> (spec &rarr; RTL &rarr; verification &rarr; physical design &rarr; signoff) will own the next control point in semiconductor value creation.
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.semi.org/en/technology-trends/topic/chip-design" target="_blank" rel="noopener">SEMI chip design trends</a> ·
+      <a href="https://semiengineering.com/big-trouble-at-3nm/" target="_blank" rel="noopener">IBS/SemiEngineering (advanced-node cost context)</a> ·
+      <a href="https://www.semiconductors.org/chipping-away-assessing-and-addressing-the-labor-market-gap-facing-the-u-s-semiconductor-industry/" target="_blank" rel="noopener">SIA/Oxford Economics</a>
+    </div>
+  </div>
+  <span class="slide-number">02 / 13</span>
+</section>
+
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Why Now</span>
+    <h2 class="animate delay-1">AI demand is forcing a full redesign of chip workflows</h2>
+
+    <div class="grid-4 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale">
+        <div class="stat-value">+25.6%</div>
+        <div class="stat-label">Semiconductor market growth in 2025</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">$72.22B</div>
+        <div class="stat-label">Meta FY2025 capex</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">~$80B</div>
+        <div class="stat-label">Microsoft FY2025 AI datacenter investment</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">$130.5B</div>
+        <div class="stat-label">NVIDIA FY2025 revenue (+114% YoY)</div>
+      </div>
+    </div>
+
+    <div class="card animate delay-3" style="margin-top: 16px;">
+      <h3>The market signal is clear</h3>
+      <p class="lead">Hyperscalers and AI infrastructure leaders are committing unprecedented capital to compute. That accelerates custom-silicon demand and makes design-cycle automation mission-critical.</p>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/" target="_blank" rel="noopener">SIA/WSTS</a> ·
+      <a href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/" target="_blank" rel="noopener">Meta FY2025</a> ·
+      <a href="https://blogs.microsoft.com/on-the-issues/2025/01/03/the-golden-opportunity-for-american-ai/" target="_blank" rel="noopener">Microsoft</a> ·
+      <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2025" target="_blank" rel="noopener">NVIDIA FY2025</a>
+    </div>
+  </div>
+  <span class="slide-number">03 / 13</span>
+</section>
+
+<section class="slide" id="s4">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Product</span>
+    <h2 class="animate delay-1">ChipOS is the agentic OS for design automation</h2>
+
+    <div class="grid-3 stagger-children" style="margin-top: 18px;">
+      <div class="card animate">
+        <h3>1. Domain IDE</h3>
+        <p>Semiconductor-first workspace for RTL, verification, physical design scripting, and review loops.</p>
+      </div>
+      <div class="card animate">
+        <h3>2. Agent + Model Fabric</h3>
+        <p>Model routing across cloud and on-prem providers, plus workflow agents orchestrated per design stage.</p>
+      </div>
+      <div class="card animate">
+        <h3>3. Knowledge + Policy Layer</h3>
+        <p>Private RAG, auditable actions, and self-host controls for IP-sensitive organizations.</p>
+      </div>
+    </div>
+
+    <div class="ide-mockup animate-scale delay-3">
+      <!-- Window chrome -->
+      <div class="ide-chrome">
+        <div class="wd wd-r"></div><div class="wd wd-y"></div><div class="wd wd-g"></div>
+        <div class="wt">ChipOS &mdash; nuclei-templates</div>
+      </div>
+      <!-- Tab bar -->
+      <div class="ide-tabbar">
+        <div class="ide-tab active">ChipOS Dashboard</div>
+      </div>
+      <!-- Body: sidebar + content -->
+      <div class="ide-body">
+        <!-- Sidebar -->
+        <div class="ide-sidebar">
+          <div class="sb-section">
+            <div class="sb-heading">Select AI Provider</div>
+            <div class="sb-provider-row">
+              <div class="sb-provider active">Claude Code</div>
+              <div class="sb-provider">Claude Vibe</div>
+            </div>
+          </div>
+          <div class="sb-section">
+            <div class="sb-heading">Workspace</div>
+            <div class="sb-item">&#9656; cloud</div>
+            <div class="sb-item">&#9656; code</div>
+            <div class="sb-item">&#9656; dast</div>
+            <div class="sb-item">&#9656; dns</div>
+            <div class="sb-item">&#9656; file</div>
+          </div>
+          <div class="sb-section">
+            <div class="sb-heading">Projects</div>
+            <div class="sb-item">&#9671; Voyager SDK Pipeline</div>
+            <div class="sb-item">&#9671; Real-Time Speed Detection</div>
+            <div class="sb-item">&#9671; Real-Time Movement Heatm&hellip;</div>
+            <div class="sb-item">&#9671; YOLOv8 Deployment &ndash; Metis</div>
+            <div class="sb-item">&#9671; Pipeline: ALPR &ndash; License&hellip;</div>
+          </div>
+          <div class="sb-section">
+            <div class="sb-heading">Tasks</div>
+            <div class="sb-item">&#9675; Setup CI/CD Pipeline Infra&hellip;</div>
+            <div class="sb-item">&#9675; Implement Build Stage</div>
+            <div class="sb-item">&#9675; Implement Test Stage</div>
+          </div>
+          <div class="sb-section">
+            <div class="sb-heading">Knowledge Base</div>
+            <div class="sb-item" style="color: rgba(255,255,255,0.30);">12 sources indexed</div>
+            <div class="sb-item">&#9656; Accellera &mdash; 2 docs</div>
+          </div>
+        </div>
+        <!-- Main dashboard -->
+        <div class="ide-content">
+          <div class="dash-brand">
+            <div class="logo-text">CHIPOS</div>
+          </div>
+          <div class="dash-tagline">The agentic OS for chip design: orchestrate knowledge, workflows, and AI agents from one platform.</div>
+          <div class="dash-cta-row">
+            <div class="dash-btn-primary">Get Started</div>
+            <div class="dash-btn-secondary">&#x2728; Ask anything about ChipOS</div>
+          </div>
+          <!-- Row 1: platform features -->
+          <div class="dash-cards" style="margin-bottom: 10px;">
+            <div class="dash-card">
+              <div class="dash-card-icon ic-blue">&#x1F4D6;</div>
+              <div class="dash-card-title">Knowledge Base</div>
+              <div class="dash-card-desc">Store and search through documentation, code examples&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-teal">&#x1F3D7;</div>
+              <div class="dash-card-title">Projects</div>
+              <div class="dash-card-desc">Manage development projects with integrated task&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-yellow">&#x26A1;</div>
+              <div class="dash-card-title">MCP Server</div>
+              <div class="dash-card-desc">Connect to AI assistants via Model Context Protocol&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-orange">&#x2699;</div>
+              <div class="dash-card-title">Settings</div>
+              <div class="dash-card-desc">Configure API keys, manage integrations, customize&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-purple">&#x1F4CB;</div>
+              <div class="dash-card-title">Subscription</div>
+              <div class="dash-card-desc">Choose your plan and unlock advanced features&hellip;</div>
+              <div class="dash-card-btn" style="color:#fbd38d; border-color:rgba(251,211,141,0.35); background:rgba(251,211,141,0.08);">Open</div>
+            </div>
+          </div>
+          <!-- Row 2: domain tools -->
+          <div class="dash-cards">
+            <div class="dash-card">
+              <div class="dash-card-icon ic-teal">&#x1F4BB;</div>
+              <div class="dash-card-title">CPU Development</div>
+              <div class="dash-card-desc">Design RISC-V processors from ISA specification&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-green">&#x1F50D;</div>
+              <div class="dash-card-title">RTL Verification</div>
+              <div class="dash-card-desc">Generate UVM testbenches, SystemVerilog assertions&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-gold">&#x1F4E6;</div>
+              <div class="dash-card-title">Voyager SDK</div>
+              <div class="dash-card-desc">Deploy AI models to Axelera Metis APUs&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-pink">&#x1F4D0;</div>
+              <div class="dash-card-title">Physical Design</div>
+              <div class="dash-card-desc">Automate floorplanning, placement, CTS, and routing&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon ic-red">&#x1F6E1;</div>
+              <div class="dash-card-title">PD Verification</div>
+              <div class="dash-card-desc">Run DRC, LVS, ERC checks and static timing analysis&hellip;</div>
+              <div class="dash-card-btn">Open</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Status bar -->
+      <div class="ide-statusbar">
+        <span>&#x2714; 0 &nbsp; &#x26A0; 0 &nbsp; &#x24D8; 0</span>
+        <span>&#x1F464; A &nbsp;&nbsp; Upgrade &nbsp;&nbsp; Fullscreen Chat</span>
+      </div>
+    </div>
+
+    <div class="card animate delay-4" style="margin-top: 16px;">
+      <div class="split-head">
+        <h3>Workflow position</h3>
+        <span class="mini">Spec &rarr; RTL &rarr; Verify &rarr; PhysDesign &rarr; Signoff</span>
+      </div>
+      <p>ChipOS orchestrates the full design loop before tapeout. Manufacturing stays with foundries &mdash; we own the agentic layer above it.</p>
+    </div>
+  </div>
+  <span class="slide-number">04 / 13</span>
+</section>
+
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <span class="section-kicker animate">What Works Today</span>
+    <h2 class="animate delay-1">From one prompt to deployed pipeline on Axelera hardware</h2>
+
+    <div class="timeline stagger-children">
+      <div class="timeline-step animate-right"><span class="k">Step 1</span><span class="v">Intent prompt</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 2</span><span class="v">Pipeline synthesis</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 3</span><span class="v">Compile & optimize</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 4</span><span class="v">Deploy to Axelera card</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 5</span><span class="v">Benchmark + iterate</span></div>
+    </div>
+
+    <div class="grid-4 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale"><div class="stat-value">261+</div><div class="stat-label">API route handlers in server code</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">228</div><div class="stat-label">Automated tests in latest quick regression snapshot</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">32</div><div class="stat-label">MCP tool registrations in code scan</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">95%</div><div class="stat-label">Pass rate in quick regression snapshot</div></div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Internal evidence: <code>test-reports/dashboard/data.json</code> and route/tool scans in <code>chipos-acf/python/src/server</code> (local repo snapshot).
+    </div>
+  </div>
+  <span class="slide-number">05 / 13</span>
+</section>
+
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Automation Surface</span>
+    <h2 class="animate delay-1">Clear scope: design + deployment + support automation, not manufacturing</h2>
+
+    <div class="scope-grid animate delay-2">
+      <div class="scope-column scope-now">
+        <div class="scope-badge badge-now">Now &mdash; Shipped</div>
+        <ul>
+          <li>RTL scaffolding &amp; code assistants</li>
+          <li>Verification copilots (UVM, coverage triage)</li>
+          <li>Pipeline deployment to Axelera hardware</li>
+          <li>RAG over design docs &amp; specs</li>
+          <li>Support automation (Zendesk)</li>
+        </ul>
+      </div>
+      <div class="scope-column scope-next">
+        <div class="scope-badge badge-next">Next &mdash; Roadmap</div>
+        <ul>
+          <li>PPA closure agents</li>
+          <li>ECO acceleration loops</li>
+          <li>Autonomous test generation</li>
+          <li>Broader accelerator support</li>
+        </ul>
+      </div>
+      <div class="scope-column scope-out">
+        <div class="scope-badge badge-out">Out of Scope</div>
+        <ul>
+          <li>Manufacturing</li>
+          <li>Foundry operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legend animate delay-3" style="margin-top: 14px;">
+      <span><span class="dot now"></span>Current shipped capabilities</span>
+      <span><span class="dot next"></span>Committed roadmap capabilities</span>
+      <span><span class="dot out"></span>Intentionally excluded area</span>
+    </div>
+    <div class="notice animate delay-3">Manufacturing stays with foundries. ChipOS is the agentic orchestration layer: design lifecycle velocity, hardware deployment, documentation intelligence, and support automation.</div>
+  </div>
+  <span class="slide-number">06 / 13</span>
+</section>
+
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Market Opportunity</span>
+    <h2 class="animate delay-1">Massive TAM, concentrated software spend, clear entry wedge</h2>
+
+    <div class="market-visual animate delay-2">
+      <div class="tam-circles">
+        <div class="circle circle-tam">
+          <span class="c-label">TAM</span>
+          <span class="c-value">$791.7B</span>
+        </div>
+        <div class="circle circle-sam">
+          <span class="c-label">SAM</span>
+          <span class="c-value">$22.3B</span>
+        </div>
+        <div class="circle circle-som">
+          <span class="c-label">SOM</span>
+          <span class="c-value">$300M</span>
+        </div>
+      </div>
+
+      <div class="market-details">
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(29,78,216,0.5);"></div>
+          <div>
+            <h3>TAM &mdash; $791.7B</h3>
+            <p>Global semiconductor revenue (2025), projecting toward ~$1T in 2026.</p>
+            <div class="methodology">SIA/WSTS annual global sales data</div>
+          </div>
+        </div>
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(14,116,144,0.6);"></div>
+          <div>
+            <h3>SAM &mdash; $22.3B <span style="font-size:13px; color:var(--subtle); font-weight:400;">(2.8% of TAM)</span></h3>
+            <p>EDA + SIP + services &mdash; $5.566B in Q3 2025, annualized run-rate.</p>
+            <div class="methodology">SEMI ESD Alliance quarterly reports</div>
+          </div>
+        </div>
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(217,119,6,0.7);"></div>
+          <div>
+            <h3>SOM &mdash; $300M <span style="font-size:13px; color:var(--subtle); font-weight:400;">(1.3% of SAM)</span></h3>
+            <p>AI silicon design teams with security constraints and large verification burdens. 5-year target.</p>
+            <div class="methodology">Bottom-up: ~1,000 teams &times; $300K avg. ACV</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expansion-path animate delay-3">
+      <div class="exp-label">Path beyond $300M SOM</div>
+      <div class="expansion-arrows">
+        <div class="exp-stage">
+          <div class="exp-value">$300M</div>
+          <div class="exp-desc">Year 5 SOM: AI design tool licenses across ~1,000 teams</div>
+        </div>
+        <div class="exp-arrow">&rarr;</div>
+        <div class="exp-stage">
+          <div class="exp-value">$1&ndash;2B</div>
+          <div class="exp-desc">AI labor substitution: verification engineers spend 60% of time on tasks ChipOS automates</div>
+        </div>
+        <div class="exp-arrow">&rarr;</div>
+        <div class="exp-stage">
+          <div class="exp-value">$3&ndash;5B</div>
+          <div class="exp-desc">Platform expansion: every design team standardizes on ChipOS as the agentic OS</div>
+        </div>
+      </div>
+      <div class="expansion-source">a16z &ldquo;Vertical SaaS + AI&rdquo; framework: AI enables 2&ndash;10x revenue per customer by capturing labor budgets, not just software licenses.</div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/" target="_blank" rel="noopener">SIA/WSTS</a> ·
+      <a href="https://www.semi.org/en/semi-press-release/esd-alliance-reports-electronic-system-design-industry-posts-5.6-billion-dollars-in-revenue-in-q3-2025" target="_blank" rel="noopener">SEMI ESD Alliance</a> ·
+      <a href="https://a16z.com/vertical-saas-now-with-ai-inside/" target="_blank" rel="noopener">a16z Vertical SaaS + AI</a>
+    </div>
+  </div>
+  <span class="slide-number">07 / 13</span>
+</section>
+
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Customers and ICP</span>
+    <h2 class="animate delay-1">Start where design velocity is existential</h2>
+
+    <div class="grid-2 animate delay-2" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Live account</h3>
+        <p><strong>Axelera AI</strong> uses ChipOS workflows for one-shot pipeline implementation and deployment to accelerator cards.</p>
+        <div class="highlight" style="margin-top: 14px;">Beachhead: AI hardware teams with short release cycles and immediate deployment feedback loops.</div>
+      </div>
+      <div class="card">
+        <h3>Target accounts (design-side)</h3>
+        <p>Hyperscalers, fabless AI silicon teams, and semiconductor platform companies managing large RTL + verification programs.</p>
+        <div class="logo-grid stagger-children">
+          <div class="logo animate-scale">NVIDIA</div>
+          <div class="logo animate-scale">Meta</div>
+          <div class="logo animate-scale">Google</div>
+          <div class="logo animate-scale">Amazon</div>
+          <div class="logo animate-scale">Microsoft</div>
+          <div class="logo animate-scale">OpenAI</div>
+          <div class="logo animate-scale">Halo</div>
+          <div class="logo animate-scale">+ Fabless AI</div>
+        </div>
+        <div class="notice">Target-account examples, not claimed contracted customers.</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">08 / 13</span>
+</section>
+
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Competition</span>
+    <h2 class="animate delay-1">Everyone ships agents. Nobody ships the OS.</h2>
+
+    <div class="quad animate-scale delay-2" style="height: 460px;">
+      <div class="quad-grid-bg"><div></div><div></div><div></div><div></div></div>
+      <div style="position:absolute; left:50%; top:0; width:1px; height:100%; background:var(--line); z-index:1;"></div>
+      <div style="position:absolute; top:50%; left:0; width:100%; height:1px; background:var(--line); z-index:1;"></div>
+      <span class="quad-sweetspot">ChipOS sweet spot &#x2197;</span>
+
+      <span class="axis top">Hardware-Agnostic</span>
+      <span class="axis bottom">Vendor-Locked</span>
+      <span class="axis left">Point Agent</span>
+      <span class="axis right">Full Platform / OS</span>
+
+      <div class="point" style="left: 8%; top: 14%; z-index:4;">
+        <div class="t">Cursor / Copilot</div>
+        <div class="s">Horizontal AI &mdash; no chip domain, no EDA integration</div>
+      </div>
+      <div class="point" style="left: 18%; top: 30%; z-index:4;">
+        <div class="t">ChipAgents ($74M)</div>
+        <div class="s">Agentic point tools for RTL + verification only</div>
+      </div>
+      <div class="point" style="left: 12%; top: 46%; z-index:4;">
+        <div class="t">Chipmind ($2.5M)</div>
+        <div class="s">Design-aware agents, ETH Zurich &mdash; early stage</div>
+      </div>
+      <div class="point" style="right: 8%; bottom: 12%; z-index:4;">
+        <div class="t">Cadence ChipStack</div>
+        <div class="s">Agentic workflow &mdash; locked to Cadence stack</div>
+      </div>
+      <div class="point" style="right: 28%; bottom: 18%; z-index:4;">
+        <div class="t">Synopsys AgentEngineer</div>
+        <div class="s">L2&ndash;L3 roadmap &mdash; locked to Synopsys stack</div>
+      </div>
+      <div class="point" style="left: 6%; bottom: 18%; z-index:4;">
+        <div class="t">Google AlphaChip</div>
+        <div class="s">RL floorplanning &mdash; Google TPUs only, one stage</div>
+      </div>
+      <div class="point point-chipos" style="right: 8%; top: 10%; z-index:4;">
+        <div class="t">ChipOS &#9733;</div>
+        <div class="s">Vendor-neutral agentic OS &mdash; full lifecycle, any hardware</div>
+      </div>
+    </div>
+
+    <div class="grid-3 stagger-children" style="margin-top: 16px;">
+      <div class="card animate">
+        <h3>Point agents (&ne; platform)</h3>
+        <p>ChipAgents ($74M, Bessemer) and Chipmind ($2.5M) solve individual stages &mdash; RTL or verification. No orchestration layer, no deployment pipeline.</p>
+      </div>
+      <div class="card animate">
+        <h3>Vendor-locked workflows</h3>
+        <p>Cadence ChipStack and Synopsys AgentEngineer require their own tool stacks. Design teams locked to one vendor cannot adopt best-of-breed AI.</p>
+      </div>
+      <div class="card animate">
+        <h3>ChipOS: the vendor-neutral OS</h3>
+        <p>Only vendor-neutral platform spanning design &rarr; verification &rarr; deployment. MCP-native, self-hostable, works with any EDA toolchain.</p>
+      </div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://news.synopsys.com/2025-12-10-Synopsys-Posts-Financial-Results-for-Fourth-Quarter-and-Fiscal-Year-2025" target="_blank" rel="noopener">Synopsys FY2025</a> ·
+      <a href="https://www.cadence.com/en_US/home/company/newsroom/press-releases/pr-ir/2025/cadence-reports-fourth-quarter-and-fiscal-year-2024-financial.html" target="_blank" rel="noopener">Cadence FY2024</a>
+    </div>
+  </div>
+  <span class="slide-number">09 / 13</span>
+</section>
+
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Business Model + GTM</span>
+    <h2 class="animate delay-1">Land with one design team. Expand to the full org.</h2>
+
+    <div class="price-grid stagger-children">
+      <div class="price-card animate-scale">
+        <div class="price-tier">Community</div>
+        <div class="price">Free</div>
+        <div class="features">
+          <div>Core workspace + community workflows</div>
+          <div>Local model support</div>
+          <div>Open ecosystem entry</div>
+        </div>
+      </div>
+      <div class="price-card featured animate-scale">
+        <div class="price-tier">Pro</div>
+        <div class="price">$99 <small>/ seat / month</small></div>
+        <div class="features">
+          <div>Multi-provider model routing</div>
+          <div>Private knowledge + team workflows</div>
+          <div>MCP and automation controls</div>
+        </div>
+      </div>
+      <div class="price-card animate-scale">
+        <div class="price-tier">Enterprise</div>
+        <div class="price">Custom</div>
+        <div class="features">
+          <div>Self-host / air-gapped deployments</div>
+          <div>SSO + policy controls + auditability</div>
+          <div>Dedicated integration and support</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3 stagger-children" style="margin-top: 16px;">
+      <div class="card animate"><h3>Land</h3><p>Start in verification or RTL productivity pain points with measurable cycle-time wins.</p></div>
+      <div class="card animate"><h3>Expand</h3><p>Roll out into physical-design scripting, signoff loops, and shared enterprise knowledge surfaces.</p></div>
+      <div class="card animate"><h3>Scale</h3><p>Make ChipOS the default agentic OS across teams and geographies &mdash; the way Git became default for source control.</p></div>
+    </div>
+  </div>
+  <span class="slide-number">10 / 13</span>
+</section>
+
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Traction + Roadmap</span>
+    <h2 class="animate delay-1">Shipping now, expanding fast</h2>
+
+    <div class="grid-4 stagger-children" style="margin-top: 16px;">
+      <div class="stat-card animate-scale"><div class="stat-value">1</div><div class="stat-label">Live enterprise deployment (Axelera)</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">260+</div><div class="stat-label">API surface (route handlers)</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">228</div><div class="stat-label">Automated tests (quick regression snapshot)</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">95%</div><div class="stat-label">Pass-rate snapshot</div></div>
+    </div>
+
+    <div class="roadmap-line stagger-children" style="margin-top: 20px;">
+      <div class="rm-card animate-right">
+        <div class="rm-dot"></div>
+        <div class="q">Q1 2026</div>
+        <h4>Product hardening</h4>
+        <p>Stabilize deployment flows and enterprise controls for design-team onboarding.</p>
+      </div>
+      <div class="rm-card animate-right">
+        <div class="rm-dot"></div>
+        <div class="q">Q2 2026</div>
+        <h4>Paid pilots</h4>
+        <p>Convert design partners into paid pilots with cycle-time ROI tracking.</p>
+      </div>
+      <div class="rm-card animate-right">
+        <div class="rm-dot"></div>
+        <div class="q">Q3 2026</div>
+        <h4>Verification autonomy</h4>
+        <p>Coverage-closure assistants and autonomous test generation loops.</p>
+      </div>
+      <div class="rm-card animate-right">
+        <div class="rm-dot"></div>
+        <div class="q">Q4 2026</div>
+        <h4>Enterprise scale</h4>
+        <p>Multi-team rollouts, deeper physical-design scripting automation, SOC2 path.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">11 / 13</span>
+</section>
+
+<section class="slide" id="s12">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Team</span>
+    <h2 class="animate delay-1">Deep domain, not just dev tools</h2>
+
+    <div class="team-layout animate delay-2">
+      <div class="card">
+        <div class="founder-header">
+          <div class="founder-avatar">AC</div>
+          <div>
+            <div class="founder-name">Abhilash Chadhar</div>
+            <div class="founder-title">Founder & CEO</div>
+          </div>
+        </div>
+        <p style="font-size: 15px; line-height: 1.5;">10 years in silicon verification across Intel (Habana AI), ISRO, and Axelera AI. Led verification signoff for AI accelerators, RISC-V vector CPUs, PCIe/USB SerDes PHYs across multiple tapeouts with working silicon. Now building the tools he wished existed.</p>
+
+        <div class="credential-badges" style="margin-top: 16px;">
+          <div class="cred-badge">
+            <div><strong>10+ yrs silicon DV</strong><span>Intel, Axelera, ISRO</span></div>
+          </div>
+          <div class="cred-badge">
+            <div><strong>Multiple tapeouts</strong><span>PCIe Gen4, USB3.2, RISC-V, AI accelerators</span></div>
+          </div>
+          <div class="cred-badge">
+            <div><strong>9 Intel awards</strong><span>Top 10% recognition across 300-person orgs</span></div>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top: 12px; color: var(--subtle);">Current dual role: Founder @ FutureAtoms + GenAI @ Axelera AI</p>
+      </div>
+
+      <div>
+        <div class="advisor-card">
+          <div class="advisor-header">
+            <div class="advisor-avatar">KC</div>
+            <div>
+              <div class="founder-name" style="font-size: 18px;">Dr. Kartik Chadhar</div>
+              <div class="founder-title">Advisor</div>
+            </div>
+          </div>
+          <p style="font-size: 14px; line-height: 1.5;">MD, Community Medicine &mdash; AIIMS Delhi & Safdarjung Hospital. MBBS, AIIMS Bhopal. Former Regional Medical Officer across multiple districts. NTSE Scholar. Nationally recognized for leadership in public health reform.</p>
+          <p class="small" style="margin-top: 8px;">Strategic advisor: operational leadership, scale-up across distributed systems, and governance perspective.</p>
+        </div>
+
+        <div class="why-team" style="margin-top: 16px;">
+          <strong>Why this team</strong>
+          <p style="margin-top: 6px;">Built verification environments, not just coding assistants. Understands where chip teams lose time: coverage closure, debug loops, signoff churn.</p>
+          <div style="margin-top: 12px; padding: 12px; border-radius: 10px; background: rgba(14,116,144,0.06); border: 1px solid rgba(14,116,144,0.18); font-size: 14px; color: #0b5e74; font-weight: 550; text-align: center;">
+            10 projects with working silicon. Building ChipOS from lived verification pain.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">12 / 13</span>
+</section>
+
+<section class="slide" id="s13">
+  <div class="slide-inner">
+    <span class="section-kicker animate">The Ask</span>
+    <h2 class="animate delay-1">Raise: <span class="gradient-text">$5M seed</span> to own the agentic OS layer for chip design</h2>
+
+    <div class="ask-wrap animate delay-2">
+      <div class="ask-amount">
+        <p style="font-size:16px; text-transform:uppercase; letter-spacing:0.08em; color:#1f4d7b;">Runway</p>
+        <div class="num gradient-text">18 months</div>
+        <p style="margin-top: 12px;">Target outcomes: 3&ndash;5 paid enterprise pilots, repeatable land-and-expand motion, and a durable platform moat as the agentic OS category winner.</p>
+      </div>
+      <div class="funds">
+        <h3>Use of funds</h3>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>Engineering (product + agents)</span><span class="pct">50%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="50%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>GTM (design-partner sales)</span><span class="pct">30%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="30%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>Infra + compliance</span><span class="pct">20%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="20%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card animate delay-3" style="margin-top: 16px;">
+      <h3>Contact</h3>
+      <p><a href="https://futureatoms.com" target="_blank" rel="noopener">futureatoms.com</a> · <a href="mailto:founder@futureatoms.com">founder@futureatoms.com</a></p>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Deck structure influenced by widely-used VC guidance on narrative clarity and sequencing:
+      <a href="https://sequoiacap.com/article/writing-a-business-plan/" target="_blank" rel="noopener">Sequoia</a> ·
+      <a href="https://www.ycombinator.com/blog/how-to-design-a-better-pitch-deck/" target="_blank" rel="noopener">Y Combinator</a> ·
+      <a href="https://www.docsend.com/blog/pre-seed-pitch-deck-guide/" target="_blank" rel="noopener">DocSend</a>
+    </div>
+  </div>
+  <span class="slide-number">13 / 13</span>
+</section>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')]
+const dots = [...document.querySelectorAll('.dot-btn')]
+
+/* ── Animation Observer (fade-up, scale, right) ── */
+const animateObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible')
+  })
+}, { threshold: 0.14 })
+
+document.querySelectorAll('.animate, .animate-scale, .animate-right').forEach((el) => animateObserver.observe(el))
+
+/* ── Concentric Circle Reveal ── */
+const circleObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.circle').forEach((c) => c.classList.add('circle-revealed'))
+    }
+  })
+}, { threshold: 0.3 })
+
+document.querySelectorAll('.tam-circles').forEach((el) => circleObserver.observe(el))
+
+/* ── Fund Bar Width Animation ── */
+const fundObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.fund-fill').forEach((bar) => {
+        const w = bar.getAttribute('data-width')
+        if (w) bar.style.width = w
+      })
+    }
+  })
+}, { threshold: 0.4 })
+
+document.querySelectorAll('.funds').forEach((el) => fundObserver.observe(el))
+
+/* ── Slide Nav Tracking ── */
+let activeIndex = 0
+const slideObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const idx = slides.indexOf(entry.target)
+      activeIndex = idx
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx))
+    }
+  })
+}, { threshold: 0.55 })
+
+slides.forEach((s) => slideObserver.observe(s))
+
+dots.forEach((dot, idx) => {
+  dot.addEventListener('click', () => slides[idx].scrollIntoView({ behavior: 'smooth' }))
+})
+
+document.addEventListener('keydown', (e) => {
+  if (['ArrowDown', 'ArrowRight', ' '].includes(e.key)) {
+    e.preventDefault()
+    if (activeIndex < slides.length - 1) slides[activeIndex + 1].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (['ArrowUp', 'ArrowLeft'].includes(e.key)) {
+    e.preventDefault()
+    if (activeIndex > 0) slides[activeIndex - 1].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (e.key === 'Home') {
+    e.preventDefault()
+    slides[0].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (e.key === 'End') {
+    e.preventDefault()
+    slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' })
+  }
+})
+
+dots[0]?.classList.add('active')
+
+/* ── Fullscreen toggle ── */
+const fsBtn = document.getElementById('fsBtn')
+const fsSvgExpand = '<polyline points="1 5 1 1 5 1"/><polyline points="11 1 15 1 15 5"/><polyline points="15 11 15 15 11 15"/><polyline points="5 15 1 15 1 11"/>'
+const fsSvgShrink = '<polyline points="5 1 5 5 1 5"/><polyline points="11 5 15 5 11 1"/><polyline points="11 15 11 11 15 11"/><polyline points="1 11 5 11 5 15"/>'
+
+function toggleFs() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {})
+  } else {
+    document.exitFullscreen()
+  }
+}
+
+fsBtn.addEventListener('click', toggleFs)
+
+document.addEventListener('fullscreenchange', () => {
+  fsBtn.querySelector('svg').innerHTML = document.fullscreenElement ? fsSvgShrink : fsSvgExpand
+})
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'f' || e.key === 'F') {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
+    toggleFs()
+  }
+})
+</script>
+</body>
+</html>

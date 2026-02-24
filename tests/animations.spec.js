@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Animation Tests', () => {
   test('Three.js scene renders on homepage', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Wait for Three.js initialization
     await page.waitForTimeout(2000);
@@ -19,7 +19,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('homepage scroll sections have transitions', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     // Check scroll sections exist
@@ -32,13 +32,13 @@ test.describe('Animation Tests', () => {
 
   test('product pages have Three.js visualizations', async ({ page }) => {
     const pagesWithCanvas = [
-      '/bevybeats.html',
-      '/savitri.html',
-      '/zaphy.html',
-      '/yuj.html',
-      '/agentic.html',
-      '/adaptivision.html',
-      '/systemverilog.html'
+      '/bevybeats',
+      '/savitri',
+      '/zaphy',
+      '/yuj',
+      '/agentic',
+      '/adaptivision',
+      '/systemverilog'
     ];
 
     for (const pagePath of pagesWithCanvas) {
@@ -57,7 +57,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('Three.js animation loop is running on homepage', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(2000);
 
     // Check if animation is running by sampling canvas content
@@ -76,7 +76,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('blog page loads correctly', async ({ page }) => {
-    await page.goto('/blog.html');
+    await page.goto('/blog');
     await page.waitForTimeout(1000);
 
     // Check page title contains expected text
@@ -91,7 +91,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('news page loads correctly', async ({ page }) => {
-    await page.goto('/news.html');
+    await page.goto('/news');
     await page.waitForTimeout(1000);
 
     // Check page title
@@ -106,7 +106,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('glass-panel styling is applied', async ({ page }) => {
-    await page.goto('/blog.html');
+    await page.goto('/blog');
     await page.waitForTimeout(500);
 
     const glassPanels = page.locator('.glass-panel');
@@ -124,7 +124,7 @@ test.describe('Animation Tests', () => {
   });
 
   test('hover effects work on product pages', async ({ page }) => {
-    await page.goto('/bevybeats.html');
+    await page.goto('/bevybeats');
     await page.waitForTimeout(1000);
 
     // Find a feature card
@@ -144,7 +144,7 @@ test.describe('Animation Tests', () => {
   test('mobile responsive design works', async ({ page }) => {
     // Test at mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     // Desktop nav should be hidden
@@ -158,12 +158,12 @@ test.describe('Animation Tests', () => {
   });
 
   test('page transitions are smooth', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     // Navigate to a product page
     const startTime = Date.now();
-    await page.goto('/bevybeats.html');
+    await page.goto('/bevybeats');
     await page.waitForLoadState('networkidle');
     const loadTime = Date.now() - startTime;
 

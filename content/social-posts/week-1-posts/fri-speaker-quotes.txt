@@ -1,0 +1,169 @@
+FRIDAY — SPEAKER QUOTES CAROUSEL (Instagram, 5 slides)
+=====================================================================
+Pillar: Thought Leadership
+VC Signal: Curated insight signals you're embedded in the ecosystem
+
+=====================================================================
+5-SLIDE CAROUSEL: Key quotes from India AI Summit 2026
+=====================================================================
+
+DESIGN SYSTEM:
+- 1080 x 1350 px (4:5)
+- Dark background (#0a0a0f)
+- India tricolor accent line at top
+- Quote in white, 36pt, Montserrat Bold
+- Attribution in cyan, 28pt
+- Speaker photo or icon in bottom-left (optional)
+- Slide counter bottom-right
+- Subtle quotation mark watermark (") in background, 20% opacity
+
+
+SLIDE 1 — HOOK
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   5 QUOTES FROM THE                      |
+|   INDIA AI SUMMIT 2026                   |
+|   THAT WILL DEFINE                       |
+|   THE NEXT DECADE.                       |
+|                                           |
+|   300,000 PARTICIPANTS.                  |
+|   3,250+ SPEAKERS.                       |
+|   THESE 5 STOOD OUT.                     |
+|                                           |
+|                                    1/5   |
++-------------------------------------------+
+
+
+SLIDE 2 — PM MODI
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   "                                       |
+|   DESIGN AND DEVELOP                     |
+|   IN INDIA.                              |
+|   DELIVER TO THE WORLD.                  |
+|   "                                       |
+|                                           |
+|   — PM NARENDRA MODI                     |
+|     Leaders' Plenary, Day 4              |
+|                                           |
+|   Context: Announcing India's M.A.N.A.V. |
+|   vision for AI development              |
+|                                           |
+|                                    2/5   |
++-------------------------------------------+
+
+Source: Blog post — Day 4 Leaders' Plenary coverage
+
+
+SLIDE 3 — LULA
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   "                                       |
+|   THE DIGITAL WORLD HAS                  |
+|   RETURNED TO ITS HOMELAND.              |
+|   "                                       |
+|                                           |
+|   — PRESIDENT LULA DA SILVA              |
+|     (Brazil), Day 5                      |
+|                                           |
+|   Context: On the Global South's role    |
+|   in shaping AI governance               |
+|                                           |
+|                                    3/5   |
++-------------------------------------------+
+
+Source: Blog post — Day 5 Global South voices
+
+
+SLIDE 4 — THE AI GODFATHERS (paraphrased)
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   500,000+ LIVE VIEWERS.                 |
+|   STANDING ROOM ONLY.                    |
+|                                           |
+|   HASSABIS. BENGIO. LECUN.              |
+|                                           |
+|   THREE SCIENTISTS WHO'VE                |
+|   DISAGREED ABOUT AGI                    |
+|   FOR DECADES — ON ONE STAGE,            |
+|   IN NEW DELHI.                          |
+|                                           |
+|   — Day 3, Research Symposium            |
+|                                           |
+|                                    4/5   |
++-------------------------------------------+
+
+Note: Use the event context rather than a direct quote
+(harder to verify exact quotes from a live keynote).
+The 500,000+ viewer stat IS verifiable.
+
+Source: Blog post + press release
+
+
+SLIDE 5 — THE THESIS (your voice)
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   "                                       |
+|   $250B FOR COMPUTE.                     |
+|   $0 FOR THE DESIGN LAYER.              |
+|                                           |
+|   INDIA ISN'T JUST CONSUMING AI.        |
+|   INDIA IS BUILDING IT.                  |
+|   "                                       |
+|                                           |
+|   — ABHILASH CHADHAR                     |
+|     Founder, FutureAtoms / ChipOS        |
+|                                           |
+|   SAVE THIS. SHARE IT.                   |
+|                                           |
+|                                    5/5   |
++-------------------------------------------+
+
+Why end with YOUR quote:
+  - The carousel started with external authority (Modi, Lula, AI godfathers)
+  - Ending with your voice puts you IN the conversation, not OUTSIDE it
+  - The contrast between heads of state and a founder is the signal:
+    "I belong in this conversation."
+
+
+=====================================================================
+INSTAGRAM CAPTION:
+=====================================================================
+
+5 quotes from the India AI Summit 2026 that will define the next decade.
+
+300,000 participants. 3,250+ speakers. 100+ countries. $250B+ committed.
+
+These are the 5 moments I keep thinking about.
+
+The full day-by-day breakdown is in the summit carousel (few posts back). Save that one too.
+
+#IndiaAISummit2026 #AI #Semiconductors #ChipDesign #BuildInPublic
+
+
+=====================================================================
+POSTING NOTES:
+=====================================================================
+
+1. QUOTE CAROUSELS get extremely high save rates
+   - People bookmark them for reference
+   - Saves = highest-quality engagement signal
+
+2. YOUR QUOTE AS THE CLOSER is the strategic move
+   - It's not arrogance — you're adding your voice to the conversation
+   - VCs seeing your name alongside Modi and Lula = credibility transfer
+   - The quote itself ("$250B for compute. $0 for design") is the investment thesis
+
+3. POST TIMING: Friday evening (7-8 PM IST)
+   - Weekend content gets more saves (people browse leisurely)
+   - Quote carousels are evergreen — they perform over days, not hours
+
+4. STORY STRATEGY: Share each slide as a separate story
+   - 5 stories = 5x the impression count
+   - Add "See all 5" sticker on story 1
+   - Add poll on story 5: "Which quote resonated most?"

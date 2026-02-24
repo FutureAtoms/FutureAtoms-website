@@ -5,68 +5,68 @@
 Website: https://futureatoms.com
 Founded: 2024
 Founder: Abhilash Chadhar
-Headquarters: India
+Headquarters: Netherlands (KVK-registered)
 
 ## Products Overview
 
 FutureAtoms offers 8 core products spanning developer tools, creative AI, and wellness applications:
 
-### 1. ChipOS - AI Operating System for Chip Development
-- **What**: Desktop application (macOS/Linux) that serves as an AI-native code editor and knowledge management system for semiconductor engineers
+### 1. ChipOS - The First Agentic OS for Semiconductor Design
+- **What**: The first agentic OS for semiconductor design — a vendor-neutral, hardware-agnostic platform orchestrating the full chip design lifecycle for semiconductor engineers
 - **Key Features**: Advanced RAG engine with semantic search, auto-code extraction from docs, MCP Server for AI assistant integration, Kanban task management
 - **Pricing**: Free tier available, Pro at $29/month, Enterprise custom pricing
 - **Use Cases**: RTL design, verification, chip architecture planning, hardware documentation management
 - **Tech**: Electron desktop app, Python backend (chipos-acf), Supabase database
-- **Download**: https://futureatoms.com/chipos.html
+- **Download**: https://futureatoms.com/chipos
 
 ### 2. BevyBeats - AI Music Generation Platform
 - **What**: AI-powered music creation and streaming platform
 - **Key Features**: Text-to-music generation, style transfer, multi-track composition, real-time collaboration
 - **Use Cases**: Content creators, musicians, game developers, podcast producers
 - **Platforms**: Web, iOS, Android
-- **URL**: https://futureatoms.com/bevybeats.html
+- **URL**: https://futureatoms.com/bevybeats
 
 ### 3. Savitri - AI Therapy & Mental Wellness
 - **What**: AI therapy companion app offering evidence-based therapeutic methodologies
 - **Key Features**: CBT (Cognitive Behavioral Therapy), DBT (Dialectical Behavior Therapy), ACT (Acceptance and Commitment Therapy), mood tracking, guided sessions
 - **Use Cases**: Daily mental health check-ins, anxiety management, stress reduction, emotional regulation
 - **Platforms**: iOS, Android
-- **URL**: https://futureatoms.com/savitri.html
+- **URL**: https://futureatoms.com/savitri
 
 ### 4. Zaphy - LinkedIn Automation
 - **What**: Chrome extension for intelligent LinkedIn automation and professional networking
 - **Key Features**: Smart connection requests, automated messaging sequences, profile viewing, analytics dashboard
 - **Use Cases**: Sales professionals, recruiters, business development, personal branding
 - **Platform**: Chrome Extension
-- **URL**: https://futureatoms.com/zaphy.html
+- **URL**: https://futureatoms.com/zaphy
 
 ### 5. Agentic Control - Multi-Agent Orchestration
 - **What**: CLI tool for orchestrating multi-agent AI workflows with MCP server capabilities
 - **Key Features**: Agent spawning, task orchestration, workflow automation, swarm intelligence
 - **Use Cases**: DevOps automation, code review pipelines, testing workflows, documentation generation
 - **Platforms**: macOS, Linux, Windows
-- **URL**: https://futureatoms.com/agentic.html
+- **URL**: https://futureatoms.com/agentic
 
 ### 6. Yuj - Yoga & Fitness App
 - **What**: Holistic yoga and workout application combining ancient wisdom with modern fitness science
 - **Key Features**: Personalized yoga sequences, workout plans, progress tracking, guided meditation
 - **Use Cases**: Daily yoga practice, fitness routines, flexibility training, mindfulness
 - **Platforms**: iOS, Android
-- **URL**: https://futureatoms.com/yuj.html
+- **URL**: https://futureatoms.com/yuj
 
 ### 7. AdaptiveVision - Computer Vision
 - **What**: Real-time adaptive object detection algorithms for computer vision applications
 - **Key Features**: Multi-object tracking, real-time inference, edge deployment, custom model training
 - **Use Cases**: Surveillance, autonomous vehicles, robotics, industrial inspection
 - **Platforms**: Linux, Windows (Python/C++ SDK)
-- **URL**: https://futureatoms.com/adaptivision.html
+- **URL**: https://futureatoms.com/adaptivision
 
 ### 8. SystemVerilogGPT - Hardware AI Assistant
 - **What**: Specialized GPT model for hardware verification and RTL design
 - **Key Features**: SystemVerilog code generation, testbench creation, assertion writing, UVM support
 - **Use Cases**: Chip verification, RTL coding, hardware architecture review, documentation
 - **Platform**: Web-based
-- **URL**: https://futureatoms.com/systemverilog.html
+- **URL**: https://futureatoms.com/systemverilog
 
 ## Pricing & Availability Snapshot
 
@@ -117,10 +117,11 @@ FutureAtoms is driven by three core missions:
 ## Contact & Resources
 
 - Website: https://futureatoms.com
-- Blog: https://futureatoms.com/blog.html
-- News: https://futureatoms.com/news.html
-- Contact: https://futureatoms.com/contact.html
+- Blog: https://futureatoms.com/blog
+- News: https://futureatoms.com/news
+- Contact: https://futureatoms.com/contact
 - GitHub: https://github.com/FutureAtoms
+- Press: https://futureatoms.com/blog-chipos-launch
 - LLM Full Documentation: https://futureatoms.com/llms-full.txt
 
 ## FAQ
@@ -153,7 +154,7 @@ A: Zaphy is a Chrome extension that works with LinkedIn's web interface. It auto
 A: Yes. Enterprise options are available for ChipOS, AdaptiveVision, and SystemVerilogGPT. Contact FutureAtoms for on-prem or private cloud deployments.
 
 **Q: Where can I find product documentation?**
-A: Visit the main product pages or the ChipOS documentation hub at https://futureatoms.com/chipos-docs.html.
+A: Visit the main product pages or the ChipOS documentation hub at https://futureatoms.com/chipos-docs.
 
 **Q: Does FutureAtoms support MCP integrations?**
 A: Yes. ChipOS and Agentic Control expose MCP servers so external AI assistants can access knowledge bases and tools.

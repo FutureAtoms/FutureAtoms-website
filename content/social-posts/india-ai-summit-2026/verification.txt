@@ -1,0 +1,75 @@
+VERIFICATION REPORT — v3 (Summit Recap Carousel)
+==================================================
+All claims verified against Supabase content_pieces (17 articles),
+press-release-chipos-india-ai-summit.txt, blog-chipos-launch.html,
+chipos-pitch.html, and about.html.
+
+SLIDE-BY-SLIDE VERIFICATION
+----------------------------
+
+SLIDE 1: "$200B pledged. Guinness World Record."
+  [VERIFIED] $200B+ — Press release + Supabase "Guinness World Record"
+  [VERIFIED] Guinness Record — Supabase article #15
+
+SLIDE 2: Day 1-2 highlights
+  [VERIFIED] Modi inaugurates, "most AI-ready democracy" — Article #1
+  [VERIFIED] Adani $100B — Article #2
+  [VERIFIED] Google $15B, Microsoft $20B, Amazon $16B — Article #4
+  NOTE: Individual company amounts ($15B/$20B/$16B) sourced from
+  article #4 full body. Total confirmed as "$50B+"
+
+SLIDE 3: "5 announcements" on Day 3
+  [VERIFIED] 5 separate articles on Feb 18 in Supabase:
+  #5 Micron, #6 ChipOS, #7 Semiconductor Mission, #8 CDAC, #9 Keynote
+
+SLIDE 4: Day 3 list
+  [VERIFIED] Semiconductor Mission 2.0 ₹40,000 crore ($4.7B) — Article #7
+  [VERIFIED] Micron Gujarat first commercial chips — Article #5
+  [VERIFIED] Hassabis + Bengio + LeCun keynote — Article #9
+  [VERIFIED] 500,000 live viewers — Article #9 excerpt
+  [VERIFIED] ChipOS launch — Article #6
+  [VERIFIED] CDAC exploring — Article #8
+
+SLIDE 5: "10 years. Intel. ISRO. Axelera AI. Foreign-built."
+  [VERIFIED] 10 years experience — chipos-pitch.html
+  [VERIFIED] Intel, ISRO, Axelera AI — about.html + pitch deck
+  [VERIFIED] Foreign-built tools — Press release
+
+SLIDE 6: ChipOS product description
+  [VERIFIED] Natural language → AI agents — Press release
+  [VERIFIED] RTL, testbenches, verification, waveforms — Press release
+  [VERIFIED] "Not a copilot. An operating system." — Press release + blog
+
+SLIDE 7: "CDAC / RISC-V / already exploring"
+  [VERIFIED] CDAC interest — Press release + Article #8
+  [VERIFIED] DHRUV64 = India's first RISC-V processor — Press release
+
+SLIDE 8: Day 4-5 highlights
+  [VERIFIED] PM Modi Leaders' Plenary — Article #10
+  [VERIFIED] Altman + Pichai + Macron roundtable — Article #12
+  [VERIFIED] 38K → 58K GPUs — Article #11
+  [VERIFIED] Google-Jio partnership, 450M+ users — Article #14
+  [VERIFIED] Guinness World Record — Article #15
+
+SLIDE 9: "India is building"
+  [EDITORIAL] — opinion/thesis, not a factual claim. Acceptable.
+
+SLIDE 10: CTA links
+  [VERIFIED] futureatoms.com/india-ai-summit-2026 — exists (HTML page)
+  [VERIFIED] chipos.ai — referenced in press release
+
+CAPTION VERIFICATION (new claims)
+-----------------------------------
+[VERIFIED] 9 Intel awards — chipos-pitch.html
+[VERIFIED] PCIe Gen4, USB 3.2, RISC-V vector CPUs — pitch deck
+[VERIFIED] 70% verification bottleneck — Press release
+[VERIFIED] Fewer than 10 companies globally — blog-chipos-launch.html
+[VERIFIED] ChipAgents $74M, Chipmind $2.5M — Press release
+[VERIFIED] 85,000 chip designers by 2030 — Article #7
+[VERIFIED] 100,000+ chip engineers — Press release
+[VERIFIED] Free tier, Pro $29/mo — Press release
+
+NO FABRICATED QUOTES. NO UNVERIFIED CLAIMS.
+Every number traces to a source file or Supabase article.
+
+HASHTAGS: IG 5, Twitter 3, LinkedIn 0 [ALL OK]

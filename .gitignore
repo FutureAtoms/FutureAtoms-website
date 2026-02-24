@@ -91,3 +91,8 @@ public/build-info.json
 # Lighthouse reports (generated)
 lighthouse-report.html
 playwright-report/
+test-results/
+
+# Carousel generator outputs and user photos
+content/social-posts/*/photos/
+content/social-posts/*/output/

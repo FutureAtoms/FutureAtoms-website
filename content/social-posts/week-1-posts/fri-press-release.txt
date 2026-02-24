@@ -1,0 +1,87 @@
+FRIDAY — PRESS RELEASE POST (LinkedIn text post)
+=====================================================================
+Pillar: Traction
+VC Signal: Official announcement format signals seriousness
+
+=====================================================================
+POST COPY:
+=====================================================================
+
+We have a formal announcement.
+
+On February 18, 2026, at the India AI Impact Summit — the world's largest AI summit with 300,000 participants and $250B+ in investment pledges — FutureAtoms launched ChipOS.
+
+ChipOS is the first agentic operating system for semiconductor design built in India.
+
+What it does:
+Engineers describe chip designs in plain English. AI agents autonomously write RTL, generate testbenches, run verification, debug waveforms, and iterate — 24/7.
+
+3-layer architecture:
+1. Domain IDE — RTL, verification, physical design workspace
+2. Agent + Model Fabric — multi-provider AI routing + workflow orchestration
+3. Knowledge + Policy Layer — private RAG, auditable actions, compliance
+
+What's live today:
+261 API routes. 228 automated tests. 32 MCP tool registrations. Multi-provider AI (OpenAI, Anthropic, Google, Grok, Ollama). Enterprise-grade security.
+
+What happened within hours:
+CDAC — the Centre for Development of Advanced Computing, behind India's DHRUV64 RISC-V processor — began exploring ChipOS for their next-generation designs.
+
+The context:
+Globally, fewer than 10 companies are building agentic chip design tools. $74M+ has been invested in this category. In India: zero companies, until now.
+
+Pricing: Free tier (50 queries/day). Pro ($29/month). Enterprise (custom, on-premise, air-gapped).
+
+This is Day 1.
+
+
+=====================================================================
+FIRST COMMENT (post within 30 seconds):
+=====================================================================
+
+Full press release: futureatoms.com/press
+Try ChipOS free: chipos.ai
+Summit coverage (17 articles): futureatoms.com/india-ai-summit-2026
+
+
+=====================================================================
+POSTING NOTES:
+=====================================================================
+
+1. FORMAT: This is intentionally more formal than the other posts
+   - Press release tone signals "this is official, this is real"
+   - The contrast with personal/narrative posts earlier in the week
+     shows range: founder who can do personal AND professional
+   - Structured sections make it easy for journalists to screenshot/quote
+
+2. NO HASHTAGS (formal announcement tone)
+
+3. "We have a formal announcement." — This opening stops the scroll
+   because it's unusual. Most LinkedIn posts start with stories or
+   questions. A direct announcement is pattern-breaking.
+
+4. THE TECHNICAL METRICS MATTER HERE
+   - In narrative posts (Tue), we avoided technical details
+   - In the announcement, metrics (261 routes, 228 tests, 32 tools)
+     signal that this is production software, not a concept
+   - VCs and technical evaluators will screenshot these numbers
+
+5. PRICING INCLUDED
+   - Including pricing in an announcement signals confidence
+   - Free tier = low barrier, high adoption potential
+   - $29 Pro = real business model
+   - Enterprise = revenue upside
+
+6. "This is Day 1." — The close signals: there's a lot more coming.
+   Creates FOMO: if you're not paying attention now, you'll miss the ride.
+
+7. ENGAGEMENT STRATEGY:
+   - This post is designed to be SHARED, not just liked
+   - Ask team members and supporters to share (not just like)
+   - Respond to every comment with specific, thoughtful replies
+   - If journalists or VCs comment, prioritize those replies
+
+8. POSTING TIME: Friday 9 AM IST
+   - Friday posts have lower engagement BUT announcements are an exception
+   - People share formal announcements over the weekend
+   - Monday morning, people return to see it in their feed

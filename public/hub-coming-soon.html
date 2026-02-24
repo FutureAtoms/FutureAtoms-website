@@ -1,12 +1,17 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/hub-coming-soon.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/hub-coming-soon">
     <meta name="description" content="ChipOS Hub - Coming soon. A centralized platform for semiconductor design resources and collaboration.">
     <meta property="og:title" content="ChipOS Hub - Coming Soon | FutureAtoms">
     <meta property="og:description" content="ChipOS Hub - Coming soon. A centralized platform for semiconductor design resources and collaboration.">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:url" content="https://futureatoms.com/hub-coming-soon.html">
+    <meta property="og:url" content="https://futureatoms.com/hub-coming-soon">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@FutureAtoms">
@@ -19,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@300;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
+        @view-transition { navigation: auto; }
         * {
             margin: 0;
             padding: 0;
@@ -295,15 +301,18 @@
       "@type": "ListItem",
       "position": 2,
       "name": "ChipOS Hub Coming Soon",
-      "item": "https://futureatoms.com/hub-coming-soon.html"
+      "item": "https://futureatoms.com/hub-coming-soon"
     }
   ]
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <div class="particles" id="particles"></div>
 
-    <div class="container">
+    <div id="main-content" class="container">
         <div class="logo">CHIPOS</div>
         <h1>🚀 Hub</h1>
         <div class="subtitle">Mission Control is Coming Soon</div>
@@ -340,10 +349,10 @@
         </div>
 
         <div class="cta-buttons">
-            <a href="chipos.html" class="cta-button">
+            <a href="/chipos" class="cta-button">
                 <span>Learn More About ChipOS</span>
             </a>
-            <a href="chipos-docs.html" class="cta-button secondary-button">
+            <a href="/chipos-docs" class="cta-button secondary-button">
                 <span>View Documentation</span>
             </a>
         </div>
@@ -358,7 +367,7 @@
     </div>
 
     <footer style="position: fixed; bottom: 20px; left: 0; right: 0; text-align: center; color: #606060; font-size: 0.85rem; z-index: 1;">
-        © 2025 FutureAtoms. All rights reserved. | <a href="index.html" style="color: #00aaff; text-decoration: none;">Back to Home</a>
+        © 2025 FutureAtoms. All rights reserved. | <a href="/" style="color: #00aaff; text-decoration: none;">Back to Home</a>
     </footer>
 
     <script>

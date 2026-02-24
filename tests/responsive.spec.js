@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 test.describe('Responsive Design Tests', () => {
   test('homepage is responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 }); // iPhone size
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     // Check if header is visible
@@ -19,7 +19,7 @@ test.describe('Responsive Design Tests', () => {
 
   test('homepage is responsive on tablet', async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 1024 }); // iPad size
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     const header = page.locator('header');
@@ -34,7 +34,7 @@ test.describe('Responsive Design Tests', () => {
 
   test('homepage is responsive on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 }); // Full HD
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     const header = page.locator('header');
@@ -56,7 +56,7 @@ test.describe('Responsive Design Tests', () => {
 
     for (const size of sizes) {
       await page.setViewportSize({ width: size.width, height: size.height });
-      await page.goto('/index.html');
+      await page.goto('/');
       await page.waitForTimeout(1000);
 
       const sections = page.locator('.scroll-section');
@@ -75,7 +75,7 @@ test.describe('Responsive Design Tests', () => {
 
     for (const size of sizes) {
       await page.setViewportSize(size);
-      await page.goto('/index.html');
+      await page.goto('/');
       await page.waitForTimeout(2000);
 
       const canvas = page.locator('canvas');
@@ -90,7 +90,7 @@ test.describe('Responsive Design Tests', () => {
   });
 
   test('product pages are responsive', async ({ page }) => {
-    const productPages = ['/bevybeats.html', '/chipos.html', '/agentic.html'];
+    const productPages = ['/bevybeats', '/chipos', '/agentic'];
 
     for (const pagePath of productPages) {
       // Test mobile
@@ -116,7 +116,7 @@ test.describe('Responsive Design Tests', () => {
 
 test.describe('Interactive Elements Tests', () => {
   test('all external links have correct attributes', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Check CDN links (Three.js, GSAP, Font Awesome)
     const scripts = await page.locator('script[src^="http"]').all();
@@ -126,7 +126,7 @@ test.describe('Interactive Elements Tests', () => {
   });
 
   test('product titles in scroll sections are visible', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(1000);
 
     const productTitles = page.locator('.product-title');
@@ -137,7 +137,7 @@ test.describe('Interactive Elements Tests', () => {
   });
 
   test('copyright information exists on all pages', async ({ page }) => {
-    const pages = ['/index.html', '/blog.html', '/news.html', '/chipos.html'];
+    const pages = ['/', '/blog', '/news', '/chipos'];
 
     for (const pagePath of pages) {
       await page.goto(pagePath);
@@ -152,7 +152,7 @@ test.describe('Interactive Elements Tests', () => {
   });
 
   test('Font Awesome icons load', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Check if Font Awesome CSS is loaded
     const fontAwesome = page.locator('link[href*="font-awesome"]');
@@ -170,7 +170,7 @@ test.describe('Interactive Elements Tests', () => {
       }
     });
 
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(3000);
 
     // Filter out known non-critical errors
@@ -190,7 +190,7 @@ test.describe('Interactive Elements Tests', () => {
 
   test('mobile menu navigation works', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/index.html');
+    await page.goto('/');
     await page.waitForTimeout(500);
 
     // Open mobile menu
@@ -217,7 +217,7 @@ test.describe('Interactive Elements Tests', () => {
   });
 
   test('glass panel effects are applied', async ({ page }) => {
-    await page.goto('/bevybeats.html');
+    await page.goto('/bevybeats');
     await page.waitForTimeout(500);
 
     const glassPanels = page.locator('.glass-panel');

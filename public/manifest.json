@@ -1,0 +1,13 @@
+{
+  "name": "FutureAtoms",
+  "short_name": "FutureAtoms",
+  "description": "Agentic AI for Semiconductors & Healthcare",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    { "src": "/images/optimized/futureatoms-icon-192w.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/optimized/futureatoms-icon-512w.webp", "sizes": "512x512", "type": "image/webp" }
+  ]
+}

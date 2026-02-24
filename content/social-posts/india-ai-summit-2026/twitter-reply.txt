@@ -1,0 +1,15 @@
+Day 3 details that didn't fit:
+
+→ Semiconductor Mission 2.0 targets 85,000 chip designers by 2030
+→ Micron Sanand = India's first commercial chip facility ever
+→ Hassabis-Bengio-LeCun keynote had 500K+ live viewers
+
+ChipOS targets the #1 bottleneck: verification eats 70% of chip dev time. Our agents handle it autonomously.
+
+Fewer than 10 companies on Earth are building agentic chip design AI. In India — there was zero until now.
+
+Free tier available. Pro $29/mo.
+
+Full summit recap (17 articles): futureatoms.com/india-ai-summit-2026
+
+#IndiaAISummit2026 #ChipOS #SemiconductorMission

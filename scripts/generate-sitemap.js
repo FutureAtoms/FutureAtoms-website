@@ -31,6 +31,7 @@ const PRIORITY_MAP = {
   'yuj.html': { priority: '0.8', changefreq: 'weekly' },
   'adaptivision.html': { priority: '0.8', changefreq: 'weekly' },
   'systemverilog.html': { priority: '0.8', changefreq: 'weekly' },
+  'swaastik.html': { priority: '0.8', changefreq: 'weekly' },
   // Key pages
   'about.html': { priority: '0.6', changefreq: 'monthly' },
   'contact.html': { priority: '0.6', changefreq: 'monthly' },
@@ -43,6 +44,7 @@ const PRIORITY_MAP = {
   'chipos-docs.html': { priority: '0.7', changefreq: 'weekly' },
   'chipos-changelog.html': { priority: '0.6', changefreq: 'weekly' },
   'chipos-pitch.html': { priority: '0.6', changefreq: 'monthly' },
+  'swaastik-pitch.html': { priority: '0.6', changefreq: 'monthly' },
 };
 
 // Blog posts get 0.7 priority

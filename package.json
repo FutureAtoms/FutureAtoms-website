@@ -30,7 +30,11 @@
     "inject:analytics": "node scripts/inject-analytics.js",
     "validate:seo": "node scripts/validate-seo.js",
     "report:seo": "node scripts/generate-seo-report.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "carousel": "node scripts/carousel/generate-carousel.js carousel",
+    "carousel:reel": "node scripts/carousel/generate-carousel.js reel",
+    "carousel:video": "node scripts/carousel/generate-reel.js",
+    "carousel:all": "node scripts/carousel/generate-carousel.js carousel && node scripts/carousel/generate-carousel.js reel && node scripts/carousel/generate-reel.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",

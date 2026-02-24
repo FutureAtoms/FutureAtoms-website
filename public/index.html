@@ -1,6 +1,11 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <link rel="canonical" href="https://futureatoms.com/">
     <title>FutureAtoms | Agentic AI for Semiconductors &amp; Healthcare</title>
     <meta name="description" content="Agentic AI powering semiconductor design and healthcare innovation. ChipOS for chip development, Savitri for AI therapy, and 8+ intelligent products.">
@@ -47,6 +52,7 @@
 
     <!-- Inline critical styles for new UI elements -->
     <style>
+        @view-transition { navigation: auto; }
         /* Progress Dots */
         .progress-dot {
             width: 10px;
@@ -228,27 +234,33 @@
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://futureatoms.com/blog.html?q={search_term_string}"
+      "urlTemplate": "https://futureatoms.com/blog?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <script type="speculationrules">
+    {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+    </script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Subdomain Routing -->
     <script>
         // Route subdomains to specific pages
         const hostname = window.location.hostname;
 
         if (hostname === 'docs.futureatoms.com') {
-            window.location.replace('/chipos-docs.html');
+            window.location.replace('/chipos-docs');
         } else if (hostname === 'hub.futureatoms.com') {
-            window.location.replace('/hub-coming-soon.html');
+            window.location.replace('/hub-coming-soon');
         } else if (hostname === 'chipos.futureatoms.com') {
-            window.location.replace('/chipos.html');
+            window.location.replace('/chipos');
         } else if (hostname === 'changelog.futureatoms.com') {
-            window.location.replace('/chipos-changelog.html');
+            window.location.replace('/chipos-changelog');
         }
         // Otherwise stay on index.html (main futureatoms.com site)
     </script>
@@ -325,6 +337,7 @@
     </div>
 
     <!-- Scroll Container -->
+    <div id="main-content"></div>
     <div id="scroll-container">
         <!-- Intro Section - Benefit-Driven Hero -->
         <div class="scroll-section" data-id="intro" data-color="#00ffff">
@@ -352,7 +365,7 @@
 
                 <!-- Single Primary CTA -->
                 <div class="flex flex-col items-center gap-3 mt-6">
-                    <a href="chipos.html" class="cta-button text-lg px-8 py-3" style="color: #00ffff; border-color: #00ffff; background: rgba(0,255,255,0.15); box-shadow: 0 0 20px rgba(0,255,255,0.2);">
+                    <a href="/chipos" class="cta-button text-lg px-8 py-3" style="color: #00ffff; border-color: #00ffff; background: rgba(0,255,255,0.15); box-shadow: 0 0 20px rgba(0,255,255,0.2);">
                         <i class="fas fa-rocket mr-2"></i>Try ChipOS Free
                     </a>
                     <a href="#products" class="text-cyan-400/60 hover:text-cyan-400 text-xs tracking-wider transition-colors">
@@ -388,23 +401,34 @@
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">⭐ Flagship • For Chip Developers</p>
                 <h2 class="product-title" style="color: #D4AF37;">ChipOS</h2>
-                <p class="product-desc">Design and verify chips 10x faster. The complete AI operating system with 13
-                    specialized apps, 14 AI models, and integrated RAG knowledge base. Used by teams at leading
-                    semiconductor companies.</p>
-                <a href="chipos.html" class="cta-button" style="color: #D4AF37; border-color: #D4AF37; background: rgba(212,175,55,0.15);">Start Building
+                <p class="product-desc">The first agentic OS for semiconductor design. A vendor-neutral, hardware-agnostic platform orchestrating the full chip design lifecycle — from RTL through verification to deployment on real silicon.</p>
+                <a href="/chipos" class="cta-button" style="color: #D4AF37; border-color: #D4AF37; background: rgba(212,175,55,0.15);">Start Building
                     Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
 
-        <!-- 2. BevyBeats (Copper) -->
+        <!-- 2. Swaastik (Teal) -->
+        <div class="scroll-section" data-id="swasthya" data-color="#00897B">
+            <div class="section-content">
+                <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Healthcare</p>
+                <h2 class="product-title" style="color: #00897B;">Swaastik</h2>
+                <p class="product-desc">The AI operating system for Indian healthcare. Connect 150,000+ facilities with
+                    AI-powered OCR, universal health records, and real-time public health surveillance.</p>
+                <a href="/swaastik" class="cta-button" style="color: #00897B; border-color: #00897B; background: rgba(0,137,123,0.15);">Explore
+                    Platform</a>
+                <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
+            </div>
+        </div>
+
+        <!-- 3. BevyBeats (Copper) -->
         <div class="scroll-section" data-id="bevy" data-color="#B87333">
             <div class="section-content">
                 <p class="text-white/40 text-xs tracking-[0.2em] uppercase mb-1">For Creators</p>
                 <h2 class="product-title" style="color: #B87333;">BevyBeats</h2>
                 <p class="product-desc">Create unique music in seconds. AI generates custom tracks for your videos,
                     games, and content — no musical experience needed.</p>
-                <a href="bevybeats.html" class="cta-button" style="color: #B87333; border-color: #B87333;">Start
+                <a href="/bevybeats" class="cta-button" style="color: #B87333; border-color: #B87333;">Start
                     Creating</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -417,7 +441,7 @@
                 <h2 class="product-title" style="color: #0077B5;">Zaphy</h2>
                 <p class="product-desc">10x your LinkedIn outreach. AI writes personalized messages, manages
                     connections, and grows your network while you sleep.</p>
-                <a href="zaphy.html" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Get the
+                <a href="/zaphy" class="cta-button" style="color: #0077B5; border-color: #0077B5;">Get the
                     Extension</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -430,7 +454,7 @@
                 <h2 class="product-title" style="color: #69C95E;">Agentic Control</h2>
                 <p class="product-desc">Automate any workflow from the terminal. Let AI agents handle repetitive tasks,
                     deployments, and complex multi-step operations.</p>
-                <a href="agentic.html" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Start
+                <a href="/agentic" class="cta-button" style="color: #69C95E; border-color: #69C95E;">Start
                     Automating</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -443,7 +467,7 @@
                 <h2 class="product-title" style="color: #C0C0C0;">SystemVerilogGPT</h2>
                 <p class="product-desc">Write RTL and UVM testbenches 10x faster. AI that understands hardware
                     verification, timing constraints, and synthesis requirements.</p>
-                <a href="systemverilog.html" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Try
+                <a href="/systemverilog" class="cta-button" style="color: #C0C0C0; border-color: #C0C0C0;">Try
                     Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -456,7 +480,7 @@
                 <h2 class="product-title" style="color: #FFA500;">Yuj</h2>
                 <p class="product-desc">Find balance in 15 minutes a day. AI-personalized yoga and meditation routines
                     that adapt to your stress levels and schedule.</p>
-                <a href="yuj.html" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Start Free</a>
+                <a href="/yuj" class="cta-button" style="color: #FFA500; border-color: #FFA500;">Start Free</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
         </div>
@@ -468,7 +492,7 @@
                 <h2 class="product-title" style="color: #A020F0;">Savitri</h2>
                 <p class="product-desc">Mental wellness support anytime you need it. Evidence-based CBT and DBT
                     techniques in a compassionate AI companion — private and judgment-free.</p>
-                <a href="savitri.html" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Talk to
+                <a href="/savitri" class="cta-button" style="color: #A020F0; border-color: #A020F0;">Talk to
                     Savitri</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -481,7 +505,7 @@
                 <h2 class="product-title" style="color: #4682B4;">AdaptiveVision</h2>
                 <p class="product-desc">Deploy computer vision in minutes, not months. Self-adapting object detection
                     that improves accuracy over time — no retraining needed.</p>
-                <a href="adaptivision.html" class="cta-button" style="color: #4682B4; border-color: #4682B4;">See
+                <a href="/adaptivision" class="cta-button" style="color: #4682B4; border-color: #4682B4;">See
                     Demo</a>
                 <div class="text-cyan-400/50 animate-bounce mt-8 text-[10px] tracking-widest uppercase"><i class="fas fa-chevron-down"></i> SCROLL TO EXPLORE</div>
             </div>
@@ -493,6 +517,7 @@
     <div id="progress-dots" class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2">
         <div class="progress-dot active" data-target="intro" title="Home"></div>
         <div class="progress-dot" data-target="chipos" title="ChipOS ⭐"></div>
+        <div class="progress-dot" data-target="swasthya" title="Swaastik"></div>
         <div class="progress-dot" data-target="bevy" title="BevyBeats"></div>
         <div class="progress-dot" data-target="zaphy" title="Zaphy"></div>
         <div class="progress-dot" data-target="agentic" title="Agentic Control"></div>
@@ -504,7 +529,7 @@
 
     <!-- Sticky CTA (appears after scrolling past hero) -->
     <div id="sticky-cta" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4">
-        <a href="chipos.html" class="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-full shadow-lg shadow-cyan-500/30 transition-all">
+        <a href="/chipos" class="flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-full shadow-lg shadow-cyan-500/30 transition-all">
             <i class="fas fa-rocket"></i>
             <span>Try ChipOS Free</span>
         </a>
@@ -514,7 +539,7 @@
         <header class="flex justify-between items-center w-full interactive">
             <button class="flex items-center gap-3 group cursor-pointer bg-transparent border-none p-0" onclick="resetCamera()" aria-label="Reset camera view">
                 <div class="w-10 h-10 flex items-center justify-center">
-                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
                 </div>
                 <div class="text-left">
                     <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
@@ -525,31 +550,32 @@
             </button>
 
             <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
-                <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+                <a href="/" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
 
                 <div class="dropdown">
                     <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
                         PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
                     </a>
                     <div class="dropdown-content">
-                        <a href="chipos.html">ChipOS</a>
-                        <a href="systemverilog.html">SystemVerilogGPT</a>
-                        <a href="zaphy.html">Zaphy</a>
-                        <a href="agentic.html">Agentic Control</a>
-                        <a href="yuj.html">Yuj</a>
-                        <a href="adaptivision.html">AdaptiveVision</a>
-                        <a href="bevybeats.html">BevyBeats</a>
-                        <a href="savitri.html">Savitri</a>
+                        <a href="/chipos">ChipOS</a>
+                        <a href="/swaastik">Swaastik</a>
+                        <a href="/systemverilog">SystemVerilogGPT</a>
+                        <a href="/zaphy">Zaphy</a>
+                        <a href="/agentic">Agentic Control</a>
+                        <a href="/yuj">Yuj</a>
+                        <a href="/adaptivision">AdaptiveVision</a>
+                        <a href="/bevybeats">BevyBeats</a>
+                        <a href="/savitri">Savitri</a>
                         <div class="border-t border-cyan-500/30 my-1"></div>
-                        <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i> Changelog</a>
+                        <a href="/chipos-changelog" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i> Changelog</a>
                     </div>
                 </div>
 
-                <a href="blog.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
-                <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
-                <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
-                <a href="careers.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
-                <a href="contact.html" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+                <a href="/blog" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+                <a href="/news" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+                <a href="/about" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+                <a href="/careers" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
+                <a href="/contact" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
             </nav>
 
             <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
@@ -569,26 +595,27 @@
                 </svg>
             </button>
             <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
-                <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+                <a href="/" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
                 <div class="flex flex-col gap-3 border-t border-b border-cyan-500/20 py-4">
                     <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
-                    <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
-                    <a href="systemverilog.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
-                    <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
-                    <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                    <a href="/chipos" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                    <a href="/swaastik" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Swaastik</a>
+                    <a href="/systemverilog" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                    <a href="/zaphy" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                    <a href="/agentic" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
                         Control</a>
-                    <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
-                    <a href="adaptivision.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
-                    <a href="bevybeats.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
-                    <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+                    <a href="/yuj" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                    <a href="/adaptivision" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                    <a href="/bevybeats" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                    <a href="/savitri" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
                 </div>
 
-                <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
-                <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
-                <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
-                <a href="careers.html" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
-                <a href="contact.html" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+                <a href="/blog" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+                <a href="/news" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+                <a href="/about" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+                <a href="/careers" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
+                <a href="/contact" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
             </nav>
         </div>
 
@@ -597,22 +624,22 @@
         <footer class="flex flex-col md:flex-row justify-between items-center w-full mt-auto pointer-events-auto py-4 border-t border-cyan-500/10">
             <!-- Quick Links -->
             <div class="flex gap-4 text-[10px] text-gray-500 mb-2 md:mb-0">
-                <a href="about.html" class="hover:text-cyan-400 transition-colors">About</a>
-                <a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a>
-                <a href="blog.html" class="hover:text-cyan-400 transition-colors">Research</a>
-                <a href="chipos-docs.html" class="hover:text-cyan-400 transition-colors">Docs</a>
-                <a href="chipos-pitch.html" class="hover:text-cyan-400 transition-colors">Investors</a>
+                <a href="/about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="/contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+                <a href="/blog" class="hover:text-cyan-400 transition-colors">Research</a>
+                <a href="/chipos-docs" class="hover:text-cyan-400 transition-colors">Docs</a>
+                <a href="/chipos-pitch" class="hover:text-cyan-400 transition-colors">Investors</a>
             </div>
 
             <!-- Social Links -->
             <div class="flex items-center gap-4">
-                <a href="https://linkedin.com/company/futureatoms" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                <a href="https://linkedin.com/company/futureatoms" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
                     <i class="fab fa-linkedin" aria-hidden="true"></i>
                 </a>
-                <a href="https://github.com/FutureAtoms" target="_blank" rel="noopener" aria-label="GitHub" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                <a href="https://github.com/FutureAtoms" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
                     <i class="fab fa-github" aria-hidden="true"></i>
                 </a>
-                <a href="https://twitter.com/futureatoms" target="_blank" rel="noopener" aria-label="Twitter" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
+                <a href="https://twitter.com/futureatoms" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-gray-500 hover:text-cyan-400 transition-colors text-sm">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </div>
@@ -658,7 +685,7 @@
 
             <div class="text-center mb-8">
                 <div class="w-10 h-10 flex items-center justify-center mx-auto mb-4">
-                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                    <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
                 </div>
                 <h2 class="text-3xl md:text-4xl font-['Orbitron'] text-white font-bold tracking-widest">ABOUT <span class="text-cyan-400" style="font-family: 'Orbitron', sans-serif;">FUTUREATOMS</span></h2>
                 <div class="h-0.5 w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mt-4">
@@ -983,43 +1010,48 @@
                 view: { rx: 0, ry: 0, rz: 0, dist: 32 }
             },
             {
-                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: '⭐ Design chips 10x faster — AI OS with 14 models.',
-                orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: 'chipos.html',
+                id: 'chipos', name: 'ChipOS', icon: '💻', color: 0xD4AF37, desc: '⭐ The first agentic OS for semiconductor design.',
+                orbitType: 's', scale: 5.0, speedOffset: 1.0, phase: 0, url: '/chipos',
                 view: { rx: 0.5, ry: 0.5, rz: 0, dist: 28 } // Tilted closer
             },
             {
+                id: 'swasthya', name: 'Swaastik', icon: '🏥', color: 0x00897B, desc: 'AI healthcare OS — OCR, health records, analytics.',
+                orbitType: 'd', scale: 6.5, speedOffset: 0.95, phase: Math.PI / 6, url: '/swaastik',
+                view: { rx: 0.3, ry: -0.4, rz: 0.1, dist: 32 }
+            },
+            {
                 id: 'bevy', name: 'BevyBeats', icon: '🎵', color: 0xB87333, desc: 'Create music in seconds — AI-generated tracks.',
-                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: 'bevybeats.html',
+                orbitType: 'd', scale: 9.5, speedOffset: 1.1, phase: Math.PI / 3, url: '/bevybeats',
                 view: { rx: -0.5, ry: 1.2, rz: 0.2, dist: 40 } // Wide angle
             },
             {
                 id: 'zaphy', name: 'Zaphy', icon: '⚡', color: 0x0077B5, desc: '10x your LinkedIn outreach — AI networking.',
-                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: 'zaphy.html',
+                orbitType: 'p', scale: 7.0, speedOffset: 1.2, phase: Math.PI / 2, url: '/zaphy',
                 view: { rx: 0.2, ry: -0.8, rz: 0.5, dist: 30 }
             },
             {
                 id: 'agentic', name: 'Agentic Control', icon: '🤖', color: 0x69C95E, desc: 'Automate any workflow — AI agents from CLI.',
-                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: 'agentic.html',
+                orbitType: 'd', scale: 10.5, speedOffset: 0.7, phase: Math.PI, url: '/agentic',
                 view: { rx: 1.0, ry: 0.2, rz: -0.5, dist: 45 }
             },
             {
                 id: 'sv_gpt', name: 'SystemVerilogGPT', icon: '🔌', color: 0xC0C0C0, desc: 'Write RTL 10x faster — AI for hardware.',
-                orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: 'systemverilog.html',
+                orbitType: 'd', scale: 8.5, speedOffset: 0.8, phase: Math.PI / 4, url: '/systemverilog',
                 view: { rx: -0.3, ry: 2.0, rz: 0, dist: 35 }
             },
             {
                 id: 'yuj', name: 'Yuj', icon: '🧘', color: 0xFFA500, desc: 'Find balance in 15min — AI-personalized wellness.',
-                orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: 'yuj.html',
+                orbitType: 'f', scale: 12.0, speedOffset: 0.6, phase: 0, url: '/yuj',
                 view: { rx: 0, ry: 0, rz: 1.5, dist: 50 } // Vertical alignment
             },
             {
                 id: 'savitri', name: 'Savitri', icon: '🧠', color: 0xA020F0, desc: 'Mental wellness anytime — compassionate AI.',
-                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: 'savitri.html',
+                orbitType: 'f', scale: 13.0, speedOffset: 0.5, phase: Math.PI / 2, url: '/savitri',
                 view: { rx: 0.8, ry: 0.8, rz: 0.8, dist: 42 }
             },
             {
                 id: 'adaptive', name: 'AdaptiveVision', icon: '👁️', color: 0x4682B4, desc: 'Deploy vision in minutes — self-improving AI.',
-                orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: 'adaptivision.html',
+                orbitType: 'p', scale: 7.5, speedOffset: 0.9, phase: Math.PI * 1.5, url: '/adaptivision',
                 view: { rx: -1.0, ry: -1.0, rz: 0, dist: 30 }
             }
         ];

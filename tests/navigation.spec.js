@@ -2,29 +2,29 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Navigation Tests', () => {
   const mainPages = [
-    { path: '/index.html', title: /FutureAtoms/ },
-    { path: '/blog.html', title: /Research|FutureAtoms/ },
-    { path: '/news.html', title: /News|FutureAtoms/ },
-    { path: '/about.html', title: /About|FutureAtoms/ },
-    { path: '/contact.html', title: /Contact|FutureAtoms/ },
+    { path: '/', title: /FutureAtoms/ },
+    { path: '/blog', title: /Research|FutureAtoms/ },
+    { path: '/news', title: /News|FutureAtoms/ },
+    { path: '/about', title: /About|FutureAtoms/ },
+    { path: '/contact', title: /Contact|FutureAtoms/ },
   ];
 
   const venturePages = [
-    { path: '/bevybeats.html', title: /BevyBeats|FutureAtoms/ },
-    { path: '/savitri.html', title: /Savitri|FutureAtoms/ },
-    { path: '/zaphy.html', title: /Zaphy|FutureAtoms/ },
-    { path: '/agentic.html', title: /Agentic|FutureAtoms/ },
-    { path: '/yuj.html', title: /Yuj|FutureAtoms/ },
-    { path: '/adaptivision.html', title: /AdaptiVision|Adaptive|FutureAtoms/ },
-    { path: '/chipos.html', title: /ChipOS|FutureAtoms/ },
-    { path: '/systemverilog.html', title: /SystemVerilog|FutureAtoms/ },
+    { path: '/bevybeats', title: /BevyBeats|FutureAtoms/ },
+    { path: '/savitri', title: /Savitri|FutureAtoms/ },
+    { path: '/zaphy', title: /Zaphy|FutureAtoms/ },
+    { path: '/agentic', title: /Agentic|FutureAtoms/ },
+    { path: '/yuj', title: /Yuj|FutureAtoms/ },
+    { path: '/adaptivision', title: /AdaptiVision|Adaptive|FutureAtoms/ },
+    { path: '/chipos', title: /ChipOS|FutureAtoms/ },
+    { path: '/systemverilog', title: /SystemVerilog|FutureAtoms/ },
   ];
 
   const blogPages = [
-    { path: '/blog-ai-music-revolution.html', title: /Music|BevyBeats|FutureAtoms/ },
-    { path: '/blog-ai-therapy.html', title: /Therapy|Savitri|FutureAtoms/ },
-    { path: '/blog-semiconductor-ai.html', title: /ChipOS|Semiconductor|FutureAtoms/ },
-    { path: '/blog-linkedin-automation.html', title: /LinkedIn|Zaphy|FutureAtoms/ },
+    { path: '/blog-ai-music-revolution', title: /Music|BevyBeats|FutureAtoms/ },
+    { path: '/blog-ai-therapy', title: /Therapy|Savitri|FutureAtoms/ },
+    { path: '/blog-semiconductor-ai', title: /ChipOS|Semiconductor|FutureAtoms/ },
+    { path: '/blog-linkedin-automation', title: /LinkedIn|Zaphy|FutureAtoms/ },
   ];
 
   test('all main pages load successfully', async ({ page }) => {
@@ -63,7 +63,7 @@ test.describe('Navigation Tests', () => {
   });
 
   test('navigation links work from homepage', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Test navigation to Blog
     const blogLink = page.locator('a[href="blog.html"]').first();
@@ -72,7 +72,7 @@ test.describe('Navigation Tests', () => {
     console.log('✓ Blog link works');
 
     // Navigate back
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Test navigation to News
     const newsLink = page.locator('a[href="news.html"]').first();
@@ -81,7 +81,7 @@ test.describe('Navigation Tests', () => {
     console.log('✓ News link works');
 
     // Navigate back
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Test navigation to About
     const aboutLink = page.locator('a[href="about.html"]').first();
@@ -93,7 +93,7 @@ test.describe('Navigation Tests', () => {
   });
 
   test('home link returns to homepage from blog', async ({ page }) => {
-    await page.goto('/blog.html');
+    await page.goto('/blog');
 
     const homeLink = page.locator('a[href="index.html"]').first();
     await homeLink.click();
@@ -103,7 +103,7 @@ test.describe('Navigation Tests', () => {
   });
 
   test('product links in dropdown navigate correctly', async ({ page }) => {
-    await page.goto('/index.html');
+    await page.goto('/');
 
     // Hover over products dropdown to show it
     const dropdown = page.locator('.dropdown').first();
@@ -119,7 +119,7 @@ test.describe('Navigation Tests', () => {
   });
 
   test('contact page links are functional', async ({ page }) => {
-    await page.goto('/contact.html');
+    await page.goto('/contact');
 
     // Check social links exist and have proper hrefs
     const githubLink = page.locator('a[href="https://github.com/FutureAtoms"]');
@@ -136,26 +136,26 @@ test.describe('Navigation Tests', () => {
 
   test('product pages have working CTA buttons', async ({ page }) => {
     // Test Yuj page GitHub link
-    await page.goto('/yuj.html');
+    await page.goto('/yuj');
     const yujGithub = page.locator('a[href="https://github.com/FutureAtoms/Yuj"]');
     await expect(yujGithub).toBeAttached();
     console.log('✓ Yuj GitHub link exists');
 
     // Test Agentic page GitHub link
-    await page.goto('/agentic.html');
+    await page.goto('/agentic');
     const agenticGithub = page.locator('a[href*="github.com/FutureAtoms/agentic"]').first();
     await expect(agenticGithub).toBeAttached();
     console.log('✓ Agentic GitHub link exists');
 
     // Test AdaptiVision page GitHub link
-    await page.goto('/adaptivision.html');
+    await page.goto('/adaptivision');
     const adaptivisionGithub = page.locator('a[href*="github.com/FutureAtoms/AdaptiVision"]').first();
     await expect(adaptivisionGithub).toBeAttached();
     console.log('✓ AdaptiVision GitHub link exists');
   });
 
   test('BevyBeats page has working links', async ({ page }) => {
-    await page.goto('/bevybeats.html');
+    await page.goto('/bevybeats');
 
     // Check the listen now button links to bevybeats.com
     const listenNowBtn = page.locator('a[href="https://www.bevybeats.com"]').first();
@@ -165,7 +165,7 @@ test.describe('Navigation Tests', () => {
   });
 
   test('ChipOS page has download buttons', async ({ page }) => {
-    await page.goto('/chipos.html');
+    await page.goto('/chipos');
 
     // Check that download section exists
     const downloadSection = page.locator('text=Download');

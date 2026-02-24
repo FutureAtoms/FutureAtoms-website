@@ -1,0 +1,14 @@
+India AI Summit 2026 — the signal, not the noise:
+
+Day 1-2: Adani $100B. Google + Microsoft + Amazon $50B+.
+Day 3: Semiconductor Mission 2.0 ($4.7B). Micron Gujarat goes commercial. Hassabis + Bengio + LeCun keynote.
+Day 4: Modi. Altman. Pichai. One table. 58,000 GPUs.
+Day 5: $200B+ total. Guinness World Record.
+
+On Day 3, I launched ChipOS — an AI OS for chip design. Describe a chip in English. Agents build it.
+
+10 years at Intel/ISRO/Axelera taught me: you can't design chips faster with tools from the '90s.
+
+CDAC is already exploring it for India's RISC-V processor.
+
+chipos.ai

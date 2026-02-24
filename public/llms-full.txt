@@ -68,10 +68,10 @@ FutureAtoms is a visionary technology company that believes AI should be accessi
 
 ---
 
-## 3. ChipOS - AI Operating System for Chip Development
+## 3. ChipOS - The First Agentic OS for Semiconductor Design
 
 ### Overview
-ChipOS is a dedicated desktop application designed as an "AI Operating System for Hardware Design." Think of it as macOS for chip teams - a complete environment integrating code editing, knowledge management, and AI assistance for semiconductor engineers.
+ChipOS is the first agentic OS for semiconductor design — a vendor-neutral, hardware-agnostic platform that orchestrates the full chip design lifecycle. It combines a domain IDE, agentic workflow orchestration, knowledge management, and MCP-native AI integration into a single platform for hardware engineering teams.
 
 ### Key Features
 
@@ -140,7 +140,7 @@ ChipOS is a dedicated desktop application designed as an "AI Operating System fo
 - Internet connection for cloud features (local mode available)
 
 ### Download
-- macOS: https://futureatoms.com/chipos.html (DMG installer)
+- macOS: https://futureatoms.com/chipos (DMG installer)
 - Linux: .deb package available on releases page
 
 ---
@@ -489,7 +489,7 @@ A: AdaptiveVision runs on standard Linux/Windows machines with GPU support. It's
 A: SystemVerilogGPT supports SystemVerilog (IEEE 1800-2017), Verilog (IEEE 1364-2005), VHDL (IEEE 1076-2008), and related standards like UVM 1.2 and PSL.
 
 **Q: How do I contact FutureAtoms?**
-A: Visit https://futureatoms.com/contact.html or email through the contact form on the website.
+A: Visit https://futureatoms.com/contact or email through the contact form on the website.
 
 **Q: Are there any FutureAtoms blog posts?**
 A: Yes, the blog covers AI innovation topics including:
@@ -498,10 +498,10 @@ A: Yes, the blog covers AI innovation topics including:
 - AI Therapy Breakthrough
 - Automating Professional Networks
 - ChipOS for Silicon Design
-Visit: https://futureatoms.com/blog.html
+Visit: https://futureatoms.com/blog
 
 **Q: Does FutureAtoms have a careers page?**
-A: Yes, visit https://futureatoms.com/careers.html for current openings.
+A: Yes, visit https://futureatoms.com/careers for current openings.
 
 **Q: What is the Quantum Theme?**
 A: The Quantum Theme is FutureAtoms' design system featuring glassmorphism effects, metallic accents (each product has unique colors), Three.js 3D animations, and a dark (#0a0a0f) aesthetic throughout the website.

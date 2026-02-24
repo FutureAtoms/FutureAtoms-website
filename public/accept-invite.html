@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <meta name="description" content="Accept your ChipOS organization invitation.">
-    <link rel="canonical" href="https://futureatoms.com/accept-invite.html">
+    <link rel="canonical" href="https://futureatoms.com/accept-invite">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Accept Invitation | ChipOS">
     <meta property="og:description" content="Accept your ChipOS organization invitation.">
@@ -20,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
+        @view-transition { navigation: auto; }
         .invite-card {
             background: rgba(10, 10, 20, 0.9);
             backdrop-filter: blur(20px);
@@ -43,14 +49,18 @@
             cursor: not-allowed;
         }
     </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 <body class="min-h-screen flex items-center justify-center py-12 px-4">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Background -->
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_30%,rgba(0,255,255,0.08),transparent_60%)]"></div>
     </div>
 
     <!-- Loading State -->
+    <div id="main-content"></div>
     <div id="loading-state" class="relative z-10 text-center">
         <div class="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mx-auto mb-4"></div>
         <p class="text-cyan-400 font-['Orbitron'] text-sm tracking-wider">Loading invitation...</p>
@@ -66,7 +76,7 @@
             <p class="text-gray-400 font-['Rajdhani'] mb-6" id="error-message">
                 This invitation link is invalid or has expired.
             </p>
-            <a href="index.html" class="inline-block px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-['Orbitron'] text-sm hover:bg-white/20 transition-all">
+            <a href="/" class="inline-block px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-['Orbitron'] text-sm hover:bg-white/20 transition-all">
                 Return Home
             </a>
         </div>
@@ -89,7 +99,7 @@
             <button id="accept-btn" onclick="acceptInvite()" class="w-full py-4 rounded-xl action-btn text-lg mb-4">
                 ACCEPT INVITATION
             </button>
-            <a href="index.html" class="text-gray-500 hover:text-white text-sm transition-colors">
+            <a href="/" class="text-gray-500 hover:text-white text-sm transition-colors">
                 Decline
             </a>
         </div>
@@ -105,7 +115,7 @@
             <p class="text-gray-400 font-['Rajdhani'] mb-6">
                 You've successfully joined the organization.
             </p>
-            <a href="billing-dashboard.html" class="inline-block w-full py-4 rounded-xl action-btn text-lg">
+            <a href="/billing-dashboard" class="inline-block w-full py-4 rounded-xl action-btn text-lg">
                 GO TO DASHBOARD
             </a>
         </div>
@@ -124,7 +134,7 @@
             <a id="login-link" href="#" class="inline-block w-full py-4 rounded-xl action-btn text-lg mb-4">
                 SIGN IN
             </a>
-            <a id="signup-link" href="signup.html" class="block text-cyan-400 hover:text-cyan-300 text-sm transition-colors">
+            <a id="signup-link" href="/signup" class="block text-cyan-400 hover:text-cyan-300 text-sm transition-colors">
                 Don't have an account? Sign up
             </a>
         </div>
@@ -164,7 +174,7 @@
                 showState('login-state');
                 const returnUrl = encodeURIComponent(window.location.href);
                 document.getElementById('login-link').href = `https://chipos.futureatoms.com?returnUrl=${returnUrl}`;
-                document.getElementById('signup-link').href = `signup.html?invite=${token}`;
+                document.getElementById('signup-link').href = `/signup?invite=${token}`;
                 return;
             }
 

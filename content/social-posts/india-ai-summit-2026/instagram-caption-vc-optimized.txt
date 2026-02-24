@@ -1,0 +1,72 @@
+$250 billion committed. 300,000 people. Guinness World Record. One thing missing.
+
+The India AI Impact Summit 2026 just wrapped. The slides above tell the story day by day — swipe through.
+
+What the slides couldn't fit:
+
+The Hassabis-Bengio-LeCun joint keynote had 500,000+ concurrent viewers. Three people who've disagreed about AGI for decades — on one stage, in New Delhi.
+
+Micron's Gujarat plant began producing India's first commercial chips. That sentence didn't exist 12 months ago.
+
+And on Day 3, between Semiconductor Mission 2.0 and the AI godfathers keynote, I launched ChipOS.
+
+10 years of verification at Intel, ISRO, Axelera AI. 9 awards. Working silicon. Verification eats 70% of every chip project — with tools from the 1990s. $250B committed to compute. Zero to the design layer.
+
+ChipOS: describe a chip in plain English. AI agents write RTL, run verification, debug waveforms, iterate 24/7. Not a copilot. An operating system.
+
+CDAC — behind India's RISC-V processor — is already exploring it.
+
+Fewer than 10 companies on Earth are building this. $74M already invested in this category. India had zero. Until now.
+
+Try ChipOS free — link in bio.
+
+#IndiaAISummit2026 #Semiconductors #ChipDesign #AgenticAI #BuildInPublic
+
+
+=======================================================================
+INSTAGRAM POSTING NOTES:
+=======================================================================
+
+1. HOOK: "$250 billion committed. 300,000 people. Guinness World Record.
+   One thing missing."
+   - Numbers stop the scroll
+   - "One thing missing" creates curiosity gap
+
+2. LINK IN BIO (set up before posting):
+   - Linktree or similar with:
+     1. chipos.ai (top link)
+     2. futureatoms.com/india-ai-summit-2026
+     3. Press release page
+   - Change bio to include "Launched at India AI Summit 2026"
+
+3. HASHTAGS: 5 (optimal for reach without looking spammy)
+   - Mix of event, industry, and movement hashtags
+
+4. STORIES to post alongside:
+   - Story 1: "New carousel is up" with arrow pointing down
+   - Story 2: Behind-the-scenes photo from summit
+   - Story 3: Poll: "What % of chip design = verification?"
+     with options: 30% / 50% / 70% / 90%
+   - Story 4: Quick video thanking people for engagement
+   - Add all to "Summit 2026" highlight
+
+5. REELS opportunity:
+   - Clip the best 30 seconds of any speaking footage
+   - Overlay key stats as text
+   - Use trending audio if appropriate
+   - Post within 24 hours of carousel
+
+6. POSTING TIME:
+   - 9-11 AM IST or 7-8 PM IST
+   - Avoid posting when carousel is live (stagger by 4+ hours)
+
+7. ENGAGEMENT:
+   - Reply to every comment in first hour
+   - Like comments from industry accounts
+   - Share carousel to stories with a "which slide surprised you?" sticker
+
+8. HIGHLIGHTS (set up before posting):
+   - "ChipOS" — product screenshots, demo clips
+   - "Summit 2026" — all summit stories and posts
+   - "Team" — team photos, hiring announcements
+   - "Product" — feature highlights, roadmap updates

@@ -1,0 +1,257 @@
+/* shared-styles.css — FutureAtoms Carousel Design System */
+
+/* Google Fonts loaded inline by renderer */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #0a0a0f;
+  --cyan: #00FFFF;
+  --white: #FFFFFF;
+  --off-white: #E5E5E5;
+  --tricolor-saffron: #FF9933;
+  --tricolor-green: #138808;
+  --glow-cyan: rgba(0, 255, 255, 0.3);
+  --glow-cyan-strong: rgba(0, 255, 255, 0.4);
+  --glass-border: rgba(0, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+}
+
+body {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  color: var(--white);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tricolor accent line ───────────────────────────── */
+.tricolor-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--tricolor-saffron) 0%,
+    var(--tricolor-saffron) 33%,
+    var(--white) 33%,
+    var(--white) 66%,
+    var(--tricolor-green) 66%,
+    var(--tricolor-green) 100%
+  );
+  z-index: 10;
+}
+
+/* ── Brand icon (top-right) ─────────────────────────── */
+.brand-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  opacity: 0.6;
+  z-index: 10;
+}
+
+/* ── Slide counter (bottom-right) ───────────────────── */
+.slide-counter {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  z-index: 10;
+}
+
+/* ── Swipe arrow (slide 1 only) ─────────────────────── */
+.swipe-arrow {
+  position: absolute;
+  bottom: 28px;
+  right: 80px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  animation: pulse-right 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-right {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(6px); opacity: 0.5; }
+}
+
+/* ── Typography ─────────────────────────────────────── */
+
+/* DAY X headers */
+.day-header {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  color: var(--cyan);
+  text-shadow: 0 0 40px var(--glow-cyan-strong);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+/* ChipOS brand name */
+.chipos-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 80px;
+  color: var(--cyan);
+  text-shadow:
+    0 0 40px var(--glow-cyan-strong),
+    0 0 80px rgba(0, 255, 255, 0.2);
+  letter-spacing: 4px;
+  margin: 12px 0;
+}
+
+/* Bold cyan numbers */
+.cyan-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 40px var(--glow-cyan-strong);
+  line-height: 1.1;
+}
+
+.cyan-number.size-xl { font-size: 80px; }
+.cyan-number.size-lg { font-size: 70px; }
+.cyan-number.size-md { font-size: 60px; }
+.cyan-number.size-sm { font-size: 50px; }
+.cyan-number.size-xs { font-size: 40px; }
+
+/* Headlines */
+.headline {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.headline.size-xl { font-size: 60px; }
+.headline.size-lg { font-size: 44px; }
+.headline.size-md { font-size: 40px; }
+.headline.size-sm { font-size: 36px; }
+
+/* Body text */
+.body-text {
+  font-family: 'Inter', 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--off-white);
+  line-height: 1.5;
+}
+
+/* Bullet text */
+.bullet-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--white);
+  line-height: 1.45;
+}
+
+.bullet-text .cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 20px var(--glow-cyan);
+}
+
+/* Cyan arrow bullet */
+.bullet-arrow {
+  color: var(--cyan);
+  font-weight: 900;
+  margin-right: 12px;
+  text-shadow: 0 0 20px var(--glow-cyan);
+}
+
+/* Sub-description / small text */
+.sub-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--off-white);
+  line-height: 1.5;
+}
+
+/* Italic emphasis */
+.italic {
+  font-style: italic;
+}
+
+/* Cyan inline text */
+.cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 20px var(--glow-cyan);
+}
+
+/* White bold inline */
+.white-bold {
+  color: var(--white);
+  font-weight: 800;
+}
+
+/* ── Glassmorphism card ─────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Numbered list items (Slide 5 style) ────────────── */
+.numbered-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.numbered-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--cyan);
+  color: var(--bg-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* ── Divider ────────────────────────────────────────── */
+.divider {
+  width: 60%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 24px 0;
+}
+
+/* ── Reel format adjustments ────────────────────────── */
+body.reel .day-header { font-size: 71px; }
+body.reel .chipos-brand { font-size: 113px; }
+body.reel .cyan-number.size-xl { font-size: 113px; }
+body.reel .cyan-number.size-lg { font-size: 99px; }
+body.reel .cyan-number.size-md { font-size: 85px; }
+body.reel .cyan-number.size-sm { font-size: 71px; }
+body.reel .cyan-number.size-xs { font-size: 57px; }
+body.reel .headline.size-xl { font-size: 85px; }
+body.reel .headline.size-lg { font-size: 62px; }
+body.reel .headline.size-md { font-size: 57px; }
+body.reel .headline.size-sm { font-size: 51px; }
+body.reel .body-text { font-size: 40px; }
+body.reel .bullet-text { font-size: 45px; }
+body.reel .sub-text { font-size: 34px; }
+body.reel .slide-counter { font-size: 26px; }
+body.reel .brand-icon { width: 64px; height: 64px; }

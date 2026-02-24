@@ -1,0 +1,38 @@
+PHOTO ORDER STRATEGY — 6-Picture Carousel
+==========================================
+
+The order matters more than the captions. Each photo should tell the story visually.
+
+Slide 1 — HOOK
+  Photo: You at Bharat Mandapam (exterior) — the iconic shot
+  Purpose: Establishes "I was there" credibility. This is the thumbnail people see first.
+
+Slide 2 — SCALE
+  Photo: Inside the summit — crowd/stage/scale shot
+  Purpose: Shows the magnitude (3,250+ speakers, 100+ countries)
+
+Slide 3 — AUTHORITY
+  Photo: You presenting / on stage (photo 1)
+  Purpose: You weren't just attending, you were presenting
+
+Slide 4 — PRODUCT
+  Photo: You presenting / on stage (photo 2 — different angle or moment)
+  Purpose: The ChipOS moment
+
+Slide 5 — ENERGY
+  Photo: Interesting summit moment — panel, expo, networking
+  Purpose: The vibe, the people, the momentum
+
+Slide 6 — CTA
+  Photo: You + ChipOS branding or a strong closing shot
+  Purpose: The memorable final image
+
+
+VISUAL ARC (even if nobody reads a word):
+  Landmark → Scale → Presenting → Presenting → Energy → Close
+
+NOTES:
+- Same 6 photos used across Instagram, LinkedIn, and Twitter
+- Instagram: carousel (swipe)
+- LinkedIn: multi-image post (grid)
+- Twitter: attach all 4 max images to main tweet, remaining 2 in reply thread

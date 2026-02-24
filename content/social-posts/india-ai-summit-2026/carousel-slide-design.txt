@@ -1,0 +1,471 @@
+INSTAGRAM CAROUSEL — SUMMIT RECAP + CHIPOS DISCOVERY
+======================================================
+
+10-SLIDE CAROUSEL: 6 photos + 4 designed text cards
+People come for the summit highlights. They discover ChipOS.
+Instagram, LinkedIn, Twitter — same slides.
+
+FORMAT: "Summit Recap" storytelling carousel (2026 best practice)
+  - Mixed media: photos for authenticity, text cards for data
+  - Day-by-day structure = easy to follow, high save rate
+  - ChipOS enters on Day 3 as ONE of the announcements, not the
+    whole post. It's news, not an ad.
+  - 10 slides = sweet spot for educational/story carousels
+
+WHY THIS WORKS:
+  - People SAVE summit recaps (algorithm gold)
+  - People SHARE news roundups (extends reach)
+  - ChipOS is DISCOVERED, not pitched
+  - You deliver VALUE first (4 slides of news) before any
+    product mention
+
+
+DESIGN SYSTEM
+--------------------------------------------
+Photo slides:
+  - Your photo with dark gradient overlay
+  - White bold text, left-aligned, top 60%
+  - Cyan accent (#00FFFF) for key numbers and names
+
+Text card slides:
+  - Dark background (#0a0a0f — your brand color)
+  - India tricolor accent line at top (saffron → white → green)
+  - "DAY X" header in cyan
+  - Arrow bullets (→) in cyan, content in white
+  - Clean, data-viz feel — NOT a PowerPoint
+
+All slides:
+  - 1080 x 1350 px (4:5)
+  - Font: Montserrat Bold / Inter Bold
+  - Slide counter bottom-right (1/10, 2/10...)
+
+
+=====================================================================
+SLIDE 1 — THE HOOK [PHOTO]
+=====================================================================
+Photo: You at Bharat Mandapam exterior
+
+┌─────────────────────────────────────────┐
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│  (india tricolor accent line)           │
+│                                         │
+│   THE INDIA AI SUMMIT 2026.             │
+│                                         │
+│   5 DAYS.                               │
+│   $200 BILLION PLEDGED.                 │
+│   GUINNESS WORLD RECORD.                │
+│                                         │
+│   HERE'S WHAT ACTUALLY                  │
+│   HAPPENED.                             │
+│                                    →    │
+│                                  1/10   │
+└─────────────────────────────────────────┘
+
+Font: "$200 BILLION" cyan 70pt. "GUINNESS WORLD RECORD." white 40pt.
+      "HERE'S WHAT ACTUALLY HAPPENED." white 44pt bold.
+
+Why it stops the scroll:
+  - Names THE EVENT everyone's talking about right now
+  - "$200B + Guinness Record" = two jaw-drop facts
+  - "Here's what actually happened" = signal vs noise framing.
+    Implies: you'll get the real story, not the chaos coverage.
+  - Photo of YOU there = credibility
+  - Arrow + "1/10" = sets expectation of a meaty thread
+
+Source: Supabase article — "India AI Summit Sets Guinness World
+  Record for Investment Pledges" + "$200B+ committed"
+
+
+=====================================================================
+SLIDE 2 — DAY 1-2: THE MONEY [TEXT CARD]
+=====================================================================
+Design: Dark background, tricolor accent, clean data layout
+
+┌─────────────────────────────────────────┐
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                         │
+│   DAY 1                                 │
+│                                         │
+│   Modi inaugurates at Bharat Mandapam.  │
+│   Calls India "the most AI-ready        │
+│   democracy."                           │
+│                                         │
+│   → ADANI: $100B TO AI DATA CENTERS     │
+│     (largest single corporate pledge)   │
+│                                         │
+│   DAY 2                                 │
+│                                         │
+│   → GOOGLE: $15B                        │
+│   → MICROSOFT: $20B                     │
+│   → AMAZON: $16B                        │
+│   = $50B+ FOR INDIA AI INFRA            │
+│                                         │
+│                                  2/10   │
+└─────────────────────────────────────────┘
+
+Font: "DAY 1" / "DAY 2" in cyan 50pt. Company names white bold 36pt.
+      Dollar amounts in cyan accent. Descriptions in off-white 28pt.
+
+Source: Supabase articles — "PM Modi Inaugurates India AI Impact
+  Summit Expo" + "Adani Group Commits $100B" + "Google,
+  Microsoft, Amazon Pledge $50B+"
+
+
+=====================================================================
+SLIDE 3 — DAY 3 SETUP [PHOTO]
+=====================================================================
+Photo: Inside the summit — crowd, stage, or auditorium (scale shot)
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│   THEN CAME DAY 3.                      │
+│                                         │
+│   5 ANNOUNCEMENTS.                      │
+│   ONE DAY.                              │
+│                                         │
+│                                         │
+│                                  3/10   │
+└─────────────────────────────────────────┘
+
+Font: "THEN CAME DAY 3." white 60pt bold.
+      "5 ANNOUNCEMENTS. ONE DAY." white 44pt.
+
+Why it works:
+  - OPEN LOOP — what were the 5 announcements? Must swipe.
+  - "Then came Day 3" = narrative shift. Builds tension.
+  - Short (7 words). Lets the massive crowd photo communicate
+    the scale. The photo IS the content.
+  - This is the Zeigarnik Effect — incomplete information that
+    the brain needs to resolve.
+
+Words: 7 [MINIMAL — intentionally sparse for dramatic effect]
+
+
+=====================================================================
+SLIDE 4 — DAY 3: THE BREAKTHROUGHS [TEXT CARD]
+=====================================================================
+Design: Dark background, tricolor accent, numbered list
+
+┌─────────────────────────────────────────┐
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                         │
+│   DAY 3                                 │
+│                                         │
+│   1. SEMICONDUCTOR MISSION 2.0          │
+│      ₹40,000 CRORE ($4.7B)             │
+│                                         │
+│   2. MICRON GUJARAT                     │
+│      INDIA'S FIRST COMMERCIAL CHIPS     │
+│                                         │
+│   3. HASSABIS + BENGIO + LECUN          │
+│      JOINT KEYNOTE. 500K LIVE VIEWERS.  │
+│                                         │
+│   4. I LAUNCHED CHIPOS.                 │
+│      (MORE ON THAT IN A SECOND)         │
+│                                         │
+│   5. CDAC STARTED EXPLORING IT.         │
+│      FOR INDIA'S RISC-V PROCESSOR.      │
+│                                         │
+│                                  4/10   │
+└─────────────────────────────────────────┘
+
+Font: Numbers in cyan circles. Headlines white bold 32pt.
+      Descriptions off-white 26pt. "(MORE ON THAT IN A SECOND)"
+      in italic — the tease.
+
+Why this is the most important slide:
+  - ChipOS appears as ITEM 4 OF 5 — not the headline, not
+    the whole post. It's part of the news.
+  - Positioned between the AI godfathers keynote and the CDAC
+    validation — sandwiched between massive credibility signals
+  - "(More on that in a second)" = open loop within the list.
+    Casual, confident, not salesy.
+  - The viewer processes: "Semiconductor Mission... Micron...
+    AI legends... wait, HE launched something? And India's
+    chip team is already on it?"
+  - ChipOS is DISCOVERED, not pitched.
+
+Source: Supabase articles — "India Launches Semiconductor Mission
+  2.0" + "Micron Sanand Begins Commercial Chip Production" +
+  "Hassabis, Bengio, LeCun Joint Keynote" + "FutureAtoms
+  Unveils ChipOS" + "CDAC Explores ChipOS for DHRUV64"
+
+
+=====================================================================
+SLIDE 5 — CHIPOS REVEAL [PHOTO]
+=====================================================================
+Photo: You on stage presenting (wide shot, audience visible)
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│   10 YEARS IN CHIP VERIFICATION.        │
+│   INTEL. ISRO. AXELERA AI.              │
+│                                         │
+│   EVERY DESIGN TOOL IN INDIA            │
+│   IS FOREIGN-BUILT.                     │
+│                                         │
+│   SO I BUILT ONE.                       │
+│                                         │
+│                                  5/10   │
+└─────────────────────────────────────────┘
+
+Font: "SO I BUILT ONE." white 60pt bold — the payoff.
+      "INTEL. ISRO. AXELERA AI." cyan 36pt — credential flash.
+      "FOREIGN-BUILT." white 40pt bold.
+
+Why it works:
+  - NOW the personal story hits — after 4 slides of pure summit
+    value. You've earned the right to go personal.
+  - "10 years" + "Intel. ISRO." = instant credibility
+  - "Every design tool is foreign-built" = the gap
+  - "So I built one." = four words. Photo of you on stage.
+    Undeniable.
+  - This isn't a product pitch. It's a founder moment inside
+    a summit recap. Feels organic.
+
+Source: Press release + chipos-pitch.html + about.html
+
+
+=====================================================================
+SLIDE 6 — WHAT CHIPOS DOES [TEXT CARD]
+=====================================================================
+Design: Dark background, product explanation, clean layout
+
+┌─────────────────────────────────────────┐
+│                                         │
+│   CHIPOS                                │
+│                                         │
+│   DESCRIBE A CHIP IN PLAIN ENGLISH.     │
+│                                         │
+│   AI AGENTS:                            │
+│   → WRITE THE RTL                       │
+│   → GENERATE TESTBENCHES                │
+│   → RUN VERIFICATION                    │
+│   → DEBUG WAVEFORMS                     │
+│   → ITERATE AUTONOMOUSLY. 24/7.         │
+│                                         │
+│   NOT A COPILOT.                        │
+│   AN OPERATING SYSTEM.                  │
+│                                         │
+│                                  6/10   │
+└─────────────────────────────────────────┘
+
+Font: "CHIPOS" cyan 80pt bold. "DESCRIBE A CHIP IN PLAIN ENGLISH."
+      white 40pt. Arrow bullets cyan 30pt. "NOT A COPILOT. AN
+      OPERATING SYSTEM." white 36pt bold — the distinction.
+
+Why it works:
+  - ONE slide for the product. That's it. Not three, not five.
+  - Dead simple language — no jargon, no acronyms explained
+  - The stacked agent capabilities show depth without complexity
+  - "Not a copilot. An operating system." = the key distinction
+    that separates ChipOS from ChatGPT/Copilot
+  - People who swipe past this still absorbed: "AI that designs
+    chips from English"
+
+Source: Press release — full product description
+
+
+=====================================================================
+SLIDE 7 — CDAC PROOF [PHOTO]
+=====================================================================
+Photo: You presenting (angle 2, or networking/handshake moment)
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│   WITHIN HOURS OF LAUNCH:               │
+│                                         │
+│   CDAC — THE TEAM BEHIND               │
+│   INDIA'S FIRST RISC-V PROCESSOR —     │
+│                                         │
+│   STARTED EXPLORING CHIPOS.             │
+│                                         │
+│                                         │
+│                                  7/10   │
+└─────────────────────────────────────────┘
+
+Font: "STARTED EXPLORING CHIPOS." white 50pt bold.
+      "CDAC" and "RISC-V" in cyan.
+
+Why it works:
+  - "Within hours of launch" = urgency, momentum
+  - This was already teased on slide 4 (#5 in the Day 3 list)
+    — now it lands with full weight
+  - Institutional validation from India's premier computing body
+  - Transitions back to the summit story — we gave ChipOS
+    exactly 2 slides (5-6) before returning to summit news
+
+Source: Press release — CDAC/DHRUV64 interest confirmed
+
+
+=====================================================================
+SLIDE 8 — DAY 4-5: THE POWER [TEXT CARD]
+=====================================================================
+Design: Dark background, tricolor accent, data layout
+
+┌─────────────────────────────────────────┐
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                         │
+│   DAY 4                                 │
+│                                         │
+│   → PM MODI OPENS LEADERS' PLENARY      │
+│   → ALTMAN + PICHAI + MACRON            │
+│     AT ONE ROUNDTABLE                   │
+│   → INDIA SCALES TO 58,000 GPUs         │
+│     (UP FROM 38,000)                    │
+│                                         │
+│   DAY 5                                 │
+│                                         │
+│   → GOOGLE + JIO: CLOUD AI CLUSTERS     │
+│     FOR 450M+ USERS                     │
+│   → $200B+ TOTAL COMMITMENTS            │
+│   → GUINNESS WORLD RECORD CERTIFIED     │
+│                                         │
+│                                  8/10   │
+└─────────────────────────────────────────┘
+
+Font: Same system as slide 2. "DAY 4" / "DAY 5" cyan 50pt.
+
+Source: Supabase articles — "PM Modi Opens Leaders' Plenary" +
+  "Altman, Pichai, Macron CEO Roundtable" + "India Adds 20,000
+  GPUs" + "Google-Jio Partnership" + "Guinness World Record"
+
+
+=====================================================================
+SLIDE 9 — THE TAKEAWAY [PHOTO]
+=====================================================================
+Photo: Summit energy — expo floor, networking, or crowd moment
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│   5 DAYS THAT PROVED                    │
+│   INDIA ISN'T JUST                      │
+│   CONSUMING AI.                         │
+│                                         │
+│   INDIA IS BUILDING IT.                 │
+│                                         │
+│                                         │
+│                                  9/10   │
+└─────────────────────────────────────────┘
+
+Font: "INDIA IS BUILDING IT." white 60pt bold.
+
+Why it works:
+  - Steps back from the details. This is the THESIS.
+  - After 8 slides of evidence, this conclusion feels earned
+  - "Consuming vs building" = the tension of the whole post
+  - Short (12 words). Emotional. Shareable on its own.
+  - The energy photo behind this = the feeling of momentum
+
+Words: 12
+
+
+=====================================================================
+SLIDE 10 — THE CTA [PHOTO]
+=====================================================================
+Photo: Strong closing shot — you + ChipOS branding or portrait
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│   FULL SUMMIT COVERAGE                  │
+│   futureatoms.com/india-ai-summit-2026  │
+│                                         │
+│   TRY CHIPOS FREE                       │
+│   chipos.ai                             │
+│                                         │
+│   SAVE THIS FOR REFERENCE.              │
+│                                         │
+│                                 10/10   │
+└─────────────────────────────────────────┘
+
+Font: URLs in cyan 36pt. "SAVE THIS" white 32pt.
+
+Why it works:
+  - TWO CTAs: summit coverage link (value) + chipos.ai (product)
+  - "Full summit coverage" link drives traffic to your website
+    where all 17 articles live — extending the engagement
+  - "Save this for reference" = explicit save ask. People who
+    reached slide 10 are your most engaged audience.
+  - The summit coverage link is the LEAD CTA — not ChipOS.
+    This keeps the post feeling like journalism, not marketing.
+
+
+=====================================================================
+THE 15-SECOND SWIPE EXPERIENCE
+=====================================================================
+
+  1:  "India AI Summit. $200B. Guinness Record. Let me see."
+       ↓
+  2:  "Day 1-2: Modi opened it. $150B from Adani + big tech. Damn."
+       ↓
+  3:  "Day 3 had 5 big announcements? What were they?"
+       ↓
+  4:  "Semiconductor Mission... Micron... AI legends... wait,
+       he launched something? And India's chip team is on it?"
+       ↓
+  5:  "10 years at Intel/ISRO. Every tool is foreign. He built one."
+       ↓
+  6:  "Describe a chip in English. AI builds it. Not a copilot."
+       ↓
+  7:  "CDAC is already exploring it. Wow."
+       ↓
+  8:  "Day 4-5: Modi + Altman + Pichai. 58K GPUs. Guinness Record."
+       ↓
+  9:  "India is building. Yeah, clearly."
+       ↓
+  10: "Let me save this. And check chipos.ai."
+
+Emotional arc:
+  Awe → Data → Curiosity → Discovery → Respect → Understanding
+  → Validation → Scale → Pride → Action
+
+
+=====================================================================
+WHAT MAKES THIS DIFFERENT FROM EVERY OTHER SUMMIT POST
+=====================================================================
+
+1. IT'S USEFUL — a real day-by-day recap people will save
+2. CHIPOS IS DISCOVERED — item 4 of 5 on Day 3, not the headline
+3. THE PERSONAL STORY IS EARNED — 4 slides of value before
+   any product mention
+4. IT GOES BACK TO THE SUMMIT — after ChipOS (slides 5-7),
+   slide 8 returns to Day 4-5 news. The post isn't hijacked.
+5. DOUBLE CTA — summit coverage link (value) + chipos.ai (product)
+6. SAVE-WORTHY — people bookmark summit recaps as reference
+
+
+=====================================================================
+DESIGN SPECS
+=====================================================================
+
+Dimensions: 1080 x 1350 px (4:5 ratio)
+
+PHOTO SLIDES (1, 3, 5, 7, 9, 10):
+  - Your photo with dark gradient overlay
+  - Overlay: linear-gradient(180deg,
+    rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%)
+  - Text: white, left-aligned, top 60%
+  - Keep your face visible — people engage with people
+
+TEXT CARD SLIDES (2, 4, 6, 8):
+  - Background: #0a0a0f (your brand dark)
+  - India tricolor accent line at top: 4px bar,
+    gradient #FF9933 → #FFFFFF → #138808
+  - "DAY X" headers: cyan (#00FFFF), Orbitron font 50pt
+  - Arrow bullets (→): cyan
+  - Content: white (#FFFFFF) bold 30-36pt
+  - Sub-descriptions: off-white (#E5E5E5) 24-28pt
+  - Consistent spacing between items
+
+Typography:
+  - Headlines: Montserrat Bold or Inter Bold, 44-80pt
+  - Body: Montserrat Medium, 28-36pt
+  - Accent: Cyan (#00FFFF) for numbers, names, CHIPOS, DAY X
+  - Slide counter: 18pt, bottom-right, 40% opacity
+
+Swipe Arrow: Slide 1 only, bottom-right, 30% opacity

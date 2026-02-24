@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/signup.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/signup">
     <meta name="description" content="Sign up for ChipOS - Create your organization and start building AI-powered chip designs.">
     <meta property="og:title" content="Sign Up | ChipOS by FutureAtoms">
     <meta property="og:description" content="Create your organization and start building AI-powered chip designs with ChipOS.">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:url" content="https://futureatoms.com/signup.html">
+    <meta property="og:url" content="https://futureatoms.com/signup">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sign Up | ChipOS by FutureAtoms">
@@ -22,6 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
+        @view-transition { navigation: auto; }
         .signup-card {
             background: rgba(10, 10, 20, 0.9);
             backdrop-filter: blur(20px);
@@ -86,8 +92,11 @@
             color: #4ade80;
         }
     </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 <body class="min-h-screen flex items-center justify-center py-12 px-4">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Background -->
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_30%,rgba(0,255,255,0.08),transparent_60%)]"></div>
@@ -102,11 +111,11 @@
         </div>
     </div>
 
-    <div class="relative z-10 w-full max-w-xl">
+    <div id="main-content" class="relative z-10 w-full max-w-xl">
         <!-- Logo -->
         <div class="text-center mb-8">
-            <a href="index.html" class="inline-flex items-center gap-3 mb-6">
-                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms" class="w-12 h-12 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+            <a href="/" class="inline-flex items-center gap-3 mb-6">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms" class="w-12 h-12 drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
                 <span class="font-['Orbitron'] text-2xl font-bold text-white">CHIP<span class="text-cyan-400">OS</span></span>
             </a>
             <h1 class="font-['Orbitron'] text-3xl md:text-4xl font-bold text-white mb-2">
@@ -327,10 +336,10 @@
 
                 // Success - redirect based on plan
                 if (plan === 'free') {
-                    window.location.href = 'billing-dashboard.html?welcome=true';
+                    window.location.href = '/billing-dashboard?welcome=true';
                 } else {
                     // Start checkout for paid plan
-                    window.location.href = `chipos-pricing.html?checkout=${plan}&signup=true`;
+                    window.location.href = `/chipos-pricing?checkout=${plan}&signup=true`;
                 }
 
             } catch (err) {

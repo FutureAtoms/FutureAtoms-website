@@ -7,14 +7,14 @@ const { test, expect } = require('@playwright/test');
 
 // All product feature pages to test
 const FEATURE_PAGES = [
-    { product: 'chipos', name: 'ChipOS', url: '/chipos-features.html', backLink: 'chipos.html' },
-    { product: 'bevybeats', name: 'BevyBeats', url: '/bevybeats-features.html', backLink: 'bevybeats.html' },
-    { product: 'savitri', name: 'Savitri', url: '/savitri-features.html', backLink: 'savitri.html' },
-    { product: 'zaphy', name: 'Zaphy', url: '/zaphy-features.html', backLink: 'zaphy.html' },
-    { product: 'agentic', name: 'Agentic Control', url: '/agentic-features.html', backLink: 'agentic.html' },
-    { product: 'yuj', name: 'Yuj', url: '/yuj-features.html', backLink: 'yuj.html' },
-    { product: 'adaptivision', name: 'AdaptiveVision', url: '/adaptivision-features.html', backLink: 'adaptivision.html' },
-    { product: 'systemverilog', name: 'SystemVerilogGPT', url: '/systemverilog-features.html', backLink: 'systemverilog.html' }
+    { product: 'chipos', name: 'ChipOS', url: '/chipos-features', backLink: '/chipos' },
+    { product: 'bevybeats', name: 'BevyBeats', url: '/bevybeats-features', backLink: '/bevybeats' },
+    { product: 'savitri', name: 'Savitri', url: '/savitri-features', backLink: '/savitri' },
+    { product: 'zaphy', name: 'Zaphy', url: '/zaphy-features', backLink: '/zaphy' },
+    { product: 'agentic', name: 'Agentic Control', url: '/agentic-features', backLink: '/agentic' },
+    { product: 'yuj', name: 'Yuj', url: '/yuj-features', backLink: '/yuj' },
+    { product: 'adaptivision', name: 'AdaptiveVision', url: '/adaptivision-features', backLink: '/adaptivision' },
+    { product: 'systemverilog', name: 'SystemVerilogGPT', url: '/systemverilog-features', backLink: '/systemverilog' }
 ];
 
 test.describe('Feature Request Pages - Loading & Structure', () => {
@@ -52,7 +52,7 @@ test.describe('Feature Request Pages - Loading & Structure', () => {
 test.describe('Feature Request Pages - Navigation', () => {
 
     test('header navigation elements exist', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Check header
         const header = page.locator('header');
@@ -89,11 +89,11 @@ test.describe('Feature Request Pages - Navigation', () => {
     }
 
     test('products dropdown contains all product links', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const productLinks = [
-            'chipos.html', 'systemverilog.html', 'zaphy.html', 'agentic.html',
-            'yuj.html', 'adaptivision.html', 'bevybeats.html', 'savitri.html'
+            '/chipos', '/systemverilog', '/zaphy', '/agentic',
+            '/yuj', '/adaptivision', '/bevybeats', '/savitri'
         ];
 
         for (const href of productLinks) {
@@ -105,7 +105,7 @@ test.describe('Feature Request Pages - Navigation', () => {
     });
 
     test('clicking home link navigates to index', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         await page.click('a[href="index.html"]');
         await expect(page).toHaveURL(/index\.html/);
@@ -144,7 +144,7 @@ test.describe('Feature Request Pages - Hero Section', () => {
 test.describe('Feature Request Pages - Stats Section', () => {
 
     test('stats section displays all stat items', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         // Check all stat elements exist
@@ -161,7 +161,7 @@ test.describe('Feature Request Pages - Stats Section', () => {
     });
 
     test('stats items have correct labels', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const expectedLabels = ['Total Requests', 'Planned', 'In Progress', 'Completed'];
         const statItems = page.locator('.stat-item');
@@ -178,7 +178,7 @@ test.describe('Feature Request Pages - Stats Section', () => {
 test.describe('Feature Request Pages - Filter Tabs', () => {
 
     test('all filter tabs are present', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const filterTabs = page.locator('.filter-tab');
         await expect(filterTabs).toHaveCount(5);
@@ -193,7 +193,7 @@ test.describe('Feature Request Pages - Filter Tabs', () => {
     });
 
     test('filter tabs have correct data attributes', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const expectedStatuses = ['all', 'submitted', 'planned', 'in_progress', 'completed'];
         const filterTabs = page.locator('.filter-tab');
@@ -206,7 +206,7 @@ test.describe('Feature Request Pages - Filter Tabs', () => {
     });
 
     test('"All" filter tab is active by default', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const allTab = page.locator('.filter-tab[data-status="all"]');
         await expect(allTab).toHaveClass(/active/);
@@ -215,7 +215,7 @@ test.describe('Feature Request Pages - Filter Tabs', () => {
     });
 
     test('clicking filter tab changes active state', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Click Submitted tab
@@ -234,7 +234,7 @@ test.describe('Feature Request Pages - Filter Tabs', () => {
     });
 
     test('all filter tabs are clickable', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const filterTabs = page.locator('.filter-tab');
@@ -253,7 +253,7 @@ test.describe('Feature Request Pages - Filter Tabs', () => {
 test.describe('Feature Request Pages - Sort Controls', () => {
 
     test('sort dropdown exists with correct options', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const sortSelect = page.locator('#sort-select');
         await expect(sortSelect).toBeVisible();
@@ -270,7 +270,7 @@ test.describe('Feature Request Pages - Sort Controls', () => {
     });
 
     test('sort dropdown default is "Most Voted"', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const sortSelect = page.locator('#sort-select');
         await expect(sortSelect).toHaveValue('votes');
@@ -279,7 +279,7 @@ test.describe('Feature Request Pages - Sort Controls', () => {
     });
 
     test('sort dropdown can be changed', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const sortSelect = page.locator('#sort-select');
 
@@ -298,7 +298,7 @@ test.describe('Feature Request Pages - Sort Controls', () => {
 test.describe('Feature Request Pages - Features Grid', () => {
 
     test('features grid container exists', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const grid = page.locator('#features-grid');
         await expect(grid).toBeAttached();
@@ -307,7 +307,7 @@ test.describe('Feature Request Pages - Features Grid', () => {
     });
 
     test('features grid shows loading or content', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const grid = page.locator('#features-grid');
 
@@ -320,7 +320,7 @@ test.describe('Feature Request Pages - Features Grid', () => {
     });
 
     test('empty state shows when no features', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(2000);
 
         // Check if empty state exists (may or may not depending on data)
@@ -340,7 +340,7 @@ test.describe('Feature Request Pages - Features Grid', () => {
 test.describe('Feature Request Pages - Submit Button', () => {
 
     test('submit feature button exists and is visible', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const submitBtn = page.locator('#submit-feature-btn');
         await expect(submitBtn).toBeVisible();
@@ -349,7 +349,7 @@ test.describe('Feature Request Pages - Submit Button', () => {
     });
 
     test('submit button has correct text', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const submitBtn = page.locator('#submit-feature-btn');
         await expect(submitBtn).toContainText('Request Feature');
@@ -358,7 +358,7 @@ test.describe('Feature Request Pages - Submit Button', () => {
     });
 
     test('submit button has icon', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const submitBtnIcon = page.locator('#submit-feature-btn i.fa-plus');
         await expect(submitBtnIcon).toBeAttached();
@@ -370,7 +370,7 @@ test.describe('Feature Request Pages - Submit Button', () => {
 test.describe('Feature Request Pages - Submit Modal', () => {
 
     test('modal is hidden by default', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const modal = page.locator('#submit-modal');
         await expect(modal).not.toHaveClass(/active/);
@@ -379,7 +379,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('clicking submit button opens modal', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Click submit button
@@ -394,7 +394,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('modal close button works', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -413,7 +413,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('clicking modal overlay closes modal', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -432,7 +432,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('pressing Escape closes modal', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -451,7 +451,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('modal has correct form fields', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -469,7 +469,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('title field is required', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -482,7 +482,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('title field has maxlength of 200', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -495,7 +495,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('character counter updates on input', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -515,7 +515,7 @@ test.describe('Feature Request Pages - Submit Modal', () => {
     });
 
     test('email field validates email format', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -532,7 +532,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('mobile viewport - page renders correctly', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Check main elements visible
         await expect(page.locator('.features-hero')).toBeVisible();
@@ -543,7 +543,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('mobile viewport - mobile menu button visible', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const mobileMenuBtn = page.locator('#mobile-menu-btn');
         await expect(mobileMenuBtn).toBeVisible();
@@ -553,7 +553,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('mobile viewport - mobile menu opens', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Menu should be hidden initially
         const mobileMenu = page.locator('#mobile-menu');
@@ -571,7 +571,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('mobile viewport - mobile menu closes', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Open menu
         await page.click('#mobile-menu-btn');
@@ -589,7 +589,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('tablet viewport - page renders correctly', async ({ page }) => {
         await page.setViewportSize({ width: 768, height: 1024 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         await expect(page.locator('.features-hero')).toBeVisible();
         await expect(page.locator('#features-grid')).toBeAttached();
@@ -599,7 +599,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('desktop viewport - desktop nav visible', async ({ page }) => {
         await page.setViewportSize({ width: 1280, height: 800 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Desktop nav should be visible
         const desktopNav = page.locator('header nav.hidden.md\\:flex');
@@ -614,7 +614,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('filter tabs wrap on mobile', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const filterTabs = page.locator('.filter-tabs');
         await expect(filterTabs).toBeVisible();
@@ -628,7 +628,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 
     test('submit modal works on mobile', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -650,7 +650,7 @@ test.describe('Feature Request Pages - Responsive Design', () => {
 test.describe('Feature Request Pages - Styling & UI', () => {
 
     test('status badge colors are correct', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         // Load the CSS and verify status-related CSS variables exist
         const hasStyles = await page.evaluate(() => {
@@ -666,7 +666,7 @@ test.describe('Feature Request Pages - Styling & UI', () => {
     });
 
     test('glass panel styling applied to header', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const header = page.locator('header');
         await expect(header).toHaveClass(/glass-panel/);
@@ -675,7 +675,7 @@ test.describe('Feature Request Pages - Styling & UI', () => {
     });
 
     test('submit button has correct styling', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const submitBtn = page.locator('#submit-feature-btn');
         await expect(submitBtn).toHaveClass(/submit-feature-btn/);
@@ -687,7 +687,7 @@ test.describe('Feature Request Pages - Styling & UI', () => {
 test.describe('Feature Request Pages - Supabase Integration', () => {
 
     test('Supabase SDK is loaded', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const supabaseLoaded = await page.evaluate(() => {
             return typeof window.supabase !== 'undefined';
@@ -699,7 +699,7 @@ test.describe('Feature Request Pages - Supabase Integration', () => {
     });
 
     test('features.js is loaded', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const initFeaturesExists = await page.evaluate(() => {
@@ -712,7 +712,7 @@ test.describe('Feature Request Pages - Supabase Integration', () => {
     });
 
     test('initFeatures is called with correct product', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         // Check the features-container has loaded (indicates initFeatures ran)
@@ -726,7 +726,7 @@ test.describe('Feature Request Pages - Supabase Integration', () => {
 test.describe('Feature Request Pages - Footer', () => {
 
     test('footer exists with copyright', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const footer = page.locator('footer');
         await expect(footer).toBeVisible();
@@ -740,7 +740,7 @@ test.describe('Feature Request Pages - Footer', () => {
 test.describe('Feature Request Pages - Accessibility', () => {
 
     test('modal has close button with aria-label', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const closeBtn = page.locator('#modal-close');
         await expect(closeBtn).toHaveAttribute('aria-label', 'Close modal');
@@ -749,7 +749,7 @@ test.describe('Feature Request Pages - Accessibility', () => {
     });
 
     test('mobile menu close button has aria-label', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const closeBtn = page.locator('#close-mobile-menu');
         await expect(closeBtn).toHaveAttribute('aria-label', 'Close mobile menu');
@@ -758,7 +758,7 @@ test.describe('Feature Request Pages - Accessibility', () => {
     });
 
     test('form labels are associated with inputs', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -775,7 +775,7 @@ test.describe('Feature Request Pages - Accessibility', () => {
     });
 
     test('submit button is focusable', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
 
         const submitBtn = page.locator('#submit-feature-btn');
         await submitBtn.focus();
@@ -789,7 +789,7 @@ test.describe('Feature Request Pages - Accessibility', () => {
 test.describe('Feature Request Pages - Form Interactions', () => {
 
     test('form can be filled out', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -811,7 +811,7 @@ test.describe('Feature Request Pages - Form Interactions', () => {
     });
 
     test('form is reset when modal is closed', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal and fill form
@@ -835,7 +835,7 @@ test.describe('Feature Request Pages - Form Interactions', () => {
     });
 
     test('character counter shows warning near limit', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -855,7 +855,7 @@ test.describe('Feature Request Pages - Form Interactions', () => {
     });
 
     test('character counter shows error near max', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -914,7 +914,7 @@ test.describe('Feature Request Pages - Error Handling', () => {
         // Block Supabase CDN
         await page.route('**/supabase**', route => route.abort());
 
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(2000);
 
         // Page should still load, just without features
@@ -929,7 +929,7 @@ test.describe('Feature Request Pages - Performance', () => {
     test('page loads within acceptable time', async ({ page }) => {
         const startTime = Date.now();
 
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForLoadState('domcontentloaded');
 
         const loadTime = Date.now() - startTime;
@@ -947,7 +947,7 @@ test.describe('Feature Request Pages - Performance', () => {
             failedResources.push(request.url());
         });
 
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForLoadState('networkidle');
 
         // Filter out external resources that might be blocked
@@ -964,14 +964,14 @@ test.describe('Feature Request Pages - Performance', () => {
 test.describe('Product Page Feature Links', () => {
 
     const PRODUCT_PAGES = [
-        { url: '/chipos.html', featureUrl: 'chipos-features.html' },
-        { url: '/bevybeats.html', featureUrl: 'bevybeats-features.html' },
-        { url: '/savitri.html', featureUrl: 'savitri-features.html' },
-        { url: '/zaphy.html', featureUrl: 'zaphy-features.html' },
-        { url: '/agentic.html', featureUrl: 'agentic-features.html' },
-        { url: '/yuj.html', featureUrl: 'yuj-features.html' },
-        { url: '/adaptivision.html', featureUrl: 'adaptivision-features.html' },
-        { url: '/systemverilog.html', featureUrl: 'systemverilog-features.html' }
+        { url: '/chipos', featureUrl: '/chipos-features' },
+        { url: '/bevybeats', featureUrl: '/bevybeats-features' },
+        { url: '/savitri', featureUrl: '/savitri-features' },
+        { url: '/zaphy', featureUrl: '/zaphy-features' },
+        { url: '/agentic', featureUrl: '/agentic-features' },
+        { url: '/yuj', featureUrl: '/yuj-features' },
+        { url: '/adaptivision', featureUrl: '/adaptivision-features' },
+        { url: '/systemverilog', featureUrl: '/systemverilog-features' }
     ];
 
     for (const pageInfo of PRODUCT_PAGES) {
@@ -988,7 +988,7 @@ test.describe('Product Page Feature Links', () => {
     }
 
     test('clicking Feature Requests link navigates correctly', async ({ page }) => {
-        await page.goto('/chipos.html');
+        await page.goto('/chipos');
         await page.waitForTimeout(1000);
 
         // Find and click the Feature Requests link
@@ -1022,7 +1022,7 @@ test.describe('Feature Request Pages - Category System', () => {
     ];
 
     test('category tabs container exists', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const categoryTabs = page.locator('#category-tabs');
@@ -1032,7 +1032,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('all category tabs are present (9 total including All)', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const categoryTabs = page.locator('.category-tab');
@@ -1042,7 +1042,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('category tabs have correct data attributes', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         for (const category of EXPECTED_CATEGORIES) {
@@ -1054,7 +1054,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('category tabs display correct labels', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         for (const category of EXPECTED_CATEGORIES) {
@@ -1066,7 +1066,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('"All" category tab is active by default', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const allTab = page.locator('.category-tab[data-category="all"]');
@@ -1076,7 +1076,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('clicking category tab changes active state', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Click UI/UX tab
@@ -1095,7 +1095,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('all category tabs are clickable', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const categoryTabs = page.locator('.category-tab');
@@ -1111,7 +1111,7 @@ test.describe('Feature Request Pages - Category System', () => {
     });
 
     test('category tabs have icons (except All)', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Check that category tabs with icons have them
@@ -1128,7 +1128,7 @@ test.describe('Feature Request Pages - Category System', () => {
 test.describe('Feature Request Pages - Category Form Dropdown', () => {
 
     test('category dropdown exists in form', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Open modal
@@ -1142,7 +1142,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
     });
 
     test('category dropdown has all 8 category options', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -1158,7 +1158,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
     });
 
     test('category dropdown options have correct values', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -1175,7 +1175,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
     });
 
     test('category dropdown default is "general"', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -1188,7 +1188,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
     });
 
     test('category dropdown can be changed', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -1210,7 +1210,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
     });
 
     test('category dropdown has label', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         await page.click('#submit-feature-btn');
@@ -1227,7 +1227,7 @@ test.describe('Feature Request Pages - Category Form Dropdown', () => {
 test.describe('Feature Request Pages - Category Helper Functions', () => {
 
     test('CATEGORIES constant is exported to window', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const categoriesExist = await page.evaluate(() => {
@@ -1240,7 +1240,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('CATEGORIES has all 8 categories', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const categoryCount = await page.evaluate(() => {
@@ -1253,7 +1253,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('each category has label, icon, and color', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const allCategoriesValid = await page.evaluate(() => {
@@ -1273,7 +1273,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('generateCategoryTabs function is exported', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const functionExists = await page.evaluate(() => {
@@ -1286,7 +1286,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('generateCategoryOptions function is exported', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const functionExists = await page.evaluate(() => {
@@ -1299,7 +1299,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('generateCategoryTabs returns valid HTML', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const html = await page.evaluate(() => {
@@ -1317,7 +1317,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
     });
 
     test('generateCategoryOptions returns valid HTML options', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(1000);
 
         const html = await page.evaluate(() => {
@@ -1338,7 +1338,7 @@ test.describe('Feature Request Pages - Category Helper Functions', () => {
 test.describe('Feature Request Pages - Category Filtering Integration', () => {
 
     test('category and status filters can be combined', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Set status filter to Submitted
@@ -1359,7 +1359,7 @@ test.describe('Feature Request Pages - Category Filtering Integration', () => {
     });
 
     test('changing category preserves status filter', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Set status filter to Planned
@@ -1379,7 +1379,7 @@ test.describe('Feature Request Pages - Category Filtering Integration', () => {
     });
 
     test('changing status preserves category filter', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         // Set category filter
@@ -1402,7 +1402,7 @@ test.describe('Feature Request Pages - Category Filtering Integration', () => {
 test.describe('Feature Request Pages - Category Styling', () => {
 
     test('category tabs have proper styling class', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const categoryTabs = page.locator('.category-tabs');
@@ -1412,7 +1412,7 @@ test.describe('Feature Request Pages - Category Styling', () => {
     });
 
     test('active category tab has visual distinction', async ({ page }) => {
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const activeTab = page.locator('.category-tab.active');
@@ -1433,7 +1433,7 @@ test.describe('Feature Request Pages - Category Styling', () => {
 
     test('category tabs are horizontally scrollable on mobile', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/chipos-features.html');
+        await page.goto('/chipos-features');
         await page.waitForTimeout(500);
 
         const categoryTabs = page.locator('.category-tabs');

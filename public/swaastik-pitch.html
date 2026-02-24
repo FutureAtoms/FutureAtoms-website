@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+<meta name="robots" content="noindex, nofollow" />
+<title>Swaastik - Investor Pitch Deck | FutureAtoms</title>
+<meta name="description" content="Swaastik is building Swaastik, the AI operating system for Indian healthcare. ₹10 crore seed round to capture a ₹4.1L crore market opportunity." />
+<link rel="canonical" href="https://futureatoms.com/swaastik-pitch" />
+<meta property="og:title" content="Swaastik - Investor Pitch Deck | FutureAtoms" />
+<meta property="og:description" content="Swaastik is building Swaastik, the AI operating system for Indian healthcare. ₹10 crore seed round to capture a ₹4.1L crore market opportunity." />
+<meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp" />
+<meta property="og:url" content="https://futureatoms.com/swaastik-pitch" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@FutureAtoms" />
+<meta name="twitter:title" content="Swaastik - Investor Pitch Deck | FutureAtoms" />
+<meta name="twitter:description" content="Swaastik is building Swaastik, the AI operating system for Indian healthcare. ₹10 crore seed round to capture a ₹4.1L crore market opportunity." />
+<meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp" />
+<link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp" />
+<link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png" />
+<link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png" />
+<style>
+        @view-transition { navigation: auto; }
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f6f8fb;
+  --bg-soft: #eef3f9;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-strong: rgba(255, 255, 255, 0.95);
+  --ink: #0f1e32;
+  --muted: #4e5e77;
+  --subtle: #8da0bd;
+  --line: rgba(21, 48, 88, 0.14);
+  --brand: #00897B;
+  --brand-2: #FF6F00;
+  --accent: #d97706;
+  --good: #0f766e;
+  --danger: #b91c1c;
+  --gradient: linear-gradient(130deg, #00897B 0%, #FF6F00 55%, #0f766e 100%);
+  --shadow: 0 18px 42px rgba(16, 37, 70, 0.10);
+  --shadow-sm: 0 4px 16px rgba(16, 37, 70, 0.06);
+  --shadow-lg: 0 24px 56px rgba(16, 37, 70, 0.16);
+  --radius-lg: 26px;
+  --radius-md: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at 14% 12%, #e0f2f1 0%, transparent 34%),
+              radial-gradient(circle at 88% 10%, #fff3e0 0%, transparent 35%),
+              var(--bg);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.slide {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 64px;
+  overflow: hidden;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.18;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(246,248,251,0.1) 0%, rgba(246,248,251,0.85) 92%);
+  pointer-events: none;
+}
+
+.slide-inner {
+  width: min(1220px, 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255,255,255,0.65);
+}
+
+.section-kicker::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--brand);
+  box-shadow: 0 0 0 6px rgba(0,137,123,0.14);
+}
+
+h1, h2, h3 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(46px, 7vw, 84px);
+  line-height: 1.02;
+  margin-top: 18px;
+}
+
+h2 {
+  font-size: clamp(34px, 4.8vw, 58px);
+  line-height: 1.06;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.52;
+  color: var(--muted);
+}
+
+p.lead {
+  font-size: 21px;
+  font-weight: 450;
+  line-height: 1.55;
+}
+
+p.small {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sub {
+  margin-top: 22px;
+  max-width: 760px;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 450;
+  color: #2f4668;
+}
+
+.hero-strip {
+  margin-top: 28px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,137,123,0.24);
+  background: rgba(0,137,123,0.08);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: #0f3f5a;
+}
+
+.hero-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 3px 3px 0 0;
+}
+
+.stat-value {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1;
+  color: var(--ink);
+  transition: transform 250ms ease;
+}
+
+.stat-card:hover .stat-value {
+  transform: scale(1.04);
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* Hero stat gradient treatment */
+#s1 .stat-value {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero slide visual anchor */
+#s1 .slide-inner::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,137,123,0.08) 0%, rgba(255,111,0,0.04) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.card strong {
+  color: var(--ink);
+}
+
+.problem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #994d00;
+  background: rgba(217,119,6,0.12);
+  border: 1px solid rgba(217,119,6,0.25);
+  border-radius: 999px;
+  padding: 6px 11px;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  margin-top: 18px;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(0,137,123,0.24);
+  background: rgba(0,137,123,0.08);
+  color: #1a3a3c;
+  font-size: 17px;
+  font-weight: 450;
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.timeline-step {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 12px 10px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-step .k {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--brand-2);
+  margin-bottom: 6px;
+}
+
+.timeline-step .v {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.legend {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.now { background: var(--brand); }
+.next { background: var(--accent); }
+.out { background: var(--subtle); }
+
+.split-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.split-head .mini {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.table th {
+  background: rgba(255,111,0,0.08);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #FF6F00;
+}
+
+.table td {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.table td strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.table tr:last-child td { border-bottom: none; }
+
+.badge-now,
+.badge-next,
+.badge-out {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-now {
+  color: #00695C;
+  border: 1px solid rgba(0,137,123,0.24);
+  background: rgba(0,137,123,0.12);
+}
+
+.badge-next {
+  color: #8b4b00;
+  border: 1px solid rgba(217,119,6,0.26);
+  background: rgba(217,119,6,0.12);
+}
+
+.badge-out {
+  color: #516078;
+  border: 1px solid rgba(141,160,189,0.38);
+  background: rgba(141,160,189,0.14);
+}
+
+.logo-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.logo {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  background: var(--card-strong);
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  color: #193258;
+  box-shadow: var(--shadow-sm);
+}
+
+.notice {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #5c6f8c;
+}
+
+.quad {
+  margin-top: 20px;
+  position: relative;
+  height: 430px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card);
+}
+
+.axis {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.axis.top { top: 10px; left: 50%; transform: translateX(-50%); }
+.axis.bottom { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.axis.left { left: 12px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left top; }
+.axis.right { right: 12px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: right top; }
+
+.point {
+  position: absolute;
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  max-width: 220px;
+  box-shadow: 0 8px 20px rgba(12, 30, 56, 0.08);
+  opacity: 0.72;
+  transition: opacity 250ms ease;
+}
+
+.point:hover { opacity: 1; }
+
+.point .t {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.point .s {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.price-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.price-card {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 22px;
+}
+
+.price-card.featured {
+  border: 1px solid rgba(0,137,123,0.35);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.price-tier {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-2);
+}
+
+.price {
+  margin-top: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.price small {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.features {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.features div {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.roadmap {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mile {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--card-strong);
+}
+
+.mile .q {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mile h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.mile p {
+  font-size: 13px;
+}
+
+.ask-wrap {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+}
+
+.ask-amount {
+  border-radius: 22px;
+  border: 1px solid rgba(0,137,123,0.3);
+  background: linear-gradient(155deg, rgba(0,137,123,0.13), rgba(255,111,0,0.08));
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+}
+
+.ask-amount .num {
+  margin-top: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(56px, 8vw, 84px);
+  line-height: 1;
+}
+
+.funds {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 22px;
+}
+
+.funds .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.funds .row:last-child { border-bottom: none; }
+
+.funds .row .pct {
+  font-family: 'Sora', sans-serif;
+  color: var(--ink);
+}
+
+.source-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #617596;
+  line-height: 1.5;
+}
+
+.source-note a {
+  color: #2458b7;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(36,88,183,0.35);
+}
+
+.source-note a:hover { border-bottom-style: solid; }
+
+.slide-number {
+  position: absolute;
+  right: 28px;
+  top: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--subtle);
+}
+
+.nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: grid;
+  gap: 8px;
+}
+
+.dot-btn {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #9db0ca;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dot-btn.active {
+  opacity: 1;
+  transform: scale(1.35);
+  background: #00897B;
+  box-shadow: 0 0 0 8px rgba(0,137,123,0.14);
+}
+
+/* -- Animations -- */
+.animate {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.animate-right {
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: all 650ms cubic-bezier(.2,.65,.2,1);
+}
+
+.animate-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children > *:nth-child(6) { transition-delay: 400ms; }
+.stagger-children > *:nth-child(7) { transition-delay: 480ms; }
+.stagger-children > *:nth-child(8) { transition-delay: 560ms; }
+
+/* -- Market Visual (TAM/SAM/SOM Concentric Circles) -- */
+.market-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 24px;
+}
+
+.tam-circles {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 700ms cubic-bezier(.2,.65,.2,1), transform 700ms cubic-bezier(.2,.65,.2,1);
+}
+
+.circle.circle-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.circle-tam {
+  width: 340px;
+  height: 340px;
+  background: rgba(255,111,0,0.06);
+  border: 2px solid rgba(255,111,0,0.2);
+  top: 0;
+  left: 0;
+  transition-delay: 0ms;
+}
+
+.circle-sam {
+  width: 200px;
+  height: 200px;
+  background: rgba(0,137,123,0.08);
+  border: 2px solid rgba(0,137,123,0.3);
+  top: 70px;
+  left: 70px;
+  transition-delay: 200ms;
+}
+
+.circle-som {
+  width: 90px;
+  height: 90px;
+  background: rgba(217,119,6,0.12);
+  border: 2px solid rgba(217,119,6,0.4);
+  top: 125px;
+  left: 125px;
+  transition-delay: 400ms;
+}
+
+.circle .c-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.circle-tam .c-label { color: #FF6F00; position: absolute; top: 20px; }
+.circle-tam .c-value { position: absolute; top: 42px; font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+.circle-sam .c-label { color: #00897B; position: absolute; top: 16px; }
+.circle-sam .c-value { position: absolute; top: 36px; font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); }
+.circle-som .c-label { color: #d97706; }
+.circle-som .c-value { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-top: -4px; }
+
+.market-details {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 420px;
+}
+
+.market-row {
+  display: flex;
+  gap: 14px;
+}
+
+.market-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.market-row h3 { font-size: 17px; margin-bottom: 4px; }
+.market-row p { font-size: 14px; line-height: 1.45; }
+.market-row .methodology { font-size: 12px; color: var(--subtle); margin-top: 2px; }
+
+/* -- Improved Quadrant -- */
+.quad-grid-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.quad-grid-bg > div:nth-child(1) { background: rgba(0,137,123,0.03); }
+.quad-grid-bg > div:nth-child(2) { background: rgba(0,137,123,0.06); }
+.quad-grid-bg > div:nth-child(3) { background: rgba(141,160,189,0.03); }
+.quad-grid-bg > div:nth-child(4) { background: rgba(141,160,189,0.05); }
+
+.quad-sweetspot {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(0,137,123,0.30);
+  z-index: 5;
+}
+
+@keyframes swasthyaPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0,137,123,0.18), 0 0 0 4px rgba(0,137,123,0.06); }
+  50% { box-shadow: 0 8px 28px rgba(0,137,123,0.28), 0 0 0 8px rgba(0,137,123,0.10); }
+}
+
+.point-swasthya {
+  border: 1.5px solid rgba(0,137,123,0.45) !important;
+  background: linear-gradient(145deg, rgba(0,137,123,0.14), rgba(255,111,0,0.06)) !important;
+  animation: swasthyaPulse 3s ease-in-out infinite;
+  opacity: 1 !important;
+}
+
+.point-swasthya:hover { opacity: 1 !important; }
+.point-swasthya .t { color: #00695C !important; }
+
+/* -- Fund Bars -- */
+.fund-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fund-row:last-child { border-bottom: none; }
+
+.fund-row-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.fund-row-head .pct {
+  font-family: 'Sora', sans-serif;
+  color: var(--ink);
+}
+
+.fund-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(0,137,123,0.08);
+  overflow: hidden;
+}
+
+.fund-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #00897B, #FF6F00);
+  width: 0;
+  transition: width 800ms cubic-bezier(.2,.65,.2,1);
+}
+
+/* -- Connected Roadmap -- */
+.roadmap-line {
+  margin-top: 18px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.roadmap-line::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 6%;
+  right: 6%;
+  height: 3px;
+  background: linear-gradient(90deg, #00897B 0%, #FF6F00 33%, #d97706 66%, #0f766e 100%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.rm-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: var(--card-strong);
+  position: relative;
+  z-index: 1;
+}
+
+.rm-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  margin: 0 auto 10px;
+  border: 2.5px solid white;
+}
+
+.rm-card:nth-child(1) .rm-dot { background: #00897B; box-shadow: 0 0 0 2px #00897B; }
+.rm-card:nth-child(2) .rm-dot { background: #FF6F00; box-shadow: 0 0 0 2px #FF6F00; }
+.rm-card:nth-child(3) .rm-dot { background: #d97706; box-shadow: 0 0 0 2px #d97706; }
+.rm-card:nth-child(4) .rm-dot { background: #0f766e; box-shadow: 0 0 0 2px #0f766e; }
+
+.rm-card .q {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--brand-2);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.rm-card h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.rm-card p { font-size: 13px; }
+
+/* -- Team Slide -- */
+.team-layout {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px;
+}
+
+.founder-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.founder-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.founder-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.founder-title {
+  font-size: 14px;
+  color: var(--brand);
+  margin-top: 2px;
+}
+
+.credential-badges {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.cred-badge {
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.cred-badge strong {
+  font-size: 14px;
+  color: var(--ink);
+  display: block;
+}
+
+.cred-badge span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.advisor-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.advisor-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.advisor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f766e, #00897B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.why-team {
+  margin-top: 16px;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(0,137,123,0.24);
+  background: rgba(0,137,123,0.08);
+}
+
+.why-team strong { color: #00695C; }
+.why-team p { font-size: 15px; color: #1a3a3c; line-height: 1.5; }
+
+/* -- Investment Thesis Card -- */
+.thesis-card {
+  margin-top: 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,137,123,0.24);
+  background: linear-gradient(135deg, rgba(0,137,123,0.06) 0%, rgba(255,111,0,0.04) 100%);
+  padding: 22px 26px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.thesis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 4px 0 0 4px;
+}
+
+.thesis-card .thesis-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.thesis-card ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.thesis-card li {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a3a5c;
+  padding-left: 20px;
+  position: relative;
+}
+
+.thesis-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+
+/* -- Market Expansion Path -- */
+.expansion-path {
+  margin-top: 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,137,123,0.24);
+  background: linear-gradient(135deg, rgba(0,137,123,0.06) 0%, rgba(255,111,0,0.04) 100%);
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+}
+
+.expansion-path .exp-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.expansion-arrows {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  justify-content: center;
+}
+
+.exp-stage {
+  flex: 1;
+  text-align: center;
+  padding: 14px 12px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.exp-stage:nth-child(1) {
+  background: rgba(217,119,6,0.10);
+  border: 1px solid rgba(217,119,6,0.25);
+}
+
+.exp-stage:nth-child(2) {
+  background: rgba(0,137,123,0.10);
+  border: 1px solid rgba(0,137,123,0.25);
+}
+
+.exp-stage:nth-child(3) {
+  background: rgba(255,111,0,0.10);
+  border: 1px solid rgba(255,111,0,0.25);
+}
+
+.exp-stage .exp-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.exp-stage .exp-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.exp-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 22px;
+  color: var(--subtle);
+}
+
+.expansion-source {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--subtle);
+  line-height: 1.5;
+}
+
+/* -- Automation Surface Grid -- */
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.scope-column {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.scope-column .scope-badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+.scope-column ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.scope-column li {
+  font-size: 14px;
+  color: var(--muted);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.45;
+}
+
+.scope-column li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.scope-now li::before { background: var(--brand); }
+.scope-next li::before { background: var(--accent); }
+.scope-out li::before { background: var(--subtle); }
+
+@media (max-width: 680px) {
+  .scope-grid { grid-template-columns: 1fr; }
+  .expansion-arrows { flex-direction: column; }
+  .exp-arrow { justify-content: center; transform: rotate(90deg); padding: 4px 0; }
+}
+
+/* -- CTA Warm Accent -- */
+#s14::after {
+  background: linear-gradient(180deg, rgba(246,248,251,0.1) 0%, rgba(246,248,251,0.7) 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(217,119,6,0.06) 0%, transparent 60%);
+}
+
+@media (max-width: 1080px) {
+  .slide { padding: 72px 28px; }
+  .hero-grid,
+  .grid-4,
+  .grid-3,
+  .price-grid,
+  .roadmap,
+  .roadmap-line,
+  .logo-grid,
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-2,
+  .market-stack,
+  .ask-wrap,
+  .team-layout {
+    grid-template-columns: 1fr;
+  }
+  .market-visual {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .tam-circles {
+    width: 280px;
+    height: 280px;
+  }
+  .circle-tam { width: 280px; height: 280px; }
+  .circle-sam { width: 164px; height: 164px; top: 58px; left: 58px; }
+  .circle-som { width: 74px; height: 74px; top: 103px; left: 103px; }
+  .roadmap-line::before { display: none; }
+  .quad { height: 390px; }
+}
+
+@media (max-width: 680px) {
+  .hero-grid,
+  .grid-4,
+  .grid-3,
+  .price-grid,
+  .roadmap,
+  .roadmap-line,
+  .logo-grid,
+  .timeline { grid-template-columns: 1fr; }
+  p { font-size: 17px; }
+  .stat-value { font-size: 34px; }
+  .tam-circles {
+    width: 220px;
+    height: 220px;
+  }
+  .circle-tam { width: 220px; height: 220px; }
+  .circle-sam { width: 130px; height: 130px; top: 45px; left: 45px; }
+  .circle-som { width: 58px; height: 58px; top: 81px; left: 81px; }
+  .circle-tam .c-value { font-size: 18px; }
+  .circle-sam .c-value { font-size: 16px; }
+  .circle-som .c-value { font-size: 12px; }
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
+</head>
+<body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
+
+<div class="nav" aria-label="slide nav">
+  <button class="dot-btn" data-slide="0"></button>
+  <button class="dot-btn" data-slide="1"></button>
+  <button class="dot-btn" data-slide="2"></button>
+  <button class="dot-btn" data-slide="3"></button>
+  <button class="dot-btn" data-slide="4"></button>
+  <button class="dot-btn" data-slide="5"></button>
+  <button class="dot-btn" data-slide="6"></button>
+  <button class="dot-btn" data-slide="7"></button>
+  <button class="dot-btn" data-slide="8"></button>
+  <button class="dot-btn" data-slide="9"></button>
+  <button class="dot-btn" data-slide="10"></button>
+  <button class="dot-btn" data-slide="11"></button>
+  <button class="dot-btn" data-slide="12"></button>
+  <button class="dot-btn" data-slide="13"></button>
+</div>
+
+<!-- SLIDE 1: Hero -->
+<section id="main-content" class="slide" id="s1">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Swaastik / Investor Narrative 2026</span>
+    <h1 class="animate delay-1">The <span class="gradient-text">AI Operating System</span><br/>for Indian Healthcare</h1>
+    <p class="hero-sub animate delay-2">Connect 150,000+ facilities with AI-powered OCR, universal health records, and real-time surveillance. <strong>Healthcare data infrastructure is our battlefield.</strong></p>
+    <div class="hero-strip animate delay-2">Live today: 94.7% accuracy medical handwriting OCR and three-tier facility integration</div>
+
+    <div class="hero-grid stagger-children animate delay-3">
+      <div class="stat-card animate-scale">
+        <div class="stat-value">&#8377;4.1L Cr</div>
+        <div class="stat-label">Digital health market by 2033</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">150K+</div>
+        <div class="stat-label">Public health facilities in India</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">2B+</div>
+        <div class="stat-label">Prescriptions written annually</div>
+      </div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.ibef.org/industry/healthcare-india" target="_blank" rel="noopener noreferrer">IBEF Healthcare India</a> &middot;
+      <a href="https://www.nhp.gov.in/" target="_blank" rel="noopener noreferrer">National Health Portal</a> &middot;
+      <a href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer">ABDM</a>
+    </div>
+  </div>
+  <span class="slide-number">01 / 14</span>
+</section>
+
+<!-- SLIDE 2: Investment Thesis -->
+<section class="slide" id="s2">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Investment Thesis</span>
+    <h2 class="animate delay-1">Why Swaastik, why now</h2>
+
+    <div class="thesis-card animate delay-2">
+      <div class="thesis-label">Core Thesis</div>
+      <ul>
+        <li>India's digital health market is <strong>&#8377;75,658 crore ($8.79B)</strong> growing to <strong>&#8377;4,11,275 crore ($47.80B)</strong> by 2033 at 17.67% CAGR. Legacy hospital systems can't handle AI-native workflows.</li>
+        <li>AI is rewriting healthcare delivery. India's 150,000+ public facilities are the <strong>last major holdout</strong> &mdash; and the highest-impact target for 1.4 billion people.</li>
+        <li>Swaastik is the first <strong>ABDM-native platform</strong> built by practicing doctors with ground-level PHC experience, not by generalist health-tech founders.</li>
+        <li>Pilot-ready with government partnerships. <strong>&#8377;10 crore seed</strong> to capture the unified healthcare data category.</li>
+      </ul>
+    </div>
+
+    <div class="grid-3 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale">
+        <div class="stat-value">17.67%</div>
+        <div class="stat-label">Market CAGR through 2033</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">1.4B</div>
+        <div class="stat-label">People to be served</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">94.7%</div>
+        <div class="stat-label">OCR accuracy on handwritten Rx</div>
+      </div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.ibef.org/industry/healthcare-india" target="_blank" rel="noopener noreferrer">IBEF Healthcare India</a> &middot;
+      <a href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer">ABDM</a>
+    </div>
+  </div>
+  <span class="slide-number">02 / 14</span>
+</section>
+
+<!-- SLIDE 3: The Problem -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <span class="section-kicker animate">The Problem</span>
+    <h2 class="animate delay-1">Healthcare complexity exploded.<br/>Data infrastructure did not.</h2>
+    <p class="lead animate delay-2" style="max-width: 860px;">India executes healthcare delivery at massive scale. The bottleneck has shifted to data: paper-based records are fragmented, illegible, and too slow for universal health coverage goals.</p>
+
+    <div class="grid-2 stagger-children" style="margin-top: 20px;">
+      <div class="card animate">
+        <div class="problem-badge">Prescription Illegibility</div>
+        <h3>75% pharmacist accuracy</h3>
+        <p>Medical errors from illegible handwriting cause thousands of preventable complications annually.</p>
+      </div>
+      <div class="card animate">
+        <div class="problem-badge">Zero Continuity</div>
+        <h3>Medical history stays on paper</h3>
+        <p>Patient referred from PHC to district hospital? Complete records stay at the PHC. Repeated tests, delayed treatment.</p>
+      </div>
+      <div class="card animate">
+        <div class="problem-badge">Data Entry Bottleneck</div>
+        <h3>167 million hours wasted</h3>
+        <p>Manual typing takes 5 minutes per prescription. 2 billion prescriptions/year = 167 million hours wasted on data entry.</p>
+      </div>
+      <div class="card animate">
+        <div class="problem-badge">Rural-Urban Divide</div>
+        <h3>Unequal access persists</h3>
+        <p>Workforce shortages. 62% immunization coverage. 36.6 per 1,000 child mortality &mdash; highest in the world.</p>
+      </div>
+    </div>
+
+    <div class="highlight animate delay-3">
+      Core thesis: whoever digitizes the <strong>patient journey</strong> (Sub-Center &rarr; PHC &rarr; District Hospital &rarr; Medical College) will own the next control point in Indian healthcare delivery.
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6166510/" target="_blank" rel="noopener noreferrer">NCBI - Health Systems in India</a> &middot;
+      <a href="https://www.nhp.gov.in/public-health-system_pg" target="_blank" rel="noopener noreferrer">Public Health System in India</a>
+    </div>
+  </div>
+  <span class="slide-number">03 / 14</span>
+</section>
+
+<!-- SLIDE 4: Why Now -->
+<section class="slide" id="s4">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Why Now</span>
+    <h2 class="animate delay-1">Government investment is forcing a full redesign of healthcare IT</h2>
+
+    <div class="grid-4 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale">
+        <div class="stat-value">2.2%</div>
+        <div class="stat-label">of GDP spent on healthcare (up from 1.2-1.4%)</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">&#8377;86K Cr</div>
+        <div class="stat-label">Annual health IT spending by government</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">&#8377;5 Lakh</div>
+        <div class="stat-label">Coverage per family under PM-JAY</div>
+      </div>
+      <div class="stat-card animate-scale">
+        <div class="stat-value">150K</div>
+        <div class="stat-label">Health &amp; Wellness Centers target</div>
+      </div>
+    </div>
+
+    <div class="card animate delay-3" style="margin-top: 16px;">
+      <h3>The market signal is clear</h3>
+      <p class="lead">National Health Mission, Ayushman Bharat Digital Mission (ABDM), and PM-JAY are committing unprecedented capital to healthcare infrastructure. That accelerates digital adoption and makes healthcare data platforms mission-critical.</p>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Sources: <a href="https://www.ibef.org/industry/healthcare-india" target="_blank" rel="noopener noreferrer">IBEF Healthcare Report</a> &middot;
+      <a href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer">ABDM</a> &middot;
+      <a href="https://pmjay.gov.in/" target="_blank" rel="noopener noreferrer">PM-JAY</a> &middot;
+      <a href="https://nhm.gov.in/" target="_blank" rel="noopener noreferrer">National Health Mission</a>
+    </div>
+  </div>
+  <span class="slide-number">04 / 14</span>
+</section>
+
+<!-- SLIDE 5: Product -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Product</span>
+    <h2 class="animate delay-1">Swaastik is the control plane for healthcare delivery</h2>
+
+    <div class="grid-3 stagger-children" style="margin-top: 18px;">
+      <div class="card animate">
+        <h3>1. AI-Powered OCR Engine</h3>
+        <p>94.7% accuracy on handwritten prescriptions. CNN-LSTM + Medical NLP. Processes in 30 seconds, doctor verifies in 5 seconds. Zero typing required.</p>
+      </div>
+      <div class="card animate">
+        <h3>2. Three-Tier Integration</h3>
+        <p>Seamless data flow: Sub-Center &rarr; PHC &rarr; CHC &rarr; District Hospital &rarr; Medical College. Complete patient journey tracking with digital referrals.</p>
+      </div>
+      <div class="card animate">
+        <h3>3. Universal Health Records</h3>
+        <p>ABDM-compliant lifetime medical history. Accessible anywhere in India. Patient-controlled consent. Encrypted and secure.</p>
+      </div>
+      <div class="card animate">
+        <h3>4. Real-Time Analytics</h3>
+        <p>Public health surveillance, disease outbreak detection, clinical decision support, resource optimization, automated IHIP reporting.</p>
+      </div>
+      <div class="card animate">
+        <h3>5. Patient Mobile App</h3>
+        <p>Medication reminders, appointment booking, lab reports, health education, telemedicine access. Available in 22 Indian languages.</p>
+      </div>
+      <div class="card animate">
+        <h3>6. Security &amp; Compliance</h3>
+        <p>ABDM compliant, DISHA framework, end-to-end encryption (AES-256), ISO 27001 ready, data residency in India.</p>
+      </div>
+    </div>
+
+    <div class="card animate delay-4" style="margin-top: 16px;">
+      <div class="split-head">
+        <h3>Workflow position</h3>
+        <span class="mini">Registration &rarr; Consultation &rarr; Rx (OCR) &rarr; Diagnosis &rarr; Treatment &rarr; Referral</span>
+      </div>
+      <p>Swaastik does not replace doctors or hospitals. It accelerates data flow and care coordination across the healthcare system.</p>
+    </div>
+  </div>
+  <span class="slide-number">05 / 14</span>
+</section>
+
+<!-- SLIDE 6: What Works Today -->
+<section class="slide" id="s6">
+  <div class="slide-inner">
+    <span class="section-kicker animate">What Works Today</span>
+    <h2 class="animate delay-1">From handwritten prescription to structured data in 35 seconds</h2>
+
+    <div class="timeline stagger-children">
+      <div class="timeline-step animate-right"><span class="k">Step 1</span><span class="v">Doctor writes Rx on paper</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 2</span><span class="v">AI OCR processes (30s)</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 3</span><span class="v">Doctor verifies (5s)</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 4</span><span class="v">Data saved forever</span></div>
+      <div class="timeline-step animate-right"><span class="k">Step 5</span><span class="v">Patient gets SMS</span></div>
+    </div>
+
+    <div class="grid-4 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale"><div class="stat-value">94.7%</div><div class="stat-label">OCR accuracy on handwritten prescriptions</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">99.6%</div><div class="stat-label">Region detection accuracy (YOLOv5)</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">96%</div><div class="stat-label">Medical spell correction accuracy</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">90%</div><div class="stat-label">Time savings vs manual entry</div></div>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Internal validation: Tested on 10,000+ Indian prescriptions across multiple PHCs. Lekhak Medical OCR &middot; MIRAGE Multimodal Recognition
+    </div>
+  </div>
+  <span class="slide-number">06 / 14</span>
+</section>
+
+<!-- SLIDE 7: Automation Surface -->
+<section class="slide" id="s7">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Automation Surface</span>
+    <h2 class="animate delay-1">Clear scope: data infrastructure + care coordination, not clinical decision-making</h2>
+
+    <div class="scope-grid animate delay-2">
+      <div class="scope-column scope-now">
+        <div class="scope-badge badge-now">Now &mdash; Shipped</div>
+        <ul>
+          <li>AI-powered prescription OCR</li>
+          <li>Universal patient health records</li>
+          <li>Three-tier facility integration</li>
+          <li>Digital referral workflows</li>
+          <li>Patient mobile app</li>
+          <li>Medication reminders</li>
+          <li>Lab result management</li>
+          <li>ABDM integration (Health ID)</li>
+        </ul>
+      </div>
+      <div class="scope-column scope-next">
+        <div class="scope-badge badge-next">Next &mdash; Roadmap</div>
+        <ul>
+          <li>Clinical decision support</li>
+          <li>Outbreak prediction models</li>
+          <li>Telemedicine integration</li>
+          <li>Wearable device sync</li>
+          <li>Blockchain health records</li>
+          <li>Ambulance coordination</li>
+          <li>Medicine supply chain</li>
+          <li>AI health chatbot</li>
+        </ul>
+      </div>
+      <div class="scope-column scope-out">
+        <div class="scope-badge badge-out">Out of Scope</div>
+        <ul>
+          <li>Clinical diagnosis</li>
+          <li>Treatment decisions</li>
+          <li>Medical device hardware</li>
+          <li>Pharmaceutical manufacturing</li>
+          <li>Insurance underwriting</li>
+          <li>Hospital construction</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight animate delay-3">
+      Clinical decisions remain with doctors. Swaastik focuses on <strong>data infrastructure</strong>, workflow automation, care coordination, and patient engagement.
+    </div>
+  </div>
+  <span class="slide-number">07 / 14</span>
+</section>
+
+<!-- SLIDE 8: Market Opportunity -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Market Opportunity</span>
+    <h2 class="animate delay-1">Massive TAM, concentrated government spend, clear entry wedge</h2>
+
+    <div class="market-visual animate delay-2">
+      <div class="tam-circles">
+        <div class="circle circle-tam">
+          <span class="c-label">TAM</span>
+          <span class="c-value">&#8377;4,11,275 Cr</span>
+        </div>
+        <div class="circle circle-sam">
+          <span class="c-label">SAM</span>
+          <span class="c-value">&#8377;15,000 Cr</span>
+        </div>
+        <div class="circle circle-som">
+          <span class="c-label">SOM</span>
+          <span class="c-value">&#8377;500 Cr</span>
+        </div>
+      </div>
+
+      <div class="market-details">
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(255,111,0,0.5);"></div>
+          <div>
+            <h3>TAM &mdash; &#8377;4,11,275 Cr</h3>
+            <p>Digital health market by 2033 at 17.67% CAGR</p>
+          </div>
+        </div>
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(0,137,123,0.6);"></div>
+          <div>
+            <h3>SAM &mdash; &#8377;15,000 Cr</h3>
+            <p>Healthcare IT infrastructure for public + private hospitals (annual)</p>
+          </div>
+        </div>
+        <div class="market-row">
+          <div class="market-dot" style="background: rgba(217,119,6,0.6);"></div>
+          <div>
+            <h3>SOM (Year 5) &mdash; &#8377;500 Cr</h3>
+            <p>AI-powered healthcare data platforms for government facilities and private hospitals. 3.3% of SAM.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expansion-path animate delay-3">
+      <div class="exp-label">Path beyond &#8377;500 Cr SOM</div>
+      <div class="expansion-arrows">
+        <div class="exp-stage">
+          <div class="exp-value">&#8377;500 Cr</div>
+          <div class="exp-desc">Year 5 SOM: SaaS licenses across 75,000 facilities</div>
+        </div>
+        <div class="exp-arrow">&rarr;</div>
+        <div class="exp-stage">
+          <div class="exp-value">&#8377;1-2K Cr</div>
+          <div class="exp-desc">Labor substitution: 60% of data entry staff time automated</div>
+        </div>
+        <div class="exp-arrow">&rarr;</div>
+        <div class="exp-stage">
+          <div class="exp-value">&#8377;3-5K Cr</div>
+          <div class="exp-desc">Platform expansion: Every facility standardizes on Swaastik</div>
+        </div>
+      </div>
+      <div class="expansion-source">Sources: IBEF Healthcare Market &middot; a16z Vertical SaaS + AI &middot; Bottom-up: 75,000 facilities &times; &#8377;6.67L avg. ACV</div>
+    </div>
+  </div>
+  <span class="slide-number">08 / 14</span>
+</section>
+
+<!-- SLIDE 9: Customers & ICP -->
+<section class="slide" id="s9">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Customers &amp; ICP</span>
+    <h2 class="animate delay-1">Start where digital adoption is existential</h2>
+
+    <div class="card animate delay-2" style="margin-bottom: 16px;">
+      <div class="problem-badge">Pilot Partner</div>
+      <h3>PHC Chhainsa, VMMC &amp; Safdarjung Hospital</h3>
+      <p>Uses Swaastik workflows for NCD management and preventive care OPD.</p>
+      <p class="small" style="margin-top: 8px; color: var(--subtle);">Beachhead: Public health facilities with high patient volume, NCD burden, and immediate need for digital workflows.</p>
+    </div>
+
+    <div class="grid-2 stagger-children" style="margin-top: 14px;">
+      <div>
+        <h3 style="margin-bottom: 10px;">Target Accounts (Public Sector)</h3>
+        <div class="grid-2" style="gap: 10px;">
+          <div class="card animate" style="padding: 14px; text-align: center;">
+            <div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--ink);">158,000</div>
+            <p class="small">Sub-Centers</p>
+          </div>
+          <div class="card animate" style="padding: 14px; text-align: center;">
+            <div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--ink);">25,000</div>
+            <p class="small">Primary Health Centers</p>
+          </div>
+          <div class="card animate" style="padding: 14px; text-align: center;">
+            <div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--ink);">5,600</div>
+            <p class="small">Community Health Centers</p>
+          </div>
+          <div class="card animate" style="padding: 14px; text-align: center;">
+            <div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: var(--ink);">750</div>
+            <p class="small">District Hospitals</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 10px;">Target Accounts (Private Sector)</h3>
+        <div class="logo-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="logo animate">Apollo</div>
+          <div class="logo animate">Fortis</div>
+          <div class="logo animate">Max</div>
+          <div class="logo animate">Manipal</div>
+          <div class="logo animate">Narayana</div>
+          <div class="logo animate">600 Medical Colleges</div>
+        </div>
+        <p class="notice">Target-account examples, not claimed contracted customers.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">09 / 14</span>
+</section>
+
+<!-- SLIDE 10: Competition -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Competition</span>
+    <h2 class="animate delay-1">White space: ABDM-native, three-tier integration, AI-powered OCR</h2>
+
+    <table class="table animate delay-2" style="margin-top: 18px;">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>OCR</th>
+          <th>3-Tier</th>
+          <th>ABDM</th>
+          <th>Public Focus</th>
+          <th>AI-Native</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>eSanjeevani (Govt)</strong></td><td>&cross;</td><td>&cross;</td><td>&check;</td><td>&check;</td><td>&cross;</td></tr>
+        <tr><td><strong>Practo</strong></td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td></tr>
+        <tr><td><strong>PharmEasy</strong></td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td></tr>
+        <tr><td><strong>Eka Care</strong></td><td>&cross;</td><td>&cross;</td><td>&check;</td><td>&cross;</td><td>&cross;</td></tr>
+        <tr><td><strong>Hospital ERP Vendors</strong></td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td><td>&cross;</td></tr>
+        <tr style="background: rgba(0,137,123,0.06);"><td><strong style="color: #00897B;">Swaastik &#9733;</strong></td><td style="color: #00897B; font-weight: 700;">&check;</td><td style="color: #00897B; font-weight: 700;">&check;</td><td style="color: #00897B; font-weight: 700;">&check;</td><td style="color: #00897B; font-weight: 700;">&check;</td><td style="color: #00897B; font-weight: 700;">&check;</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 20px;" class="animate delay-3">Our Moats</h3>
+    <div class="grid-2 stagger-children" style="margin-top: 10px;">
+      <div class="card animate">
+        <h3>Medical OCR IP</h3>
+        <p>94.7% accuracy (18-month development lead). Trained on 50,000+ Indian prescriptions.</p>
+      </div>
+      <div class="card animate">
+        <h3>Government Relationships</h3>
+        <p>Built by practicing doctors. Operational experience at PHC level. ABDM-native from day one.</p>
+      </div>
+      <div class="card animate">
+        <h3>Network Effects</h3>
+        <p>More facilities = more valuable. Only platform connecting all three tiers.</p>
+      </div>
+      <div class="card animate">
+        <h3>Domain Expertise</h3>
+        <p>Founded by MBBS, MD doctors with community medicine experience. Not generalist tech founders.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">10 / 14</span>
+</section>
+
+<!-- SLIDE 11: Business Model & GTM -->
+<section class="slide" id="s11">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Business Model + GTM</span>
+    <h2 class="animate delay-1">Land with one facility. Expand to the full state.</h2>
+
+    <div class="grid-3 stagger-children" style="margin-top: 18px;">
+      <div class="card animate">
+        <h3>Government <span style="color: var(--brand); font-size: 14px;">60% of revenue</span></h3>
+        <p class="small">License: &#8377;25K-&#8377;5L per facility/year<br/>Implementation: &#8377;25L per district<br/>Annual maintenance: 20% of license<br/>NHM/ABDM contracts, IHIP reporting</p>
+      </div>
+      <div class="card animate">
+        <h3>Private Hospitals <span style="color: var(--brand); font-size: 14px;">25% of revenue</span></h3>
+        <p class="small">Small (50-100 beds): &#8377;1.5L/year<br/>Medium (100-250 beds): &#8377;4L/year<br/>Large (250+ beds): &#8377;10L/year<br/>Corporate chains: Custom pricing</p>
+      </div>
+      <div class="card animate">
+        <h3>Value-Added <span style="color: var(--brand); font-size: 14px;">15% of revenue</span></h3>
+        <p class="small">Patient premium: &#8377;99/month<br/>Medicine delivery: 10-15% commission<br/>Diagnostic tests: 20% commission<br/>Anonymized research data</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 20px;" class="animate delay-3">GTM Motion: Land &rarr; Expand &rarr; Scale</h3>
+    <div class="grid-3 stagger-children" style="margin-top: 10px;">
+      <div class="card animate" style="border-top: 3px solid var(--brand);">
+        <h3>Land</h3>
+        <p class="small">Start with PHC or district hospital pilot. Prove 90% time savings on data entry. Measure ROI.</p>
+      </div>
+      <div class="card animate" style="border-top: 3px solid var(--accent);">
+        <h3>Expand</h3>
+        <p class="small">Roll out to all facilities in district. Demonstrate care coordination benefits across tiers.</p>
+      </div>
+      <div class="card animate" style="border-top: 3px solid var(--good);">
+        <h3>Scale</h3>
+        <p class="small">State-wide contract via health department. Become default healthcare data infrastructure.</p>
+      </div>
+    </div>
+
+    <div class="highlight animate delay-4">
+      Unit Economics: CAC &#8377;15,000 | LTV &#8377;2,50,000 | LTV/CAC 16.7x | Gross Margin 75% | CAC Payback 8 months
+    </div>
+  </div>
+  <span class="slide-number">11 / 14</span>
+</section>
+
+<!-- SLIDE 12: Traction & Roadmap -->
+<section class="slide" id="s12">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Traction + Roadmap</span>
+    <h2 class="animate delay-1">Pilot-ready, government partnerships active</h2>
+
+    <div class="grid-4 stagger-children" style="margin-top: 18px;">
+      <div class="stat-card animate-scale"><div class="stat-value">1</div><div class="stat-label">Live pilot site (PHC Chhainsa)</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">112</div><div class="stat-label">Pages in comprehensive PRD</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">10K+</div><div class="stat-label">Prescriptions for OCR training</div></div>
+      <div class="stat-card animate-scale"><div class="stat-value">94.7%</div><div class="stat-label">OCR accuracy validated</div></div>
+    </div>
+
+    <div class="roadmap-line stagger-children" style="margin-top: 18px;">
+      <div class="rm-card animate">
+        <div class="rm-dot"></div>
+        <div class="q">Q1 2026</div>
+        <h4>MVP Development</h4>
+        <p>Core platform, OCR engine, patient/doctor interfaces, ABDM integration</p>
+      </div>
+      <div class="rm-card animate">
+        <div class="rm-dot"></div>
+        <div class="q">Q2 2026</div>
+        <h4>Gurugram Pilot</h4>
+        <p>15 facilities, 5,000 patients, three-tier integration validated</p>
+      </div>
+      <div class="rm-card animate">
+        <div class="rm-dot"></div>
+        <div class="q">Q3 2026</div>
+        <h4>Haryana State</h4>
+        <p>300 facilities, 10L patients, state health department contract</p>
+      </div>
+      <div class="rm-card animate">
+        <div class="rm-dot"></div>
+        <div class="q">Q4 2026</div>
+        <h4>Multi-State</h4>
+        <p>3 states, advanced features (telemedicine, AI chatbot, wearables)</p>
+      </div>
+    </div>
+
+    <div class="card animate delay-3" style="margin-top: 16px;">
+      <h3>Validation &amp; Letters of Interest</h3>
+      <p class="small">&bull; Dr. Jugal Kishore (Professor, Community Medicine, VMMC) &mdash; Technical advisor</p>
+      <p class="small">&bull; Dr. Sneha Kumari (Medical Officer, PHC Chhainsa) &mdash; Operational insights</p>
+      <p class="small">&bull; Haryana Health Department &mdash; Pilot discussions underway</p>
+    </div>
+  </div>
+  <span class="slide-number">12 / 14</span>
+</section>
+
+<!-- SLIDE 13: Team -->
+<section class="slide" id="s13">
+  <div class="slide-inner">
+    <span class="section-kicker animate">Team</span>
+    <h2 class="animate delay-1">Deep domain, not just health-tech</h2>
+
+    <div class="team-layout animate delay-2">
+      <div>
+        <div class="founder-header">
+          <div class="founder-avatar">KC</div>
+          <div>
+            <div class="founder-name">Dr. Kartik Chadhar</div>
+            <div class="founder-title">Founder &amp; CEO</div>
+          </div>
+        </div>
+        <p style="font-size: 15px; line-height: 1.5; color: var(--muted);">MBBS (AIIMS Bhopal), MD Community Medicine (AIIMS Delhi). 5+ years operational experience running PHC OPDs, NCD screening programs, and public health initiatives across Haryana. Built proof-of-concept Google Sheets system handling 1,000+ patient records. NTSE Scholar.</p>
+
+        <div class="credential-badges" style="margin-top: 14px;">
+          <div class="cred-badge">
+            <div><strong>5+ yrs PHC ops</strong><span>NCD screening &amp; public health</span></div>
+          </div>
+          <div class="cred-badge">
+            <div><strong>AIIMS Delhi &amp; Bhopal</strong><span>MBBS + MD Community Medicine</span></div>
+          </div>
+          <div class="cred-badge">
+            <div><strong>Safdarjung Hospital</strong><span>VMMC partnerships</span></div>
+          </div>
+          <div class="cred-badge">
+            <div><strong>NTSE Scholar</strong><span>Ground-level healthcare expertise</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="advisor-card">
+          <div class="advisor-header">
+            <div class="advisor-avatar">AC</div>
+            <div>
+              <div class="founder-name" style="font-size: 18px;">Abhilash Chadhar</div>
+              <div class="founder-title">Technical Advisor</div>
+            </div>
+          </div>
+          <p style="font-size: 14px; line-height: 1.5;">Founder @ FutureAtoms (ChipOS). 10 years in silicon verification at Intel (Habana AI), ISRO, Axelera AI. Led verification signoff for AI accelerators, RISC-V CPUs, SerDes PHYs. Multiple tapeouts with working silicon. Strategic technical advisor for AI/ML infrastructure.</p>
+          <p class="small" style="margin-top: 8px;">10+ yrs AI/ML systems experience. Intel, Axelera AI, ISRO. 9 Intel awards.</p>
+        </div>
+
+        <div class="why-team" style="margin-top: 16px;">
+          <strong>Why this team</strong>
+          <p style="margin-top: 6px;">Built healthcare systems from the ground up, not just software products. Understands where doctors lose time: data entry, coordination failures, information silos.</p>
+          <div style="margin-top: 12px; padding: 12px; border-radius: 10px; background: rgba(0,137,123,0.06); border: 1px solid rgba(0,137,123,0.18); font-size: 14px; color: #00695C; font-weight: 550; text-align: center;">
+            5+ years at PHC level. Built Swaastik from lived healthcare delivery pain.
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 12px;">
+          <h3>Hiring with Funding</h3>
+          <p class="small">CTO (Healthcare IT) &middot; Chief Medical Officer &middot; Head of AI/ML &middot; 12 Engineers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-number">13 / 14</span>
+</section>
+
+<!-- SLIDE 14: The Ask -->
+<section class="slide" id="s14">
+  <div class="slide-inner">
+    <span class="section-kicker animate">The Ask</span>
+    <h2 class="animate delay-1">Raise: <span class="gradient-text">&#8377;10 crore seed</span> to own AI-native healthcare workflows</h2>
+
+    <div class="ask-wrap animate delay-2">
+      <div class="ask-amount">
+        <p style="font-size:16px; text-transform:uppercase; letter-spacing:0.08em; color:#1a4a4a;">Runway</p>
+        <div class="num gradient-text">18 months</div>
+        <p style="margin-top: 12px;">Target outcomes: 3 states, 10L+ patients digitized, &#8377;45 Cr revenue run-rate, and durable workflow moat in healthcare data infrastructure.</p>
+      </div>
+      <div class="funds">
+        <h3>Use of funds</h3>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>Engineering (platform + AI/ML)</span><span class="pct">50%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="50%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>GTM (govt partnerships + pilots)</span><span class="pct">30%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="30%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="fund-row-head"><span>Infra + compliance</span><span class="pct">20%</span></div>
+          <div class="fund-bar"><div class="fund-fill" data-width="20%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3 animate delay-3" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Engineering (&#8377;5 Cr)</h3>
+        <p class="small">Core platform &middot; OCR model training &middot; Mobile apps &middot; Cloud infra &middot; Security</p>
+      </div>
+      <div class="card">
+        <h3>GTM (&#8377;3 Cr)</h3>
+        <p class="small">Govt partnerships team &middot; Pilot implementations &middot; Training &middot; Marketing</p>
+      </div>
+      <div class="card">
+        <h3>Infrastructure (&#8377;2 Cr)</h3>
+        <p class="small">Office &middot; Legal/compliance &middot; Hardware (tablets, scanners) &middot; Operations</p>
+      </div>
+    </div>
+
+    <div class="card animate delay-3" style="margin-top: 16px;">
+      <h3>Contact</h3>
+      <p><a href="https://futureatoms.com" target="_blank" rel="noopener noreferrer">futureatoms.com</a> &middot; <a href="mailto:founder@futureatoms.com">founder@futureatoms.com</a></p>
+    </div>
+
+    <div class="source-note animate delay-4">
+      Deck structure influenced by widely-used VC guidance on narrative clarity and sequencing:
+      <a href="https://sequoiacap.com/article/writing-a-business-plan/" target="_blank" rel="noopener noreferrer">Sequoia</a> &middot;
+      <a href="https://www.ycombinator.com/blog/how-to-design-a-better-pitch-deck/" target="_blank" rel="noopener noreferrer">Y Combinator</a> &middot;
+      <a href="https://www.docsend.com/blog/pre-seed-pitch-deck-guide/" target="_blank" rel="noopener noreferrer">DocSend</a>
+    </div>
+  </div>
+  <span class="slide-number">14 / 14</span>
+</section>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')]
+const dots = [...document.querySelectorAll('.dot-btn')]
+
+const animateObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible')
+  })
+}, { threshold: 0.14 })
+
+document.querySelectorAll('.animate, .animate-scale, .animate-right').forEach((el) => animateObserver.observe(el))
+
+const circleObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.circle').forEach((c) => c.classList.add('circle-revealed'))
+    }
+  })
+}, { threshold: 0.3 })
+
+document.querySelectorAll('.tam-circles').forEach((el) => circleObserver.observe(el))
+
+const fundObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.fund-fill').forEach((bar) => {
+        const w = bar.getAttribute('data-width')
+        if (w) bar.style.width = w
+      })
+    }
+  })
+}, { threshold: 0.4 })
+
+document.querySelectorAll('.funds').forEach((el) => fundObserver.observe(el))
+
+let activeIndex = 0
+const slideObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const idx = slides.indexOf(entry.target)
+      activeIndex = idx
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx))
+    }
+  })
+}, { threshold: 0.55 })
+
+slides.forEach((s) => slideObserver.observe(s))
+
+dots.forEach((dot, idx) => {
+  dot.addEventListener('click', () => slides[idx].scrollIntoView({ behavior: 'smooth' }))
+})
+
+document.addEventListener('keydown', (e) => {
+  if (['ArrowDown', 'ArrowRight', ' '].includes(e.key)) {
+    e.preventDefault()
+    if (activeIndex < slides.length - 1) slides[activeIndex + 1].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (['ArrowUp', 'ArrowLeft'].includes(e.key)) {
+    e.preventDefault()
+    if (activeIndex > 0) slides[activeIndex - 1].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (e.key === 'Home') {
+    e.preventDefault()
+    slides[0].scrollIntoView({ behavior: 'smooth' })
+  }
+  if (e.key === 'End') {
+    e.preventDefault()
+    slides[slides.length - 1].scrollIntoView({ behavior: 'smooth' })
+  }
+})
+
+dots[0]?.classList.add('active')
+</script>
+</body>
+</html>

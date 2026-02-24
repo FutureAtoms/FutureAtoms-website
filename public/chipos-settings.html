@@ -1,7 +1,12 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/chipos-settings.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/chipos-settings">
     <title>ChipOS Settings &amp; Configuration Guide</title>
     <meta name="description" content="Complete settings documentation for ChipOS. Learn how to configure RAG, Code Extraction, API Keys, and all advanced options.">
     <meta property="og:title" content="ChipOS Settings | FutureAtoms">
@@ -28,6 +33,7 @@
 
     <link rel="stylesheet" href="css/main.css?v=9999">
     <style>
+        @view-transition { navigation: auto; }
         :root {
             --cyan-glow: rgba(0, 255, 255, 0.3);
             --purple-glow: rgba(147, 51, 234, 0.3);
@@ -253,9 +259,12 @@
             }
         }
     </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body class="min-h-screen">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Mobile Nav Button -->
     <button id="mobileNavBtn" class="mobile-nav-btn fixed top-4 left-4 z-50 w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 items-center justify-center text-cyan-400">
         <i class="fas fa-bars text-lg"></i>
@@ -264,8 +273,8 @@
     <!-- Sidebar -->
     <aside id="sidebar" class="docs-sidebar fixed left-0 top-0 w-72 h-screen overflow-y-auto py-8 px-4">
         <!-- Logo -->
-        <a href="chipos.html" class="flex items-center gap-3 mb-8 px-4">
-            <img src="chipos-logo.png" alt="ChipOS" class="w-10 h-10">
+        <a href="/chipos" class="flex items-center gap-3 mb-8 px-4">
+            <img src="chipos-logo.png" alt="ChipOS" class="w-10 h-10" decoding="async">
             <span class="font-orbitron text-xl font-bold text-white">ChipOS</span>
         </a>
 
@@ -327,7 +336,7 @@
 
             <!-- Back to docs -->
             <div class="pt-6 border-t border-gray-700">
-                <a href="chipos-docs.html" class="sidebar-link block py-2 px-4 text-cyan-400 text-sm">
+                <a href="/chipos-docs" class="sidebar-link block py-2 px-4 text-cyan-400 text-sm">
                     <i class="fas fa-arrow-left mr-2"></i> Back to Documentation
                 </a>
             </div>
@@ -335,7 +344,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="docs-main ml-72 min-h-screen">
+    <main id="main-content" class="docs-main ml-72 min-h-screen">
         <div class="docs-content min-h-screen p-8 lg:p-12">
             <div class="max-w-4xl mx-auto">
 
@@ -594,7 +603,7 @@
                                 <strong class="text-white">New Default: Voyage AI</strong>
                                 <p class="text-gray-300 text-sm mt-1">Voyage AI's <code>voyage-code-3</code> is now the
                                     default embedding model, offering <strong>13-17% better code retrieval</strong> than
-                                    OpenAI while using 33% less memory (1024 vs 1536 dimensions). Get your API key at <a href="https://voyage.ai" target="_blank" class="text-cyan-400 hover:underline">voyage.ai</a>.</p>
+                                    OpenAI while using 33% less memory (1024 vs 1536 dimensions). Get your API key at <a href="https://voyage.ai" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">voyage.ai</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -1093,10 +1102,10 @@
                     <div class="flex items-center justify-between">
                         <p class="text-gray-500 text-sm">Last updated: January 2026</p>
                         <div class="flex gap-4">
-                            <a href="chipos-docs.html" class="text-cyan-400 text-sm hover:text-cyan-300">
+                            <a href="/chipos-docs" class="text-cyan-400 text-sm hover:text-cyan-300">
                                 <i class="fas fa-book mr-1"></i> Full Documentation
                             </a>
-                            <a href="chipos.html" class="text-cyan-400 text-sm hover:text-cyan-300">
+                            <a href="/chipos" class="text-cyan-400 text-sm hover:text-cyan-300">
                                 <i class="fas fa-download mr-1"></i> Download ChipOS
                             </a>
                         </div>

@@ -1,0 +1,88 @@
+THURSDAY — DATA POST: "5 Numbers + Zero" (LinkedIn text post)
+=====================================================================
+Pillar: Market Timing
+VC Signal: "Why now" — external conditions signal category opportunity
+
+=====================================================================
+POST COPY:
+=====================================================================
+
+5 numbers from the India AI Summit 2026. And one more.
+
+$250B — total investment pledges. Guinness World Record.
+
+58,000 — GPUs India will have by year-end (up from 38,000).
+
+$4.7B — India's Semiconductor Mission 2.0 budget (Rs 40,000 crore).
+
+500,000+ — concurrent viewers for the Hassabis-Bengio-LeCun keynote.
+
+100,000+ — chip engineers in India right now.
+
+And the number that matters most:
+
+0 — Indian companies building the design layer. The tools those 100,000 engineers use every day to create chips.
+
+$250B for compute. $4.7B for semiconductors. $0 for the design layer.
+
+That's not a gap. That's a category.
+
+
+=====================================================================
+FIRST COMMENT (post within 30 seconds):
+=====================================================================
+
+We're building that design layer. Try ChipOS free: chipos.ai
+Summit coverage: futureatoms.com/india-ai-summit-2026
+
+
+=====================================================================
+INSTAGRAM VERSION (infographic):
+=====================================================================
+
+Design a single image (1080 x 1350) with:
+- Dark background (#0a0a0f)
+- India tricolor accent line at top
+- Title: "5 NUMBERS FROM THE SUMMIT. AND ONE MORE."
+- Each number in cyan, 60pt, left-aligned
+- Description in white, 28pt
+- "0" as the final number, isolated, larger (80pt)
+- "$250B for compute. $0 for design." at bottom in white 32pt
+
+Instagram caption:
+5 numbers from the India AI Summit 2026. And one more.
+
+Swipe through the carousel for the full day-by-day breakdown (3 posts back).
+
+The number that matters most: 0 Indian companies building the chip design layer.
+
+$250B for compute. $0 for design.
+
+That's the gap. That's what we're building.
+
+#IndiaAISummit2026 #Semiconductors #ChipDesign #AgenticAI #BuildInPublic
+
+
+=====================================================================
+POSTING NOTES:
+=====================================================================
+
+1. THIS IS A "SAVE-WORTHY" POST
+   - Data posts with clean numbers get high save rates
+   - The "5 + 1" structure is a proven engagement format
+   - The "zero" reveal at the end creates the emotional punch
+
+2. THE ZERO IS THE INVESTMENT THESIS
+   - VCs scanning this post will immediately see the opportunity
+   - $250B committed, 100K engineers, zero tools = obvious gap
+   - This is the "why now" distilled to one number
+
+3. STRUCTURE:
+   - 5 impressive numbers (each a jaw-dropper on its own)
+   - Build false pattern: "it's all going up"
+   - Break with "0" — the contrast creates the insight
+   - Thesis line: "$250B for compute. $0 for design."
+
+4. POSTING TIME: Thursday 8-10 AM IST
+
+5. TAG: India AI Summit official page (if they have LinkedIn)

@@ -1,0 +1,559 @@
+ENHANCED CAROUSEL — VC-SIGNAL EDITION
+======================================================
+
+10-SLIDE CAROUSEL: ChipOS as narrative climax
+LinkedIn + Instagram — same slides, different captions.
+
+KEY CHANGE FROM ORIGINAL:
+  The original had ChipOS as item #4 in a list (Slide 4).
+  This version makes ChipOS the NARRATIVE CLIMAX (Slides 7-8).
+  VCs remember the climax. A list item is forgettable.
+  A reveal is memorable.
+
+STRUCTURE:
+  Slides 1-4:  Summit scale ($200B, Guinness, Modi, Big Tech)
+  Slides 5-6:  "Then came Day 3..." tension + 5 breakthroughs
+  Slides 7-8:  ChipOS reveal + what it does (the payoff)
+  Slide 9:     CDAC validation + Day 4-5 recap
+  Slide 10:    Thesis + CTA
+
+NEW RULE: Every single slide has a BOLD NUMBER.
+  VCs process numbers faster than text. Every slide anchors on
+  a number that signals scale, speed, or scarcity.
+
+
+DESIGN SYSTEM (unchanged)
+--------------------------------------------
+Photo slides:
+  - Your photo with dark gradient overlay
+  - White bold text, left-aligned, top 60%
+  - Cyan accent (#00FFFF) for key numbers and names
+
+Text card slides:
+  - Dark background (#0a0a0f)
+  - India tricolor accent line at top (saffron > white > green)
+  - "DAY X" header in cyan
+  - Arrow bullets (>) in cyan, content in white
+
+All slides:
+  - 1080 x 1350 px (4:5)
+  - Font: Montserrat Bold / Inter Bold
+  - Slide counter bottom-right (1/10, 2/10...)
+  - ONE bold number per slide in cyan, minimum 60pt
+
+
+=====================================================================
+SLIDE 1 — THE HOOK [PHOTO]
+=====================================================================
+Photo: You at Bharat Mandapam exterior
+Bold number: $250B
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|  (india tricolor accent line)             |
+|                                           |
+|   THE INDIA AI SUMMIT 2026.              |
+|                                           |
+|   $250 BILLION IN PLEDGES.               |
+|   300,000 PARTICIPANTS.                  |
+|   GUINNESS WORLD RECORD.                 |
+|                                           |
+|   I WAS THERE. HERE'S WHAT               |
+|   ACTUALLY HAPPENED.                     |
+|                                      >   |
+|                                    1/10  |
++-------------------------------------------+
+
+Font: "$250 BILLION" cyan 70pt. "300,000" cyan 50pt.
+      "GUINNESS WORLD RECORD." white 40pt.
+      "I WAS THERE." white 36pt bold.
+
+Bold number: $250B (signals: massive market, India going all-in)
+
+Why it stops the scroll:
+  - $250B is a larger, more accurate number than $200B
+    (total commitments including Reliance/Jio ~$110B)
+  - "300,000 participants" = social proof of importance
+  - "I was there" = founder credibility, personal
+  - Three jaw-drop facts before asking for a swipe
+
+Source: Press release + Supabase articles
+
+
+=====================================================================
+SLIDE 2 — DAY 1-2: THE MONEY [TEXT CARD]
+=====================================================================
+Bold number: $100B
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   DAY 1                                  |
+|                                           |
+|   Modi inaugurates at Bharat Mandapam.   |
+|   "India — the most AI-ready democracy." |
+|                                           |
+|   > ADANI: $100B TO AI DATA CENTERS      |
+|     (largest single corporate pledge     |
+|      in AI history)                      |
+|                                           |
+|   DAY 2                                  |
+|                                           |
+|   > GOOGLE: $15B                         |
+|   > MICROSOFT: $17.5B INDIA + $50B       |
+|     GLOBAL SOUTH                         |
+|   > AMAZON: ~$16B                        |
+|   > OPENAI + TATA: MULTI-BILLION         |
+|     HYPERVAULT                           |
+|                                           |
+|   = $150B+ BY DAY 2                      |
+|                                           |
+|                                    2/10  |
++-------------------------------------------+
+
+Font: "DAY 1" / "DAY 2" cyan 50pt. "$100B" cyan 60pt bold.
+      "$150B+ BY DAY 2" cyan 36pt.
+
+Bold number: $100B (signals: unprecedented corporate investment)
+
+Source: Press release + Supabase articles
+
+
+=====================================================================
+SLIDE 3 — DAY 2 CONTINUED: WHAT THEY'RE BUILDING [TEXT CARD]
+=====================================================================
+Bold number: 58,000
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   WHAT $250B BUYS:                       |
+|                                           |
+|   > 58,000 GPUs                          |
+|     (up from 38,000)                     |
+|                                           |
+|   > CLOUD AI CLUSTERS FOR 450M+ USERS    |
+|     (Google + Jio partnership)           |
+|                                           |
+|   > INDIA'S FIRST COMMERCIAL CHIP FAB    |
+|     (Micron, Sanand, Gujarat)            |
+|                                           |
+|   > COMPUTE. INFRASTRUCTURE. HARDWARE.   |
+|                                           |
+|   BUT WHAT ABOUT THE DESIGN LAYER?       |
+|                                           |
+|                                    3/10  |
++-------------------------------------------+
+
+Font: "58,000" cyan 70pt. "BUT WHAT ABOUT THE DESIGN LAYER?"
+      white 36pt bold italic — the open loop.
+
+Bold number: 58,000 (signals: India is serious about infra)
+
+Why this slide is new:
+  - The original jumped from money to Day 3. This slide asks
+    the question a VC would ask: where's the design layer?
+  - "But what about the design layer?" = the gap. This is the
+    setup for ChipOS. VCs are now primed to look for it.
+
+
+=====================================================================
+SLIDE 4 — DAY 3 SETUP [PHOTO]
+=====================================================================
+Photo: Inside the summit — crowd, stage, or auditorium
+Bold number: 5
+
++-------------------------------------------+
+|                                           |
+|                                           |
+|   THEN CAME DAY 3.                       |
+|                                           |
+|   5 ANNOUNCEMENTS.                       |
+|   ONE DAY.                               |
+|   EVERYTHING CHANGED.                    |
+|                                           |
+|                                           |
+|                                    4/10  |
++-------------------------------------------+
+
+Font: "THEN CAME DAY 3." white 60pt bold.
+      "5" cyan 80pt. "EVERYTHING CHANGED." white 40pt.
+
+Bold number: 5 (signals: density of breakthroughs)
+
+Why it works:
+  - Open loop: what were the 5 announcements? Must swipe.
+  - "Everything changed" adds stakes
+  - Short (10 words). Photo does the heavy lifting.
+  - Zeigarnik Effect: incomplete information the brain resolves
+
+
+=====================================================================
+SLIDE 5 — DAY 3: THE BREAKTHROUGHS [TEXT CARD]
+=====================================================================
+Bold number: 500,000+
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   DAY 3                                  |
+|                                           |
+|   1. SEMICONDUCTOR MISSION 2.0           |
+|      Rs 40,000 CRORE ($4.7B)             |
+|                                           |
+|   2. MICRON GUJARAT                      |
+|      INDIA'S FIRST COMMERCIAL CHIPS      |
+|                                           |
+|   3. HASSABIS + BENGIO + LECUN           |
+|      JOINT KEYNOTE. 500,000+ VIEWERS.    |
+|                                           |
+|   4. CHIPOS LAUNCHED.                    |
+|      (I'LL EXPLAIN.)                     |
+|                                           |
+|   5. CDAC NOTICED.                       |
+|      (THAT PART SURPRISED ME.)           |
+|                                           |
+|                                    5/10  |
++-------------------------------------------+
+
+Font: Numbers in cyan circles. "500,000+" cyan bold.
+      "(I'LL EXPLAIN.)" italic — the tease.
+      "(THAT PART SURPRISED ME.)" italic — human, not corporate.
+
+Bold number: 500,000+ (signals: massive attention on this day)
+
+Key change from original:
+  - Item 4 says "(I'll explain.)" instead of "(More on that in
+    a second)" — more personal, builds anticipation
+  - Item 5 says "(That part surprised me.)" — adds emotional
+    authenticity that VCs respond to
+  - ChipOS is still discovered, not pitched. But now items 4-5
+    create a DOUBLE open loop that makes slides 7-8 feel
+    like a reward for swiping
+
+
+=====================================================================
+SLIDE 6 — THE GAP [PHOTO]
+=====================================================================
+Photo: You presenting (wide shot, audience visible)
+Bold number: 70%
+
++-------------------------------------------+
+|                                           |
+|                                           |
+|   10 YEARS IN CHIP VERIFICATION.         |
+|   INTEL. ISRO. AXELERA AI.              |
+|   9 AWARDS. WORKING SILICON.             |
+|                                           |
+|   VERIFICATION EATS 70% OF              |
+|   EVERY CHIP PROJECT.                    |
+|                                           |
+|   EVERY DESIGN TOOL IN INDIA            |
+|   IS FOREIGN-BUILT.                      |
+|                                           |
+|   ZERO INDIAN COMPANIES                  |
+|   BUILDING THE DESIGN LAYER.            |
+|                                           |
+|                                    6/10  |
++-------------------------------------------+
+
+Font: "70%" cyan 80pt bold — the anchor number.
+      "ZERO" cyan 60pt. "INTEL. ISRO." cyan 36pt.
+      "FOREIGN-BUILT." white 44pt bold.
+
+Bold number: 70% (signals: massive inefficiency = massive opportunity)
+
+Why this slide is restructured:
+  - Original combined the gap + reveal in one slide ("So I built one")
+  - Separating them creates MORE tension. Slide 6 is the problem.
+    Slide 7 is the solution. The payoff is amplified.
+  - "70%" gives VCs an anchor: "If verification is 70% and it's
+    still done manually, that's a billion-dollar efficiency gain."
+  - "9 awards. Working silicon." = compressed credibility
+  - "Zero Indian companies" = the scarcity signal VCs love
+
+
+=====================================================================
+SLIDE 7 — CHIPOS REVEAL [TEXT CARD]
+=====================================================================
+Bold number: 261+
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   SO I BUILT ONE.                        |
+|                                           |
+|   CHIPOS                                 |
+|                                           |
+|   DESCRIBE A CHIP IN PLAIN ENGLISH.      |
+|                                           |
+|   AI AGENTS:                             |
+|   > WRITE THE RTL                        |
+|   > GENERATE TESTBENCHES                 |
+|   > RUN VERIFICATION                     |
+|   > DEBUG WAVEFORMS                      |
+|   > ITERATE AUTONOMOUSLY. 24/7.          |
+|                                           |
+|   261 API ROUTES. 228 TESTS.             |
+|   32 MCP TOOLS. ENTERPRISE-READY.        |
+|                                           |
+|   NOT A COPILOT. AN OPERATING SYSTEM.    |
+|                                           |
+|                                    7/10  |
++-------------------------------------------+
+
+Font: "SO I BUILT ONE." white 60pt bold — the payoff.
+      "CHIPOS" cyan 80pt bold.
+      "261" cyan 50pt.
+      "NOT A COPILOT. AN OPERATING SYSTEM." white 36pt bold.
+
+Bold number: 261 (signals: this is real, shipped software)
+
+Why this is now the climax:
+  - "So I built one." — four words that resolve 6 slides of tension
+  - Technical metrics (261 routes, 228 tests, 32 tools) signal
+    to VCs that this isn't a demo. It's production software.
+  - "Enterprise-ready" is a VC keyword
+  - The original had ChipOS on slides 5-6 (mid-carousel). Now it's
+    on slide 7 — the natural climax of a 10-slide arc.
+
+
+=====================================================================
+SLIDE 8 — VALIDATION [PHOTO]
+=====================================================================
+Photo: You presenting (angle 2, or networking moment)
+Bold number: <10
+
++-------------------------------------------+
+|                                           |
+|                                           |
+|   WITHIN HOURS:                          |
+|   CDAC — THE TEAM BEHIND INDIA'S         |
+|   RISC-V PROCESSOR — STARTED             |
+|   EXPLORING CHIPOS.                      |
+|                                           |
+|   GLOBALLY: <10 COMPANIES                |
+|   BUILDING THIS.                         |
+|   $74M ALREADY INVESTED                  |
+|   IN THIS CATEGORY.                      |
+|                                           |
+|   IN INDIA: ZERO.                        |
+|   UNTIL NOW.                             |
+|                                           |
+|                                    8/10  |
++-------------------------------------------+
+
+Font: "<10" cyan 70pt. "$74M" cyan 50pt.
+      "ZERO." white 60pt bold. "UNTIL NOW." cyan 44pt.
+      "CDAC" and "RISC-V" in cyan.
+
+Bold number: <10 (signals: category scarcity, first-mover advantage)
+
+Why this slide combines CDAC + competitive context:
+  - Original had CDAC on its own slide. Adding competitive
+    context makes the validation slide do double duty:
+    1. Institutional proof (CDAC)
+    2. Category validation ($74M in competitor funding)
+    3. Scarcity signal (<10 companies globally)
+  - "In India: Zero. Until now." is the money line for VCs.
+    It answers: "Is there anyone else doing this?"
+
+
+=====================================================================
+SLIDE 9 — DAY 4-5 + THESIS [TEXT CARD]
+=====================================================================
+Bold number: $200B+
+
++-------------------------------------------+
+|  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  |
+|                                           |
+|   DAY 4-5                                |
+|                                           |
+|   > PM MODI OPENS LEADERS' PLENARY       |
+|   > ALTMAN + PICHAI + MACRON             |
+|     AT ONE ROUNDTABLE                    |
+|   > INDIA JOINS PAX SILICA               |
+|     (GLOBAL SEMICONDUCTOR ALLIANCE)      |
+|   > $200B+ TOTAL. GUINNESS RECORD.       |
+|                                           |
+|   ─────────────────────────               |
+|                                           |
+|   $250B FOR COMPUTE.                     |
+|   $0 FOR THE DESIGN LAYER.              |
+|                                           |
+|   INDIA ISN'T JUST CONSUMING AI.         |
+|   INDIA IS BUILDING IT.                  |
+|                                           |
+|                                    9/10  |
++-------------------------------------------+
+
+Font: "$200B+" cyan 50pt. "$250B" cyan 40pt.
+      "$0" white 60pt bold — the contrast.
+      "INDIA IS BUILDING IT." white 40pt bold.
+
+Bold number: $200B+ (signals: massive market being created)
+
+Why this slide combines Day 4-5 + thesis:
+  - Original had Day 4-5 and thesis as separate slides
+  - Combining them creates room for a stronger CTA on slide 10
+  - "$250B for compute. $0 for the design layer." = the
+    single-sentence investment thesis that makes VCs lean in
+  - This is the "why now" slide that every VC deck needs
+
+
+=====================================================================
+SLIDE 10 — CTA [PHOTO]
+=====================================================================
+Photo: Strong closing shot — you + ChipOS branding or portrait
+Bold number: 0 (as in: free)
+
++-------------------------------------------+
+|                                           |
+|                                           |
+|   TRY CHIPOS FREE                        |
+|   chipos.ai                              |
+|                                           |
+|   FULL SUMMIT COVERAGE (17 ARTICLES)     |
+|   futureatoms.com/india-ai-summit-2026   |
+|                                           |
+|   ─────────────────────────               |
+|                                           |
+|   WHAT DOES INDIA'S SEMICONDUCTOR        |
+|   INDUSTRY NEED MOST RIGHT NOW?          |
+|                                           |
+|   TELL ME IN THE COMMENTS.               |
+|   SAVE THIS POST FOR REFERENCE.          |
+|                                           |
+|                                   10/10  |
++-------------------------------------------+
+
+Font: "FREE" cyan 50pt. URLs in cyan 32pt.
+      "SAVE THIS POST" white 32pt bold.
+
+Bold number: Free (signals: accessible, try-before-you-buy)
+
+Changes from original:
+  - Added engagement question to the slide itself (not just caption)
+  - "17 articles" adds a number to the summit coverage CTA
+  - Explicit "save this post" ask = algorithm gold
+  - The question invites comments, boosting reach
+
+
+=====================================================================
+THE ENHANCED SWIPE EXPERIENCE
+=====================================================================
+
+  1:  "$250B summit. 300K people. Guinness Record. I was there."
+       |
+  2:  "Modi opened it. Adani $100B. Big Tech $50B+. Insane."
+       |
+  3:  "58K GPUs, fabs, infra... but what about the design layer?"
+       |
+  4:  "Day 3 had 5 announcements. What were they?"
+       |
+  5:  "Semiconductor Mission, Micron, AI legends, he launched
+       something, CDAC noticed... tell me more"
+       |
+  6:  "10 years at Intel. 70% is verification. Zero Indian tools."
+       |
+  7:  "He built ChipOS. 261 APIs. Not a copilot. An OS."    <-- CLIMAX
+       |
+  8:  "CDAC is exploring it. <10 companies globally. $74M invested.
+       India had zero."
+       |
+  9:  "$250B for compute. $0 for design. India is building."
+       |
+  10: "Let me try it free. And save this."
+
+Emotional arc:
+  Awe > Scale > Question > Curiosity > Discovery > Problem >
+  Solution (CLIMAX) > Validation > Thesis > Action
+
+
+=====================================================================
+BOLD NUMBER SUMMARY (VC QUICK-SCAN)
+=====================================================================
+
+  Slide 1:  $250B    — Market scale
+  Slide 2:  $100B    — Corporate conviction
+  Slide 3:  58,000   — Infrastructure scale
+  Slide 4:  5        — Density of breakthroughs
+  Slide 5:  500,000+ — Attention/eyeballs
+  Slide 6:  70%      — Problem size (= opportunity size)
+  Slide 7:  261      — Product maturity (shipped, not vaporware)
+  Slide 8:  <10      — Category scarcity
+  Slide 9:  $200B+   — Market being created
+  Slide 10: Free     — Accessibility
+
+A VC scanning ONLY the bold numbers gets:
+  "$250B... $100B... 58K GPUs... 5 breakthroughs... 500K viewers...
+   70% bottleneck... 261 APIs... <10 companies... $200B market... Free"
+
+That sequence alone tells the investment story.
+
+
+=====================================================================
+KEY DIFFERENCES FROM ORIGINAL
+=====================================================================
+
+1. CHIPOS IS NOW THE CLIMAX (Slide 7), not item #4 in a list
+   - Original: discovered on Slide 4 as list item
+   - Enhanced: revealed on Slide 7 as narrative payoff
+   - Why: VCs remember the climax, not the middle
+
+2. EVERY SLIDE HAS A BOLD NUMBER
+   - Original: some slides were text-only
+   - Enhanced: 10 bold numbers that tell the story alone
+   - Why: VCs scan before they read
+
+3. THE GAP IS ASKED BEFORE IT'S ANSWERED
+   - New Slide 3: "But what about the design layer?"
+   - Slide 6: "Zero Indian companies building the design layer"
+   - Slide 7: "So I built one."
+   - Why: Problem-solution arc is the VC narrative structure
+
+4. COMPETITIVE CONTEXT ADDED (Slide 8)
+   - Original: CDAC alone
+   - Enhanced: CDAC + "<10 companies" + "$74M invested"
+   - Why: Category validation is the #1 thing VCs look for
+
+5. THESIS IS SHARPER (Slide 9)
+   - Original: "India isn't just consuming AI. India is building it."
+   - Enhanced: "$250B for compute. $0 for the design layer."
+   - Why: The contrast makes the opportunity undeniable
+
+6. CTA HAS ENGAGEMENT HOOK (Slide 10)
+   - Original: just links
+   - Enhanced: question + save ask + links
+   - Why: Comments and saves boost algorithmic reach
+
+
+=====================================================================
+DESIGN SPECS (unchanged from original)
+=====================================================================
+
+Dimensions: 1080 x 1350 px (4:5 ratio)
+
+PHOTO SLIDES (1, 4, 6, 8, 10):
+  - Your photo with dark gradient overlay
+  - Overlay: linear-gradient(180deg,
+    rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%)
+  - Text: white, left-aligned, top 60%
+  - Bold number: cyan, minimum 60pt
+
+TEXT CARD SLIDES (2, 3, 5, 7, 9):
+  - Background: #0a0a0f
+  - India tricolor accent line at top: 4px bar,
+    gradient #FF9933 > #FFFFFF > #138808
+  - "DAY X" headers: cyan (#00FFFF), Orbitron font 50pt
+  - Arrow bullets (>): cyan
+  - Content: white (#FFFFFF) bold 30-36pt
+  - Sub-descriptions: off-white (#E5E5E5) 24-28pt
+
+Typography:
+  - Headlines: Montserrat Bold or Inter Bold, 44-80pt
+  - Body: Montserrat Medium, 28-36pt
+  - Accent: Cyan (#00FFFF) for numbers, names, CHIPOS, DAY X
+  - Slide counter: 18pt, bottom-right, 40% opacity
+
+Swipe Arrow: Slide 1 only, bottom-right, 30% opacity

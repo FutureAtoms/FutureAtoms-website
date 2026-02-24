@@ -3,7 +3,7 @@
     <meta name="description" content="Stay updated with the latest news, product launches, and technology breakthroughs from FutureAtoms and our innovative product ecosystem.">
     <meta property="og:title" content="News &amp; Updates | FutureAtoms">
     <meta property="og:description" content="Latest News from FutureAtoms">
-    <meta property="og:url" content="https://futureatoms.com/news.html">
+    <meta property="og:url" content="https://futureatoms.com/news">
     <link rel="icon" type="image/png" href="images/optimized/futureatoms-icon-192w.png">
     <link rel="apple-touch-icon" href="images/optimized/futureatoms-icon-192w.png">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
@@ -14,7 +14,12 @@
     <meta name="twitter:description" content="Latest News from FutureAtoms">
     <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/news.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/news">
     <title>Latest News &amp; Updates - FutureAtoms Tech Herald</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
+        @view-transition { navigation: auto; }
         .metallic-text {
             background: linear-gradient(135deg, #E5E4E2 0%, #ffffff 50%, #C0C0C0 100%);
             -webkit-background-clip: text;
@@ -90,13 +96,16 @@
       "@type": "ListItem",
       "position": 2,
       "name": "Latest News & Updates",
-      "item": "https://futureatoms.com/news.html"
+      "item": "https://futureatoms.com/news"
     }
   ]
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.05),transparent_70%)]">
         </div>
@@ -104,9 +113,9 @@
 
     <!-- Navigation -->
     <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
-        <a href="index.html" class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3">
             <div class="w-10 h-10 flex items-center justify-center">
-                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
             </div>
             <div>
                 <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
@@ -117,32 +126,33 @@
         </a>
 
         <nav class="hidden md:flex gap-8 font-['Orbitron'] text-sm tracking-widest items-center">
-            <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="/" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
 
             <div class="dropdown">
                 <a href="#" class="text-cyan-100/70 hover:text-cyan-400 transition-colors flex items-center gap-1">
                     PRODUCTS <i class="fas fa-chevron-down text-xs opacity-50"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="chipos.html">ChipOS</a>
-                    <a href="systemverilog.html">SystemVerilogGPT</a>
-                    <a href="zaphy.html">Zaphy</a>
-                    <a href="agentic.html">Agentic Control</a>
-                    <a href="yuj.html">Yuj</a>
-                    <a href="adaptivision.html">AdaptiveVision</a>
-                    <a href="bevybeats.html">BevyBeats</a>
-                    <a href="savitri.html">Savitri</a>
+                    <a href="/chipos">ChipOS</a>
+                    <a href="/swaastik">Swaastik</a>
+                    <a href="/systemverilog">SystemVerilogGPT</a>
+                    <a href="/zaphy">Zaphy</a>
+                    <a href="/agentic">Agentic Control</a>
+                    <a href="/yuj">Yuj</a>
+                    <a href="/adaptivision">AdaptiveVision</a>
+                    <a href="/bevybeats">BevyBeats</a>
+                    <a href="/savitri">Savitri</a>
                     <div class="border-t border-cyan-500/30 my-1"></div>
-                    <a href="chipos-changelog.html" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i>
+                    <a href="/chipos-changelog" class="text-xs text-cyan-400/70"><i class="fas fa-history mr-1"></i>
                         Changelog</a>
                 </div>
             </div>
 
-            <a href="blog.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
-            <a href="news.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
-            <a href="about.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
-            <a href="careers.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
-            <a href="contact.html" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
+            <a href="/blog" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">RESEARCH</a>
+            <a href="/news" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">NEWS</a>
+            <a href="/about" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">ABOUT</a>
+            <a href="/careers" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
+            <a href="/contact" class="border border-cyan-500/50 text-cyan-400 px-4 py-1 rounded hover:bg-cyan-500/20 transition-all">CONTACT</a>
         </nav>
 
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
@@ -160,30 +170,31 @@
             </svg>
         </button>
         <nav class="flex flex-col gap-6 text-center font-['Orbitron'] text-lg tracking-widest overflow-y-auto max-h-[80vh] w-full px-6">
-            <a href="index.html" class="text-cyan-100 hover:text-cyan-400">HOME</a>
+            <a href="/" class="text-cyan-100 hover:text-cyan-400">HOME</a>
 
             <div class="flex flex-col gap-3 border-t border-cyan-500/20 py-4">
                 <span class="text-cyan-400 opacity-70 text-sm font-bold">PRODUCTS</span>
-                <a href="chipos.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
-                <a href="systemverilog.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
-                <a href="zaphy.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
-                <a href="agentic.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
+                <a href="/chipos" class="text-white/70 hover:text-white text-base font-['Rajdhani']">ChipOS</a>
+                <a href="/swaastik" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Swaastik</a>
+                <a href="/systemverilog" class="text-white/70 hover:text-white text-base font-['Rajdhani']">SystemVerilogGPT</a>
+                <a href="/zaphy" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Zaphy</a>
+                <a href="/agentic" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Agentic
                     Control</a>
-                <a href="yuj.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
-                <a href="adaptivision.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
-                <a href="bevybeats.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
-                <a href="savitri.html" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
+                <a href="/yuj" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Yuj</a>
+                <a href="/adaptivision" class="text-white/70 hover:text-white text-base font-['Rajdhani']">AdaptiveVision</a>
+                <a href="/bevybeats" class="text-white/70 hover:text-white text-base font-['Rajdhani']">BevyBeats</a>
+                <a href="/savitri" class="text-white/70 hover:text-white text-base font-['Rajdhani']">Savitri</a>
             </div>
 
-            <a href="blog.html" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
-            <a href="news.html" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
-            <a href="about.html" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
-            <a href="careers.html" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
-            <a href="contact.html" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
+            <a href="/blog" class="text-cyan-100 hover:text-cyan-400">RESEARCH</a>
+            <a href="/news" class="text-cyan-100 hover:text-cyan-400">NEWS</a>
+            <a href="/about" class="text-cyan-100 hover:text-cyan-400">ABOUT</a>
+            <a href="/careers" class="text-cyan-100 hover:text-cyan-400">CAREERS</a>
+            <a href="/contact" class="text-cyan-400 border border-cyan-500/50 px-6 py-2 rounded-full hover:bg-cyan-500/20 mx-auto w-fit">CONTACT</a>
         </nav>
     </div>
 
-    <main class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <main id="main-content" class="relative z-10 pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-20">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-['Orbitron'] font-black tracking-tighter mb-6 metallic-text">
                 GLOBAL UPDATES
@@ -203,6 +214,76 @@
         </div>
 
         <div class="grid gap-8">
+            <!-- Featured: India AI Summit 2026 Coverage -->
+            <a href="/india-ai-summit-2026" class="block">
+                <article class="glass-panel p-8 rounded-2xl metallic-border news-card group cursor-pointer ring-1 ring-cyan-500/20">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="w-full md:w-1/3 h-48 bg-gradient-to-br from-orange-900/40 via-white/5 to-green-900/40 rounded-xl relative overflow-hidden border border-white/10">
+                            <div class="absolute top-4 left-4 bg-red-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-red-500/30 text-xs font-bold text-red-300 flex items-center gap-2">
+                                <span class="inline-block w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> LIVE COVERAGE
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-satellite-dish"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-4 mb-3 text-sm text-gray-400 font-mono">
+                                    <span class="text-cyan-400">FEB 16-22, 2026</span>
+                                    <span>&bull;</span>
+                                    <span>SUMMIT</span>
+                                    <span>&bull;</span>
+                                    <span class="text-yellow-400">17 ARTICLES</span>
+                                </div>
+                                <h2 class="text-2xl md:text-3xl font-['Orbitron'] font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                                    India AI Impact Summit 2026 — Live Coverage
+                                </h2>
+                                <p class="text-gray-300 leading-relaxed mb-6">
+                                    24x7 automated coverage of the world's largest AI summit. 3,250+ speakers, 100+ countries, $200B+ in commitments. Featuring FutureAtoms' ChipOS launch, Semiconductor Mission 2.0, and the leaders shaping AI's future — powered by Kimi K2.5 AI journalism.
+                                </p>
+                            </div>
+                            <div class="flex items-center text-cyan-400 font-bold tracking-wider text-sm group-hover:translate-x-2 transition-transform">
+                                VIEW SUMMIT COVERAGE <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <!-- News Item 0 — ChipOS Launch -->
+            <a href="/blog-chipos-launch" class="block">
+                <article class="glass-panel p-8 rounded-2xl metallic-border news-card group cursor-pointer">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="w-full md:w-1/3 h-48 bg-gradient-to-br from-green-900/50 to-cyan-900/50 rounded-xl relative overflow-hidden border border-white/10">
+                            <div class="absolute top-4 left-4 bg-green-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-green-500/30 text-xs font-bold text-green-300">
+                                LAUNCH
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center text-4xl text-white/20 group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-4 mb-3 text-sm text-gray-400 font-mono">
+                                    <span class="text-cyan-400">FEB 18, 2026</span>
+                                    <span>&bull;</span>
+                                    <span>LAUNCH</span>
+                                </div>
+                                <h2 class="text-2xl md:text-3xl font-['Orbitron'] font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                                    FutureAtoms Unveils ChipOS at India AI Impact Summit 2026
+                                </h2>
+                                <p class="text-gray-300 leading-relaxed mb-6">
+                                    At the world's largest AI summit — 3,250+ speakers, 100+ countries, $200B+ in investment announcements — FutureAtoms launched ChipOS, the first agentic OS for semiconductor design. With India committing Rs 40,000 crore to Semiconductor Mission 2.0, ChipOS fills the gap: the only Indian-built AI design platform for the chip industry.
+                                </p>
+                            </div>
+                            <div class="flex items-center text-cyan-400 font-bold tracking-wider text-sm group-hover:translate-x-2 transition-transform">
+                                READ FULL ARTICLE <i class="fas fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
             <!-- News Item 1 -->
             <article class="glass-panel p-8 rounded-2xl metallic-border news-card group cursor-pointer">
                 <div class="flex flex-col md:flex-row gap-8">
@@ -309,7 +390,7 @@
 
     <footer class="border-t border-white/10 py-8 text-center text-gray-300 text-sm font-mono">
         <p>© 2026 FutureAtoms. All rights reserved.</p>
-        <a href="chipos-pitch.html" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
+        <a href="/chipos-pitch" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>

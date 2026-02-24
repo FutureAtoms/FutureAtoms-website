@@ -1,17 +1,22 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/chipos-docs.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/chipos-docs">
     <title>ChipOS Documentation - Complete User Guide | FutureAtoms</title>
-    <meta name="description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
+    <meta name="description" content="Documentation for ChipOS, the first agentic OS for semiconductor design. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
     <meta property="og:title" content="ChipOS Documentation | FutureAtoms">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
+    <meta property="og:description" content="Documentation for ChipOS, the first agentic OS for semiconductor design. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@FutureAtoms">
     <meta name="twitter:title" content="ChipOS Documentation | FutureAtoms">
-    <meta name="twitter:description" content="Documentation for ChipOS, the AI OS for chip development. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
+    <meta name="twitter:description" content="Documentation for ChipOS, the first agentic OS for semiconductor design. Setup, modes (Agent, Chat, Zendesk), knowledge workflows, MCP integration, and AI provider settings.">
     <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/optimized/futureatoms-icon-64w.webp">
@@ -37,6 +42,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
 
     <style>
+        @view-transition { navigation: auto; }
         :root {
             --cyan-glow: rgba(0, 255, 255, 0.3);
             --purple-glow: rgba(147, 51, 234, 0.3);
@@ -270,13 +276,16 @@
       "@type": "ListItem",
       "position": 2,
       "name": "ChipOS Documentation",
-      "item": "https://futureatoms.com/chipos-docs.html"
+      "item": "https://futureatoms.com/chipos-docs"
     }
   ]
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Top Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-cyan-900/30">
         <div class="flex items-center justify-between px-4 py-3 lg:px-8">
@@ -286,8 +295,8 @@
                     <i class="fas fa-bars text-xl"></i>
                 </button>
 
-                <a href="chipos.html" class="flex items-center gap-3">
-                    <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8 object-contain">
+                <a href="/chipos" class="flex items-center gap-3">
+                    <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8 object-contain" decoding="async">
                     <span class="font-orbitron text-xl font-bold text-white">ChipOS <span class="text-cyan-400">Docs</span></span>
                 </a>
             </div>
@@ -296,10 +305,10 @@
                 <span class="hidden sm:inline-block text-xs font-mono bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">
                     v2026.01.05
                 </span>
-                <a href="chipos.html" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+                <a href="/chipos" class="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
                     <i class="fas fa-arrow-left mr-2"></i>Back to ChipOS
                 </a>
-                <a href="https://github.com/futureatoms/chipos" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                <a href="https://github.com/futureatoms/chipos" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
                     <i class="fab fa-github text-xl"></i>
                 </a>
             </div>
@@ -404,7 +413,7 @@
                         <li><a href="#commands-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Commands Reference</a></li>
                         <li><a href="#api-reference" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">API Reference</a></li>
                         <li><a href="#settings" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Settings</a></li>
-                        <li><a href="chipos-settings.html" class="sidebar-link block px-3 py-2 rounded text-sm text-cyan-400">
+                        <li><a href="/chipos-settings" class="sidebar-link block px-3 py-2 rounded text-sm text-cyan-400">
                                 <i class="fas fa-external-link-alt text-xs mr-1"></i>Full Settings Guide
                             </a></li>
                         <li><a href="#troubleshooting" class="sidebar-link block px-3 py-2 rounded text-sm text-gray-300">Troubleshooting</a></li>
@@ -414,7 +423,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="docs-content flex-1 min-h-screen">
+        <main id="main-content" class="docs-content flex-1 min-h-screen">
             <div class="max-w-4xl mx-auto px-6 py-12 lg:px-12">
 
                 <!-- Hero Section -->
@@ -430,7 +439,7 @@
                             <span class="text-white">Documentation</span>
                         </h1>
                         <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                            The complete guide to the AI Operating System for chip development.
+                            The complete guide to the first agentic OS for semiconductor design.
                             Start from login, pick a workspace and mode, then use ChipOS to manage knowledge, projects,
                             and AI workflows end-to-end.
                         </p>
@@ -467,8 +476,8 @@
 
                     <div class="prose prose-invert max-w-none">
                         <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                            ChipOS is the <strong class="text-cyan-400">AI Operating System for chip development</strong> —
-                            think macOS for chips, with AI woven into design, verification, and knowledge.
+                            ChipOS is the <strong class="text-cyan-400">first agentic OS for semiconductor design</strong> —
+                            a vendor-neutral platform with AI woven into design, verification, and knowledge.
                             It combines a dedicated desktop environment, an embedded dashboard, and a cloud or local backend
                             so you can build, search, and automate with AI across your entire workflow.
                         </p>
@@ -546,7 +555,7 @@
                         <!-- Toolbar Screenshot -->
                         <div class="glass-panel p-6 rounded-xl mb-8">
                             <div class="text-center mb-4">
-                                <img src="images/toolbar.png" alt="ChipOS Navigation Toolbar" class="inline-block rounded-lg border border-gray-700 shadow-lg max-w-full">
+                                <img src="images/toolbar.png" alt="ChipOS Navigation Toolbar" class="inline-block rounded-lg border border-gray-700 shadow-lg max-w-full" loading="lazy" decoding="async">
                                 <p class="text-gray-500 text-sm mt-2">ChipOS Navigation Toolbar - Always visible at the top</p>
                             </div>
                         </div>
@@ -2828,7 +2837,7 @@
                                         recommended configurations, and troubleshooting tips.</p>
                                 </div>
                             </div>
-                            <a href="chipos-settings.html" class="ml-4 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm font-orbitron whitespace-nowrap">
+                            <a href="/chipos-settings" class="ml-4 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm font-orbitron whitespace-nowrap">
                                 <i class="fas fa-external-link-alt mr-2"></i>Full Settings Guide
                             </a>
                         </div>
@@ -2904,15 +2913,15 @@
                 <footer class="border-t border-white/10 pt-8 mt-16">
                     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
-                            <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8">
+                            <img src="chipos-logo.png" alt="ChipOS" class="w-8 h-8" loading="lazy" decoding="async">
                             <span class="text-gray-400 text-sm">© 2026 FutureAtoms. All rights reserved.</span>
                         </div>
                         <div class="flex gap-6">
-                            <a href="chipos.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">ChipOS Home</a>
-                            <a href="chipos-changelog.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Changelog</a>
+                            <a href="/chipos" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">ChipOS Home</a>
+                            <a href="/chipos-changelog" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Changelog</a>
                             <a href="https://github.com/futureatoms/chipos" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">GitHub</a>
-                            <a href="contact.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Contact</a>
-                            <a href="chipos-pitch.html" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Investors</a>
+                            <a href="/contact" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Contact</a>
+                            <a href="/chipos-pitch" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors">Investors</a>
                         </div>
                     </div>
                 </footer>

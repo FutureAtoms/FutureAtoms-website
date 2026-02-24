@@ -1,12 +1,17 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://futureatoms.com/feedback.html">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="canonical" href="https://futureatoms.com/feedback">
     <meta name="description" content="Share your feedback with FutureAtoms - Help us improve our products and services with your valuable input.">
     <meta property="og:title" content="Share Your Feedback | FutureAtoms">
     <meta property="og:description" content="Share your feedback with FutureAtoms - Help us improve our products and services with your valuable input.">
     <meta property="og:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp">
-    <meta property="og:url" content="https://futureatoms.com/feedback.html">
+    <meta property="og:url" content="https://futureatoms.com/feedback">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@FutureAtoms">
@@ -28,6 +33,7 @@
     <link rel="stylesheet" href="css/main.css?v=9999">
     <link rel="stylesheet" href="css/feedback.css?v=7">
     <style>
+        @view-transition { navigation: auto; }
         .metallic-text {
             background: linear-gradient(135deg, #00ffff 0%, #ffffff 50%, #0088ff 100%);
             -webkit-background-clip: text;
@@ -51,18 +57,21 @@
       "@type": "ListItem",
       "position": 2,
       "name": "Share Feedback",
-      "item": "https://futureatoms.com/feedback.html"
+      "item": "https://futureatoms.com/feedback"
     }
   ]
 }</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
 </head>
 
 <body class="flex flex-col min-h-screen">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <!-- Navigation -->
     <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8 flex justify-between items-center glass-panel border-b border-cyan-900/30">
-        <a href="index.html" class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-3">
             <div class="w-10 h-10 flex items-center justify-center">
-                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">
+                <img src="images/optimized/futureatoms-icon-64w.webp" alt="FutureAtoms Icon" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" decoding="async">
             </div>
             <div>
                 <p class="font-['Orbitron'] text-2xl md:text-3xl font-bold tracking-wider text-white">
@@ -72,9 +81,9 @@
             </div>
         </a>
         <nav class="hidden md:flex gap-8 text-sm items-center">
-            <a href="index.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
-            <a href="careers.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
-            <a href="contact.html" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CONTACT</a>
+            <a href="/" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="/careers" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CAREERS</a>
+            <a href="/contact" class="text-cyan-100/70 hover:text-cyan-400 transition-colors">CONTACT</a>
         </nav>
         <!-- Mobile Menu Button -->
         <div id="mobile-menu-btn" class="md:hidden text-cyan-500 interactive cursor-pointer">
@@ -92,13 +101,13 @@
             </svg>
         </button>
         <nav class="flex flex-col items-center gap-8 text-xl font-['Orbitron'] tracking-widest">
-            <a href="index.html" class="text-white hover:text-cyan-400 transition-colors">HOME</a>
-            <a href="careers.html" class="text-white hover:text-cyan-400 transition-colors">CAREERS</a>
-            <a href="contact.html" class="text-white hover:text-cyan-400 transition-colors">CONTACT</a>
+            <a href="/" class="text-white hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="/careers" class="text-white hover:text-cyan-400 transition-colors">CAREERS</a>
+            <a href="/contact" class="text-white hover:text-cyan-400 transition-colors">CONTACT</a>
         </nav>
     </div>
 
-    <main class="flex-grow flex items-center justify-center pt-32 pb-20 px-4">
+    <main id="main-content" class="flex-grow flex items-center justify-center pt-32 pb-20 px-4">
         <div class="text-center max-w-2xl mx-auto">
             <div class="mb-8 inline-block text-6xl text-cyan-400 drop-shadow-[0_0_30px_rgba(0,255,255,0.5)]">
                 <i class="fas fa-comments"></i>
@@ -115,7 +124,7 @@
 
     <footer class="border-t border-white/10 py-8 text-center text-gray-300 text-sm font-mono">
         <p>© 2026 FutureAtoms. All rights reserved.</p>
-        <a href="chipos-pitch.html" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
+        <a href="/chipos-pitch" class="text-cyan-400/50 hover:text-cyan-400 text-sm transition-colors mt-2 inline-block">Investors</a>
     </footer>
 
     <script src="js/feedback.js?v=7"></script>

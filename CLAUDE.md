@@ -105,6 +105,8 @@ The website follows a multi-page architecture where each venture has its own ded
 - `adaptivision.html` - Object Detection Technology
 - `chipos.html` - Semiconductor Design OS (formerly Incoder)
 - `systemverilog.html` - Hardware Description AI
+- `swaastik.html` - AI Healthcare OS (Swaastik)
+- `swaastik-pitch.html` - Swaastik Investor Pitch Deck
 
 **Blog Articles:**
 - `blog-ai-music-revolution.html`
@@ -300,6 +302,7 @@ When adding new features or pages:
 - AdaptiveVision: `#30cfd0, #330867` (cyan/purple)
 - ChipOS: `#a8edea, #fed6e3` (cyan/pink)
 - SystemVerilog: `#c0c0c0, #e6e6e6, #a8a8a8` (metallic with shimmer)
+- Swaastik: `#00897B, #26A69A` (teal, healthcare)
 
 **Shimmer Animation:** Used for Zaphy and SystemVerilog icons to create metallic luster effect
 

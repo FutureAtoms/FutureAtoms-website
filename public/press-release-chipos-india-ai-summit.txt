@@ -1,0 +1,71 @@
+Sam Altman, Sundar Pichai, and Demis Hassabis Were All at India's AI Summit. The Most Important Launch May Have Been One They Missed.
+
+New Delhi, February 18, 2026
+
+
+A summit of pledges, and a missing piece
+
+When India opened Bharat Mandapam for the India AI Impact Summit 2026, the message was scale: more than 3,250 speakers across hundreds of sessions from February 16 to 20, delegations from 100+ countries, and twenty world leaders in attendance.
+
+Union IT Minister Ashwini Vaishnaw said AI infrastructure commitments tied to the summit crossed $250 billion in aggregate, driven by announcements across data centres, cloud, and compute. Among them: Reliance and Jio's plan to invest Rs 10 lakh crore over seven years, Adani's $100 billion commitment for AI-ready data centres by 2035, and major India investments disclosed by Microsoft, Google, and Amazon. OpenAI partnered with Tata Group. Anthropic partnered with Infosys.
+
+Demis Hassabis, CEO of Google DeepMind, told the summit that advanced AI could have "ten times the impact of the Industrial Revolution, at ten times the speed." Prime Minister Narendra Modi issued an invitation: "Design and Develop in India. Deliver to the World."
+
+But behind the investment headlines sat a quieter dependency: every promise of AI scale still rests on chips, and on the tools used to design them. On Day 3, Abhilash Chadhar, a former Intel engineer, was focused on a question the summit largely skipped: why is chip design still shaped by workflows and tool architectures built decades ago?
+
+
+Why chip design is still slow
+
+Modern chips are built through a chain of specialized steps: RTL design, functional verification, physical layout, and signoff, all before manufacturing begins. Verification and debug dominate schedules. Synopsys notes that 60 percent of functional verification time is spent on testbench development and debug alone. Siemens has similarly said logic verification can consume over 70 percent of the overall IC development cycle.
+
+Much of that work still runs through fragmented toolchains. The market is anchored by U.S.-based Synopsys and Cadence, and Siemens EDA (European-owned), with workflows that involve manual handoffs between tools, scripts, teams, and documents.
+
+India is spending billions to build kitchens. The chefs are still coordinating on sticky notes.
+
+
+The pitch
+
+Chadhar's answer is ChipOS, built by his Netherlands-headquartered company FutureAtoms. The company describes it as an "agentic operating system" for semiconductor design: not a chat interface, but a platform that orchestrates tasks across the design cycle from a single interface.
+
+FutureAtoms says engineers can describe intent in plain English, while AI agents generate RTL and verification scaffolding, run tests, triage failures, and iterate through debug loops. A knowledge layer makes internal documents, datasheets, and past design decisions searchable from one place. The system can be self-hosted, including in air-gapped environments, for IP-sensitive organisations.
+
+FutureAtoms says ChipOS is being used at one European AI chip company for deployment workflows to accelerator cards. The company did not disclose commercial terms.
+
+The platform is not positioned as a layer or a plugin. FutureAtoms says it covers the full chip lifecycle: specification, code generation, verification, physical design scripting, knowledge management, deployment, and support automation, and works with any existing EDA toolchain.
+
+Whether orchestration can meaningfully compress entrenched EDA workflows at scale remains an open question. But the pitch is aimed squarely at the industry's most cited bottleneck: iteration time.
+
+
+Why India's timing matters
+
+India is expanding national AI compute from 38,000 GPUs to roughly 58,000, with access priced at Rs 65 per GPU-hour under the IndiaAI Mission. In semiconductors, the government has approved ten projects with envisaged investments of about Rs 1.60 lakh crore, including fabs and packaging units. Micron is expected to begin commercial production at its ATMP facility in Sanand, Gujarat by end of February. Through C-DAC's ChipIN Centre, about one lakh engineers and students across 400 organisations have accessed shared design infrastructure.
+
+At the same time, geopolitics are tightening around supply chains. During summit week, India joined the U.S.-led Pax Silica initiative. In remarks reported by ANI, U.S. AI advisor Sriram Krishnan said: "We want to make sure that the world uses the American AI stack." For India, the sovereignty debate increasingly extends beyond factories into the design intelligence that determines what gets manufactured.
+
+C-DAC, the agency behind India's DHRUV64 RISC-V processor programme (launched December 2025), met with FutureAtoms at the summit to discuss a potential evaluation of ChipOS for India's indigenous processor roadmap, FutureAtoms said.
+
+
+The founder
+
+Chadhar spent ten years at Intel (Habana AI division), ISRO, and a European AI chip company doing verification signoff for AI accelerators, RISC-V processors, and high-speed interfaces across multiple tapeouts with working silicon. Nine Intel awards. Ten projects.
+
+"I watched the same broken process everywhere I worked," Chadhar said. "Verification eating most of the schedule. Engineers hunting through old documents. The same debug loops, repeated project after project. India now has the policy, the capital, and the engineers. What was missing was the system that turns all of that into working chips faster. Not a layer. Not a copilot. The agentic operating system for chip design."
+
+
+Availability
+
+ChipOS is available for macOS, Linux, and web. FutureAtoms lists a free tier (one knowledge source, 50 queries per day), a $29 per month Pro plan, and enterprise options including on-premise and air-gapped deployments.
+
+https://futureatoms.com/chipos
+
+
+---
+
+About FutureAtoms
+
+FutureAtoms is a Netherlands-headquartered, self-funded technology company building the operating system for semiconductor design. Founded by Abhilash Chadhar, its flagship product ChipOS orchestrates the chip design cycle from a single platform. Launched at the India AI Impact Summit 2026.
+
+Product: https://futureatoms.com/chipos
+Launch coverage: https://futureatoms.com/blog-chipos-launch
+Founder: https://www.linkedin.com/in/abhilashchadhar
+Media contact: contact@futureatoms.com

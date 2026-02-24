@@ -1,0 +1,76 @@
+TUESDAY — FOUNDER STORY (LinkedIn text-only post)
+=====================================================================
+Pillar: Founder Authority
+VC Signal: Domain expertise — this founder knows the problem from inside
+
+=====================================================================
+POST COPY:
+=====================================================================
+
+10 years verifying silicon.
+
+Verification ate 70% of every project I touched.
+
+At Intel's Habana AI division — verifying AI accelerators across 3 TPU-class generations.
+At ISRO — where failure isn't a KPI discussion, it's a national headline.
+At Axelera AI — pushing edge AI silicon to tapeout.
+
+9 Intel awards. Multiple tapeouts with working silicon. RISC-V vector CPUs. PCIe Gen4. USB 3.2 SerDes PHYs.
+
+Every single one of those projects ran on the same EDA tools. Tools whose core architectures were designed in the 1990s. Built by three American and European companies.
+
+India committed Rs 40,000 crore to semiconductors last week.
+
+India has 100,000+ chip engineers.
+
+Zero Indian companies were building the design layer.
+
+So I built ChipOS.
+
+Not another copilot that suggests code. An operating system where AI agents write RTL, generate testbenches, run verification, debug waveforms, and iterate autonomously. 24/7.
+
+I didn't start this because I wanted to build a startup. I started this because I got tired of waiting for someone else to build what I needed.
+
+CDAC — the team behind India's RISC-V processor — is already exploring it.
+
+The design layer is the foundation. Everything else is downstream.
+
+
+=====================================================================
+FIRST COMMENT (post within 30 seconds):
+=====================================================================
+
+Try ChipOS free: chipos.ai
+Full story: futureatoms.com/blog/chipos-launch
+
+
+=====================================================================
+POSTING NOTES:
+=====================================================================
+
+1. TEXT-ONLY POST (no image, no carousel)
+   - LinkedIn text posts with personal narrative get highest engagement
+   - The contrast with yesterday's visual carousel keeps the feed varied
+   - Text-only = LinkedIn gives more organic reach (no competing media)
+
+2. STRUCTURE:
+   - Opens with "10 years" — time = credibility
+   - "70%" — the anchor number VCs will remember
+   - Company names as social proof (Intel, ISRO, Axelera AI)
+   - "Zero Indian companies" — the gap, the scarcity signal
+   - "So I built ChipOS" — four words, the turn
+   - CDAC validation — institutional proof
+   - Closes with thesis: "The design layer is the foundation"
+
+3. NO HASHTAGS on this post
+   - Founder story posts perform better without hashtags on LinkedIn
+   - Hashtags can make personal posts feel like marketing
+   - Let the narrative speak
+
+4. ENGAGEMENT:
+   - This post will attract comments like "Congrats!" and "Inspiring"
+   - Reply to EVERY comment with a thoughtful follow-up
+   - Ask commenters what they're building or what their experience with EDA tools is
+   - Turn comments into conversations
+
+5. POSTING TIME: Tuesday 8-10 AM IST

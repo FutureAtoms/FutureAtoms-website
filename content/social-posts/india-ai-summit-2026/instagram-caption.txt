@@ -1,0 +1,21 @@
+The India AI Impact Summit 2026 just wrapped at Bharat Mandapam.
+
+There's been a lot of noise about crowds and logistics. That happens when 3,250+ speakers from 100+ countries show up. Here's the signal — day by day in the slides above.
+
+A few things the slides didn't have room for:
+
+The Hassabis-Bengio-LeCun joint keynote had 500,000+ concurrent viewers. Standing room only. Three people who've spent their careers disagreeing about AGI — on one stage, in New Delhi.
+
+Micron's Gujarat plant didn't just "begin production." It's India's first commercial semiconductor facility. That's a sentence that didn't exist 12 months ago.
+
+And on Day 3, between Semiconductor Mission 2.0 and the AI godfathers keynote, I walked on stage and launched ChipOS — an agentic OS where engineers describe chip designs in plain English and AI agents write the RTL, run verification, debug waveforms, and iterate 24/7.
+
+I built it after 10 years of doing verification the old way. At Intel (Habana AI). At ISRO. At Axelera AI. With tools from the 1990s.
+
+CDAC — the team behind India's DHRUV64 RISC-V processor — is already exploring it.
+
+Full summit coverage with all 17 articles: futureatoms.com/india-ai-summit-2026
+
+Try ChipOS free — link in bio.
+
+#IndiaAISummit2026 #ChipOS #SemiconductorMission #BuildInPublic #FutureAtoms

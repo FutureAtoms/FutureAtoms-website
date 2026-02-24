@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{STYLES_PATH}}">
+<style>
+  body {
+    width: {{WIDTH}}px;
+    height: {{HEIGHT}}px;
+    position: relative;
+    background: #0a0a0f;
+  }
+
+  .photo-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('{{PHOTO_URL}}');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+
+  .photo-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.10) 25%,
+      rgba(0,0,0,0.40) 55%,
+      rgba(0,0,0,0.75) 80%,
+      rgba(0,0,0,0.88) 100%
+    );
+    z-index: 2;
+  }
+
+  /* Gradient-only placeholder when no photo */
+  .photo-bg.no-photo {
+    background-image: none;
+    background: linear-gradient(135deg, #0a0a0f 0%, #111128 40%, #0a0a0f 100%);
+  }
+
+  .photo-bg.no-photo::after {
+    background: linear-gradient(180deg,
+      rgba(10,10,15,0.3) 0%,
+      rgba(10,10,15,0.6) 50%,
+      rgba(10,10,15,0.9) 100%
+    );
+  }
+
+  .tricolor-line {
+    z-index: 5;
+  }
+
+  .brand-icon {
+    z-index: 5;
+  }
+
+  .content-area {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60%;
+    padding: 0 56px 80px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 3;
+  }
+
+  .slide-counter {
+    z-index: 5;
+  }
+
+  .swipe-arrow {
+    z-index: 5;
+  }
+
+  /* Subtle radial glow behind content */
+  .content-area::before {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(0, 255, 255, 0.03) 0%, transparent 70%);
+    z-index: -1;
+  }
+</style>
+</head>
+<body class="{{FORMAT_CLASS}}">
+  <div class="tricolor-line"></div>
+  <div class="photo-bg {{PHOTO_CLASS}}"></div>
+  <img class="brand-icon" src="{{BRAND_ICON_PATH}}" alt="FutureAtoms">
+  {{CONTENT}}
+  <div class="slide-counter">{{SLIDE_NUM}}/10</div>
+  {{SWIPE_ARROW}}
+</body>
+</html>

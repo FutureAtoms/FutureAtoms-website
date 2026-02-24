@@ -8,7 +8,7 @@ const { test, expect } = require('@playwright/test');
 test.describe('Admin Panel - Loading & Basic Structure', () => {
 
     test('admin panel index.html exists and loads', async ({ page }) => {
-        const response = await page.goto('/admin/index.html');
+        const response = await page.goto('/admin/');
 
         expect(response).toBeTruthy();
         expect(response.status()).toBe(200);
@@ -17,7 +17,7 @@ test.describe('Admin Panel - Loading & Basic Structure', () => {
     });
 
     test('admin panel has correct title', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(2000);
 
         // Title should contain either FutureAtoms, Admin, or Refine (the framework name)
@@ -33,7 +33,7 @@ test.describe('Admin Panel - Loading & Basic Structure', () => {
     });
 
     test('admin panel has root element', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         const root = page.locator('#root');
         await expect(root).toBeAttached();
@@ -42,7 +42,7 @@ test.describe('Admin Panel - Loading & Basic Structure', () => {
     });
 
     test('admin panel loads React app', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         // Wait for React to render
         await page.waitForTimeout(3000);
@@ -69,7 +69,7 @@ test.describe('Admin Panel - Assets', () => {
             }
         });
 
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForLoadState('networkidle');
 
         // Should have at least one CSS file
@@ -95,7 +95,7 @@ test.describe('Admin Panel - Assets', () => {
             }
         });
 
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForLoadState('networkidle');
 
         // Should have at least one JS file
@@ -113,7 +113,7 @@ test.describe('Admin Panel - Assets', () => {
 test.describe('Admin Panel - Refine UI Components', () => {
 
     test('admin panel renders Refine layout', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Refine should render some layout structure
@@ -130,7 +130,7 @@ test.describe('Admin Panel - Refine UI Components', () => {
     });
 
     test('admin panel has sidebar or navigation', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Check for sidebar, nav, or menu elements
@@ -158,7 +158,7 @@ test.describe('Admin Panel - Refine UI Components', () => {
     });
 
     test('admin panel shows Feature Requests menu item', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Look for Feature Requests text in the menu
@@ -177,7 +177,7 @@ test.describe('Admin Panel - Refine UI Components', () => {
 test.describe('Admin Panel - Dark Theme', () => {
 
     test('admin panel uses dark theme', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Check if body or root has dark background
@@ -223,7 +223,7 @@ test.describe('Admin Panel - Routing', () => {
     });
 
     test('admin panel redirects to feature-requests by default', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Check if URL contains feature-requests or if the content shows it
@@ -256,7 +256,7 @@ test.describe('Admin Panel - No Console Errors', () => {
             }
         });
 
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Filter out Supabase connection errors (expected in test env)
@@ -277,7 +277,7 @@ test.describe('Admin Panel - Responsive Design', () => {
 
     test('admin panel renders on mobile viewport', async ({ page }) => {
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Should still render content
@@ -293,7 +293,7 @@ test.describe('Admin Panel - Responsive Design', () => {
 
     test('admin panel renders on tablet viewport', async ({ page }) => {
         await page.setViewportSize({ width: 768, height: 1024 });
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         const hasContent = await page.evaluate(() => {
@@ -308,7 +308,7 @@ test.describe('Admin Panel - Responsive Design', () => {
 
     test('admin panel renders on desktop viewport', async ({ page }) => {
         await page.setViewportSize({ width: 1920, height: 1080 });
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         const hasContent = await page.evaluate(() => {
@@ -325,7 +325,7 @@ test.describe('Admin Panel - Responsive Design', () => {
 test.describe('Admin Panel - Meta Tags', () => {
 
     test('admin panel has viewport meta tag', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         const viewport = page.locator('meta[name="viewport"]');
         await expect(viewport).toBeAttached();
@@ -334,7 +334,7 @@ test.describe('Admin Panel - Meta Tags', () => {
     });
 
     test('admin panel has charset meta tag', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         const charset = page.locator('meta[charset]');
         await expect(charset).toBeAttached();
@@ -348,7 +348,7 @@ test.describe('Admin Panel - Performance', () => {
     test('admin panel loads within acceptable time', async ({ page }) => {
         const startTime = Date.now();
 
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForLoadState('domcontentloaded');
 
         const loadTime = Date.now() - startTime;
@@ -368,7 +368,7 @@ test.describe('Admin Panel - Performance', () => {
             }
         });
 
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForLoadState('networkidle');
 
         // Should have minimal requests (index.html + bundled JS + bundled CSS)
@@ -382,7 +382,7 @@ test.describe('Admin Panel - Performance', () => {
 test.describe('Admin Panel - Feature Request List Interface', () => {
 
     test('admin shows statistics cards', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(4000);
 
         // Look for statistics or cards in the UI
@@ -402,7 +402,7 @@ test.describe('Admin Panel - Feature Request List Interface', () => {
     });
 
     test('admin shows table or list structure', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(4000);
 
         // Look for table elements (Ant Design Table)
@@ -423,7 +423,7 @@ test.describe('Admin Panel - Feature Request List Interface', () => {
 test.describe('Admin Panel - Ant Design Integration', () => {
 
     test('Ant Design CSS is loaded', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
         await page.waitForTimeout(3000);
 
         // Check for Ant Design specific classes
@@ -453,7 +453,7 @@ test.describe('Admin Panel - Build Output Verification', () => {
     });
 
     test('admin index.html has correct script reference', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         // Check for module script tag
         const hasModuleScript = await page.evaluate(() => {
@@ -467,7 +467,7 @@ test.describe('Admin Panel - Build Output Verification', () => {
     });
 
     test('admin index.html has CSS link', async ({ page }) => {
-        await page.goto('/admin/index.html');
+        await page.goto('/admin/');
 
         // Check for stylesheet link
         const hasCssLink = await page.evaluate(() => {

@@ -1,11 +1,17 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
     <meta name="robots" content="noindex">
     <title>404 - Page Not Found | FutureAtoms</title>
     <link rel="icon" type="image/webp" href="/images/optimized/futureatoms-icon-64w.webp">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@300;500;700&amp;display=swap" rel="stylesheet">
     <style>
+        @view-transition { navigation: auto; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0a0a0f;
@@ -77,11 +83,14 @@
     <meta name="twitter:site" content="@FutureAtoms">
     <meta name="twitter:title" content="404 - Page Not Found | FutureAtoms">
     <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"></head>
+    <meta name="twitter:image" content="https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"FutureAtoms","url":"https://futureatoms.com","logo":"https://futureatoms.com/images/optimized/futureatoms-icon-512w.webp"}</script>
+    <meta name="view-transition" content="same-origin">
+</head>
 
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
     <div class="glow"></div>
-    <div class="container">
+    <div id="main-content" class="container">
         <div class="error-code">404</div>
         <h1>Page Not Found</h1>
         <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
