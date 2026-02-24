@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <meta name="robots" content="noindex, nofollow">
-    <title>Redirecting... | FutureAtoms</title>
+    <title>Open Article | FutureAtoms</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -21,6 +21,7 @@
         .container {
             padding: 2rem;
             max-width: 480px;
+            width: 100%;
         }
         .logo {
             font-size: 1.2rem;
@@ -42,69 +43,161 @@
             margin: 0 auto 1.5rem;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5; }
-        a { color: #E5E4E2; text-decoration: underline; }
-        .error { display: none; color: #ff6b6b; margin-top: 1rem; }
+        .status { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5; }
+
+        /* In-app browser UI */
+        .inapp-notice { display: none; }
+        .inapp-notice .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .inapp-notice h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .inapp-notice .subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        .open-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #E5E4E2, #fff);
+            color: #0a0a0f;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .open-btn:active { opacity: 0.85; transform: scale(0.98); }
+        .copy-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 14px 32px;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .copy-btn:active { opacity: 0.85; }
+        .hint {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+        .hint strong { color: rgba(255,255,255,0.55); }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">FUTUREATOMS</div>
-        <div class="spinner"></div>
-        <p>Redirecting you to the article...</p>
-        <p class="error" id="error">
-            Could not redirect automatically. <a id="manual-link" href="#">Click here to open the article</a>.
-        </p>
+
+        <!-- Default: auto-redirect view -->
+        <div id="auto-redirect">
+            <div class="spinner"></div>
+            <p class="status">Redirecting you to the article...</p>
+        </div>
+
+        <!-- In-app browser: manual open view -->
+        <div class="inapp-notice" id="inapp-notice">
+            <div class="icon">📰</div>
+            <h2>This article needs to open in your browser</h2>
+            <p class="subtitle">Instagram's browser is blocked by this news site. Tap below to open it in Safari or Chrome.</p>
+
+            <a class="open-btn" id="open-btn" href="#" target="_blank" rel="noreferrer noopener">Open in Browser</a>
+
+            <button class="copy-btn" id="copy-btn" onclick="copyLink()">Copy Link</button>
+
+            <p class="hint">
+                Or tap <strong>⋮</strong> or <strong>⋯</strong> at the top right → <strong>Open in Browser</strong>
+            </p>
+        </div>
     </div>
+
     <script>
         (function() {
             var params = new URLSearchParams(window.location.search);
             var url = params.get('url');
 
             if (!url) {
-                document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('p').textContent = 'No URL provided.';
+                document.getElementById('auto-redirect').innerHTML = '<p class="status">No URL provided.</p>';
                 return;
             }
 
-            // Validate URL - only allow http/https
+            // Validate URL
             try {
                 var parsed = new URL(url);
-                if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-                    throw new Error('Invalid protocol');
-                }
+                if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') throw new Error();
             } catch (e) {
-                document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('p').textContent = 'Invalid URL.';
+                document.getElementById('auto-redirect').innerHTML = '<p class="status">Invalid URL.</p>';
                 return;
             }
 
-            // Set up manual fallback
-            document.getElementById('manual-link').href = url;
+            // Set button href
+            document.getElementById('open-btn').href = url;
 
-            // Redirect using a no-referrer approach
-            // Method 1: meta referrer is already set to no-referrer
-            // Method 2: Use a temporary anchor with rel=noreferrer
-            setTimeout(function() {
-                var a = document.createElement('a');
-                a.href = url;
-                a.rel = 'noreferrer noopener';
-                a.referrerPolicy = 'no-referrer';
-                // For programmatic click
-                document.body.appendChild(a);
-                a.click();
+            // Detect in-app browsers (Instagram, Facebook, TikTok, Twitter, LinkedIn, etc.)
+            var ua = navigator.userAgent || '';
+            var isInApp = /Instagram|FBAN|FBAV|FB_IAB|Twitter|Line\/|Snapchat|TikTok|BytedanceWebview|LinkedInApp/i.test(ua);
 
-                // Fallback: direct location change after meta no-referrer
+            if (isInApp) {
+                // Show the manual "Open in Browser" UI
+                document.getElementById('auto-redirect').style.display = 'none';
+                document.getElementById('inapp-notice').style.display = 'block';
+
+                // Try intent-based open for Android
+                if (/android/i.test(ua)) {
+                    document.getElementById('open-btn').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        window.location.href = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;action=android.intent.action.VIEW;end';
+                    });
+                }
+            } else {
+                // Normal browser - auto redirect
                 setTimeout(function() {
                     window.location.replace(url);
-                }, 500);
-
-                // Show manual link if still here after 3 seconds
-                setTimeout(function() {
-                    document.getElementById('error').style.display = 'block';
-                }, 3000);
-            }, 300);
+                }, 400);
+            }
         })();
+
+        function copyLink() {
+            var url = new URLSearchParams(window.location.search).get('url');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(function() {
+                    document.getElementById('copy-btn').textContent = 'Copied!';
+                    setTimeout(function() {
+                        document.getElementById('copy-btn').textContent = 'Copy Link';
+                    }, 2000);
+                });
+            } else {
+                // Fallback
+                var ta = document.createElement('textarea');
+                ta.value = url;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                document.getElementById('copy-btn').textContent = 'Copied!';
+                setTimeout(function() {
+                    document.getElementById('copy-btn').textContent = 'Copy Link';
+                }, 2000);
+            }
+        }
     </script>
 </body>
 </html>
